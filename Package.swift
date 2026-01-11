@@ -23,7 +23,8 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
-        .package(path: "../swift-test-support-primitives"),
+        .package(path: "../swift-test-primitives"),
+        .package(path: "../../swift-foundations/swift-testing-extras"),
     ],
     targets: [
         .target(
@@ -47,7 +48,8 @@ let package = Package(
             dependencies: [
                 "Linux Kernel Primitives",
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Test Support Primitives", package: "swift-test-support-primitives"),
+                .product(name: "Test Primitives", package: "swift-test-primitives"),
+                .product(name: "Testing Extras", package: "swift-testing-extras"),
             ],
             path: "Tests/Linux Kernel Primitives Tests"
         ),

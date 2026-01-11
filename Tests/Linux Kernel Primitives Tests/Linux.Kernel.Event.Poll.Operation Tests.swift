@@ -16,8 +16,8 @@
     #elseif canImport(Musl)
         import Musl
     #endif
-    import Test_Support_Primitives
-    import Testing
+    import Test_Primitives
+import Testing_Extras
 
     import Kernel_Primitives
     @testable import Linux_Kernel_Primitives

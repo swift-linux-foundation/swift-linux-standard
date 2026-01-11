@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    import Test_Support_Primitives
+    import Test_Primitives
     import Testing
 
     import Kernel_Primitives
