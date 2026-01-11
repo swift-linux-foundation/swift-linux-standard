@@ -20,9 +20,14 @@ let package = Package(
             name: "Linux Kernel Primitives",
             targets: ["Linux Kernel Primitives"]
         ),
+        .library(
+            name: "Linux Loader Primitives",
+            targets: ["Linux Loader Primitives"]
+        ),
     ],
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
+        .package(path: "../swift-loader-primitives"),
         .package(path: "../swift-test-primitives"),
         .package(path: "../../swift-foundations/swift-testing-extras"),
     ],
@@ -41,6 +46,13 @@ let package = Package(
                 .target(name: "Linux Primitives"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
+            ]
+        ),
+        .target(
+            name: "Linux Loader Primitives",
+            dependencies: [
+                .target(name: "Linux Primitives"),
+                .product(name: "Loader Primitives", package: "swift-loader-primitives"),
             ]
         ),
         .testTarget(
