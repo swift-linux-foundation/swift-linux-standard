@@ -137,13 +137,14 @@
         ///
         /// Not cancellable once the syscall begins. Check task cancellation
         /// before calling if cooperative cancellation is needed.
+        @unsafe
         public static func register(
             _ fd: Kernel.Descriptor,
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
         ) throws(Error) {
-            let result = swift_io_uring_register(
+            let result = unsafe swift_io_uring_register(
                 fd.rawValue,
                 opcode.rawValue,
                 argument,

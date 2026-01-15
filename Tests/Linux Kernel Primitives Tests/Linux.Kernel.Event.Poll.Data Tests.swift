@@ -54,7 +54,7 @@ import Testing_Extras
         func initFromRawPointer() {
             var value: Int = 42
             let data = withUnsafePointer(to: &value) { ptr in
-                Kernel.Event.Poll.Data(UnsafeRawPointer(ptr))
+                unsafe Kernel.Event.Poll.Data(UnsafeRawPointer(ptr))
             }
             #expect(data != 0)
         }
@@ -63,7 +63,7 @@ import Testing_Extras
         func initFromTypedPointer() {
             var value: Int = 42
             let data = withUnsafePointer(to: &value) { ptr in
-                Kernel.Event.Poll.Data(pointer: ptr)
+                unsafe Kernel.Event.Poll.Data(pointer: ptr)
             }
             #expect(data != 0)
         }
@@ -72,7 +72,7 @@ import Testing_Extras
         func initFromMutableTypedPointer() {
             var value: Int = 42
             let data = withUnsafeMutablePointer(to: &value) { ptr in
-                Kernel.Event.Poll.Data(pointer: ptr)
+                unsafe Kernel.Event.Poll.Data(pointer: ptr)
             }
             #expect(data != 0)
         }
@@ -81,8 +81,8 @@ import Testing_Extras
         func pointerRoundtrip() {
             var value: Int = 42
             withUnsafeMutablePointer(to: &value) { ptr in
-                let originalBitPattern = UInt(bitPattern: ptr)
-                let data = Kernel.Event.Poll.Data(pointer: ptr)
+                let originalBitPattern = unsafe UInt(bitPattern: ptr)
+                let data = unsafe Kernel.Event.Poll.Data(pointer: ptr)
                 #expect(data.rawValue == UInt64(originalBitPattern))
             }
         }

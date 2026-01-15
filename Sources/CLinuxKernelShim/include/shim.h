@@ -66,6 +66,32 @@ static inline int swift_io_uring_register(
     return (int)syscall(SYS_io_uring_register, fd, opcode, arg, nr_args);
 }
 
+// getrandom - cryptographically secure random bytes from kernel CSPRNG
+// Flags: GRND_NONBLOCK (1), GRND_RANDOM (2)
+static inline ssize_t swift_getrandom(void *buf, size_t buflen, unsigned int flags) {
+    return syscall(SYS_getrandom, buf, buflen, flags);
+}
+
+// renameat2 - atomic rename with flags
+// Flags: RENAME_NOREPLACE (1), RENAME_EXCHANGE (2), RENAME_WHITEOUT (4)
+#ifndef RENAME_NOREPLACE
+#define RENAME_NOREPLACE (1 << 0)
+#endif
+#ifndef RENAME_EXCHANGE
+#define RENAME_EXCHANGE (1 << 1)
+#endif
+#ifndef RENAME_WHITEOUT
+#define RENAME_WHITEOUT (1 << 2)
+#endif
+
+static inline int swift_renameat2(
+    int olddirfd, const char *oldpath,
+    int newdirfd, const char *newpath,
+    unsigned int flags
+) {
+    return (int)syscall(SYS_renameat2, olddirfd, oldpath, newdirfd, newpath, flags);
+}
+
 #endif /* __linux__ */
 
 #endif /* CLINUX_SHIM_H */

@@ -74,6 +74,7 @@ for target in package.targets where ![.system, .binary, .plugin].contains(target
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
+        .strictMemorySafety(),
     ]
     target.swiftSettings = (target.swiftSettings ?? []) + settings
 }

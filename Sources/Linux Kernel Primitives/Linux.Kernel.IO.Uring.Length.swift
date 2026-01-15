@@ -52,15 +52,17 @@
         /// Creates a length from a buffer pointer.
         ///
         /// - Parameter buffer: The buffer whose count to use.
+        @unsafe
         public init(_ buffer: UnsafeRawBufferPointer) {
-            self.init(UInt32(clamping: buffer.count))
+            self.init(UInt32(clamping: unsafe buffer.count))
         }
 
         /// Creates a length from a mutable buffer pointer.
         ///
         /// - Parameter buffer: The buffer whose count to use.
+        @unsafe
         public init(_ buffer: UnsafeMutableRawBufferPointer) {
-            self.init(UInt32(clamping: buffer.count))
+            self.init(UInt32(clamping: unsafe buffer.count))
         }
     }
 

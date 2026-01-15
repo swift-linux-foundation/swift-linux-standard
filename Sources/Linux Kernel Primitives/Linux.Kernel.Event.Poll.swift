@@ -129,7 +129,8 @@
                 of: epoll_event.self,
                 capacity: count
             ) { buffer in
-                let result = epoll_wait(epfd.rawValue, buffer.baseAddress!, Int32(count), timeout)
+                let baseAddress = unsafe buffer.baseAddress!
+                let result = unsafe epoll_wait(epfd.rawValue, baseAddress, Int32(count), timeout)
                 guard result >= 0 else {
                     let code = Kernel.Error.Code.captureErrno()
                     if code.posix == EINTR {
@@ -140,7 +141,7 @@
 
                 // Convert C events to Swift events
                 for i in 0..<Int(result) {
-                    events[i] = Event(buffer[i])
+                    events[i] = Event(unsafe buffer[i])
                 }
                 return .success(Int(result))
             }

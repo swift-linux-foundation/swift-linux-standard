@@ -48,6 +48,7 @@
             ///   - length: Number of bytes to read.
             ///   - offset: File offset (use `.current` for current position).
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func read(
                 fd: Kernel.Descriptor,
                 buffer: UnsafeMutableRawPointer,
@@ -58,7 +59,7 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .read.standard
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: buffer))
+                entry.addr = UInt64(UInt(bitPattern: unsafe buffer))
                 entry.len = length
                 entry.offset = offset
                 entry.data = data
@@ -72,6 +73,7 @@
             ///   - length: Number of bytes to write.
             ///   - offset: File offset (use `.current` for current position).
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func write(
                 fd: Kernel.Descriptor,
                 buffer: UnsafeRawPointer,
@@ -82,7 +84,7 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .write.standard
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: buffer))
+                entry.addr = UInt64(UInt(bitPattern: unsafe buffer))
                 entry.len = length
                 entry.offset = offset
                 entry.data = data
@@ -146,6 +148,7 @@
             ///   - addrLen: Optional pointer to sockaddr length.
             ///   - flags: Accept flags.
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func accept(
                 fd: Kernel.Descriptor,
                 addr: UnsafeMutableRawPointer?,
@@ -156,8 +159,8 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .socket.accept
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: addr))
-                entry.offset = Kernel.IO.Uring.Offset(rawValue: UInt64(UInt(bitPattern: addrLen)))
+                entry.addr = UInt64(UInt(bitPattern: unsafe addr))
+                entry.offset = Kernel.IO.Uring.Offset(rawValue: UInt64(UInt(bitPattern: unsafe addrLen)))
                 entry.opFlags = flags
                 entry.data = data
             }
@@ -169,6 +172,7 @@
             ///   - addr: Pointer to sockaddr.
             ///   - addrLen: Length of sockaddr.
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func connect(
                 fd: Kernel.Descriptor,
                 addr: UnsafeRawPointer,
@@ -178,7 +182,7 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .socket.connect
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: addr))
+                entry.addr = UInt64(UInt(bitPattern: unsafe addr))
                 entry.offset = Kernel.IO.Uring.Offset(rawValue: UInt64(addrLen))
                 entry.data = data
             }
@@ -191,6 +195,7 @@
             ///   - length: Number of bytes to send.
             ///   - flags: Send flags.
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func send(
                 fd: Kernel.Descriptor,
                 buffer: UnsafeRawPointer,
@@ -201,7 +206,7 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .socket.send
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: buffer))
+                entry.addr = UInt64(UInt(bitPattern: unsafe buffer))
                 entry.len = length
                 entry.opFlags = flags
                 entry.data = data
@@ -215,6 +220,7 @@
             ///   - length: Maximum bytes to receive.
             ///   - flags: Recv flags.
             ///   - data: Operation data to return with completion.
+            @unsafe
             public mutating func recv(
                 fd: Kernel.Descriptor,
                 buffer: UnsafeMutableRawPointer,
@@ -225,7 +231,7 @@
                 entry.cValue = io_uring_sqe()
                 entry.opcode = .socket.receive
                 entry.fd = fd
-                entry.addr = UInt64(UInt(bitPattern: buffer))
+                entry.addr = UInt64(UInt(bitPattern: unsafe buffer))
                 entry.len = length
                 entry.opFlags = flags
                 entry.data = data

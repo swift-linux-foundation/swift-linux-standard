@@ -41,22 +41,25 @@
         /// with an event.
         ///
         /// - Parameter pointer: A pointer to associate with the event.
+        @unsafe
         public init(_ pointer: UnsafeRawPointer) {
-            self.init(UInt64(UInt(bitPattern: pointer)))
+            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a typed pointer.
         ///
         /// - Parameter pointer: A pointer to associate with the event.
+        @unsafe
         public init<T>(pointer: UnsafePointer<T>) {
-            self.init(UInt64(UInt(bitPattern: pointer)))
+            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a mutable typed pointer.
         ///
         /// - Parameter pointer: A mutable pointer to associate with the event.
+        @unsafe
         public init<T>(pointer: UnsafeMutablePointer<T>) {
-            self.init(UInt64(UInt(bitPattern: pointer)))
+            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
         }
     }
 

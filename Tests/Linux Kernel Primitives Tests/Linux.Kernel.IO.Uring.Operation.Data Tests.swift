@@ -44,8 +44,9 @@
                 func fromRawPointer() {
                     var value: Int = 42
                     withUnsafePointer(to: &value) { ptr in
-                        let data = Kernel.IO.Uring.Operation.Data(ptr)
-                        #expect(data.rawValue == UInt64(UInt(bitPattern: ptr)))
+                        let data = unsafe Kernel.IO.Uring.Operation.Data(ptr)
+                        let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                        #expect(data.rawValue == expected)
                     }
                 }
 
@@ -53,8 +54,9 @@
                 func fromTypedPointer() {
                     var value: Int = 42
                     withUnsafePointer(to: &value) { ptr in
-                        let data = Kernel.IO.Uring.Operation.Data(pointer: ptr)
-                        #expect(data.rawValue == UInt64(UInt(bitPattern: ptr)))
+                        let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
+                        let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                        #expect(data.rawValue == expected)
                     }
                 }
 
@@ -62,8 +64,9 @@
                 func fromMutableTypedPointer() {
                     var value: Int = 42
                     withUnsafeMutablePointer(to: &value) { ptr in
-                        let data = Kernel.IO.Uring.Operation.Data(pointer: ptr)
-                        #expect(data.rawValue == UInt64(UInt(bitPattern: ptr)))
+                        let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
+                        let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                        #expect(data.rawValue == expected)
                     }
                 }
 
