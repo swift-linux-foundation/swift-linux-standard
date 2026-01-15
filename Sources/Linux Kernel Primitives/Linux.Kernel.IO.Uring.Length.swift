@@ -64,6 +64,24 @@
         public init(_ buffer: UnsafeMutableRawBufferPointer) {
             self.init(UInt32(clamping: unsafe buffer.count))
         }
+
+        /// Creates a length from a Span.
+        ///
+        /// This is the safe, normative API for creating a Length from contiguous storage.
+        ///
+        /// - Parameter span: The span whose count to use.
+        public init(_ span: Span<UInt8>) {
+            self.init(UInt32(clamping: span.count))
+        }
+
+        /// Creates a length from a MutableSpan.
+        ///
+        /// This is the safe, normative API for creating a Length from mutable contiguous storage.
+        ///
+        /// - Parameter span: The mutable span whose count to use.
+        public init(_ span: borrowing MutableSpan<UInt8>) {
+            self.init(UInt32(clamping: span.count))
+        }
     }
 
     // MARK: - File.Size Conversion
