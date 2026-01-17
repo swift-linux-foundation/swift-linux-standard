@@ -30,6 +30,7 @@ let package = Package(
         .package(path: "../swift-loader-primitives"),
         .package(path: "../swift-test-primitives"),
         .package(path: "../../swift-foundations/swift-testing-extras"),
+        .package(path: "../../swift-standards/swift-iso-9945"),
     ],
     targets: [
         .target(
@@ -46,6 +47,7 @@ let package = Package(
                 .target(name: "Linux Primitives"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
+                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
             ]
         ),
         .target(
@@ -69,11 +71,12 @@ let package = Package(
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     let settings: [SwiftSetting] = [
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
+        .enableExperimentalFeature("Lifetimes"),
         .strictMemorySafety(),
     ]
     target.swiftSettings = (target.swiftSettings ?? []) + settings
