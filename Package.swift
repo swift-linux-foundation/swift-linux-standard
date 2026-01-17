@@ -39,7 +39,10 @@ let package = Package(
         ),
         .target(
             name: "CLinuxKernelShim",
-            dependencies: []
+            dependencies: [],
+            linkerSettings: [
+                .linkedLibrary("uuid", .when(platforms: [.linux]))
+            ]
         ),
         .target(
             name: "Linux Kernel Primitives",

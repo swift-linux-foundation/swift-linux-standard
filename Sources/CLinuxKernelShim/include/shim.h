@@ -3,6 +3,8 @@
 
 #if defined(__linux__)
 
+#include "uuid_shim.h"
+
 // NOTE: Do NOT define _GNU_SOURCE here - let Glibc handle it
 // NOTE: Do NOT include <unistd.h> or <sys/ioctl.h> - already in SwiftGlibc
 //       Including them here causes fd_set type conflicts.
