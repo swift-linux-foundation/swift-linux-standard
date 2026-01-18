@@ -1,0 +1,4 @@
+module CLinuxMemoryShim {
+    header "allocation_tracking.h"
+    export *
+}

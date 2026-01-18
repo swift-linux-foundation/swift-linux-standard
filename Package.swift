@@ -9,7 +9,7 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         .library(
@@ -24,13 +24,15 @@ let package = Package(
             name: "Linux Loader Primitives",
             targets: ["Linux Loader Primitives"]
         ),
+        .library(
+            name: "Linux Memory Primitives",
+            targets: ["Linux Memory Primitives"]
+        )
     ],
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
         .package(path: "../swift-loader-primitives"),
-        .package(path: "../swift-test-primitives"),
-        .package(path: "../../swift-foundations/swift-testing-extras"),
-        .package(path: "../../swift-standards/swift-iso-9945"),
+        .package(path: "../../swift-standards/swift-iso-9945")
     ],
     targets: [
         .target(
@@ -45,31 +47,35 @@ let package = Package(
             ]
         ),
         .target(
+            name: "CLinuxMemoryShim",
+            dependencies: [],
+            linkerSettings: [
+                .linkedLibrary("dl", .when(platforms: [.linux]))
+            ]
+        ),
+        .target(
             name: "Linux Kernel Primitives",
             dependencies: [
                 .target(name: "Linux Primitives"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
-                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945")
             ]
         ),
         .target(
             name: "Linux Loader Primitives",
             dependencies: [
                 .target(name: "Linux Primitives"),
-                .product(name: "Loader Primitives", package: "swift-loader-primitives"),
+                .product(name: "Loader Primitives", package: "swift-loader-primitives")
             ]
         ),
-        .testTarget(
-            name: "Linux Kernel Primitives Tests",
+        .target(
+            name: "Linux Memory Primitives",
             dependencies: [
-                "Linux Kernel Primitives",
-                .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Test Primitives", package: "swift-test-primitives"),
-                .product(name: "Testing Extras", package: "swift-testing-extras"),
-            ],
-            path: "Tests/Linux Kernel Primitives Tests"
-        ),
+                .target(name: "Linux Primitives"),
+                .target(name: "CLinuxMemoryShim", condition: .when(platforms: [.linux]))
+            ]
+        )
     ],
     swiftLanguageModes: [.v6]
 )
@@ -80,7 +86,7 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableExperimentalFeature("Lifetimes"),
-        .strictMemorySafety(),
+        .strictMemorySafety()
     ]
     target.swiftSettings = (target.swiftSettings ?? []) + settings
 }
