@@ -54,7 +54,7 @@
     // MARK: - Buffer.Index + CustomStringConvertible
 
     extension Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             "\(rawValue)"
         }
     }

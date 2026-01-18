@@ -64,7 +64,7 @@
     // MARK: - CustomStringConvertible
 
     extension Kernel.IO.Uring.Offset: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             if self == .current {
                 return "current"
             }

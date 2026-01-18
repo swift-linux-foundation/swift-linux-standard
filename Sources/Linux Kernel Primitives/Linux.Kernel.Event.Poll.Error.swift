@@ -68,7 +68,7 @@
     }
 
     extension Kernel.Event.Poll.Error: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             switch self {
             case .create(let code):
                 return "epoll_create1 failed (\(code))"

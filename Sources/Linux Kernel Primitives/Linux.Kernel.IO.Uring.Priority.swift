@@ -68,7 +68,7 @@
     // MARK: - CustomStringConvertible
 
     extension Kernel.IO.Uring.Priority: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             "\(rawValue)"
         }
     }

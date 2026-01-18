@@ -68,7 +68,7 @@
     }
 
     extension Kernel.IO.Uring.Error: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             switch self {
             case .setup(let code):
                 return "io_uring_setup failed (\(code))"

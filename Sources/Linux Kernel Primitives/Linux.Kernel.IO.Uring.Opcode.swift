@@ -64,7 +64,7 @@
     // MARK: - CustomStringConvertible
 
     extension Kernel.IO.Uring.Opcode: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             switch self {
             case .nop: return "NOP"
             case .read.standard: return "READ"

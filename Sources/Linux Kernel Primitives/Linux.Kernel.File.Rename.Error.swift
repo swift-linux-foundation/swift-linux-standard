@@ -44,7 +44,7 @@
     }
 
     extension Kernel.File.Rename.Error: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             switch self {
             case .exists:
                 return "renameat2 failed: destination exists (RENAME_NOREPLACE)"

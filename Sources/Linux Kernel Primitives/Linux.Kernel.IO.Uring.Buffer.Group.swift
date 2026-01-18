@@ -55,7 +55,7 @@
     // MARK: - Buffer.Group + CustomStringConvertible
 
     extension Kernel.IO.Uring.Buffer.Group: CustomStringConvertible {
-        public var description: String {
+        public var description: Swift.String {
             "\(rawValue)"
         }
     }
