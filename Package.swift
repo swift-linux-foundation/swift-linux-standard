@@ -32,7 +32,9 @@ let package = Package(
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
         .package(path: "../swift-loader-primitives"),
-        .package(path: "../../swift-standards/swift-iso-9945")
+        .package(path: "../../swift-standards/swift-iso-9945"),
+        // SDG(wraps): Linux syscalls wrap errno
+        // .package(path: "../swift-error-primitives"),
     ],
     targets: [
         .target(
