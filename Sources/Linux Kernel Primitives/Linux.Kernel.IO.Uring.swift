@@ -70,7 +70,7 @@
             var cParams = params.cValue
             let fd = swift_io_uring_setup(entries, &cParams)
             guard fd >= 0 else {
-                throw .setup(.captureErrno())
+                throw .setup(.posix(errno))
             }
             // Update params with kernel-filled values
             params = Params(cParams)
@@ -112,7 +112,7 @@
                 0
             )
             guard result >= 0 else {
-                let code = Kernel.Error.Code.captureErrno()
+                let code = Kernel.Error.Code.posix(errno)
                 if code.posix == EINTR { throw .interrupted }
                 throw .enter(code)
             }
@@ -151,7 +151,7 @@
                 count
             )
             guard result >= 0 else {
-                throw .register(.captureErrno())
+                throw .register(.posix(errno))
             }
         }
 

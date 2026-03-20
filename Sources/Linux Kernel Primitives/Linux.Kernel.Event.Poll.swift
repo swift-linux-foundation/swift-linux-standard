@@ -55,7 +55,7 @@
         public static func create(flags: Create.Flags = .cloexec) throws(Error) -> Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
-                throw .create(.captureErrno())
+                throw .create(.posix(errno))
             }
             return Kernel.Descriptor(rawValue: epfd)
         }
@@ -91,7 +91,7 @@
                 result = epoll_ctl(epfd.rawValue, op.rawValue, fd.rawValue, nil)
             }
             guard result == 0 else {
-                throw .ctl(.captureErrno())
+                throw .ctl(.posix(errno))
             }
         }
 
@@ -132,7 +132,7 @@
                 let baseAddress = unsafe buffer.baseAddress!
                 let result = unsafe epoll_wait(epfd.rawValue, baseAddress, Int32(count), timeout)
                 guard result >= 0 else {
-                    let code = Kernel.Error.Code.captureErrno()
+                    let code = Kernel.Error.Code.posix(errno)
                     if code.posix == EINTR {
                         return .failure(.interrupted)
                     }

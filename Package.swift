@@ -32,7 +32,6 @@ let package = Package(
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
         .package(path: "../swift-loader-primitives"),
-        .package(path: "../../swift-iso/swift-iso-9945"),
         // SDG(wraps): Linux syscalls wrap errno
         // .package(path: "../swift-error-primitives"),
     ],
@@ -60,8 +59,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Primitives"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
-                .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
-                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945")
+                .product(name: "Kernel Primitives", package: "swift-kernel-primitives")
             ]
         ),
         .target(

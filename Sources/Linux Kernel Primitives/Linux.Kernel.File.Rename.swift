@@ -75,7 +75,7 @@
             )
 
             guard result == 0 else {
-                let code = Kernel.Error.Code.captureErrno()
+                let code = Kernel.Error.Code.posix(errno)
                 switch code.posix {
                 case EEXIST:
                     throw .exists
