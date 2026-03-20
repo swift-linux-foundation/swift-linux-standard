@@ -36,10 +36,14 @@ let package = Package(
         // .package(path: "../swift-error-primitives"),
     ],
     targets: [
+
+        // MARK: - Core
         .target(
             name: "Linux Primitives",
             dependencies: []
         ),
+
+        // MARK: - C Shims
         .target(
             name: "CLinuxKernelShim",
             dependencies: [],
@@ -54,6 +58,8 @@ let package = Package(
                 .linkedLibrary("dl", .when(platforms: [.linux]))
             ]
         ),
+
+        // MARK: - Kernel
         .target(
             name: "Linux Kernel Primitives",
             dependencies: [
@@ -62,6 +68,8 @@ let package = Package(
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives")
             ]
         ),
+
+        // MARK: - Loader
         .target(
             name: "Linux Loader Primitives",
             dependencies: [
@@ -69,6 +77,8 @@ let package = Package(
                 .product(name: "Loader Primitives", package: "swift-loader-primitives")
             ]
         ),
+
+        // MARK: - Memory
         .target(
             name: "Linux Memory Primitives",
             dependencies: [
@@ -76,6 +86,8 @@ let package = Package(
                 .target(name: "CLinuxMemoryShim", condition: .when(platforms: [.linux]))
             ]
         ),
+
+        // MARK: - Tests
         .testTarget(
             name: "Linux Kernel Primitives Tests",
             dependencies: [
