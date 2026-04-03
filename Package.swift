@@ -16,10 +16,24 @@ let package = Package(
             name: "Linux Primitives",
             targets: ["Linux Primitives"]
         ),
+        // MARK: - Kernel
         .library(
             name: "Linux Kernel Primitives",
             targets: ["Linux Kernel Primitives"]
         ),
+        .library(
+            name: "Linux Kernel Primitives Core",
+            targets: ["Linux Kernel Primitives Core"]
+        ),
+        .library(
+            name: "Linux Kernel Event Primitives",
+            targets: ["Linux Kernel Event Primitives"]
+        ),
+        .library(
+            name: "Linux Kernel IO Primitives",
+            targets: ["Linux Kernel IO Primitives"]
+        ),
+        // MARK: - Other
         .library(
             name: "Linux Loader Primitives",
             targets: ["Linux Loader Primitives"]
@@ -27,7 +41,7 @@ let package = Package(
         .library(
             name: "Linux Memory Primitives",
             targets: ["Linux Memory Primitives"]
-        )
+        ),
     ],
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
@@ -59,13 +73,39 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel
+        // MARK: - Kernel Core
         .target(
-            name: "Linux Kernel Primitives",
+            name: "Linux Kernel Primitives Core",
             dependencies: [
                 .target(name: "Linux Primitives"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
-                .product(name: "Kernel Primitives", package: "swift-kernel-primitives")
+                .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
+            ]
+        ),
+
+        // MARK: - Kernel Event
+        .target(
+            name: "Linux Kernel Event Primitives",
+            dependencies: [
+                "Linux Kernel Primitives Core",
+            ]
+        ),
+
+        // MARK: - Kernel IO
+        .target(
+            name: "Linux Kernel IO Primitives",
+            dependencies: [
+                "Linux Kernel Primitives Core",
+            ]
+        ),
+
+        // MARK: - Kernel Umbrella
+        .target(
+            name: "Linux Kernel Primitives",
+            dependencies: [
+                "Linux Kernel Primitives Core",
+                "Linux Kernel Event Primitives",
+                "Linux Kernel IO Primitives",
             ]
         ),
 
