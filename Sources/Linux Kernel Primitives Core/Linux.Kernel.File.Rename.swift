@@ -21,20 +21,6 @@
 
     internal import CLinuxKernelShim
 
-    extension Kernel.File {
-        /// Atomic rename operations with flags (Linux only).
-        ///
-        /// Provides access to renameat2(2) which supports atomic rename
-        /// operations with additional flags like RENAME_NOREPLACE and
-        /// RENAME_EXCHANGE.
-        ///
-        /// Higher layers (swift-kernel-primitives) provide cross-platform
-        /// abstractions that use this on Linux and renamex_np on Darwin.
-        public enum Rename {}
-    }
-
-    // MARK: - Syscalls
-
     extension Kernel.File.Rename {
         /// Atomically renames a file with flags.
         ///
@@ -60,9 +46,9 @@
         /// before calling if cooperative cancellation is needed.
         @unsafe
         public static func renameat2(
-            oldDirFD: Int32 = AT_FDCWD,
+            oldDirFD: Int32,
             oldPath: UnsafePointer<CChar>,
-            newDirFD: Int32 = AT_FDCWD,
+            newDirFD: Int32,
             newPath: UnsafePointer<CChar>,
             flags: Flags
         ) throws(Error) {
@@ -102,13 +88,14 @@
         ///   - newPath: Destination path.
         /// - Throws: `Error.exists` if destination exists, other errors on failure.
         @unsafe
-        @inlinable
         public static func noClobber(
             from oldPath: UnsafePointer<CChar>,
             to newPath: UnsafePointer<CChar>
         ) throws(Error) {
             try unsafe renameat2(
+                oldDirFD: AT_FDCWD,
                 oldPath: oldPath,
+                newDirFD: AT_FDCWD,
                 newPath: newPath,
                 flags: .noreplace
             )
@@ -124,13 +111,14 @@
         ///   - path2: Second path.
         /// - Throws: `Error` on failure.
         @unsafe
-        @inlinable
         public static func exchange(
             _ path1: UnsafePointer<CChar>,
             _ path2: UnsafePointer<CChar>
         ) throws(Error) {
             try unsafe renameat2(
+                oldDirFD: AT_FDCWD,
                 oldPath: path1,
+                newDirFD: AT_FDCWD,
                 newPath: path2,
                 flags: .exchange
             )

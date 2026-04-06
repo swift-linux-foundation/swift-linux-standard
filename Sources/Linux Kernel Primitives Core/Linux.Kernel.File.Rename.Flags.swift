@@ -11,6 +11,8 @@
 
 #if canImport(Glibc) || canImport(Musl)
 
+    public import Kernel_Primitives
+
     extension Kernel.File.Rename {
         /// Flags for renameat2(2).
         ///

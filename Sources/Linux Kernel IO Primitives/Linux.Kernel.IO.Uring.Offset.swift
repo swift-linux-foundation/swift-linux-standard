@@ -12,7 +12,7 @@
 #if canImport(Glibc) || canImport(Musl)
     public import Kernel_Primitives
 
-    public import Binary
+    public import Binary_Primitives_Core
 
     extension Kernel.IO.Uring {
         /// File offset for io_uring operations.
@@ -36,7 +36,7 @@
 
     extension Kernel.IO.Uring.Offset {
         /// Zero offset (beginning of file).
-        public static let zero: Self = 0
+        public static let zero: Self = .init(UInt64(0))
 
         /// Use current file position.
         ///

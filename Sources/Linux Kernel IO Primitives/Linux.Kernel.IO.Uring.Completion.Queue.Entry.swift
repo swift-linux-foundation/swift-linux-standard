@@ -62,7 +62,7 @@
         /// This is the value set via `entry.data` when the operation was submitted.
         /// Typically used to recover the operation context (e.g., a pointer to Storage).
         public var data: Kernel.IO.Uring.Operation.Data {
-            Kernel.IO.Uring.Operation.Data(cValue.user_data)
+            Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data)
         }
 
         /// Result of the operation.
@@ -103,7 +103,7 @@
         ///
         /// Returns nil if the operation succeeded.
         public var errorNumber: Kernel.Error.Number? {
-            isError ? Kernel.Error.Number(-res) : nil
+            isError ? Kernel.Error.Number(__unchecked: (), -res) : nil
         }
     }
 

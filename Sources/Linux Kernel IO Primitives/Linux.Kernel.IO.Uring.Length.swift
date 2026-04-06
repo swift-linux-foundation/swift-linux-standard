@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if canImport(Glibc) || canImport(Musl)
-    public import Binary
+    public import Binary_Primitives_Core
     public import Kernel_Primitives
 
     extension Kernel.IO.Uring {
@@ -38,7 +38,7 @@
 
     extension Kernel.IO.Uring.Length {
         /// Zero length.
-        public static let zero: Self = 0
+        public static let zero: Self = .init(UInt32(0))
 
         /// Creates a length from an integer.
         ///

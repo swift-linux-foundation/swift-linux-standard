@@ -12,7 +12,7 @@
 #if canImport(Glibc) || canImport(Musl)
 
     public import Kernel_Primitives
-    public import Dimension
+    public import Dimension_Primitives
 
     extension Kernel.Event.Poll {
         /// Opaque data associated with an epoll event.
@@ -43,7 +43,7 @@
         /// - Parameter pointer: A pointer to associate with the event.
         @unsafe
         public init(_ pointer: UnsafeRawPointer) {
-            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a typed pointer.
@@ -51,7 +51,7 @@
         /// - Parameter pointer: A pointer to associate with the event.
         @unsafe
         public init<T>(pointer: UnsafePointer<T>) {
-            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a mutable typed pointer.
@@ -59,7 +59,7 @@
         /// - Parameter pointer: A mutable pointer to associate with the event.
         @unsafe
         public init<T>(pointer: UnsafeMutablePointer<T>) {
-            self.init(UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
         }
     }
 
@@ -67,7 +67,7 @@
 
     extension Kernel.Event.Poll.Data {
         /// Zero poll data.
-        public static let zero: Self = 0
+        public static let zero: Self = .init(__unchecked: (), 0)
     }
 
 #endif

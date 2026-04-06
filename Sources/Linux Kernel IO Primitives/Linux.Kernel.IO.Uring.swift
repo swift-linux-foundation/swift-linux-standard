@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if canImport(Glibc) || canImport(Musl)
-    public import Kernel_Primitives
+    @_spi(Syscall) public import Kernel_Primitives
 
     extension Kernel.IO {
         /// Raw io_uring syscall wrappers (Linux only).
@@ -74,7 +74,7 @@
             }
             // Update params with kernel-filled values
             params = Params(cParams)
-            return Kernel.Descriptor(rawValue: fd)
+            return Kernel.Descriptor(_rawValue: fd)
         }
 
         /// Submits operations and/or waits for completions.
@@ -98,13 +98,13 @@
         /// If interrupted by a signal, throws `Error.interrupted`. Callers
         /// should typically retry on interruption unless cancellation is desired.
         public static func enter(
-            _ fd: Kernel.Descriptor,
+            _ fd: borrowing Kernel.Descriptor,
             toSubmit: UInt32,
             minComplete: UInt32,
             flags: Enter.Flags
         ) throws(Error) -> Int {
             let result = swift_io_uring_enter(
-                fd.rawValue,
+                fd._rawValue,
                 toSubmit,
                 minComplete,
                 flags.rawValue,
@@ -139,13 +139,13 @@
         /// before calling if cooperative cancellation is needed.
         @unsafe
         public static func register(
-            _ fd: Kernel.Descriptor,
+            _ fd: borrowing Kernel.Descriptor,
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
         ) throws(Error) {
             let result = unsafe swift_io_uring_register(
-                fd.rawValue,
+                fd._rawValue,
                 opcode.rawValue,
                 argument,
                 count
@@ -170,51 +170,9 @@
         /// Closing the ring immediately invalidates all pending submissions and
         /// completions. Ensure all in-flight operations are completed or cancelled
         /// before closing.
-        public static func close(_ fd: Kernel.Descriptor) {
-            try? Kernel.Close.close(fd)
+        public static func close(_ fd: consuming Kernel.Descriptor) {
+            try? Kernel.Close.close(consume fd)
         }
-    }
-
-    // MARK: - Runtime Detection
-
-    extension Kernel.IO.Uring {
-        /// Whether io_uring is available on this system.
-        ///
-        /// Checks by attempting `io_uring_setup` with minimal parameters.
-        /// Result is cached after first call.
-        ///
-        /// Can be disabled via the `IO_URING_DISABLED=1` environment variable.
-        ///
-        /// ## Usage
-        ///
-        /// ```swift
-        /// if Kernel.IO.Uring.isSupported {
-        ///     // Use io_uring backend
-        /// } else {
-        ///     // Fall back to epoll or other backend
-        /// }
-        /// ```
-        public static var isSupported: Bool {
-            _isSupported
-        }
-
-        /// Cached support check.
-        private static let _isSupported: Bool = {
-            // Check if disabled via environment
-            if Kernel.Environment.isSet("IO_URING_DISABLED", to: "1") {
-                return false
-            }
-
-            // Try to set up a minimal ring to check support
-            var params = Params()
-            do {
-                let fd = try setup(entries: 1, params: &params)
-                close(fd)
-                return true
-            } catch {
-                return false
-            }
-        }()
     }
 
 #endif

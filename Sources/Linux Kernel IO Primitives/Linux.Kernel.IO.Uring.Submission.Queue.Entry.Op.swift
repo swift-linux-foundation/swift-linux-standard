@@ -26,7 +26,7 @@
         /// Accessor for operation-specific properties.
         public var op: Op {
             get { Op(entry: self) }
-            set { cValue.rw_flags = newValue.flags }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.flags) }
         }
 
         /// Operation-specific properties for submission entry.
@@ -37,7 +37,7 @@
             public var flags: Int32
 
             init(entry: Kernel.IO.Uring.Submission.Queue.Entry) {
-                self.flags = entry.cValue.rw_flags
+                self.flags = Int32(bitPattern: entry.cValue.rw_flags)
             }
 
             /// Creates an Op with the given flags.

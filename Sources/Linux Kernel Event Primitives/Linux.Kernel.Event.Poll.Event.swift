@@ -87,7 +87,7 @@
         /// Creates an epoll event from the C struct.
         internal init(_ cEvent: epoll_event) {
             self.events = Kernel.Event.Poll.Events(rawValue: cEvent.events)
-            self.data = Kernel.Event.Poll.Data(cEvent.data.u64)
+            self.data = Kernel.Event.Poll.Data(__unchecked: (), cEvent.data.u64)
         }
 
         /// Converts to the C epoll_event struct.

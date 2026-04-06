@@ -50,7 +50,7 @@
 
     extension Tagged where Tag == Kernel.IO.Uring.Personality, RawValue == UInt16 {
         /// No personality (use process credentials).
-        public static var none: Self { Self(0) }
+        public static var none: Self { Self(__unchecked: (), 0) }
     }
 
 #endif

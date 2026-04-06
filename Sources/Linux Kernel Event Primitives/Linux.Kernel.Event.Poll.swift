@@ -11,7 +11,7 @@
 
 #if canImport(Glibc) || canImport(Musl)
 
-    public import Kernel_Primitives
+    @_spi(Syscall) public import Kernel_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -57,7 +57,7 @@
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return Kernel.Descriptor(rawValue: epfd)
+            return Kernel.Descriptor(_rawValue: epfd)
         }
 
         /// Controls the epoll instance (add/modify/delete).
@@ -79,16 +79,16 @@
         /// Not cancellable once the syscall begins. Check task cancellation
         /// before calling if cooperative cancellation is needed.
         public static func ctl(
-            _ epfd: Kernel.Descriptor,
+            _ epfd: borrowing Kernel.Descriptor,
             op: Operation,
-            fd: Kernel.Descriptor,
+            fd: borrowing Kernel.Descriptor,
             event: Event? = nil
         ) throws(Error) {
             let result: Int32
             if var cEvent = event?.cValue {
-                result = epoll_ctl(epfd.rawValue, op.rawValue, fd.rawValue, &cEvent)
+                result = epoll_ctl(epfd._rawValue, op.rawValue, fd._rawValue, &cEvent)
             } else {
-                result = epoll_ctl(epfd.rawValue, op.rawValue, fd.rawValue, nil)
+                result = epoll_ctl(epfd._rawValue, op.rawValue, fd._rawValue, nil)
             }
             guard result == 0 else {
                 throw .ctl(.posix(errno))
@@ -117,7 +117,7 @@
         /// If interrupted by a signal, throws `Error.interrupted`. Callers
         /// should typically retry on interruption unless cancellation is desired.
         internal static func wait(
-            _ epfd: Kernel.Descriptor,
+            _ epfd: borrowing Kernel.Descriptor,
             events: inout [Event],
             timeout: Int32
         ) throws(Error) -> Int {
@@ -130,7 +130,7 @@
                 capacity: count
             ) { buffer in
                 let baseAddress = unsafe buffer.baseAddress!
-                let result = unsafe epoll_wait(epfd.rawValue, baseAddress, Int32(count), timeout)
+                let result = unsafe epoll_wait(epfd._rawValue, baseAddress, Int32(count), timeout)
                 guard result >= 0 else {
                     let code = Kernel.Error.Code.posix(errno)
                     if code.posix == EINTR {
@@ -170,7 +170,7 @@
         /// If interrupted by a signal, throws `Error.interrupted`. Callers
         /// should typically retry on interruption unless cancellation is desired.
         public static func wait(
-            _ epfd: Kernel.Descriptor,
+            _ epfd: borrowing Kernel.Descriptor,
             events: inout [Event],
             timeout: Duration?
         ) throws(Error) -> Int {

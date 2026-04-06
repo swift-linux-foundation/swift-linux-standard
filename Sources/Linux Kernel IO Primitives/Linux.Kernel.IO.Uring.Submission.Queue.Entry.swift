@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if canImport(Glibc) || canImport(Musl)
-    public import Kernel_Primitives
+    @_spi(Syscall) public import Kernel_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -75,8 +75,8 @@
 
         /// Operation-specific flags (rw_flags field).
         public var opFlags: Int32 {
-            get { cValue.rw_flags }
-            set { cValue.rw_flags = newValue }
+            get { Int32(bitPattern: cValue.rw_flags) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue) }
         }
 
         /// I/O priority.
@@ -87,8 +87,8 @@
 
         /// File descriptor for the operation.
         public var fd: Kernel.Descriptor {
-            get { Kernel.Descriptor(rawValue: cValue.fd) }
-            set { cValue.fd = newValue.rawValue }
+            get { Kernel.Descriptor(_rawValue: cValue.fd) }
+            set { cValue.fd = newValue._rawValue }
         }
 
         /// File offset for read/write operations.
@@ -111,13 +111,13 @@
 
         /// Operation data returned with completion.
         public var data: Kernel.IO.Uring.Operation.Data {
-            get { Kernel.IO.Uring.Operation.Data(cValue.user_data) }
+            get { Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data) }
             set { cValue.user_data = newValue.rawValue }
         }
 
         /// Personality ID (for credentials).
         public var personality: Kernel.IO.Uring.Personality.ID {
-            get { Kernel.IO.Uring.Personality.ID(cValue.personality) }
+            get { Kernel.IO.Uring.Personality.ID(__unchecked: (), cValue.personality) }
             set { cValue.personality = newValue.rawValue }
         }
     }
