@@ -94,6 +94,24 @@ static inline int swift_renameat2(
     return (int)syscall(SYS_renameat2, olddirfd, oldpath, newdirfd, newpath, flags);
 }
 
+// dup3 - duplicate fd with flags (close-on-exec)
+// Linux extension (not POSIX), not in SwiftGlibc
+static inline int swift_dup3(int oldfd, int newfd, int flags) {
+    return (int)syscall(SYS_dup3, oldfd, newfd, flags);
+}
+
+// pipe2 - create pipe with flags (close-on-exec, non-blocking)
+// Linux extension (not POSIX), not in SwiftGlibc
+static inline int swift_pipe2(int pipefd[2], int flags) {
+    return (int)syscall(SYS_pipe2, pipefd, flags);
+}
+
+// sched_setaffinity - set thread CPU affinity mask
+// GNU extension, not in SwiftGlibc
+static inline int swift_sched_setaffinity(int pid, size_t cpusetsize, const void *mask) {
+    return (int)syscall(SYS_sched_setaffinity, pid, cpusetsize, mask);
+}
+
 #endif /* __linux__ */
 
 #endif /* CLINUX_SHIM_H */
