@@ -85,12 +85,6 @@
             set { cValue.ioprio = newValue.rawValue }
         }
 
-        /// File descriptor for the operation.
-        public var fd: Kernel.Descriptor {
-            get { Kernel.Descriptor(_rawValue: cValue.fd) }
-            set { cValue.fd = newValue._rawValue }
-        }
-
         /// File offset for read/write operations.
         public var offset: Kernel.IO.Uring.Offset {
             get { Kernel.IO.Uring.Offset(cValue.off) }
