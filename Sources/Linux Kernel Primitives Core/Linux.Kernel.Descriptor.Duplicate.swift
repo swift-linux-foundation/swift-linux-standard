@@ -22,23 +22,29 @@
     internal import CLinuxKernelShim
 
     extension Kernel.Descriptor.Duplicate {
-        /// Duplicates a file descriptor with flags (Linux).
+        /// Duplicates a file descriptor into an existing descriptor slot with
+        /// flags (Linux).
         ///
-        /// Uses dup3(2) to duplicate a file descriptor while atomically
-        /// setting flags on the new descriptor.
+        /// Uses `dup3(2)` to duplicate a file descriptor while atomically
+        /// setting flags on the new descriptor. The kernel resource previously
+        /// held at `newDescriptor`'s slot is closed atomically and the slot is
+        /// repointed to a duplicate of `descriptor`'s resource.
+        ///
+        /// The `inout` parameter expresses that the wrapper is mutated in place:
+        /// the slot number is unchanged, only the kernel resource it refers to
+        /// has been replaced. No new owning `Kernel.Descriptor` is constructed.
         ///
         /// - Parameters:
         ///   - descriptor: The file descriptor to duplicate.
-        ///   - newDescriptor: The target descriptor number.
+        ///   - newDescriptor: The target slot, mutated in place.
         ///   - flags: Flags to apply (currently only O_CLOEXEC).
-        /// - Returns: The new file descriptor.
-        /// - Throws: `Kernel.Descriptor.Duplicate.Error` on failure.
-        @discardableResult
+        /// - Throws: `Kernel.Descriptor.Duplicate.Error` on failure. On throw,
+        ///   `newDescriptor` is unchanged and still refers to its original resource.
         public static func duplicate(
             _ descriptor: borrowing Kernel.Descriptor,
-            to newDescriptor: borrowing Kernel.Descriptor,
+            to newDescriptor: inout Kernel.Descriptor,
             flags: Flags
-        ) throws(Error) -> Kernel.Descriptor {
+        ) throws(Error) {
             let result = swift_dup3(descriptor._rawValue, newDescriptor._rawValue, flags.rawValue)
 
             guard result >= 0 else {
@@ -52,7 +58,6 @@
                     throw .platform(Kernel.Error(code: .posix(e)))
                 }
             }
-            return Kernel.Descriptor(_rawValue: result)
         }
     }
 
