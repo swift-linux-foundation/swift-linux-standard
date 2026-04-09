@@ -10,6 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+public import Kernel_Primitives
 
 extension Kernel.Event.Descriptor {
     /// Flags for event descriptor creation.

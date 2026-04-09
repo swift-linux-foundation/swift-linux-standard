@@ -10,6 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+    public import Kernel_Primitives
 
     extension Kernel.Event {
         /// Counter value for eventfd operations.
