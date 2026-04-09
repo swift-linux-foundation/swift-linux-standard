@@ -11,7 +11,7 @@
 
 public import Linux_Primitives
 
-extension Linux_Primitives.Linux.Memory {
+extension Linux_Primitives_Core.Linux.Memory {
     /// Allocation namespace for Linux memory allocation tracking.
     public enum Allocation: Sendable {}
 }

@@ -3,9 +3,9 @@
 
 #if canImport(Glibc) || canImport(Musl)
 import CLinuxKernelShim
-public import Linux_Primitives
+public import Linux_Primitives_Core
 
-extension Linux_Primitives.Linux {
+extension Linux_Primitives_Core.Linux {
     /// Identity-related types for Linux.
     public enum Identity {}
 }

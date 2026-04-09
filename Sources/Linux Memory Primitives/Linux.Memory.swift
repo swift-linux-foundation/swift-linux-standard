@@ -11,7 +11,7 @@
 
 public import Linux_Primitives
 
-extension Linux_Primitives.Linux {
+extension Linux_Primitives_Core.Linux {
     /// Memory namespace for Linux-specific memory operations.
     public enum Memory: Sendable {}
 }

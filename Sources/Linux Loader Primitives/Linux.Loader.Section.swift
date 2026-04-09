@@ -11,10 +11,10 @@
 
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-public import Linux_Primitives
+public import Linux_Primitives_Core
 public import Loader_Primitives
 
-extension Linux_Primitives.Linux.Loader {
+extension Linux_Primitives_Core.Linux.Loader {
     /// Linux section enumeration interface.
     ///
     /// Provides access to ELF section data via Swift runtime APIs.
@@ -23,7 +23,7 @@ extension Linux_Primitives.Linux.Loader {
 
 // MARK: - Type Aliases
 
-extension Linux_Primitives.Linux.Loader.Section {
+extension Linux_Primitives_Core.Linux.Loader.Section {
     /// Section name type.
     public typealias Name = Loader.Section.Name
 
@@ -33,7 +33,7 @@ extension Linux_Primitives.Linux.Loader.Section {
 
 // MARK: - Section Enumeration
 
-extension Linux_Primitives.Linux.Loader.Section {
+extension Linux_Primitives_Core.Linux.Loader.Section {
     /// All section bounds of the given name across all loaded images.
     ///
     /// - Parameter name: The section to find.

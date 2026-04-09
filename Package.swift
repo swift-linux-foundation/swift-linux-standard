@@ -12,18 +12,10 @@ let package = Package(
         .visionOS(.v26)
     ],
     products: [
-        .library(
-            name: "Linux Primitives",
-            targets: ["Linux Primitives"]
-        ),
         // MARK: - Kernel
         .library(
             name: "Linux Kernel Primitives",
             targets: ["Linux Kernel Primitives"]
-        ),
-        .library(
-            name: "Linux Kernel Primitives Core",
-            targets: ["Linux Kernel Primitives Core"]
         ),
         .library(
             name: "Linux Kernel Event Primitives",
@@ -53,7 +45,7 @@ let package = Package(
 
         // MARK: - Core
         .target(
-            name: "Linux Primitives",
+            name: "Linux Primitives Core",
             dependencies: []
         ),
 
@@ -77,7 +69,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Primitives Core",
             dependencies: [
-                .target(name: "Linux Primitives"),
+                .target(name: "Linux Primitives Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
             ]
@@ -113,7 +105,7 @@ let package = Package(
         .target(
             name: "Linux Loader Primitives",
             dependencies: [
-                .target(name: "Linux Primitives"),
+                .target(name: "Linux Primitives Core"),
                 .product(name: "Loader Primitives", package: "swift-loader-primitives")
             ]
         ),
@@ -122,7 +114,7 @@ let package = Package(
         .target(
             name: "Linux Memory Primitives",
             dependencies: [
-                .target(name: "Linux Primitives"),
+                .target(name: "Linux Primitives Core"),
                 .target(name: "CLinuxMemoryShim", condition: .when(platforms: [.linux]))
             ]
         ),

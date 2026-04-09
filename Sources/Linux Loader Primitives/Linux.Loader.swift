@@ -11,10 +11,10 @@
 
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-@_exported public import Linux_Primitives
+@_exported public import Linux_Primitives_Core
 @_exported public import Loader_Primitives
 
-extension Linux_Primitives.Linux {
+extension Linux_Primitives_Core.Linux {
     /// Linux dynamic loader interface.
     ///
     /// Provides access to Linux-specific loader functionality including:
