@@ -23,35 +23,62 @@
     #endif
 
     extension Kernel.IO.Uring.Submission.Queue {
-        /// Offsets for submission queue ring mapping.
+        /// Byte offsets for submission queue ring mapping.
+        ///
+        /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.
+        /// Used by ``Kernel/IO/Uring/init(descriptor:params:)`` to locate
+        /// shared-memory fields within the mmap'd SQ ring region.
         public struct Offsets: Sendable, Equatable {
-            public let head: UInt32
-            public let tail: UInt32
-            public let ringMask: UInt32
-            public let ringEntries: UInt32
-            public let flags: UInt32
-            public let dropped: UInt32
-            public let array: UInt32
+            /// Byte offset to the head counter.
+            public let head: Memory.Address.Offset
+
+            /// Byte offset to the tail counter.
+            public let tail: Memory.Address.Offset
+
+            /// Byte offset to the ring mask value.
+            public let ringMask: Memory.Address.Offset
+
+            /// Byte offset to the ring entries count.
+            public let ringEntries: Memory.Address.Offset
+
+            /// Byte offset to the flags field.
+            public let flags: Memory.Address.Offset
+
+            /// Byte offset to the dropped counter.
+            public let dropped: Memory.Address.Offset
+
+            /// Byte offset to the SQ array.
+            public let array: Memory.Address.Offset
 
             internal init() {
-                self.head = 0
-                self.tail = 0
-                self.ringMask = 0
-                self.ringEntries = 0
-                self.flags = 0
-                self.dropped = 0
-                self.array = 0
+                self.head = .zero
+                self.tail = .zero
+                self.ringMask = .zero
+                self.ringEntries = .zero
+                self.flags = .zero
+                self.dropped = .zero
+                self.array = .zero
             }
 
             internal init(_ off: io_sqring_offsets) {
-                self.head = off.head
-                self.tail = off.tail
-                self.ringMask = off.ring_mask
-                self.ringEntries = off.ring_entries
-                self.flags = off.flags
-                self.dropped = off.dropped
-                self.array = off.array
+                self.head = Memory.Address.Offset(off.head)
+                self.tail = Memory.Address.Offset(off.tail)
+                self.ringMask = Memory.Address.Offset(off.ring_mask)
+                self.ringEntries = Memory.Address.Offset(off.ring_entries)
+                self.flags = Memory.Address.Offset(off.flags)
+                self.dropped = Memory.Address.Offset(off.dropped)
+                self.array = Memory.Address.Offset(off.array)
             }
+        }
+    }
+
+    // MARK: - C Boundary
+
+    extension Memory.Address.Offset {
+        /// Creates a byte offset from a kernel-provided UInt32 value.
+        @inlinable
+        package init(_ cOffset: UInt32) {
+            self.init(__unchecked: (), Affine.Discrete.Vector(Int(cOffset)))
         }
     }
 

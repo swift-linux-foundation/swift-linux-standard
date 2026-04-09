@@ -23,34 +23,51 @@
     #endif
 
     extension Kernel.IO.Uring.Completion.Queue {
-        /// Offsets for completion queue ring mapping.
+        /// Byte offsets for completion queue ring mapping.
+        ///
+        /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.
+        /// Used by ``Kernel/IO/Uring/init(descriptor:params:)`` to locate
+        /// shared-memory fields within the mmap'd CQ ring region.
         public struct Offsets: Sendable, Equatable {
-            public let head: UInt32
-            public let tail: UInt32
-            public let ringMask: UInt32
-            public let ringEntries: UInt32
-            public let overflow: UInt32
-            public let cqes: UInt32
-            public let flags: UInt32
+            /// Byte offset to the head counter.
+            public let head: Memory.Address.Offset
+
+            /// Byte offset to the tail counter.
+            public let tail: Memory.Address.Offset
+
+            /// Byte offset to the ring mask value.
+            public let ringMask: Memory.Address.Offset
+
+            /// Byte offset to the ring entries count.
+            public let ringEntries: Memory.Address.Offset
+
+            /// Byte offset to the overflow counter.
+            public let overflow: Memory.Address.Offset
+
+            /// Byte offset to the CQE array.
+            public let cqes: Memory.Address.Offset
+
+            /// Byte offset to the flags field.
+            public let flags: Memory.Address.Offset
 
             internal init() {
-                self.head = 0
-                self.tail = 0
-                self.ringMask = 0
-                self.ringEntries = 0
-                self.overflow = 0
-                self.cqes = 0
-                self.flags = 0
+                self.head = .zero
+                self.tail = .zero
+                self.ringMask = .zero
+                self.ringEntries = .zero
+                self.overflow = .zero
+                self.cqes = .zero
+                self.flags = .zero
             }
 
             internal init(_ off: io_cqring_offsets) {
-                self.head = off.head
-                self.tail = off.tail
-                self.ringMask = off.ring_mask
-                self.ringEntries = off.ring_entries
-                self.overflow = off.overflow
-                self.cqes = off.cqes
-                self.flags = off.flags
+                self.head = Memory.Address.Offset(off.head)
+                self.tail = Memory.Address.Offset(off.tail)
+                self.ringMask = Memory.Address.Offset(off.ring_mask)
+                self.ringEntries = Memory.Address.Offset(off.ring_entries)
+                self.overflow = Memory.Address.Offset(off.overflow)
+                self.cqes = Memory.Address.Offset(off.cqes)
+                self.flags = Memory.Address.Offset(off.flags)
             }
         }
     }

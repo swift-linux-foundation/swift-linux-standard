@@ -285,10 +285,10 @@
         ) throws(Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
 
-            let sqEntryCount = Int(params.sqEntries.rawValue.rawValue)
-            let cqEntryCount = Int(params.cqEntries.rawValue.rawValue)
-            let sqRingSz = Int(params.sqOff.array) + sqEntryCount * MemoryLayout<UInt32>.size
-            let cqRingSz = Int(params.cqOff.cqes) + cqEntryCount * MemoryLayout<Kernel.IO.Uring.Completion.Queue.Entry>.size
+            let sqEntryCount = Int(bitPattern: params.sqEntries)
+            let cqEntryCount = Int(bitPattern: params.cqEntries)
+            let sqRingSz = params.sqOff.array.vector.rawValue + sqEntryCount * MemoryLayout<UInt32>.size
+            let cqRingSz = params.cqOff.cqes.vector.rawValue + cqEntryCount * MemoryLayout<Kernel.IO.Uring.Completion.Queue.Entry>.size
             let sqeSz = sqEntryCount * MemoryLayout<Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             // -- Map SQ ring --
@@ -315,17 +315,21 @@
                 throw .setup(.posix(errno))
             }
 
+            // WHY: .vector.rawValue extracts Int from Memory.Address.Offset for stdlib
+            // pointer arithmetic. Memory Primitives Standard Library Integration provides
+            // typed overloads but isn't in the dependency chain.
+            // WHEN TO REMOVE: when kernel-primitives re-exports the integration module.
             unsafe self.init(
-                sqHead: sq.advanced(by: Int(params.sqOff.head)).assumingMemoryBound(to: UInt32.self),
-                sqTail: sq.advanced(by: Int(params.sqOff.tail)).assumingMemoryBound(to: UInt32.self),
-                sqMask: sq.advanced(by: Int(params.sqOff.ringMask)).load(as: UInt32.self),
+                sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
+                sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
+                sqMask: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self),
                 sqEntries: UInt32(params.sqEntries.rawValue.rawValue),
-                sqArray: sq.advanced(by: Int(params.sqOff.array)).assumingMemoryBound(to: UInt32.self),
+                sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 sqes: sqe.assumingMemoryBound(to: Kernel.IO.Uring.Submission.Queue.Entry.self),
-                cqHead: cq.advanced(by: Int(params.cqOff.head)).assumingMemoryBound(to: UInt32.self),
-                cqTail: cq.advanced(by: Int(params.cqOff.tail)).assumingMemoryBound(to: UInt32.self),
-                cqMask: cq.advanced(by: Int(params.cqOff.ringMask)).load(as: UInt32.self),
-                cqes: UnsafePointer(cq.advanced(by: Int(params.cqOff.cqes))
+                cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
+                cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
+                cqMask: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self),
+                cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
                     .assumingMemoryBound(to: Kernel.IO.Uring.Completion.Queue.Entry.self)),
                 sqRingAddr: unsafe Kernel.Memory.Address(sq), sqRingSize: Kernel.File.Size(sqRingSz),
                 cqRingAddr: unsafe Kernel.Memory.Address(cq), cqRingSize: Kernel.File.Size(cqRingSz),
