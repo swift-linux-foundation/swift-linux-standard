@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
     @_spi(Syscall) public import Kernel_Primitives
 
     #if canImport(Glibc)

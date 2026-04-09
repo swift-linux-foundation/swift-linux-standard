@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-
+#if os(Linux)
 
 extension Kernel.Event.Descriptor {
     /// Flags for event descriptor creation.
@@ -36,4 +36,6 @@ extension Kernel.Event.Descriptor {
         }
     }
 }
+
+#endif
 

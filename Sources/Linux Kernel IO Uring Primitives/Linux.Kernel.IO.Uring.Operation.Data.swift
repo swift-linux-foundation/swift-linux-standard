@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
     public import Dimension_Primitives
     public import Kernel_Primitives
 

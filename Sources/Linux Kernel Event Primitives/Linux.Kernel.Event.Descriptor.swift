@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
 
 @_spi(Syscall) public import Kernel_Primitives
 
@@ -81,7 +81,7 @@ extension Kernel.Event.Descriptor {
     /// Throws `.wouldBlock` if the counter is zero and the fd is non-blocking.
     public mutating func read() throws(Error) -> UInt64 {
         var value: UInt64 = 0
-        let result = unsafe Glibc.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
+        let result = unsafe read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
         guard result == MemoryLayout<UInt64>.size else {
             let code = Kernel.Error.Code.posix(errno)
             if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK {
@@ -99,7 +99,7 @@ extension Kernel.Event.Descriptor {
     /// (non-blocking mode).
     public mutating func write(_ value: UInt64) throws(Error) {
         var val = value
-        let result = unsafe Glibc.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
+        let result = unsafe write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
         guard result == MemoryLayout<UInt64>.size else {
             let code = Kernel.Error.Code.posix(errno)
             if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK {
@@ -126,7 +126,7 @@ extension Kernel.Event.Descriptor {
     @_spi(Syscall)
     public static func signal(rawDescriptor fd: Int32) {
         var val: UInt64 = 1
-        let result = unsafe Glibc.write(fd, &val, MemoryLayout<UInt64>.size)
+        let result = unsafe write(fd, &val, MemoryLayout<UInt64>.size)
         if result < 0 {
             let code = Kernel.Error.Code.posix(errno)
             if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK || code == .POSIX.EBADF {

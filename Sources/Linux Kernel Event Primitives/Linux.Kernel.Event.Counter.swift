@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-
+#if os(Linux)
 
     extension Kernel.Event {
         /// Counter value for eventfd operations.
@@ -29,7 +29,7 @@
         /// // Read the counter value
         /// let count = try Kernel.Event.Descriptor.read(efd)
         /// ```
-        public struct Counter: RawRepresentable, Sendable, Equatable, Hashable, Comparable {
+        public struct Counter: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt64
 
             /// Creates a counter value.
@@ -39,47 +39,49 @@
             public init(rawValue: UInt64) {
                 self.rawValue = rawValue
             }
+        }
+    }
 
-            /// Creates a counter value from an integer.
-            ///
-            /// - Parameter value: The counter value.
-            @inlinable
-            public init(_ value: UInt64) {
-                self.rawValue = value
-            }
+    // MARK: - Convenience
 
-            /// Creates a counter from a UInt32 initial value.
-            ///
-            /// Used for eventfd creation which accepts UInt32.
-            ///
-            /// - Parameter initval: The initial counter value.
-            @inlinable
-            public init(initval: UInt32) {
-                self.rawValue = UInt64(initval)
-            }
+    extension Kernel.Event.Counter {
+        /// Creates a counter value from an integer.
+        ///
+        /// - Parameter value: The counter value.
+        @inlinable
+        public init(_ value: UInt64) {
+            self.rawValue = value
+        }
 
-            // MARK: - Common Values
+        /// Creates a counter from a UInt32 initial value.
+        ///
+        /// Used for eventfd creation which accepts UInt32.
+        ///
+        /// - Parameter initval: The initial counter value.
+        @inlinable
+        public init(initval: UInt32) {
+            self.rawValue = UInt64(initval)
+        }
 
-            /// Zero counter value.
-            public static let zero = Counter(rawValue: 0)
+        /// Zero counter value.
+        public static let zero = Counter(rawValue: 0)
 
-            /// One - the common value for wakeup signals.
-            public static let one = Counter(rawValue: 1)
+        /// One - the common value for wakeup signals.
+        public static let one = Counter(rawValue: 1)
 
-            // MARK: - Comparable
+        /// Whether this counter is zero.
+        @inlinable
+        public var isZero: Bool {
+            rawValue == 0
+        }
+    }
 
-            @inlinable
-            public static func < (lhs: Counter, rhs: Counter) -> Bool {
-                lhs.rawValue < rhs.rawValue
-            }
+    // MARK: - Comparable
 
-            // MARK: - Queries
-
-            /// Whether this counter is zero.
-            @inlinable
-            public var isZero: Bool {
-                rawValue == 0
-            }
+    extension Kernel.Event.Counter: Comparable {
+        @inlinable
+        public static func < (lhs: Counter, rhs: Counter) -> Bool {
+            lhs.rawValue < rhs.rawValue
         }
     }
 
@@ -113,4 +115,6 @@
             "\(rawValue)"
         }
     }
+
+#endif
 

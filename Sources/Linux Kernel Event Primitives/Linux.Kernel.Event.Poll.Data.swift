@@ -9,10 +9,9 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
 
     public import Kernel_Primitives
-    public import Dimension_Primitives
 
     extension Kernel.Event.Poll {
         /// Opaque data associated with an epoll event.

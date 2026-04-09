@@ -5,7 +5,7 @@
 //  Platform flag constants for eventfd creation.
 //
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
 
 public import Kernel_Primitives
 

@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
     public import Binary_Primitives_Core
     public import Kernel_Primitives
 

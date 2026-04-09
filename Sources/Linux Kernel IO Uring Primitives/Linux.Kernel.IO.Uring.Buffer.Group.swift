@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
     public import Kernel_Primitives
 
     extension Kernel.IO.Uring.Buffer {

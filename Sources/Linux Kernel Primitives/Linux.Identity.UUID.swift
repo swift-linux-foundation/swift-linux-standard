@@ -1,7 +1,7 @@
 // Linux.Identity.UUID.swift
 // Native UUID parsing using libuuid
 
-#if canImport(Glibc) || canImport(Musl)
+#if os(Linux)
 import CLinuxKernelShim
 public import Linux_Primitives_Core
 

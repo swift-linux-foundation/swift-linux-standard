@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-
+#if os(Linux)
 
     extension Kernel.Event.Descriptor {
         /// Errors from event descriptor operations.
@@ -54,4 +54,6 @@
             }
         }
     }
+
+#endif
 
