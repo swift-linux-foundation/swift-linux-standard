@@ -65,9 +65,9 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel Core
+        // MARK: - Kernel
         .target(
-            name: "Linux Kernel Primitives Core",
+            name: "Linux Kernel Primitives",
             dependencies: [
                 .target(name: "Linux Primitives Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
@@ -79,7 +79,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Event Primitives",
             dependencies: [
-                "Linux Kernel Primitives Core",
+                "Linux Kernel Primitives",
             ]
         ),
 
@@ -87,17 +87,7 @@ let package = Package(
         .target(
             name: "Linux Kernel IO Primitives",
             dependencies: [
-                "Linux Kernel Primitives Core",
-            ]
-        ),
-
-        // MARK: - Kernel Umbrella
-        .target(
-            name: "Linux Kernel Primitives",
-            dependencies: [
-                "Linux Kernel Primitives Core",
-                "Linux Kernel Event Primitives",
-                "Linux Kernel IO Primitives",
+                "Linux Kernel Primitives",
             ]
         ),
 
