@@ -1,9 +1,13 @@
+// ===----------------------------------------------------------------------===//
 //
-//  Linux.Kernel.Event.Descriptor.swift
-//  swift-linux-primitives
+// This source file is part of the swift-kernel open source project
 //
-//  eventfd(2) syscall wrappers for Kernel.Event.Descriptor.
+// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
+// Licensed under Apache License v2.0
 //
+// See LICENSE for license information
+//
+// ===----------------------------------------------------------------------===//
 
 #if canImport(Glibc) || canImport(Musl)
 
@@ -18,6 +22,30 @@
 #if canImport(CLinuxShim)
     internal import CLinuxShim
 #endif
+
+extension Kernel.Event {
+    /// Event file descriptor — a Linux signaling primitive (`eventfd(2)`).
+    ///
+    /// `~Copyable`: single ownership, consumed on `close()` or deinit.
+    /// `Sendable`: the fd value is safe to transfer between threads.
+    ///
+    /// Maintains an internal uint64 counter. Writing adds to the counter;
+    /// reading drains it (or decrements by 1 in semaphore mode).
+    /// Common uses: waking poll/epoll loops, inter-thread signaling,
+    /// completion counters.
+    public struct Descriptor: ~Copyable, Sendable {
+        /// The underlying kernel file descriptor.
+        @_spi(Syscall)
+        public let descriptor: Kernel.Descriptor
+
+        /// Creates an event descriptor wrapping the given fd.
+        @_spi(Syscall)
+        @inlinable
+        public init(descriptor: consuming Kernel.Descriptor) {
+            self.descriptor = descriptor
+        }
+    }
+}
 
 // MARK: - Factory
 
@@ -85,7 +113,6 @@ extension Kernel.Event.Descriptor {
     ///
     /// Suppresses EAGAIN (counter near max, benign coalescing) and
     /// EBADF (fd closed during shutdown, benign teardown race).
-    /// Non-mutating: the caller doesn't observe counter state change.
     public func signal() {
         Kernel.Event.Descriptor.signal(rawDescriptor: descriptor._rawValue)
     }
@@ -93,8 +120,7 @@ extension Kernel.Event.Descriptor {
     /// Fire-and-forget signal using a raw file descriptor.
     ///
     /// For use in `Sendable` closures that cannot capture `~Copyable`
-    /// `Kernel.Event.Descriptor`. Mirrors
-    /// `Kernel.Kqueue.register(rawDescriptor:events:)`.
+    /// `Kernel.Event.Descriptor`.
     ///
     /// Suppresses EAGAIN and EBADF.
     @_spi(Syscall)
@@ -120,7 +146,6 @@ extension Kernel.Event.Descriptor {
     /// After this call, the descriptor is invalid. If not called,
     /// deinit closes the fd automatically (safety net).
     public consuming func close() {
-        // descriptor's deinit closes the fd
         _ = consume self
     }
 }
