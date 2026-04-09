@@ -26,4 +26,13 @@
         public enum Submission {}
     }
 
+    extension Kernel.IO.Uring.Submission {
+        /// Number of submission queue entries.
+        ///
+        /// Used for ring setup (how many SQEs to allocate), submission
+        /// batching (how many to submit per enter call), and tracking
+        /// pending submissions.
+        public typealias Count = Tagged<Kernel.IO.Uring.Submission, Cardinal>
+    }
+
 #endif

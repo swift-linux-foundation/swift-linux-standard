@@ -26,4 +26,12 @@
         public enum Completion {}
     }
 
+    extension Kernel.IO.Uring.Completion {
+        /// Number of completion queue entries.
+        ///
+        /// Used for specifying how many completions to wait for in
+        /// ``Kernel/IO/Uring/enter(_:toSubmit:minComplete:flags:)``.
+        public typealias Count = Tagged<Kernel.IO.Uring.Completion, Cardinal>
+    }
+
 #endif

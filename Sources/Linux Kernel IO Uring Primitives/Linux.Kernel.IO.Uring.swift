@@ -62,7 +62,7 @@
             private let cqes: UnsafePointer<Completion.Queue.Entry>
 
             // Submission tracking
-            private var _pendingCount: UInt32 = 0
+            private var _pendingCount: Submission.Count = .zero
 
             // mmap regions (owned — deinit unmaps)
             private let sqRingAddr: Kernel.Memory.Address
@@ -98,7 +98,7 @@
                 self.cqTail = cqTail
                 self.cqMask = cqMask
                 self.cqes = cqes
-                self._pendingCount = 0
+                self._pendingCount = .zero
                 self.sqRingAddr = sqRingAddr; self.sqRingSize = sqRingSize
                 self.cqRingAddr = cqRingAddr; self.cqRingSize = cqRingSize
                 self.sqeAddr = sqeAddr; self.sqeSize = sqeSize
@@ -155,11 +155,11 @@
         /// Not cancellable once the syscall begins. Check task cancellation
         /// before calling if cooperative cancellation is needed.
         public static func setup(
-            entries: UInt32,
+            entries: Submission.Count,
             params: inout Params
         ) throws(Kernel.IO.Uring.Error) -> Kernel.Descriptor {
             var cParams = params.cValue
-            let fd = swift_io_uring_setup(entries, &cParams)
+            let fd = swift_io_uring_setup(UInt32(entries.rawValue.rawValue), &cParams)
             guard fd >= 0 else {
                 throw .setup(.posix(errno))
             }
@@ -190,14 +190,14 @@
         /// should typically retry on interruption unless cancellation is desired.
         public static func enter(
             _ fd: borrowing Kernel.Descriptor,
-            toSubmit: UInt32,
-            minComplete: UInt32,
+            toSubmit: Submission.Count,
+            minComplete: Completion.Count,
             flags: Enter.Flags
-        ) throws(Kernel.IO.Uring.Error) -> Int {
+        ) throws(Kernel.IO.Uring.Error) -> Submission.Count {
             let result = swift_io_uring_enter(
                 fd._rawValue,
-                toSubmit,
-                minComplete,
+                UInt32(toSubmit.rawValue.rawValue),
+                UInt32(minComplete.rawValue.rawValue),
                 flags.rawValue,
                 nil,
                 0
@@ -207,7 +207,7 @@
                 if code.posix == EINTR { throw .interrupted }
                 throw .enter(code)
             }
-            return Int(result)
+            return Submission.Count(__unchecked: (), Cardinal(UInt(result)))
         }
 
         /// Registers resources with the io_uring instance.
@@ -336,7 +336,7 @@
 
     extension Kernel.IO.Uring {
         /// The number of SQEs awaiting flush via ``enter(_:toSubmit:minComplete:flags:)``.
-        public var pendingSubmissions: UInt32 { _pendingCount }
+        public var pendingSubmissions: Submission.Count { _pendingCount }
 
         /// Acquire the next available SQE slot for filling.
         ///
@@ -360,12 +360,12 @@
         /// WHEN TO REMOVE: add atomic store-release if submissions cross threads.
         public mutating func commitEntry() {
             unsafe sqTail.pointee = sqTail.pointee &+ 1
-            _pendingCount &+= 1
+            _pendingCount += .one
         }
 
         /// Reset the pending count after a successful ``enter(_:toSubmit:minComplete:flags:)``.
         public mutating func resetPending() {
-            _pendingCount = 0
+            _pendingCount = .zero
         }
     }
 
