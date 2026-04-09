@@ -285,9 +285,11 @@
         ) throws(Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
 
-            let sqRingSz = Int(params.sqOff.array) + Int(params.sqEntries) * MemoryLayout<UInt32>.size
-            let cqRingSz = Int(params.cqOff.cqes) + Int(params.cqEntries) * MemoryLayout<Kernel.IO.Uring.Completion.Queue.Entry>.size
-            let sqeSz = Int(params.sqEntries) * MemoryLayout<Kernel.IO.Uring.Submission.Queue.Entry>.size
+            let sqEntryCount = Int(params.sqEntries.rawValue.rawValue)
+            let cqEntryCount = Int(params.cqEntries.rawValue.rawValue)
+            let sqRingSz = Int(params.sqOff.array) + sqEntryCount * MemoryLayout<UInt32>.size
+            let cqRingSz = Int(params.cqOff.cqes) + cqEntryCount * MemoryLayout<Kernel.IO.Uring.Completion.Queue.Entry>.size
+            let sqeSz = sqEntryCount * MemoryLayout<Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             // -- Map SQ ring --
 
@@ -317,7 +319,7 @@
                 sqHead: sq.advanced(by: Int(params.sqOff.head)).assumingMemoryBound(to: UInt32.self),
                 sqTail: sq.advanced(by: Int(params.sqOff.tail)).assumingMemoryBound(to: UInt32.self),
                 sqMask: sq.advanced(by: Int(params.sqOff.ringMask)).load(as: UInt32.self),
-                sqEntries: params.sqEntries,
+                sqEntries: UInt32(params.sqEntries.rawValue.rawValue),
                 sqArray: sq.advanced(by: Int(params.sqOff.array)).assumingMemoryBound(to: UInt32.self),
                 sqes: sqe.assumingMemoryBound(to: Kernel.IO.Uring.Submission.Queue.Entry.self),
                 cqHead: cq.advanced(by: Int(params.cqOff.head)).assumingMemoryBound(to: UInt32.self),

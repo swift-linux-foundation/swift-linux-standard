@@ -35,7 +35,7 @@
         /// // Create params with configuration
         /// var params = Kernel.IO.Uring.Params(
         ///     flags: [.sqPoll, .singleIssuer],
-        ///     submission: .init(thread: .init(idle: 1000))
+        ///     submission: .init(thread: .init(idle: .milliseconds(1000)))
         /// )
         ///
         /// // Setup fills in kernel-provided values
@@ -52,10 +52,10 @@
         /// - ``Kernel/IO/Uring/Setup/Flags``
         public struct Params: Sendable, Equatable {
             /// Number of submission queue entries (filled by kernel).
-            public private(set) var sqEntries: UInt32
+            public private(set) var sqEntries: Submission.Count
 
             /// Number of completion queue entries (filled by kernel).
-            public private(set) var cqEntries: UInt32
+            public private(set) var cqEntries: Completion.Count
 
             /// Setup flags.
             public var flags: Setup.Flags
@@ -81,8 +81,8 @@
                 flags: Setup.Flags = [],
                 submission: Submission = Submission()
             ) {
-                self.sqEntries = 0
-                self.cqEntries = 0
+                self.sqEntries = .zero
+                self.cqEntries = .zero
                 self.flags = flags
                 self.submission = submission
                 self.features = Features(rawValue: 0)
@@ -92,13 +92,17 @@
 
             /// Creates params from the C struct (after setup).
             internal init(_ cParams: io_uring_params) {
-                self.sqEntries = cParams.sq_entries
-                self.cqEntries = cParams.cq_entries
+                self.sqEntries = Submission.Count(
+                    __unchecked: (), Cardinal(UInt(cParams.sq_entries))
+                )
+                self.cqEntries = Completion.Count(
+                    __unchecked: (), Cardinal(UInt(cParams.cq_entries))
+                )
                 self.flags = Setup.Flags(rawValue: cParams.flags)
                 self.submission = Submission(
                     thread: Submission.Thread(
-                        cpu: cParams.sq_thread_cpu,
-                        idle: cParams.sq_thread_idle
+                        cCpu: cParams.sq_thread_cpu,
+                        cIdle: cParams.sq_thread_idle
                     )
                 )
                 self.features = Features(rawValue: cParams.features)
@@ -110,8 +114,8 @@
             internal var cValue: io_uring_params {
                 var params = io_uring_params()
                 params.flags = flags.rawValue
-                params.sq_thread_cpu = submission.thread.cpu
-                params.sq_thread_idle = submission.thread.idle
+                params.sq_thread_cpu = submission.thread.cCpu
+                params.sq_thread_idle = submission.thread.cIdle
                 return params
             }
         }
