@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Linux_Primitives
+public import Linux_Primitives_Core
 #if os(Linux)
 import CLinuxMemoryShim
 #endif

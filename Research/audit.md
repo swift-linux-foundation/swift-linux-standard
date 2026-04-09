@@ -143,6 +143,7 @@ Kernel.IO.Uring.Completion.Count — UInt32-backed cardinal for CQ quantities
 ### Summary
 
 26 findings: 7 critical, 12 high, 4 medium, 3 low.
+**Post-refactor (2026-04-09)**: 15 RESOLVED, 11 remain (mostly internal ring properties — deferred as kernel ABI boundary).
 
 The io_uring target has strong namespace structure (`Kernel.IO.Uring.Submission.Queue.Entry.Prepare`) and already uses ecosystem types for some dimensions (`Offset`, `Length`, `Operation.Data`). But the core ring management, public API parameters, and entry accessor properties are entirely raw integers. The domain model is incomplete: typed wrappers exist but aren't connected to the API surface.
 

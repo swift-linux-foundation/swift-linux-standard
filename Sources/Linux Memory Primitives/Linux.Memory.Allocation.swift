@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Linux_Primitives
+public import Linux_Primitives_Core
 
 extension Linux_Primitives_Core.Linux.Memory {
     /// Allocation namespace for Linux memory allocation tracking.
