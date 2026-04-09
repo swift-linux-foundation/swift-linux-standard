@@ -15,8 +15,8 @@ public import Kernel_Primitives
     internal import Musl
 #endif
 
-#if canImport(CLinuxShim)
-    internal import CLinuxShim
+#if canImport(CLinuxKernelShim)
+    internal import CLinuxKernelShim
 #endif
 
 extension Kernel.Event.Descriptor.Flags {

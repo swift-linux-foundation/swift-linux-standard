@@ -65,10 +65,10 @@
         }
 
         /// Zero counter value.
-        public static let zero = Counter(rawValue: 0)
+        public static let zero = Self(rawValue: 0)
 
         /// One - the common value for wakeup signals.
-        public static let one = Counter(rawValue: 1)
+        public static let one = Self(rawValue: 1)
 
         /// Whether this counter is zero.
         @inlinable
