@@ -80,7 +80,7 @@
 
     extension Kernel.Event.Counter: Comparable {
         @inlinable
-        public static func < (lhs: Counter, rhs: Counter) -> Bool {
+        public static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.rawValue < rhs.rawValue
         }
     }
