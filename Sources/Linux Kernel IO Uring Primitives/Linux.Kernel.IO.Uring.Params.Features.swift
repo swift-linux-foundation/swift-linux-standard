@@ -10,6 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+    public import Kernel_Primitives
 
     extension Kernel.IO.Uring.Params {
         /// Kernel-reported feature flags from io_uring setup.
