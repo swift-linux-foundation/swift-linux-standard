@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 public import Kernel_Primitives
-public import Linux_Primitives_Core
+@_exported public import Linux_Primitives_Core
 
 extension Linux_Primitives_Core.Linux {
     /// Linux kernel mechanisms.
