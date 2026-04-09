@@ -25,6 +25,10 @@ let package = Package(
             name: "Linux Kernel IO Primitives",
             targets: ["Linux Kernel IO Primitives"]
         ),
+        .library(
+            name: "Linux Kernel IO Uring Primitives",
+            targets: ["Linux Kernel IO Uring Primitives"]
+        ),
         // MARK: - Other
         .library(
             name: "Linux Loader Primitives",
@@ -88,6 +92,14 @@ let package = Package(
             name: "Linux Kernel IO Primitives",
             dependencies: [
                 "Linux Kernel Primitives",
+            ]
+        ),
+
+        // MARK: - Kernel IO Uring
+        .target(
+            name: "Linux Kernel IO Uring Primitives",
+            dependencies: [
+                "Linux Kernel IO Primitives",
             ]
         ),
 
