@@ -52,10 +52,10 @@
         /// - ``Kernel/IO/Uring/Setup/Flags``
         public struct Params: Sendable, Equatable {
             /// Number of submission queue entries (filled by kernel).
-            public private(set) var sqEntries: Submission.Count
+            public private(set) var sqEntries: Kernel.IO.Uring.Submission.Count
 
             /// Number of completion queue entries (filled by kernel).
-            public private(set) var cqEntries: Completion.Count
+            public private(set) var cqEntries: Kernel.IO.Uring.Completion.Count
 
             /// Setup flags.
             public var flags: Setup.Flags
@@ -81,8 +81,8 @@
                 flags: Setup.Flags = [],
                 submission: Submission = Submission()
             ) {
-                self.sqEntries = .zero
-                self.cqEntries = .zero
+                self.sqEntries = Kernel.IO.Uring.Submission.Count.zero
+                self.cqEntries = Kernel.IO.Uring.Completion.Count.zero
                 self.flags = flags
                 self.submission = submission
                 self.features = Features(rawValue: 0)
@@ -92,10 +92,10 @@
 
             /// Creates params from the C struct (after setup).
             internal init(_ cParams: io_uring_params) {
-                self.sqEntries = Submission.Count(
+                self.sqEntries = Kernel.IO.Uring.Submission.Count(
                     __unchecked: (), Cardinal(UInt(cParams.sq_entries))
                 )
-                self.cqEntries = Completion.Count(
+                self.cqEntries = Kernel.IO.Uring.Completion.Count(
                     __unchecked: (), Cardinal(UInt(cParams.cq_entries))
                 )
                 self.flags = Setup.Flags(rawValue: cParams.flags)
