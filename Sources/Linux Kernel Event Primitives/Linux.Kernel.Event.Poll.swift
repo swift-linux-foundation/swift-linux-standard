@@ -41,6 +41,7 @@
         /// let count = try epoll.poll(events: &events, timeout: .seconds(1))
         /// // epoll deinit closes the epoll fd
         /// ```
+        @safe
         public struct Poll: ~Copyable, Sendable {
             /// The underlying epoll file descriptor.
             @_spi(Syscall)
