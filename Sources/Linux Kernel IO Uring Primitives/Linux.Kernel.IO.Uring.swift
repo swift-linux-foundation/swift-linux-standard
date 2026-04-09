@@ -393,21 +393,22 @@
         ///   - visitor: Called for each CQE.
         /// - Returns: Number of completions drained.
         public mutating func drainCompletions(
-            limit: Int,
+            limit: Completion.Count,
             _ visitor: (Kernel.IO.Uring.Completion.Queue.Entry) -> Void
-        ) -> Int {
+        ) -> Completion.Count {
             var head = unsafe cqHead.pointee
             let tail = unsafe cqTail.pointee
+            let maxCount = Int(bitPattern: limit)
             var count = 0
 
-            while head != tail, count < limit {
+            while head != tail, count < maxCount {
                 unsafe visitor(cqes[Int(head & cqMask)])
                 head &+= 1
                 count += 1
             }
 
             unsafe (cqHead.pointee = head)
-            return count
+            return Completion.Count(__unchecked: (), Cardinal(UInt(count)))
         }
     }
 
