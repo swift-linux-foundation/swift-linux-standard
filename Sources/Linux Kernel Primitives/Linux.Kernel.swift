@@ -9,7 +9,7 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Kernel_Primitives
+public import Kernel_Primitives_Core
 @_exported public import Linux_Primitives_Core
 
 extension Linux_Primitives_Core.Linux {
@@ -23,5 +23,5 @@ extension Linux_Primitives_Core.Linux {
     /// - io_uring async I/O
     /// - eventfd
     /// - copy_file_range, ficlone
-    public typealias Kernel = Kernel_Primitives.Kernel
+    public typealias Kernel = Kernel_Primitives_Core.Kernel
 }

@@ -11,7 +11,10 @@
 
 #if os(Linux)
 
-    @_spi(Syscall) public import Kernel_Primitives
+    @_spi(Syscall) public import Kernel_Event_Primitives
+    @_spi(Syscall) public import Kernel_Descriptor_Primitives
+    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Kernel_Time_Primitives
 
     extension Kernel.Event.Poll {
         /// A typed epoll file descriptor.

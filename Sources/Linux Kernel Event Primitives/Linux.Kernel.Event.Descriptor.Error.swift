@@ -10,7 +10,10 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_Primitives
+    public import Kernel_Event_Primitives
+    public import Kernel_Descriptor_Primitives
+    public import Kernel_Error_Primitives
+    public import Kernel_Time_Primitives
 
     extension Kernel.Event.Descriptor {
         /// Errors from event descriptor operations.

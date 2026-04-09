@@ -10,7 +10,11 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    @_spi(Syscall) public import Kernel_Primitives
+    @_spi(Syscall) public import Kernel_IO_Primitives
+    @_spi(Syscall) public import Kernel_Descriptor_Primitives
+    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Kernel_Memory_Primitives
+    @_spi(Syscall) public import Kernel_File_Primitives
 
     extension Kernel.IO {
         /// io_uring ring — owns the mmap'd SQ/CQ shared-memory regions.

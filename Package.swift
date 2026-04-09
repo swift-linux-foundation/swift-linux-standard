@@ -75,7 +75,13 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Primitives Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
-                .product(name: "Kernel Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -84,6 +90,10 @@ let package = Package(
             name: "Linux Kernel Event Primitives",
             dependencies: [
                 "Linux Kernel Primitives",
+                .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Time Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -92,6 +102,11 @@ let package = Package(
             name: "Linux Kernel IO Primitives",
             dependencies: [
                 "Linux Kernel Primitives",
+                .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -100,6 +115,11 @@ let package = Package(
             name: "Linux Kernel IO Uring Primitives",
             dependencies: [
                 "Linux Kernel IO Primitives",
+                .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -126,6 +146,15 @@ let package = Package(
             name: "Linux Kernel Primitives Tests",
             dependencies: [
                 "Linux Kernel Primitives",
+                "Linux Kernel Event Primitives",
+                "Linux Kernel IO Uring Primitives",
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Primitives Test Support", package: "swift-kernel-primitives"),
             ]
         ),
