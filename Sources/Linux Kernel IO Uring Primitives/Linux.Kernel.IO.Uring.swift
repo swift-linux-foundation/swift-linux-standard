@@ -157,7 +157,7 @@
         public static func setup(
             entries: UInt32,
             params: inout Params
-        ) throws(Error) -> Kernel.Descriptor {
+        ) throws(Kernel.IO.Uring.Error) -> Kernel.Descriptor {
             var cParams = params.cValue
             let fd = swift_io_uring_setup(entries, &cParams)
             guard fd >= 0 else {
@@ -193,7 +193,7 @@
             toSubmit: UInt32,
             minComplete: UInt32,
             flags: Enter.Flags
-        ) throws(Error) -> Int {
+        ) throws(Kernel.IO.Uring.Error) -> Int {
             let result = swift_io_uring_enter(
                 fd._rawValue,
                 toSubmit,
@@ -234,7 +234,7 @@
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
-        ) throws(Error) {
+        ) throws(Kernel.IO.Uring.Error) {
             let result = unsafe swift_io_uring_register(
                 fd._rawValue,
                 opcode.rawValue,

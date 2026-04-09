@@ -60,7 +60,7 @@ extension Kernel.Event.Descriptor {
     public static func create(
         value: UInt32 = 0,
         flags: Flags = .cloexec
-    ) throws(Error) -> Kernel.Event.Descriptor {
+    ) throws(Kernel.Event.Descriptor.Error) -> Kernel.Event.Descriptor {
         let fd = eventfd(value, flags.rawValue)
         guard fd >= 0 else {
             throw .create(.posix(errno))
@@ -79,7 +79,7 @@ extension Kernel.Event.Descriptor {
     ///
     /// Blocks if the counter is zero and the fd is blocking.
     /// Throws `.wouldBlock` if the counter is zero and the fd is non-blocking.
-    public mutating func read() throws(Error) -> UInt64 {
+    public mutating func read() throws(Kernel.Event.Descriptor.Error) -> UInt64 {
         var value: UInt64 = 0
         let result = unsafe read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
         guard result == MemoryLayout<UInt64>.size else {
@@ -97,7 +97,7 @@ extension Kernel.Event.Descriptor {
     /// The maximum value is `UInt64.max - 1`. If adding `value` would
     /// overflow, the write blocks (blocking mode) or throws `.wouldBlock`
     /// (non-blocking mode).
-    public mutating func write(_ value: UInt64) throws(Error) {
+    public mutating func write(_ value: UInt64) throws(Kernel.Event.Descriptor.Error) {
         var val = value
         let result = unsafe write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
         guard result == MemoryLayout<UInt64>.size else {

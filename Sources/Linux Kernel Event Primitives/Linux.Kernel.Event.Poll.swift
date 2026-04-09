@@ -52,7 +52,7 @@
         ///
         /// Not cancellable once the syscall begins. Check task cancellation
         /// before calling if cooperative cancellation is needed.
-        public static func create(flags: Create.Flags = .cloexec) throws(Error) -> Kernel.Descriptor {
+        public static func create(flags: Create.Flags = .cloexec) throws(Kernel.Event.Poll.Error) -> Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
@@ -83,7 +83,7 @@
             op: Operation,
             fd: borrowing Kernel.Descriptor,
             event: Event? = nil
-        ) throws(Error) {
+        ) throws(Kernel.Event.Poll.Error) {
             let result: Int32
             if var cEvent = event?.cValue {
                 result = epoll_ctl(epfd._rawValue, op.rawValue, fd._rawValue, &cEvent)
@@ -120,7 +120,7 @@
             _ epfd: borrowing Kernel.Descriptor,
             events: inout [Event],
             timeout: Int32
-        ) throws(Error) -> Int {
+        ) throws(Kernel.Event.Poll.Error) -> Int {
             guard !events.isEmpty else { return 0 }
 
             // Use stack allocation for small buffers, heap for large ones
@@ -173,7 +173,7 @@
             _ epfd: borrowing Kernel.Descriptor,
             events: inout [Event],
             timeout: Duration?
-        ) throws(Error) -> Int {
+        ) throws(Kernel.Event.Poll.Error) -> Int {
             let ms = Kernel.Time.milliseconds(from: timeout)
             return try wait(epfd, events: &events, timeout: ms)
         }
