@@ -27,35 +27,113 @@
     #endif
 
     extension Kernel.Event {
-        /// Raw epoll syscall wrappers (Linux only).
+        /// Epoll event notification (Linux).
         ///
-        /// Event.Poll is the scalable I/O event notification mechanism on Linux.
-        /// This namespace provides policy-free syscall wrappers.
+        /// Owns the epoll file descriptor via `~Copyable` — deinit closes
+        /// the fd automatically. Instance methods provide the modern Swift API;
+        /// package statics preserve the C API mirror for platform-stack internal use.
         ///
-        /// Higher layers (swift-io) build registration management,
-        /// ID tracking, and event dispatch on top of these primitives.
-        public enum Poll {}
+        /// ## Usage
+        ///
+        /// ```swift
+        /// var epoll = try Kernel.Event.Poll()
+        /// try epoll.add(fd: socketFd, event: event)
+        /// let count = try epoll.poll(events: &events, timeout: .seconds(1))
+        /// // epoll deinit closes the epoll fd
+        /// ```
+        public struct Poll: ~Copyable, Sendable {
+            /// The underlying epoll file descriptor.
+            @_spi(Syscall)
+            public let descriptor: Kernel.Descriptor
+
+            /// Creates a new epoll instance.
+            ///
+            /// - Parameter flags: Creation flags. Default: `.cloexec`.
+            /// - Throws: `Error.create` if creation fails.
+            public init(flags: Create.Flags = .cloexec) throws(Error) {
+                self.descriptor = try Self.create(flags: flags)
+            }
+        }
     }
 
-    // MARK: - Syscalls
+    // MARK: - Public Instance API
+
+    extension Kernel.Event.Poll {
+        /// Adds a file descriptor to the epoll instance.
+        ///
+        /// - Parameters:
+        ///   - fd: The target file descriptor.
+        ///   - event: The event structure describing interests.
+        /// - Throws: `Error.ctl` on failure.
+        public func add(
+            fd: borrowing Kernel.Descriptor,
+            event: Event
+        ) throws(Error) {
+            try Self.ctl(self, op: .add, fd: fd, event: event)
+        }
+
+        /// Modifies the events for a file descriptor.
+        ///
+        /// - Parameters:
+        ///   - fd: The target file descriptor.
+        ///   - event: The updated event structure.
+        /// - Throws: `Error.ctl` on failure.
+        public func modify(
+            fd: borrowing Kernel.Descriptor,
+            event: Event
+        ) throws(Error) {
+            try Self.ctl(self, op: .modify, fd: fd, event: event)
+        }
+
+        /// Removes a file descriptor from the epoll instance.
+        ///
+        /// - Parameter fd: The target file descriptor.
+        /// - Throws: `Error.ctl` on failure.
+        public func remove(
+            fd: borrowing Kernel.Descriptor
+        ) throws(Error) {
+            try Self.ctl(self, op: .delete, fd: fd)
+        }
+
+        /// Waits for events.
+        ///
+        /// - Parameters:
+        ///   - events: Buffer for returned events (pre-sized).
+        ///   - timeout: Timeout duration, or `nil` for infinite.
+        /// - Returns: Number of events written to buffer, or 0 on timeout.
+        /// - Throws: `Error.wait` on failure, `.interrupted` on EINTR.
+        public func poll(
+            events: inout [Event],
+            timeout: Duration?
+        ) throws(Error) -> Int {
+            try Self.wait(self, events: &events, timeout: timeout)
+        }
+
+        /// Registers an eventfd for wakeup signaling and returns a Sendable channel.
+        ///
+        /// Adds the eventfd to this epoll instance with `EPOLLIN | EPOLLET` and
+        /// returns a channel whose `wake()` method signals the eventfd from any thread.
+        /// Call before transferring the Poll to the poll thread via `sending`.
+        ///
+        /// - Parameter eventfd: The eventfd to register for wakeup signaling.
+        /// - Returns: A Sendable wakeup channel.
+        public func wakeup(
+            eventfd: borrowing Kernel.Event.Descriptor
+        ) throws(Error) -> Kernel.Wakeup.Channel {
+            let wakeupEvent = Event(events: [.in, .et])
+            try self.add(fd: eventfd.descriptor, event: wakeupEvent)
+            let rawEfd = eventfd.descriptor._rawValue
+            return Kernel.Wakeup.Channel {
+                Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
+            }
+        }
+    }
+
+    // MARK: - Package Statics (C API Mirror)
 
     extension Kernel.Event.Poll {
         /// Creates a new epoll instance.
-        ///
-        /// - Parameter flags: Flags for the new epoll instance.
-        /// - Returns: A file descriptor for the new epoll instance.
-        /// - Throws: `Error.create` if creation fails.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall but typically completes quickly.
-        /// Safe to call from most contexts.
-        ///
-        /// ## Cancellation
-        ///
-        /// Not cancellable once the syscall begins. Check task cancellation
-        /// before calling if cooperative cancellation is needed.
-        public static func create(flags: Create.Flags = .cloexec) throws(Kernel.Event.Poll.Error) -> Kernel.Descriptor {
+        package static func create(flags: Create.Flags = .cloexec) throws(Kernel.Event.Poll.Error) -> Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
@@ -64,76 +142,38 @@
         }
 
         /// Controls the epoll instance (add/modify/delete).
-        ///
-        /// - Parameters:
-        ///   - epfd: The epoll file descriptor.
-        ///   - op: The operation to perform.
-        ///   - fd: The target file descriptor.
-        ///   - event: The event structure (required for add/modify, ignored for delete).
-        /// - Throws: `Error.ctl` if the operation fails.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall but typically completes quickly.
-        /// Safe to call from most contexts.
-        ///
-        /// ## Cancellation
-        ///
-        /// Not cancellable once the syscall begins. Check task cancellation
-        /// before calling if cooperative cancellation is needed.
-        public static func ctl(
-            _ epfd: borrowing Kernel.Descriptor,
+        package static func ctl(
+            _ epoll: borrowing Kernel.Event.Poll,
             op: Operation,
             fd: borrowing Kernel.Descriptor,
             event: Event? = nil
         ) throws(Kernel.Event.Poll.Error) {
             let result: Int32
             if var cEvent = event?.cValue {
-                result = epoll_ctl(epfd._rawValue, op.rawValue, fd._rawValue, &cEvent)
+                result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
             } else {
-                result = epoll_ctl(epfd._rawValue, op.rawValue, fd._rawValue, nil)
+                result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, nil)
             }
             guard result == 0 else {
                 throw .ctl(.posix(errno))
             }
         }
 
-        /// Waits for events on the epoll instance (internal).
-        ///
-        /// Low-level wait that writes events into a pre-allocated buffer.
-        ///
-        /// - Parameters:
-        ///   - epfd: The epoll file descriptor.
-        ///   - events: Buffer for returned events.
-        ///   - timeout: Timeout in milliseconds (-1 for infinite, 0 for immediate).
-        /// - Returns: Number of events written to buffer, or 0 on timeout.
-        /// - Throws: `Error.wait` on failure, `Error.interrupted` on EINTR.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// Blocks until events are available, timeout expires, or interrupted by signal.
-        /// Call from a blocking context (dedicated thread pool), not the Swift
-        /// cooperative thread pool.
-        ///
-        /// ## Cancellation
-        ///
-        /// If interrupted by a signal, throws `Error.interrupted`. Callers
-        /// should typically retry on interruption unless cancellation is desired.
+        /// Waits for events (millisecond timeout, internal).
         internal static func wait(
-            _ epfd: borrowing Kernel.Descriptor,
+            _ epoll: borrowing Kernel.Event.Poll,
             events: inout [Event],
             timeout: Int32
         ) throws(Kernel.Event.Poll.Error) -> Int {
             guard !events.isEmpty else { return 0 }
 
-            // Use stack allocation for small buffers, heap for large ones
             let count = events.count
             let outcome: Result<Int, Error> = withUnsafeTemporaryAllocation(
                 of: epoll_event.self,
                 capacity: count
             ) { buffer in
                 let baseAddress = unsafe buffer.baseAddress!
-                let result = unsafe epoll_wait(epfd._rawValue, baseAddress, Int32(count), timeout)
+                let result = unsafe epoll_wait(epoll.descriptor._rawValue, baseAddress, Int32(count), timeout)
                 guard result >= 0 else {
                     let code = Kernel.Error.Code.posix(errno)
                     if code.posix == EINTR {
@@ -142,7 +182,6 @@
                     return .failure(.wait(code))
                 }
 
-                // Convert C events to Swift events
                 for i in 0..<Int(result) {
                     events[i] = Event(unsafe buffer[i])
                 }
@@ -152,33 +191,13 @@
         }
 
         /// Waits for events with a Duration timeout.
-        ///
-        /// Convenience wrapper that converts Duration to milliseconds.
-        ///
-        /// - Parameters:
-        ///   - epfd: The epoll file descriptor.
-        ///   - events: Buffer for returned events.
-        ///   - timeout: Timeout duration, or `nil` for infinite.
-        /// - Returns: Number of events written to buffer, or 0 on timeout.
-        /// - Throws: `Error.wait` on failure, `Error.interrupted` on EINTR.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// Blocks until events are available, timeout expires, or interrupted by signal.
-        /// Call from a blocking context (dedicated thread pool), not the Swift
-        /// cooperative thread pool.
-        ///
-        /// ## Cancellation
-        ///
-        /// If interrupted by a signal, throws `Error.interrupted`. Callers
-        /// should typically retry on interruption unless cancellation is desired.
-        public static func wait(
-            _ epfd: borrowing Kernel.Descriptor,
+        package static func wait(
+            _ epoll: borrowing Kernel.Event.Poll,
             events: inout [Event],
             timeout: Duration?
         ) throws(Kernel.Event.Poll.Error) -> Int {
             let ms = Kernel.Time.milliseconds(from: timeout)
-            return try wait(epfd, events: &events, timeout: ms)
+            return try wait(epoll, events: &events, timeout: ms)
         }
     }
 
