@@ -68,9 +68,9 @@
         }
 
         /// Entry flags.
-        public var flags: UInt8 {
-            get { cValue.flags }
-            set { cValue.flags = newValue }
+        public var flags: Flags {
+            get { Flags(rawValue: cValue.flags) }
+            set { cValue.flags = newValue.rawValue }
         }
 
         /// Operation-specific flags (rw_flags field).

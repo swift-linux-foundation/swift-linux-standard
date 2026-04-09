@@ -76,8 +76,8 @@
         /// Entry flags.
         ///
         /// Contains additional information about the completion.
-        public var flags: UInt32 {
-            cValue.flags
+        public var flags: Flags {
+            Flags(rawValue: cValue.flags)
         }
     }
 

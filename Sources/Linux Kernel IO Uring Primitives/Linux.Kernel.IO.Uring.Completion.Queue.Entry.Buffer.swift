@@ -24,12 +24,14 @@
                 self.entry = entry
             }
 
-            /// The buffer ID if a buffer was selected.
+            /// The buffer index if a buffer was selected.
             ///
             /// Only valid when `.buffer` flag is set.
-            public var id: UInt16? {
-                guard Flags(rawValue: entry.flags).contains(.buffer) else { return nil }
-                return UInt16(truncatingIfNeeded: entry.flags >> 16)
+            public var index: Kernel.IO.Uring.Buffer.Index? {
+                guard entry.flags.contains(.buffer) else { return nil }
+                return Kernel.IO.Uring.Buffer.Index(
+                    rawValue: UInt16(truncatingIfNeeded: entry.flags.rawValue >> 16)
+                )
             }
         }
     }

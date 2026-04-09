@@ -64,7 +64,7 @@
             public var submission: Submission
 
             /// Ring features supported by kernel (filled by kernel).
-            public private(set) var features: UInt32
+            public private(set) var features: Features
 
             /// Submission queue ring offset info (filled by kernel).
             public private(set) var sqOff: Kernel.IO.Uring.Submission.Queue.Offsets
@@ -85,7 +85,7 @@
                 self.cqEntries = 0
                 self.flags = flags
                 self.submission = submission
-                self.features = 0
+                self.features = Features(rawValue: 0)
                 self.sqOff = Kernel.IO.Uring.Submission.Queue.Offsets()
                 self.cqOff = Kernel.IO.Uring.Completion.Queue.Offsets()
             }
@@ -101,7 +101,7 @@
                         idle: cParams.sq_thread_idle
                     )
                 )
-                self.features = cParams.features
+                self.features = Features(rawValue: cParams.features)
                 self.sqOff = Kernel.IO.Uring.Submission.Queue.Offsets(cParams.sq_off)
                 self.cqOff = Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
             }
