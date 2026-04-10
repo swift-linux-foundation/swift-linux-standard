@@ -168,6 +168,8 @@ let package = Package(
             name: "Linux Kernel Event Standard",
             dependencies: [
                 "Linux Standard Core",
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
