@@ -1,0 +1,103 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+Sequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Sequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Sequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Sequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Sequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+Sequence.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+conversions.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+conversions.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+conversions.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+conversions~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+conversions.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+conversions.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+growth.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+growth.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+growth.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+growth~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+growth.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+growth.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+mutating.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+mutating.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+mutating.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+mutating~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+mutating.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+mutating.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+ones.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+ones.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+ones.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+ones~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+ones.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+ones.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+protocols.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+protocols.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+protocols.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+protocols~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+protocols.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+protocols.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+returning.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+returning.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+returning.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+returning~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+returning.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+returning.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic+zeros.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+zeros.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+zeros.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+zeros~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+zeros.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic+zeros.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic.All.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.All.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.All.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.All~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.All.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.All.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic.Statistic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Statistic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Statistic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Statistic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Statistic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.Statistic.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/Bit.Vector.Dynamic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/Bit.Vector.Dynamic.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-vector-primitives/Sources/Bit Vector Dynamic Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Dynamic_Primitives.build/exports.dia"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.Bytes.Notation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Notation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Notation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Notation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Notation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Notation.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.Bytes.Unit.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Unit.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Unit.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Unit~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Unit.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Unit.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.Bytes.Units.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Units.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Units.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Units~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Units.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.Units.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.Bytes.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Bytes.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.Radix.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Radix.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Radix.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Radix~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Radix.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.Radix.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/Binary.Format.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/Binary.Format.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/RawRepresentable+Format.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/RawRepresentable+Format.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/RawRepresentable+Format.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/RawRepresentable+Format~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/RawRepresentable+Format.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/RawRepresentable+Format.dia"
+  },
+  "/workspace/swift-primitives/swift-binary-primitives/Sources/Binary Format Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Binary_Format_Primitives.build/exports.dia"
+  }
+}

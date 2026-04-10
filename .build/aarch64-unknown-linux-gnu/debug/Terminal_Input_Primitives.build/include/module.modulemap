@@ -1,0 +1,3 @@
+module Terminal_Input_Primitives {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/include/Terminal Input Primitives-Swift.h"
+}

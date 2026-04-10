@@ -1,0 +1,152 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Array.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Array.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Array.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Array~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Array.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Array.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.ArraySlice.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ArraySlice.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ArraySlice.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ArraySlice~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ArraySlice.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ArraySlice.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.CollectionOfOne.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.CollectionOfOne.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.CollectionOfOne.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.CollectionOfOne~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.CollectionOfOne.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.CollectionOfOne.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.ContiguousArray.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ContiguousArray.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ContiguousArray.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ContiguousArray~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ContiguousArray.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ContiguousArray.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Dictionary.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Dictionary.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Dictionary.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Dictionary~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Dictionary.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Dictionary.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.EmptyCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.EmptyCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.EmptyCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.EmptyCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.EmptyCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.EmptyCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Equatable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Equatable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Equatable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Equatable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Equatable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Equatable.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.KeyValuePairs.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.KeyValuePairs.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.KeyValuePairs.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.KeyValuePairs~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.KeyValuePairs.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.KeyValuePairs.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Optional.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Optional.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Optional.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Optional~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Optional.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Optional.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.PartialRange.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.PartialRange.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.PartialRange.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.PartialRange~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.PartialRange.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.PartialRange.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Range.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Range.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Range.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Range~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Range.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Range.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Result.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Result.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Result.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Result~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Result.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Result.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.ReversedCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ReversedCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ReversedCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ReversedCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ReversedCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.ReversedCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.Set.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Set.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Set.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Set~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Set.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.Set.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafeBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafeMutableBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafeMutablePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutablePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutablePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutablePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutablePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutablePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafeMutableRawPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableRawPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableRawPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableRawPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableRawPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeMutableRawPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/Equation.Protocol+Swift.UnsafeRawPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeRawPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeRawPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeRawPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeRawPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/Equation.Protocol+Swift.UnsafeRawPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-equation-primitives/Sources/Equation Primitives Standard Library Integration/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Equation_Primitives_Standard_Library_Integration.build/exports.dia"
+  }
+}

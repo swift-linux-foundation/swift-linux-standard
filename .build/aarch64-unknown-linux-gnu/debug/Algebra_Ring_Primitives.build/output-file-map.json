@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring+Convenience.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Convenience.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Convenience.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Convenience~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Convenience.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Convenience.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring+Group.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Group.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Group.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Group~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Group.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Group.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring+Semiring.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Semiring.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Semiring.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Semiring~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Semiring.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring+Semiring.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring.Commutative+Convenience.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative+Convenience.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative+Convenience.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative+Convenience~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative+Convenience.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative+Convenience.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring.Commutative.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.Commutative.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/Algebra.Ring.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/Algebra.Ring.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-ring-primitives/Sources/Algebra Ring Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Ring_Primitives.build/exports.dia"
+  }
+}

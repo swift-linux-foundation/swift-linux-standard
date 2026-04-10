@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Core/Bit.Order.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.Order.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.Order.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.Order~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.Order.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.Order.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-primitives/Sources/Bit Primitives Core/Bit.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Primitives_Core.build/Bit.dia"
+  }
+}

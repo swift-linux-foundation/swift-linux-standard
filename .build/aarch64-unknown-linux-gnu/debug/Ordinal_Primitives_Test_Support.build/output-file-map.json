@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-ordinal-primitives/Tests/Support/Ordinal Primitives Test Support.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/Ordinal Primitives Test Support.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/Ordinal Primitives Test Support.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/Ordinal Primitives Test Support~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/Ordinal Primitives Test Support.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordinal_Primitives_Test_Support.build/Ordinal Primitives Test Support.dia"
+  }
+}

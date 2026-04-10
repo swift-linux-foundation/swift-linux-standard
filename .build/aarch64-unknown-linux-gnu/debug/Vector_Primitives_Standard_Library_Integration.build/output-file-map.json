@@ -1,0 +1,40 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Standard Library Integration/UnsafeMutableRawBufferPointer+Index.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawBufferPointer+Index.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawBufferPointer+Index.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawBufferPointer+Index~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawBufferPointer+Index.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawBufferPointer+Index.dia"
+  },
+  "/workspace/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Standard Library Integration/UnsafeMutableRawPointer+Index.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawPointer+Index.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawPointer+Index.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawPointer+Index~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawPointer+Index.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeMutableRawPointer+Index.dia"
+  },
+  "/workspace/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Standard Library Integration/UnsafeRawBufferPointer+Index.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawBufferPointer+Index.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawBufferPointer+Index.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawBufferPointer+Index~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawBufferPointer+Index.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawBufferPointer+Index.dia"
+  },
+  "/workspace/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Standard Library Integration/UnsafeRawPointer+Index.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawPointer+Index.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawPointer+Index.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawPointer+Index~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawPointer+Index.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/UnsafeRawPointer+Index.dia"
+  },
+  "/workspace/swift-primitives/swift-vector-primitives/Sources/Vector Primitives Standard Library Integration/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Vector_Primitives_Standard_Library_Integration.build/exports.dia"
+  }
+}

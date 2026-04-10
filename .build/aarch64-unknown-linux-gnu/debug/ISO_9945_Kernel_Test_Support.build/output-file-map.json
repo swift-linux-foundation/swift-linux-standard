@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/primary.swiftdeps"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/Kernel.Event.Test.Support.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Event.Test.Support.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Event.Test.Support.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Event.Test.Support~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Event.Test.Support.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Event.Test.Support.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/Kernel.IO.Test.Helpers.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.IO.Test.Helpers.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.IO.Test.Helpers.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.IO.Test.Helpers~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.IO.Test.Helpers.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.IO.Test.Helpers.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/Kernel.Temporary.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Temporary.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Temporary.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Temporary~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Temporary.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Temporary.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/Kernel.Thread.Test.Harness.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Harness.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Harness.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Harness~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Harness.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Harness.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/Kernel.Thread.Test.Primitives.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Primitives.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Primitives.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Primitives~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Primitives.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/Kernel.Thread.Test.Primitives.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Tests/Support/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Kernel_Test_Support.build/exports.dia"
+  }
+}

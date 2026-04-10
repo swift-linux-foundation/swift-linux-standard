@@ -1,0 +1,89 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Affinity.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Affinity.Failure.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Failure.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Failure.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Failure~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Failure.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Failure.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Affinity.Kind.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Kind.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Kind.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Kind~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Kind.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Kind.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Affinity.Support.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Support.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Support.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Support~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Support.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.Support.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Affinity.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Affinity.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Condition.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Condition.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Condition.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Condition~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Condition.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Condition.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Handle.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Handle.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Handle.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Handle~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Handle.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Handle.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Mutex.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Mutex.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Mutex.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Mutex~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Mutex.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Mutex.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.Yield.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Yield.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Yield.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Yield~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Yield.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.Yield.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/Kernel.Thread.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/Kernel.Thread.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Thread Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Thread_Primitives.build/exports.dia"
+  }
+}

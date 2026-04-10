@@ -1,0 +1,3 @@
+module Finite_Primitives {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives.build/include/Finite Primitives-Swift.h"
+}

@@ -1,0 +1,131 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Address.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Address.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Address.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Address~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Address.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Address.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Allocation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Allocation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Allocation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Allocation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Allocation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Allocation.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Lock.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Lock.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Lock.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Advice.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Advice.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Advice.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Advice~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Advice.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Advice.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Anonymous.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Anonymous.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Anonymous.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Anonymous~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Anonymous.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Anonymous.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Error.Validation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.Validation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.Validation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.Validation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.Validation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.Validation.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.File.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.File.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.File.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.File~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.File.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.File.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Options.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Options.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Options.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Options~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Options.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Options.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Protection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Protection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Protection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Protection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Protection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Protection.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.Region.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Region.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Region.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Region~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Region.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.Region.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Map.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Map.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Page.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Page.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Page.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Page~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Page.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Page.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Shared.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/Kernel.Memory.Shared.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/Kernel.Memory.Shared.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Memory Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Memory_Primitives.build/exports.dia"
+  }
+}

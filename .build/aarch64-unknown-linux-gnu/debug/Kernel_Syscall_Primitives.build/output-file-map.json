@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Syscall Primitives/Kernel.Syscall.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/Kernel.Syscall.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/Kernel.Syscall.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/Kernel.Syscall~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/Kernel.Syscall.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/Kernel.Syscall.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Syscall Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Syscall_Primitives.build/exports.dia"
+  }
+}

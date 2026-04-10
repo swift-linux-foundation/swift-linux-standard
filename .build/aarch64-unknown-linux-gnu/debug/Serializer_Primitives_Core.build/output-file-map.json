@@ -1,0 +1,33 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-serializer-primitives/Sources/Serializer Primitives Core/Serializable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializable.dia"
+  },
+  "/workspace/swift-primitives/swift-serializer-primitives/Sources/Serializer Primitives Core/Serializer.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-serializer-primitives/Sources/Serializer Primitives Core/Serializer.Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-serializer-primitives/Sources/Serializer Primitives Core/Serializer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serializer_Primitives_Core.build/Serializer.dia"
+  }
+}

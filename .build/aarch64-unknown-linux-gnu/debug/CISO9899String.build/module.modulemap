@@ -1,0 +1,4 @@
+module CISO9899String {
+    umbrella "/workspace/swift-iso/swift-iso-9899/Sources/CISO9899String/include"
+    export *
+}

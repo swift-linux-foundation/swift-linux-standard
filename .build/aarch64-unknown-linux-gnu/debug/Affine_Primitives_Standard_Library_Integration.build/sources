@@ -1,0 +1,5 @@
+'/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/Int+Affine.Discrete.Vector.swift'
+'/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/RandomAccessCollection+Tagged.Ordinal.Offset.swift'
+'/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/UnsafeMutablePointer+Tagged.Ordinal.swift'
+'/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/UnsafePointer+Tagged.Ordinal.swift'
+'/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/exports.swift'

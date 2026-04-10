@@ -1,0 +1,3 @@
+module ISO_9899_Core {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Core.build/include/ISO 9899 Core-Swift.h"
+}

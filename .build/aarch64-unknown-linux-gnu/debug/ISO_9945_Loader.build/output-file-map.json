@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/primary.swiftdeps"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Error.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.Library.Options.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.Options.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.Options.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.Options~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.Options.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.Options.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.Library.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Library.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.Symbol.Scope.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.Scope.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.Scope.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.Scope~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.Scope.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.Scope.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.Symbol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.Symbol.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9945/Sources/ISO 9945 Loader/ISO 9945.Loader.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_Loader.build/ISO 9945.Loader.dia"
+  }
+}

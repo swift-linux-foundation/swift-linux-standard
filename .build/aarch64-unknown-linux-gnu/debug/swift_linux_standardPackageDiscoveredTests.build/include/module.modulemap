@@ -1,0 +1,3 @@
+module swift_linux_standardPackageDiscoveredTests {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/swift_linux_standardPackageDiscoveredTests.build/include/swift-linux-standardPackageDiscoveredTests-Swift.h"
+}

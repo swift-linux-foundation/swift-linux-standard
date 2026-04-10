@@ -1,0 +1,89 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group+Arithmetic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group+Arithmetic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group+Arithmetic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group+Arithmetic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group+Arithmetic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group+Arithmetic.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Element.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Element.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Element.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Element~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Element.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Element.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Modulus.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Modulus.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Modulus.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Modulus~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Modulus.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Modulus.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static+Arithmetic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Arithmetic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Arithmetic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Arithmetic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Arithmetic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Arithmetic.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static+Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static+Sequence.Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Sequence.Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Sequence.Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Sequence.Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Sequence.Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static+Sequence.Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static.Element+Ordinal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Element+Ordinal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Element+Ordinal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Element+Ordinal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Element+Ordinal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Element+Ordinal.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static.Iterator.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Iterator.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Iterator.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Iterator~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Iterator.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.Iterator.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.Group.Static.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.Group.Static.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Cyclic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Cyclic.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/Tagged+Cyclic.Group.Static.Element.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Tagged+Cyclic.Group.Static.Element.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Tagged+Cyclic.Group.Static.Element.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Tagged+Cyclic.Group.Static.Element~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Tagged+Cyclic.Group.Static.Element.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/Tagged+Cyclic.Group.Static.Element.dia"
+  },
+  "/workspace/swift-primitives/swift-cyclic-primitives/Sources/Cyclic Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cyclic_Primitives.build/exports.dia"
+  }
+}

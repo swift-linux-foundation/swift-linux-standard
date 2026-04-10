@@ -1,0 +1,124 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Event.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Event.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Event.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Event~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Event.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Event.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Key.Code.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Code.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Code.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Code~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Code.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Code.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Key.Kind.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Kind.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Kind.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Kind~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Kind.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Kind.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Key.Modifiers.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Modifiers.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Modifiers.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Modifiers~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Modifiers.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.Modifiers.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Key.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Key.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Mouse.Button.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Button.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Button.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Button~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Button.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Button.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Mouse.Kind.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Kind.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Kind.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Kind~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Kind.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.Kind.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Mouse.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Mouse.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser+CSI.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+CSI.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+CSI.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+CSI~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+CSI.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+CSI.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser+Control.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Control.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Control.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Control~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Control.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Control.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser+Kitty.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Kitty.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Kitty.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Kitty~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Kitty.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Kitty.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser+Mouse.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Mouse.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Mouse.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Mouse~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Mouse.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+Mouse.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser+UTF8.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+UTF8.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+UTF8.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+UTF8~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+UTF8.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser+UTF8.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.Parser.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.Parser.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/Terminal.Input.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/Terminal.Input.dia"
+  },
+  "/workspace/swift-primitives/swift-terminal-primitives/Sources/Terminal Input Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Terminal_Input_Primitives.build/exports.dia"
+  }
+}

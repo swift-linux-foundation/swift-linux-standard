@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/primary.swiftdeps"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Ctype.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Ctype.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Ctype.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Ctype~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Ctype.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Ctype.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Stdlib.Conversion.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Conversion.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Conversion.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Conversion~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Conversion.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Conversion.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Stdlib.Environment.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Environment.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Environment.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Environment~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Environment.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Environment.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Stdlib.Memory.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Memory.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Memory.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Memory~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Memory.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Memory.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Stdlib.Random.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Random.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Random.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Random~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Random.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.Random.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/ISO_9899.Stdlib.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/ISO_9899.Stdlib.dia"
+  },
+  "/workspace/swift-iso/swift-iso-9899/Sources/ISO 9899 Hosted/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/exports.dia"
+  }
+}

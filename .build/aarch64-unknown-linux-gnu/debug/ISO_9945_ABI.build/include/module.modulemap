@@ -1,0 +1,3 @@
+module ISO_9945_ABI {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9945_ABI.build/include/ISO 9945 ABI-Swift.h"
+}

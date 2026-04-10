@@ -1,0 +1,61 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Format.Decimal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Decimal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Decimal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Decimal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Decimal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Decimal.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Format.Numeric.Notation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Notation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Notation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Notation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Notation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Notation.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Format.Numeric.Separator.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Separator.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Separator.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Separator~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Separator.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Separator.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Format.Numeric.Sign.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Sign.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Sign.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Sign~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Sign.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.Sign.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Format.Numeric.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Format.Numeric.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/FormatStyle.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/FormatStyle.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/FormatStyle.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/FormatStyle~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/FormatStyle.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/FormatStyle.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Formatting.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Formatting.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Formatting.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Formatting~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Formatting.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Formatting.dia"
+  },
+  "/workspace/swift-primitives/swift-formatting-primitives/Sources/Formatting Primitives/Tagged+Formatting.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Tagged+Formatting.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Tagged+Formatting.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Tagged+Formatting~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Tagged+Formatting.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Formatting_Primitives.build/Tagged+Formatting.dia"
+  }
+}

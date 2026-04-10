@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-dimension-primitives/Tests/Support/Dimension Primitives Test Support.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/Dimension Primitives Test Support.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/Dimension Primitives Test Support.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/Dimension Primitives Test Support~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/Dimension Primitives Test Support.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/Dimension Primitives Test Support.dia"
+  },
+  "/workspace/swift-primitives/swift-dimension-primitives/Tests/Support/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dimension_Primitives_Test_Support.build/exports.dia"
+  }
+}

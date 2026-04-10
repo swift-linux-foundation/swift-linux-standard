@@ -1,0 +1,40 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/Int+Affine.Discrete.Vector.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/Int+Affine.Discrete.Vector.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/Int+Affine.Discrete.Vector.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/Int+Affine.Discrete.Vector~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/Int+Affine.Discrete.Vector.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/Int+Affine.Discrete.Vector.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/RandomAccessCollection+Tagged.Ordinal.Offset.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/RandomAccessCollection+Tagged.Ordinal.Offset.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/RandomAccessCollection+Tagged.Ordinal.Offset.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/RandomAccessCollection+Tagged.Ordinal.Offset~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/RandomAccessCollection+Tagged.Ordinal.Offset.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/RandomAccessCollection+Tagged.Ordinal.Offset.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/UnsafeMutablePointer+Tagged.Ordinal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafeMutablePointer+Tagged.Ordinal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafeMutablePointer+Tagged.Ordinal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafeMutablePointer+Tagged.Ordinal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafeMutablePointer+Tagged.Ordinal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafeMutablePointer+Tagged.Ordinal.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/UnsafePointer+Tagged.Ordinal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafePointer+Tagged.Ordinal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafePointer+Tagged.Ordinal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafePointer+Tagged.Ordinal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafePointer+Tagged.Ordinal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/UnsafePointer+Tagged.Ordinal.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Standard Library Integration/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Standard_Library_Integration.build/exports.dia"
+  }
+}

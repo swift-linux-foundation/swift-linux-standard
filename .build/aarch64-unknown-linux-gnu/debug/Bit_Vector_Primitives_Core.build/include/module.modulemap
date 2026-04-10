@@ -1,0 +1,3 @@
+module Bit_Vector_Primitives_Core {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Vector_Primitives_Core.build/include/Bit Vector Primitives Core-Swift.h"
+}

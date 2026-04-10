@@ -1,0 +1,61 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group+Monoid.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Monoid.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Monoid.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Monoid~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Monoid.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Monoid.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group+Parity.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Parity.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Parity.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Parity~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Parity.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Parity.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group+Z2.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Z2.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Z2.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Z2~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Z2.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group+Z2.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group.Abelian+Group.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Group.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Group.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Group~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Group.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Group.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group.Abelian+Z2.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Z2.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Z2.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Z2~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Z2.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian+Z2.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group.Abelian.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.Abelian.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/Algebra.Group.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/Algebra.Group.dia"
+  },
+  "/workspace/swift-primitives/swift-algebra-group-primitives/Sources/Algebra Group Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Group_Primitives.build/exports.dia"
+  }
+}

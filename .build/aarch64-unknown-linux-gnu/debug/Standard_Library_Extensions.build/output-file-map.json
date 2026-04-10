@@ -1,0 +1,607 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AdditiveArithmetic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AdditiveArithmetic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AdditiveArithmetic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AdditiveArithmetic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AdditiveArithmetic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AdditiveArithmetic.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnyBidirectionalCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyBidirectionalCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyBidirectionalCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyBidirectionalCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyBidirectionalCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyBidirectionalCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnyCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnyHashable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyHashable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyHashable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyHashable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyHashable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyHashable.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnyIterator.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyIterator.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyIterator.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyIterator~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyIterator.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyIterator.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnyRandomAccessCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyRandomAccessCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyRandomAccessCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyRandomAccessCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyRandomAccessCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnyRandomAccessCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AnySequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnySequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnySequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnySequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnySequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AnySequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Array.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Array.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Array.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ArraySlice.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ArraySlice.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ArraySlice.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ArraySlice~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ArraySlice.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ArraySlice.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/AutoreleasingUnsafeMutablePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AutoreleasingUnsafeMutablePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AutoreleasingUnsafeMutablePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AutoreleasingUnsafeMutablePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AutoreleasingUnsafeMutablePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/AutoreleasingUnsafeMutablePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Bool.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Bool.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Bool.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Character.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Character.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Character.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Character~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Character.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Character.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ClosedRange.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ClosedRange.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ClosedRange.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ClosedRange~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ClosedRange.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ClosedRange.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Collection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Collection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Collection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Collection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Collection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Collection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/CollectionOfOne.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/CollectionOfOne.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CollectionOfOne.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/CommandLine.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CommandLine.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CommandLine.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CommandLine~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CommandLine.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/CommandLine.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Comparable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Comparable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Comparable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Comparable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Comparable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Comparable.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ContiguousArray.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ContiguousArray.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ContiguousArray.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ContiguousArray~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ContiguousArray.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ContiguousArray.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Dictionary.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Dictionary.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Dictionary.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Double.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Double.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Double.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Double~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Double.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Double.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/EmptyCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EmptyCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EmptyCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EmptyCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EmptyCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EmptyCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/EnumeratedSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EnumeratedSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EnumeratedSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EnumeratedSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EnumeratedSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/EnumeratedSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/FlattenSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FlattenSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FlattenSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FlattenSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FlattenSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FlattenSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Float.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Float.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Float.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Float~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Float.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Float.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/FloatingPoint.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FloatingPoint.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FloatingPoint.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FloatingPoint~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FloatingPoint.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/FloatingPoint.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Int.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Int.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Int.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Int~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Int.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Int.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/JoinedSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/JoinedSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/JoinedSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/JoinedSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/JoinedSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/JoinedSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/KeyPath.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/KeyPath.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/KeyPath.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/KeyPath~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/KeyPath.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/KeyPath.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazyCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazyDropWhileSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyDropWhileSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyDropWhileSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyDropWhileSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyDropWhileSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyDropWhileSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazyFilterSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyFilterSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyFilterSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyFilterSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyFilterSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyFilterSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazyMapSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyMapSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyMapSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyMapSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyMapSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyMapSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazyPrefixWhileSequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyPrefixWhileSequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyPrefixWhileSequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyPrefixWhileSequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyPrefixWhileSequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazyPrefixWhileSequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/LazySequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazySequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazySequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazySequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazySequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/LazySequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ManagedBuffer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ManagedBuffer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ManagedBuffer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ManagedBuffer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ManagedBuffer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ManagedBuffer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Mirror.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Mirror.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Mirror.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Mirror~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Mirror.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Mirror.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Never.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Never.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Never.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Never~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Never.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Never.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Numeric.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Numeric.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Numeric.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Numeric~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Numeric.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Numeric.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ObjectIdentifier.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ObjectIdentifier.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ObjectIdentifier.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ObjectIdentifier~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ObjectIdentifier.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ObjectIdentifier.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/OpaquePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/OpaquePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/OpaquePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/OpaquePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/OpaquePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/OpaquePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Optional.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Optional.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Optional.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/PartialRangeFrom.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeFrom.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeFrom.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeFrom~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeFrom.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeFrom.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/PartialRangeThrough.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeThrough.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeThrough.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeThrough~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeThrough.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeThrough.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/PartialRangeUpTo.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeUpTo.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeUpTo.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeUpTo~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeUpTo.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/PartialRangeUpTo.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Range.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Range.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Range.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/RangeReplaceableCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/RangeReplaceableCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/RangeReplaceableCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/RangeReplaceableCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/RangeReplaceableCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/RangeReplaceableCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Repeated.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Repeated.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Repeated.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Repeated~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Repeated.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Repeated.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Result.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Result.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Result.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/ReversedCollection.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ReversedCollection.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ReversedCollection.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ReversedCollection~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ReversedCollection.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/ReversedCollection.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Sequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Sequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Sequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Sequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Sequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Sequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Set String.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set String.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set String.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set String~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set String.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set String.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Set.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Set.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Set.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Slice.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Slice.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Slice.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Slice~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Slice.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Slice.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Span.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Span.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Span.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Span~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Span.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Span.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/StaticString.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StaticString.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StaticString.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StaticString~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StaticString.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StaticString.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/StrideThrough.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideThrough.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideThrough.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideThrough~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideThrough.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideThrough.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/StrideTo.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideTo.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideTo.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideTo~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideTo.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StrideTo.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/String.Builder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.Builder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.Builder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.Builder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.Builder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.Builder.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/String.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/String.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/StringProtocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StringProtocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StringProtocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StringProtocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StringProtocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/StringProtocol.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Substring.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Substring.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Substring.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Substring~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Substring.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Substring.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UInt8.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UInt8.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UInt8.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UInt8~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UInt8.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UInt8.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Unicode.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unicode.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unicode.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unicode~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unicode.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unicode.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Unmanaged.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unmanaged.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unmanaged.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unmanaged~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unmanaged.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Unmanaged.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeMutableBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeMutablePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutablePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutablePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutablePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutablePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutablePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeMutableRawBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeMutableRawPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeMutableRawPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeRawBufferPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawBufferPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawBufferPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawBufferPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawBufferPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawBufferPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/UnsafeRawPointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawPointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawPointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawPointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawPointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/UnsafeRawPointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/Zip2Sequence.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Zip2Sequence.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Zip2Sequence.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Zip2Sequence~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Zip2Sequence.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/Zip2Sequence.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/withCheckedContinuation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withCheckedContinuation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withCheckedContinuation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withCheckedContinuation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withCheckedContinuation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withCheckedContinuation.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/withTaskCancellationHandler.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withTaskCancellationHandler.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withTaskCancellationHandler.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withTaskCancellationHandler~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withTaskCancellationHandler.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withTaskCancellationHandler.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/withUnsafeContinuation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeContinuation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeContinuation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeContinuation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeContinuation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeContinuation.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/withUnsafePointer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafePointer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafePointer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafePointer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafePointer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafePointer.dia"
+  },
+  "/workspace/swift-primitives/swift-standard-library-extensions/Sources/Standard Library Extensions/withUnsafeTemporaryAllocation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeTemporaryAllocation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeTemporaryAllocation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeTemporaryAllocation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeTemporaryAllocation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/withUnsafeTemporaryAllocation.dia"
+  }
+}

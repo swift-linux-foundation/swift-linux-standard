@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.Memory.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Memory.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Memory.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Memory~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Memory.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Memory.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.Name.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Name.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Name.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Name~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Name.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Name.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.Path.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Path.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Path.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Path~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Path.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Path.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.Processor.Physical.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.Physical.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.Physical.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.Physical~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.Physical.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.Physical.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.Processor.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.Processor.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/Kernel.System.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/Kernel.System.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel System Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_System_Primitives.build/exports.dia"
+  }
+}

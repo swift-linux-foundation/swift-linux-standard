@@ -1,0 +1,75 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.TTY.Size+Query.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size+Query.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size+Query.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size+Query~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size+Query.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size+Query.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.TTY.Size.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.Size.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.TTY.isTTY.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.isTTY.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.isTTY.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.isTTY~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.isTTY.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.isTTY.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.TTY.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.TTY.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.Termios.Attributes+Get.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Get.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Get.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Get~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Get.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Get.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.Termios.Attributes+Raw.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Raw.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Raw.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Raw~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Raw.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Raw.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.Termios.Attributes+Set.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Set.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Set.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Set~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Set.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes+Set.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.Termios.Attributes.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.Attributes.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/Kernel.Termios.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/Kernel.Termios.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Terminal Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Terminal_Primitives.build/exports.dia"
+  }
+}

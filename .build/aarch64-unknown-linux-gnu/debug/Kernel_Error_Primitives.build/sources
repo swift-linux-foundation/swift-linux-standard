@@ -1,0 +1,7 @@
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.Code.POSIX.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.Code.Windows.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.Code.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.Mapping.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.Number.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/Kernel.Error.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Error Primitives/exports.swift'

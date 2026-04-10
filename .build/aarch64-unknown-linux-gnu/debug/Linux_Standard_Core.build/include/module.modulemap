@@ -1,0 +1,3 @@
+module Linux_Standard_Core {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/include/Linux Standard Core-Swift.h"
+}

@@ -1,0 +1,75 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Finite.Bounded.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Bounded.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Bounded.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Bounded~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Bounded.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Bounded.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Finite.Capacity.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Capacity.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Capacity.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Capacity~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Capacity.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Capacity.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Finite.Enumerable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumerable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumerable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumerable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumerable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumerable.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Finite.Enumeration.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumeration.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumeration.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumeration~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumeration.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.Enumeration.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Finite.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Finite.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Index.Bounded.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Index.Bounded.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Index.Bounded.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Index.Bounded~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Index.Bounded.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Index.Bounded.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Ordinal.Finite.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Ordinal.Finite.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Ordinal.Finite.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Ordinal.Finite~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Ordinal.Finite.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Ordinal.Finite.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Tagged+Finite.Enumerable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Finite.Enumerable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Finite.Enumerable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Finite.Enumerable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Finite.Enumerable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Finite.Enumerable.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/Tagged+Ordinal.Finite.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Ordinal.Finite.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Ordinal.Finite.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Ordinal.Finite~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Ordinal.Finite.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/Tagged+Ordinal.Finite.dia"
+  },
+  "/workspace/swift-primitives/swift-finite-primitives/Sources/Finite Primitives Core/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Finite_Primitives_Core.build/exports.dia"
+  }
+}

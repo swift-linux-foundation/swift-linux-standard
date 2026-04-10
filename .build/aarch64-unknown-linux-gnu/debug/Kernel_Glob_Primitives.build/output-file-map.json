@@ -1,0 +1,103 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Atom.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Atom.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Atom.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Atom~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Atom.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Atom.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Error.IO.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.IO.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.IO.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.IO~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.IO.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.IO.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Error.Parse.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.Parse.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.Parse.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.Parse~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.Parse.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.Parse.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Options.Dotfile.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Dotfile.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Dotfile.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Dotfile~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Dotfile.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Dotfile.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Options.Error.Policy.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.Policy.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.Policy.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.Policy~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.Policy.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.Policy.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Options.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Options.Ordering.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Ordering.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Ordering.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Ordering~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Ordering.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Options.Ordering.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Pattern.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Pattern.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Pattern.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Pattern~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Pattern.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Pattern.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Scalar.Class.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.Class.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.Class.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.Class~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.Class.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.Class.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Scalar.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Scalar.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.Segment.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Segment.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Segment.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Segment~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Segment.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.Segment.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/Kernel.Glob.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/Kernel.Glob.dia"
+  },
+  "/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Glob Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Kernel_Glob_Primitives.build/exports.dia"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/primary.swiftdeps"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Loader Standard/Linux.Loader.Section.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.Section.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.Section.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.Section~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.Section.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.Section.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Loader Standard/Linux.Loader.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Loader_Standard.build/Linux.Loader.dia"
+  }
+}

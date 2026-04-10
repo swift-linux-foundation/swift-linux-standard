@@ -1,0 +1,89 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison+BooleanProperties.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+BooleanProperties.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+BooleanProperties.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+BooleanProperties~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+BooleanProperties.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+BooleanProperties.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison+Chaining.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Chaining.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Chaining.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Chaining~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Chaining.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Chaining.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison+Comparable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Comparable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Comparable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Comparable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Comparable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Comparable.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison+Reversal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Reversal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Reversal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Reversal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Reversal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison+Reversal.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Clamp+Property.View.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp+Property.View.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp+Property.View.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp+Property.View~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp+Property.View.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp+Property.View.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Clamp.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Clamp.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Compare+Property.View.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare+Property.View.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare+Property.View.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare+Property.View~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare+Property.View.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare+Property.View.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Compare.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Compare.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Protocol+Property.View.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol+Property.View.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol+Property.View.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol+Property.View~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol+Property.View.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol+Property.View.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/Comparison.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/Comparison.dia"
+  },
+  "/workspace/swift-primitives/swift-comparison-primitives/Sources/Comparison Primitives Core/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Comparison_Primitives_Core.build/exports.dia"
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Duration+Conversions.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Conversions.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Conversions.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Conversions~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Conversions.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Conversions.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Duration+Format.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Format.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Format.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Format~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Format.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration+Format.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Duration.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Duration.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Instant.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Instant.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Instant.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Instant~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Instant.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Instant.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Attosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Attosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Attosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Attosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Attosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Attosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Calendar.Gregorian.Easter.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.Easter.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.Easter.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.Easter~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.Easter.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.Easter.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Calendar.Gregorian.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.Gregorian.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Calendar.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Calendar.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Epoch.Conversion.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.Conversion.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.Conversion.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.Conversion~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.Conversion.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.Conversion.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Epoch.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Epoch.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Femtosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Femtosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Femtosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Femtosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Femtosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Femtosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Hour.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Hour.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Hour.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Hour~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Hour.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Hour.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Microsecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Microsecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Microsecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Microsecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Microsecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Microsecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Millisecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Millisecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Millisecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Millisecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Millisecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Millisecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Minute.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Minute.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Minute.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Minute~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Minute.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Minute.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Month.Day.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.Day.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.Day.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.Day~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.Day.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.Day.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Month.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Month.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Nanosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Nanosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Nanosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Nanosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Nanosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Nanosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Picosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Picosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Picosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Picosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Picosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Picosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Second.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Second.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Second.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Second~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Second.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Second.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Timezone.Offset.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.Offset.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.Offset.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.Offset~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.Offset.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.Offset.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Timezone.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Timezone.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Week.Day.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.Day.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.Day.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.Day~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.Day.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.Day.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Week.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Week.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Year.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Year.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Year.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Year~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Year.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Year.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Yoctosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Yoctosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Yoctosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Yoctosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Yoctosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Yoctosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.Zeptosecond.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Zeptosecond.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Zeptosecond.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Zeptosecond~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Zeptosecond.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.Zeptosecond.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/Time.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/Time.dia"
+  },
+  "/workspace/swift-primitives/swift-time-primitives/Sources/Time Primitives Core/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Time_Primitives_Core.build/exports.dia"
+  }
+}

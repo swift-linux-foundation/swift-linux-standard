@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-algebra-primitives/Sources/Algebra Primitives Core/Algebra.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/Algebra.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/Algebra.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/Algebra~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/Algebra.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Algebra_Primitives_Core.build/Algebra.dia"
+  }
+}

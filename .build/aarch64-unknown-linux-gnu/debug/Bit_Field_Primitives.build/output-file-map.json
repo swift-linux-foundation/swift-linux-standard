@@ -1,0 +1,26 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-bit-primitives/Sources/Bit Field Primitives/Algebra.Field+Bit.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Algebra.Field+Bit.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Algebra.Field+Bit.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Algebra.Field+Bit~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Algebra.Field+Bit.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Algebra.Field+Bit.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-primitives/Sources/Bit Field Primitives/Bit Z₂ Field.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Bit Z₂ Field.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Bit Z₂ Field.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Bit Z₂ Field~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Bit Z₂ Field.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/Bit Z₂ Field.dia"
+  },
+  "/workspace/swift-primitives/swift-bit-primitives/Sources/Bit Field Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Bit_Field_Primitives.build/exports.dia"
+  }
+}

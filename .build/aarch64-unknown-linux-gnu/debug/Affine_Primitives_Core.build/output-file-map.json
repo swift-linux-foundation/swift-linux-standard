@@ -1,0 +1,103 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete+Arithmetic.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete+Arithmetic.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete+Arithmetic.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete+Arithmetic~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete+Arithmetic.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete+Arithmetic.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Ratio+Composition.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Composition.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Composition.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Composition~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Composition.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Composition.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Ratio+QuotientAndRemainder.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+QuotientAndRemainder.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+QuotientAndRemainder.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+QuotientAndRemainder~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+QuotientAndRemainder.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+QuotientAndRemainder.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Ratio+Tagged.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Tagged.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Tagged.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Tagged~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Tagged.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio+Tagged.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Ratio.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Ratio.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Vector.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Vector.Protocol+One.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol+One.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol+One.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol+One~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol+One.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol+One.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Vector.Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.Vector.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.Vector.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.Discrete.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.Discrete.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Affine.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Affine.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Ordinal+Affine.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Ordinal+Affine.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Ordinal+Affine.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Ordinal+Affine~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Ordinal+Affine.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Ordinal+Affine.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/Tagged+Affine.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Tagged+Affine.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Tagged+Affine.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Tagged+Affine~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Tagged+Affine.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/Tagged+Affine.dia"
+  },
+  "/workspace/swift-primitives/swift-affine-primitives/Sources/Affine Primitives Core/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Affine_Primitives_Core.build/exports.dia"
+  }
+}

@@ -1,0 +1,3 @@
+module Ordering_Primitives {
+    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ordering_Primitives.build/include/Ordering Primitives-Swift.h"
+}

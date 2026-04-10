@@ -1,0 +1,138 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Optional+take.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Optional+take.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Optional+take.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Optional+take~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Optional+take.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Optional+take.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Borrow.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Borrow.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Borrow.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Borrow~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Borrow.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Borrow.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Inout.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Inout.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Inout.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Inout~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Inout.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Inout.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Mutable.Unchecked.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.Unchecked.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.Unchecked.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.Unchecked~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.Unchecked.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.Unchecked.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Mutable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Mutable.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Shared.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Shared.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Shared.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Shared~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Shared.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Shared.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Slot.Move.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Move.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Move.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Move~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Move.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Move.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Slot.Store.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Store.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Store.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Store~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Store.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.Store.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Slot.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Slot.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer.Box.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Box.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Box.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Box~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Box.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Box.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer.Cell.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Cell.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Cell.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Cell~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Cell.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Cell.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer.Retained.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Retained.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Retained.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Retained~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Retained.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Retained.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer.Storage.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Storage.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Storage.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Storage~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Storage.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.Storage.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer._Box.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer._Box.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer._Box.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer._Box~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer._Box.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer._Box.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Transfer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Transfer.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Unique Copyable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique Copyable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique Copyable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique Copyable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique Copyable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique Copyable.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.Unique.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.Unique.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/Ownership.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/Ownership.dia"
+  },
+  "/workspace/swift-primitives/swift-ownership-primitives/Sources/Ownership Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Ownership_Primitives.build/exports.dia"
+  }
+}

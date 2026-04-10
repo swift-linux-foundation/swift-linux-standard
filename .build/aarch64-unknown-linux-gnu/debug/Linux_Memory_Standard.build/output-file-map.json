@@ -1,0 +1,26 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/primary.swiftdeps"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Memory Standard/Linux.Memory.Allocation.Statistics.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.Statistics.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.Statistics.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.Statistics~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.Statistics.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.Statistics.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Memory Standard/Linux.Memory.Allocation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.Allocation.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Memory Standard/Linux.Memory.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/Linux.Memory.dia"
+  }
+}

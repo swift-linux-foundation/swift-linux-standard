@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/Sequence.Clearable.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Clearable.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Clearable.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Clearable~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Clearable.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Clearable.dia"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/Sequence.Consume.View.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.View.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.View.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.View~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.View.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.View.dia"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/Sequence.Consume.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Consume.dia"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/Sequence.Drain+Property.View.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain+Property.View.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain+Property.View.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain+Property.View~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain+Property.View.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain+Property.View.dia"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/Sequence.Drain.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/Sequence.Drain.dia"
+  },
+  "/workspace/swift-primitives/swift-sequence-primitives/Sources/Sequence Consuming Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Sequence_Consuming_Primitives.build/exports.dia"
+  }
+}

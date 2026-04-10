@@ -1,0 +1,5 @@
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Process Primitives/Kernel.Group.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Process Primitives/Kernel.Process.ID.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Process Primitives/Kernel.Process.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Process Primitives/Kernel.User.swift'
+'/workspace/swift-primitives/swift-kernel-primitives/Sources/Kernel Process Primitives/exports.swift'

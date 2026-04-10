@@ -1,0 +1,19 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-collection-primitives/Tests/Support/Collection Primitives Test Support.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/Collection Primitives Test Support.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/Collection Primitives Test Support.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/Collection Primitives Test Support~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/Collection Primitives Test Support.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/Collection Primitives Test Support.dia"
+  },
+  "/workspace/swift-primitives/swift-collection-primitives/Tests/Support/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Collection_Primitives_Test_Support.build/exports.dia"
+  }
+}

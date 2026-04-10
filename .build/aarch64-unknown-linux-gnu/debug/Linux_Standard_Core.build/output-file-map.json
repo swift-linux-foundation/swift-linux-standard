@@ -1,0 +1,12 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Sources/Linux Standard Core/Linux.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/Linux.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/Linux.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/Linux~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/Linux.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Standard_Core.build/Linux.dia"
+  }
+}

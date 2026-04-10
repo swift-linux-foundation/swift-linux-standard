@@ -1,0 +1,243 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/primary.swiftdeps"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Create.Flags Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Create.Flags Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Create.Flags Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Create.Flags Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Create.Flags Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Create.Flags Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Data Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Data Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Data Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Data Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Data Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Data Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Error Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Error Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Error Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Error Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Error Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Error Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Event Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Event Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Event Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Event Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Event Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Event Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Events Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Events Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Events Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Events Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Events Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Events Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.Event.Poll.Operation Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Operation Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Operation Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Operation Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Operation Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.Event.Poll.Operation Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Buffer Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Buffer Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Buffer Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Buffer Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Buffer Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Buffer Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Completion Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Completion.Queue Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Completion.Queue.Offsets Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Enter.Options Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Enter.Options Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Enter.Options Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Enter.Options Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Enter.Options Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Enter.Options Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Error Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Error Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Error Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Error Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Error Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Error Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Length Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Length Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Length Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Length Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Length Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Length Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Mmap.Offset Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Mmap.Offset Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Mmap.Offset Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Mmap.Offset Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Mmap.Offset Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Mmap.Offset Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Offset Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Offset Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Offset Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Offset Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Offset Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Offset Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Opcode Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Opcode Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Opcode Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Opcode Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Opcode Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Opcode Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Operation Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Operation.Data Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation.Data Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation.Data Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation.Data Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation.Data Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Operation.Data Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Params Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Params Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Params Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Params Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Params Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Params Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Personality Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Personality Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Personality Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Personality Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Personality Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Personality Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Priority Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Priority Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Priority Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Priority Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Priority Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Priority Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Register.Opcode Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Register.Opcode Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Register.Opcode Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Register.Opcode Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Register.Opcode Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Register.Opcode Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Setup Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Setup.Options Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup.Options Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup.Options Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup.Options Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup.Options Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Setup.Options Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission.Queue Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Options Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Entry.Prepare Tests.dia"
+  },
+  "/workspace/swift-linux-foundation/swift-linux-standard/Tests/Linux Kernel Standard Tests/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Kernel_Standard_Tests.build/Linux.Kernel.IO.Uring.Submission.Queue.Offsets Tests.dia"
+  }
+}

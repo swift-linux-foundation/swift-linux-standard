@@ -1,0 +1,54 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal+CustomStringConvertible.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal+CustomStringConvertible.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal+CustomStringConvertible.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal+CustomStringConvertible~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal+CustomStringConvertible.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal+CustomStringConvertible.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal.Add.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Add.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Add.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Add~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Add.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Add.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal.Error.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Error.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Error.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Error~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Error.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Error.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal.Protocol.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Protocol.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Protocol.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Protocol~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Protocol.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Protocol.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal.Subtract.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Subtract.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Subtract.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Subtract~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Subtract.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.Subtract.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/Cardinal.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/Cardinal.dia"
+  },
+  "/workspace/swift-primitives/swift-cardinal-primitives/Sources/Cardinal Primitives Core/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Cardinal_Primitives_Core.build/exports.dia"
+  }
+}

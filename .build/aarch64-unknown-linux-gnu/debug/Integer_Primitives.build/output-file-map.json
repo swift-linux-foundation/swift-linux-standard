@@ -1,0 +1,82 @@
+{
+  "": {
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/primary.swiftdeps"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/BinaryInteger+GCD.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+GCD.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+GCD.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+GCD~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+GCD.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+GCD.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/BinaryInteger+Shift.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+Shift.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+Shift.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+Shift~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+Shift.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/BinaryInteger+Shift.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/FixedWidthInteger+Rotation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Rotation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Rotation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Rotation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Rotation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Rotation.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/FixedWidthInteger+Saturating.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Saturating.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Saturating.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Saturating~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Saturating.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/FixedWidthInteger+Saturating.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/Numeric.Integer.Division.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Division.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Division.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Division~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Division.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Division.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/Numeric.Integer.Rotation.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Rotation.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Rotation.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Rotation~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Rotation.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Rotation.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/Numeric.Integer.Saturating.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Saturating.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Saturating.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Saturating~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Saturating.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Saturating.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/Numeric.Integer.Shift.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Shift.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Shift.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Shift~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Shift.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.Shift.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/Numeric.Integer.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/Numeric.Integer.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/SignedInteger+Division.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/SignedInteger+Division.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/SignedInteger+Division.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/SignedInteger+Division~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/SignedInteger+Division.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/SignedInteger+Division.dia"
+  },
+  "/workspace/swift-primitives/swift-numeric-primitives/Sources/Integer Primitives/exports.swift": {
+    "dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/exports.d",
+    "object": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/exports.swift.o",
+    "swiftmodule": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/exports~partial.swiftmodule",
+    "swift-dependencies": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/exports.swiftdeps",
+    "diagnostics": "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Integer_Primitives.build/exports.dia"
+  }
+}
