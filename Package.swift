@@ -31,6 +31,7 @@ let package = Package(
         .package(path: "../../swift-primitives/swift-kernel-primitives"),
         .package(path: "../../swift-primitives/swift-cpu-primitives"),
         .package(path: "../../swift-primitives/swift-loader-primitives"),
+        .package(path: "../../swift-primitives/swift-system-primitives"),
         .package(path: "../../swift-iso/swift-iso-9945"),
     ],
     targets: [
@@ -153,6 +154,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "System Primitives", package: "swift-system-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                             .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
