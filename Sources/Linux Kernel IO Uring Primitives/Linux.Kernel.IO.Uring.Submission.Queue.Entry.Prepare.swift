@@ -59,14 +59,14 @@
         /// Configures this entry for a read operation.
         ///
         /// - Parameters:
-        ///   - fd: File descriptor to read from.
+        ///   - target: File targeting (descriptor, registered index, or auto-allocate).
         ///   - buffer: Buffer pointer to read into.
         ///   - length: Number of bytes to read.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func read(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -74,7 +74,7 @@
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .read.standard)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.offset = offset)
@@ -84,14 +84,14 @@
         /// Configures this entry for a write operation.
         ///
         /// - Parameters:
-        ///   - fd: File descriptor to write to.
+        ///   - target: File targeting (descriptor, registered index, or auto-allocate).
         ///   - buffer: Buffer pointer containing data to write.
         ///   - length: Number of bytes to write.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func write(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -99,7 +99,7 @@
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .write.standard)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.offset = offset)
@@ -125,18 +125,18 @@
         /// Configures this entry for an fsync operation.
         ///
         /// - Parameters:
-        ///   - fd: File descriptor to sync.
+        ///   - target: File targeting (descriptor or registered index).
         ///   - datasync: If true, only sync data (not metadata).
         ///   - data: Operation data to return with completion.
         @inlinable
         public func fsync(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             datasync: Bool,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .sync.file)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             if datasync {
                 unsafe (pointer.pointee.opFlags = 1)  // IORING_FSYNC_DATASYNC
             }
@@ -146,30 +146,30 @@
         /// Configures this entry for a close operation.
         ///
         /// - Parameters:
-        ///   - fd: File descriptor to close.
+        ///   - target: File targeting (descriptor or registered index).
         ///   - data: Operation data to return with completion.
         @inlinable
         public func close(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .close)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.data = data)
         }
 
         /// Configures this entry for an accept operation.
         ///
         /// - Parameters:
-        ///   - fd: Listening socket file descriptor.
+        ///   - target: File targeting (descriptor, registered, or auto-allocate for accept-direct).
         ///   - addr: Optional pointer to sockaddr buffer.
         ///   - addrLen: Optional pointer to sockaddr length.
         ///   - flags: Accept flags.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func accept(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             addr: UnsafeMutableRawPointer?,
             addrLen: UnsafeMutablePointer<UInt32>?,
             flags: Int32,
@@ -177,7 +177,7 @@
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.accept)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
             unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(UInt(bitPattern: addrLen))))
             unsafe (pointer.pointee.opFlags = flags)
@@ -187,20 +187,20 @@
         /// Configures this entry for a connect operation.
         ///
         /// - Parameters:
-        ///   - fd: Socket file descriptor.
+        ///   - target: File targeting (descriptor or registered index).
         ///   - addr: Pointer to sockaddr.
         ///   - addrLen: Length of sockaddr.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func connect(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             addr: UnsafeRawPointer,
             addrLen: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.connect)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
             unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(addrLen)))
             unsafe (pointer.pointee.data = data)
@@ -209,14 +209,14 @@
         /// Configures this entry for a send operation.
         ///
         /// - Parameters:
-        ///   - fd: Socket file descriptor.
+        ///   - target: File targeting (descriptor or registered index).
         ///   - buffer: Buffer pointer containing data to send.
         ///   - length: Number of bytes to send.
         ///   - flags: Send flags.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func send(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Int32,
@@ -224,7 +224,7 @@
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.send)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.opFlags = flags)
@@ -234,14 +234,14 @@
         /// Configures this entry for a recv operation.
         ///
         /// - Parameters:
-        ///   - fd: Socket file descriptor.
+        ///   - target: File targeting (descriptor or registered index).
         ///   - buffer: Buffer pointer to receive into.
         ///   - length: Maximum bytes to receive.
         ///   - flags: Recv flags.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func recv(
-            fd: borrowing Kernel.Descriptor,
+            target: Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Int32,
@@ -249,7 +249,7 @@
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.receive)
-            unsafe (pointer.pointee.cValue.fd = fd._rawValue)
+            unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.opFlags = flags)
