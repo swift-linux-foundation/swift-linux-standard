@@ -43,12 +43,12 @@
         /// ## Usage
         ///
         /// ```swift
-        /// if let sqe = ring.nextEntry() {
-        ///     sqe.pointee.prepare.nop(data: data)
-        ///     ring.commitEntry()
+        /// if let sqe = ring.submission.next() {
+        ///     sqe.prepare.nop(data: data)
+        ///     ring.submission.commit()
         /// }
-        /// _ = try ring.enter(toSubmit: ring.pendingSubmissions, minComplete: .zero, flags: [])
-        /// let harvested = ring.drainCompletions(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
+        /// _ = try ring.enter(toSubmit: ring.submission.pending, minComplete: .zero, flags: [])
+        /// let harvested = ring.completion.drain(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
         ///     // process completion
         /// }
         /// ```
@@ -57,32 +57,32 @@
             // Ring descriptor (owned — deinit closes fd after regions are unmapped).
             // The explicit deinit body unmaps mmap'd regions first; then stored-
             // property destruction closes the descriptor.
-            private let ringDescriptor: Kernel.Descriptor
+            @usableFromInline let ringDescriptor: Kernel.Descriptor
 
             // SQ ring (shared-memory pointers into mmap'd region)
-            private let sqHead: UnsafeMutablePointer<UInt32>
-            private let sqTail: UnsafeMutablePointer<UInt32>
-            private let sqMask: Submission.Queue.Mask
-            private let sqEntries: Submission.Count
-            private let sqArray: UnsafeMutablePointer<UInt32>
-            private let sqes: UnsafeMutablePointer<Submission.Queue.Entry>
+            @usableFromInline let sqHead: UnsafeMutablePointer<UInt32>
+            @usableFromInline let sqTail: UnsafeMutablePointer<UInt32>
+            @usableFromInline let sqMask: Submission.Queue.Mask
+            @usableFromInline let sqEntries: Submission.Count
+            @usableFromInline let sqArray: UnsafeMutablePointer<UInt32>
+            @usableFromInline let sqes: UnsafeMutablePointer<Submission.Queue.Entry>
 
             // CQ ring (shared-memory pointers into mmap'd region)
-            private let cqHead: UnsafeMutablePointer<UInt32>
-            private let cqTail: UnsafeMutablePointer<UInt32>
-            private let cqMask: Completion.Queue.Mask
-            private let cqes: UnsafePointer<Completion.Queue.Entry>
+            @usableFromInline let cqHead: UnsafeMutablePointer<UInt32>
+            @usableFromInline let cqTail: UnsafeMutablePointer<UInt32>
+            @usableFromInline let cqMask: Completion.Queue.Mask
+            @usableFromInline let cqes: UnsafePointer<Completion.Queue.Entry>
 
             // Submission tracking
-            private var _pendingCount: Submission.Count = .zero
+            @usableFromInline var _pendingCount: Submission.Count = .zero
 
             // mmap regions (owned — deinit unmaps)
-            private let sqRingAddr: Kernel.Memory.Address
-            private let sqRingSize: Kernel.File.Size
-            private let cqRingAddr: Kernel.Memory.Address
-            private let cqRingSize: Kernel.File.Size
-            private let sqeAddr: Kernel.Memory.Address
-            private let sqeSize: Kernel.File.Size
+            @usableFromInline let sqRingAddr: Kernel.Memory.Address
+            @usableFromInline let sqRingSize: Kernel.File.Size
+            @usableFromInline let cqRingAddr: Kernel.Memory.Address
+            @usableFromInline let cqRingSize: Kernel.File.Size
+            @usableFromInline let sqeAddr: Kernel.Memory.Address
+            @usableFromInline let sqeSize: Kernel.File.Size
 
             @unsafe
             init(
@@ -126,13 +126,7 @@
         }
     }
 
-    extension Kernel.IO.Uring {
-        /// Phantom type tag for the io_uring byte space.
-        ///
-        /// Used to parameterize Dimension types for io_uring operations.
-        /// IO.Uring uses UInt64 for offsets (with UInt64.max meaning "current position").
-        public enum Space {}
-    }
+    // Space is declared in Linux.Kernel.IO.Uring.Space.swift
 
 #endif
 
@@ -418,45 +412,91 @@
     // MARK: - Submission Queue Operations
 
     extension Kernel.IO.Uring {
-        /// The number of SQEs awaiting flush via ``enter(_:toSubmit:minComplete:flags:)``.
-        public var pendingSubmissions: Submission.Count { _pendingCount }
+        /// Submission queue operations.
+        public var submission: Submission.Access {
+            mutating get {
+                unsafe Submission.Access(ring: &self)
+            }
+        }
+    }
+
+    extension Kernel.IO.Uring.Submission {
+        /// Accessor for submission queue operations on the ring.
+        public struct Access: ~Copyable {
+            @usableFromInline
+            let ring: UnsafeMutablePointer<Kernel.IO.Uring>
+
+            @unsafe @usableFromInline
+            init(ring: UnsafeMutablePointer<Kernel.IO.Uring>) {
+                self.ring = unsafe ring
+            }
+        }
+    }
+
+    extension Kernel.IO.Uring.Submission.Access {
+        /// The number of SQEs awaiting flush via ``Kernel/IO/Uring/enter(toSubmit:minComplete:flags:)``.
+        public var pending: Kernel.IO.Uring.Submission.Count {
+            unsafe ring.pointee._pendingCount
+        }
 
         /// Acquire the next available SQE slot for filling.
         ///
         /// Returns a pointer to the SQE if a slot is available, or `nil`
         /// if the submission queue is full. After filling the SQE, call
-        /// ``commitEntry()`` to advance the tail.
+        /// ``commit()`` to advance the tail.
         ///
         /// - Returns: Mutable pointer to the next SQE, or `nil` if full.
         @unsafe
-        public mutating func nextEntry() -> UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>? {
-            let tail = unsafe sqTail.pointee
-            let head = unsafe sqHead.pointee
-            let used = Submission.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
-            guard used < sqEntries else { return nil }
-            let slot = sqMask.slot(for: tail)
-            unsafe sqArray[slot] = UInt32(slot)
-            return unsafe sqes.advanced(by: slot)
+        public func next() -> UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>? {
+            let tail = unsafe ring.pointee.sqTail.pointee
+            let head = unsafe ring.pointee.sqHead.pointee
+            let used = Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
+            guard used < ring.pointee.sqEntries else { return nil }
+            let slot = ring.pointee.sqMask.slot(for: tail)
+            unsafe ring.pointee.sqArray[slot] = UInt32(slot)
+            return unsafe ring.pointee.sqes.advanced(by: slot)
         }
 
-        /// Advance the SQ tail after filling an entry from ``nextEntry()``.
+        /// Advance the SQ tail after filling an entry from ``next()``.
         ///
         /// NOTE: `io_uring_enter` provides a full memory barrier on flush.
         /// WHEN TO REMOVE: add atomic store-release if submissions cross threads.
-        public mutating func commitEntry() {
-            unsafe sqTail.pointee = sqTail.pointee &+ 1
-            _pendingCount += .one
+        public func commit() {
+            unsafe ring.pointee.sqTail.pointee = ring.pointee.sqTail.pointee &+ 1
+            unsafe (ring.pointee._pendingCount += .one)
         }
 
-        /// Reset the pending count after a successful ``enter(_:toSubmit:minComplete:flags:)``.
-        public mutating func resetPending() {
-            _pendingCount = .zero
+        /// Reset the pending count after a successful enter call.
+        public func reset() {
+            unsafe (ring.pointee._pendingCount = .zero)
         }
     }
 
     // MARK: - Completion Queue Operations
 
     extension Kernel.IO.Uring {
+        /// Completion queue operations.
+        public var completion: Completion.Access {
+            mutating get {
+                unsafe Completion.Access(ring: &self)
+            }
+        }
+    }
+
+    extension Kernel.IO.Uring.Completion {
+        /// Accessor for completion queue operations on the ring.
+        public struct Access: ~Copyable {
+            @usableFromInline
+            let ring: UnsafeMutablePointer<Kernel.IO.Uring>
+
+            @unsafe @usableFromInline
+            init(ring: UnsafeMutablePointer<Kernel.IO.Uring>) {
+                self.ring = unsafe ring
+            }
+        }
+    }
+
+    extension Kernel.IO.Uring.Completion.Access {
         /// Drain completed events from the CQ.
         ///
         /// Iterates available CQEs up to `limit`, calling `visitor` for each.
@@ -471,24 +511,24 @@
         ///   - limit: Maximum number of completions to drain.
         ///   - visitor: Called for each CQE.
         /// - Returns: Number of completions drained.
-        public mutating func drainCompletions(
-            limit: Completion.Count,
+        public func drain(
+            limit: Kernel.IO.Uring.Completion.Count,
             _ visitor: (Kernel.IO.Uring.Completion.Queue.Entry) -> Void
-        ) -> Completion.Count {
-            var head = unsafe cqHead.pointee
-            let tail = unsafe cqTail.pointee
+        ) -> Kernel.IO.Uring.Completion.Count {
+            var head = unsafe ring.pointee.cqHead.pointee
+            let tail = unsafe ring.pointee.cqTail.pointee
             let maxCount = Int(bitPattern: limit)
             var count = 0
 
             while head != tail, count < maxCount {
-                let slot = cqMask.slot(for: head)
-                unsafe visitor(cqes[slot])
+                let slot = ring.pointee.cqMask.slot(for: head)
+                unsafe visitor(ring.pointee.cqes[slot])
                 head &+= 1
                 count += 1
             }
 
-            unsafe (cqHead.pointee = head)
-            return Completion.Count(__unchecked: (), Cardinal(UInt(count)))
+            unsafe (ring.pointee.cqHead.pointee = head)
+            return Kernel.IO.Uring.Completion.Count(__unchecked: (), Cardinal(UInt(count)))
         }
     }
 

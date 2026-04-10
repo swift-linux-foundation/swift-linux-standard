@@ -264,7 +264,7 @@
         /// Prepare an SQE operation through this pointer — zero copies.
         ///
         /// ```swift
-        /// let sqe = ring.nextEntry()!
+        /// let sqe = ring.submission.next()!
         /// unsafe sqe.prepare.read(fd: fd, buffer: buf, length: len, offset: .zero, data: id)
         /// ```
         @unsafe

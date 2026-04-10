@@ -17,19 +17,16 @@
     public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring {
-        /// Send zero-copy operation opcodes.
+        /// Send operation opcodes.
         public struct Send {
+            /// Send standard (kernel 5.6+).
+            public static let standard = Kernel.IO.Uring.Opcode(rawValue: 26)
+
+            /// Send message (sendmsg).
+            public static let message = Kernel.IO.Uring.Opcode(rawValue: 9)
+
             /// Access to zero-copy send operations.
             public static var zero: Zero.Type { Zero.self }
-
-            /// Zero-copy send operations.
-            public struct Zero {
-                /// Send with zero-copy (kernel 6.0+).
-                public static let copy = Opcode(rawValue: 47)
-
-                /// Sendmsg with zero-copy (kernel 6.1+).
-                public static let msg = Opcode(rawValue: 48)
-            }
         }
     }
 

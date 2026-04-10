@@ -1,5 +1,54 @@
 # Audit: swift-linux-primitives
 
+## Code Surface — 2026-04-10
+
+### Scope
+
+- **Target**: `Linux Kernel IO Uring Primitives` (swift-linux-primitives)
+- **Skill**: code-surface — [API-NAME-001], [API-NAME-002], [API-NAME-003], [API-ERR-001], [API-ERR-002], [API-ERR-003], [API-IMPL-005], [API-IMPL-006], [API-IMPL-007], [API-IMPL-008]
+- **Files**: 67 source files in `Sources/Linux Kernel IO Uring Primitives/`
+
+### Findings
+
+| # | Severity | Rule | Location | Finding | Status |
+|---|----------|------|----------|---------|--------|
+| 1 | HIGH | [API-NAME-002] | Linux.Kernel.IO.Uring.swift | `nextEntry()` → `ring.submission.next()` | RESOLVED 2026-04-10 |
+| 2 | HIGH | [API-NAME-002] | Linux.Kernel.IO.Uring.swift | `commitEntry()` → `ring.submission.commit()` | RESOLVED 2026-04-10 |
+| 3 | HIGH | [API-NAME-002] | Linux.Kernel.IO.Uring.swift | `drainCompletions(limit:_:)` → `ring.completion.drain(limit:_:)` | RESOLVED 2026-04-10 |
+| 4 | MEDIUM | [API-NAME-002] | Linux.Kernel.IO.Uring.swift | `resetPending()` → `ring.submission.reset()` | RESOLVED 2026-04-10 |
+| 5 | MEDIUM | [API-NAME-002] | Linux.Kernel.IO.Uring.swift | `pendingSubmissions` → `ring.submission.pending` | RESOLVED 2026-04-10 |
+| 6 | MEDIUM | [API-IMPL-005] | Linux.Kernel.IO.Uring.swift | `Space` extracted to `Linux.Kernel.IO.Uring.Space.swift` | RESOLVED 2026-04-10 |
+| 7 | MEDIUM | [API-IMPL-006] | Completion.Queue.Entry.Typed.swift | Renamed to `Completion.Queue.Entry+Multishot.swift` | RESOLVED 2026-04-10 |
+| 8 | HIGH | [API-IMPL-008] | Submission.Queue.Entry.Prepare.swift | `Prepare` refactored to ~Copyable pointer-based struct. Methods in extensions. | RESOLVED 2026-04-10 (by prior commit 6239f5e) |
+| 9 | LOW | [API-IMPL-005] | Linux.Kernel.IO.Uring.Send.swift | `Zero` extracted to `Linux.Kernel.IO.Uring.Send.Zero.swift` | RESOLVED 2026-04-10 |
+| 10 | LOW | [API-IMPL-008] | Linux.Kernel.IO.Uring.Params.swift | `cValue` moved to extension | RESOLVED 2026-04-10 |
+| 11 | LOW | [API-NAME-002] | Completion.Queue.Entry.swift:109 | `errorNumber` — "error number" is POSIX terminology | DEFERRED — spec-mirroring argument reasonable |
+
+### Compliant Areas
+
+| Rule | Status | Notes |
+|------|--------|-------|
+| [API-NAME-001] Nest.Name | PASS (67/67) | No compound type names anywhere. |
+| [API-NAME-002] OptionSet members | PASS | `sqPoll`, `ioLink`, `coopTaskrun` etc. — all spec-mirroring exemptions (`IORING_SETUP_*`, `IOSQE_*`). |
+| [API-NAME-002] Opcode accessors | PASS | `.read.standard`, `.socket.accept`, `.send.zero.copy` — all nested. |
+| [API-NAME-002] Prep method names | PASS | `prepare.read(...)`, `prepare.nop(...)` — single-word verbs. |
+| [API-NAME-002] Boolean properties | PASS | `isSuccess`, `isError`, `isCancelled`, `hasMore` — standard boolean naming. |
+| [API-NAME-003] Spec-mirroring | PASS | All opcode values and flag bits match kernel `io_uring.h`. |
+| [API-ERR-001] Typed throws | PASS | All three syscalls: `throws(Kernel.IO.Uring.Error)`. |
+| [API-ERR-002] Nested errors | PASS | `Kernel.IO.Uring.Error`, `Kernel.IO.Uring.Wakeup.Error`. |
+| [API-ERR-003] Failure description | PASS | `.setup(Code)`, `.enter(Code)`, `.register(Code)`, `.interrupted`. |
+| [API-IMPL-005] One type/file | PASS (69/69) | All resolved. `Space` and `Send.Zero` extracted. |
+| [API-IMPL-006] File naming | PASS (69/69) | `Typed.swift` renamed to `+Multishot.swift`. |
+| [API-IMPL-007] Extension files | PASS | `+Wakeup.swift` uses `+` suffix correctly. |
+
+### Summary
+
+11 findings: 4 high, 3 medium, 3 low, 1 deferred. **10 RESOLVED, 1 DEFERRED.**
+
+Ring instance methods refactored to nested accessor pattern: `ring.submission.next()`, `ring.submission.commit()`, `ring.submission.pending`, `ring.submission.reset()`, `ring.completion.drain(limit:_:)`. Both `Submission.Access` and `Completion.Access` are `~Copyable` pointer-based accessor structs. L3 consumer (`swift-kernel/Kernel.Completion+IOUring.swift`) updated to match.
+
+---
+
 ## Implementation (Domain Modelling) — 2026-04-09
 
 ### Scope

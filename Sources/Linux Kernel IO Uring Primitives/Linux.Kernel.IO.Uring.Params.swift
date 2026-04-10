@@ -114,14 +114,17 @@
                 self.cqOff = Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
             }
 
-            /// Converts to the C io_uring_params struct.
-            internal var cValue: io_uring_params {
-                var params = io_uring_params()
-                params.flags = flags.rawValue
-                params.sq_thread_cpu = submission.thread.cCpu
-                params.sq_thread_idle = submission.thread.cIdle
-                return params
-            }
+        }
+    }
+
+    extension Kernel.IO.Uring.Params {
+        /// Converts to the C io_uring_params struct.
+        internal var cValue: io_uring_params {
+            var params = io_uring_params()
+            params.flags = flags.rawValue
+            params.sq_thread_cpu = submission.thread.cCpu
+            params.sq_thread_idle = submission.thread.cIdle
+            return params
         }
     }
 
