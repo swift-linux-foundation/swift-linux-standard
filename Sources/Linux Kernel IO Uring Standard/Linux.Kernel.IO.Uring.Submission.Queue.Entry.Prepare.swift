@@ -867,13 +867,13 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Pointer to msghdr struct.
+        ///   - message: Raw pointer to platform msghdr struct.
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func send(
             target: Kernel.IO.Uring.Target,
-            message: UnsafePointer<msghdr>,
+            message: UnsafeRawPointer,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -890,13 +890,13 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Pointer to msghdr struct for receiving.
+        ///   - message: Raw mutable pointer to platform msghdr struct.
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func recv(
             target: Kernel.IO.Uring.Target,
-            message: UnsafeMutablePointer<msghdr>,
+            message: UnsafeMutableRawPointer,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -945,14 +945,14 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Pointer to msghdr struct.
+        ///   - message: Raw pointer to platform msghdr struct.
         ///   - flags: Message flags.
         ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func send(
             target: Kernel.IO.Uring.Target,
-            message: UnsafePointer<msghdr>,
+            message: UnsafeRawPointer,
             flags: Kernel.Socket.Message.Options,
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
