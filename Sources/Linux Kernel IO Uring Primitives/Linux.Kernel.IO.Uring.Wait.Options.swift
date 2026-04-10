@@ -12,17 +12,12 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    #if canImport(Glibc)
-        internal import Glibc
-    #elseif canImport(Musl)
-        internal import Musl
-    #endif
-
-    extension Kernel.IO.Uring.Pipe {
-        /// Flags for pipe creation.
+    extension Kernel.IO.Uring.Wait {
+        /// Flags for waitid operations.
         ///
-        /// Wraps O_* constants applicable to pipe2().
-        public struct Flags: OptionSet, Sendable {
+        /// Reserved for kernel use. Pass `.none` unless a specific
+        /// kernel extension defines flags for io_uring waitid.
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             @inlinable
@@ -30,14 +25,8 @@
                 self.rawValue = rawValue
             }
 
-            /// Non-blocking pipe.
-            public static let nonBlock = Flags(rawValue: UInt32(O_NONBLOCK))
-
-            /// Close-on-exec flag.
-            public static let closeOnExec = Flags(rawValue: UInt32(O_CLOEXEC))
-
-            /// Direct I/O for pipe.
-            public static let direct = Flags(rawValue: UInt32(O_DIRECT))
+            /// No special flags.
+            public static let none = Options([])
         }
     }
 

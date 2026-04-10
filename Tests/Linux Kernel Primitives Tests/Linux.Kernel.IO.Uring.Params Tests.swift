@@ -128,7 +128,7 @@ import Testing
     extension Kernel.IO.Uring.Params.Test.EdgeCase {
         @Test("Params with all flags")
         func paramsWithAllFlags() {
-            let flags: Kernel.IO.Uring.Setup.Flags = [.ioPoll, .sqPoll, .sqAff]
+            let flags: Kernel.IO.Uring.Setup.Options = [.ioPoll, .sqPoll, .sqAff]
             let params = Kernel.IO.Uring.Params(flags: flags)
             #expect(params.flags.contains(.ioPoll))
             #expect(params.flags.contains(.sqPoll))

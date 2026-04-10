@@ -23,7 +23,7 @@
         ///
         /// ## See Also
         ///
-        /// - ``Kernel/IO/Uring/Enter/Flags``
+        /// - ``Kernel/IO/Uring/Enter/Options``
         public enum Enter {}
     }
 

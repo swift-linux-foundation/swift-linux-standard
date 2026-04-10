@@ -39,7 +39,7 @@
         /// ## See Also
         ///
         /// - ``Kernel/IO/Uring/Completion/Queue/Entry``
-        public struct Flags: OptionSet, Sendable {
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             public init(rawValue: UInt32) {
@@ -48,7 +48,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry.Flags {
+    extension Kernel.IO.Uring.Completion.Queue.Entry.Options {
         /// Indicates that a buffer was selected from a buffer group.
         ///
         /// When set, the upper 16 bits of the flags field contain the

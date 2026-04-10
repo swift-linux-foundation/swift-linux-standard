@@ -21,7 +21,7 @@
         ///
         /// Wraps IORING_FIXED_FD_* constants.
         public struct Install: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32
 
                 @inlinable
@@ -30,7 +30,7 @@
                 }
 
                 /// Don't set close-on-exec on the installed fd.
-                public static let noCloseOnExec = Flags(rawValue: UInt32(IORING_FIXED_FD_NO_CLOEXEC))
+                public static let noCloseOnExec = Options(rawValue: UInt32(IORING_FIXED_FD_NO_CLOEXEC))
             }
         }
     }

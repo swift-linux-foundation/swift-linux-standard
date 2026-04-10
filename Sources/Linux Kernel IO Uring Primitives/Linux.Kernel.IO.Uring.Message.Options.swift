@@ -20,7 +20,7 @@
         /// Flags for io_uring MSG_RING operations (inter-ring messaging).
         public struct Message: Sendable {
             /// Flags controlling MSG_RING behavior.
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32
 
                 @inlinable
@@ -29,10 +29,10 @@
                 }
 
                 /// Skip CQE on the source ring for this message.
-                public static let cqeSkip = Flags(rawValue: UInt32(IORING_MSG_RING_CQE_SKIP))
+                public static let cqeSkip = Options(rawValue: UInt32(IORING_MSG_RING_CQE_SKIP))
 
                 /// Pass flags from the source SQE to the target CQE.
-                public static let flagsPass = Flags(rawValue: UInt32(IORING_MSG_RING_FLAGS_PASS))
+                public static let flagsPass = Options(rawValue: UInt32(IORING_MSG_RING_FLAGS_PASS))
             }
         }
     }

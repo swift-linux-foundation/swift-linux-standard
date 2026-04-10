@@ -41,7 +41,7 @@
         ///
         /// - ``Kernel/IO/Uring/Submission/Queue/Entry``
         /// - ``Kernel/IO/Uring/Opcode``
-        public struct Flags: OptionSet, Sendable {
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt8
 
             public init(rawValue: UInt8) {
@@ -55,7 +55,7 @@
             /// file descriptors on each operation.
             ///
             /// - Linux: `IOSQE_FIXED_FILE` (bit 0)
-            public static let fixedFile = Flags(rawValue: 1 << 0)
+            public static let fixedFile = Options(rawValue: 1 << 0)
 
             /// Drains the submission queue before starting this entry.
             ///
@@ -63,7 +63,7 @@
             /// Provides ordering guarantees across unlinked submissions.
             ///
             /// - Linux: `IOSQE_IO_DRAIN` (bit 1)
-            public static let ioDrain = Flags(rawValue: 1 << 1)
+            public static let ioDrain = Options(rawValue: 1 << 1)
 
             /// Links this entry to the next entry in the submission queue.
             ///
@@ -72,7 +72,7 @@
             /// `-ECANCELED`. Use for dependent operations.
             ///
             /// - Linux: `IOSQE_IO_LINK` (bit 2)
-            public static let ioLink = Flags(rawValue: 1 << 2)
+            public static let ioLink = Options(rawValue: 1 << 2)
 
             /// Links to next entry regardless of success or failure.
             ///
@@ -80,7 +80,7 @@
             /// fails. The linked operation still sees the failure status.
             ///
             /// - Linux: `IOSQE_IO_HARDLINK` (bit 3)
-            public static let ioHardlink = Flags(rawValue: 1 << 3)
+            public static let ioHardlink = Options(rawValue: 1 << 3)
 
             /// Forces the operation to execute asynchronously.
             ///
@@ -88,7 +88,7 @@
             /// immediately. Useful for avoiding blocking the submission path.
             ///
             /// - Linux: `IOSQE_ASYNC` (bit 4)
-            public static let async = Flags(rawValue: 1 << 4)
+            public static let async = Options(rawValue: 1 << 4)
 
             /// Selects a buffer from the provided buffer pool.
             ///
@@ -97,7 +97,7 @@
             /// buffer ID is returned in the CQE.
             ///
             /// - Linux: `IOSQE_BUFFER_SELECT` (bit 5)
-            public static let bufferSelect = Flags(rawValue: 1 << 5)
+            public static let bufferSelect = Options(rawValue: 1 << 5)
 
             /// Skips CQE generation on successful completion (kernel 5.17+).
             ///
@@ -106,7 +106,7 @@
             /// when success confirmation isn't needed.
             ///
             /// - Linux: `IOSQE_CQE_SKIP_SUCCESS` (bit 6)
-            public static let cqeSkipSuccess = Flags(rawValue: 1 << 6)
+            public static let cqeSkipSuccess = Options(rawValue: 1 << 6)
         }
     }
 

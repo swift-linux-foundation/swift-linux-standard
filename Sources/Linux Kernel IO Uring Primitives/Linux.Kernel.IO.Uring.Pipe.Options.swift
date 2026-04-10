@@ -18,11 +18,11 @@
         internal import Musl
     #endif
 
-    extension Kernel.IO.Uring.Sync {
-        /// Flags for sync_file_range operations.
+    extension Kernel.IO.Uring.Pipe {
+        /// Flags for pipe creation.
         ///
-        /// Wraps SYNC_FILE_RANGE_* constants from `<fcntl.h>`.
-        public struct Flags: OptionSet, Sendable {
+        /// Wraps O_* constants applicable to pipe2().
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             @inlinable
@@ -30,14 +30,14 @@
                 self.rawValue = rawValue
             }
 
-            /// Wait for writeout of pages in the range that were dirty before the call.
-            public static let waitBefore = Flags(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE))
+            /// Non-blocking pipe.
+            public static let nonBlock = Options(rawValue: UInt32(O_NONBLOCK))
 
-            /// Initiate writeout of pages in the range that are currently dirty.
-            public static let write = Flags(rawValue: UInt32(SYNC_FILE_RANGE_WRITE))
+            /// Close-on-exec flag.
+            public static let closeOnExec = Options(rawValue: UInt32(O_CLOEXEC))
 
-            /// Wait for writeout of pages in the range after writeback has been initiated.
-            public static let waitAfter = Flags(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_AFTER))
+            /// Direct I/O for pipe.
+            public static let direct = Options(rawValue: UInt32(O_DIRECT))
         }
     }
 

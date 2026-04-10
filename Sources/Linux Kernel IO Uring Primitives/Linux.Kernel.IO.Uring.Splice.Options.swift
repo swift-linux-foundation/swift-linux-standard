@@ -23,7 +23,7 @@
         ///
         /// Wraps SPLICE_F_* constants from `<fcntl.h>`.
         public struct Splice: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32
 
                 @inlinable
@@ -32,16 +32,16 @@
                 }
 
                 /// Attempt to move pages instead of copying.
-                public static let move = Flags(rawValue: UInt32(SPLICE_F_MOVE))
+                public static let move = Options(rawValue: UInt32(SPLICE_F_MOVE))
 
                 /// Do not block on I/O.
-                public static let nonblock = Flags(rawValue: UInt32(SPLICE_F_NONBLOCK))
+                public static let nonblock = Options(rawValue: UInt32(SPLICE_F_NONBLOCK))
 
                 /// Hint that more data will follow.
-                public static let more = Flags(rawValue: UInt32(SPLICE_F_MORE))
+                public static let more = Options(rawValue: UInt32(SPLICE_F_MORE))
 
                 /// Splicing to/from a registered file descriptor.
-                public static let fixedDescriptor = Flags(rawValue: 1 << 31) // SPLICE_F_FD_IN_FIXED
+                public static let fixedDescriptor = Options(rawValue: 1 << 31) // SPLICE_F_FD_IN_FIXED
             }
         }
     }

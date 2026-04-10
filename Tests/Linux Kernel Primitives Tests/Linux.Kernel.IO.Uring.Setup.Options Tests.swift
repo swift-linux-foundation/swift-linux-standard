@@ -21,7 +21,7 @@ import Testing
     import Kernel_Memory_Primitives
     @testable import Linux_Kernel_Primitives
 
-    extension Kernel.IO.Uring.Setup.Flags {
+    extension Kernel.IO.Uring.Setup.Options {
         enum Test {
             @Suite struct Unit {}
             @Suite struct EdgeCase {}
@@ -32,11 +32,11 @@ import Testing
 
     // MARK: - Type Unit Tests
 
-    extension Kernel.IO.Uring.Setup.Flags.Test.Unit {
+    extension Kernel.IO.Uring.Setup.Options.Test.Unit {
 
         @Test("flags combine with union")
         func flagsCombineWithUnion() {
-            let combined = Kernel.IO.Uring.Setup.Flags.ioPoll.union(.sqPoll)
+            let combined = Kernel.IO.Uring.Setup.Options.ioPoll.union(.sqPoll)
             #expect(combined.contains(.ioPoll))
             #expect(combined.contains(.sqPoll))
             #expect(!combined.contains(.sqAff))
@@ -44,26 +44,26 @@ import Testing
 
         @Test("empty flags is empty")
         func emptyFlagsIsEmpty() {
-            let flags: Kernel.IO.Uring.Setup.Flags = []
+            let flags: Kernel.IO.Uring.Setup.Options = []
             #expect(flags.isEmpty)
             #expect(flags.rawValue == 0)
         }
 
         @Test("ioPoll has rawValue 1")
         func ioPollHasRawValue1() {
-            #expect(Kernel.IO.Uring.Setup.Flags.ioPoll.rawValue == 1)
+            #expect(Kernel.IO.Uring.Setup.Options.ioPoll.rawValue == 1)
         }
 
         @Test("sqPoll has rawValue 2")
         func sqPollHasRawValue2() {
-            #expect(Kernel.IO.Uring.Setup.Flags.sqPoll.rawValue == 2)
+            #expect(Kernel.IO.Uring.Setup.Options.sqPoll.rawValue == 2)
         }
 
         @Test("flags are distinct")
         func flagsAreDistinct() {
-            #expect(Kernel.IO.Uring.Setup.Flags.ioPoll != .sqPoll)
-            #expect(Kernel.IO.Uring.Setup.Flags.sqPoll != .sqAff)
-            #expect(Kernel.IO.Uring.Setup.Flags.sqAff != .cqSize)
+            #expect(Kernel.IO.Uring.Setup.Options.ioPoll != .sqPoll)
+            #expect(Kernel.IO.Uring.Setup.Options.sqPoll != .sqAff)
+            #expect(Kernel.IO.Uring.Setup.Options.sqAff != .cqSize)
         }
     }
 

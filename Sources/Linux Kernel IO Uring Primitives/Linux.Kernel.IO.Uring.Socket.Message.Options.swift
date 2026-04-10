@@ -24,7 +24,7 @@
         /// Wraps MSG_* constants from `<sys/socket.h>`.
         /// Used by send, recv, sendmsg, recvmsg, and their zero-copy variants.
         public struct Message: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: Int32
 
                 @inlinable
@@ -33,37 +33,37 @@
                 }
 
                 /// Don't block.
-                public static let dontWait = Flags(rawValue: Int32(MSG_DONTWAIT))
+                public static let dontWait = Options(rawValue: Int32(MSG_DONTWAIT))
 
                 /// Don't generate SIGPIPE.
-                public static let noSignal = Flags(rawValue: Int32(MSG_NOSIGNAL))
+                public static let noSignal = Options(rawValue: Int32(MSG_NOSIGNAL))
 
                 /// Send out-of-band data.
-                public static let outOfBand = Flags(rawValue: Int32(MSG_OOB))
+                public static let outOfBand = Options(rawValue: Int32(MSG_OOB))
 
                 /// Peek at incoming data without consuming.
-                public static let peek = Flags(rawValue: Int32(MSG_PEEK))
+                public static let peek = Options(rawValue: Int32(MSG_PEEK))
 
                 /// Wait for full request or error.
-                public static let waitAll = Flags(rawValue: Int32(MSG_WAITALL))
+                public static let waitAll = Options(rawValue: Int32(MSG_WAITALL))
 
                 /// Send/receive data as end-of-record.
-                public static let endOfRecord = Flags(rawValue: Int32(MSG_EOR))
+                public static let endOfRecord = Options(rawValue: Int32(MSG_EOR))
 
                 /// Data completes connection.
-                public static let confirm = Flags(rawValue: Int32(MSG_CONFIRM))
+                public static let confirm = Options(rawValue: Int32(MSG_CONFIRM))
 
                 /// Hint that more data will follow.
-                public static let more = Flags(rawValue: Int32(MSG_MORE))
+                public static let more = Options(rawValue: Int32(MSG_MORE))
 
                 /// Don't use a gateway to send out the packet.
-                public static let dontRoute = Flags(rawValue: Int32(MSG_DONTROUTE))
+                public static let dontRoute = Options(rawValue: Int32(MSG_DONTROUTE))
 
                 /// Truncated message.
-                public static let truncate = Flags(rawValue: Int32(MSG_TRUNC))
+                public static let truncate = Options(rawValue: Int32(MSG_TRUNC))
 
                 /// Control data was truncated.
-                public static let controlTruncate = Flags(rawValue: Int32(MSG_CTRUNC))
+                public static let controlTruncate = Options(rawValue: Int32(MSG_CTRUNC))
             }
         }
     }

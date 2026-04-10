@@ -216,7 +216,7 @@
             _ fd: borrowing Kernel.Descriptor,
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
-            flags: Enter.Flags
+            flags: Enter.Options
         ) throws(Kernel.IO.Uring.Error) -> Submission.Count {
             let result = swift_io_uring_enter(
                 fd._rawValue,
@@ -305,7 +305,7 @@
         public func enter(
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
-            flags: Enter.Flags
+            flags: Enter.Options
         ) throws(Error) -> Submission.Count {
             try Self.enter(
                 ringDescriptor,

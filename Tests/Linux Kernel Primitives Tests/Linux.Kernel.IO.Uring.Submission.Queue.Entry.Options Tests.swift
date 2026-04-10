@@ -21,7 +21,7 @@ import Testing
     import Kernel_Memory_Primitives
     @testable import Linux_Kernel_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry.Flags {
+    extension Kernel.IO.Uring.Submission.Queue.Entry.Options {
         enum Test {
             @Suite struct Unit {}
             @Suite struct EdgeCase {}

@@ -24,7 +24,7 @@
         ///
         /// ## See Also
         ///
-        /// - ``Kernel/IO/Uring/Setup/Flags``
+        /// - ``Kernel/IO/Uring/Setup/Options``
         /// - ``Kernel/IO/Uring/Params``
         public enum Setup {}
     }

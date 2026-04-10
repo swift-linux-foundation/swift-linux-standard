@@ -230,7 +230,7 @@
             target: Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -255,7 +255,7 @@
             target: Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -482,7 +482,7 @@
             offsetIn: Kernel.IO.Uring.Offset,
             offsetOut: Kernel.IO.Uring.Offset,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Splice.Flags,
+            flags: Kernel.IO.Uring.Splice.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -512,7 +512,7 @@
             target: Kernel.IO.Uring.Target,
             source: borrowing Kernel.Descriptor,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Splice.Flags,
+            flags: Kernel.IO.Uring.Splice.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -562,7 +562,7 @@
         public func openat(
             target: Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.IO.Uring.File.Open.Flags,
+            flags: Kernel.IO.Uring.File.Open.Options,
             mode: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -613,7 +613,7 @@
         public func statx(
             target: Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.IO.Uring.File.At.Flags,
+            flags: Kernel.IO.Uring.File.At.Options,
             mask: UInt32,
             buffer: UnsafeMutableRawPointer,
             data: Kernel.IO.Uring.Operation.Data
@@ -643,7 +643,7 @@
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Kernel.IO.Uring.File.Rename.Flags,
+            flags: Kernel.IO.Uring.File.Rename.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -667,7 +667,7 @@
         public func unlinkat(
             target: Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.IO.Uring.File.At.Flags,
+            flags: Kernel.IO.Uring.File.At.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -737,7 +737,7 @@
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Kernel.IO.Uring.File.At.Flags,
+            flags: Kernel.IO.Uring.File.At.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -860,7 +860,7 @@
         public func send(
             target: Kernel.IO.Uring.Target,
             message: UnsafePointer<msghdr>,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -883,7 +883,7 @@
         public func recv(
             target: Kernel.IO.Uring.Target,
             message: UnsafeMutablePointer<msghdr>,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -913,7 +913,7 @@
             target: Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -939,7 +939,7 @@
         public func send(
             target: Kernel.IO.Uring.Target,
             message: UnsafePointer<msghdr>,
-            flags: Kernel.IO.Uring.Socket.Message.Flags,
+            flags: Kernel.IO.Uring.Socket.Message.Options,
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1037,7 +1037,7 @@
         public func timeout(
             timespec: UnsafePointer<__kernel_timespec>,
             count: UInt32,
-            flags: Kernel.IO.Uring.Timeout.Flags,
+            flags: Kernel.IO.Uring.Timeout.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1058,7 +1058,7 @@
         @inlinable
         public func timeout(
             remove target: Kernel.IO.Uring.Operation.Data,
-            flags: Kernel.IO.Uring.Timeout.Flags,
+            flags: Kernel.IO.Uring.Timeout.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1082,7 +1082,7 @@
         @unsafe @inlinable
         public func timeout(
             link timespec: UnsafePointer<__kernel_timespec>,
-            flags: Kernel.IO.Uring.Timeout.Flags,
+            flags: Kernel.IO.Uring.Timeout.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1107,7 +1107,7 @@
         public func poll(
             target: Kernel.IO.Uring.Target,
             mask: UInt32,
-            flags: Kernel.IO.Uring.Poll.Flags,
+            flags: Kernel.IO.Uring.Poll.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1154,7 +1154,7 @@
             ring fd: Int32,
             value: UInt32,
             targetData: Kernel.IO.Uring.Operation.Data,
-            flags: Kernel.IO.Uring.Message.Flags,
+            flags: Kernel.IO.Uring.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1274,7 +1274,7 @@
         @inlinable
         public func install(
             fd: UInt32,
-            flags: Kernel.IO.Uring.Fixed.Install.Flags,
+            flags: Kernel.IO.Uring.Fixed.Install.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1293,7 +1293,7 @@
         @unsafe @inlinable
         public func pipe(
             fds: UnsafeMutablePointer<Int32>,
-            flags: Kernel.IO.Uring.Pipe.Flags,
+            flags: Kernel.IO.Uring.Pipe.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1331,7 +1331,7 @@
             id: Int32,
             info: UnsafeMutableRawPointer,
             options: UInt32,
-            flags: Kernel.IO.Uring.Wait.Flags,
+            flags: Kernel.IO.Uring.Wait.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1409,7 +1409,7 @@
             target: Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Sync.Flags,
+            flags: Kernel.IO.Uring.Sync.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1438,7 +1438,7 @@
             wait futex: UnsafePointer<UInt32>,
             value: UInt64,
             mask: UInt64,
-            flags: Kernel.IO.Uring.Futex.Flags,
+            flags: Kernel.IO.Uring.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1464,7 +1464,7 @@
             wake futex: UnsafePointer<UInt32>,
             value: UInt64,
             mask: UInt64,
-            flags: Kernel.IO.Uring.Futex.Flags,
+            flags: Kernel.IO.Uring.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1490,7 +1490,7 @@
         public func futex(
             waitv: UnsafePointer<futex_waitv>,
             count: UInt32,
-            flags: Kernel.IO.Uring.Futex.Flags,
+            flags: Kernel.IO.Uring.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1523,7 +1523,7 @@
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Xattr.Flags,
+            flags: Kernel.IO.Uring.Xattr.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1553,7 +1553,7 @@
             value: UnsafeRawPointer,
             path: UnsafePointer<CChar>,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Xattr.Flags,
+            flags: Kernel.IO.Uring.Xattr.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())

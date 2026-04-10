@@ -45,7 +45,7 @@
         /// ## See Also
         ///
         /// - ``Kernel/IO/Uring``
-        /// - ``Kernel/IO/Uring/Submission/Queue/Entry/Flags``
+        /// - ``Kernel/IO/Uring/Submission/Queue/Entry/Options``
         public struct Opcode: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt32
 

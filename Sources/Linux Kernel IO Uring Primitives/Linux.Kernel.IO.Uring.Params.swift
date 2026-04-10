@@ -53,7 +53,7 @@
         /// ## See Also
         ///
         /// - ``Kernel/IO/Uring``
-        /// - ``Kernel/IO/Uring/Setup/Flags``
+        /// - ``Kernel/IO/Uring/Setup/Options``
         public struct Params: Sendable, Equatable {
             /// Number of submission queue entries (filled by kernel).
             public private(set) var sqEntries: Kernel.IO.Uring.Submission.Count
@@ -62,7 +62,7 @@
             public private(set) var cqEntries: Kernel.IO.Uring.Completion.Count
 
             /// Setup flags.
-            public var flags: Setup.Flags
+            public var flags: Setup.Options
 
             /// Submission queue thread configuration.
             public var submission: Submission
@@ -82,7 +82,7 @@
             ///   - flags: Setup flags to configure the ring.
             ///   - submission: Submission queue thread configuration.
             public init(
-                flags: Setup.Flags = [],
+                flags: Setup.Options = [],
                 submission: Submission = Submission()
             ) {
                 self.sqEntries = Kernel.IO.Uring.Submission.Count.zero
@@ -102,7 +102,7 @@
                 self.cqEntries = Kernel.IO.Uring.Completion.Count(
                     __unchecked: (), Cardinal(UInt(cParams.cq_entries))
                 )
-                self.flags = Setup.Flags(rawValue: cParams.flags)
+                self.flags = Setup.Options(rawValue: cParams.flags)
                 self.submission = Submission(
                     thread: Submission.Thread(
                         cCpu: cParams.sq_thread_cpu,

@@ -28,7 +28,7 @@
         /// Wraps O_* constants from `<fcntl.h>` and `<linux/io_uring.h>`.
         /// Used by openat and openat2 operations.
         public struct Open: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: Int32
 
                 @inlinable
@@ -37,29 +37,29 @@
                 }
 
                 /// Read only.
-                public static let readOnly = Flags(rawValue: O_RDONLY)
+                public static let readOnly = Options(rawValue: O_RDONLY)
                 /// Write only.
-                public static let writeOnly = Flags(rawValue: O_WRONLY)
+                public static let writeOnly = Options(rawValue: O_WRONLY)
                 /// Read and write.
-                public static let readWrite = Flags(rawValue: O_RDWR)
+                public static let readWrite = Options(rawValue: O_RDWR)
                 /// Create file if it doesn't exist.
-                public static let create = Flags(rawValue: O_CREAT)
+                public static let create = Options(rawValue: O_CREAT)
                 /// Fail if file already exists (with .create).
-                public static let exclusive = Flags(rawValue: O_EXCL)
+                public static let exclusive = Options(rawValue: O_EXCL)
                 /// Truncate existing file.
-                public static let truncate = Flags(rawValue: O_TRUNC)
+                public static let truncate = Options(rawValue: O_TRUNC)
                 /// Append mode.
-                public static let append = Flags(rawValue: O_APPEND)
+                public static let append = Options(rawValue: O_APPEND)
                 /// Non-blocking mode.
-                public static let nonBlock = Flags(rawValue: O_NONBLOCK)
+                public static let nonBlock = Options(rawValue: O_NONBLOCK)
                 /// Close-on-exec flag.
-                public static let closeOnExec = Flags(rawValue: O_CLOEXEC)
+                public static let closeOnExec = Options(rawValue: O_CLOEXEC)
                 /// Bypass page cache (direct I/O).
-                public static let direct = Flags(rawValue: O_DIRECT)
+                public static let direct = Options(rawValue: O_DIRECT)
                 /// Write through (synchronous I/O for data).
-                public static let dataSync = Flags(rawValue: O_DSYNC)
+                public static let dataSync = Options(rawValue: O_DSYNC)
                 /// Synchronous I/O (data + metadata).
-                public static let sync = Flags(rawValue: O_SYNC)
+                public static let sync = Options(rawValue: O_SYNC)
             }
         }
 
@@ -67,7 +67,7 @@
         ///
         /// Wraps AT_* constants from `<fcntl.h>`.
         public struct At: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32
 
                 @inlinable
@@ -76,16 +76,16 @@
                 }
 
                 /// Do not follow symbolic links.
-                public static let noFollow = Flags(rawValue: UInt32(AT_SYMLINK_NOFOLLOW))
+                public static let noFollow = Options(rawValue: UInt32(AT_SYMLINK_NOFOLLOW))
 
                 /// Allow empty path string.
-                public static let emptyPath = Flags(rawValue: UInt32(AT_EMPTY_PATH))
+                public static let emptyPath = Options(rawValue: UInt32(AT_EMPTY_PATH))
 
                 /// Follow symbolic links (for linkat).
-                public static let symlinkFollow = Flags(rawValue: UInt32(AT_SYMLINK_FOLLOW))
+                public static let symlinkFollow = Options(rawValue: UInt32(AT_SYMLINK_FOLLOW))
 
                 /// Remove directory instead of file (for unlinkat).
-                public static let removeDirectory = Flags(rawValue: UInt32(AT_REMOVEDIR))
+                public static let removeDirectory = Options(rawValue: UInt32(AT_REMOVEDIR))
             }
         }
 
@@ -93,7 +93,7 @@
         ///
         /// Wraps RENAME_* constants from `<linux/fs.h>`.
         public struct Rename: Sendable {
-            public struct Flags: OptionSet, Sendable {
+            public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32
 
                 @inlinable
@@ -102,13 +102,13 @@
                 }
 
                 /// Don't overwrite target if it exists.
-                public static let noReplace = Flags(rawValue: UInt32(RENAME_NOREPLACE))
+                public static let noReplace = Options(rawValue: UInt32(RENAME_NOREPLACE))
 
                 /// Atomically exchange source and target.
-                public static let exchange = Flags(rawValue: UInt32(RENAME_EXCHANGE))
+                public static let exchange = Options(rawValue: UInt32(RENAME_EXCHANGE))
 
                 /// Create a whiteout object at the source.
-                public static let whiteout = Flags(rawValue: UInt32(RENAME_WHITEOUT))
+                public static let whiteout = Options(rawValue: UInt32(RENAME_WHITEOUT))
             }
         }
 

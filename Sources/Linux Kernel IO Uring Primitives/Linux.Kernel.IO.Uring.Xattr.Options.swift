@@ -12,12 +12,17 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Wait {
-        /// Flags for waitid operations.
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
+
+    extension Kernel.IO.Uring.Xattr {
+        /// Flags for extended attribute operations.
         ///
-        /// Reserved for kernel use. Pass `.none` unless a specific
-        /// kernel extension defines flags for io_uring waitid.
-        public struct Flags: OptionSet, Sendable {
+        /// Wraps XATTR_* constants from `<sys/xattr.h>`.
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             @inlinable
@@ -25,8 +30,11 @@
                 self.rawValue = rawValue
             }
 
-            /// No special flags.
-            public static let none = Flags([])
+            /// Fail if the attribute already exists.
+            public static let create = Options(rawValue: UInt32(XATTR_CREATE))
+
+            /// Fail if the attribute does not exist.
+            public static let replace = Options(rawValue: UInt32(XATTR_REPLACE))
         }
     }
 

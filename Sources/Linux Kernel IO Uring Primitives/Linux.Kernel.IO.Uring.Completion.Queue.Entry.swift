@@ -80,8 +80,8 @@
         /// Entry flags.
         ///
         /// Contains additional information about the completion.
-        public var flags: Flags {
-            Flags(rawValue: cValue.flags)
+        public var flags: Options {
+            Options(rawValue: cValue.flags)
         }
     }
 

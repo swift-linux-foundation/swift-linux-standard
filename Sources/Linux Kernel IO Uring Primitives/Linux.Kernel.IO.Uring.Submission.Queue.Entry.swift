@@ -72,8 +72,8 @@
         }
 
         /// Entry flags.
-        public var flags: Flags {
-            get { Flags(rawValue: cValue.flags) }
+        public var flags: Options {
+            get { Options(rawValue: cValue.flags) }
             set { cValue.flags = newValue.rawValue }
         }
 

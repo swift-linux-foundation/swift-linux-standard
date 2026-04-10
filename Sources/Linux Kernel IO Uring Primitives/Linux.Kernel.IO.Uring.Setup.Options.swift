@@ -54,7 +54,7 @@
         ///
         /// - ``Kernel/IO/Uring``
         /// - ``Kernel/IO/Uring/Setup``
-        public struct Flags: OptionSet, Sendable {
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             public init(rawValue: UInt32) {
@@ -63,7 +63,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Setup.Flags {
+    extension Kernel.IO.Uring.Setup.Options {
         /// Enables busy-waiting for I/O completion.
         ///
         /// The kernel will poll for completions instead of using interrupts.

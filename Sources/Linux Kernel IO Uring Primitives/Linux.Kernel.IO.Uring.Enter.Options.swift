@@ -46,8 +46,8 @@
         /// ## See Also
         ///
         /// - ``Kernel/IO/Uring``
-        /// - ``Kernel/IO/Uring/Setup/Flags``
-        public struct Flags: OptionSet, Sendable {
+        /// - ``Kernel/IO/Uring/Setup/Options``
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             public init(rawValue: UInt32) {
@@ -60,7 +60,7 @@
             /// available or the timeout expires.
             ///
             /// - Linux: `IORING_ENTER_GETEVENTS`
-            public static let getEvents = Flags(rawValue: 1 << 0)
+            public static let getEvents = Options(rawValue: 1 << 0)
 
             /// Wakes up the SQ poll thread.
             ///
@@ -68,7 +68,7 @@
             /// added new submissions. Only needed with `.sqPoll` setup flag.
             ///
             /// - Linux: `IORING_ENTER_SQ_WAKEUP`
-            public static let sqWakeup = Flags(rawValue: 1 << 1)
+            public static let sqWakeup = Options(rawValue: 1 << 1)
 
             /// Waits for SQ ring space to become available.
             ///
@@ -76,7 +76,7 @@
             /// available (completions are reaped).
             ///
             /// - Linux: `IORING_ENTER_SQ_WAIT`
-            public static let sqWait = Flags(rawValue: 1 << 2)
+            public static let sqWait = Options(rawValue: 1 << 2)
 
             /// Uses extended argument format (kernel 5.11+).
             ///
@@ -84,7 +84,7 @@
             /// via the `arg` parameter.
             ///
             /// - Linux: `IORING_ENTER_EXT_ARG`
-            public static let extArg = Flags(rawValue: 1 << 3)
+            public static let extArg = Options(rawValue: 1 << 3)
 
             /// Uses a registered ring fd (kernel 5.18+).
             ///
@@ -92,7 +92,7 @@
             /// rather than a raw file descriptor.
             ///
             /// - Linux: `IORING_ENTER_REGISTERED_RING`
-            public static let registeredRing = Flags(rawValue: 1 << 4)
+            public static let registeredRing = Options(rawValue: 1 << 4)
         }
     }
 

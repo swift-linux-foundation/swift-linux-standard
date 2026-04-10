@@ -16,7 +16,7 @@
         /// Flags for futex operations.
         ///
         /// Wraps FUTEX_* constants from `<linux/futex.h>`.
-        public struct Flags: OptionSet, Sendable {
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             @inlinable

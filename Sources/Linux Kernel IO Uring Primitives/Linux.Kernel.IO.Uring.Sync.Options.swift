@@ -18,11 +18,11 @@
         internal import Musl
     #endif
 
-    extension Kernel.IO.Uring.Xattr {
-        /// Flags for extended attribute operations.
+    extension Kernel.IO.Uring.Sync {
+        /// Flags for sync_file_range operations.
         ///
-        /// Wraps XATTR_* constants from `<sys/xattr.h>`.
-        public struct Flags: OptionSet, Sendable {
+        /// Wraps SYNC_FILE_RANGE_* constants from `<fcntl.h>`.
+        public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
             @inlinable
@@ -30,11 +30,14 @@
                 self.rawValue = rawValue
             }
 
-            /// Fail if the attribute already exists.
-            public static let create = Flags(rawValue: UInt32(XATTR_CREATE))
+            /// Wait for writeout of pages in the range that were dirty before the call.
+            public static let waitBefore = Options(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE))
 
-            /// Fail if the attribute does not exist.
-            public static let replace = Flags(rawValue: UInt32(XATTR_REPLACE))
+            /// Initiate writeout of pages in the range that are currently dirty.
+            public static let write = Options(rawValue: UInt32(SYNC_FILE_RANGE_WRITE))
+
+            /// Wait for writeout of pages in the range after writeback has been initiated.
+            public static let waitAfter = Options(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_AFTER))
         }
     }
 

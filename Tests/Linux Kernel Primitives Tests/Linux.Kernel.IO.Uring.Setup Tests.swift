@@ -47,9 +47,9 @@ import Testing
     // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Setup.Test.Unit {
-        @Test("Setup.Flags type exists")
-        func flagsTypeExists() {
-            let _: Kernel.IO.Uring.Setup.Flags.Type = Kernel.IO.Uring.Setup.Flags.self
+        @Test("Setup.Options type exists")
+        func optionsTypeExists() {
+            let _: Kernel.IO.Uring.Setup.Options.Type = Kernel.IO.Uring.Setup.Options.self
         }
     }
 #endif
