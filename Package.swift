@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-linux-primitives",
+    name: "swift-linux-standard",
     platforms: [
         .macOS(.v26),
         .iOS(.v26),
@@ -40,11 +40,10 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(path: "../swift-kernel-primitives"),
-        .package(path: "../swift-cpu-primitives"),
-        .package(path: "../swift-loader-primitives"),
-        // SDG(wraps): Linux syscalls wrap errno
-        // .package(path: "../swift-error-primitives"),
+        .package(path: "../../swift-primitives/swift-kernel-primitives"),
+        .package(path: "../../swift-primitives/swift-cpu-primitives"),
+        .package(path: "../../swift-primitives/swift-loader-primitives"),
+        .package(path: "../../swift-iso/swift-iso-9945"),
     ],
     targets: [
 
