@@ -14,29 +14,29 @@ let package = Package(
     products: [
         // MARK: - Kernel
         .library(
-            name: "Linux Kernel Primitives",
-            targets: ["Linux Kernel Primitives"]
+            name: "Linux Kernel Standard",
+            targets: ["Linux Kernel Standard"]
         ),
         .library(
-            name: "Linux Kernel Event Primitives",
-            targets: ["Linux Kernel Event Primitives"]
+            name: "Linux Kernel Event Standard",
+            targets: ["Linux Kernel Event Standard"]
         ),
         .library(
-            name: "Linux Kernel IO Primitives",
-            targets: ["Linux Kernel IO Primitives"]
+            name: "Linux Kernel IO Standard",
+            targets: ["Linux Kernel IO Standard"]
         ),
         .library(
-            name: "Linux Kernel IO Uring Primitives",
-            targets: ["Linux Kernel IO Uring Primitives"]
+            name: "Linux Kernel IO Uring Standard",
+            targets: ["Linux Kernel IO Uring Standard"]
         ),
         // MARK: - Other
         .library(
-            name: "Linux Loader Primitives",
-            targets: ["Linux Loader Primitives"]
+            name: "Linux Loader Standard",
+            targets: ["Linux Loader Standard"]
         ),
         .library(
-            name: "Linux Memory Primitives",
-            targets: ["Linux Memory Primitives"]
+            name: "Linux Memory Standard",
+            targets: ["Linux Memory Standard"]
         ),
     ],
     dependencies: [
@@ -49,7 +49,7 @@ let package = Package(
 
         // MARK: - Core
         .target(
-            name: "Linux Primitives Core",
+            name: "Linux Standard Core",
             dependencies: []
         ),
 
@@ -71,9 +71,9 @@ let package = Package(
 
         // MARK: - Kernel
         .target(
-            name: "Linux Kernel Primitives",
+            name: "Linux Kernel Standard",
             dependencies: [
-                .target(name: "Linux Primitives Core"),
+                .target(name: "Linux Standard Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
@@ -89,9 +89,9 @@ let package = Package(
 
         // MARK: - Kernel Event
         .target(
-            name: "Linux Kernel Event Primitives",
+            name: "Linux Kernel Event Standard",
             dependencies: [
-                "Linux Kernel Primitives",
+                "Linux Kernel Standard",
                 .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -101,9 +101,9 @@ let package = Package(
 
         // MARK: - Kernel IO
         .target(
-            name: "Linux Kernel IO Primitives",
+            name: "Linux Kernel IO Standard",
             dependencies: [
-                "Linux Kernel Primitives",
+                "Linux Kernel Standard",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -114,10 +114,10 @@ let package = Package(
 
         // MARK: - Kernel IO Uring
         .target(
-            name: "Linux Kernel IO Uring Primitives",
+            name: "Linux Kernel IO Uring Standard",
             dependencies: [
-                "Linux Kernel IO Primitives",
-                "Linux Kernel Event Primitives",
+                "Linux Kernel IO Standard",
+                "Linux Kernel Event Standard",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -131,29 +131,29 @@ let package = Package(
 
         // MARK: - Loader
         .target(
-            name: "Linux Loader Primitives",
+            name: "Linux Loader Standard",
             dependencies: [
-                .target(name: "Linux Primitives Core"),
+                .target(name: "Linux Standard Core"),
                 .product(name: "Loader Primitives", package: "swift-loader-primitives")
             ]
         ),
 
         // MARK: - Memory
         .target(
-            name: "Linux Memory Primitives",
+            name: "Linux Memory Standard",
             dependencies: [
-                .target(name: "Linux Primitives Core"),
+                .target(name: "Linux Standard Core"),
                 .target(name: "CLinuxMemoryShim", condition: .when(platforms: [.linux]))
             ]
         ),
 
         // MARK: - Tests
         .testTarget(
-            name: "Linux Kernel Primitives Tests",
+            name: "Linux Kernel Standard Tests",
             dependencies: [
-                "Linux Kernel Primitives",
-                "Linux Kernel Event Primitives",
-                "Linux Kernel IO Uring Primitives",
+                "Linux Kernel Standard",
+                "Linux Kernel Event Standard",
+                "Linux Kernel IO Uring Standard",
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),

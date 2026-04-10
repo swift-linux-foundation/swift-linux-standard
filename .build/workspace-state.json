@@ -119,20 +119,6 @@
       {
         "basedOn" : null,
         "packageRef" : {
-          "identity" : "swift-arm-primitives",
-          "kind" : "fileSystem",
-          "location" : "/Users/coen/Developer/swift-primitives/swift-arm-primitives",
-          "name" : "swift-arm-primitives"
-        },
-        "state" : {
-          "name" : "fileSystem",
-          "path" : "/Users/coen/Developer/swift-primitives/swift-arm-primitives"
-        },
-        "subpath" : "swift-arm-primitives"
-      },
-      {
-        "basedOn" : null,
-        "packageRef" : {
           "identity" : "swift-ascii-primitives",
           "kind" : "fileSystem",
           "location" : "/Users/coen/Developer/swift-primitives/swift-ascii-primitives",
@@ -731,20 +717,6 @@
           "path" : "/Users/coen/Developer/swift-primitives/swift-witness-primitives"
         },
         "subpath" : "swift-witness-primitives"
-      },
-      {
-        "basedOn" : null,
-        "packageRef" : {
-          "identity" : "swift-x86-primitives",
-          "kind" : "fileSystem",
-          "location" : "/Users/coen/Developer/swift-primitives/swift-x86-primitives",
-          "name" : "swift-x86-primitives"
-        },
-        "state" : {
-          "name" : "fileSystem",
-          "path" : "/Users/coen/Developer/swift-primitives/swift-x86-primitives"
-        },
-        "subpath" : "swift-x86-primitives"
       }
     ],
     "prebuilts" : [
