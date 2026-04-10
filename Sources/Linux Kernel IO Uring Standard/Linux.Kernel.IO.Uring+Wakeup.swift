@@ -14,6 +14,7 @@
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Kernel_Error_Primitives
     @_spi(Syscall) public import Kernel_Primitives_Core
+    @_spi(Syscall) public import Kernel_Event_Primitives
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
     // MARK: - createWakeup
