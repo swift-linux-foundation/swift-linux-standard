@@ -36,6 +36,15 @@
 #define SYNC_FILE_RANGE_WAIT_AFTER 4
 #endif
 
+// xattr flags - from <sys/xattr.h>, not in SwiftGlibc
+#include <sys/xattr.h>
+#ifndef XATTR_CREATE
+#define XATTR_CREATE 1
+#endif
+#ifndef XATTR_REPLACE
+#define XATTR_REPLACE 2
+#endif
+
 // splice flags - not in SwiftGlibc
 #ifndef SPLICE_F_MOVE
 #define SPLICE_F_MOVE 1
