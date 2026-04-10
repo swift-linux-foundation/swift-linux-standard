@@ -12,6 +12,10 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
+    #if canImport(CLinuxKernelShim)
+        internal import CLinuxKernelShim
+    #endif
+
     #if canImport(Glibc)
         internal import Glibc
     #elseif canImport(Musl)

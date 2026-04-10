@@ -36,6 +36,9 @@
 #define SYNC_FILE_RANGE_WAIT_AFTER 4
 #endif
 
+// fallocate flags - from <linux/falloc.h>, not in SwiftGlibc
+#include <linux/falloc.h>
+
 // xattr flags - from <sys/xattr.h>, not in SwiftGlibc
 #include <sys/xattr.h>
 #ifndef XATTR_CREATE
