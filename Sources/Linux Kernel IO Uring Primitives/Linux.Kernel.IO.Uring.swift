@@ -62,15 +62,15 @@
             // SQ ring (shared-memory pointers into mmap'd region)
             private let sqHead: UnsafeMutablePointer<UInt32>
             private let sqTail: UnsafeMutablePointer<UInt32>
-            private let sqMask: UInt32
-            private let sqEntries: UInt32
+            private let sqMask: Submission.Queue.Mask
+            private let sqEntries: Submission.Count
             private let sqArray: UnsafeMutablePointer<UInt32>
             private let sqes: UnsafeMutablePointer<Submission.Queue.Entry>
 
             // CQ ring (shared-memory pointers into mmap'd region)
             private let cqHead: UnsafeMutablePointer<UInt32>
             private let cqTail: UnsafeMutablePointer<UInt32>
-            private let cqMask: UInt32
+            private let cqMask: Completion.Queue.Mask
             private let cqes: UnsafePointer<Completion.Queue.Entry>
 
             // Submission tracking
@@ -89,13 +89,13 @@
                 ringDescriptor: consuming Kernel.Descriptor,
                 sqHead: UnsafeMutablePointer<UInt32>,
                 sqTail: UnsafeMutablePointer<UInt32>,
-                sqMask: UInt32,
-                sqEntries: UInt32,
+                sqMask: Submission.Queue.Mask,
+                sqEntries: Submission.Count,
                 sqArray: UnsafeMutablePointer<UInt32>,
                 sqes: UnsafeMutablePointer<Submission.Queue.Entry>,
                 cqHead: UnsafeMutablePointer<UInt32>,
                 cqTail: UnsafeMutablePointer<UInt32>,
-                cqMask: UInt32,
+                cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 sqRingAddr: Kernel.Memory.Address, sqRingSize: Kernel.File.Size,
                 cqRingAddr: Kernel.Memory.Address, cqRingSize: Kernel.File.Size,
@@ -399,13 +399,13 @@
                 ringDescriptor: consume descriptor,
                 sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                sqMask: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self),
-                sqEntries: UInt32(params.sqEntries.rawValue.rawValue),
+                sqMask: Submission.Queue.Mask(rawValue: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self)),
+                sqEntries: params.sqEntries,
                 sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 sqes: sqe.assumingMemoryBound(to: Kernel.IO.Uring.Submission.Queue.Entry.self),
                 cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                cqMask: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self),
+                cqMask: Completion.Queue.Mask(rawValue: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self)),
                 cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
                     .assumingMemoryBound(to: Kernel.IO.Uring.Completion.Queue.Entry.self)),
                 sqRingAddr: unsafe Kernel.Memory.Address(sq), sqRingSize: Kernel.File.Size(sqRingSz),
@@ -431,10 +431,12 @@
         @unsafe
         public mutating func nextEntry() -> UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>? {
             let tail = unsafe sqTail.pointee
-            guard unsafe sqEntries &- (tail &- sqHead.pointee) > 0 else { return nil }
-            let idx = Int(tail & sqMask)
-            unsafe sqArray[idx] = UInt32(idx)
-            return unsafe sqes.advanced(by: idx)
+            let head = unsafe sqHead.pointee
+            let used = Submission.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
+            guard used < sqEntries else { return nil }
+            let slot = sqMask.slot(for: tail)
+            unsafe sqArray[slot] = UInt32(slot)
+            return unsafe sqes.advanced(by: slot)
         }
 
         /// Advance the SQ tail after filling an entry from ``nextEntry()``.
@@ -479,7 +481,8 @@
             var count = 0
 
             while head != tail, count < maxCount {
-                unsafe visitor(cqes[Int(head & cqMask)])
+                let slot = cqMask.slot(for: head)
+                unsafe visitor(cqes[slot])
                 head &+= 1
                 count += 1
             }
