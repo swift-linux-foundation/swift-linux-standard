@@ -83,6 +83,7 @@ let package = Package(
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Socket Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
