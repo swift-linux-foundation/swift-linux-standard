@@ -200,6 +200,8 @@ let package = Package(
                 "Linux Kernel Event Standard",
                 "Linux Kernel File Standard",
                 "Linux Kernel Pipe Standard",
+                "Linux Kernel Futex Standard",
+                "Linux Kernel Socket Standard",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
