@@ -16,6 +16,7 @@
     @_spi(Syscall) public import Kernel_Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
     public import Kernel_Socket_Primitives
+    public import Linux_Kernel_Event_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -183,7 +184,7 @@
             target: Kernel.IO.Uring.Target,
             addr: UnsafeMutableRawPointer?,
             addrLen: UnsafeMutablePointer<UInt32>?,
-            flags: Kernel.Socket.Flags,
+            flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -552,26 +553,35 @@
     extension Kernel.IO.Uring.Submission.Queue.Entry.Prepare {
         /// Configures this entry for an openat operation.
         ///
+        /// The kernel's open flags are decomposed into two parameters:
+        /// - `access`: The access mode (read-only, write-only, read-write)
+        /// - `options`: Additional open options (create, truncate, append, etc.)
+        ///
+        /// These are combined into a single flags field in the SQE.
+        ///
         /// - Parameters:
         ///   - target: Directory fd targeting (use `.descriptor` for dirfd, `.allocate` for direct open).
         ///   - path: Null-terminated path to open.
-        ///   - flags: Open flags (O_RDONLY, O_WRONLY, etc.).
+        ///   - access: File access mode (default: `.readOnly`).
+        ///   - options: Additional open options (create, truncate, etc.).
         ///   - mode: File mode for creation.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func openat(
             target: Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.File.Open.Options,
-            mode: UInt32,
+            access: Kernel.File.Open.Access = .readOnly,
+            options: Kernel.File.Open.Options = [],
+            mode: UInt32 = 0,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .file.openat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
+            // Combine access mode and options into one flags field
+            unsafe (pointer.pointee.opFlags = access.rawValue | options.rawValue)
             unsafe (pointer.pointee.cValue.len = mode)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -643,7 +653,7 @@
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Kernel.File.Rename.Flags,
+            flags: Kernel.File.Rename.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -796,7 +806,7 @@
             domain: Int32,
             type: Int32,
             protocol: Int32,
-            flags: Kernel.Socket.Flags,
+            flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1156,14 +1166,14 @@
         ///
         /// - Parameters:
         ///   - target: File targeting for the fd to poll.
-        ///   - events: Poll event mask (e.g., `POLLIN`, `POLLOUT`).
+        ///   - events: Poll event mask (e.g., `.in`, `.out`).
         ///   - multishot: If true, produces CQEs on every event without resubmission.
         ///   - trigger: Trigger mode — edge (default) or level.
         ///   - data: Operation data to return with completion.
         @inlinable
         public func poll(
             target: Kernel.IO.Uring.Target,
-            events: UInt32,
+            events: Kernel.Event.Poll.Events,
             multishot: Bool = false,
             trigger: Kernel.IO.Uring.Poll.Trigger = .edge,
             data: Kernel.IO.Uring.Operation.Data
@@ -1171,7 +1181,7 @@
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .poll.add)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.poll32_events = events)
+            unsafe (pointer.pointee.cValue.poll32_events = events.rawValue)
             var rawFlags: UInt32 = trigger.pollBits
             if multishot { rawFlags |= UInt32(IORING_POLL_ADD_MULTI) }
             unsafe (pointer.pointee.cValue.len = rawFlags)
@@ -1353,7 +1363,7 @@
         @unsafe @inlinable
         public func pipe(
             fds: UnsafeMutablePointer<Int32>,
-            flags: Kernel.Pipe.Flags,
+            flags: Kernel.Pipe.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())

@@ -26,10 +26,10 @@
     #endif
 
     extension Kernel.Descriptor.Duplicate {
-        /// Flags for dup3(2).
+        /// Options for dup3(2).
         ///
         /// Controls the behavior of file descriptor duplication with flags.
-        public struct Flags: OptionSet, Sendable, Equatable, Hashable {
+        public struct Options: OptionSet, Sendable, Equatable, Hashable {
             public let rawValue: Int32
 
             public init(rawValue: Int32) {
@@ -37,7 +37,7 @@
             }
 
             /// Set the close-on-exec flag on the new file descriptor.
-            public static let closeOnExec = Flags(rawValue: O_CLOEXEC)
+            public static let closeOnExec = Options(rawValue: O_CLOEXEC)
         }
     }
 

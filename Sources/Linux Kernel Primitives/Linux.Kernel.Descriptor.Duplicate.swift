@@ -49,7 +49,7 @@
         public static func duplicate(
             _ descriptor: borrowing Kernel.Descriptor,
             to newDescriptor: inout Kernel.Descriptor,
-            flags: Flags
+            flags: Options
         ) throws(Error) {
             let result = swift_dup3(descriptor._rawValue, newDescriptor._rawValue, flags.rawValue)
 

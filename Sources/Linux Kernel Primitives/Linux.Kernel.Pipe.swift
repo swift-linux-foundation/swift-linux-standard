@@ -41,7 +41,7 @@ extension Kernel.Pipe {
     ///   - write: On return, the write end of the pipe.
     /// - Throws: `Kernel.Pipe.Error` on failure.
     public static func pipe2(
-        flags: Flags,
+        flags: Options,
         read: inout Kernel.Descriptor,
         write: inout Kernel.Descriptor
     ) throws(Error) {
@@ -65,8 +65,8 @@ extension Kernel.Pipe {
         write = Kernel.Descriptor(_rawValue: fds.1)
     }
 
-    /// Flags for pipe creation (Linux).
-    public struct Flags: OptionSet, Sendable {
+    /// Options for pipe creation (Linux).
+    public struct Options: OptionSet, Sendable {
         public let rawValue: Int32
 
         public init(rawValue: Int32) {
@@ -74,13 +74,13 @@ extension Kernel.Pipe {
         }
 
         /// Set the close-on-exec flag on the new file descriptors.
-        public static let closeOnExec = Flags(rawValue: O_CLOEXEC)
+        public static let closeOnExec = Options(rawValue: O_CLOEXEC)
 
         /// Set the non-blocking flag on the new file descriptors.
-        public static let nonBlock = Flags(rawValue: O_NONBLOCK)
+        public static let nonBlock = Options(rawValue: O_NONBLOCK)
 
         /// Create a direct I/O pipe (Linux 3.4+).
-        public static let direct = Flags(rawValue: O_DIRECT)
+        public static let direct = Options(rawValue: O_DIRECT)
     }
 }
 

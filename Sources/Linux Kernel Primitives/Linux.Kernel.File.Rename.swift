@@ -56,7 +56,7 @@
             oldPath: UnsafePointer<CChar>,
             newDirFD: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Flags
+            flags: Options
         ) throws(Error) {
             let result = unsafe swift_renameat2(
                 oldDirFD,
