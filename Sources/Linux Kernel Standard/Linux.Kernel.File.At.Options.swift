@@ -12,7 +12,11 @@
 #if os(Linux)
 
 public import Kernel_File_Primitives
-public import ISO_9945_Kernel
+public import ISO_9945_Kernel_File
+
+#if canImport(CLinuxKernelShim)
+    internal import CLinuxKernelShim
+#endif
 
 #if canImport(Glibc)
     internal import Glibc

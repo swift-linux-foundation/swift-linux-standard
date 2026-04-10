@@ -37,7 +37,7 @@
             }
 
             /// Set the close-on-exec flag on the new file descriptor.
-            public static let closeOnExec = Options(rawValue: O_CLOEXEC)
+            public static let closeOnExec = Self(rawValue: O_CLOEXEC)
         }
     }
 
