@@ -19,6 +19,10 @@ public import Kernel_Memory_Primitives
 public import Kernel_Random_Primitives
 public import Kernel_Path_Primitives
 
+#if canImport(CLinuxKernelShim)
+    internal import CLinuxKernelShim
+#endif
+
 #if canImport(Glibc)
     internal import Glibc
 #elseif canImport(Musl)
@@ -43,13 +47,13 @@ extension Kernel.Pipe {
             }
 
             /// Attempt to move pages instead of copying.
-            public static let move = Options(rawValue: UInt32(SPLICE_F_MOVE))
+            public static let move = Self(rawValue: UInt32(SPLICE_F_MOVE))
 
             /// Do not block on I/O.
-            public static let nonblock = Options(rawValue: UInt32(SPLICE_F_NONBLOCK))
+            public static let nonblock = Self(rawValue: UInt32(SPLICE_F_NONBLOCK))
 
             /// Hint that more data will follow.
-            public static let more = Options(rawValue: UInt32(SPLICE_F_MORE))
+            public static let more = Self(rawValue: UInt32(SPLICE_F_MORE))
         }
     }
 }

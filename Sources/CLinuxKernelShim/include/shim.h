@@ -17,6 +17,18 @@
 #include <linux/io_uring.h>  // io_uring structs
 #include <sys/syscall.h>     // __NR_* syscall numbers (safe - just defines)
 
+// splice flags - not in SwiftGlibc
+#include <fcntl.h>
+#ifndef SPLICE_F_MOVE
+#define SPLICE_F_MOVE 1
+#endif
+#ifndef SPLICE_F_NONBLOCK
+#define SPLICE_F_NONBLOCK 2
+#endif
+#ifndef SPLICE_F_MORE
+#define SPLICE_F_MORE 4
+#endif
+
 // O_DIRECT - not in SwiftGlibc's fcntl overlay
 #ifndef O_DIRECT
 #define O_DIRECT 040000

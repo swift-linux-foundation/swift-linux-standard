@@ -18,6 +18,7 @@ public import Kernel_File_Primitives
 public import Kernel_Memory_Primitives
 public import Kernel_Random_Primitives
 public import Kernel_Path_Primitives
+public import ISO_9945_Kernel_Memory
 
 #if canImport(Glibc)
     internal import Glibc
@@ -25,9 +26,9 @@ public import Kernel_Path_Primitives
     internal import Musl
 #endif
 
-// MARK: - Linux-specific mlockall Flags
+// MARK: - Linux-specific mlockall Options
 
-extension Kernel.Memory.Lock.All.Flags {
+extension Kernel.Memory.Lock.All.Options {
     /// Lock pages when they are faulted in (Linux 4.4+).
     ///
     /// This avoids the overhead of faulting in all pages immediately.
