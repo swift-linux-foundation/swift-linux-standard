@@ -10,9 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 public import Kernel_Primitives_Core
-@_exported public import Linux_Standard_Core
 
-extension Linux_Standard_Core.Linux {
+extension Linux {
     /// Linux kernel mechanisms.
     ///
     /// This is a typealias to `Kernel_Primitives.Kernel`, allowing Linux-specific
