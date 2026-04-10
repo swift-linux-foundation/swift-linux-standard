@@ -115,11 +115,13 @@ let package = Package(
             name: "Linux Kernel IO Uring Primitives",
             dependencies: [
                 "Linux Kernel IO Primitives",
+                "Linux Kernel Event Primitives",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
             ]
         ),
 

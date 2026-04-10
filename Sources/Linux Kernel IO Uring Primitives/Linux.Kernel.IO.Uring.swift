@@ -17,16 +17,17 @@
     @_spi(Syscall) public import Kernel_File_Primitives
 
     extension Kernel.IO {
-        /// io_uring ring — owns the mmap'd SQ/CQ shared-memory regions.
+        /// io_uring ring — owns the ring descriptor and mmap'd SQ/CQ shared-memory regions.
         ///
         /// io_uring is a high-performance asynchronous I/O interface for Linux (kernel 5.1+).
-        /// This struct IS the ring: it owns three mmap'd regions (SQ ring, CQ ring, SQE array)
-        /// and provides typed access to submission and completion queues. All raw pointer
-        /// arithmetic and UInt32 ring index masking is encapsulated here — consumers see typed
-        /// operations only.
+        /// This struct IS the ring: it owns the ring file descriptor, three mmap'd regions
+        /// (SQ ring, CQ ring, SQE array), and provides typed access to submission and
+        /// completion queues. All raw pointer arithmetic and UInt32 ring index masking is
+        /// encapsulated here — consumers see typed operations only.
         ///
-        /// Static methods provide policy-free syscall wrappers that operate on raw descriptors.
-        /// Instance methods provide the shared-memory SQ/CQ protocol.
+        /// Instance methods provide both descriptor-bound syscalls (``enter(toSubmit:minComplete:flags:)``,
+        /// ``register(opcode:argument:count:)``) and the shared-memory SQ/CQ protocol.
+        /// Static methods remain available for detached-descriptor workflows.
         ///
         /// NOT Sendable — thread-confined to the io_uring poll thread.
         ///
@@ -34,8 +35,9 @@
         ///
         /// ```swift
         /// var params = Kernel.IO.Uring.Params()
-        /// let fd = try Kernel.IO.Uring.setup(entries: 256, params: &params)
-        /// var ring = try Kernel.IO.Uring(descriptor: fd, params: params)
+        /// let fd = try Kernel.IO.Uring.setup(entries: .init(__unchecked: (), Cardinal(256)), params: &params)
+        /// var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
+        /// // ring now owns the descriptor — deinit unmaps regions then closes fd
         /// ```
         ///
         /// ## Usage
@@ -45,11 +47,17 @@
         ///     sqe.pointee.prepare.nop(data: data)
         ///     ring.commitEntry()
         /// }
-        /// let harvested = ring.drainCompletions(limit: 256) { cqe in
+        /// _ = try ring.enter(toSubmit: ring.pendingSubmissions, minComplete: .zero, flags: [])
+        /// let harvested = ring.drainCompletions(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
         ///     // process completion
         /// }
         /// ```
         public struct Uring: ~Copyable {
+
+            // Ring descriptor (owned — deinit closes fd after regions are unmapped).
+            // The explicit deinit body unmaps mmap'd regions first; then stored-
+            // property destruction closes the descriptor.
+            private let ringDescriptor: Kernel.Descriptor
 
             // SQ ring (shared-memory pointers into mmap'd region)
             private let sqHead: UnsafeMutablePointer<UInt32>
@@ -78,6 +86,7 @@
 
             @unsafe
             init(
+                ringDescriptor: consuming Kernel.Descriptor,
                 sqHead: UnsafeMutablePointer<UInt32>,
                 sqTail: UnsafeMutablePointer<UInt32>,
                 sqMask: UInt32,
@@ -92,6 +101,7 @@
                 cqRingAddr: Kernel.Memory.Address, cqRingSize: Kernel.File.Size,
                 sqeAddr: Kernel.Memory.Address, sqeSize: Kernel.File.Size
             ) {
+                self.ringDescriptor = consume ringDescriptor
                 self.sqHead = sqHead
                 self.sqTail = sqTail
                 self.sqMask = sqMask
@@ -270,6 +280,68 @@
         }
     }
 
+    // MARK: - Instance API (descriptor-bound)
+
+    extension Kernel.IO.Uring {
+        /// Submit pending operations and/or wait for completions using the
+        /// ring's owned descriptor.
+        ///
+        /// - Parameters:
+        ///   - toSubmit: Number of SQEs to submit.
+        ///   - minComplete: Minimum completions to wait for.
+        ///   - flags: Enter flags.
+        /// - Returns: Number of SQEs submitted.
+        /// - Throws: `Error.enter` on failure, `Error.interrupted` on EINTR.
+        public func enter(
+            toSubmit: Submission.Count,
+            minComplete: Completion.Count,
+            flags: Enter.Flags
+        ) throws(Error) -> Submission.Count {
+            try Self.enter(
+                ringDescriptor,
+                toSubmit: toSubmit,
+                minComplete: minComplete,
+                flags: flags
+            )
+        }
+
+        /// Raw register — internal escape hatch for typed public methods.
+        @unsafe
+        internal func register(
+            opcode: Register.Opcode,
+            argument: UnsafeMutableRawPointer?,
+            count: UInt32
+        ) throws(Error) {
+            try unsafe Self.register(
+                ringDescriptor,
+                opcode: opcode,
+                argument: argument,
+                count: count
+            )
+        }
+
+        /// Register an eventfd for completion notifications.
+        ///
+        /// The eventfd is signaled when completions arrive, enabling
+        /// integration with poll-based event loops (epoll).
+        ///
+        /// - Parameter descriptor: The eventfd file descriptor.
+        /// - Throws: `Error.register` on failure.
+        public func register(
+            eventfd descriptor: borrowing Kernel.Descriptor
+        ) throws(Error) {
+            var fd = descriptor._rawValue
+            try unsafe withUnsafeMutablePointer(to: &fd) {
+                (ptr: UnsafeMutablePointer<Int32>) throws(Error) in
+                try unsafe self.register(
+                    opcode: .eventfd.register,
+                    argument: ptr,
+                    count: 1
+                )
+            }
+        }
+    }
+
     // MARK: - Factory
 
     extension Kernel.IO.Uring {
@@ -284,7 +356,7 @@
         ///   - params: Kernel-filled params containing ring offsets and sizes.
         /// - Throws: ``Error/setup(_:)`` on mmap failure.
         public init(
-            descriptor: borrowing Kernel.Descriptor,
+            descriptor: consuming Kernel.Descriptor,
             params: Kernel.IO.Uring.Params
         ) throws(Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
@@ -324,6 +396,7 @@
             // typed overloads but isn't in the dependency chain.
             // WHEN TO REMOVE: when kernel-primitives re-exports the integration module.
             unsafe self.init(
+                ringDescriptor: consume descriptor,
                 sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 sqMask: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self),
