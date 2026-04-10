@@ -13,31 +13,19 @@ let package = Package(
     ],
     products: [
         // MARK: - Kernel
-        .library(
-            name: "Linux Kernel Standard",
-            targets: ["Linux Kernel Standard"]
-        ),
-        .library(
-            name: "Linux Kernel Event Standard",
-            targets: ["Linux Kernel Event Standard"]
-        ),
-        .library(
-            name: "Linux Kernel IO Standard",
-            targets: ["Linux Kernel IO Standard"]
-        ),
-        .library(
-            name: "Linux Kernel IO Uring Standard",
-            targets: ["Linux Kernel IO Uring Standard"]
-        ),
+        .library(name: "Linux Kernel File Standard", targets: ["Linux Kernel File Standard"]),
+        .library(name: "Linux Kernel Pipe Standard", targets: ["Linux Kernel Pipe Standard"]),
+        .library(name: "Linux Kernel Socket Standard", targets: ["Linux Kernel Socket Standard"]),
+        .library(name: "Linux Kernel Memory Standard", targets: ["Linux Kernel Memory Standard"]),
+        .library(name: "Linux Kernel Descriptor Standard", targets: ["Linux Kernel Descriptor Standard"]),
+        .library(name: "Linux Kernel Futex Standard", targets: ["Linux Kernel Futex Standard"]),
+        .library(name: "Linux Kernel System Standard", targets: ["Linux Kernel System Standard"]),
+        .library(name: "Linux Kernel Event Standard", targets: ["Linux Kernel Event Standard"]),
+        .library(name: "Linux Kernel IO Standard", targets: ["Linux Kernel IO Standard"]),
+        .library(name: "Linux Kernel IO Uring Standard", targets: ["Linux Kernel IO Uring Standard"]),
         // MARK: - Other
-        .library(
-            name: "Linux Loader Standard",
-            targets: ["Linux Loader Standard"]
-        ),
-        .library(
-            name: "Linux Memory Standard",
-            targets: ["Linux Memory Standard"]
-        ),
+        .library(name: "Linux Loader Standard", targets: ["Linux Loader Standard"]),
+        .library(name: "Linux Memory Standard", targets: ["Linux Memory Standard"]),
     ],
     dependencies: [
         .package(path: "../../swift-primitives/swift-kernel-primitives"),
@@ -69,9 +57,9 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel
+        // MARK: - Kernel File
         .target(
-            name: "Linux Kernel Standard",
+            name: "Linux Kernel File Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
@@ -79,11 +67,66 @@ let package = Package(
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
+                .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
+            ]
+        ),
+        // MARK: - Kernel Pipe
+        .target(
+            name: "Linux Kernel Pipe Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+            ]
+        ),
+        // MARK: - Kernel Socket
+        .target(
+            name: "Linux Kernel Socket Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
                 .product(name: "Kernel Socket Primitives", package: "swift-kernel-primitives"),
-                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
+            ]
+        ),
+        // MARK: - Kernel Memory
+        .target(
+            name: "Linux Kernel Memory Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "ISO 9945 Kernel Memory", package: "swift-iso-9945"),
+            ]
+        ),
+        // MARK: - Kernel Descriptor
+        .target(
+            name: "Linux Kernel Descriptor Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+            ]
+        ),
+        // MARK: - Kernel Futex
+        .target(
+            name: "Linux Kernel Futex Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+            ]
+        ),
+        // MARK: - Kernel System
+        .target(
+            name: "Linux Kernel System Standard",
+            dependencies: [
+                .target(name: "Linux Standard Core"),
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -91,7 +134,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Event Standard",
             dependencies: [
-                "Linux Kernel Standard",
+                "Linux Standard Core",
                 .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -103,7 +146,7 @@ let package = Package(
         .target(
             name: "Linux Kernel IO Standard",
             dependencies: [
-                "Linux Kernel Standard",
+                "Linux Standard Core",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -118,6 +161,8 @@ let package = Package(
             dependencies: [
                 "Linux Kernel IO Standard",
                 "Linux Kernel Event Standard",
+                "Linux Kernel File Standard",
+                "Linux Kernel Pipe Standard",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
@@ -125,7 +170,7 @@ let package = Package(
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
-                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
         ),
 
@@ -151,7 +196,13 @@ let package = Package(
         .testTarget(
             name: "Linux Kernel Standard Tests",
             dependencies: [
-                "Linux Kernel Standard",
+                "Linux Kernel File Standard",
+                "Linux Kernel Pipe Standard",
+                "Linux Kernel Socket Standard",
+                "Linux Kernel Memory Standard",
+                "Linux Kernel Descriptor Standard",
+                "Linux Kernel Futex Standard",
+                "Linux Kernel System Standard",
                 "Linux Kernel Event Standard",
                 "Linux Kernel IO Uring Standard",
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
