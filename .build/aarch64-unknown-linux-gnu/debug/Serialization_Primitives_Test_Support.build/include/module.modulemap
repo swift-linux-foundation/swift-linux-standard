@@ -1,3 +1,0 @@
-module Serialization_Primitives_Test_Support {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Serialization_Primitives_Test_Support.build/include/Serialization Primitives Test Support-Swift.h"
-}

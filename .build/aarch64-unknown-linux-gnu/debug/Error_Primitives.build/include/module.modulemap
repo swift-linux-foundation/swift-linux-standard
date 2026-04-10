@@ -1,3 +1,0 @@
-module Error_Primitives {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Error_Primitives.build/include/Error Primitives-Swift.h"
-}

@@ -1,3 +1,0 @@
-module swift_linux_standardPackageTests {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/swift_linux_standardPackageTests.build/include/swift-linux-standardPackageTests-Swift.h"
-}

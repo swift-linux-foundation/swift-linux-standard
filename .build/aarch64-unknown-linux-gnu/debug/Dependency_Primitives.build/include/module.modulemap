@@ -1,3 +1,0 @@
-module Dependency_Primitives {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Dependency_Primitives.build/include/Dependency Primitives-Swift.h"
-}

@@ -1,3 +1,0 @@
-module Standard_Library_Extensions {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Standard_Library_Extensions.build/include/Standard Library Extensions-Swift.h"
-}

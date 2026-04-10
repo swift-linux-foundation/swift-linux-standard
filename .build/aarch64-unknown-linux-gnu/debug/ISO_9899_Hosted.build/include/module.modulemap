@@ -1,3 +1,0 @@
-module ISO_9899_Hosted {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/ISO_9899_Hosted.build/include/ISO 9899 Hosted-Swift.h"
-}

@@ -1,3 +1,0 @@
-module Linux_Memory_Standard {
-    header "/workspace/swift-linux-foundation/swift-linux-standard/.build/aarch64-unknown-linux-gnu/debug/Linux_Memory_Standard.build/include/Linux Memory Standard-Swift.h"
-}
