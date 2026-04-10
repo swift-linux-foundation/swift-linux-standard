@@ -111,39 +111,7 @@
                 public static let whiteout = Options(rawValue: UInt32(RENAME_WHITEOUT))
             }
         }
-
-        /// Mode bits for fallocate.
-        public struct Allocate: Sendable {
-            public struct Mode: OptionSet, Sendable {
-                public let rawValue: Int32
-
-                @inlinable
-                public init(rawValue: Int32) {
-                    self.rawValue = rawValue
-                }
-
-                /// Default: allocate disk space.
-                public static let none = Mode([])
-
-                /// Deallocate space (punch hole). Combine with `.keepSize`.
-                public static let punchHole = Mode(rawValue: 0x02) // FALLOC_FL_PUNCH_HOLE
-
-                /// Don't modify the file's apparent size.
-                public static let keepSize = Mode(rawValue: 0x01) // FALLOC_FL_KEEP_SIZE
-
-                /// Remove range, collapsing file.
-                public static let collapseRange = Mode(rawValue: 0x08) // FALLOC_FL_COLLAPSE_RANGE
-
-                /// Zero-fill range.
-                public static let zeroRange = Mode(rawValue: 0x10) // FALLOC_FL_ZERO_RANGE
-
-                /// Insert range, shifting data.
-                public static let insertRange = Mode(rawValue: 0x20) // FALLOC_FL_INSERT_RANGE
-
-                /// Unshare shared extents.
-                public static let unshareRange = Mode(rawValue: 0x40) // FALLOC_FL_UNSHARE_RANGE
-            }
-        }
+        // Allocate.Mode is defined as an enum in Linux.Kernel.IO.Uring.File.Allocate.Mode.swift
     }
 
 #endif

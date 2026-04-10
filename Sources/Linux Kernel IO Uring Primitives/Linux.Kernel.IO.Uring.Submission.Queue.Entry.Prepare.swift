@@ -756,7 +756,7 @@
         ///
         /// - Parameters:
         ///   - target: File targeting (descriptor or registered index).
-        ///   - mode: Fallocate mode flags.
+        ///   - mode: Allocation mode (e.g., `.allocate()`, `.punch`, `.zero(keepSize: true)`).
         ///   - offset: Starting offset in the file.
         ///   - length: Number of bytes to allocate.
         ///   - data: Operation data to return with completion.
@@ -774,7 +774,7 @@
             // WHY: fallocate stores the length in addr because the len field is only
             // 32-bit but fallocate's length parameter is 64-bit.
             unsafe (pointer.pointee.addr = length)
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: mode.rawValue))
+            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: mode.rawBits))
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.data = data)
         }
@@ -1023,21 +1023,23 @@
     // MARK: - Timeout and Poll
 
     extension Kernel.IO.Uring.Submission.Queue.Entry.Prepare {
-        /// Configures this entry for a timeout operation.
+        /// Configures this entry for a relative timeout operation.
         ///
-        /// Completes after the specified time elapses or after `count` completions,
-        /// whichever comes first.
+        /// Completes after the specified duration elapses or after `count`
+        /// completions, whichever comes first.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec (absolute or relative per flags).
+        ///   - timespec: Pointer to kernel timespec specifying the duration.
         ///   - count: Number of completions to wait for (0 = time only).
-        ///   - flags: Timeout flags (e.g., `IORING_TIMEOUT_ABS`).
+        ///   - clock: Clock source for the timeout (default: `.monotonic`).
+        ///   - multishot: If true, the timeout repeats automatically.
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
-            timespec: UnsafePointer<__kernel_timespec>,
-            count: UInt32,
-            flags: Kernel.IO.Uring.Timeout.Options,
+            after timespec: UnsafePointer<__kernel_timespec>,
+            count: UInt32 = 0,
+            clock: Kernel.IO.Uring.Clock = .monotonic,
+            multishot: Bool = false,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1045,7 +1047,39 @@
             unsafe (pointer.pointee.cValue.fd = -1)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
             unsafe (pointer.pointee.cValue.len = count)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            var rawFlags: UInt32 = clock.timeoutBits
+            if multishot { rawFlags |= UInt32(IORING_TIMEOUT_MULTISHOT) }
+            unsafe (pointer.pointee.cValue.rw_flags = rawFlags)
+            unsafe (pointer.pointee.data = data)
+        }
+
+        /// Configures this entry for an absolute timeout operation.
+        ///
+        /// Completes at the specified deadline or after `count` completions,
+        /// whichever comes first.
+        ///
+        /// - Parameters:
+        ///   - timespec: Pointer to kernel timespec specifying the deadline.
+        ///   - count: Number of completions to wait for (0 = time only).
+        ///   - clock: Clock source for the timeout (default: `.monotonic`).
+        ///   - multishot: If true, the timeout repeats automatically.
+        ///   - data: Operation data to return with completion.
+        @unsafe @inlinable
+        public func timeout(
+            deadline timespec: UnsafePointer<__kernel_timespec>,
+            count: UInt32 = 0,
+            clock: Kernel.IO.Uring.Clock = .monotonic,
+            multishot: Bool = false,
+            data: Kernel.IO.Uring.Operation.Data
+        ) {
+            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee.opcode = .timeout.standard)
+            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
+            unsafe (pointer.pointee.cValue.len = count)
+            var rawFlags: UInt32 = clock.timeoutBits | UInt32(IORING_TIMEOUT_ABS)
+            if multishot { rawFlags |= UInt32(IORING_TIMEOUT_MULTISHOT) }
+            unsafe (pointer.pointee.cValue.rw_flags = rawFlags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1053,36 +1087,33 @@
         ///
         /// - Parameters:
         ///   - target: Operation data of the timeout to remove.
-        ///   - flags: Timeout flags (e.g., `IORING_TIMEOUT_UPDATE`).
         ///   - data: Operation data to return with this operation's completion.
         @inlinable
         public func timeout(
             remove target: Kernel.IO.Uring.Operation.Data,
-            flags: Kernel.IO.Uring.Timeout.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .timeout.remove)
             unsafe (pointer.pointee.cValue.fd = -1)
             unsafe (pointer.pointee.addr = target.rawValue)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
 
-        /// Configures this entry for a link timeout operation.
+        /// Configures this entry for a relative link timeout operation.
         ///
         /// Must be submitted immediately after the linked SQE it guards.
-        /// If the linked operation doesn't complete within the timeout,
+        /// If the linked operation doesn't complete within the duration,
         /// it is cancelled.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec.
-        ///   - flags: Timeout flags.
+        ///   - timespec: Pointer to kernel timespec specifying the duration.
+        ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
             link timespec: UnsafePointer<__kernel_timespec>,
-            flags: Kernel.IO.Uring.Timeout.Options,
+            clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1090,31 +1121,60 @@
             unsafe (pointer.pointee.cValue.fd = -1)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
             unsafe (pointer.pointee.cValue.len = 1)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (pointer.pointee.cValue.rw_flags = clock.timeoutBits)
+            unsafe (pointer.pointee.data = data)
+        }
+
+        /// Configures this entry for an absolute link timeout operation.
+        ///
+        /// Must be submitted immediately after the linked SQE it guards.
+        /// If the linked operation doesn't complete by the deadline,
+        /// it is cancelled.
+        ///
+        /// - Parameters:
+        ///   - timespec: Pointer to kernel timespec specifying the deadline.
+        ///   - clock: Clock source for the timeout (default: `.monotonic`).
+        ///   - data: Operation data to return with completion.
+        @unsafe @inlinable
+        public func timeout(
+            linkDeadline timespec: UnsafePointer<__kernel_timespec>,
+            clock: Kernel.IO.Uring.Clock = .monotonic,
+            data: Kernel.IO.Uring.Operation.Data
+        ) {
+            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee.opcode = .timeout.link)
+            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
+            unsafe (pointer.pointee.cValue.len = 1)
+            unsafe (pointer.pointee.cValue.rw_flags = clock.timeoutBits | UInt32(IORING_TIMEOUT_ABS))
             unsafe (pointer.pointee.data = data)
         }
 
         /// Configures this entry for a poll add operation.
         ///
-        /// Monitors a file descriptor for events. Supports multishot via flags.
+        /// Monitors a file descriptor for events.
         ///
         /// - Parameters:
         ///   - target: File targeting for the fd to poll.
-        ///   - mask: Poll event mask (e.g., `POLLIN`, `POLLOUT`).
-        ///   - flags: Poll flags (e.g., `IORING_POLL_ADD_MULTI` for multishot).
+        ///   - events: Poll event mask (e.g., `POLLIN`, `POLLOUT`).
+        ///   - multishot: If true, produces CQEs on every event without resubmission.
+        ///   - trigger: Trigger mode — edge (default) or level.
         ///   - data: Operation data to return with completion.
         @inlinable
         public func poll(
             target: Kernel.IO.Uring.Target,
-            mask: UInt32,
-            flags: Kernel.IO.Uring.Poll.Options,
+            events: UInt32,
+            multishot: Bool = false,
+            trigger: Kernel.IO.Uring.Poll.Trigger = .edge,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .poll.add)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.poll32_events = mask)
-            unsafe (pointer.pointee.cValue.len = flags.rawValue)
+            unsafe (pointer.pointee.cValue.poll32_events = events)
+            var rawFlags: UInt32 = trigger.pollBits
+            if multishot { rawFlags |= UInt32(IORING_POLL_ADD_MULTI) }
+            unsafe (pointer.pointee.cValue.len = rawFlags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1515,7 +1575,7 @@
         ///   - name: Null-terminated attribute name.
         ///   - value: Attribute value pointer.
         ///   - length: Length of the attribute value.
-        ///   - flags: Xattr flags (e.g., `XATTR_CREATE`).
+        ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func fsetxattr(
@@ -1523,7 +1583,7 @@
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Xattr.Options,
+            disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1532,7 +1592,7 @@
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: name)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (pointer.pointee.cValue.rw_flags = disposition.rawBits)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1545,7 +1605,7 @@
         ///   - value: Attribute value pointer.
         ///   - path: Null-terminated file path.
         ///   - length: Length of the attribute value.
-        ///   - flags: Xattr flags (e.g., `XATTR_CREATE`).
+        ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func setxattr(
@@ -1553,7 +1613,7 @@
             value: UnsafeRawPointer,
             path: UnsafePointer<CChar>,
             length: Kernel.IO.Uring.Length,
-            flags: Kernel.IO.Uring.Xattr.Options,
+            disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1563,7 +1623,7 @@
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
             unsafe (pointer.pointee.cValue.addr3 = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (pointer.pointee.cValue.rw_flags = disposition.rawBits)
             unsafe (pointer.pointee.data = data)
         }
 
