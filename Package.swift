@@ -83,6 +83,7 @@ let package = Package(
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Socket Primitives", package: "swift-kernel-primitives"),
+                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
             ]
         ),
 
@@ -124,6 +125,7 @@ let package = Package(
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
+                .product(name: "ISO 9945 Kernel", package: "swift-iso-9945"),
             ]
         ),
 
