@@ -1050,7 +1050,7 @@
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
-            after timespec: UnsafePointer<__kernel_timespec>,
+            after timespec: UnsafeRawPointer,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1080,7 +1080,7 @@
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
-            deadline timespec: UnsafePointer<__kernel_timespec>,
+            deadline timespec: UnsafeRawPointer,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1126,7 +1126,7 @@
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
-            link timespec: UnsafePointer<__kernel_timespec>,
+            link timespec: UnsafeRawPointer,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1151,7 +1151,7 @@
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func timeout(
-            linkDeadline timespec: UnsafePointer<__kernel_timespec>,
+            linkDeadline timespec: UnsafeRawPointer,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1562,7 +1562,7 @@
         ///   - data: Operation data to return with completion.
         @unsafe @inlinable
         public func futex(
-            waitv: UnsafePointer<futex_waitv>,
+            waitv: UnsafeRawPointer,
             count: UInt32,
             flags: Kernel.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
