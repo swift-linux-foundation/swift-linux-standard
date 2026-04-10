@@ -43,12 +43,13 @@
         /// ## Usage
         ///
         /// ```swift
-        /// if let sqe = ring.submission.next() {
-        ///     sqe.prepare.nop(data: data)
-        ///     ring.submission.commit()
+        /// if let sqe = ring.nextEntry() {
+        ///     unsafe sqe.prepare.nop(data: data)
+        ///     ring.advance()
         /// }
-        /// _ = try ring.enter(toSubmit: ring.submission.pending, minComplete: .zero, flags: [])
-        /// let harvested = ring.completion.drain(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
+        /// let flushed = ring.flush()
+        /// _ = try ring.enter(toSubmit: flushed, minComplete: .zero, flags: [])
+        /// let harvested = ring.drain(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
         ///     // process completion
         /// }
         /// ```
@@ -73,8 +74,15 @@
             @usableFromInline let cqMask: Completion.Queue.Mask
             @usableFromInline let cqes: UnsafePointer<Completion.Queue.Entry>
 
-            // Submission tracking
-            @usableFromInline var _pendingCount: Submission.Count = .zero
+            // Submission tracking — local head/tail decoupled from kernel-visible tail.
+            // next() advances sqeTail locally. flush() publishes [sqeHead..<sqeTail]
+            // to the kernel with a single atomic store-release on sqTail.
+            @usableFromInline var sqeHead: UInt32 = 0
+            @usableFromInline var sqeTail: UInt32 = 0
+
+            // Whether SQ and CQ share one mmap region (IORING_FEAT_SINGLE_MMAP).
+            // When true, deinit must NOT munmap cqRingAddr separately.
+            @usableFromInline let singleMmap: Bool
 
             // mmap regions (owned — deinit unmaps)
             @usableFromInline let sqRingAddr: Kernel.Memory.Address
@@ -97,6 +105,7 @@
                 cqTail: UnsafeMutablePointer<UInt32>,
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
+                singleMmap: Bool,
                 sqRingAddr: Kernel.Memory.Address, sqRingSize: Kernel.File.Size,
                 cqRingAddr: Kernel.Memory.Address, cqRingSize: Kernel.File.Size,
                 sqeAddr: Kernel.Memory.Address, sqeSize: Kernel.File.Size
@@ -112,7 +121,9 @@
                 self.cqTail = cqTail
                 self.cqMask = cqMask
                 self.cqes = cqes
-                self._pendingCount = .zero
+                self.sqeHead = 0
+                self.sqeTail = 0
+                self.singleMmap = singleMmap
                 self.sqRingAddr = sqRingAddr; self.sqRingSize = sqRingSize
                 self.cqRingAddr = cqRingAddr; self.cqRingSize = cqRingSize
                 self.sqeAddr = sqeAddr; self.sqeSize = sqeSize
@@ -120,7 +131,10 @@
 
             deinit {
                 unsafe munmap(sqRingAddr.mutablePointer, Int(sqRingSize))
-                unsafe munmap(cqRingAddr.mutablePointer, Int(cqRingSize))
+                // With SINGLE_MMAP, CQ shares the SQ region — do not double-munmap.
+                if !singleMmap {
+                    unsafe munmap(cqRingAddr.mutablePointer, Int(cqRingSize))
+                }
                 unsafe munmap(sqeAddr.mutablePointer, Int(sqeSize))
             }
         }
@@ -141,6 +155,8 @@
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
+
+    public import CPU_Primitives
 
     // MARK: - Syscalls
 
@@ -354,6 +370,7 @@
             params: Kernel.IO.Uring.Params
         ) throws(Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
+            let isSingleMmap = params.features.contains(.singleMmap)
 
             let sqEntryCount = Int(bitPattern: params.sqEntries)
             let cqEntryCount = Int(bitPattern: params.cqEntries)
@@ -362,26 +379,39 @@
             let sqeSz = sqEntryCount * MemoryLayout<Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             // -- Map SQ ring --
+            // With SINGLE_MMAP (kernel 5.4+), size the region to cover both SQ and CQ.
 
-            guard let sq = unsafe mmap(nil, sqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, 0),
+            let sqMmapSz = isSingleMmap ? max(sqRingSz, cqRingSz) : sqRingSz
+
+            guard let sq = unsafe mmap(nil, sqMmapSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, 0),
                   unsafe sq != MAP_FAILED else {
                 throw .setup(.posix(errno))
             }
 
             // -- Map CQ ring --
+            // With SINGLE_MMAP the CQ ring shares the SQ region — no separate mmap.
 
-            guard let cq = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(Kernel.IO.Uring.Mmap.Offset.cqRing)),
-                  unsafe cq != MAP_FAILED else {
-                unsafe munmap(sq, sqRingSz)
-                throw .setup(.posix(errno))
+            let cq: UnsafeMutableRawPointer
+            let cqMmapSz: Int
+            if isSingleMmap {
+                cq = sq
+                cqMmapSz = 0  // Not separately mapped.
+            } else {
+                cqMmapSz = cqRingSz
+                guard let cqPtr = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(Kernel.IO.Uring.Mmap.Offset.cqRing)),
+                      unsafe cqPtr != MAP_FAILED else {
+                    unsafe munmap(sq, sqMmapSz)
+                    throw .setup(.posix(errno))
+                }
+                cq = cqPtr
             }
 
-            // -- Map SQE array --
+            // -- Map SQE array (always separate) --
 
             guard let sqe = unsafe mmap(nil, sqeSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(Kernel.IO.Uring.Mmap.Offset.sqes)),
                   unsafe sqe != MAP_FAILED else {
-                unsafe munmap(sq, sqRingSz)
-                unsafe munmap(cq, cqRingSz)
+                unsafe munmap(sq, sqMmapSz)
+                if !isSingleMmap { unsafe munmap(cq, cqMmapSz) }
                 throw .setup(.posix(errno))
             }
 
@@ -402,8 +432,9 @@
                 cqMask: Completion.Queue.Mask(rawValue: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self)),
                 cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
                     .assumingMemoryBound(to: Kernel.IO.Uring.Completion.Queue.Entry.self)),
-                sqRingAddr: unsafe Kernel.Memory.Address(sq), sqRingSize: Kernel.File.Size(sqRingSz),
-                cqRingAddr: unsafe Kernel.Memory.Address(cq), cqRingSize: Kernel.File.Size(cqRingSz),
+                singleMmap: isSingleMmap,
+                sqRingAddr: unsafe Kernel.Memory.Address(sq), sqRingSize: Kernel.File.Size(sqMmapSz),
+                cqRingAddr: unsafe Kernel.Memory.Address(cq), cqRingSize: Kernel.File.Size(cqMmapSz),
                 sqeAddr: unsafe Kernel.Memory.Address(sqe), sqeSize: Kernel.File.Size(sqeSz)
             )
         }
@@ -412,123 +443,112 @@
     // MARK: - Submission Queue Operations
 
     extension Kernel.IO.Uring {
-        /// Submission queue operations.
-        public var submission: Submission.Access {
-            mutating get {
-                unsafe Submission.Access(ring: &self)
-            }
-        }
-    }
-
-    extension Kernel.IO.Uring.Submission {
-        /// Accessor for submission queue operations on the ring.
-        public struct Access: ~Copyable {
-            @usableFromInline
-            let ring: UnsafeMutablePointer<Kernel.IO.Uring>
-
-            @unsafe @usableFromInline
-            init(ring: UnsafeMutablePointer<Kernel.IO.Uring>) {
-                self.ring = unsafe ring
-            }
-        }
-    }
-
-    extension Kernel.IO.Uring.Submission.Access {
-        /// The number of SQEs awaiting flush via ``Kernel/IO/Uring/enter(toSubmit:minComplete:flags:)``.
-        public var pending: Kernel.IO.Uring.Submission.Count {
-            unsafe ring.pointee._pendingCount
-        }
-
         /// Acquire the next available SQE slot for filling.
         ///
-        /// Returns a pointer to the SQE if a slot is available, or `nil`
-        /// if the submission queue is full. After filling the SQE, call
-        /// ``commit()`` to advance the tail.
+        /// Returns a pointer to the SQE if a slot is available, or `nil` if the
+        /// submission queue is full (submit pending entries and retry).
+        ///
+        /// The returned pointer is valid until the next ``flush()`` call. Fill the
+        /// SQE via `sqe.prepare.read(...)` etc., then call ``advance()`` to mark it
+        /// ready, and ``flush()`` to publish the batch to the kernel.
+        ///
+        /// ## Safety
+        ///
+        /// The returned pointer aliases mmap'd shared memory. The caller MUST NOT
+        /// hold the pointer across a ``flush()`` + ``enter(toSubmit:minComplete:flags:)``
+        /// cycle — the kernel may overwrite the SQE after submission.
         ///
         /// - Returns: Mutable pointer to the next SQE, or `nil` if full.
         @unsafe
-        public func next() -> UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>? {
-            let tail = unsafe ring.pointee.sqTail.pointee
-            let head = unsafe ring.pointee.sqHead.pointee
-            let used = Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
-            guard used < ring.pointee.sqEntries else { return nil }
-            let slot = ring.pointee.sqMask.slot(for: tail)
-            unsafe ring.pointee.sqArray[slot] = UInt32(slot)
-            return unsafe ring.pointee.sqes.advanced(by: slot)
+        public mutating func nextEntry() -> UnsafeMutablePointer<Submission.Queue.Entry>? {
+            // Local tail vs kernel-visible head. On SQPOLL the kernel advances sqHead
+            // concurrently, so we load with acquire. Without SQPOLL the acquire is
+            // harmless (TSO on x86, ldar on ARM64 — one instruction either way).
+            let head = unsafe CPU.Atomic.load(sqHead, ordering: .acquiring)
+            guard sqEntries.rawValue.rawValue > UInt(sqeTail &- head) else { return nil }
+            let slot = sqMask.slot(for: sqeTail)
+            return unsafe sqes.advanced(by: slot)
         }
 
-        /// Advance the SQ tail after filling an entry from ``next()``.
+        /// Mark the current SQE as ready for submission.
         ///
-        /// NOTE: `io_uring_enter` provides a full memory barrier on flush.
-        /// WHEN TO REMOVE: add atomic store-release if submissions cross threads.
-        public func commit() {
-            unsafe ring.pointee.sqTail.pointee = ring.pointee.sqTail.pointee &+ 1
-            unsafe (ring.pointee._pendingCount += .one)
+        /// Call after filling an SQE from ``nextEntry()``. This advances the local
+        /// tail but does NOT publish to the kernel — call ``flush()`` for that.
+        public mutating func advance() {
+            sqeTail &+= 1
         }
 
-        /// Reset the pending count after a successful enter call.
-        public func reset() {
-            unsafe (ring.pointee._pendingCount = .zero)
+        /// Flush all pending SQEs to the kernel.
+        ///
+        /// Populates the SQ indirection array for the range [sqeHead..<sqeTail],
+        /// then publishes the new tail with a single atomic store-release. This
+        /// makes ALL pending SQEs visible to the kernel in one barrier.
+        ///
+        /// - Returns: Number of SQEs flushed.
+        public mutating func flush() -> Submission.Count {
+            let localTail = sqeTail
+            let flushed = localTail &- sqeHead
+            var toFlush = sqeHead
+            while toFlush != localTail {
+                let slot = sqMask.slot(for: toFlush)
+                unsafe sqArray[slot] = UInt32(slot)
+                toFlush &+= 1
+            }
+            sqeHead = localTail
+
+            // Single atomic store-release: makes SQE writes visible to the kernel.
+            unsafe CPU.Atomic.store(sqTail, localTail, ordering: .releasing)
+
+            return Submission.Count(__unchecked: (), Cardinal(UInt(flushed)))
+        }
+
+        /// Number of SQEs locally queued but not yet flushed to the kernel.
+        public var pending: Submission.Count {
+            Submission.Count(__unchecked: (), Cardinal(UInt(sqeTail &- sqeHead)))
         }
     }
 
     // MARK: - Completion Queue Operations
 
     extension Kernel.IO.Uring {
-        /// Completion queue operations.
-        public var completion: Completion.Access {
-            mutating get {
-                unsafe Completion.Access(ring: &self)
-            }
-        }
-    }
-
-    extension Kernel.IO.Uring.Completion {
-        /// Accessor for completion queue operations on the ring.
-        public struct Access: ~Copyable {
-            @usableFromInline
-            let ring: UnsafeMutablePointer<Kernel.IO.Uring>
-
-            @unsafe @usableFromInline
-            init(ring: UnsafeMutablePointer<Kernel.IO.Uring>) {
-                self.ring = unsafe ring
-            }
-        }
-    }
-
-    extension Kernel.IO.Uring.Completion.Access {
         /// Drain completed events from the CQ.
         ///
-        /// Iterates available CQEs up to `limit`, calling `visitor` for each.
-        /// Advances the CQ head after all entries are processed.
-        ///
-        /// Non-blocking shared-memory read.
-        ///
-        /// NOTE: `io_uring_enter` on flush provides the memory barrier for the next cycle.
-        /// WHEN TO REMOVE: add atomic store-release if harvest crosses threads.
+        /// Reads the CQ tail with acquire ordering (sees kernel's CQE writes),
+        /// iterates available CQEs up to `limit`, then publishes the new CQ head
+        /// with release ordering (frees CQ slots for the kernel).
         ///
         /// - Parameters:
         ///   - limit: Maximum number of completions to drain.
         ///   - visitor: Called for each CQE.
         /// - Returns: Number of completions drained.
-        public func drain(
-            limit: Kernel.IO.Uring.Completion.Count,
-            _ visitor: (Kernel.IO.Uring.Completion.Queue.Entry) -> Void
-        ) -> Kernel.IO.Uring.Completion.Count {
-            var head = unsafe ring.pointee.cqHead.pointee
-            let tail = unsafe ring.pointee.cqTail.pointee
+        public mutating func drain(
+            limit: Completion.Count,
+            _ visitor: (Completion.Queue.Entry) -> Void
+        ) -> Completion.Count {
+            // Acquire-load tail: sees all CQE data the kernel wrote before
+            // its store-release to cqTail.
+            var head = unsafe cqHead.pointee  // We are the sole writer of cqHead.
+            let tail = unsafe CPU.Atomic.load(cqTail, ordering: .acquiring)
             let maxCount = Int(bitPattern: limit)
             var count = 0
 
             while head != tail, count < maxCount {
-                let slot = ring.pointee.cqMask.slot(for: head)
-                unsafe visitor(ring.pointee.cqes[slot])
+                let slot = cqMask.slot(for: head)
+                unsafe visitor(cqes[slot])
                 head &+= 1
                 count += 1
             }
 
-            unsafe (ring.pointee.cqHead.pointee = head)
-            return Kernel.IO.Uring.Completion.Count(__unchecked: (), Cardinal(UInt(count)))
+            // Release-store head: makes consumed CQ slots available to the kernel.
+            unsafe CPU.Atomic.store(cqHead, head, ordering: .releasing)
+            return Completion.Count(__unchecked: (), Cardinal(UInt(count)))
+        }
+
+        /// Number of completions available without entering the kernel.
+        public var completionsAvailable: Completion.Count {
+            let tail = unsafe CPU.Atomic.load(cqTail, ordering: .acquiring)
+            let head = unsafe cqHead.pointee
+            return Completion.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
         }
     }
 

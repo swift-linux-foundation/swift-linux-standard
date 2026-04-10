@@ -21,6 +21,9 @@
         public struct Epoll {
             /// Add to epoll set.
             public static let ctl = Opcode(rawValue: 29)
+
+            /// Epoll wait (kernel 6.x+).
+            public static let wait = Opcode(rawValue: 59)
         }
     }
 

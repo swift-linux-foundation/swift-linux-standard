@@ -63,6 +63,9 @@
 
         /// Close file descriptor.
         public static let close = Self(rawValue: 19)
+
+        /// 128-byte no-op (kernel 6.x+).
+        public static let nop128 = Self(rawValue: 63)
     }
 
     // MARK: - CustomStringConvertible
@@ -70,18 +73,90 @@
     extension Kernel.IO.Uring.Opcode: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
+            // Basic
             case .nop: return "NOP"
+            case .close: return "CLOSE"
+            case .nop128: return "NOP128"
+            // Read
             case .read.standard: return "READ"
             case .read.vectored: return "READV"
+            case .read.fixed: return "READ_FIXED"
+            case .read.multishot: return "READ_MULTISHOT"
+            case .read.vectoredFixed: return "READV_FIXED"
+            // Write
             case .write.standard: return "WRITE"
             case .write.vectored: return "WRITEV"
+            case .write.fixed: return "WRITE_FIXED"
+            case .write.vectoredFixed: return "WRITEV_FIXED"
+            // Sync
             case .sync.file: return "FSYNC"
+            case .sync.fileRange: return "SYNC_FILE_RANGE"
+            // File
+            case .file.openat: return "OPENAT"
+            case .file.openat2: return "OPENAT2"
+            case .file.statx: return "STATX"
+            case .file.fallocate: return "FALLOCATE"
+            case .file.fadvise: return "FADVISE"
+            case .file.ftruncate: return "FTRUNCATE"
+            case .file.renameat: return "RENAMEAT"
+            case .file.unlinkat: return "UNLINKAT"
+            case .file.mkdirat: return "MKDIRAT"
+            case .file.symlinkat: return "SYMLINKAT"
+            case .file.linkat: return "LINKAT"
+            case .file.filesUpdate: return "FILES_UPDATE"
+            // Socket
             case .socket.accept: return "ACCEPT"
             case .socket.connect: return "CONNECT"
             case .socket.send: return "SEND"
             case .socket.receive: return "RECV"
-            case .close: return "CLOSE"
+            case .socket.sendMessage: return "SENDMSG"
+            case .socket.receiveMessage: return "RECVMSG"
+            case .socket.shutdown: return "SHUTDOWN"
+            case .socket.create: return "SOCKET"
+            case .socket.bind: return "BIND"
+            case .socket.listen: return "LISTEN"
+            case .socket.receiveZeroCopy: return "RECV_ZC"
+            // Send (zero-copy)
+            case .send.zero.copy: return "SEND_ZC"
+            case .send.zero.msg: return "SENDMSG_ZC"
+            // Cancel
             case .cancel.async: return "ASYNC_CANCEL"
+            // Timeout
+            case .timeout.standard: return "TIMEOUT"
+            case .timeout.remove: return "TIMEOUT_REMOVE"
+            case .timeout.link: return "LINK_TIMEOUT"
+            // Poll
+            case .poll.add: return "POLL_ADD"
+            case .poll.remove: return "POLL_REMOVE"
+            // Pipe
+            case .pipe.splice: return "SPLICE"
+            case .pipe.tee: return "TEE"
+            case .pipe.create: return "PIPE"
+            // Buffer
+            case .buffer.provide: return "PROVIDE_BUFFERS"
+            case .buffer.remove: return "REMOVE_BUFFERS"
+            // Epoll
+            case .epoll.ctl: return "EPOLL_CTL"
+            case .epoll.wait: return "EPOLL_WAIT"
+            // Ring
+            case .ring.msg: return "MSG_RING"
+            case .ring.cmd: return "URING_CMD"
+            case .ring.cmd128: return "URING_CMD128"
+            // Xattr
+            case .xattr.fset: return "FSETXATTR"
+            case .xattr.set: return "SETXATTR"
+            case .xattr.fget: return "FGETXATTR"
+            case .xattr.get: return "GETXATTR"
+            // Memory
+            case .memory.madvise: return "MADVISE"
+            // Futex
+            case .futex.wait: return "FUTEX_WAIT"
+            case .futex.wake: return "FUTEX_WAKE"
+            case .futex.waitv: return "FUTEX_WAITV"
+            // Wait
+            case .wait.id: return "WAITID"
+            // Fixed
+            case .fixed.fdInstall: return "FIXED_FD_INSTALL"
             default: return "OPCODE(\(rawValue))"
             }
         }

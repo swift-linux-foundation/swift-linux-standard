@@ -24,6 +24,9 @@
 
             /// Transfer data between fds (tee).
             public static let tee = Opcode(rawValue: 33)
+
+            /// Create pipe (kernel 6.x+).
+            public static let create = Opcode(rawValue: 62)
         }
     }
 

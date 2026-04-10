@@ -41,6 +41,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../swift-kernel-primitives"),
+        .package(path: "../swift-cpu-primitives"),
         .package(path: "../swift-loader-primitives"),
         // SDG(wraps): Linux syscalls wrap errno
         // .package(path: "../swift-error-primitives"),
@@ -122,6 +123,7 @@ let package = Package(
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
             ]
         ),
 

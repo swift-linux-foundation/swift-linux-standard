@@ -42,6 +42,18 @@
 
             /// Socket operation.
             public static let create = Opcode(rawValue: 45)
+
+            /// Bind socket to address (kernel 6.11+).
+            public static let bind = Opcode(rawValue: 56)
+
+            /// Listen on socket (kernel 6.11+).
+            public static let listen = Opcode(rawValue: 57)
+
+            /// Zero-copy receive (kernel 6.x+).
+            // WHY: Compound name — the non-compound path would be `.receive.zero.copy`
+            // via a dedicated Receive namespace (symmetric with Send.Zero). Deferred to
+            // avoid scope creep; this provides immediate coverage.
+            public static let receiveZeroCopy = Opcode(rawValue: 58)
         }
     }
 

@@ -30,6 +30,11 @@
 
             /// Read multishot (kernel 6.2+).
             public static let multishot = Opcode(rawValue: 49)
+
+            /// Vectored read into registered buffers (kernel 6.x+).
+            // WHY: Ideal path is `.read.vectored.fixed` but `.read.vectored` already
+            // returns Opcode, not a namespace. Restructuring would break existing callers.
+            public static let vectoredFixed = Opcode(rawValue: 60)
         }
     }
 

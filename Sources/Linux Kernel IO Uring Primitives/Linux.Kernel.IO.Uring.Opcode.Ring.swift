@@ -24,6 +24,9 @@
 
             /// Uring command.
             public static let cmd = Kernel.IO.Uring.Opcode(rawValue: 46)
+
+            /// 128-byte uring command.
+            public static let cmd128 = Kernel.IO.Uring.Opcode(rawValue: 64)
         }
 
         /// Access to ring operation opcodes.
