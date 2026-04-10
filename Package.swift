@@ -38,7 +38,9 @@ let package = Package(
         // MARK: - Core
         .target(
             name: "Linux Standard Core",
-            dependencies: []
+            dependencies: [
+                .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+            ]
         ),
 
         // MARK: - C Shims
