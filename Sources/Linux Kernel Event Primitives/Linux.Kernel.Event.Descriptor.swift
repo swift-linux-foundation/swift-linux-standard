@@ -153,6 +153,21 @@ extension Kernel.Event.Descriptor {
     }
 }
 
+// MARK: - Consuming Extraction
+
+extension Kernel.Descriptor {
+    /// Extract the kernel descriptor from an event descriptor, consuming it.
+    ///
+    /// The caller takes ownership of the returned descriptor — its deinit
+    /// closes the fd. The event descriptor is fully consumed.
+    ///
+    /// Enables cross-platform code that needs a ``Kernel/Descriptor``
+    /// rather than the Linux-specific ``Kernel/Event/Descriptor``.
+    public init(_ eventDescriptor: consuming Kernel.Event.Descriptor) {
+        self = eventDescriptor.descriptor
+    }
+}
+
 // MARK: - Lifecycle
 
 extension Kernel.Event.Descriptor {
