@@ -20,6 +20,8 @@
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard
+    public import Linux_Kernel_Futex_Standard
+    public import Linux_Kernel_Socket_Standard
     public import ISO_9945_Kernel_File
 
     #if canImport(Glibc)
