@@ -83,6 +83,9 @@ let package = Package(
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                            .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel Socket
@@ -91,6 +94,13 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .product(name: "Kernel Socket Primitives", package: "swift-kernel-primitives"),
+                            .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel Memory
@@ -100,6 +110,12 @@ let package = Package(
                 .target(name: "Linux Standard Core"),
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "ISO 9945 Kernel Memory", package: "swift-iso-9945"),
+                            .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel Descriptor
@@ -111,6 +127,10 @@ let package = Package(
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                            .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel Futex
@@ -119,6 +139,12 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
+                            .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel System
@@ -129,6 +155,11 @@ let package = Package(
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                            .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
