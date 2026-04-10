@@ -182,6 +182,8 @@ let package = Package(
             name: "Linux Kernel IO Standard",
             dependencies: [
                 "Linux Standard Core",
+                "Linux Kernel File Standard",
+                "Linux Kernel Descriptor Standard",
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
