@@ -35,10 +35,10 @@ extension Kernel.Futex {
         }
 
         /// Use the private futex fast path (process-private futex).
-        public static let privateFlag = Options(rawValue: 128) // FUTEX_PRIVATE_FLAG
+        public static let privateFlag = Self(rawValue: 128) // FUTEX_PRIVATE_FLAG
 
         /// Use the clock realtime for timeout.
-        public static let clockRealtime = Options(rawValue: 256) // FUTEX_CLOCK_REALTIME
+        public static let clockRealtime = Self(rawValue: 256) // FUTEX_CLOCK_REALTIME
     }
 }
 

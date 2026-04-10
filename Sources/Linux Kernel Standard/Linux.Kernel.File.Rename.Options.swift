@@ -34,19 +34,19 @@
             ///
             /// The rename fails with EEXIST if the destination already exists.
             /// Provides atomic "create if not exists" semantics.
-            public static let noreplace = Options(rawValue: 1)  // RENAME_NOREPLACE
+            public static let noreplace = Self(rawValue: 1)  // RENAME_NOREPLACE
 
             /// Atomically exchange source and destination.
             ///
             /// Both paths must exist. The operation atomically swaps
             /// the two directory entries.
-            public static let exchange = Options(rawValue: 2)  // RENAME_EXCHANGE
+            public static let exchange = Self(rawValue: 2)  // RENAME_EXCHANGE
 
             /// Create a whiteout at source (overlayfs).
             ///
             /// Used by overlay filesystems to mark a file as deleted
             /// in the upper layer while it still exists in lower layers.
-            public static let whiteout = Options(rawValue: 4)  // RENAME_WHITEOUT
+            public static let whiteout = Self(rawValue: 4)  // RENAME_WHITEOUT
         }
     }
 

@@ -74,13 +74,13 @@ extension Kernel.Pipe {
         }
 
         /// Set the close-on-exec flag on the new file descriptors.
-        public static let closeOnExec = Options(rawValue: O_CLOEXEC)
+        public static let closeOnExec = Self(rawValue: O_CLOEXEC)
 
         /// Set the non-blocking flag on the new file descriptors.
-        public static let nonBlock = Options(rawValue: O_NONBLOCK)
+        public static let nonBlock = Self(rawValue: O_NONBLOCK)
 
         /// Create a direct I/O pipe (Linux 3.4+).
-        public static let direct = Options(rawValue: O_DIRECT)
+        public static let direct = Self(rawValue: O_DIRECT)
     }
 }
 

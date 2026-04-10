@@ -19,6 +19,10 @@ public import Kernel_Memory_Primitives
 public import Kernel_Random_Primitives
 public import Kernel_Path_Primitives
 
+#if canImport(CLinuxKernelShim)
+    internal import CLinuxKernelShim
+#endif
+
 #if canImport(Glibc)
     internal import Glibc
 #elseif canImport(Musl)
@@ -45,13 +49,13 @@ extension Kernel.File {
                 }
 
                 /// Wait for writeout of pages in the range that were dirty before the call.
-                public static let waitBefore = Options(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE))
+                public static let waitBefore = Self(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE))
 
                 /// Initiate writeout of pages in the range that are currently dirty.
-                public static let write = Options(rawValue: UInt32(SYNC_FILE_RANGE_WRITE))
+                public static let write = Self(rawValue: UInt32(SYNC_FILE_RANGE_WRITE))
 
                 /// Wait for writeout of pages in the range after writeback has been initiated.
-                public static let waitAfter = Options(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_AFTER))
+                public static let waitAfter = Self(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_AFTER))
             }
         }
     }

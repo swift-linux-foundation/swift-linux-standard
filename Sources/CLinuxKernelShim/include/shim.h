@@ -17,8 +17,26 @@
 #include <linux/io_uring.h>  // io_uring structs
 #include <sys/syscall.h>     // __NR_* syscall numbers (safe - just defines)
 
-// splice flags - not in SwiftGlibc
+// Linux-specific constants not in SwiftGlibc
 #include <fcntl.h>
+
+// AT_EMPTY_PATH - Linux 2.6.39+
+#ifndef AT_EMPTY_PATH
+#define AT_EMPTY_PATH 0x1000
+#endif
+
+// sync_file_range flags - Linux 2.6.17+
+#ifndef SYNC_FILE_RANGE_WAIT_BEFORE
+#define SYNC_FILE_RANGE_WAIT_BEFORE 1
+#endif
+#ifndef SYNC_FILE_RANGE_WRITE
+#define SYNC_FILE_RANGE_WRITE 2
+#endif
+#ifndef SYNC_FILE_RANGE_WAIT_AFTER
+#define SYNC_FILE_RANGE_WAIT_AFTER 4
+#endif
+
+// splice flags - not in SwiftGlibc
 #ifndef SPLICE_F_MOVE
 #define SPLICE_F_MOVE 1
 #endif
