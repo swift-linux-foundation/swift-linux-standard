@@ -33,9 +33,9 @@
         /// - `.allocate`: Kernel auto-allocates a registered file slot
         ///   (`IORING_FILE_INDEX_ALLOC`). For accept-direct, openat-direct,
         ///   socket-direct. Sets both `IOSQE_FIXED_FILE` and `file_index = ~0`.
-        public enum Target {
+        public enum Target: ~Copyable {
             /// A kernel file descriptor.
-            case descriptor(borrowing Kernel.Descriptor)
+            case descriptor(Kernel.Descriptor)
 
             /// An index into the registered file table.
             case registered(UInt32)
@@ -49,7 +49,6 @@
 
     extension Kernel.IO.Uring.Target {
         /// Write the target's fd value to the SQE.
-        @inlinable
         func apply(
             to sqe: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>
         ) {

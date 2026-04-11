@@ -1,6 +1,7 @@
 ---
 date: 2026-04-10
-status: open
+status: resolved
+resolution-date: 2026-04-11
 severity: build-blocking
 packages:
   - swift-linux-standard

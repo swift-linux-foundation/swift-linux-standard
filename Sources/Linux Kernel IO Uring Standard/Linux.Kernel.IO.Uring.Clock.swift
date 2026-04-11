@@ -45,7 +45,6 @@
 
     extension Kernel.IO.Uring.Clock {
         /// The io_uring timeout flag bits for this clock source.
-        @usableFromInline
         var timeoutBits: UInt32 {
             switch self {
             case .monotonic: 0
