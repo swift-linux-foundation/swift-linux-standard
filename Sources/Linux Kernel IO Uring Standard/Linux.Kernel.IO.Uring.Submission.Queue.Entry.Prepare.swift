@@ -22,6 +22,8 @@
     public import Linux_Kernel_Event_Standard
     public import Linux_Kernel_Futex_Standard
     public import Linux_Kernel_Socket_Standard
+    public import Linux_Kernel_System_Standard
+    public import Kernel_Process_Primitives
     public import ISO_9945_Kernel_File
 
     #if canImport(Glibc)
@@ -51,10 +53,9 @@
         /// from a previous operation leaks into the next. The ~16KB/batch cost
         /// (256 SQEs × 64 bytes) is negligible relative to the I/O latency.
         public struct Prepare: ~Copyable {
-            @usableFromInline
             let pointer: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>
 
-            @unsafe @inlinable
+            @unsafe
             init(_ pointer: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>) {
                 self.pointer = unsafe pointer
             }
@@ -67,7 +68,6 @@
         /// Configures this entry for a no-op operation.
         ///
         /// - Parameter data: Operation data to return with completion.
-        @inlinable
         public func nop(data: Kernel.IO.Uring.Operation.Data) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .nop)
@@ -82,9 +82,9 @@
         ///   - length: Number of bytes to read.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func read(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -107,9 +107,9 @@
         ///   - length: Number of bytes to write.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func write(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -129,7 +129,6 @@
         /// - Parameters:
         ///   - target: Operation data of the operation to cancel.
         ///   - data: Operation data to return with this cancel's completion.
-        @inlinable
         public func cancel(
             target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
@@ -146,9 +145,8 @@
         ///   - target: File targeting (descriptor or registered index).
         ///   - datasync: If true, only sync data (not metadata).
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func fsync(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             datasync: Bool,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -166,9 +164,8 @@
         /// - Parameters:
         ///   - target: File targeting (descriptor or registered index).
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func close(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -181,15 +178,15 @@
         ///
         /// - Parameters:
         ///   - target: File targeting (descriptor, registered, or auto-allocate for accept-direct).
-        ///   - addr: Optional pointer to sockaddr buffer.
-        ///   - addrLen: Optional pointer to sockaddr length.
+        ///   - addr: Optional pointer to address storage buffer (kernel writes accepted address).
+        ///   - length: Optional pointer to address length (in/out).
         ///   - flags: Accept flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func accept(
-            target: Kernel.IO.Uring.Target,
-            addr: UnsafeMutableRawPointer?,
-            addrLen: UnsafeMutablePointer<UInt32>?,
+            target: borrowing Kernel.IO.Uring.Target,
+            addr: UnsafeMutablePointer<Kernel.Socket.Address.Storage>?,
+            length: UnsafeMutablePointer<UInt32>?,
             flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -197,7 +194,7 @@
             unsafe (pointer.pointee.opcode = .socket.accept)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
-            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(UInt(bitPattern: addrLen))))
+            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(UInt(bitPattern: length))))
             unsafe (pointer.pointee.opFlags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -206,21 +203,21 @@
         ///
         /// - Parameters:
         ///   - target: File targeting (descriptor or registered index).
-        ///   - addr: Pointer to sockaddr.
-        ///   - addrLen: Length of sockaddr.
+        ///   - address: Pointer to socket address storage.
+        ///   - length: Length of socket address.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func connect(
-            target: Kernel.IO.Uring.Target,
-            addr: UnsafeRawPointer,
-            addrLen: UInt32,
+            target: borrowing Kernel.IO.Uring.Target,
+            address: UnsafePointer<Kernel.Socket.Address.Storage>,
+            length: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.connect)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
-            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(addrLen)))
+            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: address)))
+            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(length)))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -232,9 +229,9 @@
         ///   - length: Number of bytes to send.
         ///   - flags: Send flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func send(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Socket.Message.Options,
@@ -257,9 +254,9 @@
         ///   - length: Maximum bytes to receive.
         ///   - flags: Recv flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func recv(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Socket.Message.Options,
@@ -285,9 +282,9 @@
         ///   - vectors: Buffer pointer to Vector array.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func read(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
@@ -308,9 +305,9 @@
         ///   - vectors: Buffer pointer to Vector array.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func write(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
@@ -335,9 +332,9 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func read(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -365,9 +362,9 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func write(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
@@ -392,9 +389,9 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func read(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
@@ -418,9 +415,9 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func write(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
@@ -448,9 +445,8 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferGroup: Buffer group for kernel-selected buffers.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func read(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             length: Kernel.IO.Uring.Length,
             offset: Kernel.IO.Uring.Offset,
             bufferGroup: Kernel.IO.Uring.Buffer.Group,
@@ -482,9 +478,8 @@
         ///   - length: Number of bytes to transfer.
         ///   - flags: Splice flags (e.g., `SPLICE_F_MOVE`).
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func splice(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             source: borrowing Kernel.Descriptor,
             offsetIn: Kernel.IO.Uring.Offset,
             offsetOut: Kernel.IO.Uring.Offset,
@@ -514,9 +509,8 @@
         ///   - length: Number of bytes to duplicate.
         ///   - flags: Splice flags.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func tee(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             source: borrowing Kernel.Descriptor,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Pipe.Splice.Options,
@@ -537,9 +531,8 @@
         ///   - target: File targeting (descriptor or registered index).
         ///   - length: New file length in bytes.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func ftruncate(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             length: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -572,9 +565,9 @@
         ///   - options: Additional open options (create, truncate, etc.).
         ///   - mode: File mode for creation.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func openat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             access: Kernel.File.Open.Access = .readOnly,
             options: Kernel.File.Open.Options = [],
@@ -596,22 +589,20 @@
         /// - Parameters:
         ///   - target: Directory fd targeting (use `.descriptor` for dirfd, `.allocate` for direct open).
         ///   - path: Null-terminated path to open.
-        ///   - how: Pointer to `open_how` struct specifying open parameters.
-        ///   - size: Size of the `open_how` struct.
+        ///   - how: Pointer to open parameters (must remain valid until completion).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func openat2(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            how: UnsafeRawPointer,
-            size: UInt32,
+            how: UnsafePointer<Kernel.File.Open.How>,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .file.openat2)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.len = size)
+            unsafe (pointer.pointee.cValue.len = UInt32(MemoryLayout<Kernel.File.Open.How>.size))
             unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: how)))
             unsafe (pointer.pointee.data = data)
         }
@@ -623,15 +614,15 @@
         ///   - path: Null-terminated path to stat.
         ///   - flags: Statx flags (e.g., `AT_SYMLINK_NOFOLLOW`).
         ///   - mask: Statx mask (which fields to populate).
-        ///   - buffer: Pointer to statx buffer for results.
+        ///   - buffer: Pointer to statx buffer for results (kernel writes here).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func statx(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             flags: Kernel.File.At.Options,
-            mask: UInt32,
-            buffer: UnsafeMutableRawPointer,
+            mask: Kernel.File.Statx.Mask,
+            buffer: UnsafeMutablePointer<Kernel.File.Statx>,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -639,7 +630,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
             unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
-            unsafe (pointer.pointee.cValue.len = mask)
+            unsafe (pointer.pointee.cValue.len = mask.rawValue)
             unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.data = data)
         }
@@ -653,9 +644,9 @@
         ///   - newPath: Null-terminated new path.
         ///   - flags: Rename flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func renameat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
@@ -679,9 +670,9 @@
         ///   - path: Null-terminated path to unlink.
         ///   - flags: Unlink flags (e.g., `AT_REMOVEDIR`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func unlinkat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             flags: Kernel.File.At.Options,
             data: Kernel.IO.Uring.Operation.Data
@@ -701,9 +692,9 @@
         ///   - path: Null-terminated path for the new directory.
         ///   - mode: Directory permission mode.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func mkdirat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             mode: UInt32,
             data: Kernel.IO.Uring.Operation.Data
@@ -723,9 +714,9 @@
         ///   - linkTarget: Null-terminated symlink target path.
         ///   - linkPath: Null-terminated path for the new symlink.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func symlinkat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             linkTarget: UnsafePointer<CChar>,
             linkPath: UnsafePointer<CChar>,
             data: Kernel.IO.Uring.Operation.Data
@@ -747,9 +738,9 @@
         ///   - newPath: Null-terminated new path.
         ///   - flags: Link flags (e.g., `AT_SYMLINK_FOLLOW`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func linkat(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
@@ -776,9 +767,8 @@
         ///   - offset: Starting offset in the file.
         ///   - length: Number of bytes to allocate.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func fallocate(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             mode: Kernel.IO.Uring.File.Allocate.Mode,
             offset: Kernel.IO.Uring.Offset,
             length: UInt64,
@@ -807,7 +797,6 @@
         ///   - protocol: Protocol number (typically 0).
         ///   - flags: Socket flags.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func socket(
             domain: Int32,
             type: Int32,
@@ -828,21 +817,21 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - addr: Pointer to sockaddr.
-        ///   - addrLen: Length of sockaddr.
+        ///   - address: Pointer to socket address storage.
+        ///   - length: Length of socket address.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func bind(
-            target: Kernel.IO.Uring.Target,
-            addr: UnsafeRawPointer,
-            addrLen: UInt32,
+            target: borrowing Kernel.IO.Uring.Target,
+            address: UnsafePointer<Kernel.Socket.Address.Storage>,
+            length: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.bind)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
-            unsafe (pointer.pointee.cValue.off = UInt64(addrLen))
+            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: address)))
+            unsafe (pointer.pointee.cValue.off = UInt64(length))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -852,9 +841,8 @@
         ///   - target: Socket file targeting.
         ///   - backlog: Maximum pending connection queue length.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func listen(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             backlog: Int32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -869,13 +857,13 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Raw pointer to platform msghdr struct.
+        ///   - message: Pointer to message header (must remain valid until completion).
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func send(
-            target: Kernel.IO.Uring.Target,
-            message: UnsafeRawPointer,
+            target: borrowing Kernel.IO.Uring.Target,
+            message: UnsafePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -892,13 +880,13 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Raw mutable pointer to platform msghdr struct.
+        ///   - message: Pointer to message header (kernel writes results here).
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func recv(
-            target: Kernel.IO.Uring.Target,
-            message: UnsafeMutableRawPointer,
+            target: borrowing Kernel.IO.Uring.Target,
+            message: UnsafeMutablePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -924,9 +912,9 @@
         ///   - flags: Message flags.
         ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func send(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Socket.Message.Options,
@@ -947,14 +935,14 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - message: Raw pointer to platform msghdr struct.
+        ///   - message: Pointer to message header (must remain valid until notification CQE).
         ///   - flags: Message flags.
         ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func send(
-            target: Kernel.IO.Uring.Target,
-            message: UnsafeRawPointer,
+            target: borrowing Kernel.IO.Uring.Target,
+            message: UnsafePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
@@ -975,9 +963,8 @@
         ///   - target: Socket file targeting.
         ///   - how: Shutdown mode (`SHUT_RD`, `SHUT_WR`, or `SHUT_RDWR`).
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func shutdown(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             how: Int32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -992,24 +979,24 @@
         ///
         /// - Parameters:
         ///   - target: Epoll fd targeting.
-        ///   - fd: Target file descriptor to add/modify/delete.
-        ///   - op: Epoll operation (`EPOLL_CTL_ADD`, `EPOLL_CTL_MOD`, `EPOLL_CTL_DEL`).
-        ///   - event: Pointer to epoll_event struct (may be nil for `EPOLL_CTL_DEL`).
+        ///   - descriptor: Target file descriptor to add/modify/delete.
+        ///   - operation: Epoll operation (add, modify, delete).
+        ///   - event: Pointer to epoll event (may be nil for delete).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func epoll(
-            target: Kernel.IO.Uring.Target,
-            fd: Int32,
-            op: Int32,
-            event: UnsafeMutableRawPointer?,
+            target: borrowing Kernel.IO.Uring.Target,
+            descriptor: borrowing Kernel.Descriptor,
+            operation: Kernel.Event.Poll.Operation,
+            event: UnsafeMutablePointer<Kernel.Event.Poll.Event>?,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .epoll.ctl)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: event)))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: op))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: fd)))
+            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: operation.rawValue))
+            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue)))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1017,13 +1004,13 @@
         ///
         /// - Parameters:
         ///   - target: Epoll fd targeting.
-        ///   - events: Pointer to epoll_event array for results.
+        ///   - events: Pointer to epoll event array for results.
         ///   - maxEvents: Maximum number of events to return.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func epoll(
-            target: Kernel.IO.Uring.Target,
-            events: UnsafeMutableRawPointer,
+            target: borrowing Kernel.IO.Uring.Target,
+            events: UnsafeMutablePointer<Kernel.Event.Poll.Event>,
             maxEvents: Int32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1045,14 +1032,14 @@
         /// completions, whichever comes first.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec specifying the duration.
+        ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - count: Number of completions to wait for (0 = time only).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - multishot: If true, the timeout repeats automatically.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func timeout(
-            after timespec: UnsafeRawPointer,
+            after timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1075,14 +1062,14 @@
         /// whichever comes first.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec specifying the deadline.
+        ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - count: Number of completions to wait for (0 = time only).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - multishot: If true, the timeout repeats automatically.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func timeout(
-            deadline timespec: UnsafeRawPointer,
+            deadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1104,7 +1091,6 @@
         /// - Parameters:
         ///   - target: Operation data of the timeout to remove.
         ///   - data: Operation data to return with this operation's completion.
-        @inlinable
         public func timeout(
             remove target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
@@ -1123,12 +1109,12 @@
         /// it is cancelled.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec specifying the duration.
+        ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func timeout(
-            link timespec: UnsafeRawPointer,
+            link timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1148,12 +1134,12 @@
         /// it is cancelled.
         ///
         /// - Parameters:
-        ///   - timespec: Pointer to kernel timespec specifying the deadline.
+        ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func timeout(
-            linkDeadline timespec: UnsafeRawPointer,
+            linkDeadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1176,9 +1162,8 @@
         ///   - multishot: If true, produces CQEs on every event without resubmission.
         ///   - trigger: Trigger mode — edge (default) or level.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func poll(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             events: Kernel.Event.Poll.Events,
             multishot: Bool = false,
             trigger: Kernel.IO.Uring.Poll.Trigger = .edge,
@@ -1199,7 +1184,6 @@
         /// - Parameters:
         ///   - target: Operation data of the poll operation to remove.
         ///   - data: Operation data to return with this operation's completion.
-        @inlinable
         public func poll(
             remove target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
@@ -1225,7 +1209,6 @@
         ///   - targetData: User data for the injected CQE.
         ///   - flags: Message ring flags.
         ///   - data: Operation data for this operation's own completion.
-        @inlinable
         public func message(
             ring fd: Int32,
             value: UInt32,
@@ -1254,7 +1237,7 @@
         ///   - group: Buffer group ID.
         ///   - startId: Starting buffer ID.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func provide(
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
@@ -1280,7 +1263,6 @@
         ///   - count: Number of buffers to remove.
         ///   - group: Buffer group ID.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func remove(
             bufferCount count: Int32,
             group: Kernel.IO.Uring.Buffer.Group,
@@ -1300,7 +1282,7 @@
         ///   - count: Number of file descriptors.
         ///   - offset: Starting index in the registered file table.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func files(
             update fds: UnsafePointer<Int32>,
             count: UInt32,
@@ -1325,9 +1307,8 @@
         ///   - target: Device file targeting.
         ///   - op: Command opcode.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func command(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             op: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1347,7 +1328,6 @@
         ///   - fd: Fixed file index to install.
         ///   - flags: Install flags.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func install(
             fd: UInt32,
             flags: Kernel.IO.Uring.Fixed.Install.Options,
@@ -1366,7 +1346,7 @@
         ///   - fds: Pointer to two-element Int32 array for read/write fds.
         ///   - flags: Pipe flags (e.g., `O_NONBLOCK`, `O_CLOEXEC`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func pipe(
             fds: UnsafeMutablePointer<Int32>,
             flags: Kernel.Pipe.Options,
@@ -1383,7 +1363,6 @@
         /// Configures this entry for a 128-byte no-op operation.
         ///
         /// - Parameter data: Operation data to return with completion.
-        @inlinable
         public func nop128(data: Kernel.IO.Uring.Operation.Data) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .nop128)
@@ -1395,27 +1374,27 @@
         /// Waits for a child process state change (async `waitid(2)`).
         ///
         /// - Parameters:
-        ///   - idtype: ID type (e.g., `P_PID`, `P_ALL`).
-        ///   - id: Process/group ID to wait for.
-        ///   - info: Pointer to siginfo_t for results.
-        ///   - options: Wait options (e.g., `WEXITED`).
-        ///   - flags: Waitid-specific flags.
+        ///   - kind: Type of process identifier to wait for.
+        ///   - id: Process or group ID.
+        ///   - info: Pointer to signal information buffer (kernel writes results here).
+        ///   - options: Wait options specifying which state changes to report.
+        ///   - flags: Waitid-specific io_uring flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func waitid(
-            idtype: UInt32,
-            id: Int32,
-            info: UnsafeMutableRawPointer,
-            options: UInt32,
+            kind: Kernel.Process.Wait.Kind,
+            id: Kernel.Process.ID,
+            info: UnsafeMutablePointer<Kernel.Signal.Information>,
+            options: Kernel.Process.Wait.Options,
             flags: Kernel.IO.Uring.Wait.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .wait.id)
-            unsafe (pointer.pointee.cValue.fd = id)
-            unsafe (pointer.pointee.cValue.len = idtype)
+            unsafe (pointer.pointee.cValue.fd = id.rawValue)
+            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: kind.rawValue))
             unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: info)))
-            unsafe (pointer.pointee.cValue.file_index = options)
+            unsafe (pointer.pointee.cValue.file_index = UInt32(bitPattern: options.rawValue))
             unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -1432,9 +1411,8 @@
         ///   - length: Length of the advisory region.
         ///   - advice: Advisory hint (e.g., `POSIX_FADV_SEQUENTIAL`).
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func fadvise(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
             length: Kernel.IO.Uring.Length,
             advice: UInt32,
@@ -1456,7 +1434,7 @@
         ///   - length: Length of the memory region.
         ///   - advice: Advisory hint (e.g., `MADV_DONTNEED`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func madvise(
             addr: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
@@ -1480,9 +1458,8 @@
         ///   - length: Number of bytes to sync.
         ///   - flags: Sync range flags.
         ///   - data: Operation data to return with completion.
-        @inlinable
         public func sync(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.File.Sync.Range.Options,
@@ -1509,7 +1486,7 @@
         ///   - mask: Bit mask for comparison.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func futex(
             wait futex: UnsafePointer<UInt32>,
             value: UInt64,
@@ -1535,7 +1512,7 @@
         ///   - mask: Bit mask for matching waiters.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func futex(
             wake futex: UnsafePointer<UInt32>,
             value: UInt64,
@@ -1558,13 +1535,13 @@
         /// Waits on multiple futexes simultaneously.
         ///
         /// - Parameters:
-        ///   - waitv: Pointer to array of futex_waitv structs.
+        ///   - entries: Pointer to contiguous array of wait entries (must remain valid until completion).
         ///   - count: Number of futex entries.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func futex(
-            waitv: UnsafeRawPointer,
+            wait entries: UnsafePointer<Kernel.Futex.Wait.Entry>,
             count: UInt32,
             flags: Kernel.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
@@ -1572,7 +1549,7 @@
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .futex.waitv)
             unsafe (pointer.pointee.cValue.fd = 0)
-            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: waitv)))
+            unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: entries)))
             unsafe (pointer.pointee.cValue.len = count)
             unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
@@ -1593,9 +1570,9 @@
         ///   - length: Length of the attribute value.
         ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func fsetxattr(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
@@ -1623,7 +1600,7 @@
         ///   - length: Length of the attribute value.
         ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func setxattr(
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
@@ -1653,9 +1630,9 @@
         ///   - value: Buffer for the attribute value.
         ///   - length: Length of the value buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func fgetxattr(
-            target: Kernel.IO.Uring.Target,
+            target: borrowing Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
             value: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
@@ -1680,7 +1657,7 @@
         ///   - path: Null-terminated file path.
         ///   - length: Length of the value buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe @inlinable
+        @unsafe
         public func getxattr(
             name: UnsafePointer<CChar>,
             value: UnsafeMutableRawPointer,

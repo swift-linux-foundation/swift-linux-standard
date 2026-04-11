@@ -15,6 +15,8 @@
 #include <sys/statfs.h>      // statfs - NOT in SwiftGlibc
 #include <linux/fs.h>        // FICLONE macro
 #include <linux/io_uring.h>  // io_uring structs
+#include <linux/openat2.h>   // struct open_how, RESOLVE_* flags
+#include <linux/stat.h>      // struct statx, statx_timestamp, STATX_* constants
 #include <sys/syscall.h>     // __NR_* syscall numbers (safe - just defines)
 
 // Linux-specific constants not in SwiftGlibc

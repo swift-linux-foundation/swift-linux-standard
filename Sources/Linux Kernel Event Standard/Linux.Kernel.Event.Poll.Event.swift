@@ -29,10 +29,9 @@
     extension Kernel.Event.Poll {
         /// An epoll event describing readiness conditions and associated data.
         ///
-        /// Events are used both for registering interest (via `epoll_ctl`) and
-        /// receiving notifications (via `epoll_wait`). When registering, you
-        /// specify what conditions to monitor; when receiving, you get details
-        /// about what happened.
+        /// Layout-compatible with `struct epoll_event`. An
+        /// `UnsafeMutablePointer<Event>` may be passed directly to kernel
+        /// interfaces that expect `struct epoll_event *`.
         ///
         /// ## Usage
         ///
@@ -56,31 +55,36 @@
         ///     }
         /// }
         /// ```
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/Event/Poll``
-        /// - ``Kernel/Event/Poll/Events``
-        /// - ``Kernel/Event/Poll/Data``
-        public struct Event: Sendable, Equatable, Hashable {
-            /// The event flags that occurred or are being monitored.
-            public var events: Events
-
-            /// Data associated with the file descriptor.
-            ///
-            /// This is typically used to store an identifier that helps dispatch
-            /// the event to the appropriate handler.
-            public var data: Kernel.Event.Poll.Data
+        public struct Event: @unchecked Sendable {
+            /// The underlying C struct.
+            internal var cValue: epoll_event
 
             /// Creates an epoll event.
             ///
             /// - Parameters:
             ///   - events: The event flags to monitor.
             ///   - data: Data to associate with the file descriptor.
-            public init(events: Events, data: Kernel.Event.Poll.Data = .zero) {
-                self.events = events
-                self.data = data
+            public init(events: Events = [], data: Kernel.Event.Poll.Data = .zero) {
+                self.cValue = epoll_event()
+                self.cValue.events = events.rawValue
+                self.cValue.data.u64 = data.rawValue
             }
+        }
+    }
+
+    // MARK: - Accessors
+
+    extension Kernel.Event.Poll.Event {
+        /// The event flags that occurred or are being monitored.
+        public var events: Kernel.Event.Poll.Events {
+            get { Kernel.Event.Poll.Events(rawValue: cValue.events) }
+            set { cValue.events = newValue.rawValue }
+        }
+
+        /// Data associated with the file descriptor.
+        public var data: Kernel.Event.Poll.Data {
+            get { Kernel.Event.Poll.Data(__unchecked: (), cValue.data.u64) }
+            set { cValue.data.u64 = newValue.rawValue }
         }
     }
 
@@ -89,16 +93,22 @@
     extension Kernel.Event.Poll.Event {
         /// Creates an epoll event from the C struct.
         internal init(_ cEvent: epoll_event) {
-            self.events = Kernel.Event.Poll.Events(rawValue: cEvent.events)
-            self.data = Kernel.Event.Poll.Data(__unchecked: (), cEvent.data.u64)
+            self.cValue = cEvent
         }
+    }
 
-        /// Converts to the C epoll_event struct.
-        internal var cValue: epoll_event {
-            var event = epoll_event()
-            event.events = events.rawValue
-            event.data.u64 = data.rawValue
-            return event
+    // MARK: - Equatable, Hashable
+
+    extension Kernel.Event.Poll.Event: Equatable {
+        public static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.cValue.events == rhs.cValue.events && lhs.cValue.data.u64 == rhs.cValue.data.u64
+        }
+    }
+
+    extension Kernel.Event.Poll.Event: Hashable {
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(cValue.events)
+            hasher.combine(cValue.data.u64)
         }
     }
 

@@ -38,7 +38,7 @@
         ///     sqe.prepare.read(target: .descriptor(fd), vectors: vecs, offset: .zero, data: id)
         /// }
         /// ```
-        public struct Vector: Sendable {
+        public struct Vector: @unchecked Sendable {
             /// Base address of the buffer.
             public var base: UnsafeMutableRawPointer?
 
@@ -77,7 +77,6 @@
         /// The underlying C iovec representation.
         ///
         /// Binary-compatible — same layout as `struct iovec`.
-        @inlinable
         var cValue: iovec {
             iovec(iov_base: unsafe base, iov_len: length)
         }
