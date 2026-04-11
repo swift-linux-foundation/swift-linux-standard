@@ -23,6 +23,7 @@
     public import Linux_Kernel_Futex_Standard
     public import Linux_Kernel_Socket_Standard
     public import Linux_Kernel_System_Standard
+    public import Linux_Kernel_Memory_Standard
     public import Kernel_Process_Primitives
     public import ISO_9945_Kernel_File
 
@@ -571,7 +572,7 @@
             path: UnsafePointer<CChar>,
             access: Kernel.File.Open.Access = .readOnly,
             options: Kernel.File.Open.Options = [],
-            mode: UInt32 = 0,
+            mode: Kernel.File.Permissions = .none,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -580,7 +581,7 @@
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
             // Combine access mode and options into one flags field
             unsafe (pointer.pointee.opFlags = access.rawValue | options.rawValue)
-            unsafe (pointer.pointee.cValue.len = mode)
+            unsafe (pointer.pointee.cValue.len = UInt32(mode.rawValue))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -792,24 +793,24 @@
         /// Configures this entry for a socket creation operation.
         ///
         /// - Parameters:
-        ///   - domain: Protocol family (e.g., `AF_INET`, `AF_INET6`).
-        ///   - type: Socket type (e.g., `SOCK_STREAM`, `SOCK_DGRAM`).
+        ///   - domain: Address family (e.g., `.inet`, `.inet6`).
+        ///   - kind: Socket kind (e.g., `.stream`, `.datagram`).
         ///   - protocol: Protocol number (typically 0).
         ///   - flags: Socket flags.
         ///   - data: Operation data to return with completion.
         public func socket(
-            domain: Int32,
-            type: Int32,
-            protocol: Int32,
+            domain: Kernel.Socket.Address.Family,
+            kind: Kernel.Socket.Kind,
+            protocol: Int32 = 0,
             flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.create)
-            unsafe (pointer.pointee.cValue.fd = domain)
+            unsafe (pointer.pointee.cValue.fd = domain.rawValue)
             unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
             unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: `protocol`))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: type)))
+            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: kind.rawValue)))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -961,17 +962,17 @@
         ///
         /// - Parameters:
         ///   - target: Socket file targeting.
-        ///   - how: Shutdown mode (`SHUT_RD`, `SHUT_WR`, or `SHUT_RDWR`).
+        ///   - how: Shutdown mode (`.read`, `.write`, or `.both`).
         ///   - data: Operation data to return with completion.
         public func shutdown(
             target: borrowing Kernel.IO.Uring.Target,
-            how: Int32,
+            how: Kernel.Socket.Shutdown.Mode,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
             unsafe (pointer.pointee.opcode = .socket.shutdown)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: how))
+            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: how.rawValue))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1409,13 +1410,13 @@
         ///   - target: File targeting.
         ///   - offset: Starting offset.
         ///   - length: Length of the advisory region.
-        ///   - advice: Advisory hint (e.g., `POSIX_FADV_SEQUENTIAL`).
+        ///   - advice: File access pattern advisory hint.
         ///   - data: Operation data to return with completion.
         public func fadvise(
             target: borrowing Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
             length: Kernel.IO.Uring.Length,
-            advice: UInt32,
+            advice: Kernel.File.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1423,7 +1424,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = advice)
+            unsafe (pointer.pointee.cValue.rw_flags = advice.rawValue)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1432,13 +1433,13 @@
         /// - Parameters:
         ///   - addr: Start address of the memory region.
         ///   - length: Length of the memory region.
-        ///   - advice: Advisory hint (e.g., `MADV_DONTNEED`).
+        ///   - advice: Memory access pattern advisory hint.
         ///   - data: Operation data to return with completion.
         @unsafe
         public func madvise(
             addr: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
-            advice: UInt32,
+            advice: Kernel.Memory.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             unsafe (pointer.pointee.cValue = io_uring_sqe())
@@ -1446,7 +1447,7 @@
             unsafe (pointer.pointee.cValue.fd = -1)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = advice)
+            unsafe (pointer.pointee.cValue.rw_flags = advice.rawValue)
             unsafe (pointer.pointee.data = data)
         }
 

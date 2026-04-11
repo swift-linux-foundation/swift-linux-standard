@@ -208,6 +208,7 @@ let package = Package(
                 "Linux Kernel Futex Standard",
                 "Linux Kernel Socket Standard",
                 "Linux Kernel System Standard",
+                "Linux Kernel Memory Standard",
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
