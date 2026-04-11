@@ -795,13 +795,13 @@
         /// - Parameters:
         ///   - domain: Address family (e.g., `.inet`, `.inet6`).
         ///   - kind: Socket kind (e.g., `.stream`, `.datagram`).
-        ///   - protocol: Protocol number (typically 0).
+        ///   - protocol: Network protocol (default: `.auto`).
         ///   - flags: Socket flags.
         ///   - data: Operation data to return with completion.
         public func socket(
             domain: Kernel.Socket.Address.Family,
             kind: Kernel.Socket.Kind,
-            protocol: Int32 = 0,
+            protocol: Kernel.Socket.`Protocol` = .auto,
             flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -809,7 +809,7 @@
             unsafe (pointer.pointee.opcode = .socket.create)
             unsafe (pointer.pointee.cValue.fd = domain.rawValue)
             unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: `protocol`))
+            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: `protocol`.rawValue))
             unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: kind.rawValue)))
             unsafe (pointer.pointee.data = data)
         }
