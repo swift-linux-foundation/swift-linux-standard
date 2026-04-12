@@ -33,6 +33,8 @@ let package = Package(
         .package(path: "../../swift-primitives/swift-dimension-primitives"),
         .package(path: "../../swift-primitives/swift-loader-primitives"),
         .package(path: "../../swift-primitives/swift-system-primitives"),
+        .package(path: "../../swift-primitives/swift-standard-library-extensions"),
+        .package(path: "../../swift-primitives/swift-witness-primitives"),
         .package(path: "../../swift-iso/swift-iso-9945"),
     ],
     targets: [
