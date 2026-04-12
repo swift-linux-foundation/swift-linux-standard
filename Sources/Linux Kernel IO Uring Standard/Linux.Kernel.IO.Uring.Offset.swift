@@ -29,10 +29,10 @@
         ///
         /// ```swift
         /// // Read at a specific offset
-        /// sqe.prepare.read(fd: fd, buffer: buf, length: len, offset: .zero, userData: id)
+        /// ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
         ///
         /// // Read at current file position
-        /// sqe.prepare.read(fd: fd, buffer: buf, length: len, offset: .current, userData: id)
+        /// ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .current, data: id)
         /// ```
         public typealias Offset = Coordinate.X<Space>.Value<UInt64>
     }

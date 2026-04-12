@@ -19,7 +19,7 @@
     import Kernel_Error_Primitives
     import Kernel_File_Primitives
     import Kernel_Memory_Primitives
-    @testable import Linux_Kernel_Standard
+    @testable import Linux_Kernel_IO_Uring_Standard
 
     /// Tests for Kernel.IO.Uring.Length (typealias to Magnitude.Value).
     extension Kernel.IO.Uring {

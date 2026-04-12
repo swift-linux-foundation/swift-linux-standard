@@ -35,7 +35,7 @@
         ///     Kernel.IO.Uring.Vector(base: buf2, length: 1024),
         /// ]
         /// vectors.withUnsafeBufferPointer { vecs in
-        ///     sqe.prepare.read(target: .descriptor(fd), vectors: vecs, offset: .zero, data: id)
+        ///     ring.next.entry.read(target: .descriptor(fd), vectors: vecs, offset: .zero, data: id)
         /// }
         /// ```
         public struct Vector: @unchecked Sendable {
