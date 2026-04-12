@@ -95,14 +95,9 @@ let package = Package(
             name: "Linux Kernel Socket Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
+                .product(name: "ISO 9945 Kernel Socket Address", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Kernel Socket", package: "swift-iso-9945"),
                 .product(name: "Kernel Socket Primitives", package: "swift-kernel-primitives"),
-                            .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
         // MARK: - Kernel Memory
@@ -159,6 +154,7 @@ let package = Package(
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                             .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
