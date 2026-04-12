@@ -115,7 +115,7 @@ import Testing
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 1
             entry.fsync(target: .registered(3), datasync: true, data: data)
-            #expect(entry.opcode == .sync.file)
+            #expect(entry.opcode == .sync.file.standard)
             #expect(entry.cValue.fd == 3)
             #expect(entry.opFlags == 1)
             #expect(entry.data == data)
@@ -359,7 +359,7 @@ import Testing
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 84
             entry.install(fd: 10, flags: Kernel.IO.Uring.Fixed.Install.Options(rawValue: 0x01), data: data)
-            #expect(entry.opcode == .fixed.fdInstall)
+            #expect(entry.opcode == .fixed.install)
             #expect(entry.cValue.fd == 10)
             #expect(entry.cValue.rw_flags == 0x01)
             #expect(entry.data == data)
@@ -393,7 +393,7 @@ import Testing
             let data: Kernel.IO.Uring.Operation.Data = 88
             let fds = unsafe UnsafePointer<Int32>(bitPattern: 0x1100)!
             unsafe entry.files(update: fds, count: 4, offset: 10, data: data)
-            #expect(entry.opcode == .file.filesUpdate)
+            #expect(entry.opcode == .file.update)
             #expect(entry.cValue.fd == -1)
             #expect(entry.addr == 0x1100)
             #expect(entry.cValue.len == 4)

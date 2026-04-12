@@ -11,10 +11,6 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
-    public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring {
         /// File operation opcodes.
@@ -53,7 +49,7 @@
             public static let linkat = Opcode(rawValue: 39)
 
             /// Update registered files.
-            public static let filesUpdate = Opcode(rawValue: 20)
+            public static let update = Opcode(rawValue: 20)
         }
     }
 

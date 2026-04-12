@@ -11,10 +11,6 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
-    public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring {
         /// Opcodes specifying which operation to submit to io_uring.
@@ -79,18 +75,18 @@
             case .nop128: return "NOP128"
             // Read
             case .read.standard: return "READ"
-            case .read.vectored: return "READV"
+            case .read.vectored.standard: return "READV"
+            case .read.vectored.fixed: return "READV_FIXED"
             case .read.fixed: return "READ_FIXED"
             case .read.multishot: return "READ_MULTISHOT"
-            case .read.vectoredFixed: return "READV_FIXED"
             // Write
             case .write.standard: return "WRITE"
-            case .write.vectored: return "WRITEV"
+            case .write.vectored.standard: return "WRITEV"
+            case .write.vectored.fixed: return "WRITEV_FIXED"
             case .write.fixed: return "WRITE_FIXED"
-            case .write.vectoredFixed: return "WRITEV_FIXED"
             // Sync
-            case .sync.file: return "FSYNC"
-            case .sync.fileRange: return "SYNC_FILE_RANGE"
+            case .sync.file.standard: return "FSYNC"
+            case .sync.file.range: return "SYNC_FILE_RANGE"
             // File
             case .file.openat: return "OPENAT"
             case .file.openat2: return "OPENAT2"
@@ -103,14 +99,14 @@
             case .file.mkdirat: return "MKDIRAT"
             case .file.symlinkat: return "SYMLINKAT"
             case .file.linkat: return "LINKAT"
-            case .file.filesUpdate: return "FILES_UPDATE"
+            case .file.update: return "FILES_UPDATE"
             // Socket
             case .socket.accept: return "ACCEPT"
             case .socket.connect: return "CONNECT"
             case .socket.send: return "SEND"
             case .socket.receive: return "RECV"
-            case .socket.sendMessage: return "SENDMSG"
-            case .socket.receiveMessage: return "RECVMSG"
+            case .socket.message.send: return "SENDMSG"
+            case .socket.message.receive: return "RECVMSG"
             case .socket.shutdown: return "SHUTDOWN"
             case .socket.create: return "SOCKET"
             case .socket.bind: return "BIND"
@@ -156,7 +152,7 @@
             // Wait
             case .wait.id: return "WAITID"
             // Fixed
-            case .fixed.fdInstall: return "FIXED_FD_INSTALL"
+            case .fixed.install: return "FIXED_FD_INSTALL"
             default: return "OPCODE(\(rawValue))"
             }
         }

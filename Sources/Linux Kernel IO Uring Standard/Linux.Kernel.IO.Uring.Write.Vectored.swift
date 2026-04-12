@@ -11,18 +11,15 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
+    extension Kernel.IO.Uring.Write {
+        /// Vectored write operations.
+        public struct Vectored {
+            /// Vectored write (writev).
+            public static let standard = Kernel.IO.Uring.Opcode(rawValue: 2)
 
-    extension Kernel.IO.Uring {
-        /// Fixed fd operation opcodes.
-        public struct Fixed {
-            /// Install fixed fd into process table (kernel 6.7+).
-            public static let install = Opcode(rawValue: 54)
+            /// Vectored write from registered buffers (kernel 6.x+).
+            public static let fixed = Kernel.IO.Uring.Opcode(rawValue: 61)
         }
-    }
-
-    extension Kernel.IO.Uring.Opcode {
-        /// Access to fixed fd operation opcodes.
-        public static var fixed: Kernel.IO.Uring.Fixed.Type { Kernel.IO.Uring.Fixed.self }
     }
 
 #endif

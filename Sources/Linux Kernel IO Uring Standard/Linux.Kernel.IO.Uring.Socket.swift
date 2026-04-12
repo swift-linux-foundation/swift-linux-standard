@@ -11,10 +11,6 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
-    public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring {
         /// Socket operation opcodes.
@@ -31,11 +27,8 @@
             /// Receive data from socket.
             public static let receive = Opcode(rawValue: 27)
 
-            /// Send message on socket.
-            public static let sendMessage = Opcode(rawValue: 9)
-
-            /// Receive message from socket.
-            public static let receiveMessage = Opcode(rawValue: 10)
+            /// Access to message-oriented socket operations.
+            public static var message: Message.Type { Message.self }
 
             /// Shutdown socket.
             public static let shutdown = Opcode(rawValue: 34)

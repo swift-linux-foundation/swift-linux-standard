@@ -11,18 +11,15 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
+    extension Kernel.IO.Uring.Socket {
+        /// Message-oriented socket operations.
+        public struct Message {
+            /// Send message on socket (sendmsg).
+            public static let send = Kernel.IO.Uring.Opcode(rawValue: 9)
 
-    extension Kernel.IO.Uring {
-        /// Fixed fd operation opcodes.
-        public struct Fixed {
-            /// Install fixed fd into process table (kernel 6.7+).
-            public static let install = Opcode(rawValue: 54)
+            /// Receive message from socket (recvmsg).
+            public static let receive = Kernel.IO.Uring.Opcode(rawValue: 10)
         }
-    }
-
-    extension Kernel.IO.Uring.Opcode {
-        /// Access to fixed fd operation opcodes.
-        public static var fixed: Kernel.IO.Uring.Fixed.Type { Kernel.IO.Uring.Fixed.self }
     }
 
 #endif

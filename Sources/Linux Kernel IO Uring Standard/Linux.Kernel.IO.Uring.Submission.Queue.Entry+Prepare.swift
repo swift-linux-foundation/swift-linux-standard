@@ -120,7 +120,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .sync.file
+            self.opcode = .sync.file.standard
             target.apply(to: &self)
             if datasync {
                 self.opFlags = Self.fsyncDatasync
@@ -260,7 +260,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .read.vectored
+            self.opcode = .read.vectored.standard
             target.apply(to: &self)
             unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
@@ -283,7 +283,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .write.vectored
+            self.opcode = .write.vectored.standard
             target.apply(to: &self)
             unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
@@ -368,7 +368,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .read.vectoredFixed
+            self.opcode = .read.vectored.fixed
             target.apply(to: &self)
             unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
@@ -394,7 +394,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .write.vectoredFixed
+            self.opcode = .write.vectored.fixed
             target.apply(to: &self)
             unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
@@ -845,7 +845,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .socket.sendMessage
+            self.opcode = .socket.message.send
             target.apply(to: &self)
             unsafe self.setAddr(message)
             self._rawLength = 1
@@ -868,7 +868,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .socket.receiveMessage
+            self.opcode = .socket.message.receive
             target.apply(to: &self)
             unsafe self.setAddr(message)
             self._rawLength = 1
@@ -1269,7 +1269,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .file.filesUpdate
+            self.opcode = .file.update
             Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(fds)
             self._rawLength = count
@@ -1315,7 +1315,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .fixed.fdInstall
+            self.opcode = .fixed.install
             self._fd = Int32(bitPattern: fd)
             self.installFlags = flags
             self.data = data
@@ -1450,7 +1450,7 @@
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
-            self.opcode = .sync.fileRange
+            self.opcode = .sync.file.range
             target.apply(to: &self)
             self.offset = offset
             self.len = length

@@ -11,10 +11,7 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
-    public import Kernel_File_Primitives
+    public import System_Primitives
 
     extension Kernel.IO.Uring.Params.Submission {
         /// Thread configuration for submission queue polling.
