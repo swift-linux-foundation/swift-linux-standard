@@ -164,6 +164,7 @@ let package = Package(
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Kernel Time Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 

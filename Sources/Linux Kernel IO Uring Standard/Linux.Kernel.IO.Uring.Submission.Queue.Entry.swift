@@ -100,8 +100,8 @@
         }
 
         /// I/O priority.
-        public var priority: Kernel.IO.Uring.Priority {
-            get { Kernel.IO.Uring.Priority(rawValue: cValue.ioprio) }
+        public var priority: Kernel.IO.Priority {
+            get { Kernel.IO.Priority(rawValue: cValue.ioprio) }
             set { cValue.ioprio = newValue.rawValue }
         }
 

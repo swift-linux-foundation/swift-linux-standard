@@ -255,7 +255,7 @@
         @inlinable @unsafe
         public mutating func read(
             target: borrowing Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
+            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -278,7 +278,7 @@
         @inlinable @unsafe
         public mutating func write(
             target: borrowing Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
+            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -362,7 +362,7 @@
         @inlinable @unsafe
         public mutating func read(
             target: borrowing Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
+            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
             offset: Kernel.IO.Uring.Offset,
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
@@ -388,7 +388,7 @@
         @inlinable @unsafe
         public mutating func write(
             target: borrowing Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
+            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
             offset: Kernel.IO.Uring.Offset,
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
@@ -895,7 +895,7 @@
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Socket.Message.Options,
-            zeroCopyFlags: Kernel.IO.Uring.Priority,
+            zeroCopyFlags: Kernel.IO.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -921,7 +921,7 @@
             target: borrowing Kernel.IO.Uring.Target,
             message: UnsafePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
-            zeroCopyFlags: Kernel.IO.Uring.Priority,
+            zeroCopyFlags: Kernel.IO.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -1017,7 +1017,7 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func timeout(
-            after timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
+            after timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1045,7 +1045,7 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func timeout(
-            deadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
+            deadline timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             count: UInt32 = 0,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
@@ -1090,7 +1090,7 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func timeout(
-            link timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
+            link timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
@@ -1115,7 +1115,7 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func timeout(
-            linkDeadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
+            linkDeadline timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
