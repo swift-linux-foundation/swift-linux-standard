@@ -69,6 +69,11 @@
 
             /// Access to provided buffer ring sub-operations.
             public static var provided: Provided.Type { Provided.self }
+
+            /// Sparse resource registration flag for v2 buffer APIs.
+            ///
+            /// - Linux: `IORING_REGISTER_SRC_REGISTERED`
+            public static let sourceRegistered: UInt32 = 1
         }
     }
 

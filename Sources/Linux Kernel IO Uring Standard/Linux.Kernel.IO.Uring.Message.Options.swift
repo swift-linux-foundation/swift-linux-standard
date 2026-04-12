@@ -17,8 +17,21 @@
     #endif
 
     extension Kernel.IO.Uring {
-        /// Flags for io_uring MSG_RING operations (inter-ring messaging).
+        /// Types for io_uring MSG_RING operations (inter-ring messaging).
         public struct Message: Sendable {
+            /// The kind of message sent between rings.
+            public enum Kind: UInt32, Sendable {
+                /// Send arbitrary data to the target ring's CQ.
+                ///
+                /// - Linux: `IORING_MSG_DATA`
+                case data = 0
+
+                /// Send a file descriptor to the target ring.
+                ///
+                /// - Linux: `IORING_MSG_SEND_FD`
+                case sendDescriptor = 1
+            }
+
             /// Flags controlling MSG_RING behavior.
             public struct Options: OptionSet, Sendable {
                 public let rawValue: UInt32

@@ -49,6 +49,24 @@
             ///
             /// Value: `IORING_OFF_SQES` (0x10000000)
             public static let sqes: Int64 = 0x1000_0000
+
+            /// Offset for mapping a provided buffer ring.
+            ///
+            /// The buffer group ID is encoded in the upper bits via
+            /// `providedBufferShift`.
+            ///
+            /// Value: `IORING_OFF_PBUF_RING` (0x80000000)
+            public static let providedBufferRing: Int64 = 0x8000_0000
+
+            /// Bit shift for encoding the buffer group ID in the mmap offset.
+            ///
+            /// Value: `IORING_OFF_PBUF_SHIFT` (16)
+            public static let providedBufferShift: Int64 = 16
+
+            /// Mask for extracting the mmap region type from an offset.
+            ///
+            /// Value: `IORING_OFF_MMAP_MASK` (0xF8000000)
+            public static let mask: Int64 = 0xF800_0000
         }
     }
 

@@ -17,7 +17,8 @@
             /// Vectored write (writev).
             public static let standard = Kernel.IO.Uring.Opcode(rawValue: 2)
 
-            /// Vectored write from registered buffers (kernel 6.x+).
+            /// Vectored write from registered buffers (kernel 6.13+).
+            // TRACKING: Opcode 61 exceeds IORING_OP_LAST=58 in kernel 6.12.
             public static let fixed = Kernel.IO.Uring.Opcode(rawValue: 61)
         }
     }
