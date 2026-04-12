@@ -1569,7 +1569,7 @@
             unsafe self.setAddr(name)
             self.len = length
             unsafe self.setOffset(value)
-            self.xattrDisposition = disposition
+            self.setXattrDisposition(disposition)
             self.data = data
         }
 
@@ -1600,7 +1600,7 @@
             self.len = length
             unsafe self.setOffset(value)
             unsafe self.setAddr3(path)
-            self.xattrDisposition = disposition
+            self.setXattrDisposition(disposition)
             self.data = data
         }
 
