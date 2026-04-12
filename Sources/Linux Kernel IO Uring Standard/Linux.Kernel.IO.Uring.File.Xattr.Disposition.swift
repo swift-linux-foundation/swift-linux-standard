@@ -48,6 +48,7 @@
 
     extension Kernel.IO.Uring.File.Xattr.Disposition {
         /// The raw XATTR_* flag for the kernel.
+        @usableFromInline
         var rawBits: UInt32 {
             switch self {
             case .createOrReplace: 0

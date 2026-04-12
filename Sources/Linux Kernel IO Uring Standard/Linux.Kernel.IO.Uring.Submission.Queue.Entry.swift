@@ -15,6 +15,15 @@
     @_spi(Syscall) public import Kernel_Error_Primitives
     @_spi(Syscall) public import Kernel_Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
+    public import Kernel_Socket_Primitives
+    public import Kernel_Event_Primitives
+    public import Linux_Kernel_File_Standard
+    public import Linux_Kernel_Pipe_Standard
+    public import Linux_Kernel_Event_Standard
+    public import Linux_Kernel_Futex_Standard
+    public import Linux_Kernel_Socket_Standard
+    public import Linux_Kernel_Memory_Standard
+    public import ISO_9945_Kernel_File
 
     #if canImport(Glibc)
         internal import Glibc
@@ -117,6 +126,138 @@
         public var personality: Kernel.IO.Uring.Personality.ID {
             get { Kernel.IO.Uring.Personality.ID(__unchecked: (), cValue.personality) }
             set { cValue.personality = newValue.rawValue }
+        }
+    }
+
+    // MARK: - Single-Field Semantic Accessors
+
+    // These cover opcodes needing one overloaded field from a union.
+    // Multi-field opcodes use view types on Prepare instead.
+    // Compound names permitted at @usableFromInline internal scope
+    // per feedback_compound_package_scope.
+
+    extension Kernel.IO.Uring.Submission.Queue.Entry {
+        /// Unlink AT_* flags (e.g., `AT_REMOVEDIR`).
+        @usableFromInline
+        internal var atFlags: Kernel.File.At.Options {
+            get { Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
+        }
+
+        /// File access pattern advisory hint.
+        @usableFromInline
+        internal var fileAdvice: Kernel.File.Advice {
+            get { Kernel.File.Advice(rawValue: cValue.rw_flags) }
+            set { cValue.rw_flags = newValue.rawValue }
+        }
+
+        /// Memory advisory hint.
+        @usableFromInline
+        internal var memoryAdvice: Kernel.Memory.Advice {
+            get { Kernel.Memory.Advice(rawValue: cValue.rw_flags) }
+            set { cValue.rw_flags = newValue.rawValue }
+        }
+
+        /// Sync range flags.
+        @usableFromInline
+        internal var syncRangeFlags: Kernel.File.Sync.Range.Options {
+            get { Kernel.File.Sync.Range.Options(rawValue: cValue.rw_flags) }
+            set { cValue.rw_flags = newValue.rawValue }
+        }
+
+        /// Pipe creation flags.
+        @usableFromInline
+        internal var pipeCreateFlags: Kernel.Pipe.Options {
+            get { Kernel.Pipe.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
+        }
+
+        /// Fixed file descriptor installation flags.
+        @usableFromInline
+        internal var installFlags: Kernel.IO.Uring.Fixed.Install.Options {
+            get { Kernel.IO.Uring.Fixed.Install.Options(rawValue: cValue.rw_flags) }
+            set { cValue.rw_flags = newValue.rawValue }
+        }
+
+        /// File permissions mode (for openat, mkdirat, chmod).
+        @usableFromInline
+        internal var filePermissions: Kernel.File.Permissions {
+            get { Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len)) }
+            set { cValue.len = UInt32(newValue.rawValue) }
+        }
+
+        /// Socket shutdown mode.
+        @usableFromInline
+        internal var shutdownMode: Kernel.Socket.Shutdown.Mode {
+            get { Kernel.Socket.Shutdown.Mode(rawValue: Int32(bitPattern: cValue.len)) }
+            set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
+        }
+
+        /// Listen backlog (max pending connections).
+        @usableFromInline
+        internal var listenBacklog: Int32 {
+            get { Int32(bitPattern: UInt32(truncatingIfNeeded: cValue.off)) }
+            set { cValue.off = UInt64(UInt32(bitPattern: newValue)) }
+        }
+
+        /// Socket address length (for bind).
+        @usableFromInline
+        internal var addressLength: UInt32 {
+            get { UInt32(truncatingIfNeeded: cValue.off) }
+            set { cValue.off = UInt64(newValue) }
+        }
+
+        /// Socket message flags (for accept, send, recv).
+        ///
+        /// Replaces direct `opFlags = flags.rawValue` pattern.
+        @usableFromInline
+        internal var messageFlags: Kernel.Socket.Message.Options {
+            get { Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
+        }
+    }
+
+    // MARK: - Raw Field Accessors (Irreducible)
+
+    // For uses where no domain type exists: sentinels, struct sizes,
+    // compile-time constants, and misc raw values.
+
+    extension Kernel.IO.Uring.Submission.Queue.Entry {
+        /// Raw file descriptor field.
+        ///
+        /// For install registered fd and uring command target only.
+        /// Domain-typed uses go through view types or Target.
+        @usableFromInline
+        internal var _fd: Int32 {
+            get { cValue.fd }
+            set { cValue.fd = newValue }
+        }
+
+        /// Raw length field.
+        ///
+        /// For openat2 struct size, mkdirat mode, literal 1, and misc counts.
+        /// Domain-typed uses go through view types or typed accessors.
+        @usableFromInline
+        internal var _rawLength: UInt32 {
+            get { cValue.len }
+            set { cValue.len = newValue }
+        }
+
+        /// Raw offset field.
+        ///
+        /// For openat2 how pointer, symlinkat path, files update offset,
+        /// and buffer remove offset. Domain-typed uses go through view types.
+        @usableFromInline
+        internal var _rawOffset: UInt64 {
+            get { cValue.off }
+            set { cValue.off = newValue }
+        }
+
+        /// Uring command opcode (32-bit union with off).
+        @usableFromInline
+        internal var commandOpcode: UInt32 {
+            get { cValue.cmd_op }
+            set { cValue.cmd_op = newValue }
         }
     }
 

@@ -54,9 +54,10 @@
         /// from a previous operation leaks into the next. The ~16KB/batch cost
         /// (256 SQEs × 64 bytes) is negligible relative to the I/O latency.
         public struct Prepare: ~Copyable {
+            @usableFromInline
             let pointer: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>
 
-            @unsafe
+            @usableFromInline @unsafe
             init(_ pointer: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>) {
                 self.pointer = unsafe pointer
             }
@@ -69,8 +70,9 @@
         /// Configures this entry for a no-op operation.
         ///
         /// - Parameter data: Operation data to return with completion.
+        @inlinable
         public func nop(data: Kernel.IO.Uring.Operation.Data) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .nop)
             unsafe (pointer.pointee.data = data)
         }
@@ -83,7 +85,7 @@
         ///   - length: Number of bytes to read.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func read(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
@@ -91,7 +93,7 @@
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .read.standard)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
@@ -108,7 +110,7 @@
         ///   - length: Number of bytes to write.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func write(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
@@ -116,7 +118,7 @@
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .write.standard)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
@@ -130,11 +132,12 @@
         /// - Parameters:
         ///   - target: Operation data of the operation to cancel.
         ///   - data: Operation data to return with this cancel's completion.
+        @inlinable
         public func cancel(
             target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .cancel.async)
             unsafe (pointer.pointee.addr = target.rawValue)
             unsafe (pointer.pointee.data = data)
@@ -151,7 +154,7 @@
             datasync: Bool,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .sync.file)
             unsafe target.apply(to: pointer)
             if datasync {
@@ -165,11 +168,12 @@
         /// - Parameters:
         ///   - target: File targeting (descriptor or registered index).
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func close(
             target: borrowing Kernel.IO.Uring.Target,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .close)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.data = data)
@@ -183,7 +187,7 @@
         ///   - length: Optional pointer to address length (in/out).
         ///   - flags: Accept flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func accept(
             target: borrowing Kernel.IO.Uring.Target,
             addr: UnsafeMutablePointer<Kernel.Socket.Address.Storage>?,
@@ -191,7 +195,7 @@
             flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.accept)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
@@ -207,14 +211,14 @@
         ///   - address: Pointer to socket address storage.
         ///   - length: Length of socket address.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func connect(
             target: borrowing Kernel.IO.Uring.Target,
             address: UnsafePointer<Kernel.Socket.Address.Storage>,
             length: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.connect)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: address)))
@@ -230,7 +234,7 @@
         ///   - length: Number of bytes to send.
         ///   - flags: Send flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func send(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
@@ -238,7 +242,7 @@
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.send)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
@@ -255,7 +259,7 @@
         ///   - length: Maximum bytes to receive.
         ///   - flags: Recv flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func recv(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
@@ -263,7 +267,7 @@
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.receive)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
@@ -283,18 +287,18 @@
         ///   - vectors: Buffer pointer to Vector array.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func read(
             target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .read.vectored)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: vectors.baseAddress)))
-            unsafe (pointer.pointee.cValue.len = UInt32(vectors.count))
+            unsafe (pointer.pointee._rawLength = UInt32(vectors.count))
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.data = data)
         }
@@ -306,18 +310,18 @@
         ///   - vectors: Buffer pointer to Vector array.
         ///   - offset: File offset (use `.current` for current position).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func write(
             target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
             offset: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .write.vectored)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: vectors.baseAddress)))
-            unsafe (pointer.pointee.cValue.len = UInt32(vectors.count))
+            unsafe (pointer.pointee._rawLength = UInt32(vectors.count))
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.data = data)
         }
@@ -333,7 +337,7 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func read(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
@@ -342,13 +346,13 @@
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .read.fixed)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.offset = offset)
-            unsafe (pointer.pointee.cValue.buf_index = bufferIndex.rawValue)
+            unsafe (self.buffer.index = bufferIndex)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -363,7 +367,7 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func write(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
@@ -372,13 +376,13 @@
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .write.fixed)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.offset = offset)
-            unsafe (pointer.pointee.cValue.buf_index = bufferIndex.rawValue)
+            unsafe (self.buffer.index = bufferIndex)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -390,7 +394,7 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func read(
             target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
@@ -398,13 +402,13 @@
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .read.vectoredFixed)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: vectors.baseAddress)))
-            unsafe (pointer.pointee.cValue.len = UInt32(vectors.count))
+            unsafe (pointer.pointee._rawLength = UInt32(vectors.count))
             unsafe (pointer.pointee.offset = offset)
-            unsafe (pointer.pointee.cValue.buf_index = bufferIndex.rawValue)
+            unsafe (self.buffer.index = bufferIndex)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -416,7 +420,7 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferIndex: Index of the registered buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func write(
             target: borrowing Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<Kernel.IO.Uring.Vector>,
@@ -424,13 +428,13 @@
             bufferIndex: Kernel.IO.Uring.Buffer.Index,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .write.vectoredFixed)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: vectors.baseAddress)))
-            unsafe (pointer.pointee.cValue.len = UInt32(vectors.count))
+            unsafe (pointer.pointee._rawLength = UInt32(vectors.count))
             unsafe (pointer.pointee.offset = offset)
-            unsafe (pointer.pointee.cValue.buf_index = bufferIndex.rawValue)
+            unsafe (self.buffer.index = bufferIndex)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -446,6 +450,7 @@
         ///   - offset: File offset (use `.current` for current position).
         ///   - bufferGroup: Buffer group for kernel-selected buffers.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func read(
             target: borrowing Kernel.IO.Uring.Target,
             length: Kernel.IO.Uring.Length,
@@ -453,12 +458,12 @@
             bufferGroup: Kernel.IO.Uring.Buffer.Group,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .read.multishot)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.len = length)
             unsafe (pointer.pointee.offset = offset)
-            unsafe (pointer.pointee.cValue.buf_group = bufferGroup.rawValue)
+            unsafe (self.buffer.group = bufferGroup)
             unsafe (pointer.pointee.flags.insert(.bufferSelect))
             unsafe (pointer.pointee.data = data)
         }
@@ -479,6 +484,7 @@
         ///   - length: Number of bytes to transfer.
         ///   - flags: Splice flags (e.g., `SPLICE_F_MOVE`).
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func splice(
             target: borrowing Kernel.IO.Uring.Target,
             source: borrowing Kernel.Descriptor,
@@ -488,14 +494,14 @@
             flags: Kernel.Pipe.Splice.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .pipe.splice)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.splice_fd_in = source._rawValue)
+            unsafe (splice.set(source: source))
             unsafe (pointer.pointee.addr = offsetIn.rawValue)
             unsafe (pointer.pointee.offset = offsetOut)
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (splice.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -510,6 +516,7 @@
         ///   - length: Number of bytes to duplicate.
         ///   - flags: Splice flags.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func tee(
             target: borrowing Kernel.IO.Uring.Target,
             source: borrowing Kernel.Descriptor,
@@ -517,12 +524,12 @@
             flags: Kernel.Pipe.Splice.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .pipe.tee)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.splice_fd_in = source._rawValue)
+            unsafe (splice.set(source: source))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (splice.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -532,12 +539,13 @@
         ///   - target: File targeting (descriptor or registered index).
         ///   - length: New file length in bytes.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func ftruncate(
             target: borrowing Kernel.IO.Uring.Target,
             length: Kernel.IO.Uring.Offset,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.ftruncate)
             unsafe target.apply(to: pointer)
             // WHY: ftruncate stores the new length in the off field as u64.
@@ -566,7 +574,7 @@
         ///   - options: Additional open options (create, truncate, etc.).
         ///   - mode: File mode for creation.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func openat(
             target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
@@ -575,13 +583,13 @@
             mode: Kernel.File.Permissions = .none,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.openat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
             // Combine access mode and options into one flags field
             unsafe (pointer.pointee.opFlags = access.rawValue | options.rawValue)
-            unsafe (pointer.pointee.cValue.len = UInt32(mode.rawValue))
+            unsafe (pointer.pointee.filePermissions = mode)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -592,19 +600,19 @@
         ///   - path: Null-terminated path to open.
         ///   - how: Pointer to open parameters (must remain valid until completion).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func openat2(
             target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             how: UnsafePointer<Kernel.File.Open.How>,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.openat2)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.len = UInt32(MemoryLayout<Kernel.File.Open.How>.size))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: how)))
+            unsafe (pointer.pointee._rawLength = UInt32(MemoryLayout<Kernel.File.Open.How>.size))
+            unsafe (pointer.pointee._rawOffset = UInt64(UInt(bitPattern: how)))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -617,7 +625,7 @@
         ///   - mask: Statx mask (which fields to populate).
         ///   - buffer: Pointer to statx buffer for results (kernel writes here).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func statx(
             target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
@@ -626,13 +634,13 @@
             buffer: UnsafeMutablePointer<Kernel.File.Statx>,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.statx)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
-            unsafe (pointer.pointee.cValue.len = mask.rawValue)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: buffer)))
+            unsafe (statx.flags = flags)
+            unsafe (statx.mask = mask)
+            unsafe statx.set(buffer: buffer)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -645,7 +653,7 @@
         ///   - newPath: Null-terminated new path.
         ///   - flags: Rename flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func renameat(
             target: borrowing Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
@@ -654,13 +662,13 @@
             flags: Kernel.File.Rename.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.renameat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: oldPath)))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: newDirFd))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: newPath)))
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe rename.set(directory: newDirFd)
+            unsafe rename.set(path: newPath)
+            unsafe (rename.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -671,18 +679,18 @@
         ///   - path: Null-terminated path to unlink.
         ///   - flags: Unlink flags (e.g., `AT_REMOVEDIR`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func unlinkat(
             target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             flags: Kernel.File.At.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.unlinkat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
+            unsafe (pointer.pointee.atFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -693,18 +701,18 @@
         ///   - path: Null-terminated path for the new directory.
         ///   - mode: Directory permission mode.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func mkdirat(
             target: borrowing Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             mode: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.mkdirat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.len = mode)
+            unsafe (pointer.pointee._rawLength = mode)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -715,18 +723,18 @@
         ///   - linkTarget: Null-terminated symlink target path.
         ///   - linkPath: Null-terminated path for the new symlink.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func symlinkat(
             target: borrowing Kernel.IO.Uring.Target,
             linkTarget: UnsafePointer<CChar>,
             linkPath: UnsafePointer<CChar>,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.symlinkat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: linkTarget)))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: linkPath)))
+            unsafe (pointer.pointee._rawOffset = UInt64(UInt(bitPattern: linkPath)))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -739,7 +747,7 @@
         ///   - newPath: Null-terminated new path.
         ///   - flags: Link flags (e.g., `AT_SYMLINK_FOLLOW`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func linkat(
             target: borrowing Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
@@ -748,13 +756,13 @@
             flags: Kernel.File.At.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.linkat)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: oldPath)))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: newDirFd))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: newPath)))
-            unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
+            unsafe link.set(directory: newDirFd)
+            unsafe link.set(path: newPath)
+            unsafe (link.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -768,6 +776,7 @@
         ///   - offset: Starting offset in the file.
         ///   - length: Number of bytes to allocate.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func fallocate(
             target: borrowing Kernel.IO.Uring.Target,
             mode: Kernel.IO.Uring.File.Allocate.Mode,
@@ -775,13 +784,13 @@
             length: UInt64,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.fallocate)
             unsafe target.apply(to: pointer)
             // WHY: fallocate stores the length in addr because the len field is only
             // 32-bit but fallocate's length parameter is 64-bit.
             unsafe (pointer.pointee.addr = length)
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: mode.rawBits))
+            unsafe (pointer.pointee._rawLength = UInt32(bitPattern: mode.rawBits))
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.data = data)
         }
@@ -798,6 +807,7 @@
         ///   - protocol: Network protocol (default: `.auto`).
         ///   - flags: Socket flags.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func socket(
             domain: Kernel.Socket.Address.Family,
             kind: Kernel.Socket.Kind,
@@ -805,12 +815,12 @@
             flags: Kernel.Socket.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.create)
-            unsafe (pointer.pointee.cValue.fd = domain.rawValue)
-            unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: `protocol`.rawValue))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: kind.rawValue)))
+            unsafe (socket.domain = domain)
+            unsafe (socket.flags = flags)
+            unsafe (socket.protocol = `protocol`)
+            unsafe (socket.kind = kind)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -821,18 +831,18 @@
         ///   - address: Pointer to socket address storage.
         ///   - length: Length of socket address.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func bind(
             target: borrowing Kernel.IO.Uring.Target,
             address: UnsafePointer<Kernel.Socket.Address.Storage>,
             length: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.bind)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: address)))
-            unsafe (pointer.pointee.cValue.off = UInt64(length))
+            unsafe (pointer.pointee.addressLength = length)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -842,15 +852,16 @@
         ///   - target: Socket file targeting.
         ///   - backlog: Maximum pending connection queue length.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func listen(
             target: borrowing Kernel.IO.Uring.Target,
             backlog: Int32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.listen)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: backlog)))
+            unsafe (pointer.pointee.listenBacklog = backlog)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -861,18 +872,18 @@
         ///   - message: Pointer to message header (must remain valid until completion).
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func send(
             target: borrowing Kernel.IO.Uring.Target,
             message: UnsafePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.sendMessage)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
-            unsafe (pointer.pointee.cValue.len = 1)
+            unsafe (pointer.pointee._rawLength = 1)
             unsafe (pointer.pointee.opFlags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -884,18 +895,18 @@
         ///   - message: Pointer to message header (kernel writes results here).
         ///   - flags: Message flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func recv(
             target: borrowing Kernel.IO.Uring.Target,
             message: UnsafeMutablePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.receiveMessage)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
-            unsafe (pointer.pointee.cValue.len = 1)
+            unsafe (pointer.pointee._rawLength = 1)
             unsafe (pointer.pointee.opFlags = flags.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -913,7 +924,7 @@
         ///   - flags: Message flags.
         ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func send(
             target: borrowing Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
@@ -922,7 +933,7 @@
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .send.zero.copy)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
@@ -940,7 +951,7 @@
         ///   - flags: Message flags.
         ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func send(
             target: borrowing Kernel.IO.Uring.Target,
             message: UnsafePointer<Kernel.Socket.Message.Header>,
@@ -948,11 +959,11 @@
             zeroCopyFlags: Kernel.IO.Uring.Priority,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .send.zero.msg)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
-            unsafe (pointer.pointee.cValue.len = 1)
+            unsafe (pointer.pointee._rawLength = 1)
             unsafe (pointer.pointee.opFlags = flags.rawValue)
             unsafe (pointer.pointee.priority = zeroCopyFlags)
             unsafe (pointer.pointee.data = data)
@@ -964,15 +975,16 @@
         ///   - target: Socket file targeting.
         ///   - how: Shutdown mode (`.read`, `.write`, or `.both`).
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func shutdown(
             target: borrowing Kernel.IO.Uring.Target,
             how: Kernel.Socket.Shutdown.Mode,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .socket.shutdown)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: how.rawValue))
+            unsafe (pointer.pointee.shutdownMode = how)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -984,7 +996,7 @@
         ///   - operation: Epoll operation (add, modify, delete).
         ///   - event: Pointer to epoll event (may be nil for delete).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func epoll(
             target: borrowing Kernel.IO.Uring.Target,
             descriptor: borrowing Kernel.Descriptor,
@@ -992,12 +1004,12 @@
             event: UnsafeMutablePointer<Kernel.Event.Poll.Event>?,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .epoll.ctl)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: event)))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: operation.rawValue))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue)))
+            unsafe (epoll.operation = operation)
+            unsafe epoll.set(descriptor: descriptor)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1008,18 +1020,18 @@
         ///   - events: Pointer to epoll event array for results.
         ///   - maxEvents: Maximum number of events to return.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func epoll(
             target: borrowing Kernel.IO.Uring.Target,
             events: UnsafeMutablePointer<Kernel.Event.Poll.Event>,
             maxEvents: Int32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .epoll.wait)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: events)))
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: maxEvents))
+            unsafe (epoll.maxEvents = maxEvents)
             unsafe (pointer.pointee.data = data)
         }
     }
@@ -1038,7 +1050,7 @@
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - multishot: If true, the timeout repeats automatically.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func timeout(
             after timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             count: UInt32 = 0,
@@ -1046,14 +1058,12 @@
             multishot: Bool = false,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .timeout.standard)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe Kernel.IO.Uring.Target.none.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
-            unsafe (pointer.pointee.cValue.len = count)
-            var rawFlags: UInt32 = clock.timeoutBits
-            if multishot { rawFlags |= UInt32(IORING_TIMEOUT_MULTISHOT) }
-            unsafe (pointer.pointee.cValue.rw_flags = rawFlags)
+            unsafe (timeout.count = count)
+            unsafe timeout.configure(clock: clock, options: multishot ? .multishot : [])
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1068,7 +1078,7 @@
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - multishot: If true, the timeout repeats automatically.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func timeout(
             deadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             count: UInt32 = 0,
@@ -1076,14 +1086,12 @@
             multishot: Bool = false,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .timeout.standard)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe Kernel.IO.Uring.Target.none.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
-            unsafe (pointer.pointee.cValue.len = count)
-            var rawFlags: UInt32 = clock.timeoutBits | UInt32(IORING_TIMEOUT_ABS)
-            if multishot { rawFlags |= UInt32(IORING_TIMEOUT_MULTISHOT) }
-            unsafe (pointer.pointee.cValue.rw_flags = rawFlags)
+            unsafe (timeout.count = count)
+            unsafe timeout.configure(clock: clock, options: multishot ? [.absolute, .multishot] : .absolute)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1092,13 +1100,14 @@
         /// - Parameters:
         ///   - target: Operation data of the timeout to remove.
         ///   - data: Operation data to return with this operation's completion.
+        @inlinable
         public func timeout(
             remove target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .timeout.remove)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe Kernel.IO.Uring.Target.none.apply(to: pointer)
             unsafe (pointer.pointee.addr = target.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -1113,18 +1122,18 @@
         ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func timeout(
             link timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .timeout.link)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe Kernel.IO.Uring.Target.none.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
-            unsafe (pointer.pointee.cValue.len = 1)
-            unsafe (pointer.pointee.cValue.rw_flags = clock.timeoutBits)
+            unsafe (timeout.count = 1)
+            unsafe timeout.configure(clock: clock)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1138,18 +1147,18 @@
         ///   - timespec: Pointer to timeout specification (must remain valid until completion).
         ///   - clock: Clock source for the timeout (default: `.monotonic`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func timeout(
             linkDeadline timespec: UnsafePointer<Kernel.IO.Uring.Timeout.Specification>,
             clock: Kernel.IO.Uring.Clock = .monotonic,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .timeout.link)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe Kernel.IO.Uring.Target.none.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: timespec)))
-            unsafe (pointer.pointee.cValue.len = 1)
-            unsafe (pointer.pointee.cValue.rw_flags = clock.timeoutBits | UInt32(IORING_TIMEOUT_ABS))
+            unsafe (timeout.count = 1)
+            unsafe timeout.configure(clock: clock, options: .absolute)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1163,6 +1172,7 @@
         ///   - multishot: If true, produces CQEs on every event without resubmission.
         ///   - trigger: Trigger mode — edge (default) or level.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func poll(
             target: borrowing Kernel.IO.Uring.Target,
             events: Kernel.Event.Poll.Events,
@@ -1170,13 +1180,13 @@
             trigger: Kernel.IO.Uring.Poll.Trigger = .edge,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .poll.add)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.poll32_events = events.rawValue)
-            var rawFlags: UInt32 = trigger.pollBits
-            if multishot { rawFlags |= UInt32(IORING_POLL_ADD_MULTI) }
-            unsafe (pointer.pointee.cValue.len = rawFlags)
+            unsafe (poll.events = events)
+            var options = trigger.option
+            if multishot { options.insert(.multishot) }
+            unsafe (poll.options = options)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1185,13 +1195,14 @@
         /// - Parameters:
         ///   - target: Operation data of the poll operation to remove.
         ///   - data: Operation data to return with this operation's completion.
+        @inlinable
         public func poll(
             remove target: Kernel.IO.Uring.Operation.Data,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .poll.remove)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (Kernel.IO.Uring.Target.none.apply(to: pointer))
             unsafe (pointer.pointee.addr = target.rawValue)
             unsafe (pointer.pointee.data = data)
         }
@@ -1210,6 +1221,7 @@
         ///   - targetData: User data for the injected CQE.
         ///   - flags: Message ring flags.
         ///   - data: Operation data for this operation's own completion.
+        @inlinable
         public func message(
             ring fd: Int32,
             value: UInt32,
@@ -1217,12 +1229,12 @@
             flags: Kernel.IO.Uring.Message.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .ring.msg)
-            unsafe (pointer.pointee.cValue.fd = fd)
-            unsafe (pointer.pointee.cValue.len = value)
-            unsafe (pointer.pointee.cValue.off = targetData.rawValue)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (message.ring = fd)
+            unsafe (message.value = value)
+            unsafe (message.target = targetData.rawValue)
+            unsafe (message.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1238,7 +1250,7 @@
         ///   - group: Buffer group ID.
         ///   - startId: Starting buffer ID.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func provide(
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
@@ -1247,14 +1259,13 @@
             startId: UInt16,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .buffer.provide)
-            unsafe (pointer.pointee.cValue.fd = count)
+            unsafe (self.buffer.count = count)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
-            // WHY: The off field stores the starting buffer ID, not a file offset.
-            unsafe (pointer.pointee.cValue.off = UInt64(startId))
-            unsafe (pointer.pointee.cValue.buf_group = group.rawValue)
+            unsafe (self.buffer.startID = startId)
+            unsafe (self.buffer.group = group)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1264,15 +1275,16 @@
         ///   - count: Number of buffers to remove.
         ///   - group: Buffer group ID.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func remove(
             bufferCount count: Int32,
             group: Kernel.IO.Uring.Buffer.Group,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .buffer.remove)
-            unsafe (pointer.pointee.cValue.fd = count)
-            unsafe (pointer.pointee.cValue.buf_group = group.rawValue)
+            unsafe (self.buffer.count = count)
+            unsafe (self.buffer.group = group)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1283,19 +1295,19 @@
         ///   - count: Number of file descriptors.
         ///   - offset: Starting index in the registered file table.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func files(
             update fds: UnsafePointer<Int32>,
             count: UInt32,
             offset: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.filesUpdate)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (Kernel.IO.Uring.Target.none.apply(to: pointer))
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: fds)))
-            unsafe (pointer.pointee.cValue.len = count)
-            unsafe (pointer.pointee.cValue.off = UInt64(offset))
+            unsafe (pointer.pointee._rawLength = count)
+            unsafe (pointer.pointee._rawOffset = UInt64(offset))
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1308,15 +1320,16 @@
         ///   - target: Device file targeting.
         ///   - op: Command opcode.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func command(
             target: borrowing Kernel.IO.Uring.Target,
             op: UInt32,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .ring.cmd)
             unsafe target.apply(to: pointer)
-            unsafe (pointer.pointee.cValue.cmd_op = op)
+            unsafe (pointer.pointee.commandOpcode = op)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1329,15 +1342,16 @@
         ///   - fd: Fixed file index to install.
         ///   - flags: Install flags.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func install(
             fd: UInt32,
             flags: Kernel.IO.Uring.Fixed.Install.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .fixed.fdInstall)
-            unsafe (pointer.pointee.cValue.fd = Int32(bitPattern: fd))
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (pointer.pointee._fd = Int32(bitPattern: fd))
+            unsafe (pointer.pointee.installFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1347,25 +1361,26 @@
         ///   - fds: Pointer to two-element Int32 array for read/write fds.
         ///   - flags: Pipe flags (e.g., `O_NONBLOCK`, `O_CLOEXEC`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func pipe(
             fds: UnsafeMutablePointer<Int32>,
             flags: Kernel.Pipe.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .pipe.create)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (Kernel.IO.Uring.Target.none.apply(to: pointer))
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: fds)))
-            unsafe (pointer.pointee.cValue.rw_flags = UInt32(bitPattern: flags.rawValue))
+            unsafe (pointer.pointee.pipeCreateFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
         /// Configures this entry for a 128-byte no-op operation.
         ///
         /// - Parameter data: Operation data to return with completion.
+        @inlinable
         public func nop128(data: Kernel.IO.Uring.Operation.Data) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .nop128)
             unsafe (pointer.pointee.data = data)
         }
@@ -1381,7 +1396,7 @@
         ///   - options: Wait options specifying which state changes to report.
         ///   - flags: Waitid-specific io_uring flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func waitid(
             kind: Kernel.Process.Wait.Kind,
             id: Kernel.Process.ID,
@@ -1390,13 +1405,13 @@
             flags: Kernel.IO.Uring.Wait.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .wait.id)
-            unsafe (pointer.pointee.cValue.fd = id.rawValue)
-            unsafe (pointer.pointee.cValue.len = UInt32(bitPattern: kind.rawValue))
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: info)))
-            unsafe (pointer.pointee.cValue.file_index = UInt32(bitPattern: options.rawValue))
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe waitid.set(process: id)
+            unsafe (waitid.kind = kind)
+            unsafe waitid.set(info: info)
+            unsafe (waitid.waitOptions = options)
+            unsafe (waitid.uringFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
     }
@@ -1412,6 +1427,7 @@
         ///   - length: Length of the advisory region.
         ///   - advice: File access pattern advisory hint.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func fadvise(
             target: borrowing Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
@@ -1419,12 +1435,12 @@
             advice: Kernel.File.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .file.fadvise)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = advice.rawValue)
+            unsafe (pointer.pointee.fileAdvice = advice)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1435,19 +1451,19 @@
         ///   - length: Length of the memory region.
         ///   - advice: Memory access pattern advisory hint.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func madvise(
             addr: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
             advice: Kernel.Memory.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .memory.madvise)
-            unsafe (pointer.pointee.cValue.fd = -1)
+            unsafe (Kernel.IO.Uring.Target.none.apply(to: pointer))
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = advice.rawValue)
+            unsafe (pointer.pointee.memoryAdvice = advice)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1459,6 +1475,7 @@
         ///   - length: Number of bytes to sync.
         ///   - flags: Sync range flags.
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func sync(
             target: borrowing Kernel.IO.Uring.Target,
             offset: Kernel.IO.Uring.Offset,
@@ -1466,12 +1483,12 @@
             flags: Kernel.File.Sync.Range.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .sync.fileRange)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.offset = offset)
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (pointer.pointee.syncRangeFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
     }
@@ -1487,7 +1504,7 @@
         ///   - mask: Bit mask for comparison.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func futex(
             wait futex: UnsafePointer<UInt32>,
             value: UInt64,
@@ -1495,13 +1512,13 @@
             flags: Kernel.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .futex.wait)
-            unsafe (pointer.pointee.cValue.fd = 0)
+
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: futex)))
-            unsafe (pointer.pointee.cValue.off = value)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
-            unsafe (pointer.pointee.cValue.addr3 = mask)
+            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(value))
+            unsafe (self.futex.flags = flags)
+            unsafe (self.futex.mask = mask)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1513,7 +1530,7 @@
         ///   - mask: Bit mask for matching waiters.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func futex(
             wake futex: UnsafePointer<UInt32>,
             value: UInt64,
@@ -1521,13 +1538,13 @@
             flags: Kernel.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .futex.wake)
-            unsafe (pointer.pointee.cValue.fd = 0)
+
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: futex)))
-            unsafe (pointer.pointee.cValue.off = value)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
-            unsafe (pointer.pointee.cValue.addr3 = mask)
+            unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(value))
+            unsafe (self.futex.flags = flags)
+            unsafe (self.futex.mask = mask)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1540,19 +1557,19 @@
         ///   - count: Number of futex entries.
         ///   - flags: Futex flags.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func futex(
             wait entries: UnsafePointer<Kernel.Futex.Wait.Entry>,
             count: UInt32,
             flags: Kernel.Futex.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .futex.waitv)
-            unsafe (pointer.pointee.cValue.fd = 0)
+
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: entries)))
-            unsafe (pointer.pointee.cValue.len = count)
-            unsafe (pointer.pointee.cValue.rw_flags = flags.rawValue)
+            unsafe (self.futex.count = count)
+            unsafe (self.futex.flags = flags)
             unsafe (pointer.pointee.data = data)
         }
     }
@@ -1571,7 +1588,7 @@
         ///   - length: Length of the attribute value.
         ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func fsetxattr(
             target: borrowing Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
@@ -1580,13 +1597,13 @@
             disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .xattr.fset)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: name)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
-            unsafe (pointer.pointee.cValue.rw_flags = disposition.rawBits)
+            unsafe xattr.set(value: value)
+            unsafe (xattr.disposition = disposition)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1601,7 +1618,7 @@
         ///   - length: Length of the attribute value.
         ///   - disposition: How to handle existing/absent attributes (default: `.createOrReplace`).
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func setxattr(
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
@@ -1610,14 +1627,14 @@
             disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .xattr.set)
-            unsafe (pointer.pointee.cValue.fd = 0)
+
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: name)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
-            unsafe (pointer.pointee.cValue.addr3 = UInt64(UInt(bitPattern: path)))
-            unsafe (pointer.pointee.cValue.rw_flags = disposition.rawBits)
+            unsafe xattr.set(value: value)
+            unsafe xattr.set(path: path)
+            unsafe (xattr.disposition = disposition)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1631,7 +1648,7 @@
         ///   - value: Buffer for the attribute value.
         ///   - length: Length of the value buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func fgetxattr(
             target: borrowing Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
@@ -1639,12 +1656,12 @@
             length: Kernel.IO.Uring.Length,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .xattr.fget)
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: name)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
+            unsafe xattr.set(value: value)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -1658,7 +1675,7 @@
         ///   - path: Null-terminated file path.
         ///   - length: Length of the value buffer.
         ///   - data: Operation data to return with completion.
-        @unsafe
+        @inlinable @unsafe
         public func getxattr(
             name: UnsafePointer<CChar>,
             value: UnsafeMutableRawPointer,
@@ -1666,13 +1683,13 @@
             length: Kernel.IO.Uring.Length,
             data: Kernel.IO.Uring.Operation.Data
         ) {
-            unsafe (pointer.pointee.cValue = io_uring_sqe())
+            unsafe (pointer.pointee = .init())
             unsafe (pointer.pointee.opcode = .xattr.get)
-            unsafe (pointer.pointee.cValue.fd = 0)
+
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: name)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.cValue.off = UInt64(UInt(bitPattern: value)))
-            unsafe (pointer.pointee.cValue.addr3 = UInt64(UInt(bitPattern: path)))
+            unsafe xattr.set(value: value)
+            unsafe xattr.set(path: path)
             unsafe (pointer.pointee.data = data)
         }
     }

@@ -42,6 +42,12 @@
 
             /// Kernel auto-allocates a registered file slot.
             case allocate
+
+            /// No file descriptor — sets fd to -1.
+            ///
+            /// Used by operations that don't target a file: timeout, cancel,
+            /// poll remove, files update, madvise, pipe, and similar.
+            case none
         }
     }
 
@@ -49,20 +55,24 @@
 
     extension Kernel.IO.Uring.Target {
         /// Write the target's fd value to the SQE.
+        @usableFromInline
         func apply(
             to sqe: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>
         ) {
             switch self {
             case .descriptor(let fd):
-                unsafe (sqe.pointee.cValue.fd = fd._rawValue)
+                unsafe (sqe.pointee._fd = fd._rawValue)
 
             case .registered(let index):
-                unsafe (sqe.pointee.cValue.fd = Int32(bitPattern: index))
+                unsafe (sqe.pointee._fd = Int32(bitPattern: index))
                 unsafe (sqe.pointee.flags.insert(.fixedFile))
 
             case .allocate:
-                unsafe (sqe.pointee.cValue.fd = Int32(bitPattern: UInt32.max))
+                unsafe (sqe.pointee._fd = Int32(bitPattern: UInt32.max))
                 unsafe (sqe.pointee.flags.insert(.fixedFile))
+
+            case .none:
+                unsafe (sqe.pointee._fd = -1)
             }
         }
     }
