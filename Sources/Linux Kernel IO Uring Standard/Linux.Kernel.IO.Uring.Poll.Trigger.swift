@@ -39,6 +39,7 @@
 
     extension Kernel.IO.Uring.Poll.Trigger {
         /// The io_uring poll flag bits for this trigger mode.
+        @usableFromInline
         var pollBits: UInt32 {
             switch self {
             case .edge: 0
