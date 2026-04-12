@@ -12,9 +12,12 @@
 #if os(Linux)
     #if canImport(Glibc)
         import Glibc
-        import CLinuxShim
     #elseif canImport(Musl)
         import Musl
+    #endif
+
+    #if canImport(CLinuxKernelShim)
+        import CLinuxKernelShim
     #endif
 import Testing
 
@@ -25,7 +28,7 @@ import Testing
     import Kernel_Error_Primitives
     import Kernel_File_Primitives
     import Kernel_Memory_Primitives
-    @testable import Linux_Kernel_Standard
+    @testable import Linux_Kernel_Event_Standard
 
     extension Kernel.Event.Poll.Operation {
         enum Test {

@@ -54,25 +54,25 @@
     // MARK: - SQE Application
 
     extension Kernel.IO.Uring.Target {
-        /// Write the target's fd value to the SQE.
+        /// Write the target's fd value and flags to the SQE.
         @usableFromInline
         func apply(
-            to sqe: UnsafeMutablePointer<Kernel.IO.Uring.Submission.Queue.Entry>
+            to sqe: inout Kernel.IO.Uring.Submission.Queue.Entry
         ) {
             switch self {
             case .descriptor(let fd):
-                unsafe (sqe.pointee._fd = fd._rawValue)
+                sqe._fd = fd._rawValue
 
             case .registered(let index):
-                unsafe (sqe.pointee._fd = Int32(bitPattern: index))
-                unsafe (sqe.pointee.flags.insert(.fixedFile))
+                sqe._fd = Int32(bitPattern: index)
+                sqe.flags.insert(.fixedFile)
 
             case .allocate:
-                unsafe (sqe.pointee._fd = Int32(bitPattern: UInt32.max))
-                unsafe (sqe.pointee.flags.insert(.fixedFile))
+                sqe._fd = Int32(bitPattern: UInt32.max)
+                sqe.flags.insert(.fixedFile)
 
             case .none:
-                unsafe (sqe.pointee._fd = -1)
+                sqe._fd = -1
             }
         }
     }

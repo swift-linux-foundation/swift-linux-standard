@@ -19,7 +19,7 @@
     import Kernel_Error_Primitives
     import Kernel_File_Primitives
     import Kernel_Memory_Primitives
-    @testable import Linux_Kernel_Standard
+    @testable import Linux_Kernel_IO_Uring_Standard
 
     /// Tests for Kernel.IO.Uring.Operation.Data (typealias to Tagged).
     extension Kernel.IO.Uring.Operation {

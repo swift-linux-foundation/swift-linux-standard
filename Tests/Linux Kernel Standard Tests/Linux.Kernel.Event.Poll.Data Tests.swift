@@ -25,7 +25,7 @@ import Testing
     import Kernel_Error_Primitives
     import Kernel_File_Primitives
     import Kernel_Memory_Primitives
-    @testable import Linux_Kernel_Standard
+    @testable import Linux_Kernel_Event_Standard
 
     // Kernel.Event.Poll.Data is a typealias to Tagged<Kernel.Event.Poll, UInt64>
     // The #Tests macro cannot be used directly on typealiases

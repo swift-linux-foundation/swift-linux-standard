@@ -43,12 +43,10 @@
         ///
         /// ## Usage
         ///
-        /// Entries are typically filled in-place in the submission queue ring buffer:
+        /// Entries are filled in-place through the ring's ``Kernel/IO/Uring/Slot``:
         /// ```swift
-        /// let entryPtr = ring.sqes.advanced(by: index)
-        /// var entry = Kernel.IO.Uring.Submission.Queue.Entry()
-        /// entry.setRead(fd: fd, buffer: buffer, offset: 0, data: id)
-        /// entryPtr.pointee = entry.cValue
+        /// ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
+        /// ring.advance()
         /// ```
         ///
         /// ## Thread Safety
@@ -132,7 +130,6 @@
     // MARK: - Single-Field Semantic Accessors
 
     // These cover opcodes needing one overloaded field from a union.
-    // Multi-field opcodes use view types on Prepare instead.
     // Compound names permitted at @usableFromInline internal scope
     // per feedback_compound_package_scope.
 
@@ -260,6 +257,77 @@
         internal var _rawOffset: UInt64 {
             get { cValue.off }
             set { cValue.off = newValue }
+        }
+
+        /// Raw operation-specific flags field.
+        ///
+        /// Union over rw_flags: splice flags, timeout bits, poll trigger,
+        /// futex flags, xattr disposition, rename/link/statx AT_* flags, etc.
+        /// Domain-typed uses go through typed accessors (atFlags, fileAdvice, etc.).
+        @usableFromInline
+        internal var _rawFlags: UInt32 {
+            get { cValue.rw_flags }
+            set { cValue.rw_flags = newValue }
+        }
+
+        /// Registered buffer index.
+        @usableFromInline
+        internal var _bufferIndex: UInt16 {
+            get { cValue.buf_index }
+            set { cValue.buf_index = newValue }
+        }
+
+        /// Buffer group for kernel-selected buffers.
+        @usableFromInline
+        internal var _bufferGroup: UInt16 {
+            get { cValue.buf_group }
+            set { cValue.buf_group = newValue }
+        }
+
+        /// Splice source file descriptor (splice_fd_in).
+        @usableFromInline
+        internal var _spliceSourceFd: Int32 {
+            get { cValue.splice_fd_in }
+            set { cValue.splice_fd_in = newValue }
+        }
+
+        /// Set splice source from a descriptor.
+        ///
+        /// Absorbs `Kernel.Descriptor._rawValue` extraction — SPI access
+        /// hidden from @inlinable callers.
+        @usableFromInline
+        internal mutating func setSpliceSource(_ descriptor: borrowing Kernel.Descriptor) {
+            cValue.splice_fd_in = descriptor._rawValue
+        }
+
+        /// Set epoll target descriptor in the offset field.
+        ///
+        /// Absorbs `Kernel.Descriptor._rawValue` extraction — SPI access
+        /// hidden from @inlinable callers.
+        @usableFromInline
+        internal mutating func setEpollDescriptor(_ descriptor: borrowing Kernel.Descriptor) {
+            cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue))
+        }
+
+        /// Poll event mask (poll32_events).
+        @usableFromInline
+        internal var _pollEvents: UInt32 {
+            get { cValue.poll32_events }
+            set { cValue.poll32_events = newValue }
+        }
+
+        /// Fixed file index / waitid options (file_index union).
+        @usableFromInline
+        internal var _fileIndex: UInt32 {
+            get { cValue.file_index }
+            set { cValue.file_index = newValue }
+        }
+
+        /// Third address field (addr3).
+        @usableFromInline
+        internal var _addr3: UInt64 {
+            get { cValue.addr3 }
+            set { cValue.addr3 = newValue }
         }
 
         /// Uring command opcode (32-bit union with off).

@@ -44,7 +44,7 @@
         ///
         /// ```swift
         /// if let sqe = ring.nextEntry() {
-        ///     unsafe sqe.prepare.nop(data: data)
+        ///     ring.next.entry.nop(data: data)
         ///     ring.advance()
         /// }
         /// let flushed = ring.flush()
@@ -443,13 +443,38 @@
     // MARK: - Submission Queue Operations
 
     extension Kernel.IO.Uring {
+        /// The current submission queue slot.
+        ///
+        /// Yields a `~Copyable ~Escapable` ``Slot`` via `mutating _read` coroutine.
+        /// The coroutine scope confines the slot's lifetime — it cannot escape.
+        /// Write to the SQE through ``Slot/entry``:
+        ///
+        /// ```swift
+        /// ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
+        /// ring.next.entry.flags.insert(.link)  // same slot — tail unchanged
+        /// ring.advance()
+        /// ```
+        ///
+        /// Multiple accesses without ``advance()`` hit the same slot (by design).
+        /// Call ``advance()`` after each SQE is fully configured.
+        ///
+        /// - Precondition: The submission queue is not full. Check capacity
+        ///   before accessing.
+        public var next: Slot {
+            mutating _read {
+                let slot = sqMask.slot(for: sqeTail)
+                let ptr = unsafe sqes.advanced(by: slot)
+                yield unsafe Slot(ptr)
+            }
+        }
+
         /// Acquire the next available SQE slot for filling.
         ///
         /// Returns a pointer to the SQE if a slot is available, or `nil` if the
         /// submission queue is full (submit pending entries and retry).
         ///
         /// The returned pointer is valid until the next ``flush()`` call. Fill the
-        /// SQE via `sqe.prepare.read(...)` etc., then call ``advance()`` to mark it
+        /// SQE via `entry.read(...)` etc., then call ``advance()`` to mark it
         /// ready, and ``flush()`` to publish the batch to the kernel.
         ///
         /// ## Safety
