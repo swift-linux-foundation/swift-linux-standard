@@ -51,4 +51,19 @@
         }
     }
 
+    extension Kernel.IO.Uring.Register.Opcode {
+        /// High-bit flag: use a registered ring descriptor for the register call.
+        ///
+        /// OR this with any register opcode to indicate the ring fd
+        /// is an index into the registered ring fd array.
+        ///
+        /// - Linux: `IORING_REGISTER_USE_REGISTERED_RING`
+        public static let useRegisteredRing = Self(rawValue: 1 << 31)
+
+        /// Sparse resource registration flag.
+        ///
+        /// - Linux: `IORING_RSRC_REGISTER_SPARSE`
+        public static let sparse = Self(rawValue: 1)
+    }
+
 #endif
