@@ -30,6 +30,7 @@ let package = Package(
     dependencies: [
         .package(path: "../../swift-primitives/swift-kernel-primitives"),
         .package(path: "../../swift-primitives/swift-cpu-primitives"),
+        .package(path: "../../swift-primitives/swift-dimension-primitives"),
         .package(path: "../../swift-primitives/swift-loader-primitives"),
         .package(path: "../../swift-primitives/swift-system-primitives"),
         .package(path: "../../swift-iso/swift-iso-9945"),
@@ -206,6 +207,7 @@ let package = Package(
                 "Linux Kernel System Standard",
                 "Linux Kernel Memory Standard",
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
+                .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
                 .product(name: "Kernel IO Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Error Primitives", package: "swift-kernel-primitives"),
