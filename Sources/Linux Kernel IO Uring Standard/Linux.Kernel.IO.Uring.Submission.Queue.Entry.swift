@@ -207,12 +207,17 @@
             set { cValue.off = UInt64(newValue) }
         }
 
-        /// Socket message flags (for accept, send, recv).
-        ///
-        /// Replaces direct `opFlags = flags.rawValue` pattern.
+        /// Socket message flags (for send, recv, sendmsg, recvmsg).
         @usableFromInline
         internal var messageFlags: Kernel.Socket.Message.Options {
             get { Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
+        }
+
+        /// Accept flags.
+        @usableFromInline
+        internal var acceptFlags: Kernel.Socket.Options {
+            get { Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
     }
@@ -223,6 +228,10 @@
     // compile-time constants, and misc raw values.
 
     extension Kernel.IO.Uring.Submission.Queue.Entry {
+        /// Fsync datasync-only flag (IORING_FSYNC_DATASYNC).
+        @usableFromInline
+        internal static let fsyncDatasync: Int32 = Int32(IORING_FSYNC_DATASYNC)
+
         /// Raw file descriptor field.
         ///
         /// For install registered fd and uring command target only.

@@ -149,6 +149,7 @@
         ///   - target: File targeting (descriptor or registered index).
         ///   - datasync: If true, only sync data (not metadata).
         ///   - data: Operation data to return with completion.
+        @inlinable
         public func fsync(
             target: borrowing Kernel.IO.Uring.Target,
             datasync: Bool,
@@ -158,7 +159,7 @@
             unsafe (pointer.pointee.opcode = .sync.file)
             unsafe target.apply(to: pointer)
             if datasync {
-                unsafe (pointer.pointee.opFlags = Int32(IORING_FSYNC_DATASYNC))
+                unsafe (pointer.pointee.opFlags = Kernel.IO.Uring.Submission.Queue.Entry.fsyncDatasync)
             }
             unsafe (pointer.pointee.data = data)
         }
@@ -200,7 +201,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: addr)))
             unsafe (pointer.pointee.offset = Kernel.IO.Uring.Offset(UInt64(UInt(bitPattern: length))))
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.acceptFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -247,7 +248,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -272,7 +273,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
     }
@@ -884,7 +885,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
             unsafe (pointer.pointee._rawLength = 1)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -907,7 +908,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
             unsafe (pointer.pointee._rawLength = 1)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.data = data)
         }
 
@@ -938,7 +939,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: buffer)))
             unsafe (pointer.pointee.len = length)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.priority = zeroCopyFlags)
             unsafe (pointer.pointee.data = data)
         }
@@ -964,7 +965,7 @@
             unsafe target.apply(to: pointer)
             unsafe (pointer.pointee.addr = UInt64(UInt(bitPattern: message)))
             unsafe (pointer.pointee._rawLength = 1)
-            unsafe (pointer.pointee.opFlags = flags.rawValue)
+            unsafe (pointer.pointee.messageFlags = flags)
             unsafe (pointer.pointee.priority = zeroCopyFlags)
             unsafe (pointer.pointee.data = data)
         }
