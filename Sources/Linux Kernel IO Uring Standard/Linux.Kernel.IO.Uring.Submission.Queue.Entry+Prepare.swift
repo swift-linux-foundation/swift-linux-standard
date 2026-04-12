@@ -887,7 +887,7 @@
         ///   - buffer: Buffer pointer containing data to send.
         ///   - length: Number of bytes to send.
         ///   - flags: Message flags.
-        ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
+        ///   - transfer: Socket transfer modifier flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
@@ -895,7 +895,7 @@
             buffer: UnsafeRawPointer,
             length: Kernel.IO.Uring.Length,
             flags: Kernel.Socket.Message.Options,
-            zeroCopyFlags: Kernel.IO.Priority,
+            transfer: Kernel.IO.Uring.Socket.Transfer.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -904,7 +904,7 @@
             unsafe self.setAddr(buffer)
             self.len = length
             self.messageFlags = flags
-            self.priority = zeroCopyFlags
+            self.transferOptions = transfer
             self.data = data
         }
 
@@ -914,14 +914,14 @@
         ///   - target: Socket file targeting.
         ///   - message: Pointer to message header (must remain valid until notification CQE).
         ///   - flags: Message flags.
-        ///   - zeroCopyFlags: Zero-copy flags (stored in ioprio).
+        ///   - transfer: Socket transfer modifier flags (stored in ioprio).
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
             target: borrowing Kernel.IO.Uring.Target,
             message: UnsafePointer<Kernel.Socket.Message.Header>,
             flags: Kernel.Socket.Message.Options,
-            zeroCopyFlags: Kernel.IO.Priority,
+            transfer: Kernel.IO.Uring.Socket.Transfer.Options,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -930,7 +930,7 @@
             unsafe self.setAddr(message)
             self._rawLength = 1
             self.messageFlags = flags
-            self.priority = zeroCopyFlags
+            self.transferOptions = transfer
             self.data = data
         }
 
