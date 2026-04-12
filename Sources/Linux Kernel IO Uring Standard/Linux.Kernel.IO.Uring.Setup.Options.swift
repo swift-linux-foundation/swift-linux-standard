@@ -125,10 +125,11 @@
         /// - Linux: `IORING_SETUP_R_DISABLED`
         public static let rDisabled = Self(rawValue: 1 << 6)
 
-        /// Allows the kernel to choose the SQ thread CPU.
+        /// Continue submitting remaining SQEs on error (kernel 5.18+).
         ///
-        /// When used with `.sqPoll`, lets the kernel select an appropriate
-        /// CPU for the polling thread instead of requiring `.sqAff`.
+        /// Without this flag, an SQE error aborts the entire batch.
+        /// With it, the kernel skips the failing SQE and continues
+        /// submitting the rest.
         ///
         /// - Linux: `IORING_SETUP_SUBMIT_ALL`
         public static let submitAll = Self(rawValue: 1 << 7)
@@ -141,10 +142,11 @@
         /// - Linux: `IORING_SETUP_COOP_TASKRUN`
         public static let coopTaskrun = Self(rawValue: 1 << 8)
 
-        /// Enables single-issuer task running mode (kernel 5.19+).
+        /// Uses SQ ring flags for task work notification (kernel 5.19+).
         ///
-        /// Optimizes for the common case where only one task submits to the ring.
-        /// Combined with `.coopTaskrun` for best performance.
+        /// When set, the kernel signals pending task work via the SQ ring
+        /// flags field (`IORING_SQ_TASKRUN`) instead of interrupting with
+        /// a signal. Requires `.coopTaskrun`.
         ///
         /// - Linux: `IORING_SETUP_TASKRUN_FLAG`
         public static let taskrunFlag = Self(rawValue: 1 << 9)

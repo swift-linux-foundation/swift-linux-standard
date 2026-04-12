@@ -139,7 +139,7 @@ import Testing
                 limit: 16
             ) { cqe in
                 received.insert(cqe.data.rawValue)
-                #expect(cqe.res == 0)  // all NOPs succeed
+                #expect(cqe.isSuccess)  // all NOPs succeed
             }
             #expect(drained.rawValue.rawValue == UInt(count))
             #expect(received == [0x100, 0x101, 0x102, 0x103])

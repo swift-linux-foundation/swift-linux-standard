@@ -90,7 +90,11 @@
         }
 
         /// Operation-specific flags (rw_flags field).
-        public var opFlags: Int32 {
+        ///
+        /// Raw access for opcodes where the typed union accessors
+        /// don't apply (e.g., openat combines access + options).
+        @usableFromInline
+        internal var opFlags: Int32 {
             get { Int32(bitPattern: cValue.rw_flags) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue) }
         }
@@ -108,7 +112,11 @@
         }
 
         /// Buffer address or other address field.
-        public var addr: UInt64 {
+        ///
+        /// Raw UInt64 — used internally by typed `setAddr` helpers
+        /// and for irreducible cases (splice offsetIn, fallocate length).
+        @usableFromInline
+        internal var addr: UInt64 {
             get { cValue.addr }
             set { cValue.addr = newValue }
         }
@@ -345,11 +353,15 @@
             set { cValue.rw_flags = newValue.rawValue }
         }
 
-        /// Xattr create/replace disposition.
+        /// Xattr create/replace disposition (write-only).
+        ///
+        /// Set-only because the raw bits encode multiple dispositions
+        /// that cannot be losslessly round-tripped through the enum.
         @usableFromInline
-        internal var xattrDisposition: Kernel.IO.Uring.File.Xattr.Disposition {
-            get { Kernel.IO.Uring.File.Xattr.Disposition.createOrReplace }
-            set { cValue.rw_flags = newValue.rawBits }
+        internal mutating func setXattrDisposition(
+            _ disposition: Kernel.IO.Uring.File.Xattr.Disposition
+        ) {
+            cValue.rw_flags = disposition.rawBits
         }
 
         /// Waitid io_uring-level flags.

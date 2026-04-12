@@ -69,11 +69,14 @@
             Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data)
         }
 
-        /// Result of the operation.
+        /// Raw result of the operation.
         ///
-        /// - For successful operations: the number of bytes transferred (or other success value)
-        /// - For failed operations: a negative errno value
-        public var res: Int32 {
+        /// Negative values are negated errno codes. Non-negative values
+        /// are operation-specific success results (bytes transferred, fd, etc.).
+        ///
+        /// Prefer ``isSuccess`` and ``error`` for typed access.
+        @usableFromInline
+        internal var res: Int32 {
             cValue.res
         }
 
