@@ -105,6 +105,16 @@
             set { cValue.ioprio = newValue.rawValue }
         }
 
+        /// Socket transfer modifier flags (stored in the ioprio field).
+        ///
+        /// Used by send, recv, sendmsg, recvmsg, send_zc, sendmsg_zc
+        /// operations. Overlaps the ioprio field — set one or the other.
+        @usableFromInline
+        internal var transferOptions: Kernel.IO.Uring.Socket.Transfer.Options {
+            get { .init(rawValue: cValue.ioprio) }
+            set { cValue.ioprio = newValue.rawValue }
+        }
+
         /// File offset for read/write operations.
         public var offset: Kernel.IO.Uring.Offset {
             get { Kernel.IO.Uring.Offset(cValue.off) }
