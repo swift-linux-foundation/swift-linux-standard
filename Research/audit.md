@@ -573,6 +573,35 @@ These are runtime flags read from the mmap'd SQ ring `flags` field. `SQ_NEED_WAK
 
 4. **SQ ring flags** (0%): `SQ_NEED_WAKEUP` is required for correct SQ_POLL operation.
 
+### Post-Closure Summary — 2026-04-12
+
+All gaps addressed in 4 phases (commits `3cdd8c7`–`0acfde2`).
+
+| Category | Before | After | Completeness |
+|----------|--------|-------|-------------|
+| Opcodes | 58/58 | 58/58 | **100%** |
+| Setup Flags | 14/17 | 17/17 | **100%** |
+| Enter Flags | 5/6 | 6/6 | **100%** |
+| SQE Flags | 7/7 | 7/7 | **100%** |
+| CQE Flags | 4/5 | 5/5 | **100%** |
+| Feature Flags | 14/16 | 16/16 | **100%** |
+| Cancel Flags | 6/6 | 6/6 | **100%** |
+| Register Ops | 12/31 | 31/31 | **100%** |
+| Timeout Flags | 4/7 | 7/7 | **100%** |
+| Poll Flags | 2/4 | 4/4 | **100%** |
+| Recv/Send Flags | 0/6 | 5/6 | 83% |
+| Accept Flags | 0/3 | 3/3 | **100%** |
+| SQ Ring Flags | 0/3 | 3/3 | **100%** |
+| CQ Ring Flags | 0/1 | 1/1 | **100%** |
+
+**Remaining**: `IORING_NOTIF_USAGE_ZC_COPIED` (CQE notification flag, not SQE flag — tracked but not yet typed).
+
+**New types introduced**: `Socket.Transfer.Options`, `Accept.Options`, `Submission.Queue.Options`, `Completion.Queue.Options`, `Ring.Command.Options`, `Nop.Options`, `Restriction.Kind`, `Socket.Command`, `Message.Kind`.
+
+**Breaking change**: Zero-copy send prepare methods now accept `Socket.Transfer.Options` instead of `Kernel.IO.Priority`.
+
+**Source files**: 88 → 101 (13 new files).
+
 **Speculative opcodes**: 7 opcodes with rawValue ≥ 58 exceed kernel 6.12's `IORING_OP_LAST`. Likely kernel 6.13+ additions. LOW severity — document kernel version requirements.
 
 ---
