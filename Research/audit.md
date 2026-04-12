@@ -264,6 +264,425 @@ The V6 architecture is a significant ergonomic improvement: `ring.next.entry.rea
 
 ---
 
+## Spec Completeness — 2026-04-12
+
+### Scope
+
+- **Target**: `Linux Kernel IO Uring Standard` (88 source files)
+- **Spec**: `include/uapi/linux/io_uring.h` from kernel 6.12 (tag v6.12)
+- **Focus**: Every kernel constant, opcode, flag, register operation, and struct field compared against our implementation
+- **Build verification**: Docker swift:6.3, `apt-get install uuid-dev`, 260 tests pass
+
+### Verified State
+
+- Working tree clean, HEAD `5eb5f96`
+- Docker build: 31.94s, 2 unused-import warnings (Kernel_File_Primitives, CPU_Primitives in Uring.swift)
+- 260 tests pass (186 suites)
+
+### Opcodes (`enum io_uring_op`) — 58 kernel opcodes (0–57)
+
+**All 58 opcodes covered.** Full mapping:
+
+| # | Kernel Constant | Our API | Status |
+|---|----------------|---------|--------|
+| 0 | `IORING_OP_NOP` | `.nop` | ✓ |
+| 1 | `IORING_OP_READV` | `.read.vectored.standard` | ✓ |
+| 2 | `IORING_OP_WRITEV` | `.write.vectored.standard` | ✓ |
+| 3 | `IORING_OP_FSYNC` | `.sync.file.standard` | ✓ |
+| 4 | `IORING_OP_READ_FIXED` | `.read.fixed` | ✓ |
+| 5 | `IORING_OP_WRITE_FIXED` | `.write.fixed` | ✓ |
+| 6 | `IORING_OP_POLL_ADD` | `.poll.add` | ✓ |
+| 7 | `IORING_OP_POLL_REMOVE` | `.poll.remove` | ✓ |
+| 8 | `IORING_OP_SYNC_FILE_RANGE` | `.sync.file.range` | ✓ |
+| 9 | `IORING_OP_SENDMSG` | `.socket.message.send` | ✓ |
+| 10 | `IORING_OP_RECVMSG` | `.socket.message.receive` | ✓ |
+| 11 | `IORING_OP_TIMEOUT` | `.timeout.standard` | ✓ |
+| 12 | `IORING_OP_TIMEOUT_REMOVE` | `.timeout.remove` | ✓ |
+| 13 | `IORING_OP_ACCEPT` | `.socket.accept` | ✓ |
+| 14 | `IORING_OP_ASYNC_CANCEL` | `.cancel.async` | ✓ |
+| 15 | `IORING_OP_LINK_TIMEOUT` | `.timeout.link` | ✓ |
+| 16 | `IORING_OP_CONNECT` | `.socket.connect` | ✓ |
+| 17 | `IORING_OP_FALLOCATE` | `.file.fallocate` | ✓ |
+| 18 | `IORING_OP_OPENAT` | `.file.openat` | ✓ |
+| 19 | `IORING_OP_CLOSE` | `.close` | ✓ |
+| 20 | `IORING_OP_FILES_UPDATE` | `.file.update` | ✓ |
+| 21 | `IORING_OP_STATX` | `.file.statx` | ✓ |
+| 22 | `IORING_OP_READ` | `.read.standard` | ✓ |
+| 23 | `IORING_OP_WRITE` | `.write.standard` | ✓ |
+| 24 | `IORING_OP_FADVISE` | `.file.fadvise` | ✓ |
+| 25 | `IORING_OP_MADVISE` | `.memory.madvise` | ✓ |
+| 26 | `IORING_OP_SEND` | `.socket.send` | ✓ |
+| 27 | `IORING_OP_RECV` | `.socket.receive` | ✓ |
+| 28 | `IORING_OP_OPENAT2` | `.file.openat2` | ✓ |
+| 29 | `IORING_OP_EPOLL_CTL` | `.epoll.ctl` | ✓ |
+| 30 | `IORING_OP_SPLICE` | `.pipe.splice` | ✓ |
+| 31 | `IORING_OP_PROVIDE_BUFFERS` | `.buffer.provide` | ✓ |
+| 32 | `IORING_OP_REMOVE_BUFFERS` | `.buffer.remove` | ✓ |
+| 33 | `IORING_OP_TEE` | `.pipe.tee` | ✓ |
+| 34 | `IORING_OP_SHUTDOWN` | `.socket.shutdown` | ✓ |
+| 35 | `IORING_OP_RENAMEAT` | `.file.renameat` | ✓ |
+| 36 | `IORING_OP_UNLINKAT` | `.file.unlinkat` | ✓ |
+| 37 | `IORING_OP_MKDIRAT` | `.file.mkdirat` | ✓ |
+| 38 | `IORING_OP_SYMLINKAT` | `.file.symlinkat` | ✓ |
+| 39 | `IORING_OP_LINKAT` | `.file.linkat` | ✓ |
+| 40 | `IORING_OP_MSG_RING` | `.ring.msg` | ✓ |
+| 41 | `IORING_OP_FSETXATTR` | `.xattr.fset` | ✓ |
+| 42 | `IORING_OP_SETXATTR` | `.xattr.set` | ✓ |
+| 43 | `IORING_OP_FGETXATTR` | `.xattr.fget` | ✓ |
+| 44 | `IORING_OP_GETXATTR` | `.xattr.get` | ✓ |
+| 45 | `IORING_OP_SOCKET` | `.socket.create` | ✓ |
+| 46 | `IORING_OP_URING_CMD` | `.ring.cmd` | ✓ |
+| 47 | `IORING_OP_SEND_ZC` | `.send.zero.copy` | ✓ |
+| 48 | `IORING_OP_SENDMSG_ZC` | `.send.zero.msg` | ✓ |
+| 49 | `IORING_OP_READ_MULTISHOT` | `.read.multishot` | ✓ |
+| 50 | `IORING_OP_WAITID` | `.wait.id` | ✓ |
+| 51 | `IORING_OP_FUTEX_WAIT` | `.futex.wait` | ✓ |
+| 52 | `IORING_OP_FUTEX_WAKE` | `.futex.wake` | ✓ |
+| 53 | `IORING_OP_FUTEX_WAITV` | `.futex.waitv` | ✓ |
+| 54 | `IORING_OP_FIXED_FD_INSTALL` | `.fixed.install` | ✓ |
+| 55 | `IORING_OP_FTRUNCATE` | `.file.ftruncate` | ✓ |
+| 56 | `IORING_OP_BIND` | `.socket.bind` | ✓ |
+| 57 | `IORING_OP_LISTEN` | `.socket.listen` | ✓ |
+
+**Speculative opcodes beyond IORING_OP_LAST (58)**:
+
+| RawValue | Our API | Assessment |
+|----------|---------|------------|
+| 58 | `.socket.receiveZeroCopy` | Not in kernel 6.12. Speculative — remove or gate on future kernel version |
+| 59 | `.epoll.wait` | Not in kernel 6.12. Speculative |
+| 60 | `.read.vectored.fixed` | Not in kernel 6.12. Speculative |
+| 61 | `.write.vectored.fixed` | Not in kernel 6.12. Speculative |
+| 62 | `.pipe.create` | Not in kernel 6.12. Speculative |
+| 63 | `.nop128` | Not in kernel 6.12. Speculative |
+| 64 | `.ring.cmd128` | Not in kernel 6.12. Speculative |
+
+**Assessment**: All 7 speculative opcodes exceed `IORING_OP_LAST=58` in kernel 6.12. They may appear in kernel 6.13+ development branches. **Action**: add `// Kernel 6.13+` doc comments or gate behind a compile-time check. Do NOT remove — they may be correct for newer kernels. Severity: LOW.
+
+### Setup Flags (`IORING_SETUP_*`) — 17 kernel flags
+
+| # | Severity | Kernel Constant | Hex | Kernel Version | Status |
+|---|----------|----------------|-----|----------------|--------|
+| 1 | MEDIUM | `IORING_SETUP_NO_MMAP` | `0x4000` | 6.4 | **MISSING** |
+| 2 | MEDIUM | `IORING_SETUP_REGISTERED_FD_ONLY` | `0x8000` | 6.4 | **MISSING** |
+| 3 | LOW | `IORING_SETUP_NO_SQARRAY` | `0x10000` | 6.6 | **MISSING** |
+
+14/17 covered. Missing 3 flags added in kernel 6.4–6.6. `NO_MMAP` and `REGISTERED_FD_ONLY` enable userspace-allocated ring memory and are prerequisites for registered ring FDs — used by high-performance runtimes. `NO_SQARRAY` is an optimization removing the SQ indirection array.
+
+### Enter Flags (`IORING_ENTER_*`) — 6 kernel flags
+
+| # | Severity | Kernel Constant | Hex | Kernel Version | Status |
+|---|----------|----------------|-----|----------------|--------|
+| 1 | LOW | `IORING_ENTER_ABS_TIMER` | `0x20` | 6.7 | **MISSING** |
+
+5/6 covered. `ABS_TIMER` enables absolute timeout with `io_uring_enter`.
+
+### SQE Flags (`IOSQE_*`) — 7/7 COMPLETE ✓
+
+### CQE Flags (`IORING_CQE_F_*`) — 5 kernel flags
+
+| # | Severity | Kernel Constant | Hex | Kernel Version | Status |
+|---|----------|----------------|-----|----------------|--------|
+| 1 | MEDIUM | `IORING_CQE_F_BUF_MORE` | `0x10` | 6.7 | **MISSING** |
+
+4/5 covered. `BUF_MORE` indicates the provided buffer ring has more buffers available — needed for incremental provided-buffer consumption with `IORING_REGISTER_PBUF_RING`.
+
+### Feature Flags (`IORING_FEAT_*`) — 16 kernel flags
+
+| # | Severity | Kernel Constant | Hex | Kernel Version | Status |
+|---|----------|----------------|-----|----------------|--------|
+| 1 | LOW | `IORING_FEAT_RECVSEND_BUNDLE` | `0x4000` | 6.10 | **MISSING** |
+| 2 | LOW | `IORING_FEAT_MIN_TIMEOUT` | `0x8000` | 6.10 | **MISSING** |
+
+14/16 covered. Both are kernel 6.10 additions. `RECVSEND_BUNDLE` enables bundled recv/send for scatter-gather networking. `MIN_TIMEOUT` enables minimum completion timeout.
+
+### Cancel Flags (`IORING_ASYNC_CANCEL_*`) — 6/6 COMPLETE ✓
+
+### Register Operations (`IORING_REGISTER_*`) — 31 kernel operations
+
+**Biggest gap.** 12/31 covered, 19 missing.
+
+| # | Severity | Kernel Constant | Value | Kernel Version | Status |
+|---|----------|----------------|-------|----------------|--------|
+| 1 | HIGH | `IORING_REGISTER_RESTRICTIONS` | 11 | 5.10 | **MISSING** |
+| 2 | HIGH | `IORING_REGISTER_FILES2` | 13 | 5.13 | **MISSING** |
+| 3 | HIGH | `IORING_REGISTER_FILES_UPDATE2` | 14 | 5.13 | **MISSING** |
+| 4 | HIGH | `IORING_REGISTER_BUFFERS2` | 15 | 5.13 | **MISSING** |
+| 5 | HIGH | `IORING_REGISTER_BUFFERS_UPDATE` | 16 | 5.13 | **MISSING** |
+| 6 | MEDIUM | `IORING_REGISTER_IOWQ_AFF` | 17 | 5.14 | **MISSING** |
+| 7 | MEDIUM | `IORING_UNREGISTER_IOWQ_AFF` | 18 | 5.14 | **MISSING** |
+| 8 | MEDIUM | `IORING_REGISTER_IOWQ_MAX_WORKERS` | 19 | 5.15 | **MISSING** |
+| 9 | MEDIUM | `IORING_REGISTER_RING_FDS` | 20 | 5.18 | **MISSING** |
+| 10 | MEDIUM | `IORING_UNREGISTER_RING_FDS` | 21 | 5.18 | **MISSING** |
+| 11 | HIGH | `IORING_REGISTER_PBUF_RING` | 22 | 5.19 | **MISSING** |
+| 12 | HIGH | `IORING_UNREGISTER_PBUF_RING` | 23 | 5.19 | **MISSING** |
+| 13 | MEDIUM | `IORING_REGISTER_SYNC_CANCEL` | 24 | 6.0 | **MISSING** |
+| 14 | LOW | `IORING_REGISTER_FILE_ALLOC_RANGE` | 25 | 6.0 | **MISSING** |
+| 15 | LOW | `IORING_REGISTER_PBUF_STATUS` | 26 | 6.4 | **MISSING** |
+| 16 | LOW | `IORING_REGISTER_NAPI` | 27 | 6.9 | **MISSING** |
+| 17 | LOW | `IORING_UNREGISTER_NAPI` | 28 | 6.9 | **MISSING** |
+| 18 | MEDIUM | `IORING_REGISTER_CLOCK` | 29 | 6.10 | **MISSING** |
+| 19 | LOW | `IORING_REGISTER_CLONE_BUFFERS` | 30 | 6.12 | **MISSING** |
+
+Priority rationale: FILES2/BUFFERS2/PBUF_RING are the v2 resource registration APIs that supersede the original register operations. RESTRICTIONS enables ring hardening for sandboxed environments.
+
+### Timeout Flags (`IORING_TIMEOUT_*`)
+
+| # | Severity | Kernel Constant | Status | Notes |
+|---|----------|----------------|--------|-------|
+| — | — | `IORING_TIMEOUT_ABS` | ✓ | `.absolute` |
+| — | — | `IORING_TIMEOUT_MULTISHOT` | ✓ | `.multishot` |
+| — | — | `IORING_TIMEOUT_BOOTTIME` | ✓ | Via `Clock.boottime` → `timeoutBits` |
+| — | — | `IORING_TIMEOUT_REALTIME` | ✓ | Via `Clock.realtime` → `timeoutBits` |
+| 1 | MEDIUM | `IORING_TIMEOUT_UPDATE` | **MISSING** | Needed for timeout update operations |
+| 2 | LOW | `IORING_LINK_TIMEOUT_UPDATE` | **MISSING** | Update linked timeouts |
+| 3 | LOW | `IORING_TIMEOUT_ETIME_SUCCESS` | **MISSING** | Treat timeout expiry as success |
+| 4 | INFO | `IORING_TIMEOUT_CLOCK_MASK` | **MISSING** | Convenience mask (BOOTTIME\|REALTIME) |
+| 5 | INFO | `IORING_TIMEOUT_UPDATE_MASK` | **MISSING** | Convenience mask (UPDATE\|LINK_UPDATE) |
+
+4/7 flags covered (2 explicit, 2 via Clock enum). `TIMEOUT_UPDATE` is needed for timeout modification operations.
+
+### Poll Flags (`IORING_POLL_*`)
+
+| # | Severity | Kernel Constant | Status | Notes |
+|---|----------|----------------|--------|-------|
+| — | — | `IORING_POLL_ADD_MULTI` | ✓ | `.multishot` |
+| — | — | `IORING_POLL_ADD_LEVEL` | ✓ | `.level` |
+| 1 | MEDIUM | `IORING_POLL_UPDATE_EVENTS` | **MISSING** | Update poll mask without remove/re-add |
+| 2 | MEDIUM | `IORING_POLL_UPDATE_USER_DATA` | **MISSING** | Update user_data of existing poll |
+
+2/4 covered. `UPDATE_EVENTS` and `UPDATE_USER_DATA` enable in-place poll modification (used by POLL_REMOVE with these flags to update rather than cancel).
+
+### Recv/Send Flags (`IORING_RECVSEND_*`) — Entire category MISSING
+
+| # | Severity | Kernel Constant | Hex | Kernel Version |
+|---|----------|----------------|-----|----------------|
+| 1 | HIGH | `IORING_RECVSEND_POLL_FIRST` | `0x01` | 5.19 |
+| 2 | HIGH | `IORING_RECV_MULTISHOT` | `0x02` | 5.19 |
+| 3 | HIGH | `IORING_RECVSEND_FIXED_BUF` | `0x04` | 6.0 |
+| 4 | MEDIUM | `IORING_SEND_ZC_REPORT_USAGE` | `0x08` | 6.1 |
+| 5 | LOW | `IORING_RECVSEND_BUNDLE` | `0x10` | 6.10 |
+| 6 | INFO | `IORING_NOTIF_USAGE_ZC_COPIED` | `0x80000000` | 6.1 |
+
+0/6 covered. `POLL_FIRST`, `RECV_MULTISHOT`, and `FIXED_BUF` are core networking optimizations used by production io_uring runtimes.
+
+### Accept Flags (`IORING_ACCEPT_*`) — Entire category MISSING
+
+| # | Severity | Kernel Constant | Hex | Kernel Version |
+|---|----------|----------------|-----|----------------|
+| 1 | HIGH | `IORING_ACCEPT_MULTISHOT` | `0x01` | 5.19 |
+| 2 | LOW | `IORING_ACCEPT_DONTWAIT` | `0x02` | 6.3 |
+| 3 | LOW | `IORING_ACCEPT_POLL_FIRST` | `0x04` | 6.3 |
+
+0/3 covered. `ACCEPT_MULTISHOT` is essential for high-connection-rate servers — single SQE accepts multiple connections.
+
+### MSG Ring Constants
+
+| # | Severity | Kernel Constant | Status | Notes |
+|---|----------|----------------|--------|-------|
+| — | — | `IORING_MSG_RING_CQE_SKIP` | ✓ | `.cqeSkip` |
+| — | — | `IORING_MSG_RING_FLAGS_PASS` | ✓ | `.flagsPass` |
+| 1 | LOW | `IORING_MSG_DATA` (0) | **MISSING** | Message type: send data |
+| 2 | LOW | `IORING_MSG_SEND_FD` (1) | **MISSING** | Message type: send fd between rings |
+
+### SQ Ring Flags (`IORING_SQ_*`) — No typed representation
+
+| # | Severity | Kernel Constant | Hex | Status |
+|---|----------|----------------|-----|--------|
+| 1 | MEDIUM | `IORING_SQ_NEED_WAKEUP` | `0x01` | **MISSING** — no `Submission.Queue.Flags` type |
+| 2 | LOW | `IORING_SQ_CQ_OVERFLOW` | `0x02` | **MISSING** |
+| 3 | LOW | `IORING_SQ_TASKRUN` | `0x04` | **MISSING** |
+
+These are runtime flags read from the mmap'd SQ ring `flags` field. `SQ_NEED_WAKEUP` is critical for SQ_POLL mode — the application checks it to decide when to call `io_uring_enter`.
+
+### CQ Ring Flags (`IORING_CQ_*`) — No typed representation
+
+| # | Severity | Kernel Constant | Hex | Status |
+|---|----------|----------------|-----|--------|
+| 1 | LOW | `IORING_CQ_EVENTFD_DISABLED` | `0x01` | **MISSING** |
+
+### Other Missing Constants
+
+| # | Severity | Category | Constant | Value | Notes |
+|---|----------|----------|----------|-------|-------|
+| 1 | LOW | NOP | `IORING_NOP_INJECT_RESULT` | `0x01` | Inject result into NOP CQE |
+| 2 | MEDIUM | CMD | `IORING_URING_CMD_FIXED` | `0x01` | Use fixed file for uring_cmd |
+| 3 | INFO | CMD | `IORING_URING_CMD_MASK` | `0x01` | Mask for cmd flags |
+| 4 | LOW | Restriction | `IORING_RESTRICTION_REGISTER_OP` | 0 | Ring restriction types |
+| 5 | LOW | Restriction | `IORING_RESTRICTION_SQE_OP` | 1 | |
+| 6 | LOW | Restriction | `IORING_RESTRICTION_SQE_FLAGS_ALLOWED` | 2 | |
+| 7 | LOW | Restriction | `IORING_RESTRICTION_SQE_FLAGS_REQUIRED` | 3 | |
+| 8 | LOW | Socket CMD | `SOCKET_URING_OP_SIOCINQ` | 0 | Socket uring_cmd sub-ops |
+| 9 | LOW | Socket CMD | `SOCKET_URING_OP_SIOCOUTQ` | 1 | |
+| 10 | LOW | Socket CMD | `SOCKET_URING_OP_GETSOCKOPT` | 2 | |
+| 11 | LOW | Socket CMD | `SOCKET_URING_OP_SETSOCKOPT` | 3 | |
+| 12 | LOW | IO-WQ | `IO_WQ_BOUND` | 0 | Worker types for IOWQ_MAX_WORKERS |
+| 13 | LOW | IO-WQ | `IO_WQ_UNBOUND` | 1 | |
+| 14 | MEDIUM | Register | `IORING_REGISTER_USE_REGISTERED_RING` | `0x80000000` | High-bit flag for registered ring fd |
+| 15 | LOW | Resource | `IORING_RSRC_REGISTER_SPARSE` | `0x01` | Sparse resource registration |
+| 16 | LOW | PBUF | `IOU_PBUF_RING_MMAP` | 1 | Provided buffer ring flags |
+| 17 | LOW | PBUF | `IOU_PBUF_RING_INC` | 2 | |
+| 18 | LOW | Mmap | `IORING_OFF_PBUF_RING` | `0x80000000` | PBUF ring mmap offset |
+| 19 | LOW | Mmap | `IORING_OFF_PBUF_SHIFT` | 16 | Shift for PBUF ring group |
+| 20 | LOW | Mmap | `IORING_OFF_MMAP_MASK` | `0xF8000000` | Mmap offset mask |
+| 21 | LOW | File | `IORING_FILE_INDEX_ALLOC` | `0xFFFFFFFF` | Auto-allocate file slot |
+| 22 | LOW | File | `IORING_REGISTER_FILES_SKIP` | -2 | Skip slot in file update |
+| 23 | MEDIUM | Splice | `SPLICE_F_FD_IN_FIXED` | `0x80000000` | Use fixed fd for splice source |
+| 24 | LOW | Register | `IORING_REGISTER_SRC_REGISTERED` | 1 | Source is registered (clone_buffers) |
+| 25 | INFO | Probe | `IO_URING_OP_SUPPORTED` | `0x01` | Probe result flag |
+
+### Struct Field Coverage
+
+**`io_sqring_offsets`**: 7/7 active fields covered (head, tail, ring_mask, ring_entries, flags, dropped, array). `resv1` and `user_addr` intentionally omitted — `user_addr` only used with `IORING_SETUP_NO_MMAP`.
+
+**`io_cqring_offsets`**: 7/7 active fields covered (head, tail, ring_mask, ring_entries, overflow, cqes, flags). `resv1` and `user_addr` intentionally omitted.
+
+**`io_uring_params`**: Covered via `Params`, `Params.Features`, `Setup.Options`, `Params.Submission.Thread`. `wq_fd` and `resv` fields present in C bridge.
+
+**`io_uring_sqe`**: All 64 bytes modeled via typed union accessors on `Entry`. Opcode, flags, ioprio, fd, off, addr, len, user_data, buf_index, personality, splice_fd_in/file_index all accessible.
+
+**`io_uring_cqe`**: user_data, res, flags fields modeled. `big_cqe` (32-byte CQE extension) not modeled — requires `IORING_SETUP_CQE32`.
+
+### Summary
+
+| Category | Kernel Count | Covered | Missing | Completeness |
+|----------|-------------|---------|---------|-------------|
+| Opcodes | 58 | 58 | 0 | **100%** |
+| Setup Flags | 17 | 14 | 3 | 82% |
+| Enter Flags | 6 | 5 | 1 | 83% |
+| SQE Flags | 7 | 7 | 0 | **100%** |
+| CQE Flags | 5 | 4 | 1 | 80% |
+| Feature Flags | 16 | 14 | 2 | 88% |
+| Cancel Flags | 6 | 6 | 0 | **100%** |
+| Register Ops | 31 | 12 | 19 | 39% |
+| Timeout Flags | 7 | 4 | 3 | 57% |
+| Poll Flags | 4 | 2 | 2 | 50% |
+| Recv/Send Flags | 6 | 0 | 6 | 0% |
+| Accept Flags | 3 | 0 | 3 | 0% |
+| SQ Ring Flags | 3 | 0 | 3 | 0% |
+| CQ Ring Flags | 1 | 0 | 1 | 0% |
+
+**Total findings**: 10 HIGH, 16 MEDIUM, 32 LOW, 5 INFO.
+
+**Key gaps by impact**:
+
+1. **Register operations** (39% coverage): The v2 resource APIs (FILES2, BUFFERS2, PBUF_RING) are the modern registration path. PBUF_RING especially is required for provided buffer rings, a key zero-copy pattern.
+
+2. **Recv/Send flags** (0%): `POLL_FIRST`, `RECV_MULTISHOT`, `FIXED_BUF` are used by every production io_uring networking runtime. This is the highest-impact missing flag category.
+
+3. **Accept flags** (0%): `ACCEPT_MULTISHOT` is essential for high-connection-rate servers.
+
+4. **SQ ring flags** (0%): `SQ_NEED_WAKEUP` is required for correct SQ_POLL operation.
+
+**Speculative opcodes**: 7 opcodes with rawValue ≥ 58 exceed kernel 6.12's `IORING_OP_LAST`. Likely kernel 6.13+ additions. LOW severity — document kernel version requirements.
+
+---
+
+## Module Placement — 2026-04-12
+
+### Scope
+
+- **Target**: All types in `Linux Kernel IO Uring Standard` (88 source files)
+- **Skills**: platform [PLAT-ARCH-001] through [PLAT-ARCH-014]
+- **Decision rule**: [PLAT-ARCH-012] — L1 if WE defined it, L2 if THEY defined it, L3 if we COMPOSE both
+- **Focus**: Types flagged in handoff + systematic scan for misplacement
+
+### Decision Framework
+
+Every type in this module answers to: "Can you point to a Linux kernel man page, spec chapter, or header that defines this type's API surface?"
+
+- **Yes** → L2 (stays — faithfully encodes kernel spec)
+- **No, but it's a cross-platform vocabulary concept WE defined** → L1 candidate
+- **No, but it's a POSIX type defined by IEEE 1003.1** → L2 swift-iso-9945 candidate
+- **No, and it's a composed abstraction** → L3 candidate
+
+### Type-by-Type Analysis
+
+#### STAYS at L2 (correct placement) — 10 types
+
+| Type | io_uring Spec Authority | Verdict |
+|------|------------------------|---------|
+| `Kernel.IO.Uring.Opcode` | `enum io_uring_op` | L2 ✓ — kernel-defined enum |
+| `Kernel.IO.Uring.Setup.Options` | `IORING_SETUP_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Enter.Options` | `IORING_ENTER_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Submission.Queue.Entry.Options` | `IOSQE_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Completion.Queue.Entry.Options` | `IORING_CQE_F_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Cancel.Options` | `IORING_ASYNC_CANCEL_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Register.Opcode` | `IORING_REGISTER_*` | L2 ✓ — kernel-defined enum |
+| `Kernel.IO.Uring.Params` | `struct io_uring_params` | L2 ✓ — kernel-defined struct |
+| `Kernel.IO.Uring.Params.Features` | `IORING_FEAT_*` | L2 ✓ — kernel-defined flags |
+| `Kernel.IO.Uring.Mmap.Offset` | `IORING_OFF_SQ_RING` etc. | L2 ✓ — kernel-defined constants |
+
+#### STAYS at L2 (io_uring-specific vocabulary) — 11 types
+
+| Type | Backing | Why L2 | Notes |
+|------|---------|--------|-------|
+| `Offset` | `Coordinate.X<Space>.Value<UInt64>` | UInt64.max = "current position" is io_uring encoding | POSIX uses off_t(-1) |
+| `Length` | `Magnitude<Space>.Value<UInt32>` | UInt32 is the SQE `len` field width | Not POSIX file size |
+| `Space` | Phantom tag | Tags io_uring's coordinate space | Enables typed dimensions |
+| `Operation.Data` | `Tagged<Operation, UInt64>` | io_uring `user_data` field | 100% io_uring-specific |
+| `Personality.ID` | `Tagged<Personality, UInt16>` | io_uring personality registration | 100% io_uring-specific |
+| `Buffer.Index` | UInt16 RawRepresentable | SQE `buf_index` field | io_uring registered buffers |
+| `Buffer.Group` | UInt16 RawRepresentable | SQE `buf_group` field | io_uring buffer groups |
+| `Clock` | enum (monotonic/boottime/realtime) | Maps to `IORING_TIMEOUT_*` flag bits | io_uring-specific encoding |
+| `Poll.Trigger` | enum (edge/level) | Maps to `IORING_POLL_ADD_LEVEL` | io_uring-specific encoding |
+| `Poll.Options` | OptionSet | `IORING_POLL_ADD_*` | io_uring-specific |
+| `Timeout.Options` | OptionSet | `IORING_TIMEOUT_*` | io_uring-specific |
+
+#### CANDIDATES FOR RELOCATION — 3 types
+
+##### 1. `Kernel.IO.Uring.Vector` → **MOVE to L2 swift-iso-9945**
+
+- **Current**: `Kernel.IO.Uring.Vector` — struct wrapping `iovec` (base pointer + length)
+- **Spec authority**: `struct iovec` is defined by IEEE 1003.1 (`<sys/uio.h>`), NOT by io_uring
+- **Existing POSIX infrastructure**: `ISO_9945.Kernel.IO.Vector` already exists as a namespace in swift-iso-9945 with `read`/`write` static methods. However, it uses raw tuples `[(base: UnsafeMutableRawPointer, length: Int)]` instead of a typed struct.
+- **Recommended action**: Define `ISO_9945.Kernel.IO.Vector.Element` (or `Kernel.IO.Vector`) as the typed `iovec` wrapper in swift-iso-9945. The io_uring module then uses the POSIX type instead of its own duplicate.
+- **Impact**: io_uring's vectored read/write prepare methods (`read.vectored`, `write.vectored`) accept `[Vector]` — these signatures would change to use the POSIX type.
+- **Severity**: MEDIUM — duplication of POSIX type, but functionally correct.
+
+##### 2. `Kernel.IO.Uring.Timeout.Specification` → **MOVE to L2 swift-iso-9945 or L1**
+
+- **Current**: `Kernel.IO.Uring.Timeout.Specification` — struct with `seconds: Int64` + `nanoseconds: Int64`
+- **Spec authority**: Layout-compatible with `struct __kernel_timespec` from `<linux/time_types.h>`. This is a general-purpose Linux kernel time type, NOT io_uring-specific. Used by `clock_nanosleep`, `timer_settime`, `pselect6`, `ppoll`, `io_pgetevents`, futex, and io_uring.
+- **Recommended action**: Define `Kernel.Time.Specification` or `POSIX.Kernel.Time.Specification` in swift-iso-9945 as the typed `__kernel_timespec` wrapper. io_uring uses it via the re-export chain.
+- **Impact**: `Timeout.Specification` becomes a typealias to the POSIX type, or prepare methods take the shared type.
+- **Severity**: MEDIUM — over-nesting of a general kernel type inside io_uring.
+
+##### 3. `Kernel.IO.Uring.Priority` → **INVESTIGATE shared placement**
+
+- **Current**: `Kernel.IO.Uring.Priority` — wraps the `ioprio` format (class bits 13–15, level bits 0–12)
+- **Spec authority**: `ioprio` format is defined by the Linux block I/O subsystem (`man 2 ioprio_set`), NOT by io_uring. The io_uring SQE `ioprio` field accepts the same format as the `ioprio_set` syscall.
+- **Candidates**:
+  - `Linux.Kernel.IO.Priority` in `Linux Kernel IO Standard` target (same package, different target)
+  - `Kernel.IO.Priority` at L1 if the concept is cross-platform (Windows has I/O priority classes too)
+- **Impact**: Minimal — rename + re-export. The type structure is correct; only its namespace location is over-specific.
+- **Severity**: LOW — functionally correct, namespace imprecision only.
+
+### All Other Types — No Relocation Needed
+
+Systematic scan of remaining 65 files confirms all other types encode io_uring-specific concepts:
+
+| Category | Types | Count | Verdict |
+|----------|-------|-------|---------|
+| Ring management | `Uring`, `Slot`, `Entry`, `Submission.*`, `Completion.*` | 20 | L2 ✓ — io_uring ring structures |
+| Opcode namespaces | `Read`, `Write`, `Socket`, `File`, `Pipe`, `Xattr`, etc. | 25 | L2 ✓ — io_uring opcode constants |
+| Flag types | `Setup.Options`, `Enter.Options`, `Cancel.Options`, etc. | 12 | L2 ✓ — io_uring flag constants |
+| Support types | `Error`, `Wakeup`, `Target`, `Fixed`, `Message`, etc. | 8 | L2 ✓ — io_uring-specific abstractions |
+
+No L1 candidates identified. io_uring is entirely Linux kernel-defined — there are no cross-platform vocabulary types to extract to primitives. No L3 candidates identified — all types are spec-encoding, not composed abstractions.
+
+### Summary
+
+| Type | Current Layer | Recommended | Action |
+|------|--------------|-------------|--------|
+| `Vector` | L2 io_uring | L2 POSIX (swift-iso-9945) | Define typed `iovec` struct in POSIX, io_uring uses it |
+| `Timeout.Specification` | L2 io_uring | L2 POSIX (swift-iso-9945) | Define `Kernel.Time.Specification` in POSIX |
+| `Priority` | L2 io_uring | L2 Linux Kernel IO Standard | Investigate shared `Kernel.IO.Priority` |
+| All other types (85) | L2 io_uring | L2 io_uring (stays) | No action |
+
+**Key finding**: The io_uring module is correctly placed at L2. Only 3 of 88 types have placement concerns, and all are POSIX/Linux general-purpose types that io_uring reuses rather than io_uring-specific definitions. The relocations are namespace precision improvements, not architectural violations.
+
+---
+
 ## Legacy — Consolidated 2026-04-08
 
 ### From: swift-institute/Research/audit-primitives.md (2026-04-03)

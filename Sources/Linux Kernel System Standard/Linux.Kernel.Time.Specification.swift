@@ -11,15 +11,17 @@
 
 #if os(Linux)
 
-public import Kernel_IO_Primitives
+public import Kernel_Time_Primitives
 
-extension Kernel.IO.Uring.Timeout {
-    /// Kernel timespec for io_uring timeout operations.
+extension Linux.Kernel.Time {
+    /// Binary-compatible wrapper for `struct __kernel_timespec`.
     ///
-    /// Layout-compatible with `struct __kernel_timespec` from
-    /// `<linux/time_types.h>`. An `UnsafePointer<Specification>` may be
-    /// passed directly to kernel interfaces that expect
-    /// `struct __kernel_timespec *`.
+    /// Layout: two `Int64` fields matching `<linux/time_types.h>`.
+    /// Used by multiple Linux kernel subsystems — io_uring timeouts,
+    /// futex, `clock_nanosleep`, `pselect6`, `ppoll`, `io_pgetevents`.
+    ///
+    /// An `UnsafePointer<Specification>` may be passed directly to any
+    /// kernel interface that expects `struct __kernel_timespec *`.
     public struct Specification: Sendable, Equatable, Hashable {
         /// Seconds component.
         public var seconds: Int64
