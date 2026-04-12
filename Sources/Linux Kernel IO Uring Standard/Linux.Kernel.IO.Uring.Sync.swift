@@ -11,19 +11,12 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
-    public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring {
         /// Sync operation opcodes.
         public struct Sync {
-            /// File sync (fsync).
-            public static let file = Opcode(rawValue: 3)
-
-            /// Sync file data range.
-            public static let fileRange = Opcode(rawValue: 8)
+            /// Access to file sync operations.
+            public static var file: File.Type { File.self }
         }
     }
 

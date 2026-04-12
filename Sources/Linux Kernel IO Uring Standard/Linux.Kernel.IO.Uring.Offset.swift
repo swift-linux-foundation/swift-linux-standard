@@ -12,9 +12,6 @@
 #if os(Linux)
     public import Dimension_Primitives
     public import Kernel_IO_Primitives
-    public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
-    public import Kernel_Memory_Primitives
     public import Kernel_File_Primitives
 
     public import Binary_Primitives_Core

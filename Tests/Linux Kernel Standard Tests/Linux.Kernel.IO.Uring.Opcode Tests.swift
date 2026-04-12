@@ -45,14 +45,14 @@ import Testing
             #expect(Kernel.IO.Uring.Opcode.nop.rawValue == 0)
         }
 
-        @Test("read.vectored has rawValue 1")
+        @Test("read.vectored.standard has rawValue 1")
         func readVectoredRawValue() {
-            #expect(Kernel.IO.Uring.Read.vectored.rawValue == 1)
+            #expect(Kernel.IO.Uring.Read.vectored.standard.rawValue == 1)
         }
 
-        @Test("write.vectored has rawValue 2")
+        @Test("write.vectored.standard has rawValue 2")
         func writeVectoredRawValue() {
-            #expect(Kernel.IO.Uring.Write.vectored.rawValue == 2)
+            #expect(Kernel.IO.Uring.Write.vectored.standard.rawValue == 2)
         }
 
         @Test("read.standard has rawValue 22")
@@ -165,22 +165,22 @@ import Testing
                 .close,
                 .nop128,
                 Kernel.IO.Uring.Read.standard,
-                Kernel.IO.Uring.Read.vectored,
+                Kernel.IO.Uring.Read.Vectored.standard,
+                Kernel.IO.Uring.Read.Vectored.fixed,
                 Kernel.IO.Uring.Read.fixed,
                 Kernel.IO.Uring.Read.multishot,
-                Kernel.IO.Uring.Read.vectoredFixed,
                 Kernel.IO.Uring.Write.standard,
-                Kernel.IO.Uring.Write.vectored,
+                Kernel.IO.Uring.Write.Vectored.standard,
+                Kernel.IO.Uring.Write.Vectored.fixed,
                 Kernel.IO.Uring.Write.fixed,
-                Kernel.IO.Uring.Write.vectoredFixed,
-                Kernel.IO.Uring.Sync.file,
-                Kernel.IO.Uring.Sync.fileRange,
+                Kernel.IO.Uring.Sync.File.standard,
+                Kernel.IO.Uring.Sync.File.range,
                 Kernel.IO.Uring.Socket.accept,
                 Kernel.IO.Uring.Socket.connect,
                 Kernel.IO.Uring.Socket.send,
                 Kernel.IO.Uring.Socket.receive,
-                Kernel.IO.Uring.Socket.sendMessage,
-                Kernel.IO.Uring.Socket.receiveMessage,
+                Kernel.IO.Uring.Socket.Message.send,
+                Kernel.IO.Uring.Socket.Message.receive,
                 Kernel.IO.Uring.Socket.shutdown,
                 Kernel.IO.Uring.Socket.create,
                 Kernel.IO.Uring.Socket.bind,
@@ -203,7 +203,7 @@ import Testing
                 Kernel.IO.Uring.File.mkdirat,
                 Kernel.IO.Uring.File.symlinkat,
                 Kernel.IO.Uring.File.linkat,
-                Kernel.IO.Uring.File.filesUpdate,
+                Kernel.IO.Uring.File.update,
                 Kernel.IO.Uring.Send.zero.copy,
                 Kernel.IO.Uring.Send.zero.msg,
                 Kernel.IO.Uring.Pipe.splice,
@@ -225,7 +225,7 @@ import Testing
                 Kernel.IO.Uring.Futex.wake,
                 Kernel.IO.Uring.Futex.waitv,
                 Kernel.IO.Uring.Wait.id,
-                Kernel.IO.Uring.Fixed.fdInstall,
+                Kernel.IO.Uring.Fixed.install,
             ]
 
             for i in 0..<opcodes.count {

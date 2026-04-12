@@ -11,18 +11,15 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
+    extension Kernel.IO.Uring.Sync {
+        /// File sync operations.
+        public struct File {
+            /// File sync (fsync).
+            public static let standard = Kernel.IO.Uring.Opcode(rawValue: 3)
 
-    extension Kernel.IO.Uring {
-        /// Fixed fd operation opcodes.
-        public struct Fixed {
-            /// Install fixed fd into process table (kernel 6.7+).
-            public static let install = Opcode(rawValue: 54)
+            /// Sync file data range.
+            public static let range = Kernel.IO.Uring.Opcode(rawValue: 8)
         }
-    }
-
-    extension Kernel.IO.Uring.Opcode {
-        /// Access to fixed fd operation opcodes.
-        public static var fixed: Kernel.IO.Uring.Fixed.Type { Kernel.IO.Uring.Fixed.self }
     }
 
 #endif
