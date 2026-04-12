@@ -40,6 +40,18 @@
             /// requiring resubmission. Check `IORING_CQE_F_MORE` on each
             /// CQE; resubmit when absent.
             public static let multishot = Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
+
+            /// Update the poll event mask of an existing poll request.
+            ///
+            /// Used with `POLL_REMOVE` opcode to modify rather than cancel.
+            /// The new mask is provided in the SQE's poll events field.
+            public static let updateEvents = Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
+
+            /// Update the user data of an existing poll request.
+            ///
+            /// Used with `POLL_REMOVE` opcode to change the user data
+            /// returned in the CQE without removing the poll.
+            public static let updateUserData = Options(rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA))
         }
     }
 

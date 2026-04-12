@@ -40,6 +40,24 @@
             /// with `IORING_CQE_F_MORE`; the timeout remains active until
             /// explicitly removed.
             public static let multishot = Options(rawValue: UInt32(IORING_TIMEOUT_MULTISHOT))
+
+            /// Update an existing timeout instead of adding a new one.
+            ///
+            /// Used with `TIMEOUT_REMOVE` opcode to modify a pending
+            /// timeout's duration or deadline.
+            public static let update = Options(rawValue: UInt32(IORING_TIMEOUT_UPDATE))
+
+            /// Treat timeout expiry as success rather than error.
+            ///
+            /// By default, timeout expiry returns `-ETIME`. With this
+            /// flag, expiry returns `0` (success) in the CQE result.
+            public static let expirySuccess = Options(rawValue: UInt32(IORING_TIMEOUT_ETIME_SUCCESS))
+
+            /// Update a linked timeout.
+            ///
+            /// Modifies a pending linked timeout created with
+            /// `LINK_TIMEOUT` opcode.
+            public static let linkUpdate = Options(rawValue: UInt32(IORING_LINK_TIMEOUT_UPDATE))
         }
     }
 

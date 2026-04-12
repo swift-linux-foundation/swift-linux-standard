@@ -89,6 +89,14 @@
             ///
             /// - Linux: `IORING_ENTER_REGISTERED_RING`
             public static let registeredRing = Options(rawValue: 1 << 4)
+
+            /// Uses an absolute timeout value (kernel 6.7+).
+            ///
+            /// When combined with `.extArg`, the timeout is interpreted
+            /// as an absolute deadline rather than a relative duration.
+            ///
+            /// - Linux: `IORING_ENTER_ABS_TIMER`
+            public static let absoluteTimer = Options(rawValue: 1 << 5)
         }
     }
 

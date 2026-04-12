@@ -72,6 +72,12 @@
 
         /// Ring can be registered with another ring's descriptor.
         public static let regRegRing = Self(rawValue: 1 << 13)
+
+        /// Bundled send/receive for scatter-gather networking (kernel 6.10+).
+        public static let receiveSendBundle = Self(rawValue: 1 << 14)
+
+        /// Minimum completion timeout support (kernel 6.10+).
+        public static let minimumTimeout = Self(rawValue: 1 << 15)
     }
 
     // MARK: - Query
