@@ -11,6 +11,7 @@
 
 #if os(Linux)
     import Testing
+    import Kernel_Primitives_Test_Support
 
     import Kernel_Primitives_Core
     import Kernel_Event_Primitives

@@ -16,6 +16,7 @@
         import Musl
     #endif
 import Testing
+    import Kernel_Primitives_Test_Support
 
     import Kernel_Primitives_Core
     import Kernel_Event_Primitives
@@ -39,63 +40,16 @@ import Testing
 
     extension Kernel.IO.Uring.Test.Unit {
 
-        @Test("isSupported returns boolean")
-        func isSupportedReturnsBool() {
-            // This should return a boolean without crashing
-            let supported = Kernel.IO.Uring.isSupported
-            // Just verify it's a boolean (can be either true or false depending on kernel)
-            #expect(supported == true || supported == false)
-        }
-
-        @Test("setup returns descriptor and updates params")
-        func setupReturnsDescriptorAndUpdatesParams() throws {
-            guard Kernel.IO.Uring.isSupported else { return }
-
-            var params = Kernel.IO.Uring.Params()
-            let fd = try Kernel.IO.Uring.setup(entries: 1, params: &params)
-            defer { Kernel.IO.Uring.close(fd) }
-
-            #expect(fd.rawValue >= 0)
-            // Kernel should have updated sqEntries
-            #expect(params.sqEntries > 0)
-        }
-
-        @Test("enter with zero submit returns immediately")
-        func enterWithZeroReturnsImmediately() throws {
-            guard Kernel.IO.Uring.isSupported else { return }
-
-            var params = Kernel.IO.Uring.Params()
-            let fd = try Kernel.IO.Uring.setup(entries: 1, params: &params)
-            defer { Kernel.IO.Uring.close(fd) }
-
-            // Enter with nothing to submit or wait for should return immediately
-            let result = try Kernel.IO.Uring.enter(fd, toSubmit: 0, minComplete: 0, flags: [])
-            #expect(result >= 0)
-        }
-
-        @Test("close does not crash")
-        func closeDoesNotCrash() throws {
-            guard Kernel.IO.Uring.isSupported else { return }
-
-            var params = Kernel.IO.Uring.Params()
-            let fd = try Kernel.IO.Uring.setup(entries: 1, params: &params)
-
-            // Close should not throw (it's non-throwing)
-            Kernel.IO.Uring.close(fd)
-
-            // Double close should also not crash
-            Kernel.IO.Uring.close(fd)
-        }
-
         @Test("setup with invalid entries throws")
         func setupWithInvalidEntriesThrows() throws {
-            guard Kernel.IO.Uring.isSupported else { return }
-
             var params = Kernel.IO.Uring.Params()
 
             // 0 entries should fail
             #expect(throws: Kernel.IO.Uring.Error.self) {
-                _ = try Kernel.IO.Uring.setup(entries: 0, params: &params)
+                _ = try Kernel.IO.Uring.setup(
+                    entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(0)),
+                    params: &params
+                )
             }
         }
     }

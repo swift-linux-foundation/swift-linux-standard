@@ -23,11 +23,22 @@ import Testing
     import Kernel_Socket_Primitives
     import Kernel_Process_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
+    import Linux_Kernel_Socket_Standard
+    import Linux_Kernel_Pipe_Standard
+    import Linux_Kernel_File_Standard
+    import Linux_Kernel_Event_Standard
+    import Linux_Kernel_Futex_Standard
+    import Linux_Kernel_Memory_Standard
+    import ISO_9945_Kernel_File
 
     #if canImport(Glibc)
         import Glibc
     #elseif canImport(Musl)
         import Musl
+    #endif
+
+    #if canImport(CLinuxKernelShim)
+        import CLinuxKernelShim
     #endif
 
     extension Kernel.IO.Uring.Submission.Queue.Entry {
@@ -215,12 +226,13 @@ import Testing
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `socket sets domain in fd, protocol in len, kind in off`() {
+            typealias SocketProtocol = Kernel.Socket.`Protocol`
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 60
             entry.socket(
                 domain: Kernel.Socket.Address.Family(rawValue: 2),
                 kind: Kernel.Socket.Kind(rawValue: 1),
-                protocol: Kernel.Socket.`Protocol`(rawValue: 6),
+                protocol: SocketProtocol(rawValue: 6),
                 flags: Kernel.Socket.Options(rawValue: 0),
                 data: data
             )
