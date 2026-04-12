@@ -21,6 +21,25 @@
             ///
             /// - Linux: `IORING_REGISTER_ENABLE_RINGS`
             public static let enable = Opcode(rawValue: 11)
+
+            /// Ring descriptor registration sub-operations.
+            public struct Descriptor {
+                /// Registers ring file descriptors for fast access (kernel 5.18+).
+                ///
+                /// Allows using registered ring fds with `.registeredRing`
+                /// enter flag, avoiding fd lookup overhead.
+                ///
+                /// - Linux: `IORING_REGISTER_RING_FDS`
+                public static let register = Opcode(rawValue: 20)
+
+                /// Unregisters ring file descriptors.
+                ///
+                /// - Linux: `IORING_UNREGISTER_RING_FDS`
+                public static let unregister = Opcode(rawValue: 21)
+            }
+
+            /// Access to ring descriptor sub-operations.
+            public static var descriptor: Descriptor.Type { Descriptor.self }
         }
     }
 

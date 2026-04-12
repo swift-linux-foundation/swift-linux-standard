@@ -32,6 +32,39 @@
             ///
             /// - Linux: `IORING_REGISTER_FILES_UPDATE`
             public static let update = Opcode(rawValue: 6)
+
+            /// Registers file descriptors (v2 API, kernel 5.13+).
+            ///
+            /// Supports sparse registration and resource tagging.
+            ///
+            /// - Linux: `IORING_REGISTER_FILES2`
+            public static let register2 = Opcode(rawValue: 13)
+
+            /// Updates registered files (v2 API, kernel 5.13+).
+            ///
+            /// - Linux: `IORING_REGISTER_FILES_UPDATE2`
+            public static let update2 = Opcode(rawValue: 14)
+
+            /// File descriptor slot allocation sub-operations.
+            public struct Alloc {
+                /// Sets the allocation range for file descriptor slots (kernel 6.0+).
+                ///
+                /// - Linux: `IORING_REGISTER_FILE_ALLOC_RANGE`
+                public static let range = Opcode(rawValue: 25)
+            }
+
+            /// Access to file allocation sub-operations.
+            public static var alloc: Alloc.Type { Alloc.self }
+
+            /// Sentinel value to skip a slot during file update.
+            ///
+            /// - Linux: `IORING_REGISTER_FILES_SKIP`
+            public static let skip: Int32 = -2
+
+            /// Auto-allocate the next available file slot.
+            ///
+            /// - Linux: `IORING_FILE_INDEX_ALLOC`
+            public static let indexAlloc: UInt32 = 0xFFFFFFFF
         }
     }
 
