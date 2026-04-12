@@ -264,17 +264,6 @@
             set { cValue.off = newValue }
         }
 
-        /// Raw operation-specific flags field.
-        ///
-        /// Union over rw_flags: splice flags, timeout bits, poll trigger,
-        /// futex flags, xattr disposition, rename/link/statx AT_* flags, etc.
-        /// Domain-typed uses go through typed accessors (atFlags, fileAdvice, etc.).
-        @usableFromInline
-        internal var _rawFlags: UInt32 {
-            get { cValue.rw_flags }
-            set { cValue.rw_flags = newValue }
-        }
-
         /// Registered buffer index.
         @usableFromInline
         internal var _bufferIndex: Kernel.IO.Uring.Buffer.Index {
@@ -287,13 +276,6 @@
         internal var _bufferGroup: Kernel.IO.Uring.Buffer.Group {
             get { Kernel.IO.Uring.Buffer.Group(rawValue: cValue.buf_group) }
             set { cValue.buf_group = newValue.rawValue }
-        }
-
-        /// Splice source file descriptor (splice_fd_in).
-        @usableFromInline
-        internal var _spliceSourceFd: Int32 {
-            get { cValue.splice_fd_in }
-            set { cValue.splice_fd_in = newValue }
         }
 
         /// Set splice source from a descriptor.
@@ -312,20 +294,6 @@
         @usableFromInline
         internal mutating func setEpollDescriptor(_ descriptor: borrowing Kernel.Descriptor) {
             cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue))
-        }
-
-        /// Poll event mask (poll32_events).
-        @usableFromInline
-        internal var _pollEvents: UInt32 {
-            get { cValue.poll32_events }
-            set { cValue.poll32_events = newValue }
-        }
-
-        /// Fixed file index / waitid options (file_index union).
-        @usableFromInline
-        internal var _fileIndex: UInt32 {
-            get { cValue.file_index }
-            set { cValue.file_index = newValue }
         }
 
         /// Third address field (addr3).
