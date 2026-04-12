@@ -179,6 +179,33 @@
         ///
         /// - Linux: `IORING_SETUP_DEFER_TASKRUN`
         public static let deferTaskrun = Self(rawValue: 1 << 13)
+
+        /// Disables kernel-side mmap for ring memory (kernel 6.4+).
+        ///
+        /// The application provides pre-allocated memory for the rings
+        /// via the `user_addr` fields in offsets structs. Enables
+        /// rings in memory that the kernel cannot mmap itself.
+        ///
+        /// - Linux: `IORING_SETUP_NO_MMAP`
+        public static let noMemoryMap = Self(rawValue: 1 << 14)
+
+        /// Only allows registered ring file descriptors (kernel 6.4+).
+        ///
+        /// The ring fd returned by setup is not a real fd — it must be
+        /// registered via `IORING_REGISTER_RING_FDS` before use. Requires
+        /// `.noMemoryMap`.
+        ///
+        /// - Linux: `IORING_SETUP_REGISTERED_FD_ONLY`
+        public static let registeredDescriptorOnly = Self(rawValue: 1 << 15)
+
+        /// Removes the SQ indirection array (kernel 6.6+).
+        ///
+        /// SQEs are consumed directly by index rather than through
+        /// the `sq_array` indirection. Reduces memory and simplifies
+        /// the submission path.
+        ///
+        /// - Linux: `IORING_SETUP_NO_SQARRAY`
+        public static let noSubmissionArray = Self(rawValue: 1 << 16)
     }
 
 #endif

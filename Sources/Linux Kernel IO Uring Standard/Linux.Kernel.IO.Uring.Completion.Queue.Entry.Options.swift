@@ -76,6 +76,15 @@
         ///
         /// - Linux: `IORING_CQE_F_NOTIF`
         public static let notif = Self(rawValue: 1 << 3)
+
+        /// Indicates more buffers are available in the provided buffer ring.
+        ///
+        /// Used with provided buffer rings (`IORING_REGISTER_PBUF_RING`)
+        /// to signal that the ring still has buffers for subsequent
+        /// operations. Kernel 6.7+.
+        ///
+        /// - Linux: `IORING_CQE_F_BUF_MORE`
+        public static let bufferMore = Self(rawValue: 1 << 4)
     }
 
 #endif
