@@ -60,7 +60,8 @@
         /// Close file descriptor.
         public static let close = Self(rawValue: 19)
 
-        /// 128-byte no-op (kernel 6.x+).
+        /// 128-byte no-op (kernel 6.13+).
+        // TRACKING: Opcode 63 exceeds IORING_OP_LAST=58 in kernel 6.12.
         public static let nop128 = Self(rawValue: 63)
     }
 

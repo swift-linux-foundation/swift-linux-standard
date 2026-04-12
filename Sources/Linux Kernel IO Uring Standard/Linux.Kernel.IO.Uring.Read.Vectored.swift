@@ -17,7 +17,8 @@
             /// Vectored read (readv).
             public static let standard = Kernel.IO.Uring.Opcode(rawValue: 1)
 
-            /// Vectored read into registered buffers (kernel 6.x+).
+            /// Vectored read into registered buffers (kernel 6.13+).
+            // TRACKING: Opcode 60 exceeds IORING_OP_LAST=58 in kernel 6.12.
             public static let fixed = Kernel.IO.Uring.Opcode(rawValue: 60)
         }
     }

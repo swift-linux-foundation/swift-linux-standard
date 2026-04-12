@@ -21,8 +21,17 @@
             /// Transfer data between fds (tee).
             public static let tee = Opcode(rawValue: 33)
 
-            /// Create pipe (kernel 6.x+).
+            /// Create pipe (kernel 6.13+).
+            // TRACKING: Opcode 62 exceeds IORING_OP_LAST=58 in kernel 6.12.
             public static let create = Opcode(rawValue: 62)
+
+            /// Use a fixed (registered) file descriptor as the splice source.
+            ///
+            /// OR this with the `splice_fd_in` SQE field value to indicate
+            /// the source fd is a fixed file index.
+            ///
+            /// - Linux: `SPLICE_F_FD_IN_FIXED`
+            public static let fixedDescriptorIn: UInt32 = 0x8000_0000
         }
     }
 

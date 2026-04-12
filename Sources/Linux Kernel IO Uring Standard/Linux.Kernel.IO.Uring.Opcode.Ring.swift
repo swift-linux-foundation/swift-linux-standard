@@ -21,7 +21,8 @@
             /// Uring command.
             public static let cmd = Kernel.IO.Uring.Opcode(rawValue: 46)
 
-            /// 128-byte uring command.
+            /// 128-byte uring command (kernel 6.13+).
+            // TRACKING: Opcode 64 exceeds IORING_OP_LAST=58 in kernel 6.12.
             public static let cmd128 = Kernel.IO.Uring.Opcode(rawValue: 64)
         }
 
