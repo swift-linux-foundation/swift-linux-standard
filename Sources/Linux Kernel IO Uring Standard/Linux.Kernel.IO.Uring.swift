@@ -43,13 +43,12 @@
         /// ## Usage
         ///
         /// ```swift
-        /// if let sqe = ring.nextEntry() {
-        ///     ring.next.entry.nop(data: data)
-        ///     ring.advance()
-        /// }
+        /// guard ring.hasCapacity else { /* flush and retry */ }
+        /// ring.next.entry.nop(data: data)
+        /// ring.advance()
         /// let flushed = ring.flush()
-        /// _ = try ring.enter(toSubmit: flushed, minComplete: .zero, flags: [])
-        /// let harvested = ring.drain(limit: .init(__unchecked: (), Cardinal(256))) { cqe in
+        /// _ = try ring.enter(toSubmit: flushed, minComplete: flushed, flags: .getEvents)
+        /// _ = ring.drain(limit: 256) { cqe in
         ///     // process completion
         /// }
         /// ```
@@ -468,36 +467,24 @@
             }
         }
 
-        /// Acquire the next available SQE slot for filling.
+        /// Whether the submission queue has capacity for another SQE.
         ///
-        /// Returns a pointer to the SQE if a slot is available, or `nil` if the
-        /// submission queue is full (submit pending entries and retry).
-        ///
-        /// The returned pointer is valid until the next ``flush()`` call. Fill the
-        /// SQE via `entry.read(...)` etc., then call ``advance()`` to mark it
-        /// ready, and ``flush()`` to publish the batch to the kernel.
-        ///
-        /// ## Safety
-        ///
-        /// The returned pointer aliases mmap'd shared memory. The caller MUST NOT
-        /// hold the pointer across a ``flush()`` + ``enter(toSubmit:minComplete:flags:)``
-        /// cycle — the kernel may overwrite the SQE after submission.
-        ///
-        /// - Returns: Mutable pointer to the next SQE, or `nil` if full.
-        @unsafe
-        public mutating func nextEntry() -> UnsafeMutablePointer<Submission.Queue.Entry>? {
-            // Local tail vs kernel-visible head. On SQPOLL the kernel advances sqHead
-            // concurrently, so we load with acquire. Without SQPOLL the acquire is
-            // harmless (TSO on x86, ldar on ARM64 — one instruction either way).
-            let head = unsafe CPU.Atomic.load(sqHead, ordering: .acquiring)
-            guard sqEntries.rawValue.rawValue > UInt(sqeTail &- head) else { return nil }
-            let slot = sqMask.slot(for: sqeTail)
-            return unsafe sqes.advanced(by: slot)
+        /// Check before accessing ``next``:
+        /// ```swift
+        /// guard ring.hasCapacity else { /* flush and retry */ }
+        /// ring.next.entry.read(...)
+        /// ring.advance()
+        /// ```
+        public var hasCapacity: Bool {
+            mutating get {
+                let head = unsafe CPU.Atomic.load(sqHead, ordering: .acquiring)
+                return sqEntries.rawValue.rawValue > UInt(sqeTail &- head)
+            }
         }
 
         /// Mark the current SQE as ready for submission.
         ///
-        /// Call after filling an SQE from ``nextEntry()``. This advances the local
+        /// Call after filling an SQE via ``next``. This advances the local
         /// tail but does NOT publish to the kernel — call ``flush()`` for that.
         public mutating func advance() {
             sqeTail &+= 1
