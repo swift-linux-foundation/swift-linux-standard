@@ -40,7 +40,7 @@
             /// Note: Uses Int32 to match Linux kernel's `__kernel_rwf_t` type.
             public var flags: Int32
 
-            init(entry: Kernel.IO.Uring.Submission.Queue.Entry) {
+            init(entry: borrowing Kernel.IO.Uring.Submission.Queue.Entry) {
                 self.flags = Int32(bitPattern: entry.cValue.rw_flags)
             }
 
