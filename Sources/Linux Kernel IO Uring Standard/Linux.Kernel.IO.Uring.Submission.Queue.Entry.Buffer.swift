@@ -44,7 +44,7 @@
             /// Buffer group (for buffer selection).
             public var group: Kernel.IO.Uring.Buffer.Group
 
-            init(entry: Kernel.IO.Uring.Submission.Queue.Entry) {
+            init(entry: borrowing Kernel.IO.Uring.Submission.Queue.Entry) {
                 self.index = Kernel.IO.Uring.Buffer.Index(rawValue: entry.cValue.buf_index)
                 self.group = Kernel.IO.Uring.Buffer.Group(rawValue: entry.cValue.buf_group)
             }

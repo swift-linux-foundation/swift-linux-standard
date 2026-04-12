@@ -52,11 +52,13 @@
         /// ring.advance()
         /// ```
         ///
-        /// ## Thread Safety
+        /// ## Ownership
         ///
-        /// Entries are value types that wrap a C struct. They should be filled
-        /// on the poll thread and written to the shared ring buffer.
-        public struct Entry: Sendable {
+        /// `~Copyable` — an Entry represents a unique SQE slot. Copying would
+        /// create a disconnected value that does not write back to the ring.
+        /// Entries are filled in-place through the ``Kernel/IO/Uring/Slot``
+        /// coroutine, confined to the io_uring poll thread.
+        public struct Entry: ~Copyable {
             /// The underlying C struct.
             internal var cValue: io_uring_sqe
 
