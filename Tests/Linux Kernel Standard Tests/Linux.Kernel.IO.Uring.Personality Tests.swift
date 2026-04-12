@@ -12,9 +12,7 @@
 #if os(Linux)
     import Testing
     import Kernel_Primitives_Test_Support
-
     import Kernel_Primitives_Core
-    import Kernel_Event_Primitives
     import Kernel_IO_Primitives
     import Kernel_Descriptor_Primitives
     import Kernel_Error_Primitives
@@ -22,81 +20,101 @@
     import Kernel_Memory_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
 
-    /// Tests for Kernel.IO.Uring.Personality.
-    extension Kernel.IO.Uring {
-        @Suite
-        enum PersonalityTest {
-            // MARK: - Unit Tests
+    #if canImport(Glibc)
+        import Glibc
+    #elseif canImport(Musl)
+        import Musl
+    #endif
 
-            @Suite struct Unit {
-                @Test("Personality namespace exists")
-                func namespaceExists() {
-                    _ = Kernel.IO.Uring.Personality.self
-                }
+    #if canImport(CLinuxKernelShim)
+        import CLinuxKernelShim
+    #endif
 
-                @Test("Personality is an enum")
-                func isEnum() {
-                    let _: Kernel.IO.Uring.Personality.Type = Kernel.IO.Uring.Personality.self
-                }
+    extension Kernel.IO.Uring.Personality {
+        enum Test {
+            @Suite struct Unit {}
+            @Suite struct `Edge Case` {}
+            @Suite struct Integration {}
+            @Suite(.serialized) struct Performance {}
+        }
+    }
 
-                @Test("ID type exists")
-                func idTypeExists() {
-                    let _: Kernel.IO.Uring.Personality.ID.Type = Kernel.IO.Uring.Personality.ID.self
-                }
+    // MARK: - Unit Tests
 
-                @Test("ID.none constant")
-                func idNoneConstant() {
-                    let none = Kernel.IO.Uring.Personality.ID.none
-                    #expect(none.rawValue == 0)
-                }
+    extension Kernel.IO.Uring.Personality.Test.Unit {
+        @Test("Personality namespace exists")
+        func namespaceExists() {
+            let _: Kernel.IO.Uring.Personality.Type = Kernel.IO.Uring.Personality.self
+        }
 
-                @Test("ID from UInt16")
-                func idFromUInt16() {
-                    let id = Kernel.IO.Uring.Personality.ID(42)
-                    #expect(id.rawValue == 42)
-                }
+        @Test("Personality is an enum")
+        func isEnum() {
+            _ = Kernel.IO.Uring.Personality.self
+        }
 
-                @Test("ID is Sendable")
-                func idIsSendable() {
-                    let id: any Sendable = Kernel.IO.Uring.Personality.ID.none
-                    #expect(id is Kernel.IO.Uring.Personality.ID)
-                }
+        @Test("ID type exists")
+        func idTypeExists() {
+            let _: Kernel.IO.Uring.Personality.ID.Type = Kernel.IO.Uring.Personality.ID.self
+        }
 
-                @Test("ID is Equatable")
-                func idIsEquatable() {
-                    let a = Kernel.IO.Uring.Personality.ID(10)
-                    let b = Kernel.IO.Uring.Personality.ID(10)
-                    let c = Kernel.IO.Uring.Personality.ID(20)
-                    #expect(a == b)
-                    #expect(a != c)
-                }
+        @Test("ID literal construction")
+        func idLiteralConstruction() {
+            let id: Kernel.IO.Uring.Personality.ID = 42
+            #expect(id.rawValue == 42)
+        }
 
-                @Test("ID is Hashable")
-                func idIsHashable() {
-                    var set = Set<Kernel.IO.Uring.Personality.ID>()
-                    set.insert(.none)
-                    set.insert(Kernel.IO.Uring.Personality.ID(1))
-                    set.insert(.none)  // duplicate
-                    #expect(set.count == 2)
-                }
-            }
+        @Test("ID.none constant has rawValue 0")
+        func idNoneConstant() {
+            let none = Kernel.IO.Uring.Personality.ID.none
+            #expect(none.rawValue == 0)
+        }
 
-            // MARK: - Edge Cases
+        @Test("ID rawValue access")
+        func idRawValueAccess() {
+            let id: Kernel.IO.Uring.Personality.ID = 7
+            #expect(id.rawValue == 7)
+        }
 
-            @Suite struct EdgeCase {
-                @Test("ID max value")
-                func idMaxValue() {
-                    let id = Kernel.IO.Uring.Personality.ID(UInt16.max)
-                    #expect(id.rawValue == UInt16.max)
-                }
+        @Test("ID is Sendable")
+        func idIsSendable() {
+            let id: any Sendable = Kernel.IO.Uring.Personality.ID.none
+            #expect(id is Kernel.IO.Uring.Personality.ID)
+        }
 
-                @Test("ID rawValue roundtrip")
-                func idRawValueRoundtrip() {
-                    for value: UInt16 in [0, 1, 100, UInt16.max] {
-                        let id = Kernel.IO.Uring.Personality.ID(value)
-                        #expect(id.rawValue == value)
-                    }
-                }
+        @Test("ID is Equatable")
+        func idIsEquatable() {
+            let a: Kernel.IO.Uring.Personality.ID = 10
+            let b: Kernel.IO.Uring.Personality.ID = 10
+            let c: Kernel.IO.Uring.Personality.ID = 20
+            #expect(a == b)
+            #expect(a != c)
+        }
+
+        @Test("ID is Hashable")
+        func idIsHashable() {
+            var set = Set<Kernel.IO.Uring.Personality.ID>()
+            set.insert(.none)
+            let one: Kernel.IO.Uring.Personality.ID = 1
+            set.insert(one)
+            set.insert(.none)  // duplicate
+            #expect(set.count == 2)
+        }
+    }
+
+    // MARK: - Edge Cases
+
+    extension Kernel.IO.Uring.Personality.Test.`Edge Case` {
+        @Test("ID UInt16.max value")
+        func idMaxValue() {
+            let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), UInt16.max)
+            #expect(id.rawValue == UInt16.max)
+        }
+
+        @Test("ID rawValue roundtrip")
+        func idRawValueRoundtrip() {
+            for value: UInt16 in [0, 1, 100, UInt16.max] {
+                let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), value)
+                #expect(id.rawValue == value)
             }
         }
     }
