@@ -200,6 +200,70 @@ The systemic fix is a ring index type with mask-aware arithmetic, typed counts f
 
 ---
 
+## V6 Ergonomics — 2026-04-12
+
+### Scope
+
+- **Target**: V6 `~Escapable` Slot + mutating Entry architecture
+- **Skills**: code-surface [API-NAME-002], [API-IMPL-005], [API-IMPL-008]; implementation [IMPL-INTENT], [IMPL-002], [IMPL-010], [IMPL-064], [IMPL-065], [IMPL-071], [IMPL-COMPILE]
+- **Files**: `Slot.swift`, `Entry+Prepare.swift`, `Entry.swift` (accessors), `Target.swift`, `Uring.swift` (Ring.next)
+
+### What V6 Got Right
+
+| Aspect | Assessment |
+|--------|-----------|
+| `ring.next.entry.nop(data:)` | Reads as intent. Three-word chain: where (next slot), what (entry), do (nop). |
+| `~Copyable ~Escapable` Slot | [IMPL-064] + [IMPL-065] — compiler enforces single-owner, scoped lifetime. |
+| `nonmutating _modify` on Slot.entry | [IMPL-071] — interior mutability through pointer, zero copies. |
+| Prepare type eliminated | 14 files deleted, no more pointer-backed view types. API surface is `entry.X()` — direct. |
+| `self = .init()` in every method | Zero-init by construction. No stale fields. |
+| `target.apply(to: &self)` | Safe, no pointers. Inout replaces `UnsafeMutablePointer`. |
+
+### Findings
+
+| # | Severity | Rule | Location | Finding | Status |
+|---|----------|------|----------|---------|--------|
+| 1 | HIGH | [IMPL-002] | Entry+Prepare.swift:106 | **`.rawValue` leak in cancel**: `self.addr = target.rawValue`. Operation.Data → UInt64 extraction in @inlinable body. Should have `@usableFromInline` helper or typed addr accessor accepting Operation.Data. Same at lines 466 (splice offsetIn), 1077 (timeout remove), 1172 (poll remove), 1202 (message targetData). | OPEN |
+| 2 | HIGH | [IMPL-010] | Entry+Prepare.swift:63 | **`UInt64(UInt(bitPattern: buffer))` in 18 methods.** Pointer → UInt64 conversion is mechanism at call sites. Present in read, write, accept, connect, send, recv, openat, openat2, statx, renameat, unlinkat, mkdirat, symlinkat, linkat, epoll, madvise, pipe, provide, fsetxattr, setxattr, fgetxattr, getxattr, files, waitid, futex. Each method inlines this conversion. Should have `@usableFromInline` helper: `mutating func _setAddr(_ ptr: UnsafeRawPointer)`. | OPEN |
+| 3 | MEDIUM | [IMPL-002] | Entry+Prepare.swift:469,497 | **`.rawValue` on domain types routed to `_rawFlags`**: `self._rawFlags = flags.rawValue` in splice, tee, linkat, rename, statx, message, futex, xattr, waitid, install, timeout. 15 sites. The `_rawFlags` accessor is raw UInt32 — typed accessors for each flag domain would eliminate the `.rawValue` extraction. | OPEN |
+| 4 | MEDIUM | [IMPL-002] | Entry+Prepare.swift:320,350,376,402,431 | **`.rawValue` on Buffer.Index/Group**: `self._bufferIndex = bufferIndex.rawValue`, `self._bufferGroup = bufferGroup.rawValue`. 7 sites. Should have typed `_bufferIndex: Buffer.Index` and `_bufferGroup: Buffer.Group` accessors directly. | OPEN |
+| 5 | MEDIUM | [IMPL-INTENT] | Uring.swift:463-469 | **`ring.next` has no capacity check.** Precondition undocumented, no runtime guard. `nextEntry()` returns Optional — safe. `next` fatalErrors on overflow — unsafe contract disguised as a property access. Consider `ring.next` returning Optional\<Slot\> or adding a guard. | OPEN |
+| 6 | MEDIUM | [API-NAME-002] | Entry.swift:253-268 | **`setSpliceSource(_:)` and `setEpollDescriptor(_:)` are compound identifiers.** These `@usableFromInline` helpers violate [API-NAME-002]. Permitted at `package` scope per `feedback_compound_package_scope`, but they're `internal` not `package`. Acceptable as `@usableFromInline internal` — document the exception. | OPEN |
+| 7 | LOW | [API-IMPL-008] | Slot.swift:28-48 | **Slot has `entry` computed property in type body.** Per [API-IMPL-008], computed properties belong in extensions. Minor — Slot is a 1-property type. | OPEN |
+| 8 | LOW | [IMPL-INTENT] | Entry+Prepare.swift:786-788 | **Socket method has 4 consecutive raw field assignments.** `self._fd = domain.rawValue; self._rawFlags = ...; self._rawLength = ...; self._rawOffset = ...` — pure mechanism. Socket is the only opcode where ALL four standard fields are overloaded with different semantics. | OPEN |
+
+### Ergonomic Comparison: Before vs After
+
+```swift
+// BEFORE (view-type architecture):
+if let sqe = unsafe ring.nextEntry() {
+    unsafe sqe.prepare.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
+    ring.advance()
+}
+
+// AFTER (V6 architecture):
+ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
+ring.advance()
+```
+
+**Improvements**: No `unsafe` at call site for non-pointer methods. No `if let` unwrap. No pointer type in API. `ring.next.entry.X()` reads as intent.
+
+**Remaining friction**: `ring.next` has no capacity check (finding #5). The checked path still requires the old `nextEntry()` API.
+
+### Systemic Patterns
+
+**Pattern A: `.rawValue` extraction inside `@inlinable` bodies.** 40+ sites extract `.rawValue` from typed domain values to store in raw `_rawX` accessors. The root cause is that Entry's union field accessors are raw (`_rawFlags: UInt32`, `_rawLength: UInt32`) rather than typed. Adding typed overloads (e.g., `_spliceFlags: Kernel.Pipe.Splice.Options`) for each union interpretation would push `.rawValue` into the accessor, eliminating it from the @inlinable body. This is the same pattern as the Domain Modelling audit's Pattern C.
+
+**Pattern B: Pointer-to-UInt64 boilerplate.** 18 methods contain `self.addr = UInt64(UInt(bitPattern: ptr))`. A single `@usableFromInline mutating func _setAddr(_ ptr: UnsafeRawPointer)` helper would eliminate this. Alternatively, a typed `addr` setter accepting `UnsafeRawPointer` directly.
+
+### Summary
+
+8 findings: 2 high, 4 medium, 2 low.
+
+The V6 architecture is a significant ergonomic improvement: `ring.next.entry.read(...)` reads as intent, the `~Escapable` Slot provides compiler-enforced scoping, and the Prepare type elimination reduced 14 files to 2. The remaining friction is internal — `.rawValue` extraction in @inlinable bodies and pointer-to-UInt64 boilerplate. These are addressable by adding typed union field accessors and a pointer-address helper, both backward-compatible changes.
+
+---
+
 ## Legacy — Consolidated 2026-04-08
 
 ### From: swift-institute/Research/audit-primitives.md (2026-04-03)
