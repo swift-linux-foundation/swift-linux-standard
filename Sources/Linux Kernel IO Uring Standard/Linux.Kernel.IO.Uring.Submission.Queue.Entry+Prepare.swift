@@ -60,7 +60,7 @@
             self = .init()
             self.opcode = .read.standard
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.offset = offset
             self.data = data
@@ -85,7 +85,7 @@
             self = .init()
             self.opcode = .write.standard
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.offset = offset
             self.data = data
@@ -103,7 +103,7 @@
         ) {
             self = .init()
             self.opcode = .cancel.async
-            self.addr = target.rawValue
+            self.setAddr(target)
             self.data = data
         }
 
@@ -163,8 +163,8 @@
             self = .init()
             self.opcode = .socket.accept
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: addr))
-            self.offset = Kernel.IO.Uring.Offset(unsafe UInt64(UInt(bitPattern: length)))
+            unsafe self.setAddr(addr)
+            unsafe self.setOffset(length)
             self.acceptFlags = flags
             self.data = data
         }
@@ -186,7 +186,7 @@
             self = .init()
             self.opcode = .socket.connect
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: address))
+            unsafe self.setAddr(address)
             self.offset = Kernel.IO.Uring.Offset(UInt64(length))
             self.data = data
         }
@@ -210,7 +210,7 @@
             self = .init()
             self.opcode = .socket.send
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.messageFlags = flags
             self.data = data
@@ -235,7 +235,7 @@
             self = .init()
             self.opcode = .socket.receive
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.messageFlags = flags
             self.data = data
@@ -262,7 +262,7 @@
             self = .init()
             self.opcode = .read.vectored
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: vectors.baseAddress))
+            unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
             self.offset = offset
             self.data = data
@@ -285,7 +285,7 @@
             self = .init()
             self.opcode = .write.vectored
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: vectors.baseAddress))
+            unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
             self.offset = offset
             self.data = data
@@ -314,10 +314,10 @@
             self = .init()
             self.opcode = .read.fixed
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.offset = offset
-            self._bufferIndex = bufferIndex.rawValue
+            self._bufferIndex = bufferIndex
             self.data = data
         }
 
@@ -344,10 +344,10 @@
             self = .init()
             self.opcode = .write.fixed
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.offset = offset
-            self._bufferIndex = bufferIndex.rawValue
+            self._bufferIndex = bufferIndex
             self.data = data
         }
 
@@ -370,10 +370,10 @@
             self = .init()
             self.opcode = .read.vectoredFixed
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: vectors.baseAddress))
+            unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
             self.offset = offset
-            self._bufferIndex = bufferIndex.rawValue
+            self._bufferIndex = bufferIndex
             self.data = data
         }
 
@@ -396,10 +396,10 @@
             self = .init()
             self.opcode = .write.vectoredFixed
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: vectors.baseAddress))
+            unsafe self.setAddr(vectors.baseAddress)
             self._rawLength = UInt32(vectors.count)
             self.offset = offset
-            self._bufferIndex = bufferIndex.rawValue
+            self._bufferIndex = bufferIndex
             self.data = data
         }
 
@@ -428,7 +428,7 @@
             target.apply(to: &self)
             self.len = length
             self.offset = offset
-            self._bufferGroup = bufferGroup.rawValue
+            self._bufferGroup = bufferGroup
             self.flags.insert(.bufferSelect)
             self.data = data
         }
@@ -466,7 +466,7 @@
             self.addr = offsetIn.rawValue
             self.offset = offsetOut
             self.len = length
-            self._rawFlags = flags.rawValue
+            self.spliceFlags = flags
             self.data = data
         }
 
@@ -494,7 +494,7 @@
             target.apply(to: &self)
             self.setSpliceSource(source)
             self.len = length
-            self._rawFlags = flags.rawValue
+            self.spliceFlags = flags
             self.data = data
         }
 
@@ -551,7 +551,7 @@
             self = .init()
             self.opcode = .file.openat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: path))
+            unsafe self.setAddr(path)
             // Combine access mode and options into one flags field
             self.opFlags = access.rawValue | options.rawValue
             self.filePermissions = mode
@@ -575,9 +575,9 @@
             self = .init()
             self.opcode = .file.openat2
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: path))
+            unsafe self.setAddr(path)
             self._rawLength = UInt32(MemoryLayout<Kernel.File.Open.How>.size)
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: how))
+            unsafe self.setOffset(how)
             self.data = data
         }
 
@@ -602,10 +602,10 @@
             self = .init()
             self.opcode = .file.statx
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: path))
-            self._rawFlags = UInt32(bitPattern: flags.rawValue)
+            unsafe self.setAddr(path)
+            self.atFlags = flags
             self._rawLength = mask.rawValue
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setOffset(buffer)
             self.data = data
         }
 
@@ -630,10 +630,10 @@
             self = .init()
             self.opcode = .file.renameat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: oldPath))
+            unsafe self.setAddr(oldPath)
             self._rawLength = UInt32(bitPattern: newDirFd)
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: newPath))
-            self._rawFlags = flags.rawValue
+            unsafe self.setOffset(newPath)
+            self.renameFlags = flags
             self.data = data
         }
 
@@ -654,7 +654,7 @@
             self = .init()
             self.opcode = .file.unlinkat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: path))
+            unsafe self.setAddr(path)
             self.atFlags = flags
             self.data = data
         }
@@ -676,7 +676,7 @@
             self = .init()
             self.opcode = .file.mkdirat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: path))
+            unsafe self.setAddr(path)
             self._rawLength = mode
             self.data = data
         }
@@ -698,8 +698,8 @@
             self = .init()
             self.opcode = .file.symlinkat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: linkTarget))
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: linkPath))
+            unsafe self.setAddr(linkTarget)
+            unsafe self.setOffset(linkPath)
             self.data = data
         }
 
@@ -724,10 +724,10 @@
             self = .init()
             self.opcode = .file.linkat
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: oldPath))
+            unsafe self.setAddr(oldPath)
             self._rawLength = UInt32(bitPattern: newDirFd)
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: newPath))
-            self._rawFlags = UInt32(bitPattern: flags.rawValue)
+            unsafe self.setOffset(newPath)
+            self.atFlags = flags
             self.data = data
         }
 
@@ -782,10 +782,10 @@
         ) {
             self = .init()
             self.opcode = .socket.create
-            self._fd = domain.rawValue
-            self._rawFlags = UInt32(bitPattern: flags.rawValue)
-            self._rawLength = UInt32(bitPattern: `protocol`.rawValue)
-            self._rawOffset = UInt64(UInt32(bitPattern: kind.rawValue))
+            self.socketDomain = domain
+            self.socketFlags = flags
+            self.socketProtocol = `protocol`
+            self.socketKind = kind
             self.data = data
         }
 
@@ -806,7 +806,7 @@
             self = .init()
             self.opcode = .socket.bind
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: address))
+            unsafe self.setAddr(address)
             self.addressLength = length
             self.data = data
         }
@@ -847,7 +847,7 @@
             self = .init()
             self.opcode = .socket.sendMessage
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: message))
+            unsafe self.setAddr(message)
             self._rawLength = 1
             self.messageFlags = flags
             self.data = data
@@ -870,7 +870,7 @@
             self = .init()
             self.opcode = .socket.receiveMessage
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: message))
+            unsafe self.setAddr(message)
             self._rawLength = 1
             self.messageFlags = flags
             self.data = data
@@ -901,7 +901,7 @@
             self = .init()
             self.opcode = .send.zero.copy
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            unsafe self.setAddr(buffer)
             self.len = length
             self.messageFlags = flags
             self.priority = zeroCopyFlags
@@ -927,7 +927,7 @@
             self = .init()
             self.opcode = .send.zero.msg
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: message))
+            unsafe self.setAddr(message)
             self._rawLength = 1
             self.messageFlags = flags
             self.priority = zeroCopyFlags
@@ -972,8 +972,8 @@
             self = .init()
             self.opcode = .epoll.ctl
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: event))
-            self._rawLength = UInt32(bitPattern: operation.rawValue)
+            unsafe self.setAddr(event)
+            self.epollOperation = operation
             self.setEpollDescriptor(descriptor)
             self.data = data
         }
@@ -995,8 +995,8 @@
             self = .init()
             self.opcode = .epoll.wait
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: events))
-            self._rawLength = UInt32(bitPattern: maxEvents)
+            unsafe self.setAddr(events)
+            self.epollMaxEvents = maxEvents
             self.data = data
         }
     }
@@ -1026,9 +1026,9 @@
             self = .init()
             self.opcode = .timeout.standard
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: timespec))
+            unsafe self.setAddr(timespec)
             self._rawLength = count
-            self._rawFlags = clock.timeoutBits | (multishot ? Kernel.IO.Uring.Timeout.Options.multishot.rawValue : 0)
+            self.configureTimeout(clock: clock, options: multishot ? .multishot : [])
             self.data = data
         }
 
@@ -1054,10 +1054,10 @@
             self = .init()
             self.opcode = .timeout.standard
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: timespec))
+            unsafe self.setAddr(timespec)
             self._rawLength = count
             let options: Kernel.IO.Uring.Timeout.Options = multishot ? [.absolute, .multishot] : .absolute
-            self._rawFlags = clock.timeoutBits | options.rawValue
+            self.configureTimeout(clock: clock, options: options)
             self.data = data
         }
 
@@ -1074,7 +1074,7 @@
             self = .init()
             self.opcode = .timeout.remove
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = target.rawValue
+            self.setAddr(target)
             self.data = data
         }
 
@@ -1097,9 +1097,9 @@
             self = .init()
             self.opcode = .timeout.link
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: timespec))
+            unsafe self.setAddr(timespec)
             self._rawLength = 1
-            self._rawFlags = clock.timeoutBits
+            self.configureTimeout(clock: clock)
             self.data = data
         }
 
@@ -1122,9 +1122,9 @@
             self = .init()
             self.opcode = .timeout.link
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: timespec))
+            unsafe self.setAddr(timespec)
             self._rawLength = 1
-            self._rawFlags = clock.timeoutBits | Kernel.IO.Uring.Timeout.Options.absolute.rawValue
+            self.configureTimeout(clock: clock, options: .absolute)
             self.data = data
         }
 
@@ -1149,10 +1149,10 @@
             self = .init()
             self.opcode = .poll.add
             target.apply(to: &self)
-            self._pollEvents = events.rawValue
+            self.pollEvents = events
             var options = trigger.option
             if multishot { options.insert(.multishot) }
-            self._rawLength = options.rawValue
+            self.pollOptions = options
             self.data = data
         }
 
@@ -1169,7 +1169,7 @@
             self = .init()
             self.opcode = .poll.remove
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = target.rawValue
+            self.setAddr(target)
             self.data = data
         }
     }
@@ -1197,10 +1197,10 @@
         ) {
             self = .init()
             self.opcode = .ring.msg
-            self._fd = fd
-            self._rawLength = value
-            self._rawOffset = targetData.rawValue
-            self._rawFlags = flags.rawValue
+            self.messageRingFd = fd
+            self.messageValue = value
+            self.setMessageTarget(targetData)
+            self.messageRingFlags = flags
             self.data = data
         }
 
@@ -1227,11 +1227,11 @@
         ) {
             self = .init()
             self.opcode = .buffer.provide
-            self._fd = count
-            self.addr = unsafe UInt64(UInt(bitPattern: buffer))
+            self.bufferCount = count
+            unsafe self.setAddr(buffer)
             self.len = length
-            self._rawOffset = UInt64(startId)
-            self._bufferGroup = group.rawValue
+            self.bufferStartID = startId
+            self._bufferGroup = group
             self.data = data
         }
 
@@ -1249,8 +1249,8 @@
         ) {
             self = .init()
             self.opcode = .buffer.remove
-            self._fd = count
-            self._bufferGroup = group.rawValue
+            self.bufferCount = count
+            self._bufferGroup = group
             self.data = data
         }
 
@@ -1271,7 +1271,7 @@
             self = .init()
             self.opcode = .file.filesUpdate
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: fds))
+            unsafe self.setAddr(fds)
             self._rawLength = count
             self._rawOffset = UInt64(offset)
             self.data = data
@@ -1336,7 +1336,7 @@
             self = .init()
             self.opcode = .pipe.create
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: fds))
+            unsafe self.setAddr(fds)
             self.pipeCreateFlags = flags
             self.data = data
         }
@@ -1373,11 +1373,11 @@
         ) {
             self = .init()
             self.opcode = .wait.id
-            self._fd = id.rawValue
-            self._rawLength = UInt32(bitPattern: kind.rawValue)
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: info))
-            self._fileIndex = UInt32(bitPattern: options.rawValue)
-            self._rawFlags = flags.rawValue
+            self.setWaitidProcess(id)
+            self.waitidKind = kind
+            unsafe self.setOffset(info)
+            self.waitidOptions = options
+            self.waitidFlags = flags
             self.data = data
         }
     }
@@ -1427,7 +1427,7 @@
             self = .init()
             self.opcode = .memory.madvise
             Kernel.IO.Uring.Target.none.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: addr))
+            unsafe self.setAddr(addr)
             self.len = length
             self.memoryAdvice = advice
             self.data = data
@@ -1481,9 +1481,9 @@
             self = .init()
             self.opcode = .futex.wait
 
-            self.addr = unsafe UInt64(UInt(bitPattern: futex))
+            unsafe self.setAddr(futex)
             self.offset = Kernel.IO.Uring.Offset(value)
-            self._rawFlags = flags.rawValue
+            self.futexFlags = flags
             self._addr3 = mask
             self.data = data
         }
@@ -1507,9 +1507,9 @@
             self = .init()
             self.opcode = .futex.wake
 
-            self.addr = unsafe UInt64(UInt(bitPattern: futex))
+            unsafe self.setAddr(futex)
             self.offset = Kernel.IO.Uring.Offset(value)
-            self._rawFlags = flags.rawValue
+            self.futexFlags = flags
             self._addr3 = mask
             self.data = data
         }
@@ -1533,9 +1533,9 @@
             self = .init()
             self.opcode = .futex.waitv
 
-            self.addr = unsafe UInt64(UInt(bitPattern: entries))
+            unsafe self.setAddr(entries)
             self._rawLength = count
-            self._rawFlags = flags.rawValue
+            self.futexFlags = flags
             self.data = data
         }
     }
@@ -1566,10 +1566,10 @@
             self = .init()
             self.opcode = .xattr.fset
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: name))
+            unsafe self.setAddr(name)
             self.len = length
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: value))
-            self._rawFlags = disposition.rawBits
+            unsafe self.setOffset(value)
+            self.xattrDisposition = disposition
             self.data = data
         }
 
@@ -1596,11 +1596,11 @@
             self = .init()
             self.opcode = .xattr.set
 
-            self.addr = unsafe UInt64(UInt(bitPattern: name))
+            unsafe self.setAddr(name)
             self.len = length
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: value))
-            self._addr3 = unsafe UInt64(UInt(bitPattern: path))
-            self._rawFlags = disposition.rawBits
+            unsafe self.setOffset(value)
+            unsafe self.setAddr3(path)
+            self.xattrDisposition = disposition
             self.data = data
         }
 
@@ -1625,9 +1625,9 @@
             self = .init()
             self.opcode = .xattr.fget
             target.apply(to: &self)
-            self.addr = unsafe UInt64(UInt(bitPattern: name))
+            unsafe self.setAddr(name)
             self.len = length
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: value))
+            unsafe self.setOffset(value)
             self.data = data
         }
 
@@ -1652,10 +1652,10 @@
             self = .init()
             self.opcode = .xattr.get
 
-            self.addr = unsafe UInt64(UInt(bitPattern: name))
+            unsafe self.setAddr(name)
             self.len = length
-            self._rawOffset = unsafe UInt64(UInt(bitPattern: value))
-            self._addr3 = unsafe UInt64(UInt(bitPattern: path))
+            unsafe self.setOffset(value)
+            unsafe self.setAddr3(path)
             self.data = data
         }
     }
