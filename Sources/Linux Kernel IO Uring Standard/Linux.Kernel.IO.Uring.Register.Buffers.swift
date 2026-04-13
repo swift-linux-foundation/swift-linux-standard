@@ -45,28 +45,6 @@
             /// - Linux: `IORING_REGISTER_CLONE_BUFFERS`
             public static let clone = Opcode(rawValue: 30)
 
-            /// Provided buffer ring sub-operations.
-            public struct Provided {
-                /// Registers a provided buffer ring (kernel 5.19+).
-                ///
-                /// Enables automatic buffer selection from a ring of
-                /// pre-provided buffers. More efficient than the legacy
-                /// `PROVIDE_BUFFERS` opcode.
-                ///
-                /// - Linux: `IORING_REGISTER_PBUF_RING`
-                public static let register = Opcode(rawValue: 22)
-
-                /// Unregisters a provided buffer ring.
-                ///
-                /// - Linux: `IORING_UNREGISTER_PBUF_RING`
-                public static let unregister = Opcode(rawValue: 23)
-
-                /// Queries provided buffer ring status (kernel 6.4+).
-                ///
-                /// - Linux: `IORING_REGISTER_PBUF_STATUS`
-                public static let status = Opcode(rawValue: 26)
-            }
-
             /// Access to provided buffer ring sub-operations.
             public static var provided: Provided.Type { Provided.self }
 
