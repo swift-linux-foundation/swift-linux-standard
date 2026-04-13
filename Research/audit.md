@@ -606,6 +606,58 @@ All gaps addressed in 4 phases (commits `3cdd8c7`–`0acfde2`).
 
 ---
 
+## Post-Closure Review — 2026-04-13
+
+### Scope
+
+- **Target**: All new/modified code from commits `65f8c37`–`0acfde2` (relocations + 4 phases)
+- **Skills**: code-surface [API-IMPL-005], [API-IMPL-008]; implementation [IMPL-002]; platform [PLAT-ARCH-005a]
+- **Files**: 17 new files, 16 modified files across `Linux Kernel IO Uring Standard`, `Linux Kernel IO Standard`, `Linux Kernel System Standard`, `ISO 9945 Kernel File`
+
+### Findings
+
+| # | Severity | Rule | Location | Finding | Status |
+|---|----------|------|----------|---------|--------|
+| 1 | CRITICAL | Spec value | Register.Rings.swift:23 | **`Register.Rings.enable` has rawValue 11 but kernel spec says `IORING_REGISTER_ENABLE_RINGS = 12`.** Pre-existing bug now exposed by collision with `Register.Restriction.register` (correctly rawValue 11). Both claim rawValue 11. | OPEN |
+| 2 | HIGH | [IMPL-002] | Register.Opcode.swift:66 | **`Register.Opcode.sparse` is semantically wrong.** `IORING_RSRC_REGISTER_SPARSE` is a flag on `struct io_uring_rsrc_register.flags`, not a register opcode value. Placing it on `Register.Opcode` creates a rawValue collision with `Buffers.unregister` (1) and misrepresents its domain. Move to a resource registration flags type. | OPEN |
+| 3 | HIGH | [API-IMPL-005] | Nop.Options.swift | **Two type declarations**: `enum Nop` + `struct Options`. Split into `Nop.swift` and `Nop.Options.swift`. | OPEN |
+| 4 | HIGH | [API-IMPL-005] | Restriction.Kind.swift | **Two type declarations**: `enum Restriction` + `enum Kind`. Split into `Restriction.swift` and `Restriction.Kind.swift`. | OPEN |
+| 5 | HIGH | [API-IMPL-005] | Register.Worker.swift | **Three type declarations**: `struct Worker` + `struct Affinity` + `enum Kind`. Split into `Register.Worker.swift`, `Register.Worker.Affinity.swift`, `Register.Worker.Kind.swift`. | OPEN |
+| 6 | HIGH | [API-IMPL-005] | Register.Files.swift | **Two type declarations** after Phase 3: `struct Files` + `struct Alloc`. Extract `Alloc` to `Register.Files.Alloc.swift`. | OPEN |
+| 7 | HIGH | [API-IMPL-005] | Register.Buffers.swift | **Two type declarations** after Phase 3: `struct Buffers` + `struct Provided`. Extract `Provided` to `Register.Buffers.Provided.swift`. | OPEN |
+| 8 | HIGH | [API-IMPL-005] | Register.Rings.swift | **Two type declarations** after Phase 3: `struct Rings` + `struct Descriptor`. Extract `Descriptor` to `Register.Rings.Descriptor.swift`. | OPEN |
+| 9 | HIGH | [API-IMPL-005] | Message.Options.swift | **Two type declarations** after Phase 4: `struct Message` + `enum Kind`. Extract `Kind` to `Message.Kind.swift`. | OPEN |
+| 10 | MEDIUM | [API-IMPL-008] | Linux.Kernel.IO.Priority.swift:44–55 | **Static properties and `<` operator in type body.** `.default`, `.normal`, and `Comparable` conformance should be in extensions. Preserved from original file during relocation. | OPEN |
+| 11 | MEDIUM | — | Socket.Command.swift:23 | **`init(rawValue:)` not `@inlinable`.** All other RawRepresentable types in the io_uring module mark this `@inlinable`. Inconsistent; prevents cross-module inlining. | OPEN |
+| 12 | LOW | [API-IMPL-008] | ISO 9945.Kernel.IO.Vector.Segment.swift:55–68 | **Convenience inits in body.** The `init(_ buffer: UnsafeMutableRawBufferPointer)` and `init(_ buffer: UnsafeRawBufferPointer)` convenience initializers should be in an extension. Only the canonical `init(base:length:)` belongs in the body. | OPEN |
+
+### Compliant Areas
+
+| Rule | Status | Notes |
+|------|--------|-------|
+| [API-NAME-001] Nest.Name | PASS | All new type names use nesting: `Socket.Transfer.Options`, `Accept.Options`, `Register.Worker.Affinity`, etc. |
+| [API-NAME-002] No compound identifiers | PASS | OptionSet constants use spec-mirroring exception. `transferOptions` accessor is `@usableFromInline internal` (package scope permitted). |
+| [API-NAME-003] Spec-mirroring | PASS | All constants reference kernel constant names in doc comments. Abbreviations expanded (FD→Descriptor, SQ→Submission, etc.). |
+| [API-ERR-001] Typed throws | N/A | No new throwing functions. |
+| [API-IMPL-006] File naming | PASS | All 17 new files use dot-separated nested path convention. |
+| [API-IMPL-007] Extension files | N/A | No new extension files. |
+| [PLAT-ARCH-003] Extends Kernel namespace | PASS | All io_uring types extend `Kernel.IO.Uring`. |
+| [PLAT-ARCH-005a] No C types in public API | PASS | `iovec` only in internal C Bridge extension on Vector.Segment. |
+| [PLAT-ARCH-012] L2 placement | PASS | All types faithfully encode Linux kernel io_uring spec. |
+| [IMPL-064] ~Copyable default | PASS | OptionSets justified Copyable (lightweight values). Namespace types are zero-size. |
+
+### Summary
+
+12 findings: 1 critical, 7 high, 2 medium, 2 low.
+
+**Finding #1 is a pre-existing spec value bug** — `Register.Rings.enable` was rawValue 11 before this work. The kernel says 12. The addition of `Register.Restriction.register` (correctly 11) exposed the collision.
+
+**Findings #3–#9 are systematic** — all are [API-IMPL-005] one-type-per-file violations from embedding sub-namespace types inside parent files. Fix: extract each nested type into its own file following `Parent.Child.swift` convention (7 new files, 7 existing files shrink).
+
+**Finding #2 is a domain modeling error** — `IORING_RSRC_REGISTER_SPARSE` is not a register opcode. It belongs on a resource registration argument type.
+
+---
+
 ## Module Placement — 2026-04-12
 
 ### Scope

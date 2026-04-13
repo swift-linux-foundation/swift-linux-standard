@@ -12,14 +12,6 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
-        /// Ring restriction types for sandboxing.
-        ///
-        /// Used with `Register.Restriction.register` to limit which
-        /// operations are permitted on a ring.
-        public enum Restriction {}
-    }
-
     extension Kernel.IO.Uring.Restriction {
         /// The kind of restriction to apply.
         public enum Kind: UInt16, Sendable {

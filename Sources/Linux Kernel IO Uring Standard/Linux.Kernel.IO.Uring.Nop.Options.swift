@@ -12,11 +12,6 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
-        /// Nop operation modifiers.
-        public enum Nop {}
-    }
-
     extension Kernel.IO.Uring.Nop {
         /// Flags for NOP operations.
         public struct Options: OptionSet, Sendable {

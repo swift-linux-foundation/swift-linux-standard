@@ -35,25 +35,29 @@
             public init(rawValue: UInt16) {
                 self.rawValue = rawValue
             }
+        }
+    }
 
-            /// Creates a priority from a UInt16 value.
-            public init(_ value: UInt16) {
-                self.rawValue = value
-            }
+    // MARK: - Common Values
 
-            // MARK: - Common Values
+    extension Kernel.IO.Priority {
+        /// Creates a priority from a UInt16 value.
+        public init(_ value: UInt16) {
+            self.rawValue = value
+        }
 
-            /// Default priority (no priority set).
-            public static let `default` = Priority(0)
+        /// Default priority (no priority set).
+        public static let `default` = Self(0)
 
-            /// Normal priority (best-effort, middle level).
-            public static let normal = Priority(0)
+        /// Normal priority (best-effort, middle level).
+        public static let normal = Self(0)
+    }
 
-            // MARK: - Comparable
+    // MARK: - Comparable
 
-            public static func < (lhs: Priority, rhs: Priority) -> Bool {
-                lhs.rawValue < rhs.rawValue
-            }
+    extension Kernel.IO.Priority {
+        public static func < (lhs: Self, rhs: Self) -> Bool {
+            lhs.rawValue < rhs.rawValue
         }
     }
 

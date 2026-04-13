@@ -59,11 +59,16 @@
         ///
         /// - Linux: `IORING_REGISTER_USE_REGISTERED_RING`
         public static let useRegisteredRing = Self(rawValue: 1 << 31)
+    }
 
-        /// Sparse resource registration flag.
-        ///
-        /// - Linux: `IORING_RSRC_REGISTER_SPARSE`
-        public static let sparse = Self(rawValue: 1)
+    extension Kernel.IO.Uring.Register {
+        /// Flags for v2 resource registration arguments (`io_uring_rsrc_register`).
+        public struct Resource {
+            /// Register resources sparsely (leave unset slots as holes).
+            ///
+            /// - Linux: `IORING_RSRC_REGISTER_SPARSE`
+            public static let sparse: UInt32 = 1
+        }
     }
 
 #endif

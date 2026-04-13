@@ -102,7 +102,7 @@ import Testing
 
         @Test("rings.enable constant")
         func ringsEnableConstant() {
-            #expect(Kernel.IO.Uring.Register.Opcode.rings.enable.rawValue == 11)
+            #expect(Kernel.IO.Uring.Register.Opcode.rings.enable.rawValue == 12)
         }
     }
 

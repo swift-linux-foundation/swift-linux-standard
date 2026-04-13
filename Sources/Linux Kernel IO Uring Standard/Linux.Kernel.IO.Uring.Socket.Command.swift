@@ -20,6 +20,7 @@
         public struct Command: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt32
 
+            @inlinable
             public init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
