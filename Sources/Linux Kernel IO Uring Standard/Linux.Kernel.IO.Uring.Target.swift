@@ -25,17 +25,25 @@
         /// the entry flags. This enum makes the sum explicit — the flag/field
         /// agreement is compiler-enforced.
         ///
+        /// `~Escapable`: Target borrows the descriptor's lifetime — it cannot
+        /// outlive the descriptor it references. The kernel fd number is safe
+        /// because the lifetime system guarantees the descriptor stays open.
+        ///
         /// ## Cases
         ///
         /// - `.descriptor`: A kernel file descriptor (the common case).
+        ///   Created via ``init(descriptor:)`` which borrows the descriptor.
         /// - `.registered`: An index into the io_uring registered file table.
         ///   Sets `IOSQE_FIXED_FILE` automatically.
         /// - `.allocate`: Kernel auto-allocates a registered file slot
         ///   (`IORING_FILE_INDEX_ALLOC`). For accept-direct, openat-direct,
         ///   socket-direct. Sets both `IOSQE_FIXED_FILE` and `file_index = ~0`.
-        public enum Target: ~Copyable {
-            /// A kernel file descriptor.
-            case descriptor(Kernel.Descriptor)
+        public enum Target: ~Copyable, ~Escapable {
+            /// A kernel file descriptor (raw fd number).
+            ///
+            /// The fd is safe to use because Target's `~Escapable` constraint
+            /// ties it to the borrowed descriptor's lifetime.
+            case descriptor(Int32)
 
             /// An index into the registered file table.
             case registered(UInt32)
@@ -51,6 +59,20 @@
         }
     }
 
+    // MARK: - Construction
+
+    extension Kernel.IO.Uring.Target {
+        /// Creates a descriptor target by borrowing a kernel descriptor.
+        ///
+        /// The target borrows the descriptor's lifetime — it cannot outlive
+        /// the descriptor. The raw fd number is extracted at construction
+        /// and is safe to use for the SQE because the descriptor stays open.
+        @_lifetime(borrow fd)
+        public init(descriptor fd: borrowing Kernel.Descriptor) {
+            self = .descriptor(fd._rawValue)
+        }
+    }
+
     // MARK: - SQE Application
 
     extension Kernel.IO.Uring.Target {
@@ -61,7 +83,7 @@
         ) {
             switch self {
             case .descriptor(let fd):
-                sqe._fd = fd._rawValue
+                sqe._fd = fd
 
             case .registered(let index):
                 sqe._fd = Int32(bitPattern: index)
