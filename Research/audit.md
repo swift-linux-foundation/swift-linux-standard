@@ -618,18 +618,18 @@ All gaps addressed in 4 phases (commits `3cdd8c7`–`0acfde2`).
 
 | # | Severity | Rule | Location | Finding | Status |
 |---|----------|------|----------|---------|--------|
-| 1 | CRITICAL | Spec value | Register.Rings.swift:23 | **`Register.Rings.enable` has rawValue 11 but kernel spec says `IORING_REGISTER_ENABLE_RINGS = 12`.** Pre-existing bug now exposed by collision with `Register.Restriction.register` (correctly rawValue 11). Both claim rawValue 11. | OPEN |
-| 2 | HIGH | [IMPL-002] | Register.Opcode.swift:66 | **`Register.Opcode.sparse` is semantically wrong.** `IORING_RSRC_REGISTER_SPARSE` is a flag on `struct io_uring_rsrc_register.flags`, not a register opcode value. Placing it on `Register.Opcode` creates a rawValue collision with `Buffers.unregister` (1) and misrepresents its domain. Move to a resource registration flags type. | OPEN |
-| 3 | HIGH | [API-IMPL-005] | Nop.Options.swift | **Two type declarations**: `enum Nop` + `struct Options`. Split into `Nop.swift` and `Nop.Options.swift`. | OPEN |
-| 4 | HIGH | [API-IMPL-005] | Restriction.Kind.swift | **Two type declarations**: `enum Restriction` + `enum Kind`. Split into `Restriction.swift` and `Restriction.Kind.swift`. | OPEN |
-| 5 | HIGH | [API-IMPL-005] | Register.Worker.swift | **Three type declarations**: `struct Worker` + `struct Affinity` + `enum Kind`. Split into `Register.Worker.swift`, `Register.Worker.Affinity.swift`, `Register.Worker.Kind.swift`. | OPEN |
-| 6 | HIGH | [API-IMPL-005] | Register.Files.swift | **Two type declarations** after Phase 3: `struct Files` + `struct Alloc`. Extract `Alloc` to `Register.Files.Alloc.swift`. | OPEN |
-| 7 | HIGH | [API-IMPL-005] | Register.Buffers.swift | **Two type declarations** after Phase 3: `struct Buffers` + `struct Provided`. Extract `Provided` to `Register.Buffers.Provided.swift`. | OPEN |
-| 8 | HIGH | [API-IMPL-005] | Register.Rings.swift | **Two type declarations** after Phase 3: `struct Rings` + `struct Descriptor`. Extract `Descriptor` to `Register.Rings.Descriptor.swift`. | OPEN |
-| 9 | HIGH | [API-IMPL-005] | Message.Options.swift | **Two type declarations** after Phase 4: `struct Message` + `enum Kind`. Extract `Kind` to `Message.Kind.swift`. | OPEN |
-| 10 | MEDIUM | [API-IMPL-008] | Linux.Kernel.IO.Priority.swift:44–55 | **Static properties and `<` operator in type body.** `.default`, `.normal`, and `Comparable` conformance should be in extensions. Preserved from original file during relocation. | OPEN |
-| 11 | MEDIUM | — | Socket.Command.swift:23 | **`init(rawValue:)` not `@inlinable`.** All other RawRepresentable types in the io_uring module mark this `@inlinable`. Inconsistent; prevents cross-module inlining. | OPEN |
-| 12 | LOW | [API-IMPL-008] | ISO 9945.Kernel.IO.Vector.Segment.swift:55–68 | **Convenience inits in body.** The `init(_ buffer: UnsafeMutableRawBufferPointer)` and `init(_ buffer: UnsafeRawBufferPointer)` convenience initializers should be in an extension. Only the canonical `init(base:length:)` belongs in the body. | OPEN |
+| 1 | CRITICAL | Spec value | Register.Rings.swift:23 | **`Register.Rings.enable` had rawValue 11; kernel spec says 12.** Pre-existing bug exposed by `Register.Restriction.register` (correctly 11). | RESOLVED 2026-04-13 |
+| 2 | HIGH | [IMPL-002] | Register.Opcode.swift:66 | **`Register.Opcode.sparse` was semantically wrong.** Moved to `Register.Resource.sparse`. | RESOLVED 2026-04-13 |
+| 3 | HIGH | [API-IMPL-005] | Nop.Options.swift | **Two type declarations.** Extracted `enum Nop` to `Nop.swift`. | RESOLVED 2026-04-13 |
+| 4 | HIGH | [API-IMPL-005] | Restriction.Kind.swift | **Two type declarations.** Extracted `enum Restriction` to `Restriction.swift`. | RESOLVED 2026-04-13 |
+| 5 | HIGH | [API-IMPL-005] | Register.Worker.swift | **Three type declarations.** Extracted to `Worker.Affinity.swift` and `Worker.Kind.swift`. | RESOLVED 2026-04-13 |
+| 6 | HIGH | [API-IMPL-005] | Register.Files.swift | **Two type declarations.** Extracted `Files.Alloc` to `Register.Files.Alloc.swift`. | RESOLVED 2026-04-13 |
+| 7 | HIGH | [API-IMPL-005] | Register.Buffers.swift | **Two type declarations.** Extracted `Buffers.Provided` to `Register.Buffers.Provided.swift`. | RESOLVED 2026-04-13 |
+| 8 | HIGH | [API-IMPL-005] | Register.Rings.swift | **Two type declarations.** Extracted `Rings.Descriptor` to `Register.Rings.Descriptor.swift`. | RESOLVED 2026-04-13 |
+| 9 | HIGH | [API-IMPL-005] | Message.Options.swift | **Two type declarations.** Extracted `Message.Kind` to `Message.Kind.swift`. | RESOLVED 2026-04-13 |
+| 10 | MEDIUM | [API-IMPL-008] | Linux.Kernel.IO.Priority.swift | **Static properties and `<` in body.** Moved to extensions. | RESOLVED 2026-04-13 |
+| 11 | MEDIUM | — | Socket.Command.swift | **`init(rawValue:)` not `@inlinable`.** Added. | RESOLVED 2026-04-13 |
+| 12 | LOW | [API-IMPL-008] | ISO 9945.Kernel.IO.Vector.Segment.swift | **Convenience inits in body.** Moved to extension. | RESOLVED 2026-04-13 |
 
 ### Compliant Areas
 
@@ -648,13 +648,7 @@ All gaps addressed in 4 phases (commits `3cdd8c7`–`0acfde2`).
 
 ### Summary
 
-12 findings: 1 critical, 7 high, 2 medium, 2 low.
-
-**Finding #1 is a pre-existing spec value bug** — `Register.Rings.enable` was rawValue 11 before this work. The kernel says 12. The addition of `Register.Restriction.register` (correctly 11) exposed the collision.
-
-**Findings #3–#9 are systematic** — all are [API-IMPL-005] one-type-per-file violations from embedding sub-namespace types inside parent files. Fix: extract each nested type into its own file following `Parent.Child.swift` convention (7 new files, 7 existing files shrink).
-
-**Finding #2 is a domain modeling error** — `IORING_RSRC_REGISTER_SPARSE` is not a register opcode. It belongs on a resource registration argument type.
+12 findings: 1 critical, 7 high, 2 medium, 2 low. **All 12 RESOLVED** (commit `bd776f0`).
 
 ---
 
