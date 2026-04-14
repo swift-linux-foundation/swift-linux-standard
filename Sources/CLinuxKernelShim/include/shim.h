@@ -156,6 +156,13 @@ static inline int swift_sched_setaffinity(int pid, size_t cpusetsize, const void
     return (int)syscall(SYS_sched_setaffinity, pid, cpusetsize, mask);
 }
 
+// gettid - get kernel thread ID (TID)
+// glibc wrapper added in 2.30; exposed here via syscall for portability
+// across glibc versions and because it isn't in SwiftGlibc's module map.
+static inline pid_t swift_gettid(void) {
+    return (pid_t)syscall(SYS_gettid);
+}
+
 #endif /* __linux__ */
 
 #endif /* CLINUX_SHIM_H */
