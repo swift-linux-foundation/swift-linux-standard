@@ -57,9 +57,17 @@
         }
 
         /// Create eventfd — helper avoids deferred ~Copyable init in typed throws.
+        ///
+        /// The eventfd is BLOCKING (no `EFD_NONBLOCK`) because
+        /// ``Kernel/Completion/Notification/wait()`` does a blocking 8-byte
+        /// read to sleep until the kernel signals a completion. A
+        /// non-blocking eventfd would make the read return `EAGAIN`
+        /// immediately, causing the completion Loop's run loop to hot-spin
+        /// (~10k iterations/sec per Loop thread). `CLOEXEC` is retained
+        /// so child processes don't inherit the eventfd.
         private static func createEventfd() throws(Wakeup.Error) -> Kernel.Event.Descriptor {
             do throws(Kernel.Event.Descriptor.Error) {
-                return try Kernel.Event.Descriptor.create(flags: .cloexec | .nonblock)
+                return try Kernel.Event.Descriptor.create(flags: .cloexec)
             } catch {
                 switch error {
                 case .create(let code): throw .eventfd(code)
