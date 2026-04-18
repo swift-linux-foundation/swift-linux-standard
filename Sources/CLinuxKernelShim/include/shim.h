@@ -163,6 +163,30 @@ static inline pid_t swift_gettid(void) {
     return (pid_t)syscall(SYS_gettid);
 }
 
+// Dynamic loader symbol-lookup sentinels.
+// RTLD_DEFAULT and RTLD_NEXT are GNU extensions gated by _GNU_SOURCE on glibc.
+// They are C macros expanding to cast expressions and cannot be imported into
+// Swift directly. Define _GNU_SOURCE locally around the dlfcn include so the
+// macros are visible, then expose them via simple C functions.
+
+#ifndef _GNU_SOURCE
+#define _GNU_SOURCE
+#define _CLINUX_SHIM_DEFINED_GNU_SOURCE
+#endif
+#include <dlfcn.h>
+#ifdef _CLINUX_SHIM_DEFINED_GNU_SOURCE
+#undef _GNU_SOURCE
+#undef _CLINUX_SHIM_DEFINED_GNU_SOURCE
+#endif
+
+static inline void *swift_RTLD_DEFAULT(void) {
+    return RTLD_DEFAULT;
+}
+
+static inline void *swift_RTLD_NEXT(void) {
+    return RTLD_NEXT;
+}
+
 #endif /* __linux__ */
 
 #endif /* CLINUX_SHIM_H */
