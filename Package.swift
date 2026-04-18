@@ -32,6 +32,7 @@ let package = Package(
         .package(path: "../../swift-primitives/swift-cpu-primitives"),
         .package(path: "../../swift-primitives/swift-dimension-primitives"),
         .package(path: "../../swift-primitives/swift-loader-primitives"),
+        .package(path: "../../swift-primitives/swift-string-primitives"),
         .package(path: "../../swift-primitives/swift-system-primitives"),
         .package(path: "../../swift-primitives/swift-standard-library-extensions"),
         .package(path: "../../swift-primitives/swift-witness-primitives"),
@@ -229,7 +230,9 @@ let package = Package(
             name: "Linux Loader Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .product(name: "Loader Primitives", package: "swift-loader-primitives")
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Loader Primitives", package: "swift-loader-primitives"),
+                .product(name: "String Primitives", package: "swift-string-primitives")
             ]
         ),
 
