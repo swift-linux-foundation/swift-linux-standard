@@ -29,55 +29,55 @@
             // MARK: - Unit Tests
 
             @Suite struct Unit {
-                @Test("Offset type exists")
-                func typeExists() {
+                @Test
+                func `Offset type exists`() {
                     let _: Kernel.IO.Uring.Offset.Type = Kernel.IO.Uring.Offset.self
                 }
 
-                @Test("Offset.zero constant")
-                func zeroConstant() {
+                @Test
+                func `Offset.zero constant`() {
                     let zero = Kernel.IO.Uring.Offset.zero
                     #expect(zero == 0)
                 }
 
-                @Test("Offset.current constant")
-                func currentConstant() {
+                @Test
+                func `Offset.current constant`() {
                     let current = Kernel.IO.Uring.Offset.current
                     #expect(current.rawValue == UInt64.max)
                 }
 
-                @Test("Offset from File.Offset")
-                func fromFileOffset() {
+                @Test
+                func `Offset from File.Offset`() {
                     let offset = Kernel.IO.Uring.Offset(Kernel.File.Offset(4096))
                     #expect(offset == 4096)
                 }
 
-                @Test("current description")
-                func currentDescription() {
+                @Test
+                func `current description`() {
                     let current = Kernel.IO.Uring.Offset.current
                     #expect(current.description == "current")
                 }
 
-                @Test("zero description")
-                func zeroDescription() {
+                @Test
+                func `zero description`() {
                     let zero = Kernel.IO.Uring.Offset.zero
                     #expect(zero.description == "0")
                 }
 
-                @Test("numeric offset description")
-                func numericDescription() {
+                @Test
+                func `numeric offset description`() {
                     let offset = Kernel.IO.Uring.Offset(Kernel.File.Offset(4096))
                     #expect(offset.description == "4096")
                 }
 
-                @Test("Offset is Sendable")
-                func isSendable() {
+                @Test
+                func `Offset is Sendable`() {
                     let offset: any Sendable = Kernel.IO.Uring.Offset.zero
                     #expect(offset is Kernel.IO.Uring.Offset)
                 }
 
-                @Test("Offset is Equatable")
-                func isEquatable() {
+                @Test
+                func `Offset is Equatable`() {
                     let a = Kernel.IO.Uring.Offset(Kernel.File.Offset(100))
                     let b = Kernel.IO.Uring.Offset(Kernel.File.Offset(100))
                     let c = Kernel.IO.Uring.Offset(Kernel.File.Offset(200))
@@ -85,8 +85,8 @@
                     #expect(a != c)
                 }
 
-                @Test("Offset is Hashable")
-                func isHashable() {
+                @Test
+                func `Offset is Hashable`() {
                     var set = Set<Kernel.IO.Uring.Offset>()
                     set.insert(.zero)
                     set.insert(.current)
@@ -95,22 +95,22 @@
                     #expect(set.count == 3)
                 }
 
-                @Test("Offset from positive File.Offset")
-                func fromPositiveFileOffset() {
+                @Test
+                func `Offset from positive File.Offset`() {
                     let fileOffset = Kernel.File.Offset(1000)
                     let offset = Kernel.IO.Uring.Offset(fileOffset)
                     #expect(offset == 1000)
                 }
 
-                @Test("Offset from zero File.Offset")
-                func fromZeroFileOffset() {
+                @Test
+                func `Offset from zero File.Offset`() {
                     let fileOffset = Kernel.File.Offset(0)
                     let offset = Kernel.IO.Uring.Offset(fileOffset)
                     #expect(offset == 0)
                 }
 
-                @Test("Offset from negative File.Offset becomes current")
-                func fromNegativeFileOffset() {
+                @Test
+                func `Offset from negative File.Offset becomes current`() {
                     let fileOffset = Kernel.File.Offset(-1)
                     let offset = Kernel.IO.Uring.Offset(fileOffset)
                     #expect(offset == .current)
@@ -120,13 +120,13 @@
             // MARK: - Edge Cases
 
             @Suite struct EdgeCase {
-                @Test("zero and current are distinct")
-                func zeroCurrentDistinct() {
+                @Test
+                func `zero and current are distinct`() {
                     #expect(Kernel.IO.Uring.Offset.zero != Kernel.IO.Uring.Offset.current)
                 }
 
-                @Test("max UInt64 value equals current")
-                func maxValueEqualsCurrent() {
+                @Test
+                func `max UInt64 value equals current`() {
                     let max = Kernel.IO.Uring.Offset(UInt64.max)
                     #expect(max == .current)
                 }

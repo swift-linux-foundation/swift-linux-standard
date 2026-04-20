@@ -34,30 +34,30 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.Event.Poll.Create.Flags.Test.Unit {
-        @Test("init with rawValue stores value")
-        func initWithRawValue() {
+        @Test
+        func `init with rawValue stores value`() {
             let flags = Kernel.Event.Poll.Create.Flags(rawValue: 42)
             #expect(flags.rawValue == 42)
         }
 
-        @Test("none has rawValue of 0")
-        func noneHasZeroRawValue() {
+        @Test
+        func `none has rawValue of 0`() {
             #expect(Kernel.Event.Poll.Create.Flags.none.rawValue == 0)
         }
 
-        @Test("cloexec has non-zero rawValue")
-        func cloexecHasNonZeroRawValue() {
+        @Test
+        func `cloexec has non-zero rawValue`() {
             #expect(Kernel.Event.Poll.Create.Flags.cloexec.rawValue != 0)
         }
 
-        @Test("flags can be combined with union")
-        func flagsCombineWithUnion() {
+        @Test
+        func `flags can be combined with union`() {
             let combined = Kernel.Event.Poll.Create.Flags.cloexec.union(.none)
             #expect(combined.rawValue == Kernel.Event.Poll.Create.Flags.cloexec.rawValue)
         }
 
-        @Test("rawValue roundtrip preserves value")
-        func rawValueRoundtrip() {
+        @Test
+        func `rawValue roundtrip preserves value`() {
             let original: Int32 = 0x7FFF_FFFF
             let flags = Kernel.Event.Poll.Create.Flags(rawValue: original)
             #expect(flags.rawValue == original)
@@ -67,14 +67,14 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.Event.Poll.Create.Flags.Test.Unit {
-        @Test("Create.Flags is Sendable")
-        func isSendable() {
+        @Test
+        func `Create.Flags is Sendable`() {
             let flags: any Sendable = Kernel.Event.Poll.Create.Flags.cloexec
             #expect(flags is Kernel.Event.Poll.Create.Flags)
         }
 
-        @Test("Create.Flags is Equatable")
-        func isEquatable() {
+        @Test
+        func `Create.Flags is Equatable`() {
             let a = Kernel.Event.Poll.Create.Flags.cloexec
             let b = Kernel.Event.Poll.Create.Flags.cloexec
             let c = Kernel.Event.Poll.Create.Flags.none
@@ -82,8 +82,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Create.Flags is Hashable")
-        func isHashable() {
+        @Test
+        func `Create.Flags is Hashable`() {
             var set = Set<Kernel.Event.Poll.Create.Flags>()
             set.insert(.cloexec)
             set.insert(.none)
@@ -95,20 +95,20 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.Event.Poll.Create.Flags.Test.EdgeCase {
-        @Test("combining same flag is idempotent")
-        func combiningIdempotent() {
+        @Test
+        func `combining same flag is idempotent`() {
             let combined: Kernel.Event.Poll.Create.Flags = [.cloexec, .cloexec]
             #expect(combined == .cloexec)
         }
 
-        @Test("combining with none is identity")
-        func combiningWithNoneIsIdentity() {
+        @Test
+        func `combining with none is identity`() {
             let combined = Kernel.Event.Poll.Create.Flags.cloexec.union(.none)
             #expect(combined == .cloexec)
         }
 
-        @Test("none combined with none is none")
-        func noneCombinedWithNone() {
+        @Test
+        func `none combined with none is none`() {
             let combined = Kernel.Event.Poll.Create.Flags.none.union(.none)
             #expect(combined == .none)
         }

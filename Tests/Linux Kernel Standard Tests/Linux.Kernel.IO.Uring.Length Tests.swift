@@ -42,37 +42,37 @@
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.LengthTest.Unit {
-        @Test("Length from Int")
-        func fromInt() {
+        @Test
+        func `Length from Int`() {
             let length = Kernel.IO.Uring.Length(1024)
             #expect(length.rawValue == 1024)
         }
 
-        @Test("Length from rawValue")
-        func fromRawValue() {
+        @Test
+        func `Length from rawValue`() {
             let length = Kernel.IO.Uring.Length(__unchecked: (), 4096)
             #expect(length.rawValue == 4096)
         }
 
-        @Test("Length.zero constant")
-        func zeroConstant() {
+        @Test
+        func `Length.zero constant`() {
             #expect(Kernel.IO.Uring.Length.zero.rawValue == 0)
         }
 
-        @Test("Length integer literal")
-        func integerLiteral() {
+        @Test
+        func `Length integer literal`() {
             let length: Kernel.IO.Uring.Length = 8192
             #expect(length.rawValue == 8192)
         }
 
-        @Test("Length is Sendable")
-        func isSendable() {
+        @Test
+        func `Length is Sendable`() {
             let length: any Sendable = Kernel.IO.Uring.Length(1024)
             #expect(length is Kernel.IO.Uring.Length)
         }
 
-        @Test("Length is Equatable")
-        func isEquatable() {
+        @Test
+        func `Length is Equatable`() {
             let a = Kernel.IO.Uring.Length(1024)
             let b = Kernel.IO.Uring.Length(1024)
             let c = Kernel.IO.Uring.Length(2048)
@@ -80,16 +80,16 @@
             #expect(a != c)
         }
 
-        @Test("Length is Comparable")
-        func isComparable() {
+        @Test
+        func `Length is Comparable`() {
             let small = Kernel.IO.Uring.Length(100)
             let large = Kernel.IO.Uring.Length(1000)
             #expect(small < large)
             #expect(large > small)
         }
 
-        @Test("Length rawValue access")
-        func rawValueAccess() {
+        @Test
+        func `Length rawValue access`() {
             let length = Kernel.IO.Uring.Length(512)
             #expect(length.rawValue == 512)
         }
@@ -98,27 +98,27 @@
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.LengthTest.`Edge Case` {
-        @Test("Length max UInt32 value")
-        func maxValue() {
+        @Test
+        func `Length max UInt32 value`() {
             let length = Kernel.IO.Uring.Length(__unchecked: (), UInt32.max)
             #expect(length.rawValue == UInt32.max)
         }
 
-        @Test("Length zero comparison")
-        func zeroComparison() {
+        @Test
+        func `Length zero comparison`() {
             let zero = Kernel.IO.Uring.Length.zero
             let nonZero = Kernel.IO.Uring.Length(1)
             #expect(zero < nonZero)
         }
 
-        @Test("Length clamping large Int values")
-        func clampsLargeValues() {
+        @Test
+        func `Length clamping large Int values`() {
             let length = Kernel.IO.Uring.Length(Int(UInt32.max) + 1000)
             #expect(length.rawValue == UInt32.max)
         }
 
-        @Test("Length ordering")
-        func ordering() {
+        @Test
+        func `Length ordering`() {
             let lengths = [
                 Kernel.IO.Uring.Length(100),
                 Kernel.IO.Uring.Length(50),

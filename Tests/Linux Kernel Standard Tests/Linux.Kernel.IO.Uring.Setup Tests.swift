@@ -34,13 +34,13 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Setup.Test.Unit {
-        @Test("Setup namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Setup namespace exists`() {
             _ = Kernel.IO.Uring.Setup.self
         }
 
-        @Test("Setup is an enum")
-        func isEnum() {
+        @Test
+        func `Setup is an enum`() {
             let _: Kernel.IO.Uring.Setup.Type = Kernel.IO.Uring.Setup.self
         }
     }
@@ -48,8 +48,8 @@ import Testing
     // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Setup.Test.Unit {
-        @Test("Setup.Options type exists")
-        func optionsTypeExists() {
+        @Test
+        func `Setup.Options type exists`() {
             let _: Kernel.IO.Uring.Setup.Options.Type = Kernel.IO.Uring.Setup.Options.self
         }
     }

@@ -34,8 +34,8 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
-        @Test("setup case exists")
-        func setupCase() {
+        @Test
+        func `setup case exists`() {
             let code = Kernel.Error.Code.posix(1)
             let error = Kernel.IO.Uring.Error.setup(code)
             if case .setup(let c) = error {
@@ -45,8 +45,8 @@ import Testing
             }
         }
 
-        @Test("enter case exists")
-        func enterCase() {
+        @Test
+        func `enter case exists`() {
             let code = Kernel.Error.Code.posix(2)
             let error = Kernel.IO.Uring.Error.enter(code)
             if case .enter(let c) = error {
@@ -56,8 +56,8 @@ import Testing
             }
         }
 
-        @Test("register case exists")
-        func registerCase() {
+        @Test
+        func `register case exists`() {
             let code = Kernel.Error.Code.posix(3)
             let error = Kernel.IO.Uring.Error.register(code)
             if case .register(let c) = error {
@@ -67,8 +67,8 @@ import Testing
             }
         }
 
-        @Test("interrupted case exists")
-        func interruptedCase() {
+        @Test
+        func `interrupted case exists`() {
             let error = Kernel.IO.Uring.Error.interrupted
             if case .interrupted = error {
                 // Expected
@@ -81,26 +81,26 @@ import Testing
     // MARK: - Description Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
-        @Test("setup description format")
-        func setupDescription() {
+        @Test
+        func `setup description format`() {
             let error = Kernel.IO.Uring.Error.setup(.posix(1))
             #expect(error.description.contains("io_uring_setup"))
         }
 
-        @Test("enter description format")
-        func enterDescription() {
+        @Test
+        func `enter description format`() {
             let error = Kernel.IO.Uring.Error.enter(.posix(1))
             #expect(error.description.contains("io_uring_enter"))
         }
 
-        @Test("register description format")
-        func registerDescription() {
+        @Test
+        func `register description format`() {
             let error = Kernel.IO.Uring.Error.register(.posix(1))
             #expect(error.description.contains("io_uring_register"))
         }
 
-        @Test("interrupted description format")
-        func interruptedDescription() {
+        @Test
+        func `interrupted description format`() {
             let error = Kernel.IO.Uring.Error.interrupted
             #expect(error.description.contains("interrupted"))
         }
@@ -109,20 +109,20 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
-        @Test("Error conforms to Swift.Error")
-        func isSwiftError() {
+        @Test
+        func `Error conforms to Swift.Error`() {
             let error: any Swift.Error = Kernel.IO.Uring.Error.interrupted
             #expect(error is Kernel.IO.Uring.Error)
         }
 
-        @Test("Error is Sendable")
-        func isSendable() {
+        @Test
+        func `Error is Sendable`() {
             let error: any Sendable = Kernel.IO.Uring.Error.interrupted
             #expect(error is Kernel.IO.Uring.Error)
         }
 
-        @Test("Error is Equatable")
-        func isEquatable() {
+        @Test
+        func `Error is Equatable`() {
             let a = Kernel.IO.Uring.Error.interrupted
             let b = Kernel.IO.Uring.Error.interrupted
             let c = Kernel.IO.Uring.Error.setup(.posix(1))
@@ -130,8 +130,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Error is Hashable")
-        func isHashable() {
+        @Test
+        func `Error is Hashable`() {
             var set = Set<Kernel.IO.Uring.Error>()
             set.insert(.setup(.posix(1)))
             set.insert(.enter(.posix(2)))
@@ -141,8 +141,8 @@ import Testing
             #expect(set.count == 4)
         }
 
-        @Test("Error is CustomStringConvertible")
-        func isCustomStringConvertible() {
+        @Test
+        func `Error is CustomStringConvertible`() {
             let error: any CustomStringConvertible = Kernel.IO.Uring.Error.interrupted
             #expect(!error.description.isEmpty)
         }
@@ -151,8 +151,8 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Error.Test.EdgeCase {
-        @Test("all cases are distinct")
-        func allCasesDistinct() {
+        @Test
+        func `all cases are distinct`() {
             let code = Kernel.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),
@@ -168,15 +168,15 @@ import Testing
             }
         }
 
-        @Test("same case with different codes are distinct")
-        func differentCodesDistinct() {
+        @Test
+        func `same case with different codes are distinct`() {
             let a = Kernel.IO.Uring.Error.setup(.posix(1))
             let b = Kernel.IO.Uring.Error.setup(.posix(2))
             #expect(a != b)
         }
 
-        @Test("all descriptions are non-empty")
-        func allDescriptionsNonEmpty() {
+        @Test
+        func `all descriptions are non-empty`() {
             let code = Kernel.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),

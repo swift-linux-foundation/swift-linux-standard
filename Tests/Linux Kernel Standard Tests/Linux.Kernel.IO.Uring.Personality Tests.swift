@@ -42,47 +42,47 @@
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Personality.Test.Unit {
-        @Test("Personality namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Personality namespace exists`() {
             let _: Kernel.IO.Uring.Personality.Type = Kernel.IO.Uring.Personality.self
         }
 
-        @Test("Personality is an enum")
-        func isEnum() {
+        @Test
+        func `Personality is an enum`() {
             _ = Kernel.IO.Uring.Personality.self
         }
 
-        @Test("ID type exists")
-        func idTypeExists() {
+        @Test
+        func `ID type exists`() {
             let _: Kernel.IO.Uring.Personality.ID.Type = Kernel.IO.Uring.Personality.ID.self
         }
 
-        @Test("ID literal construction")
-        func idLiteralConstruction() {
+        @Test
+        func `ID literal construction`() {
             let id: Kernel.IO.Uring.Personality.ID = 42
             #expect(id.rawValue == 42)
         }
 
-        @Test("ID.none constant has rawValue 0")
-        func idNoneConstant() {
+        @Test
+        func `ID.none constant has rawValue 0`() {
             let none = Kernel.IO.Uring.Personality.ID.none
             #expect(none.rawValue == 0)
         }
 
-        @Test("ID rawValue access")
-        func idRawValueAccess() {
+        @Test
+        func `ID rawValue access`() {
             let id: Kernel.IO.Uring.Personality.ID = 7
             #expect(id.rawValue == 7)
         }
 
-        @Test("ID is Sendable")
-        func idIsSendable() {
+        @Test
+        func `ID is Sendable`() {
             let id: any Sendable = Kernel.IO.Uring.Personality.ID.none
             #expect(id is Kernel.IO.Uring.Personality.ID)
         }
 
-        @Test("ID is Equatable")
-        func idIsEquatable() {
+        @Test
+        func `ID is Equatable`() {
             let a: Kernel.IO.Uring.Personality.ID = 10
             let b: Kernel.IO.Uring.Personality.ID = 10
             let c: Kernel.IO.Uring.Personality.ID = 20
@@ -90,8 +90,8 @@
             #expect(a != c)
         }
 
-        @Test("ID is Hashable")
-        func idIsHashable() {
+        @Test
+        func `ID is Hashable`() {
             var set = Set<Kernel.IO.Uring.Personality.ID>()
             set.insert(.none)
             let one: Kernel.IO.Uring.Personality.ID = 1
@@ -104,14 +104,14 @@
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Personality.Test.`Edge Case` {
-        @Test("ID UInt16.max value")
-        func idMaxValue() {
+        @Test
+        func `ID UInt16.max value`() {
             let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), UInt16.max)
             #expect(id.rawValue == UInt16.max)
         }
 
-        @Test("ID rawValue roundtrip")
-        func idRawValueRoundtrip() {
+        @Test
+        func `ID rawValue roundtrip`() {
             for value: UInt16 in [0, 1, 100, UInt16.max] {
                 let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), value)
                 #expect(id.rawValue == value)

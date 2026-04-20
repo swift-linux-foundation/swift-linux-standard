@@ -35,33 +35,33 @@ import Testing
 
     extension Kernel.IO.Uring.Setup.Options.Test.Unit {
 
-        @Test("flags combine with union")
-        func flagsCombineWithUnion() {
+        @Test
+        func `flags combine with union`() {
             let combined = Kernel.IO.Uring.Setup.Options.ioPoll.union(.sqPoll)
             #expect(combined.contains(.ioPoll))
             #expect(combined.contains(.sqPoll))
             #expect(!combined.contains(.sqAff))
         }
 
-        @Test("empty flags is empty")
-        func emptyFlagsIsEmpty() {
+        @Test
+        func `empty flags is empty`() {
             let flags: Kernel.IO.Uring.Setup.Options = []
             #expect(flags.isEmpty)
             #expect(flags.rawValue == 0)
         }
 
-        @Test("ioPoll has rawValue 1")
-        func ioPollHasRawValue1() {
+        @Test
+        func `ioPoll has rawValue 1`() {
             #expect(Kernel.IO.Uring.Setup.Options.ioPoll.rawValue == 1)
         }
 
-        @Test("sqPoll has rawValue 2")
-        func sqPollHasRawValue2() {
+        @Test
+        func `sqPoll has rawValue 2`() {
             #expect(Kernel.IO.Uring.Setup.Options.sqPoll.rawValue == 2)
         }
 
-        @Test("flags are distinct")
-        func flagsAreDistinct() {
+        @Test
+        func `flags are distinct`() {
             #expect(Kernel.IO.Uring.Setup.Options.ioPoll != .sqPoll)
             #expect(Kernel.IO.Uring.Setup.Options.sqPoll != .sqAff)
             #expect(Kernel.IO.Uring.Setup.Options.sqAff != .cqSize)

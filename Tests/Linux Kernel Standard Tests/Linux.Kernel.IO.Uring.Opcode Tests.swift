@@ -34,49 +34,49 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Opcode.Test.Unit {
-        @Test("Opcode from rawValue")
-        func rawValueInit() {
+        @Test
+        func `Opcode from rawValue`() {
             let opcode = Kernel.IO.Uring.Opcode(rawValue: 22)
             #expect(opcode.rawValue == 22)
         }
 
-        @Test("nop has rawValue 0")
-        func nopRawValue() {
+        @Test
+        func `nop has rawValue 0`() {
             #expect(Kernel.IO.Uring.Opcode.nop.rawValue == 0)
         }
 
-        @Test("read.vectored.standard has rawValue 1")
-        func readVectoredRawValue() {
+        @Test
+        func `read.vectored.standard has rawValue 1`() {
             #expect(Kernel.IO.Uring.Read.vectored.standard.rawValue == 1)
         }
 
-        @Test("write.vectored.standard has rawValue 2")
-        func writeVectoredRawValue() {
+        @Test
+        func `write.vectored.standard has rawValue 2`() {
             #expect(Kernel.IO.Uring.Write.vectored.standard.rawValue == 2)
         }
 
-        @Test("read.standard has rawValue 22")
-        func readStandardRawValue() {
+        @Test
+        func `read.standard has rawValue 22`() {
             #expect(Kernel.IO.Uring.Read.standard.rawValue == 22)
         }
 
-        @Test("write.standard has rawValue 23")
-        func writeStandardRawValue() {
+        @Test
+        func `write.standard has rawValue 23`() {
             #expect(Kernel.IO.Uring.Write.standard.rawValue == 23)
         }
 
-        @Test("close has rawValue 19")
-        func closeRawValue() {
+        @Test
+        func `close has rawValue 19`() {
             #expect(Kernel.IO.Uring.Opcode.close.rawValue == 19)
         }
 
-        @Test("socket.accept has rawValue 13")
-        func socketAcceptRawValue() {
+        @Test
+        func `socket.accept has rawValue 13`() {
             #expect(Kernel.IO.Uring.Opcode.socket.accept.rawValue == 13)
         }
 
-        @Test("socket.connect has rawValue 16")
-        func socketConnectRawValue() {
+        @Test
+        func `socket.connect has rawValue 16`() {
             #expect(Kernel.IO.Uring.Opcode.socket.connect.rawValue == 16)
         }
     }
@@ -84,14 +84,14 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.IO.Uring.Opcode.Test.Unit {
-        @Test("Opcode is Sendable")
-        func isSendable() {
+        @Test
+        func `Opcode is Sendable`() {
             let opcode: any Sendable = Kernel.IO.Uring.Opcode.nop
             #expect(opcode is Kernel.IO.Uring.Opcode)
         }
 
-        @Test("Opcode is Equatable")
-        func isEquatable() {
+        @Test
+        func `Opcode is Equatable`() {
             let a = Kernel.IO.Uring.Read.standard
             let b = Kernel.IO.Uring.Read.standard
             let c = Kernel.IO.Uring.Write.standard
@@ -99,8 +99,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Opcode is Hashable")
-        func isHashable() {
+        @Test
+        func `Opcode is Hashable`() {
             var set = Set<Kernel.IO.Uring.Opcode>()
             set.insert(.nop)
             set.insert(Kernel.IO.Uring.Read.standard)
@@ -109,14 +109,14 @@ import Testing
             #expect(set.count == 3)
         }
 
-        @Test("Opcode is RawRepresentable")
-        func isRawRepresentable() {
+        @Test
+        func `Opcode is RawRepresentable`() {
             let opcode = Kernel.IO.Uring.Opcode(rawValue: 22)
             #expect(opcode.rawValue == 22)
         }
 
-        @Test("Opcode is CustomStringConvertible")
-        func isCustomStringConvertible() {
+        @Test
+        func `Opcode is CustomStringConvertible`() {
             let opcode: any CustomStringConvertible = Kernel.IO.Uring.Read.standard
             #expect(opcode.description == "READ")
         }
@@ -125,23 +125,23 @@ import Testing
     // MARK: - Description Tests
 
     extension Kernel.IO.Uring.Opcode.Test.Unit {
-        @Test("nop description")
-        func nopDescription() {
+        @Test
+        func `nop description`() {
             #expect(Kernel.IO.Uring.Opcode.nop.description == "NOP")
         }
 
-        @Test("read.standard description")
-        func readDescription() {
+        @Test
+        func `read.standard description`() {
             #expect(Kernel.IO.Uring.Read.standard.description == "READ")
         }
 
-        @Test("write.standard description")
-        func writeDescription() {
+        @Test
+        func `write.standard description`() {
             #expect(Kernel.IO.Uring.Write.standard.description == "WRITE")
         }
 
-        @Test("unknown opcode description")
-        func unknownDescription() {
+        @Test
+        func `unknown opcode description`() {
             let opcode = Kernel.IO.Uring.Opcode(rawValue: 200)
             #expect(opcode.description.contains("OPCODE"))
             #expect(opcode.description.contains("200"))
@@ -151,15 +151,15 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Opcode.Test.EdgeCase {
-        @Test("opcodes with same rawValue are equal")
-        func sameRawValueEqual() {
+        @Test
+        func `opcodes with same rawValue are equal`() {
             let a = Kernel.IO.Uring.Opcode(rawValue: 22)
             let b = Kernel.IO.Uring.Read.standard
             #expect(a == b)
         }
 
-        @Test("opcodes are distinct")
-        func opcodesDistinct() {
+        @Test
+        func `opcodes are distinct`() {
             let opcodes: [Kernel.IO.Uring.Opcode] = [
                 .nop,
                 .close,
@@ -235,8 +235,8 @@ import Testing
             }
         }
 
-        @Test("rawValue roundtrip")
-        func rawValueRoundtrip() {
+        @Test
+        func `rawValue roundtrip`() {
             for rawValue: UInt8 in [0, 1, 22, 23, 55] {
                 let opcode = Kernel.IO.Uring.Opcode(rawValue: rawValue)
                 #expect(opcode.rawValue == rawValue)

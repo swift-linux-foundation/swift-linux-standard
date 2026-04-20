@@ -42,8 +42,8 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Test.Unit {
-        @Test("setup with invalid entries throws")
-        func setupWithInvalidEntriesThrows() throws {
+        @Test
+        func `setup with invalid entries throws`() throws {
             var params = Kernel.IO.Uring.Params()
 
             #expect(throws: Kernel.IO.Uring.Error.self) {
@@ -63,8 +63,8 @@ import Testing
         ///
         /// Submits a NOP via the ~Escapable Slot coroutine and verifies the kernel
         /// returns the correct operation data in the CQE.
-        @Test("nop round-trip through Slot coroutine")
-        func nopRoundTrip() throws {
+        @Test
+        func `nop round-trip through Slot coroutine`() throws {
             // Setup ring with 4 entries
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
@@ -107,8 +107,8 @@ import Testing
 
         /// Submits multiple NOPs in a batch to verify the Slot coroutine
         /// correctly handles sequential next/advance cycles.
-        @Test("batch nop submission via Slot")
-        func batchNopSubmission() throws {
+        @Test
+        func `batch nop submission via Slot`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
                 entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(8)),
@@ -147,8 +147,8 @@ import Testing
 
         /// Verifies that multiple accesses to ring.next without advance()
         /// hit the same slot — the Slot coroutine design invariant.
-        @Test("repeated next access without advance writes same slot")
-        func repeatedNextSameSlot() throws {
+        @Test
+        func `repeated next access without advance writes same slot`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
                 entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(4)),
@@ -184,8 +184,8 @@ import Testing
 
         /// Verifies that the nonmutating _modify on Slot.entry correctly
         /// writes through the pointer to mmap'd SQE memory.
-        @Test("Slot.entry _modify writes through to mmap'd memory")
-        func slotEntryWriteThrough() throws {
+        @Test
+        func `Slot.entry _modify writes through to mmap'd memory`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
                 entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(4)),

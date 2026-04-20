@@ -34,36 +34,36 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Priority.Test.Unit {
-        @Test("Priority from rawValue")
-        func rawValueInit() {
+        @Test
+        func `Priority from rawValue`() {
             let priority = Kernel.IO.Priority(rawValue: 100)
             #expect(priority.rawValue == 100)
         }
 
-        @Test("Priority from UInt16")
-        func uint16Init() {
+        @Test
+        func `Priority from UInt16`() {
             let priority = Kernel.IO.Priority(50)
             #expect(priority.rawValue == 50)
         }
 
-        @Test("Priority.default constant")
-        func defaultConstant() {
+        @Test
+        func `Priority.default constant`() {
             #expect(Kernel.IO.Priority.default.rawValue == 0)
         }
 
-        @Test("Priority.normal constant")
-        func normalConstant() {
+        @Test
+        func `Priority.normal constant`() {
             #expect(Kernel.IO.Priority.normal.rawValue == 0)
         }
 
-        @Test("Priority integer literal")
-        func integerLiteral() {
+        @Test
+        func `Priority integer literal`() {
             let priority: Kernel.IO.Priority = 42
             #expect(priority.rawValue == 42)
         }
 
-        @Test("Priority description")
-        func description() {
+        @Test
+        func `Priority description`() {
             let priority = Kernel.IO.Priority(123)
             #expect(priority.description == "123")
         }
@@ -72,14 +72,14 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.IO.Priority.Test.Unit {
-        @Test("Priority is Sendable")
-        func isSendable() {
+        @Test
+        func `Priority is Sendable`() {
             let priority: any Sendable = Kernel.IO.Priority(0)
             #expect(priority is Kernel.IO.Priority)
         }
 
-        @Test("Priority is Equatable")
-        func isEquatable() {
+        @Test
+        func `Priority is Equatable`() {
             let a = Kernel.IO.Priority(10)
             let b = Kernel.IO.Priority(10)
             let c = Kernel.IO.Priority(20)
@@ -87,8 +87,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Priority is Hashable")
-        func isHashable() {
+        @Test
+        func `Priority is Hashable`() {
             var set = Set<Kernel.IO.Priority>()
             set.insert(.default)
             set.insert(Kernel.IO.Priority(100))
@@ -96,16 +96,16 @@ import Testing
             #expect(set.count == 2)
         }
 
-        @Test("Priority is Comparable")
-        func isComparable() {
+        @Test
+        func `Priority is Comparable`() {
             let low = Kernel.IO.Priority(10)
             let high = Kernel.IO.Priority(100)
             #expect(low < high)
             #expect(high > low)
         }
 
-        @Test("Priority is RawRepresentable")
-        func isRawRepresentable() {
+        @Test
+        func `Priority is RawRepresentable`() {
             let priority = Kernel.IO.Priority(rawValue: 50)
             #expect(priority.rawValue == 50)
         }
@@ -114,19 +114,19 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.IO.Priority.Test.EdgeCase {
-        @Test("Priority max value")
-        func maxValue() {
+        @Test
+        func `Priority max value`() {
             let priority = Kernel.IO.Priority(UInt16.max)
             #expect(priority.rawValue == UInt16.max)
         }
 
-        @Test("default and normal are equal")
-        func defaultEqualsNormal() {
+        @Test
+        func `default and normal are equal`() {
             #expect(Kernel.IO.Priority.default == Kernel.IO.Priority.normal)
         }
 
-        @Test("Priority ordering")
-        func ordering() {
+        @Test
+        func `Priority ordering`() {
             let priorities = [
                 Kernel.IO.Priority(100),
                 Kernel.IO.Priority(50),

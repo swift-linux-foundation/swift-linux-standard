@@ -34,13 +34,13 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Completion.Queue.Test.Unit {
-        @Test("Queue namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Queue namespace exists`() {
             _ = Kernel.IO.Uring.Completion.Queue.self
         }
 
-        @Test("Queue is an enum")
-        func isEnum() {
+        @Test
+        func `Queue is an enum`() {
             let _: Kernel.IO.Uring.Completion.Queue.Type = Kernel.IO.Uring.Completion.Queue.self
         }
     }
@@ -48,13 +48,13 @@ import Testing
     // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Completion.Queue.Test.Unit {
-        @Test("Queue.Entry type exists")
-        func entryTypeExists() {
+        @Test
+        func `Queue.Entry type exists`() {
             let _: Kernel.IO.Uring.Completion.Queue.Entry.Type = Kernel.IO.Uring.Completion.Queue.Entry.self
         }
 
-        @Test("Queue.Offsets type exists")
-        func offsetsTypeExists() {
+        @Test
+        func `Queue.Offsets type exists`() {
             let _: Kernel.IO.Uring.Completion.Queue.Offsets.Type = Kernel.IO.Uring.Completion.Queue.Offsets.self
         }
     }
