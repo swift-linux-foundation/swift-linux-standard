@@ -12,12 +12,8 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 @_spi(Syscall) public import Kernel_Error_Primitives
-@_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Memory_Primitives
 @_spi(Syscall) public import Kernel_Random_Primitives
-@_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -26,32 +22,33 @@
     internal import Musl
 #endif
 
-// MARK: - Linux getrandom Implementation
+// MARK: - Linux getrandom(2) syscall
 
-extension Kernel.Random {
-    /// Fills a mutable span with cryptographically secure random bytes.
+extension Linux.Kernel.Random {
+    /// Fills a mutable span with cryptographically secure random bytes using
+    /// `getrandom(2)`.
     ///
-    /// Uses the kernel's CSPRNG via getrandom(2). Handles partial reads
+    /// Uses the kernel's CSPRNG via `getrandom(2)`. Handles partial reads
     /// and EINTR automatically by retrying until the buffer is full.
     ///
     /// - Parameter span: The mutable span to fill with random bytes.
-    /// - Throws: `Error` if getrandom fails.
-
-    public static func fill(_ span: inout MutableSpan<UInt8>) throws(Error) {
-        try unsafe span.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) throws(Error) in
-            try unsafe fill(buffer)
+    /// - Throws: `Kernel.Random.Error` if getrandom fails.
+    public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Kernel.Random.Error) {
+        try unsafe span.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) throws(Kernel.Random.Error) in
+            try unsafe getrandom(buffer)
         }
     }
 
-    /// Fills a buffer with cryptographically secure random bytes.
+    /// Fills a buffer with cryptographically secure random bytes using
+    /// `getrandom(2)`.
     ///
-    /// Uses the kernel's CSPRNG via getrandom(2). Handles partial reads
+    /// Uses the kernel's CSPRNG via `getrandom(2)`. Handles partial reads
     /// and EINTR automatically by retrying until the buffer is full.
     ///
     /// - Parameter buffer: The buffer to fill with random bytes.
-    /// - Throws: `Error` if getrandom fails.
+    /// - Throws: `Kernel.Random.Error` if getrandom fails.
     @unsafe
-    public static func fill(_ buffer: UnsafeMutableRawBufferPointer) throws(Error) {
+    public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Kernel.Random.Error) {
         guard let base = buffer.baseAddress else { return }
         let total = buffer.count
         guard total > 0 else { return }
@@ -85,14 +82,14 @@ extension Kernel.Random {
         }
     }
 
-    /// Fills a typed buffer with cryptographically secure random bytes.
+    /// Fills a typed buffer with cryptographically secure random bytes using
+    /// `getrandom(2)`.
     ///
     /// - Parameter buffer: The buffer to fill with random bytes.
-    /// - Throws: `Error` if getrandom fails.
-
+    /// - Throws: `Kernel.Random.Error` if getrandom fails.
     @unsafe
-    public static func fill(_ buffer: UnsafeMutableBufferPointer<UInt8>) throws(Error) {
-        try unsafe fill(UnsafeMutableRawBufferPointer(buffer))
+    public static func getrandom(_ buffer: UnsafeMutableBufferPointer<UInt8>) throws(Kernel.Random.Error) {
+        try unsafe getrandom(UnsafeMutableRawBufferPointer(buffer))
     }
 }
 
