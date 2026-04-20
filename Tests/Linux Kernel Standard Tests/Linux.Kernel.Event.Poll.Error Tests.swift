@@ -40,8 +40,8 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.Event.Poll.Error.Test.Unit {
-        @Test("create case stores error code")
-        func createCase() {
+        @Test
+        func `create case stores error code`() {
             let code = Kernel.Error.Code.posix(EINVAL)
             let error = Kernel.Event.Poll.Error.create(code)
             if case .create(let storedCode) = error {
@@ -51,8 +51,8 @@ import Testing
             }
         }
 
-        @Test("ctl case stores error code")
-        func ctlCase() {
+        @Test
+        func `ctl case stores error code`() {
             let code = Kernel.Error.Code.posix(EBADF)
             let error = Kernel.Event.Poll.Error.ctl(code)
             if case .ctl(let storedCode) = error {
@@ -62,8 +62,8 @@ import Testing
             }
         }
 
-        @Test("wait case stores error code")
-        func waitCase() {
+        @Test
+        func `wait case stores error code`() {
             let code = Kernel.Error.Code.posix(EFAULT)
             let error = Kernel.Event.Poll.Error.wait(code)
             if case .wait(let storedCode) = error {
@@ -73,8 +73,8 @@ import Testing
             }
         }
 
-        @Test("interrupted case exists")
-        func interruptedCase() {
+        @Test
+        func `interrupted case exists`() {
             let error = Kernel.Event.Poll.Error.interrupted
             if case .interrupted = error {
                 // Expected
@@ -87,29 +87,29 @@ import Testing
     // MARK: - Description Tests
 
     extension Kernel.Event.Poll.Error.Test.Unit {
-        @Test("create description format")
-        func createDescription() {
+        @Test
+        func `create description format`() {
             let code = Kernel.Error.Code.posix(EINVAL)
             let error = Kernel.Event.Poll.Error.create(code)
             #expect(error.description.contains("epoll_create1 failed"))
         }
 
-        @Test("ctl description format")
-        func ctlDescription() {
+        @Test
+        func `ctl description format`() {
             let code = Kernel.Error.Code.posix(EBADF)
             let error = Kernel.Event.Poll.Error.ctl(code)
             #expect(error.description.contains("epoll_ctl failed"))
         }
 
-        @Test("wait description format")
-        func waitDescription() {
+        @Test
+        func `wait description format`() {
             let code = Kernel.Error.Code.posix(EFAULT)
             let error = Kernel.Event.Poll.Error.wait(code)
             #expect(error.description.contains("epoll_wait failed"))
         }
 
-        @Test("interrupted description")
-        func interruptedDescription() {
+        @Test
+        func `interrupted description`() {
             let error = Kernel.Event.Poll.Error.interrupted
             #expect(error.description == "operation interrupted")
         }
@@ -118,20 +118,20 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.Event.Poll.Error.Test.Unit {
-        @Test("Error conforms to Swift.Error")
-        func isSwiftError() {
+        @Test
+        func `Error conforms to Swift.Error`() {
             let error: any Swift.Error = Kernel.Event.Poll.Error.interrupted
             #expect(error is Kernel.Event.Poll.Error)
         }
 
-        @Test("Error is Sendable")
-        func isSendable() {
+        @Test
+        func `Error is Sendable`() {
             let error: any Sendable = Kernel.Event.Poll.Error.interrupted
             #expect(error is Kernel.Event.Poll.Error)
         }
 
-        @Test("Error is Equatable")
-        func isEquatable() {
+        @Test
+        func `Error is Equatable`() {
             let code = Kernel.Error.Code.posix(EINVAL)
             let a = Kernel.Event.Poll.Error.create(code)
             let b = Kernel.Event.Poll.Error.create(code)
@@ -140,8 +140,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Error is Hashable")
-        func isHashable() {
+        @Test
+        func `Error is Hashable`() {
             var set = Set<Kernel.Event.Poll.Error>()
             set.insert(.interrupted)
             set.insert(.create(Kernel.Error.Code.posix(EINVAL)))
@@ -153,23 +153,23 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.Event.Poll.Error.Test.EdgeCase {
-        @Test("different error codes are not equal")
-        func differentCodesNotEqual() {
+        @Test
+        func `different error codes are not equal`() {
             let error1 = Kernel.Event.Poll.Error.create(Kernel.Error.Code.posix(EINVAL))
             let error2 = Kernel.Event.Poll.Error.create(Kernel.Error.Code.posix(ENOMEM))
             #expect(error1 != error2)
         }
 
-        @Test("same code different case not equal")
-        func samCodeDifferentCaseNotEqual() {
+        @Test
+        func `same code different case not equal`() {
             let code = Kernel.Error.Code.posix(EINVAL)
             let error1 = Kernel.Event.Poll.Error.create(code)
             let error2 = Kernel.Event.Poll.Error.ctl(code)
             #expect(error1 != error2)
         }
 
-        @Test("interrupted equals itself")
-        func interruptedEqualsSelf() {
+        @Test
+        func `interrupted equals itself`() {
             #expect(Kernel.Event.Poll.Error.interrupted == .interrupted)
         }
     }

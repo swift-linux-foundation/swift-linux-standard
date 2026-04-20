@@ -34,13 +34,13 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Submission.Test.Unit {
-        @Test("Submission namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Submission namespace exists`() {
             _ = Kernel.IO.Uring.Submission.self
         }
 
-        @Test("Submission is an enum")
-        func isEnum() {
+        @Test
+        func `Submission is an enum`() {
             let _: Kernel.IO.Uring.Submission.Type = Kernel.IO.Uring.Submission.self
         }
     }
@@ -48,8 +48,8 @@ import Testing
     // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Submission.Test.Unit {
-        @Test("Submission.Queue type exists")
-        func queueTypeExists() {
+        @Test
+        func `Submission.Queue type exists`() {
             let _: Kernel.IO.Uring.Submission.Queue.Type = Kernel.IO.Uring.Submission.Queue.self
         }
     }

@@ -42,28 +42,28 @@
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Params.Test.Unit {
-        @Test("Params default init produces zeroed state")
-        func defaultInit() {
+        @Test
+        func `Params default init produces zeroed state`() {
             let params = Kernel.IO.Uring.Params()
             #expect(params.sqEntries.rawValue == Cardinal(0))
             #expect(params.cqEntries.rawValue == Cardinal(0))
             #expect(params.flags.isEmpty)
         }
 
-        @Test("Params init with flags")
-        func initWithFlags() {
+        @Test
+        func `Params init with flags`() {
             let params = Kernel.IO.Uring.Params(flags: .sqPoll)
             #expect(params.flags == .sqPoll)
         }
 
-        @Test("Params is Sendable")
-        func isSendable() {
+        @Test
+        func `Params is Sendable`() {
             let params: any Sendable = Kernel.IO.Uring.Params()
             #expect(params is Kernel.IO.Uring.Params)
         }
 
-        @Test("Params is Equatable")
-        func isEquatable() {
+        @Test
+        func `Params is Equatable`() {
             let a = Kernel.IO.Uring.Params()
             let b = Kernel.IO.Uring.Params()
             let c = Kernel.IO.Uring.Params(flags: .sqPoll)
@@ -75,8 +75,8 @@
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Params.Test.`Edge Case` {
-        @Test("Params with multiple flags")
-        func paramsWithMultipleFlags() {
+        @Test
+        func `Params with multiple flags`() {
             let flags: Kernel.IO.Uring.Setup.Options = [.ioPoll, .sqPoll, .sqAff]
             let params = Kernel.IO.Uring.Params(flags: flags)
             #expect(params.flags.contains(.ioPoll))

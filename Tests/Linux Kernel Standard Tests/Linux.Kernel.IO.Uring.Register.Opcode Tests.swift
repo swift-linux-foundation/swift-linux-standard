@@ -34,74 +34,74 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Register.Opcode.Test.Unit {
-        @Test("Register.Opcode type exists")
-        func typeExists() {
+        @Test
+        func `Register.Opcode type exists`() {
             let _: Kernel.IO.Uring.Register.Opcode.Type = Kernel.IO.Uring.Register.Opcode.self
         }
 
-        @Test("Register.Opcode from rawValue")
-        func fromRawValue() {
+        @Test
+        func `Register.Opcode from rawValue`() {
             let opcode = Kernel.IO.Uring.Register.Opcode(rawValue: 42)
             #expect(opcode.rawValue == 42)
         }
 
-        @Test("buffers.register constant")
-        func buffersRegisterConstant() {
+        @Test
+        func `buffers.register constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.buffers.register.rawValue == 0)
         }
 
-        @Test("buffers.unregister constant")
-        func buffersUnregisterConstant() {
+        @Test
+        func `buffers.unregister constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.buffers.unregister.rawValue == 1)
         }
 
-        @Test("files.register constant")
-        func filesRegisterConstant() {
+        @Test
+        func `files.register constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.files.register.rawValue == 2)
         }
 
-        @Test("files.unregister constant")
-        func filesUnregisterConstant() {
+        @Test
+        func `files.unregister constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.files.unregister.rawValue == 3)
         }
 
-        @Test("eventfd.register constant")
-        func eventfdRegisterConstant() {
+        @Test
+        func `eventfd.register constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.eventfd.register.rawValue == 4)
         }
 
-        @Test("eventfd.unregister constant")
-        func eventfdUnregisterConstant() {
+        @Test
+        func `eventfd.unregister constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.eventfd.unregister.rawValue == 5)
         }
 
-        @Test("files.update constant")
-        func filesUpdateConstant() {
+        @Test
+        func `files.update constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.files.update.rawValue == 6)
         }
 
-        @Test("eventfd.async constant")
-        func eventfdAsyncConstant() {
+        @Test
+        func `eventfd.async constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.eventfd.async.rawValue == 7)
         }
 
-        @Test("probe.register constant")
-        func probeRegisterConstant() {
+        @Test
+        func `probe.register constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.probe.register.rawValue == 8)
         }
 
-        @Test("personality.register constant")
-        func personalityRegisterConstant() {
+        @Test
+        func `personality.register constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.personality.register.rawValue == 9)
         }
 
-        @Test("personality.unregister constant")
-        func personalityUnregisterConstant() {
+        @Test
+        func `personality.unregister constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.personality.unregister.rawValue == 10)
         }
 
-        @Test("rings.enable constant")
-        func ringsEnableConstant() {
+        @Test
+        func `rings.enable constant`() {
             #expect(Kernel.IO.Uring.Register.Opcode.rings.enable.rawValue == 12)
         }
     }
@@ -109,14 +109,14 @@ import Testing
     // MARK: - Conformance Tests
 
     extension Kernel.IO.Uring.Register.Opcode.Test.Unit {
-        @Test("Register.Opcode is Sendable")
-        func isSendable() {
+        @Test
+        func `Register.Opcode is Sendable`() {
             let opcode: any Sendable = Kernel.IO.Uring.Register.Opcode.buffers.register
             #expect(opcode is Kernel.IO.Uring.Register.Opcode)
         }
 
-        @Test("Register.Opcode is Equatable")
-        func isEquatable() {
+        @Test
+        func `Register.Opcode is Equatable`() {
             let a = Kernel.IO.Uring.Register.Opcode.files.register
             let b = Kernel.IO.Uring.Register.Opcode.files.register
             let c = Kernel.IO.Uring.Register.Opcode.files.unregister
@@ -124,8 +124,8 @@ import Testing
             #expect(a != c)
         }
 
-        @Test("Register.Opcode is Hashable")
-        func isHashable() {
+        @Test
+        func `Register.Opcode is Hashable`() {
             var set = Set<Kernel.IO.Uring.Register.Opcode>()
             set.insert(.buffers.register)
             set.insert(.files.register)
@@ -133,8 +133,8 @@ import Testing
             #expect(set.count == 2)
         }
 
-        @Test("Register.Opcode is RawRepresentable")
-        func isRawRepresentable() {
+        @Test
+        func `Register.Opcode is RawRepresentable`() {
             let opcode = Kernel.IO.Uring.Register.Opcode(rawValue: 4)
             #expect(opcode == .eventfd.register)
         }
@@ -143,8 +143,8 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Register.Opcode.Test.EdgeCase {
-        @Test("all opcodes have unique rawValues")
-        func uniqueRawValues() {
+        @Test
+        func `all opcodes have unique rawValues`() {
             let opcodes: [Kernel.IO.Uring.Register.Opcode] = [
                 .buffers.register,
                 .buffers.unregister,
@@ -164,8 +164,8 @@ import Testing
             #expect(rawValues.count == uniqueValues.count)
         }
 
-        @Test("rawValue roundtrip")
-        func rawValueRoundtrip() {
+        @Test
+        func `rawValue roundtrip`() {
             for rawValue: UInt32 in [0, 1, 5, 11] {
                 let opcode = Kernel.IO.Uring.Register.Opcode(rawValue: rawValue)
                 #expect(opcode.rawValue == rawValue)

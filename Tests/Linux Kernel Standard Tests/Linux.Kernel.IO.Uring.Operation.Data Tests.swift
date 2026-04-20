@@ -42,26 +42,26 @@
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Operation.DataTest.Unit {
-        @Test("Data literal construction")
-        func literalConstruction() {
+        @Test
+        func `Data literal construction`() {
             let data: Kernel.IO.Uring.Operation.Data = 42
             #expect(data.rawValue == 42)
         }
 
-        @Test("Data.zero constant")
-        func zeroConstant() {
+        @Test
+        func `Data.zero constant`() {
             let zero = Kernel.IO.Uring.Operation.Data.zero
             #expect(zero.rawValue == 0)
         }
 
-        @Test("Data rawValue access")
-        func rawValueAccess() {
+        @Test
+        func `Data rawValue access`() {
             let data: Kernel.IO.Uring.Operation.Data = 99
             #expect(data.rawValue == 99)
         }
 
-        @Test("Data from UnsafeRawPointer")
-        func fromRawPointer() {
+        @Test
+        func `Data from UnsafeRawPointer`() {
             var value: Int = 42
             withUnsafePointer(to: &value) { ptr in
                 let rawPtr = unsafe UnsafeRawPointer(ptr)
@@ -71,8 +71,8 @@
             }
         }
 
-        @Test("Data from typed pointer")
-        func fromTypedPointer() {
+        @Test
+        func `Data from typed pointer`() {
             var value: Int = 42
             withUnsafePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
@@ -81,8 +81,8 @@
             }
         }
 
-        @Test("Data from mutable typed pointer")
-        func fromMutableTypedPointer() {
+        @Test
+        func `Data from mutable typed pointer`() {
             var value: Int = 42
             withUnsafeMutablePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
@@ -91,14 +91,14 @@
             }
         }
 
-        @Test("Data is Sendable")
-        func isSendable() {
+        @Test
+        func `Data is Sendable`() {
             let data: any Sendable = Kernel.IO.Uring.Operation.Data.zero
             #expect(data is Kernel.IO.Uring.Operation.Data)
         }
 
-        @Test("Data is Equatable")
-        func isEquatable() {
+        @Test
+        func `Data is Equatable`() {
             let a: Kernel.IO.Uring.Operation.Data = 100
             let b: Kernel.IO.Uring.Operation.Data = 100
             let c: Kernel.IO.Uring.Operation.Data = 200
@@ -106,8 +106,8 @@
             #expect(a != c)
         }
 
-        @Test("Data is Hashable")
-        func isHashable() {
+        @Test
+        func `Data is Hashable`() {
             var set = Set<Kernel.IO.Uring.Operation.Data>()
             set.insert(.zero)
             let one: Kernel.IO.Uring.Operation.Data = 1
@@ -120,14 +120,14 @@
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Operation.DataTest.`Edge Case` {
-        @Test("Data UInt64.max value")
-        func maxValue() {
+        @Test
+        func `Data UInt64.max value`() {
             let data = Kernel.IO.Uring.Operation.Data(__unchecked: (), UInt64.max)
             #expect(data.rawValue == UInt64.max)
         }
 
-        @Test("Data Set insertion deduplication")
-        func setDeduplication() {
+        @Test
+        func `Data Set insertion deduplication`() {
             let a: Kernel.IO.Uring.Operation.Data = 42
             let b: Kernel.IO.Uring.Operation.Data = 42
             let c: Kernel.IO.Uring.Operation.Data = 99
@@ -138,8 +138,8 @@
             #expect(set.count == 2)
         }
 
-        @Test("Data rawValue roundtrip")
-        func rawValueRoundtrip() {
+        @Test
+        func `Data rawValue roundtrip`() {
             for value: UInt64 in [0, 1, 100, 0xDEAD_BEEF, UInt64.max] {
                 let data = Kernel.IO.Uring.Operation.Data(__unchecked: (), value)
                 #expect(data.rawValue == value)

@@ -35,39 +35,39 @@ import Testing
 
     extension Kernel.Event.Poll.Events.Test.Unit {
 
-        @Test("in and out events are distinct")
-        func inAndOutAreDistinct() {
+        @Test
+        func `in and out events are distinct`() {
             #expect(Kernel.Event.Poll.Events.in != .out)
             #expect(Kernel.Event.Poll.Events.in.rawValue != Kernel.Event.Poll.Events.out.rawValue)
         }
 
-        @Test("events combine with OR operator")
-        func eventsCombineWithOrOperator() {
+        @Test
+        func `events combine with OR operator`() {
             let combined: Kernel.Event.Poll.Events = [.in, .out]
             #expect(combined.contains(.in))
             #expect(combined.contains(.out))
             #expect(!combined.contains(.err))
         }
 
-        @Test("contains detects single event")
-        func containsDetectsSingleEvent() {
+        @Test
+        func `contains detects single event`() {
             let events: Kernel.Event.Poll.Events = .in
             #expect(events.contains(.in))
             #expect(!events.contains(.out))
         }
 
-        @Test("in event has non-zero rawValue")
-        func inRawValueNonZero() {
+        @Test
+        func `in event has non-zero rawValue`() {
             #expect(Kernel.Event.Poll.Events.in.rawValue != 0)
         }
 
-        @Test("out event has non-zero rawValue")
-        func outRawValueNonZero() {
+        @Test
+        func `out event has non-zero rawValue`() {
             #expect(Kernel.Event.Poll.Events.out.rawValue != 0)
         }
 
-        @Test("in and out have different rawValues")
-        func inAndOutDifferentRawValues() {
+        @Test
+        func `in and out have different rawValues`() {
             #expect(Kernel.Event.Poll.Events.in.rawValue != Kernel.Event.Poll.Events.out.rawValue)
         }
     }

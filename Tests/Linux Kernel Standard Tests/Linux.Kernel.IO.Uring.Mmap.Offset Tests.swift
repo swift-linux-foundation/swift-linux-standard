@@ -34,13 +34,13 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Mmap.Offset.Test.Unit {
-        @Test("Mmap.Offset namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Mmap.Offset namespace exists`() {
             _ = Kernel.IO.Uring.Mmap.Offset.self
         }
 
-        @Test("Mmap.Offset is an enum")
-        func isEnum() {
+        @Test
+        func `Mmap.Offset is an enum`() {
             let _: Kernel.IO.Uring.Mmap.Offset.Type = Kernel.IO.Uring.Mmap.Offset.self
         }
     }
@@ -48,18 +48,18 @@ import Testing
     // MARK: - Constant Tests
 
     extension Kernel.IO.Uring.Mmap.Offset.Test.Unit {
-        @Test("sqRing has value 0")
-        func sqRingValue() {
+        @Test
+        func `sqRing has value 0`() {
             #expect(Kernel.IO.Uring.Mmap.Offset.sqRing == 0)
         }
 
-        @Test("cqRing has value 0x8000000")
-        func cqRingValue() {
+        @Test
+        func `cqRing has value 0x8000000`() {
             #expect(Kernel.IO.Uring.Mmap.Offset.cqRing == 0x8000000)
         }
 
-        @Test("sqes has value 0x10000000")
-        func sqesValue() {
+        @Test
+        func `sqes has value 0x10000000`() {
             #expect(Kernel.IO.Uring.Mmap.Offset.sqes == 0x1000_0000)
         }
     }
@@ -67,8 +67,8 @@ import Testing
     // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Mmap.Offset.Test.EdgeCase {
-        @Test("offsets are distinct")
-        func offsetsDistinct() {
+        @Test
+        func `offsets are distinct`() {
             let offsets: [Int64] = [
                 Kernel.IO.Uring.Mmap.Offset.sqRing,
                 Kernel.IO.Uring.Mmap.Offset.cqRing,
@@ -82,15 +82,15 @@ import Testing
             }
         }
 
-        @Test("offsets are page-aligned")
-        func offsetsPageAligned() {
+        @Test
+        func `offsets are page-aligned`() {
             // cqRing and sqes should be page-aligned (multiple of common page sizes)
             #expect(Kernel.IO.Uring.Mmap.Offset.cqRing % 4096 == 0)
             #expect(Kernel.IO.Uring.Mmap.Offset.sqes % 4096 == 0)
         }
 
-        @Test("sqRing is zero")
-        func sqRingIsZero() {
+        @Test
+        func `sqRing is zero`() {
             #expect(Kernel.IO.Uring.Mmap.Offset.sqRing == 0)
         }
     }

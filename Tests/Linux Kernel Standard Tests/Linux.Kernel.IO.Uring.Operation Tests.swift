@@ -34,13 +34,13 @@ import Testing
     // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Operation.Test.Unit {
-        @Test("Operation namespace exists")
-        func namespaceExists() {
+        @Test
+        func `Operation namespace exists`() {
             _ = Kernel.IO.Uring.Operation.self
         }
 
-        @Test("Operation is an enum")
-        func isEnum() {
+        @Test
+        func `Operation is an enum`() {
             let _: Kernel.IO.Uring.Operation.Type = Kernel.IO.Uring.Operation.self
         }
     }
@@ -48,8 +48,8 @@ import Testing
     // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Operation.Test.Unit {
-        @Test("Operation.Data type exists")
-        func dataTypeExists() {
+        @Test
+        func `Operation.Data type exists`() {
             let _: Kernel.IO.Uring.Operation.Data.Type = Kernel.IO.Uring.Operation.Data.self
         }
     }
