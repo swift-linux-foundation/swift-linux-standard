@@ -11,7 +11,7 @@
 
 #if os(Linux)
 public import System_Primitives
-import Glibc
+internal import Glibc
 
 extension System.Memory {
     /// Total physical memory via `/proc/meminfo`.
