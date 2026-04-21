@@ -652,6 +652,54 @@ All gaps addressed in 4 phases (commits `3cdd8c7`–`0acfde2`).
 
 ---
 
+## Platform — 2026-04-21
+
+### Scope
+
+- **Target**: swift-linux-standard (L2 — Linux kernel API specification)
+- **Skill**: platform — [PLAT-ARCH-001]–[PLAT-ARCH-015], [PATTERN-001], [PATTERN-004]–[PATTERN-005], [PATTERN-009]
+- **Files**: ~175 Swift source files across 12 target modules (Linux Standard Core, CLinuxKernelShim, CLinuxMemoryShim, Linux Kernel {File, Pipe, Socket, Memory, Descriptor, Futex, System, Event, IO, IO Uring} Standard, Linux Loader Standard, Linux Memory Standard)
+
+### Findings
+
+| # | Severity | Rule | Location | Finding | Status |
+|---|----------|------|----------|---------|--------|
+| 1 | HIGH | [PLAT-ARCH-013] / [PLAT-ARCH-007] | `Linux Kernel Memory Standard/Linux.Kernel.Memory.Advice.swift:22-56` | Declares a standalone `Kernel.Memory.Advice` struct (UInt32 rawValue) layering `MADV_NORMAL/RANDOM/SEQUENTIAL/WILLNEED/DONTNEED` constants. These five constants are POSIX.1 (`posix_madvise`), not Linux-only; only `MADV_FREE`/`MADV_REMOVE` are Linux-specific. The L1 shell already exists at `Kernel.Memory.Map.Advice` (Int32 rawValue) in swift-kernel-primitives. This duplicates a POSIX concept that belongs in iso-9945, while also parallel-naming around an existing L1 shell — both the placement ([PLAT-ARCH-007]) and the shell-layering pattern ([PLAT-ARCH-013]) are violated. Width mismatch (UInt32 vs the L1 Int32 shell) compounds the problem. | OPEN |
+| 2 | HIGH | [PLAT-ARCH-007] | `Linux Kernel File Standard/Linux.Kernel.File.Advice.swift:22-52` | Defines `Kernel.File.Advice` here, with six constants all from POSIX.1 (`POSIX_FADV_NORMAL/RANDOM/SEQUENTIAL/WILLNEED/DONTNEED/NOREUSE` — `posix_fadvise(3)`). This is POSIX code duplicated in the Linux L2 package; it belongs in swift-iso-9945. No Linux-specific advice constants appear in the file (the Linux-only `POSIX_FADV_*` values are the POSIX set). | OPEN |
+| 3 | LOW | [PATTERN-006] / `InternalImportsByDefault` | `Linux Kernel System Standard/System.Topology.NUMA.Discover.swift:14`; `Linux Kernel System Standard/System.Memory.Total.swift:14` | Two files use `import Glibc` without the `internal` keyword, inconsistent with the ~40 other files in the package that use `internal import Glibc`. Package has `InternalImportsByDefault` enabled so the effect is identical, but the explicit form is the package convention. | OPEN |
+| 4 | LOW | [PATTERN-004a] (advisory) | `Linux Kernel IO Uring Standard/Linux.Kernel.IO.Uring.swift:146-156`; similar duplicate `#if os(Linux)` blocks in other io_uring files | Some io_uring files open a second `#if os(Linux)` block late in the file for Glibc/shim imports after an earlier `#if os(Linux)` has already closed. Functionally equivalent to a single top-of-file gate, but the secondary block adds indirection that was not found in the newer event/system sources. | OPEN |
+
+### Compliant Areas
+
+| Rule | Status | Notes |
+|------|--------|-------|
+| [PLAT-ARCH-001] L2 placement | PASS | Package is correctly at L2 (Standards), organizationally under swift-linux-foundation, per [PLAT-ARCH-010]. |
+| [PLAT-ARCH-003] Extends shared `Kernel` namespace | PASS | All kernel types extend `Kernel.*` via the `Linux.Kernel` typealias; no competing root namespace. |
+| [PLAT-ARCH-004] Platform root namespace + typealias | PASS | `Linux Standard Core/Linux.swift` declares `public enum Linux: Sendable {}`; `Linux.Kernel.swift` declares `public typealias Kernel = Kernel_Primitives_Core.Kernel` on `extension Linux`. |
+| [PLAT-ARCH-005] Descriptor unification | PASS | Uses `Kernel.Descriptor` throughout; no Linux-specific fd wrapper types. |
+| [PLAT-ARCH-005a] No C types in public API | PASS | `epoll_event`, `io_uring_sqe`, `io_uring_cqe`, `io_uring_params`, `siginfo_t` all appear only as `internal var cValue: …` stored properties or as `internal init(_:)` bridges. Verified via grep of `public .* (cValue|siginfo_t|epoll_event|io_uring_sqe|io_uring_cqe|iovec|sockaddr|pid_t|uid_t|gid_t|timespec)`: zero public leaks. `Kernel.Event.Poll.poll(events: inout [Event], …)` takes the wrapped `[Event]`, not `[epoll_event]`. |
+| [PLAT-ARCH-006] Re-export chain | PASS | 11 per-target `exports.swift` files re-export `Linux_Standard_Core`; `Linux Kernel System Standard/exports.swift` also re-exports `ISO_9945_Kernel_Process`. |
+| [PLAT-ARCH-013] Shell + Values OptionSet | PASS | `Kernel.File.Open.Options.direct (O_DIRECT)`, `Kernel.File.Seek.Whence.hole/data (SEEK_HOLE/SEEK_DATA)`, `Kernel.Event.Descriptor.Flags.cloexec/nonblock/semaphore (EFD_*)`, `Kernel.Memory.Lock.All.Options.onFault (MCL_ONFAULT)` all layered on L1/POSIX shells as Linux-specific constants. Finding #1 is the one place the pattern is inverted. |
+| [PLAT-ARCH-015] Linux thread ID width | PASS | `Linux Kernel System Standard/Linux.Kernel.Thread.ID.swift:35-46` declares `struct ID` with `public let rawValue: Int32` (matches `pid_t`/Linux tid width); doc comment explicitly states Int32 is exposed rather than the `pid_t` typedef to avoid leaking platform typedefs. |
+| [PATTERN-001] C shim layer structure | PASS | `CLinuxKernelShim` and `CLinuxMemoryShim` are minimal, Linux-only targets; platform conditionals on shim targets at Package.swift level (`.when(platforms: [.linux])`). |
+| [PATTERN-004] / [PATTERN-004c] SwiftPM linker flags | PASS | `linkedLibrary("uuid", .when(platforms: [.linux]))`, `linkedLibrary("dl", .when(platforms: [.linux]))` correctly gated. |
+| [PATTERN-004a] File-level `#if os(Linux)` | PASS | All 40+ source files with platform gates use `#if os(Linux)` at top-of-file (sometimes with `|| os(Android) || os(OpenBSD)`), not `canImport` for platform identity. Inner `canImport(Glibc) / canImport(Musl) / canImport(Bionic) / canImport(CLinuxKernelShim)` guards are correct module-availability checks per [PATTERN-004a]. |
+| [PATTERN-005] Swift 6.3 / v6 language mode | PASS | `swift-tools-version: 6.3`, `swiftLanguageModes: [.v6]`, `StrictMemorySafety`, `ExistentialAny`, `InternalImportsByDefault`, `MemberImportVisibility`, `LifetimeDependence` all enabled. |
+
+### Summary
+
+4 findings: 0 critical, 2 high, 0 medium, 2 low.
+
+Systemic verdict: the package is in strong shape for its L2 Linux role. The platform-root namespace, typealias to `Kernel`, descriptor unification, file-level `#if os(Linux)` gating, C-type encapsulation in `internal cValue`, Int32-width thread ID, and shell-plus-values OptionSet pattern are all correctly applied across ~175 source files.
+
+The two HIGH findings share a root cause: two POSIX.1-specified *Advice types (`posix_fadvise`, `posix_madvise`) were implemented in the Linux L2 package rather than in iso-9945 per [PLAT-ARCH-007]. `Kernel.Memory.Advice` additionally parallel-names around the existing L1 shell `Kernel.Memory.Map.Advice`, so its remediation is not just a move to iso-9945 — it requires deciding whether `Kernel.Memory.Advice` is the same concept as `Kernel.Memory.Map.Advice` (and consolidating on the L1 shell if so) or a distinct Linux-only type (in which case the POSIX constants must move to iso-9945 and a Linux-only remainder must stay here). The two LOW findings are hygiene: two missing `internal` keywords on `import Glibc`, and a file-layout quirk in older io_uring sources where a second `#if os(Linux)` block opens late in the file after an earlier one has closed.
+
+### Legacy Consolidation
+
+On contact [AUDIT-015], consolidated and removed the per-file `Audits/file-audit/` directory (83 `*.swift.audit.md` files, dated 2026-04-12, totaling ~85KB of per-file findings for the `Linux Kernel IO Uring Standard` target). These per-file audits have been superseded by the `## Code Surface — 2026-04-10`, `## Implementation (Domain Modelling) — 2026-04-09`, `## V6 Ergonomics — 2026-04-12`, `## Spec Completeness — 2026-04-12`, `## Post-Closure Review — 2026-04-13`, and `## Module Placement — 2026-04-12` sections already present in this file. No DEFERRED findings in the per-file audits referenced platform rules; the per-file findings that remain relevant are captured in the respective skill sections above. Legacy subsection added below.
+
+---
+
 ## Module Placement — 2026-04-12
 
 ### Scope
@@ -787,3 +835,13 @@ All in `Sources/Linux Kernel Primitives/`:
 
 HIGH=1, MEDIUM=3, LOW=20, INFO=34
 Finding IDs: IMPL-010, LNX-001, LNX-002, LNX-003, LNX-004, LNX-005, LNX-006, LNX-007, LNX-008, LNX-009, LNX-010, LNX-011, LNX-012, LNX-013, LNX-014 (+28 more)
+
+---
+
+### From: Audits/file-audit/*.swift.audit.md (2026-04-12, 83 files)
+
+**Per-file audit sweep of `Linux Kernel IO Uring Standard` target**
+
+Rules checked per file: `API-NAME-001`, `API-NAME-002`, `API-NAME-003`, `API-ERR-001`, `API-ERR-002`, `API-ERR-003`, `API-IMPL-005`, `API-IMPL-006`, `API-IMPL-007`, `API-IMPL-008`, `IMPL-002`, `IMPL-064`, `IMPL-065`, `IMPL-067`, `IMPL-COMPILE`, plus doc-comment and unsafe-ops observations.
+
+**Disposition**: Superseded on 2026-04-21 by the `## Code Surface — 2026-04-10` (resolved 10/11 with 1 DEFERRED), `## Implementation (Domain Modelling) — 2026-04-09`, `## V6 Ergonomics — 2026-04-12`, `## Spec Completeness — 2026-04-12`, `## Post-Closure Review — 2026-04-13` (12 RESOLVED), and `## Module Placement — 2026-04-12` sections above. Every substantive finding (compound method names → nested accessors, one-type-per-file extractions, Register spec corrections, `Space`/`Send.Zero`/`Rings.Descriptor`/`Files.Alloc`/`Buffers.Provided`/`Message.Kind` extractions, `Completion.Queue.Entry+Multishot` rename, `cValue` moved to extensions) is already tracked as RESOLVED in the superseding sections. Only one legacy observation remains — the static `Kernel.IO.Uring.close(_:)` method being a potential double-close footgun adjacent to deinit — and that is an implementation-hygiene concern, not a platform-rule violation, so it does not surface in the Platform section. Directory removed per [AUDIT-015].
