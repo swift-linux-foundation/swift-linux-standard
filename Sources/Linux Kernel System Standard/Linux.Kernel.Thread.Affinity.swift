@@ -22,20 +22,14 @@ internal import Musl
 internal import Bionic
 #endif
 
-// MARK: - Linux.Kernel.Thread.Affinity Namespace
-
-extension Linux.Kernel.Thread {
-    /// Thread affinity operations on Linux-family kernels.
-    ///
-    /// Wraps `sched_setaffinity(2)` at L2 so higher layers do not call the
-    /// raw syscall directly. Consumers at L3 (`swift-linux`'s
-    /// `Linux.Thread.Affinity`) delegate here per [PLAT-ARCH-008c].
-    public enum Affinity {}
-}
-
 // MARK: - Set Mask
 
-extension Linux.Kernel.Thread.Affinity {
+// Adds L2 syscall wrappers to the existing cross-platform
+// `Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
+// Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`) delegate here
+// per [PLAT-ARCH-008c].
+
+extension Kernel.Thread.Affinity {
     /// Sets the CPU affinity mask for a thread via `sched_setaffinity(2)`.
     ///
     /// - Parameters:
