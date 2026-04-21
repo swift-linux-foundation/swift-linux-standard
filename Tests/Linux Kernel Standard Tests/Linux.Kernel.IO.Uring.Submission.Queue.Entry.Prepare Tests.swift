@@ -426,7 +426,7 @@ import Testing
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 91
             let addr = unsafe UnsafeMutableRawPointer(bitPattern: 0x10000)!
-            unsafe entry.madvise(addr: addr, length: 4096, advice: Kernel.Memory.Advice(rawValue: 4), data: data)
+            unsafe entry.madvise(addr: addr, length: 4096, advice: Kernel.Memory.Map.Advice(rawValue: 4), data: data)
             #expect(entry.opcode == .memory.madvise)
             #expect(entry.cValue.fd == -1)
             #expect(entry.addr == 0x10000)

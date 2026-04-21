@@ -1421,7 +1421,7 @@
         public mutating func madvise(
             addr: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
-            advice: Kernel.Memory.Advice,
+            advice: Kernel.Memory.Map.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()

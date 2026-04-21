@@ -173,9 +173,9 @@
 
         /// Memory advisory hint.
         @usableFromInline
-        internal var memoryAdvice: Kernel.Memory.Advice {
-            get { Kernel.Memory.Advice(rawValue: cValue.rw_flags) }
-            set { cValue.rw_flags = newValue.rawValue }
+        internal var memoryAdvice: Kernel.Memory.Map.Advice {
+            get { Kernel.Memory.Map.Advice(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Sync range flags.
