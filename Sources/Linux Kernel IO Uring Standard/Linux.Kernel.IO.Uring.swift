@@ -16,6 +16,18 @@
     @_spi(Syscall) public import Kernel_Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
 
+    public import CPU_Primitives
+
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
+
+    #if canImport(CLinuxKernelShim)
+        internal import CLinuxKernelShim
+    #endif
+
     extension Kernel.IO {
         /// io_uring ring — owns the ring descriptor and mmap'd SQ/CQ shared-memory regions.
         ///
@@ -140,22 +152,6 @@
     }
 
     // Space is declared in Linux.Kernel.IO.Uring.Space.swift
-
-#endif
-
-#if os(Linux)
-
-    #if canImport(Glibc)
-        internal import Glibc
-    #elseif canImport(Musl)
-        internal import Musl
-    #endif
-
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
-    #endif
-
-    public import CPU_Primitives
 
     // MARK: - Syscalls
 
