@@ -28,6 +28,7 @@ let package = Package(
         .library(name: "Linux Memory Standard", targets: ["Linux Memory Standard"]),
     ],
     dependencies: [
+        .package(path: "../../swift-primitives/swift-algebra-primitives"),
         .package(path: "../../swift-primitives/swift-kernel-primitives"),
         .package(path: "../../swift-primitives/swift-cpu-primitives"),
         .package(path: "../../swift-primitives/swift-dimension-primitives"),
@@ -93,6 +94,7 @@ let package = Package(
                             .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Algebra Primitives Core", package: "swift-algebra-primitives"),
                 .product(name: "ISO 9945 Kernel Descriptor", package: "swift-iso-9945"),
             ]
         ),

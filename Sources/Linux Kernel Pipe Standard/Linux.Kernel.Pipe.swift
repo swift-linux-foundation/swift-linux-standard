@@ -14,6 +14,8 @@
 @_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
+@_spi(Syscall) public import ISO_9945_Kernel_Descriptor
+public import Algebra_Primitives_Core
 
 #if canImport(Glibc)
     internal import Glibc
@@ -68,13 +70,23 @@ extension Kernel.Pipe {
         return (read: fds.0, write: fds.1)
     }
 
-    // Phase 1.5 typed L2 form deferred: tuples of ~Copyable types aren't
-    // supported in Swift 6.3 ("type '(read: POSIX.Kernel.Descriptor,
-    // write: POSIX.Kernel.Descriptor)' containing noncopyable element is
-    // not supported"). The L3-policy at swift-linux handles the typed
-    // case via inout-pair or a dedicated Pair ~Copyable struct. Phase 1.5
-    // adds typed forms only where the return shape doesn't require a
-    // tuple-of-~Copyable.
+    /// Creates a pipe (Linux) — typed L2 form.
+    ///
+    /// Phase 1.5 typed L2 form. Composes the raw `pipe2(flags:)` SPI with
+    /// `POSIX.Kernel.Descriptor(_rawValue:)` construction for both ends.
+    /// § 5.6 handle-returning bifurcation generalized to a pair: kernel
+    /// produces both fds; this typed form wraps each in the L2 descriptor.
+    /// Returns an `Algebra.Pair` (`first` = read, `second` = write) because
+    /// Swift 6.3 doesn't allow tuples of ~Copyable types.
+    public static func pipe2(
+        flags: Options
+    ) throws(Error) -> Pair<POSIX.Kernel.Descriptor, POSIX.Kernel.Descriptor> {
+        let raw = try pipe2(flags: flags) as (read: Int32, write: Int32)
+        return Pair(
+            POSIX.Kernel.Descriptor(_rawValue: raw.read),
+            POSIX.Kernel.Descriptor(_rawValue: raw.write)
+        )
+    }
 
     /// Options for pipe creation (Linux).
     public struct Options: OptionSet, Sendable {
