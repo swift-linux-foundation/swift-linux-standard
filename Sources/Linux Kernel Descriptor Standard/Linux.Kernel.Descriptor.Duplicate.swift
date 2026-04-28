@@ -11,12 +11,8 @@
 
 #if os(Linux)
 
-    @_spi(Syscall) public import Kernel_Primitives_Core
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Kernel_Error_Primitives
-    @_spi(Syscall) public import Kernel_File_Primitives
-    @_spi(Syscall) public import Kernel_Memory_Primitives
-    @_spi(Syscall) public import Kernel_Path_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -28,29 +24,37 @@
 
     extension Kernel.Descriptor.Duplicate {
         /// Duplicates a file descriptor into an existing descriptor slot with
-        /// flags (Linux).
+        /// flags (Linux) — raw fd SPI.
+        ///
+        /// Spec-literal: takes raw `Int32` source/destination fds. The L3-policy
+        /// typed-descriptor convenience (with `inout Kernel.Descriptor`
+        /// semantic-marker) lives at swift-linux per [PLAT-ARCH-005] /
+        /// [PLAT-ARCH-008e]. Per Path X Phase 1 sub-cycle 1.7 Wave D Option A:
+        /// dup3's destFd is a pure input from the kernel's perspective (the
+        /// kernel atomically rebinds the resource at the slot; the slot number
+        /// is unchanged on return), so L2 takes pure `Int32` inputs — no inout
+        /// at L2 is needed and would be unrepresentable anyway because L1
+        /// `Kernel.Descriptor._rawValue` is an SPI getter, not inout-projectable.
         ///
         /// Uses `dup3(2)` to duplicate a file descriptor while atomically
         /// setting flags on the new descriptor. The kernel resource previously
-        /// held at `newDescriptor`'s slot is closed atomically and the slot is
-        /// repointed to a duplicate of `descriptor`'s resource.
-        ///
-        /// The `inout` parameter expresses that the wrapper is mutated in place:
-        /// the slot number is unchanged, only the kernel resource it refers to
-        /// has been replaced. No new owning `Kernel.Descriptor` is constructed.
+        /// held at the destination slot is closed atomically and the slot is
+        /// repointed to a duplicate of source's resource.
         ///
         /// - Parameters:
-        ///   - descriptor: The file descriptor to duplicate.
-        ///   - newDescriptor: The target slot, mutated in place.
+        ///   - sourceFd: The raw fd to duplicate.
+        ///   - destinationFd: The raw fd of the target slot.
         ///   - flags: Flags to apply (currently only O_CLOEXEC).
         /// - Throws: `Kernel.Descriptor.Duplicate.Error` on failure. On throw,
-        ///   `newDescriptor` is unchanged and still refers to its original resource.
+        ///   the destination slot is unchanged and still refers to its original
+        ///   resource.
+        @_spi(Syscall)
         public static func duplicate(
-            _ descriptor: borrowing Kernel.Descriptor,
-            to newDescriptor: inout Kernel.Descriptor,
+            sourceFd: Int32,
+            destinationFd: Int32,
             flags: Options
         ) throws(Error) {
-            let result = swift_dup3(descriptor._rawValue, newDescriptor._rawValue, flags.rawValue)
+            let result = swift_dup3(sourceFd, destinationFd, flags.rawValue)
 
             guard result >= 0 else {
                 let e = errno
