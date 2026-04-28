@@ -91,7 +91,7 @@ extension Kernel.Event.Descriptor {
         #endif
         guard result == MemoryLayout<UInt64>.size else {
             let code = Kernel.Error.Code.posix(errno)
-            if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK {
+            if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                 throw .wouldBlock
             }
             throw .read(code)
@@ -113,7 +113,7 @@ extension Kernel.Event.Descriptor {
         #endif
         guard result == MemoryLayout<UInt64>.size else {
             let code = Kernel.Error.Code.posix(errno)
-            if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK {
+            if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                 throw .wouldBlock
             }
             throw .write(code)
@@ -144,7 +144,7 @@ extension Kernel.Event.Descriptor {
         #endif
         if result < 0 {
             let code = Kernel.Error.Code.posix(errno)
-            if code == .POSIX.EAGAIN || code == .POSIX.EWOULDBLOCK || code == .POSIX.EBADF {
+            if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) || code == .posix(EBADF) {
                 // Benign: counter full (coalesced wakeup) or fd closed during shutdown
             } else {
                 assertionFailure("eventfd signal failed: \(code)")
