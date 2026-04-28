@@ -16,7 +16,6 @@
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Kernel_Memory_Primitives
-@_spi(Syscall) public import Kernel_Random_Primitives
 @_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
@@ -54,11 +53,11 @@ extension Kernel.Pipe {
         }
 
         guard result == 0 else {
-            let code = Kernel.Error.Code.posix(errno)
-            if let handleError = Kernel.Descriptor.Validity.Error(code: code) {
-                throw .handle(handleError)
-            }
-            throw .platform(Kernel.Error(code: code))
+            // Validity.Error.init?(code:) is an iso-9945 extension; this target
+            // does not depend on iso-9945. Refining to .handle(...) for
+            // descriptor-validity codes happens at swift-linux L3-policy, where
+            // the iso-9945 extension is in scope.
+            throw .platform(Kernel.Error(code: .posix(errno)))
         }
 
         read = Kernel.Descriptor(_rawValue: fds.0)

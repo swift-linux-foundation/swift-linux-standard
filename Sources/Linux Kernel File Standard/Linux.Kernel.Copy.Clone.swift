@@ -16,7 +16,6 @@
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Kernel_Memory_Primitives
-@_spi(Syscall) public import Kernel_Random_Primitives
 @_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)

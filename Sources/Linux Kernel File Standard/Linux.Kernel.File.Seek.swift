@@ -16,7 +16,6 @@ public import Kernel_Descriptor_Primitives
 public import Kernel_Error_Primitives
 public import Kernel_File_Primitives
 public import Kernel_Memory_Primitives
-public import Kernel_Random_Primitives
 public import Kernel_Path_Primitives
 
 // MARK: - Linux-specific Seek Whence
