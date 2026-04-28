@@ -77,7 +77,6 @@ let package = Package(
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
-                .product(name: "ISO 9945 Kernel Descriptor", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
         ),
@@ -95,7 +94,6 @@ let package = Package(
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Algebra Primitives Core", package: "swift-algebra-primitives"),
-                .product(name: "ISO 9945 Kernel Descriptor", package: "swift-iso-9945"),
             ]
         ),
         // MARK: - Kernel Socket
@@ -136,7 +134,6 @@ let package = Package(
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
-                .product(name: "ISO 9945 Kernel Descriptor", package: "swift-iso-9945"),
             ]
         ),
         // MARK: - Kernel Futex
@@ -226,7 +223,6 @@ let package = Package(
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
-                .product(name: "ISO 9945 Kernel Descriptor", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
         ),

@@ -13,7 +13,6 @@
 
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Kernel_Error_Primitives
-    @_spi(Syscall) public import ISO_9945_Kernel_Descriptor
 
     #if canImport(Glibc)
         internal import Glibc
@@ -75,8 +74,8 @@
         /// Phase 1.5 typed L2 form. Delegates to the raw
         /// `duplicate(sourceFd:destinationFd:flags:)` SPI.
         public static func duplicate(
-            source: borrowing POSIX.Kernel.Descriptor,
-            destination: borrowing POSIX.Kernel.Descriptor,
+            source: borrowing Kernel.Descriptor,
+            destination: borrowing Kernel.Descriptor,
             flags: Options
         ) throws(Error) {
             try duplicate(

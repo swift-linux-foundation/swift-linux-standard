@@ -13,7 +13,7 @@
 
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import ISO_9945_Kernel_Descriptor
+@_spi(Syscall) public import Kernel_Descriptor_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -96,9 +96,9 @@ extension Kernel.Copy.Range {
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `copy(fromFd:...:toFd:...:length:)` SPI.
     public static func copy(
-        from source: borrowing POSIX.Kernel.Descriptor,
+        from source: borrowing Kernel.Descriptor,
         sourceOffset: inout Kernel.File.Offset,
-        to destination: borrowing POSIX.Kernel.Descriptor,
+        to destination: borrowing Kernel.Descriptor,
         destOffset: inout Kernel.File.Offset,
         length: Kernel.File.Size
     ) throws(Kernel.Copy.Error) -> Kernel.File.Size {

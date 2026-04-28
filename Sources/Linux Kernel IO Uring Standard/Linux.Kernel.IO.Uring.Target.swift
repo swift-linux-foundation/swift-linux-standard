@@ -11,7 +11,7 @@
 
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
-    @_spi(Syscall) public import ISO_9945_Kernel_Descriptor
+    @_spi(Syscall) public import Kernel_Descriptor_Primitives
 
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
@@ -62,7 +62,7 @@
     // MARK: - Typed Construction (Phase 1.5)
 
     extension Kernel.IO.Uring.Target {
-        /// Creates a descriptor target by borrowing a typed POSIX descriptor.
+        /// Creates a descriptor target by borrowing a typed descriptor.
         ///
         /// Phase 1.5 typed L2 form. The target borrows the descriptor's
         /// lifetime via `@_lifetime(borrow descriptor)` — it cannot outlive
@@ -72,7 +72,7 @@
         /// The public enum case `Target.descriptor(Int32)` remains the
         /// spec-literal raw constructor.
         @_lifetime(borrow descriptor)
-        public init(descriptor: borrowing POSIX.Kernel.Descriptor) {
+        public init(descriptor: borrowing Kernel.Descriptor) {
             self = .descriptor(descriptor._rawValue)
         }
     }
