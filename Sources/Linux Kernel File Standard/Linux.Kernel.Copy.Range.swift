@@ -11,12 +11,8 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Memory_Primitives
-@_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -25,10 +21,14 @@
     internal import Musl
 #endif
 
-// MARK: - copy_file_range Implementation
+// MARK: - copy_file_range Implementation — raw fd SPI
 
 extension Kernel.Copy.Range {
-    /// Copies bytes between file descriptors using copy_file_range(2).
+    /// Copies bytes between file descriptors using copy_file_range(2) — raw fd SPI.
+    ///
+    /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
+    /// convenience (with `Kernel.Descriptor.Validity` checks) lives at
+    /// swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
     ///
     /// This Linux-specific syscall performs efficient kernel-space copying,
     /// avoiding unnecessary data transfer to userspace. On supported filesystems,
@@ -49,37 +49,33 @@ extension Kernel.Copy.Range {
     /// all data is copied or the source is exhausted (returns 0).
     ///
     /// ## Errors
-    /// - ``Kernel/Copy/Error/invalidDescriptor``: Source or destination is invalid
     /// - ``Kernel/Copy/Error/crossDevice``: Offload not supported across devices
     /// - ``Kernel/Copy/Error/io``: I/O error during copy
     ///
     /// - Parameters:
-    ///   - source: Source file descriptor (open for reading).
+    ///   - sourceFd: Source file raw fd (open for reading).
     ///   - sourceOffset: Offset in source file (updated on return).
-    ///   - destination: Destination file descriptor (open for writing).
+    ///   - destinationFd: Destination file raw fd (open for writing).
     ///   - destOffset: Offset in destination file (updated on return).
     ///   - length: Maximum number of bytes to copy.
     /// - Returns: Number of bytes copied (may be less than `length`).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-
+    @_spi(Syscall)
     public static func copy(
-        from source: borrowing Kernel.Descriptor,
+        fromFd sourceFd: Int32,
         sourceOffset: inout Kernel.File.Offset,
-        to destination: borrowing Kernel.Descriptor,
+        toFd destinationFd: Int32,
         destOffset: inout Kernel.File.Offset,
         length: Kernel.File.Size
     ) throws(Kernel.Copy.Error) -> Kernel.File.Size {
-        guard source.isValid else { throw .invalidDescriptor }
-        guard destination.isValid else { throw .invalidDescriptor }
-
         var srcOff = off_t(sourceOffset.rawValue)
         var dstOff = off_t(destOffset.rawValue)
 
         let result = Int(
             swift_copy_file_range(
-                source._rawValue,
+                sourceFd,
                 &srcOff,
-                destination._rawValue,
+                destinationFd,
                 &dstOff,
                 size_t(Int(length)),
                 0

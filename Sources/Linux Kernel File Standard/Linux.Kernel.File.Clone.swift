@@ -12,10 +12,8 @@
 #if os(Linux)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Memory_Primitives
 @_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
@@ -76,12 +74,22 @@ private let _FICLONE: UInt = 0x4004_9409
 extension Kernel.File.Clone {
     /// Linux FICLONE operations.
     public enum Ficlone {
-        /// Attempts to clone a file using ioctl(FICLONE).
+        /// Attempts to clone a file using ioctl(FICLONE) — raw fd SPI.
+        ///
+        /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
+        /// convenience lives at swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
+        ///
+        /// - Parameters:
+        ///   - sourceFd: Source file raw fd (open for reading).
+        ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
+        /// - Returns: `true` if cloned via FICLONE, `false` if the filesystem
+        ///   does not support reflink (caller falls back to byte copy).
+        @_spi(Syscall)
         public static func attempt(
-            source: borrowing Kernel.Descriptor,
-            destination: borrowing Kernel.Descriptor
+            sourceFd: Int32,
+            destinationFd: Int32
         ) throws(Kernel.File.Clone.Error.Syscall) -> Bool {
-            let result = ioctl(destination._rawValue, _FICLONE, source._rawValue)
+            let result = ioctl(destinationFd, _FICLONE, sourceFd)
 
             if result == 0 {
                 return true
@@ -98,10 +106,19 @@ extension Kernel.File.Clone {
 
     /// Linux copy_file_range operations.
     public enum CopyRange {
-        /// Copies file data using copy_file_range().
+        /// Copies file data using copy_file_range() — raw fd SPI.
+        ///
+        /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
+        /// convenience lives at swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
+        ///
+        /// - Parameters:
+        ///   - sourceFd: Source file raw fd (open for reading).
+        ///   - destinationFd: Destination file raw fd (open for writing).
+        ///   - length: Total number of bytes to copy.
+        @_spi(Syscall)
         public static func copy(
-            source: borrowing Kernel.Descriptor,
-            destination: borrowing Kernel.Descriptor,
+            sourceFd: Int32,
+            destinationFd: Int32,
             length: Int
         ) throws(Kernel.File.Clone.Error.Syscall) {
             var remaining = Kernel.File.Size(length)
@@ -112,9 +129,9 @@ extension Kernel.File.Clone {
                 let copied: Kernel.File.Size
                 do {
                     copied = try Kernel.Copy.Range.copy(
-                        from: source,
+                        fromFd: sourceFd,
                         sourceOffset: &srcOffset,
-                        to: destination,
+                        toFd: destinationFd,
                         destOffset: &dstOffset,
                         length: remaining
                     )

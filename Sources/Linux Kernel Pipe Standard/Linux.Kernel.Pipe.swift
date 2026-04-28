@@ -12,11 +12,8 @@
 #if os(Linux)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Memory_Primitives
-@_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -25,25 +22,33 @@
     internal import Musl
 #endif
 
-// MARK: - Linux pipe2 Implementation
+// MARK: - Linux pipe2 Implementation — raw fd SPI
 
 extension Kernel.Pipe {
-    /// Creates a pipe with the specified flags (Linux).
+    /// Creates a pipe with the specified flags (Linux) — raw fd SPI.
+    ///
+    /// Spec-literal: returns the raw `Int32` fds atomically. The L3-policy
+    /// typed-descriptor convenience (out-param `inout Kernel.Descriptor`
+    /// shape) AND the `Kernel.Descriptor.Validity.Error → .handle(...)`
+    /// normalization both live at swift-linux per [PLAT-ARCH-005] /
+    /// [PLAT-ARCH-008e]. L2 raw stays platform-error-only because
+    /// `Validity.Error.init?(code:)` is an iso-9945 extension and the
+    /// Linux Kernel Pipe Standard target does not depend on iso-9945.
     ///
     /// Uses pipe2(2) which atomically sets flags on both descriptors,
-    /// avoiding race conditions between pipe() and fcntl().
+    /// avoiding race conditions between pipe() and fcntl(). Returns the
+    /// pair of newly-created fds — § 5.6 handle-returning bifurcation
+    /// generalized to a pair.
     ///
     /// - Parameter flags: Flags to apply to the pipe descriptors.
-    /// - Parameters:
-    ///   - flags: Flags to apply to the pipe descriptors.
-    ///   - read: On return, the read end of the pipe.
-    ///   - write: On return, the write end of the pipe.
-    /// - Throws: `Kernel.Pipe.Error` on failure.
+    /// - Returns: A tuple `(read, write)` of raw fds for the read end and
+    ///   write end of the pipe.
+    /// - Throws: `Kernel.Pipe.Error.platform` on failure. L3-policy refines
+    ///   to `.handle(...)` for `Kernel.Descriptor.Validity.Error` codes.
+    @_spi(Syscall)
     public static func pipe2(
-        flags: Options,
-        read: inout Kernel.Descriptor,
-        write: inout Kernel.Descriptor
-    ) throws(Error) {
+        flags: Options
+    ) throws(Error) -> (read: Int32, write: Int32) {
         var fds: (Int32, Int32) = (0, 0)
 
         let result = withUnsafeMutablePointer(to: &fds) { ptr in
@@ -60,8 +65,7 @@ extension Kernel.Pipe {
             throw .platform(Kernel.Error(code: .posix(errno)))
         }
 
-        read = Kernel.Descriptor(_rawValue: fds.0)
-        write = Kernel.Descriptor(_rawValue: fds.1)
+        return (read: fds.0, write: fds.1)
     }
 
     /// Options for pipe creation (Linux).

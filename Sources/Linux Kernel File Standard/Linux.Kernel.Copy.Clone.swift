@@ -11,12 +11,8 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Memory_Primitives
-@_spi(Syscall) public import Kernel_Path_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -25,10 +21,14 @@
     internal import Musl
 #endif
 
-// MARK: - Linux FICLONE Implementation
+// MARK: - Linux FICLONE Implementation — raw fd SPI
 
 extension Kernel.Copy.Clone {
-    /// Clones a file using FICLONE ioctl, creating a copy-on-write duplicate.
+    /// Clones a file using FICLONE ioctl — raw fd SPI.
+    ///
+    /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
+    /// convenience (with `Kernel.Descriptor.Validity` checks) lives at
+    /// swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
     ///
     /// Both files share the same data blocks until one is modified, making this
     /// extremely fast for large files on supported filesystems.
@@ -43,24 +43,20 @@ extension Kernel.Copy.Clone {
     /// - XFS (with reflink enabled)
     ///
     /// ## Errors
-    /// - ``Kernel/Copy/Error/invalidDescriptor``: Source or destination is invalid
     /// - ``Kernel/Copy/Error/unsupported``: Filesystem doesn't support FICLONE
     /// - ``Kernel/Copy/Error/crossDevice``: Source and destination on different filesystems
     /// - ``Kernel/Copy/Error/notEmpty``: Destination file is not empty
     ///
     /// - Parameters:
-    ///   - source: Source file descriptor (open for reading).
-    ///   - destination: Destination file descriptor (must be empty, open for writing).
+    ///   - sourceFd: Source file raw fd (open for reading).
+    ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-
+    @_spi(Syscall)
     public static func perform(
-        from source: borrowing Kernel.Descriptor,
-        to destination: borrowing Kernel.Descriptor
+        fromFd sourceFd: Int32,
+        toFd destinationFd: Int32
     ) throws(Kernel.Copy.Error) {
-        guard source.isValid else { throw .invalidDescriptor }
-        guard destination.isValid else { throw .invalidDescriptor }
-
-        let result = swift_ficlone(destination._rawValue, source._rawValue)
+        let result = swift_ficlone(destinationFd, sourceFd)
         guard result == 0 else {
             throw Kernel.Copy.Error(posixErrno: errno)
         }
