@@ -15,7 +15,7 @@
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Kernel_Path_Primitives
-@_spi(Syscall) public import ISO_9945_Kernel_Descriptor
+@_spi(Syscall) public import Kernel_Descriptor_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -112,8 +112,8 @@ extension Kernel.File.Clone.Ficlone {
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `attempt(sourceFd:destinationFd:)` SPI.
     public static func attempt(
-        source: borrowing POSIX.Kernel.Descriptor,
-        destination: borrowing POSIX.Kernel.Descriptor
+        source: borrowing Kernel.Descriptor,
+        destination: borrowing Kernel.Descriptor
     ) throws(Kernel.File.Clone.Error.Syscall) -> Bool {
         try attempt(sourceFd: source._rawValue, destinationFd: destination._rawValue)
     }
@@ -170,8 +170,8 @@ extension Kernel.File.Clone.CopyRange {
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `copy(sourceFd:destinationFd:length:)` SPI.
     public static func copy(
-        source: borrowing POSIX.Kernel.Descriptor,
-        destination: borrowing POSIX.Kernel.Descriptor,
+        source: borrowing Kernel.Descriptor,
+        destination: borrowing Kernel.Descriptor,
         length: Int
     ) throws(Kernel.File.Clone.Error.Syscall) {
         try copy(sourceFd: source._rawValue, destinationFd: destination._rawValue, length: length)

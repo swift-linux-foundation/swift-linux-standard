@@ -14,7 +14,7 @@
 @_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import ISO_9945_Kernel_Descriptor
+@_spi(Syscall) public import Kernel_Descriptor_Primitives
 public import Algebra_Primitives_Core
 
 #if canImport(Glibc)
@@ -73,18 +73,18 @@ extension Kernel.Pipe {
     /// Creates a pipe (Linux) — typed L2 form.
     ///
     /// Phase 1.5 typed L2 form. Composes the raw `pipe2(flags:)` SPI with
-    /// `POSIX.Kernel.Descriptor(_rawValue:)` construction for both ends.
-    /// § 5.6 handle-returning bifurcation generalized to a pair: kernel
-    /// produces both fds; this typed form wraps each in the L2 descriptor.
+    /// `Kernel.Descriptor(_rawValue:)` construction for both ends. § 5.6
+    /// handle-returning bifurcation generalized to a pair: kernel produces
+    /// both fds; this typed form wraps each in the L1 descriptor type.
     /// Returns an `Algebra.Pair` (`first` = read, `second` = write) because
     /// Swift 6.3 doesn't allow tuples of ~Copyable types.
     public static func pipe2(
         flags: Options
-    ) throws(Error) -> Pair<POSIX.Kernel.Descriptor, POSIX.Kernel.Descriptor> {
+    ) throws(Error) -> Pair<Kernel.Descriptor, Kernel.Descriptor> {
         let raw = try pipe2(flags: flags) as (read: Int32, write: Int32)
-        return Pair(
-            POSIX.Kernel.Descriptor(_rawValue: raw.read),
-            POSIX.Kernel.Descriptor(_rawValue: raw.write)
+        return unsafe Pair(
+            Kernel.Descriptor(_rawValue: raw.read),
+            Kernel.Descriptor(_rawValue: raw.write)
         )
     }
 
