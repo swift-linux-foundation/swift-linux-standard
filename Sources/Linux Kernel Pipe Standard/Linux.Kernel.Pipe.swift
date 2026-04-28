@@ -68,6 +68,14 @@ extension Kernel.Pipe {
         return (read: fds.0, write: fds.1)
     }
 
+    // Phase 1.5 typed L2 form deferred: tuples of ~Copyable types aren't
+    // supported in Swift 6.3 ("type '(read: POSIX.Kernel.Descriptor,
+    // write: POSIX.Kernel.Descriptor)' containing noncopyable element is
+    // not supported"). The L3-policy at swift-linux handles the typed
+    // case via inout-pair or a dedicated Pair ~Copyable struct. Phase 1.5
+    // adds typed forms only where the return shape doesn't require a
+    // tuple-of-~Copyable.
+
     /// Options for pipe creation (Linux).
     public struct Options: OptionSet, Sendable {
         public let rawValue: Int32

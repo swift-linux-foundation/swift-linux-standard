@@ -11,6 +11,7 @@
 
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
+    @_spi(Syscall) public import ISO_9945_Kernel_Descriptor
 
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
@@ -58,11 +59,25 @@
         }
     }
 
-    // MARK: - SQE Application
+    // MARK: - Typed Construction (Phase 1.5)
 
-    // Construction from typed `Kernel.Descriptor` lives at swift-linux
-    // L3-policy per [PLAT-ARCH-005] / [PLAT-ARCH-008e]. The public enum
-    // case `Target.descriptor(Int32)` IS the spec-literal raw constructor.
+    extension Kernel.IO.Uring.Target {
+        /// Creates a descriptor target by borrowing a typed POSIX descriptor.
+        ///
+        /// Phase 1.5 typed L2 form. The target borrows the descriptor's
+        /// lifetime via `@_lifetime(borrow descriptor)` — it cannot outlive
+        /// the descriptor. The raw fd number is extracted at construction
+        /// and is safe to use for the SQE because the descriptor stays open.
+        ///
+        /// The public enum case `Target.descriptor(Int32)` remains the
+        /// spec-literal raw constructor.
+        @_lifetime(borrow descriptor)
+        public init(descriptor: borrowing POSIX.Kernel.Descriptor) {
+            self = .descriptor(descriptor._rawValue)
+        }
+    }
+
+    // MARK: - SQE Application
 
     extension Kernel.IO.Uring.Target {
         /// Write the target's fd value and flags to the SQE.

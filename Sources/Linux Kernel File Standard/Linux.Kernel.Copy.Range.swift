@@ -13,6 +13,7 @@
 
 @_spi(Syscall) public import Kernel_Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
+@_spi(Syscall) public import ISO_9945_Kernel_Descriptor
 
 #if canImport(Glibc)
     internal import Glibc
@@ -89,6 +90,25 @@ extension Kernel.Copy.Range {
         sourceOffset = Kernel.File.Offset(Int64(srcOff))
         destOffset = Kernel.File.Offset(Int64(dstOff))
         return Kernel.File.Size(Int64(result))
+    }
+
+    /// Copies bytes between file descriptors using copy_file_range(2) — typed L2 form.
+    ///
+    /// Phase 1.5 typed L2 form. Delegates to the raw `copy(fromFd:...:toFd:...:length:)` SPI.
+    public static func copy(
+        from source: borrowing POSIX.Kernel.Descriptor,
+        sourceOffset: inout Kernel.File.Offset,
+        to destination: borrowing POSIX.Kernel.Descriptor,
+        destOffset: inout Kernel.File.Offset,
+        length: Kernel.File.Size
+    ) throws(Kernel.Copy.Error) -> Kernel.File.Size {
+        try copy(
+            fromFd: source._rawValue,
+            sourceOffset: &sourceOffset,
+            toFd: destination._rawValue,
+            destOffset: &destOffset,
+            length: length
+        )
     }
 }
 
