@@ -14,7 +14,7 @@ public import Linux_Standard_Core
 import CLinuxMemoryShim
 #endif
 
-extension Linux_Standard_Core.Linux.Memory.Allocation {
+extension Linux_Standard_Core.Memory.Allocation {
     /// Memory allocation statistics for Linux.
     ///
     /// Uses LD_PRELOAD-based malloc/free hooks to track allocations.
@@ -42,7 +42,7 @@ extension Linux_Standard_Core.Linux.Memory.Allocation {
     }
 }
 
-extension Linux_Standard_Core.Linux.Memory.Allocation.Statistics {
+extension Linux_Standard_Core.Memory.Allocation.Statistics {
     /// Capture current allocation statistics.
     ///
     /// Returns the current state of allocation tracking counters.

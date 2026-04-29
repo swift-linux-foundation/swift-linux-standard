@@ -15,7 +15,7 @@ public import Kernel_Primitives_Core
 public import Kernel_Descriptor_Primitives
 public import Error_Primitives
 public import Kernel_File_Primitives
-public import Kernel_Memory_Primitives
+public import Memory_Primitives
 public import Path_Primitives
 public import ISO_9945_Kernel_Memory
 
@@ -27,7 +27,7 @@ public import ISO_9945_Kernel_Memory
 
 // MARK: - Linux-specific mlockall Options
 
-extension Kernel.Memory.Lock.All.Options {
+extension Memory.Lock.All.Options {
     /// Lock pages when they are faulted in (Linux 4.4+).
     ///
     /// This avoids the overhead of faulting in all pages immediately.
