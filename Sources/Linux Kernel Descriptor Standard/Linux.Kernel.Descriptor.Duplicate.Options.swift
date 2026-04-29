@@ -16,7 +16,7 @@
     public import Error_Primitives
     public import Kernel_File_Primitives
     public import Kernel_Memory_Primitives
-    public import Kernel_Path_Primitives
+    public import Path_Primitives
 
     #if canImport(Glibc)
         internal import Glibc

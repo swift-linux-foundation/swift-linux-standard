@@ -16,7 +16,7 @@ public import Kernel_Descriptor_Primitives
 public import Error_Primitives
 public import Kernel_File_Primitives
 public import Kernel_Memory_Primitives
-public import Kernel_Path_Primitives
+public import Path_Primitives
 
 // MARK: - Linux Futex Flags
 
