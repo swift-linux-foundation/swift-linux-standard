@@ -12,7 +12,7 @@
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
-    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Error_Primitives
     @_spi(Syscall) public import Kernel_Primitives_Core
     @_spi(Syscall) public import Kernel_Event_Primitives
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
@@ -82,7 +82,7 @@
 
     extension Kernel.IO.Uring.Error {
         /// Extract the platform error code from any io_uring error case.
-        var code: Kernel.Error.Code {
+        var code: Error_Primitives.Error.Code {
             switch self {
             case .setup(let code): code
             case .enter(let code): code

@@ -13,7 +13,7 @@
 
     public import Kernel_Primitives_Core
     public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
+    public import Error_Primitives
     public import Kernel_File_Primitives
     public import Kernel_Memory_Primitives
     public import Kernel_Path_Primitives
@@ -66,7 +66,7 @@
             )
 
             guard result == 0 else {
-                let code = Kernel.Error.Code.posix(errno)
+                let code = Error_Primitives.Error.Code.posix(errno)
                 switch code.posix {
                 case EEXIST:
                     throw .exists

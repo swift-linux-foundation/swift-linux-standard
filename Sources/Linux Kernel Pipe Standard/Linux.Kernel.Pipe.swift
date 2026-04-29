@@ -12,7 +12,7 @@
 #if os(Linux)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Error_Primitives
+@_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Kernel_Descriptor_Primitives
 public import Algebra_Primitives_Core
@@ -64,7 +64,7 @@ extension Kernel.Pipe {
             // does not depend on iso-9945. Refining to .handle(...) for
             // descriptor-validity codes happens at swift-linux L3-policy, where
             // the iso-9945 extension is in scope.
-            throw .platform(Kernel.Error(code: .posix(errno)))
+            throw .platform(Error_Primitives.Error(code: .posix(errno)))
         }
 
         return (read: fds.0, write: fds.1)

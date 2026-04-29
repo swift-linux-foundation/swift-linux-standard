@@ -13,7 +13,7 @@
 
 @_spi(Syscall) public import Kernel_Event_Primitives
 @_spi(Syscall) public import Kernel_Descriptor_Primitives
-@_spi(Syscall) public import Kernel_Error_Primitives
+@_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_Time_Primitives
 
 #if canImport(Glibc)
@@ -90,7 +90,7 @@ extension Kernel.Event.Descriptor {
         let result = unsafe Musl.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
         #endif
         guard result == MemoryLayout<UInt64>.size else {
-            let code = Kernel.Error.Code.posix(errno)
+            let code = Error_Primitives.Error.Code.posix(errno)
             if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                 throw .wouldBlock
             }
@@ -112,7 +112,7 @@ extension Kernel.Event.Descriptor {
         let result = unsafe Musl.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
         #endif
         guard result == MemoryLayout<UInt64>.size else {
-            let code = Kernel.Error.Code.posix(errno)
+            let code = Error_Primitives.Error.Code.posix(errno)
             if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                 throw .wouldBlock
             }
@@ -143,7 +143,7 @@ extension Kernel.Event.Descriptor {
         let result = unsafe Musl.write(fd, &val, MemoryLayout<UInt64>.size)
         #endif
         if result < 0 {
-            let code = Kernel.Error.Code.posix(errno)
+            let code = Error_Primitives.Error.Code.posix(errno)
             if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) || code == .posix(EBADF) {
                 // Benign: counter full (coalesced wakeup) or fd closed during shutdown
             } else {

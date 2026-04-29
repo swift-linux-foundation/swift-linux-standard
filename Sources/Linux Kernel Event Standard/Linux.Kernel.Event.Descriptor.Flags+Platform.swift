@@ -9,7 +9,7 @@
 
 public import Kernel_Event_Primitives
 public import Kernel_Descriptor_Primitives
-public import Kernel_Error_Primitives
+public import Error_Primitives
 public import Kernel_Time_Primitives
 
 #if canImport(Glibc)

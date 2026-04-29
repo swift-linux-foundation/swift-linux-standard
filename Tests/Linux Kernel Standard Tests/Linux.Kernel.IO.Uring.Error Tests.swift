@@ -17,7 +17,7 @@ import Testing
     import Kernel_Event_Primitives
     import Kernel_IO_Primitives
     import Kernel_Descriptor_Primitives
-    import Kernel_Error_Primitives
+    import Error_Primitives
     import Kernel_File_Primitives
     import Kernel_Memory_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
@@ -36,7 +36,7 @@ import Testing
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
         func `setup case exists`() {
-            let code = Kernel.Error.Code.posix(1)
+            let code = Error_Primitives.Error.Code.posix(1)
             let error = Kernel.IO.Uring.Error.setup(code)
             if case .setup(let c) = error {
                 #expect(c == code)
@@ -47,7 +47,7 @@ import Testing
 
         @Test
         func `enter case exists`() {
-            let code = Kernel.Error.Code.posix(2)
+            let code = Error_Primitives.Error.Code.posix(2)
             let error = Kernel.IO.Uring.Error.enter(code)
             if case .enter(let c) = error {
                 #expect(c == code)
@@ -58,7 +58,7 @@ import Testing
 
         @Test
         func `register case exists`() {
-            let code = Kernel.Error.Code.posix(3)
+            let code = Error_Primitives.Error.Code.posix(3)
             let error = Kernel.IO.Uring.Error.register(code)
             if case .register(let c) = error {
                 #expect(c == code)
@@ -153,7 +153,7 @@ import Testing
     extension Kernel.IO.Uring.Error.Test.EdgeCase {
         @Test
         func `all cases are distinct`() {
-            let code = Kernel.Error.Code.posix(1)
+            let code = Error_Primitives.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),
                 .enter(code),
@@ -177,7 +177,7 @@ import Testing
 
         @Test
         func `all descriptions are non-empty`() {
-            let code = Kernel.Error.Code.posix(1)
+            let code = Error_Primitives.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),
                 .enter(code),

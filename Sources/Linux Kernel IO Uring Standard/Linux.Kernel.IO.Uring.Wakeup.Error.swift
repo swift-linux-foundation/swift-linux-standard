@@ -11,16 +11,16 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Error_Primitives
+    public import Error_Primitives
 
     extension Kernel.IO.Uring.Wakeup {
         /// Error during wakeup channel creation.
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
             /// eventfd creation failed.
-            case eventfd(Kernel.Error.Code)
+            case eventfd(Error_Primitives.Error.Code)
 
             /// io_uring eventfd registration failed.
-            case register(Kernel.Error.Code)
+            case register(Error_Primitives.Error.Code)
         }
     }
 
