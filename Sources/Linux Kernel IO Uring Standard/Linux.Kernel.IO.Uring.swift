@@ -12,7 +12,7 @@
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
-    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Error_Primitives
     @_spi(Syscall) public import Kernel_Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
 
@@ -222,7 +222,7 @@
                 0
             )
             guard result >= 0 else {
-                let code = Kernel.Error.Code.posix(errno)
+                let code = Error_Primitives.Error.Code.posix(errno)
                 if code.posix == EINTR { throw .interrupted }
                 throw .enter(code)
             }

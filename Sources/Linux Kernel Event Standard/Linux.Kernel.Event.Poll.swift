@@ -13,7 +13,7 @@
 
     @_spi(Syscall) public import Kernel_Event_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
-    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Error_Primitives
     @_spi(Syscall) public import Kernel_Time_Primitives
 
     #if canImport(Glibc)
@@ -176,7 +176,7 @@
                 let baseAddress = unsafe buffer.baseAddress!
                 let result = unsafe epoll_wait(epoll.descriptor._rawValue, baseAddress, Int32(count), timeout)
                 guard result >= 0 else {
-                    let code = Kernel.Error.Code.posix(errno)
+                    let code = Error_Primitives.Error.Code.posix(errno)
                     if code.posix == EINTR {
                         return .failure(.interrupted)
                     }

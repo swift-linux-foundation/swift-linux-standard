@@ -12,7 +12,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
-    @_spi(Syscall) public import Kernel_Error_Primitives
+    @_spi(Syscall) public import Error_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -64,7 +64,7 @@
                 case EMFILE:
                     throw .tooManyOpen
                 default:
-                    throw .platform(Kernel.Error(code: .posix(e)))
+                    throw .platform(Error_Primitives.Error(code: .posix(e)))
                 }
             }
         }

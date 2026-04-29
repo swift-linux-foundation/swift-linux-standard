@@ -12,20 +12,20 @@
 #if os(Linux)
     public import Kernel_Event_Primitives
     public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
+    public import Error_Primitives
     public import Kernel_Time_Primitives
 
     extension Kernel.Event.Descriptor {
         /// Errors from event descriptor operations.
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
             /// Failed to create event descriptor.
-            case create(Kernel.Error.Code)
+            case create(Error_Primitives.Error.Code)
 
             /// Failed to read from event descriptor.
-            case read(Kernel.Error.Code)
+            case read(Error_Primitives.Error.Code)
 
             /// Failed to write to event descriptor.
-            case write(Kernel.Error.Code)
+            case write(Error_Primitives.Error.Code)
 
             /// Operation would block (non-blocking mode).
             case wouldBlock
@@ -49,7 +49,7 @@
 
     extension Kernel.Event.Descriptor.Error {
         /// The error code associated with this error, if any.
-        public var code: Kernel.Error.Code? {
+        public var code: Error_Primitives.Error.Code? {
             switch self {
             case .create(let code): return code
             case .read(let code): return code

@@ -11,7 +11,7 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Error_Primitives
+    public import Error_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -106,8 +106,8 @@
         /// The error number (for failed operations).
         ///
         /// Returns nil if the operation succeeded.
-        public var errorNumber: Kernel.Error.Number? {
-            isError ? Kernel.Error.Number(__unchecked: (), -res) : nil
+        public var errorNumber: Error_Primitives.Error.Number? {
+            isError ? Error_Primitives.Error.Number(__unchecked: (), -res) : nil
         }
     }
 

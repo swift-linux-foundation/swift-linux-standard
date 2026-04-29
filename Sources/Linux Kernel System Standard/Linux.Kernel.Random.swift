@@ -12,7 +12,7 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Error_Primitives
+@_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_Random_Primitives
 
 #if canImport(Glibc)
@@ -67,7 +67,7 @@ extension Linux.Kernel.Random {
             }
 
             if result == -1 {
-                let code = Kernel.Error.Code.posix(errno)
+                let code = Error_Primitives.Error.Code.posix(errno)
                 if code.posix == EINTR {
                     continue  // Retry on interrupt
                 }

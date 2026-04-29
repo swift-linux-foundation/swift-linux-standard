@@ -13,15 +13,15 @@
 
     public import Kernel_Event_Primitives
     public import Kernel_Descriptor_Primitives
-    public import Kernel_Error_Primitives
+    public import Error_Primitives
     public import Kernel_Time_Primitives
 
     extension Kernel.Event.Poll {
         /// Errors from epoll operations.
         ///
         /// Low-level errors from epoll syscalls. Each case wraps the
-        /// underlying `Kernel.Error.Code` for platform-specific details.
-        /// Convert to `Kernel.Error` for semantic error handling.
+        /// underlying `Error_Primitives.Error.Code` for platform-specific details.
+        /// Convert to `Error_Primitives.Error` for semantic error handling.
         ///
         /// ## Usage
         ///
@@ -49,19 +49,19 @@
             ///
             /// Returned by `epoll_create1`. Common causes: process has
             /// too many open file descriptors, system limit reached.
-            case create(Kernel.Error.Code)
+            case create(Error_Primitives.Error.Code)
 
             /// Failed to modify the epoll interest list.
             ///
             /// Returned by `epoll_ctl`. Common causes: file descriptor
             /// not valid, already exists (for add), not found (for delete).
-            case ctl(Kernel.Error.Code)
+            case ctl(Error_Primitives.Error.Code)
 
             /// Failed to wait for events.
             ///
             /// Returned by `epoll_wait`/`epoll_pwait`. Common causes:
             /// invalid epoll descriptor, invalid events buffer.
-            case wait(Kernel.Error.Code)
+            case wait(Error_Primitives.Error.Code)
 
             /// Operation was interrupted by a signal.
             ///

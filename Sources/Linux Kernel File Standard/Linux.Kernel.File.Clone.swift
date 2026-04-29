@@ -12,7 +12,7 @@
 #if os(Linux)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Kernel_Error_Primitives
+@_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Kernel_Path_Primitives
 @_spi(Syscall) public import Kernel_Descriptor_Primitives
