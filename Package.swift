@@ -173,7 +173,6 @@ let package = Package(
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
                 .product(name: "Kernel Time Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Thread Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
