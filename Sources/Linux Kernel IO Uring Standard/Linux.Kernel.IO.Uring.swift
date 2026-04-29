@@ -13,7 +13,7 @@
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Error_Primitives
-    @_spi(Syscall) public import Kernel_Memory_Primitives
+    @_spi(Syscall) public import Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
 
     public import CPU_Primitives
@@ -96,11 +96,11 @@
             @usableFromInline let singleMmap: Bool
 
             // mmap regions (owned — deinit unmaps)
-            @usableFromInline let sqRingAddr: Kernel.Memory.Address
+            @usableFromInline let sqRingAddr: Memory.Address
             @usableFromInline let sqRingSize: Kernel.File.Size
-            @usableFromInline let cqRingAddr: Kernel.Memory.Address
+            @usableFromInline let cqRingAddr: Memory.Address
             @usableFromInline let cqRingSize: Kernel.File.Size
-            @usableFromInline let sqeAddr: Kernel.Memory.Address
+            @usableFromInline let sqeAddr: Memory.Address
             @usableFromInline let sqeSize: Kernel.File.Size
 
             @unsafe
@@ -117,9 +117,9 @@
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Kernel.Memory.Address, sqRingSize: Kernel.File.Size,
-                cqRingAddr: Kernel.Memory.Address, cqRingSize: Kernel.File.Size,
-                sqeAddr: Kernel.Memory.Address, sqeSize: Kernel.File.Size
+                sqRingAddr: Memory.Address, sqRingSize: Kernel.File.Size,
+                cqRingAddr: Memory.Address, cqRingSize: Kernel.File.Size,
+                sqeAddr: Memory.Address, sqeSize: Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
                 self.sqHead = sqHead
@@ -428,9 +428,9 @@
                 cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
                     .assumingMemoryBound(to: Kernel.IO.Uring.Completion.Queue.Entry.self)),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Kernel.Memory.Address(sq), sqRingSize: Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Kernel.Memory.Address(cq), cqRingSize: Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Kernel.Memory.Address(sqe), sqeSize: Kernel.File.Size(sqeSz)
+                sqRingAddr: unsafe Memory.Address(sq), sqRingSize: Kernel.File.Size(sqMmapSz),
+                cqRingAddr: unsafe Memory.Address(cq), cqRingSize: Kernel.File.Size(cqMmapSz),
+                sqeAddr: unsafe Memory.Address(sqe), sqeSize: Kernel.File.Size(sqeSz)
             )
         }
     }

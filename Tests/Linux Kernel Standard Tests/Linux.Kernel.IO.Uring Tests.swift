@@ -17,7 +17,7 @@ import Testing
     import Kernel_Descriptor_Primitives
     import Error_Primitives
     import Kernel_File_Primitives
-    import Kernel_Memory_Primitives
+    import Memory_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
 
     #if canImport(Glibc)

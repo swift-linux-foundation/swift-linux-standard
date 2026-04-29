@@ -13,7 +13,7 @@
     public import Kernel_IO_Primitives
     public import Kernel_Descriptor_Primitives
     public import Error_Primitives
-    public import Kernel_Memory_Primitives
+    public import Memory_Primitives
     public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring.Cancel {

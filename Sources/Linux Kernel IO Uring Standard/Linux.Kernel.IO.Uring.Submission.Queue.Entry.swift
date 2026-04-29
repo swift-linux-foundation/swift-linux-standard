@@ -13,7 +13,7 @@
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Error_Primitives
-    @_spi(Syscall) public import Kernel_Memory_Primitives
+    @_spi(Syscall) public import Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
     public import Kernel_Socket_Primitives
     public import Kernel_Event_Primitives
@@ -173,8 +173,8 @@
 
         /// Memory advisory hint.
         @usableFromInline
-        internal var memoryAdvice: Kernel.Memory.Map.Advice {
-            get { Kernel.Memory.Map.Advice(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var memoryAdvice: Memory.Map.Advice {
+            get { Memory.Map.Advice(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 

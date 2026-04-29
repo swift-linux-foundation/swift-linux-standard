@@ -13,7 +13,7 @@
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Kernel_Descriptor_Primitives
     @_spi(Syscall) public import Error_Primitives
-    @_spi(Syscall) public import Kernel_Memory_Primitives
+    @_spi(Syscall) public import Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
     public import Kernel_Socket_Primitives
     public import Kernel_Event_Primitives
@@ -1422,7 +1422,7 @@
         public mutating func madvise(
             addr: UnsafeMutableRawPointer,
             length: Kernel.IO.Uring.Length,
-            advice: Kernel.Memory.Map.Advice,
+            advice: Memory.Map.Advice,
             data: Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
