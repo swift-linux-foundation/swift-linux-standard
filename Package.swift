@@ -38,6 +38,7 @@ let package = Package(
         .package(path: "../../swift-primitives/swift-standard-library-extensions"),
         .package(path: "../../swift-primitives/swift-witness-primitives"),
         .package(path: "../../swift-primitives/swift-error-primitives"),
+        .package(path: "../../swift-primitives/swift-random-primitives"),
         .package(path: "../../swift-iso/swift-iso-9945"),
     ],
     targets: [
@@ -92,7 +93,7 @@ let package = Package(
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                             .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Algebra Primitives Core", package: "swift-algebra-primitives"),
             ]
@@ -118,7 +119,7 @@ let package = Package(
                 .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
@@ -133,7 +134,7 @@ let package = Package(
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                             .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
@@ -147,7 +148,7 @@ let package = Package(
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Memory Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Kernel Path Primitives", package: "swift-kernel-primitives"),
             ]
         ),
@@ -162,7 +163,8 @@ let package = Package(
                 .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
-                .product(name: "Kernel Random Primitives", package: "swift-kernel-primitives"),
+                .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
+                .product(name: "Random Primitives", package: "swift-random-primitives"),
                             .product(name: "Kernel Descriptor Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),

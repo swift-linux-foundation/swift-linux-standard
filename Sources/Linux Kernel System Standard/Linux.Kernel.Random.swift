@@ -12,8 +12,8 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
 @_spi(Syscall) public import Kernel_Primitives_Core
-@_spi(Syscall) public import Error_Primitives
-@_spi(Syscall) public import Kernel_Random_Primitives
+@_spi(Syscall) public import Random_Primitives
+public import ISO_9945_Kernel_System
 
 #if canImport(Glibc)
     internal import Glibc
@@ -32,9 +32,9 @@ extension Linux.Kernel.Random {
     /// and EINTR automatically by retrying until the buffer is full.
     ///
     /// - Parameter span: The mutable span to fill with random bytes.
-    /// - Throws: `Kernel.Random.Error` if getrandom fails.
-    public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Kernel.Random.Error) {
-        try unsafe span.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) throws(Kernel.Random.Error) in
+    /// - Throws: `Random.Error` if getrandom fails.
+    public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Random.Error) {
+        try unsafe span.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
             try unsafe getrandom(buffer)
         }
     }
@@ -46,9 +46,9 @@ extension Linux.Kernel.Random {
     /// and EINTR automatically by retrying until the buffer is full.
     ///
     /// - Parameter buffer: The buffer to fill with random bytes.
-    /// - Throws: `Kernel.Random.Error` if getrandom fails.
+    /// - Throws: `Random.Error` if getrandom fails.
     @unsafe
-    public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Kernel.Random.Error) {
+    public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) {
         guard let base = buffer.baseAddress else { return }
         let total = buffer.count
         guard total > 0 else { return }
@@ -67,18 +67,17 @@ extension Linux.Kernel.Random {
             }
 
             if result == -1 {
-                let code = Error_Primitives.Error.Code.posix(errno)
-                if code.posix == EINTR {
+                if errno == EINTR {
                     continue  // Retry on interrupt
                 }
-                if code.posix == EAGAIN {
-                    throw .wouldBlock
+                if errno == EAGAIN {
+                    throw .entropyNotReady
                 }
-                throw .platform(code)
+                throw .systemError(errno)
             }
 
             // result == 0 shouldn't happen, but treat as error
-            throw .platform(.posix(0))
+            throw .systemError(0)
         }
     }
 
@@ -86,9 +85,9 @@ extension Linux.Kernel.Random {
     /// `getrandom(2)`.
     ///
     /// - Parameter buffer: The buffer to fill with random bytes.
-    /// - Throws: `Kernel.Random.Error` if getrandom fails.
+    /// - Throws: `Random.Error` if getrandom fails.
     @unsafe
-    public static func getrandom(_ buffer: UnsafeMutableBufferPointer<UInt8>) throws(Kernel.Random.Error) {
+    public static func getrandom(_ buffer: UnsafeMutableBufferPointer<UInt8>) throws(Random.Error) {
         try unsafe getrandom(UnsafeMutableRawBufferPointer(buffer))
     }
 }
