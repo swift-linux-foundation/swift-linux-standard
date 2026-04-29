@@ -11,7 +11,6 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-public import Kernel_Thread_Primitives
 internal import CLinuxKernelShim
 
 #if canImport(Glibc)
