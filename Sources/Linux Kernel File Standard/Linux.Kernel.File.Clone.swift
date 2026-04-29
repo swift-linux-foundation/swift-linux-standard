@@ -14,7 +14,7 @@
 @_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Path_Primitives
+@_spi(Syscall) public import Path_Primitives
 @_spi(Syscall) public import Kernel_Descriptor_Primitives
 
 #if canImport(Glibc)
@@ -28,7 +28,7 @@
 
 extension Kernel.File.Clone.Capability {
     /// Probes whether the filesystem at the given path supports cloning.
-    public static func probe(at path: borrowing Kernel.Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Kernel.File.Clone.Capability {
+    public static func probe(at path: borrowing Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Kernel.File.Clone.Capability {
         try unsafe path.withUnsafePointer { cString throws(Kernel.File.Clone.Error.Syscall) in
             var statfsBuf = statfs()
             let result = statfs(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statfsBuf)
@@ -54,7 +54,7 @@ extension Kernel.File.Clone.Capability {
 
 extension Kernel.File.Clone.Metadata {
     /// Gets the size of a file.
-    public static func size(at path: borrowing Kernel.Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Int {
+    public static func size(at path: borrowing Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Int {
         try unsafe path.withUnsafePointer { cString throws(Kernel.File.Clone.Error.Syscall) in
             var statBuf = Glibc.stat()
             let result = stat(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statBuf)
