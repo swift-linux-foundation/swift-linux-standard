@@ -11,7 +11,6 @@
 
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
-    @_spi(Syscall) public import Kernel_Descriptor_Primitives
 
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim

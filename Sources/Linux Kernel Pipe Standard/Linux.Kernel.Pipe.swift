@@ -14,7 +14,6 @@
 @_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 public import Algebra_Primitives_Core
 
 #if canImport(Glibc)
