@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Kernel_Event_Primitives
 @_spi(Syscall) public import Error_Primitives
 
 #if canImport(Glibc)

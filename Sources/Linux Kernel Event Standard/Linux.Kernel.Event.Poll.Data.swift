@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-    public import Kernel_Event_Primitives
     public import Error_Primitives
 
     extension Kernel.Event.Poll {

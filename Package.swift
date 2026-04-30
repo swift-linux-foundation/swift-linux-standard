@@ -174,7 +174,6 @@ let package = Package(
                 "Linux Standard Core",
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
             ]
         ),
@@ -249,7 +248,6 @@ let package = Package(
                 "Linux Kernel Event Standard",
                 "Linux Kernel IO Uring Standard",
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),

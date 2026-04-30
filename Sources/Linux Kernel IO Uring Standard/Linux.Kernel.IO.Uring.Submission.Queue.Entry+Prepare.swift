@@ -15,7 +15,6 @@
     @_spi(Syscall) public import Memory_Primitives
     @_spi(Syscall) public import Kernel_File_Primitives
     public import Kernel_Socket_Primitives
-    public import Kernel_Event_Primitives
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard
