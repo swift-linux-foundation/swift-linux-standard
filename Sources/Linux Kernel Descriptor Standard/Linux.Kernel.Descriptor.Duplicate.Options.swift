@@ -12,7 +12,6 @@
 #if os(Linux)
 
     public import Error_Primitives
-    public import Kernel_File_Primitives
     public import Memory_Primitives
     public import Path_Primitives
 

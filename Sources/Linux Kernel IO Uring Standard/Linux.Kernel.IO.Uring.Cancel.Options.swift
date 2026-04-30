@@ -13,7 +13,6 @@
     public import Kernel_IO_Primitives
     public import Error_Primitives
     public import Memory_Primitives
-    public import Kernel_File_Primitives
 
     extension Kernel.IO.Uring.Cancel {
         /// Flags controlling how cancel operations match their targets.

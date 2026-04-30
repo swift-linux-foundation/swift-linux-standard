@@ -21,7 +21,6 @@ import Testing
 
     import Kernel_IO_Primitives
     import Error_Primitives
-    import Kernel_File_Primitives
     import Memory_Primitives
     @testable import Linux_Kernel_Event_Standard
 
