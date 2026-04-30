@@ -12,6 +12,5 @@
 // TODO: Rewrite tests for current domain-typed API
 #if os(Linux)
 import Testing
-    import Kernel_Primitives_Test_Support
     @testable import Linux_Kernel_Event_Standard
 #endif

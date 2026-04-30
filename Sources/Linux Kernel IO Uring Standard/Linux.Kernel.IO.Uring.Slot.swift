@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    @_spi(Syscall) public import Kernel_IO_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
         /// A slot in the submission queue ring buffer.

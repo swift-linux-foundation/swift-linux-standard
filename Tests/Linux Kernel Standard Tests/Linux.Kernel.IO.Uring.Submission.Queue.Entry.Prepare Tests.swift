@@ -12,11 +12,8 @@
 #if os(Linux)
 import Testing
 
-    import Kernel_Primitives_Test_Support
-    import Kernel_IO_Primitives
     import Error_Primitives
     import Memory_Primitives
-    import Kernel_Socket_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
     import Linux_Kernel_Socket_Standard
     import Linux_Kernel_Pipe_Standard

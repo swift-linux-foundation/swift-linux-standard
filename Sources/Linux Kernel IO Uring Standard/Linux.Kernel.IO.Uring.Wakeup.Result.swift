@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
     extension ISO_9945.Kernel.IO.Uring.Wakeup {

@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Opcode.Ring.Command {
         /// Flags for uring command operations (`IORING_OP_URING_CMD`).

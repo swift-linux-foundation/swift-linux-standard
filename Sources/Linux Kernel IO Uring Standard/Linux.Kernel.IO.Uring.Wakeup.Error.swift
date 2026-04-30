@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
     public import Error_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Wakeup {

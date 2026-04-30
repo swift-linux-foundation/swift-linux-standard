@@ -10,10 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Error_Primitives
     @_spi(Syscall) public import Memory_Primitives
-    public import Kernel_Socket_Primitives
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard

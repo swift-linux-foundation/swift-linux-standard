@@ -17,9 +17,7 @@
     #endif
 
 import Testing
-    import Kernel_Primitives_Test_Support
 
-    import Kernel_IO_Primitives
     import Error_Primitives
     import Memory_Primitives
     @testable import Linux_Kernel_Event_Standard
