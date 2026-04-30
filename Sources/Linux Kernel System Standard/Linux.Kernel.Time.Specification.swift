@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-public import Kernel_Time_Primitives
 
 extension Linux.Kernel.Time {
     /// Binary-compatible wrapper for `struct __kernel_timespec`.
