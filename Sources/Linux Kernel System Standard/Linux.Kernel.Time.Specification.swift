@@ -12,6 +12,11 @@
 #if os(Linux)
 
 
+extension Linux.Kernel {
+    /// Linux-specific time vocabulary (e.g. `__kernel_timespec`).
+    public enum Time: Sendable {}
+}
+
 extension Linux.Kernel.Time {
     /// Binary-compatible wrapper for `struct __kernel_timespec`.
     ///

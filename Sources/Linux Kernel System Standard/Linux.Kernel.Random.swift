@@ -12,7 +12,6 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
 @_spi(Syscall) public import Random_Primitives
-public import ISO_9945_Kernel_System
 
 #if canImport(Glibc)
     internal import Glibc
@@ -20,6 +19,13 @@ public import ISO_9945_Kernel_System
 #elseif canImport(Musl)
     internal import Musl
 #endif
+
+// MARK: - Namespace anchor
+
+extension Linux.Kernel {
+    /// Linux-specific random vocabulary (e.g. `getrandom(2)`).
+    public enum Random: Sendable {}
+}
 
 // MARK: - Linux getrandom(2) syscall
 
