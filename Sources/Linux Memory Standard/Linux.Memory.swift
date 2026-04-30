@@ -11,7 +11,7 @@
 
 public import Linux_Standard_Core
 
-extension Linux_Standard_Core.Linux {
+extension Linux {
     /// Memory namespace for Linux-specific memory operations.
     public enum Memory: Sendable {}
 }
