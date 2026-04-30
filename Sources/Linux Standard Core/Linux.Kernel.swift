@@ -10,16 +10,9 @@
 // ===----------------------------------------------------------------------===//
 
 
+public import Kernel_Namespace
+
 extension Linux {
-    /// Linux kernel mechanisms.
-    ///
-    /// This is a typealias to `Kernel_Primitives.Kernel`, allowing Linux-specific
-    /// extensions to be added to the shared Kernel type.
-    ///
-    /// Linux-specific syscall wrappers for:
-    /// - epoll event notification
-    /// - io_uring async I/O
-    /// - eventfd
-    /// - copy_file_range, ficlone
-    public typealias Kernel = Kernel_Primitives_Core.Kernel
+    /// Linux kernel mechanisms — typealias to the shared `Kernel` namespace.
+    public typealias Kernel = Kernel_Namespace.Kernel
 }
