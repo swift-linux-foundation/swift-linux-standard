@@ -2,7 +2,6 @@
 
 @_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Kernel_File_Primitives
-public import Kernel_Process_Primitives
 
 #if canImport(CLinuxKernelShim)
     internal import CLinuxKernelShim

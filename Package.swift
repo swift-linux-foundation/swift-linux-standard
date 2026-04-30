@@ -79,7 +79,6 @@ let package = Package(
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
@@ -157,7 +156,6 @@ let package = Package(
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "System Primitives", package: "swift-system-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
@@ -214,7 +212,6 @@ let package = Package(
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
-                .product(name: "Kernel Process Primitives", package: "swift-kernel-primitives"),
                 .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]

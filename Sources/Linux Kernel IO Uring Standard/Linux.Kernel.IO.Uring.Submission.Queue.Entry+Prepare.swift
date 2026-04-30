@@ -23,7 +23,6 @@
     public import Linux_Kernel_Socket_Standard
     public import Linux_Kernel_System_Standard
     public import Linux_Kernel_Memory_Standard
-    public import Kernel_Process_Primitives
     public import ISO_9945_Kernel_File
     public import ISO_9945_Kernel_Signal
     public import ISO_9945_Core

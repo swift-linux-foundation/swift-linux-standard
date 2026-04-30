@@ -22,7 +22,6 @@
     public import Linux_Kernel_Futex_Standard
     public import Linux_Kernel_Socket_Standard
     public import Linux_Kernel_Memory_Standard
-    public import Kernel_Process_Primitives
     public import ISO_9945_Kernel_File
     public import ISO_9945_Kernel_Process
     public import ISO_9945_Core
