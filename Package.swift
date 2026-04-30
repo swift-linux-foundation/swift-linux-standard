@@ -164,7 +164,6 @@ let package = Package(
                 .product(name: "Kernel File Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
-                .product(name: "Kernel Time Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
@@ -177,7 +176,6 @@ let package = Package(
                 .product(name: "Kernel Primitives Core", package: "swift-kernel-primitives"),
                 .product(name: "Kernel Event Primitives", package: "swift-kernel-primitives"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Kernel Time Primitives", package: "swift-kernel-primitives"),
             ]
         ),
 
