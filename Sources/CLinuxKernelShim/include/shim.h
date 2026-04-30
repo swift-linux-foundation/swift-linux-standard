@@ -163,6 +163,26 @@ static inline pid_t swift_gettid(void) {
     return (pid_t)syscall(SYS_gettid);
 }
 
+// pidfd_open - create a fd referring to a process (Linux 5.3+)
+// glibc wrapper added in 2.36; exposed here via syscall for portability
+// across glibc versions and because it isn't in SwiftGlibc's module map.
+static inline int swift_pidfd_open(pid_t pid, unsigned int flags) {
+    return (int)syscall(SYS_pidfd_open, pid, flags);
+}
+
+// pidfd_send_signal - send a signal to a process referenced by a pidfd
+// (Linux 5.1+). Same portability rationale as pidfd_open.
+static inline int swift_pidfd_send_signal(int pidfd, int sig, void *info, unsigned int flags) {
+    return (int)syscall(SYS_pidfd_send_signal, pidfd, sig, info, flags);
+}
+
+// timerfd / signalfd headers — accessible via glibc/musl directly,
+// included here so dependent shim consumers and Swift sources resolve
+// symbols (timerfd_create, timerfd_settime, signalfd) without per-file
+// imports.
+#include <sys/timerfd.h>
+#include <sys/signalfd.h>
+
 // Dynamic loader symbol-lookup sentinels.
 // RTLD_DEFAULT and RTLD_NEXT are GNU extensions gated by _GNU_SOURCE on glibc.
 // They are C macros expanding to cast expressions and cannot be imported into
