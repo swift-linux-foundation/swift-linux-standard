@@ -10,12 +10,11 @@
 // ===----------------------------------------------------------------------===//
 
 
-public import ISO_9945_Core
-
 extension Linux {
-    /// Linux kernel mechanisms — typealias to the iso-9945 L2 `Kernel`
-    /// namespace (G6.D typealias-via-L3 per [PLAT-ARCH-005]; Linux
-    /// re-typealiases from iso-9945 since linux-standard depends on
-    /// iso-9945 per [PLAT-ARCH-007]).
-    public typealias Kernel = ISO_9945.Kernel
+    /// Linux kernel mechanisms — distinct nominal type per [PLAT-ARCH-008k]
+    /// Spec/Policy Namespace Split. Linux-specific spec content (ABI structs,
+    /// Linux-only syscalls like `getrandom(2)`) lives here; POSIX-shared
+    /// content stays at `ISO_9945.Kernel`. Resolves the [PLAT-ARCH-018] silent
+    /// typealias-conflict hazard between `Linux.Kernel` and `ISO_9945.Kernel`.
+    public enum Kernel: Sendable {}
 }
