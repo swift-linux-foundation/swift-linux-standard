@@ -21,6 +21,9 @@ let package = Package(
         .library(name: "Linux Kernel Futex Standard", targets: ["Linux Kernel Futex Standard"]),
         .library(name: "Linux Kernel System Standard", targets: ["Linux Kernel System Standard"]),
         .library(name: "Linux Kernel Event Standard", targets: ["Linux Kernel Event Standard"]),
+        .library(name: "Linux Kernel Process Standard", targets: ["Linux Kernel Process Standard"]),
+        .library(name: "Linux Kernel Timer Standard", targets: ["Linux Kernel Timer Standard"]),
+        .library(name: "Linux Kernel Signal Standard", targets: ["Linux Kernel Signal Standard"]),
         .library(name: "Linux Kernel IO Standard", targets: ["Linux Kernel IO Standard"]),
         .library(name: "Linux Kernel IO Uring Standard", targets: ["Linux Kernel IO Uring Standard"]),
         // MARK: - Other
@@ -163,6 +166,38 @@ let package = Package(
             ]
         ),
 
+        // MARK: - Kernel Process (pidfd)
+        .target(
+            name: "Linux Kernel Process Standard",
+            dependencies: [
+                "Linux Standard Core",
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
+            ]
+        ),
+
+        // MARK: - Kernel Timer (timerfd)
+        .target(
+            name: "Linux Kernel Timer Standard",
+            dependencies: [
+                "Linux Standard Core",
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Error Primitives", package: "swift-error-primitives"),
+            ]
+        ),
+
+        // MARK: - Kernel Signal (signalfd)
+        .target(
+            name: "Linux Kernel Signal Standard",
+            dependencies: [
+                "Linux Standard Core",
+                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
+            ]
+        ),
+
         // MARK: - Kernel IO
         .target(
             name: "Linux Kernel IO Standard",
@@ -228,6 +263,9 @@ let package = Package(
                 "Linux Kernel Futex Standard",
                 "Linux Kernel System Standard",
                 "Linux Kernel Event Standard",
+                "Linux Kernel Process Standard",
+                "Linux Kernel Timer Standard",
+                "Linux Kernel Signal Standard",
                 "Linux Kernel IO Uring Standard",
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
