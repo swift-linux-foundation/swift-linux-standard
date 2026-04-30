@@ -12,7 +12,7 @@
 #if os(Linux)
 public import Error_Primitives
 
-extension Kernel.Event.Descriptor {
+extension ISO_9945.Kernel.Event.Descriptor {
     /// Flags for event descriptor creation.
     ///
     /// ## Platform Implementation

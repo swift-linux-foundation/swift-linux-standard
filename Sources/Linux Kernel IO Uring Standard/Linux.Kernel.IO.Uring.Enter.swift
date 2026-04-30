@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for io_uring_enter related types.
         ///
         /// Contains flags for controlling `io_uring_enter` behavior.

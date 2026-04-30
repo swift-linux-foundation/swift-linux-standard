@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Enter {
+    extension ISO_9945.Kernel.IO.Uring.Enter {
         /// Flags controlling `io_uring_enter` behavior.
         ///
         /// These flags control what `io_uring_enter` does: submit operations,
@@ -23,7 +23,7 @@
         ///
         /// ```swift
         /// // Submit and wait for at least one completion
-        /// let submitted = try Kernel.IO.Uring.enter(
+        /// let submitted = try ISO_9945.Kernel.IO.Uring.enter(
         ///     ring,
         ///     toSubmit: pendingCount,
         ///     minComplete: 1,
@@ -31,7 +31,7 @@
         /// )
         ///
         /// // Just submit, don't wait
-        /// let submitted = try Kernel.IO.Uring.enter(
+        /// let submitted = try ISO_9945.Kernel.IO.Uring.enter(
         ///     ring,
         ///     toSubmit: pendingCount,
         ///     minComplete: 0,

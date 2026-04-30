@@ -22,12 +22,12 @@
         internal import Musl
     #endif
 
-    extension Kernel.IO.Uring.File {
+    extension ISO_9945.Kernel.IO.Uring.File {
         /// Extended attribute namespace — wraps xattr operations.
         public enum Xattr {}
     }
 
-    extension Kernel.IO.Uring.File.Xattr {
+    extension ISO_9945.Kernel.IO.Uring.File.Xattr {
         /// How to handle an existing or absent attribute.
         ///
         /// The three dispositions are mutually exclusive:
@@ -46,7 +46,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.File.Xattr.Disposition {
+    extension ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition {
         /// The raw XATTR_* flag for the kernel.
         @usableFromInline
         var rawBits: UInt32 {

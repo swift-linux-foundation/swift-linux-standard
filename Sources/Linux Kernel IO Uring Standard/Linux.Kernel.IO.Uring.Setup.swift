@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for io_uring setup and configuration types.
         ///
         /// Contains types used when creating an io_uring instance,

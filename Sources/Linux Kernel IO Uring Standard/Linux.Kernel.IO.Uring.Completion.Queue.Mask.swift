@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Ring mask — extracts physical slot from a monotonic UInt32 counter.
         ///
         /// Invariant: `rawValue == entries - 1` (always one less than power-of-2).

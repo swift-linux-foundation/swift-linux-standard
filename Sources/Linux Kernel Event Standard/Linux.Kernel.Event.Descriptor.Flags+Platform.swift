@@ -19,7 +19,7 @@ public import Error_Primitives
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.Event.Descriptor.Flags {
+extension ISO_9945.Kernel.Event.Descriptor.Flags {
     /// Close-on-exec: prevents the fd from leaking to child processes.
     ///
     /// - Linux: `EFD_CLOEXEC`

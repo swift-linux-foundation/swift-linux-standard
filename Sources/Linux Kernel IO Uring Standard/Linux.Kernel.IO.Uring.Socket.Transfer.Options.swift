@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Socket.Transfer {
+    extension ISO_9945.Kernel.IO.Uring.Socket.Transfer {
         /// Flags modifying socket send/receive behavior.
         ///
         /// These flags are stored in the SQE `ioprio` field for
@@ -41,7 +41,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Socket.Transfer.Options {
+    extension ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options {
         /// Try polling for data first before issuing the operation.
         ///
         /// The kernel polls the socket before starting the actual

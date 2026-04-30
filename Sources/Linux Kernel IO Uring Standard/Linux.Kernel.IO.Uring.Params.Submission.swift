@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Params {
+    extension ISO_9945.Kernel.IO.Uring.Params {
         /// Submission queue configuration.
         public struct Submission: Sendable, Equatable {
             /// Thread configuration for submission queue polling.

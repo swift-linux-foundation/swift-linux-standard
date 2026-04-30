@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Opcodes specifying which operation to submit to io_uring.
         ///
         /// Each opcode corresponds to an `IORING_OP_*` constant from `<linux/io_uring.h>`.
@@ -53,7 +53,7 @@
 
     // MARK: - Basic Operations
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// No operation (used for wakeup or testing).
         public static let nop = Self(rawValue: 0)
 
@@ -67,7 +67,7 @@
 
     // MARK: - CustomStringConvertible
 
-    extension Kernel.IO.Uring.Opcode: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Uring.Opcode: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             // Basic

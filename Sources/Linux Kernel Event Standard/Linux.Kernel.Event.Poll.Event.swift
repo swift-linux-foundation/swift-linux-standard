@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// An epoll event describing readiness conditions and associated data.
         ///
         /// Layout-compatible with `struct epoll_event`. An
@@ -34,11 +34,11 @@
         ///
         /// ```swift
         /// // Register interest
-        /// let event = Kernel.Event.Poll.Event(
+        /// let event = ISO_9945.Kernel.Event.Poll.Event(
         ///     events: [.in, .et],
         ///     data: .init(connectionId)
         /// )
-        /// try Kernel.Event.Poll.control(
+        /// try ISO_9945.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .add,
         ///     descriptor: socketFd,
@@ -61,7 +61,7 @@
             /// - Parameters:
             ///   - events: The event flags to monitor.
             ///   - data: Data to associate with the file descriptor.
-            public init(events: Events = [], data: Kernel.Event.Poll.Data = .zero) {
+            public init(events: Events = [], data: ISO_9945.Kernel.Event.Poll.Data = .zero) {
                 self.cValue = epoll_event()
                 self.cValue.events = events.rawValue
                 self.cValue.data.u64 = data.rawValue
@@ -71,23 +71,23 @@
 
     // MARK: - Accessors
 
-    extension Kernel.Event.Poll.Event {
+    extension ISO_9945.Kernel.Event.Poll.Event {
         /// The event flags that occurred or are being monitored.
-        public var events: Kernel.Event.Poll.Events {
-            get { Kernel.Event.Poll.Events(rawValue: cValue.events) }
+        public var events: ISO_9945.Kernel.Event.Poll.Events {
+            get { ISO_9945.Kernel.Event.Poll.Events(rawValue: cValue.events) }
             set { cValue.events = newValue.rawValue }
         }
 
         /// Data associated with the file descriptor.
-        public var data: Kernel.Event.Poll.Data {
-            get { Kernel.Event.Poll.Data(__unchecked: (), cValue.data.u64) }
+        public var data: ISO_9945.Kernel.Event.Poll.Data {
+            get { ISO_9945.Kernel.Event.Poll.Data(__unchecked: (), cValue.data.u64) }
             set { cValue.data.u64 = newValue.rawValue }
         }
     }
 
     // MARK: - C Conversion
 
-    extension Kernel.Event.Poll.Event {
+    extension ISO_9945.Kernel.Event.Poll.Event {
         /// Creates an epoll event from the C struct.
         internal init(_ cEvent: epoll_event) {
             self.cValue = cEvent
@@ -96,13 +96,13 @@
 
     // MARK: - Equatable, Hashable
 
-    extension Kernel.Event.Poll.Event: Equatable {
+    extension ISO_9945.Kernel.Event.Poll.Event: Equatable {
         public static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.cValue.events == rhs.cValue.events && lhs.cValue.data.u64 == rhs.cValue.data.u64
         }
     }
 
-    extension Kernel.Event.Poll.Event: Hashable {
+    extension ISO_9945.Kernel.Event.Poll.Event: Hashable {
         public func hash(into hasher: inout Hasher) {
             hasher.combine(cValue.events)
             hasher.combine(cValue.data.u64)

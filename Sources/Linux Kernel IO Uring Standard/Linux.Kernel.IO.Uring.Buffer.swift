@@ -13,7 +13,7 @@
 
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for buffer-related types and opcodes.
         ///
         /// Contains types for working with registered buffers and buffer
@@ -33,9 +33,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to buffer management operation opcodes.
-        public static var buffer: Kernel.IO.Uring.Buffer.Type { Kernel.IO.Uring.Buffer.self }
+        public static var buffer: ISO_9945.Kernel.IO.Uring.Buffer.Type { ISO_9945.Kernel.IO.Uring.Buffer.self }
     }
 
 #endif

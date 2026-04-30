@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Poll {
+    extension ISO_9945.Kernel.IO.Uring.Poll {
         /// Trigger mode for io_uring poll operations.
         ///
         /// Determines when the kernel delivers poll completions.
@@ -37,7 +37,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Poll.Trigger {
+    extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
         /// The io_uring poll flag bits for this trigger mode.
         @usableFromInline
         var pollBits: UInt32 {

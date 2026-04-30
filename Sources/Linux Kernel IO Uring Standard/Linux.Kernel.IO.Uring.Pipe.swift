@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Pipe/splice operation opcodes.
         public struct Pipe {
             /// Splice data between fds.
@@ -35,9 +35,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to pipe/splice operation opcodes.
-        public static var pipe: Kernel.IO.Uring.Pipe.Type { Kernel.IO.Uring.Pipe.self }
+        public static var pipe: ISO_9945.Kernel.IO.Uring.Pipe.Type { ISO_9945.Kernel.IO.Uring.Pipe.self }
     }
 
 #endif

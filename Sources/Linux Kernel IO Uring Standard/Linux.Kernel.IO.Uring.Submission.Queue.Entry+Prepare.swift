@@ -27,12 +27,12 @@
 
     // MARK: - Operations
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a no-op operation.
         ///
         /// - Parameter data: Operation data to return with completion.
         @inlinable
-        public mutating func nop(data: Kernel.IO.Uring.Operation.Data) {
+        public mutating func nop(data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
             self = .init()
             self.opcode = .nop
             self.data = data
@@ -48,11 +48,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func read(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
-            length: Kernel.IO.Uring.Length,
-            offset: Kernel.IO.Uring.Offset,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .read.standard
@@ -73,11 +73,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func write(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
-            offset: Kernel.IO.Uring.Offset,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .write.standard
@@ -95,8 +95,8 @@
         ///   - data: Operation data to return with this cancel's completion.
         @inlinable
         public mutating func cancel(
-            target: Kernel.IO.Uring.Operation.Data,
-            data: Kernel.IO.Uring.Operation.Data
+            target: ISO_9945.Kernel.IO.Uring.Operation.Data,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .cancel.async
@@ -112,9 +112,9 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func fsync(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             datasync: Bool,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .sync.file.standard
@@ -132,8 +132,8 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func close(
-            target: borrowing Kernel.IO.Uring.Target,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .close
@@ -151,11 +151,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func accept(
-            target: borrowing Kernel.IO.Uring.Target,
-            addr: UnsafeMutablePointer<Kernel.Socket.Address.Storage>?,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            addr: UnsafeMutablePointer<ISO_9945.Kernel.Socket.Address.Storage>?,
             length: UnsafeMutablePointer<UInt32>?,
-            flags: Kernel.Socket.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.Socket.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.accept
@@ -175,16 +175,16 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func connect(
-            target: borrowing Kernel.IO.Uring.Target,
-            address: UnsafePointer<Kernel.Socket.Address.Storage>,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            address: UnsafePointer<ISO_9945.Kernel.Socket.Address.Storage>,
             length: UInt32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.connect
             target.apply(to: &self)
             unsafe self.setAddr(address)
-            self.offset = Kernel.IO.Uring.Offset(UInt64(length))
+            self.offset = ISO_9945.Kernel.IO.Uring.Offset(UInt64(length))
             self.data = data
         }
 
@@ -198,11 +198,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.Socket.Message.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.send
@@ -223,11 +223,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func recv(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.Socket.Message.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.receive
@@ -241,7 +241,7 @@
 
     // MARK: - File I/O (Vectored, Fixed, Multishot)
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a vectored read operation (readv).
         ///
         /// - Parameters:
@@ -251,10 +251,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func read(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
-            offset: Kernel.IO.Uring.Offset,
-            data: Kernel.IO.Uring.Operation.Data
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .read.vectored.standard
@@ -274,10 +274,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func write(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
-            offset: Kernel.IO.Uring.Offset,
-            data: Kernel.IO.Uring.Operation.Data
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .write.vectored.standard
@@ -301,12 +301,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func read(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
-            length: Kernel.IO.Uring.Length,
-            offset: Kernel.IO.Uring.Offset,
-            bufferIndex: Kernel.IO.Uring.Buffer.Index,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .read.fixed
@@ -331,12 +331,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func write(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
-            offset: Kernel.IO.Uring.Offset,
-            bufferIndex: Kernel.IO.Uring.Buffer.Index,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .write.fixed
@@ -358,11 +358,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func read(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
-            offset: Kernel.IO.Uring.Offset,
-            bufferIndex: Kernel.IO.Uring.Buffer.Index,
-            data: Kernel.IO.Uring.Operation.Data
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .read.vectored.fixed
@@ -384,11 +384,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func write(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
-            offset: Kernel.IO.Uring.Offset,
-            bufferIndex: Kernel.IO.Uring.Buffer.Index,
-            data: Kernel.IO.Uring.Operation.Data
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .write.vectored.fixed
@@ -414,11 +414,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func read(
-            target: borrowing Kernel.IO.Uring.Target,
-            length: Kernel.IO.Uring.Length,
-            offset: Kernel.IO.Uring.Offset,
-            bufferGroup: Kernel.IO.Uring.Buffer.Group,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            bufferGroup: ISO_9945.Kernel.IO.Uring.Buffer.Group,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .read.multishot
@@ -433,7 +433,7 @@
 
     // MARK: - File I/O (Splice, Tee, Truncate)
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a splice operation.
         ///
         /// Moves data between two file descriptors without copying through user space.
@@ -448,13 +448,13 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func splice(
-            target: borrowing Kernel.IO.Uring.Target,
-            source: borrowing Kernel.Descriptor,
-            offsetIn: Kernel.IO.Uring.Offset,
-            offsetOut: Kernel.IO.Uring.Offset,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.Pipe.Splice.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            source: borrowing ISO_9945.Kernel.Descriptor,
+            offsetIn: ISO_9945.Kernel.IO.Uring.Offset,
+            offsetOut: ISO_9945.Kernel.IO.Uring.Offset,
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.Pipe.Splice.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .pipe.splice
@@ -480,11 +480,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func tee(
-            target: borrowing Kernel.IO.Uring.Target,
-            source: borrowing Kernel.Descriptor,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.Pipe.Splice.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            source: borrowing ISO_9945.Kernel.Descriptor,
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.Pipe.Splice.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .pipe.tee
@@ -503,9 +503,9 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func ftruncate(
-            target: borrowing Kernel.IO.Uring.Target,
-            length: Kernel.IO.Uring.Offset,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            length: ISO_9945.Kernel.IO.Uring.Offset,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.ftruncate
@@ -520,7 +520,7 @@
 
     // MARK: - File System
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for an openat operation.
         ///
         /// The kernel's open flags are decomposed into two parameters:
@@ -538,12 +538,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func openat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            access: Kernel.File.Open.Access = .readOnly,
-            options: Kernel.File.Open.Options = [],
-            mode: Kernel.File.Permissions = .none,
-            data: Kernel.IO.Uring.Operation.Data
+            access: ISO_9945.Kernel.File.Open.Access = .readOnly,
+            options: ISO_9945.Kernel.File.Open.Options = [],
+            mode: ISO_9945.Kernel.File.Permissions = .none,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.openat
@@ -564,16 +564,16 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func openat2(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            how: UnsafePointer<Kernel.File.Open.How>,
-            data: Kernel.IO.Uring.Operation.Data
+            how: UnsafePointer<ISO_9945.Kernel.File.Open.How>,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.openat2
             target.apply(to: &self)
             unsafe self.setAddr(path)
-            self._rawLength = UInt32(MemoryLayout<Kernel.File.Open.How>.size)
+            self._rawLength = UInt32(MemoryLayout<ISO_9945.Kernel.File.Open.How>.size)
             unsafe self.setOffset(how)
             self.data = data
         }
@@ -589,12 +589,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func statx(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.File.At.Options,
-            mask: Kernel.File.Statx.Mask,
-            buffer: UnsafeMutablePointer<Kernel.File.Statx>,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.File.At.Options,
+            mask: ISO_9945.Kernel.File.Statx.Mask,
+            buffer: UnsafeMutablePointer<ISO_9945.Kernel.File.Statx>,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.statx
@@ -617,12 +617,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func renameat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Kernel.File.Rename.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.File.Rename.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.renameat
@@ -643,10 +643,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func unlinkat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: Kernel.File.At.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.File.At.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.unlinkat
@@ -665,10 +665,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func mkdirat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
             mode: UInt32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.mkdirat
@@ -687,10 +687,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func symlinkat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             linkTarget: UnsafePointer<CChar>,
             linkPath: UnsafePointer<CChar>,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.symlinkat
@@ -711,12 +711,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func linkat(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: Kernel.File.At.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.File.At.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.linkat
@@ -740,11 +740,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func fallocate(
-            target: borrowing Kernel.IO.Uring.Target,
-            mode: Kernel.IO.Uring.File.Allocate.Mode,
-            offset: Kernel.IO.Uring.Offset,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            mode: ISO_9945.Kernel.IO.Uring.File.Allocate.Mode,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
             length: UInt64,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.fallocate
@@ -760,7 +760,7 @@
 
     // MARK: - Networking
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a socket creation operation.
         ///
         /// - Parameters:
@@ -771,11 +771,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func socket(
-            domain: Kernel.Socket.Address.Family,
-            kind: Kernel.Socket.Kind,
-            protocol: Kernel.Socket.`Protocol` = .auto,
-            flags: Kernel.Socket.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            domain: ISO_9945.Kernel.Socket.Address.Family,
+            kind: ISO_9945.Kernel.Socket.Kind,
+            protocol: ISO_9945.Kernel.Socket.`Protocol` = .auto,
+            flags: ISO_9945.Kernel.Socket.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.create
@@ -795,10 +795,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func bind(
-            target: borrowing Kernel.IO.Uring.Target,
-            address: UnsafePointer<Kernel.Socket.Address.Storage>,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            address: UnsafePointer<ISO_9945.Kernel.Socket.Address.Storage>,
             length: UInt32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.bind
@@ -816,9 +816,9 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func listen(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             backlog: Int32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.listen
@@ -836,10 +836,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
-            target: borrowing Kernel.IO.Uring.Target,
-            message: UnsafePointer<Kernel.Socket.Message.Header>,
-            flags: Kernel.Socket.Message.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            message: UnsafePointer<ISO_9945.Kernel.Socket.Message.Header>,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.message.send
@@ -859,10 +859,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func recv(
-            target: borrowing Kernel.IO.Uring.Target,
-            message: UnsafeMutablePointer<Kernel.Socket.Message.Header>,
-            flags: Kernel.Socket.Message.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            message: UnsafeMutablePointer<ISO_9945.Kernel.Socket.Message.Header>,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.message.receive
@@ -888,12 +888,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.Socket.Message.Options,
-            transfer: Kernel.IO.Uring.Socket.Transfer.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            transfer: ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .send.zero.copy
@@ -915,11 +915,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func send(
-            target: borrowing Kernel.IO.Uring.Target,
-            message: UnsafePointer<Kernel.Socket.Message.Header>,
-            flags: Kernel.Socket.Message.Options,
-            transfer: Kernel.IO.Uring.Socket.Transfer.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            message: UnsafePointer<ISO_9945.Kernel.Socket.Message.Header>,
+            flags: ISO_9945.Kernel.Socket.Message.Options,
+            transfer: ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .send.zero.msg
@@ -939,9 +939,9 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func shutdown(
-            target: borrowing Kernel.IO.Uring.Target,
-            how: Kernel.Socket.Shutdown.Mode,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            how: ISO_9945.Kernel.Socket.Shutdown.Mode,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .socket.shutdown
@@ -960,11 +960,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func epoll(
-            target: borrowing Kernel.IO.Uring.Target,
-            descriptor: borrowing Kernel.Descriptor,
-            operation: Kernel.Event.Poll.Operation,
-            event: UnsafeMutablePointer<Kernel.Event.Poll.Event>?,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            descriptor: borrowing ISO_9945.Kernel.Descriptor,
+            operation: ISO_9945.Kernel.Event.Poll.Operation,
+            event: UnsafeMutablePointer<ISO_9945.Kernel.Event.Poll.Event>?,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .epoll.ctl
@@ -984,10 +984,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func epoll(
-            target: borrowing Kernel.IO.Uring.Target,
-            events: UnsafeMutablePointer<Kernel.Event.Poll.Event>,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            events: UnsafeMutablePointer<ISO_9945.Kernel.Event.Poll.Event>,
             maxEvents: Int32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .epoll.wait
@@ -1000,7 +1000,7 @@
 
     // MARK: - Timeout and Poll
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a relative timeout operation.
         ///
         /// Completes after the specified duration elapses or after `count`
@@ -1016,13 +1016,13 @@
         public mutating func timeout(
             after timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             count: UInt32 = 0,
-            clock: Kernel.IO.Uring.Clock = .monotonic,
+            clock: ISO_9945.Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .timeout.standard
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(timespec)
             self._rawLength = count
             self.configureTimeout(clock: clock, options: multishot ? .multishot : [])
@@ -1044,16 +1044,16 @@
         public mutating func timeout(
             deadline timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
             count: UInt32 = 0,
-            clock: Kernel.IO.Uring.Clock = .monotonic,
+            clock: ISO_9945.Kernel.IO.Uring.Clock = .monotonic,
             multishot: Bool = false,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .timeout.standard
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(timespec)
             self._rawLength = count
-            let options: Kernel.IO.Uring.Timeout.Options = multishot ? [.absolute, .multishot] : .absolute
+            let options: ISO_9945.Kernel.IO.Uring.Timeout.Options = multishot ? [.absolute, .multishot] : .absolute
             self.configureTimeout(clock: clock, options: options)
             self.data = data
         }
@@ -1065,12 +1065,12 @@
         ///   - data: Operation data to return with this operation's completion.
         @inlinable
         public mutating func timeout(
-            remove target: Kernel.IO.Uring.Operation.Data,
-            data: Kernel.IO.Uring.Operation.Data
+            remove target: ISO_9945.Kernel.IO.Uring.Operation.Data,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .timeout.remove
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             self.setAddr(target)
             self.data = data
         }
@@ -1088,12 +1088,12 @@
         @inlinable @unsafe
         public mutating func timeout(
             link timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
-            clock: Kernel.IO.Uring.Clock = .monotonic,
-            data: Kernel.IO.Uring.Operation.Data
+            clock: ISO_9945.Kernel.IO.Uring.Clock = .monotonic,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .timeout.link
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(timespec)
             self._rawLength = 1
             self.configureTimeout(clock: clock)
@@ -1113,12 +1113,12 @@
         @inlinable @unsafe
         public mutating func timeout(
             linkDeadline timespec: UnsafePointer<Linux.Kernel.Time.Specification>,
-            clock: Kernel.IO.Uring.Clock = .monotonic,
-            data: Kernel.IO.Uring.Operation.Data
+            clock: ISO_9945.Kernel.IO.Uring.Clock = .monotonic,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .timeout.link
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(timespec)
             self._rawLength = 1
             self.configureTimeout(clock: clock, options: .absolute)
@@ -1137,11 +1137,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func poll(
-            target: borrowing Kernel.IO.Uring.Target,
-            events: Kernel.Event.Poll.Events,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            events: ISO_9945.Kernel.Event.Poll.Events,
             multishot: Bool = false,
-            trigger: Kernel.IO.Uring.Poll.Trigger = .edge,
-            data: Kernel.IO.Uring.Operation.Data
+            trigger: ISO_9945.Kernel.IO.Uring.Poll.Trigger = .edge,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .poll.add
@@ -1160,12 +1160,12 @@
         ///   - data: Operation data to return with this operation's completion.
         @inlinable
         public mutating func poll(
-            remove target: Kernel.IO.Uring.Operation.Data,
-            data: Kernel.IO.Uring.Operation.Data
+            remove target: ISO_9945.Kernel.IO.Uring.Operation.Data,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .poll.remove
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             self.setAddr(target)
             self.data = data
         }
@@ -1173,7 +1173,7 @@
 
     // MARK: - Control and Utility
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a ring-to-ring message operation.
         ///
         /// Injects a CQE with the specified value and user_data into the target ring.
@@ -1188,9 +1188,9 @@
         public mutating func message(
             ring fd: Int32,
             value: UInt32,
-            targetData: Kernel.IO.Uring.Operation.Data,
-            flags: Kernel.IO.Uring.Message.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            targetData: ISO_9945.Kernel.IO.Uring.Operation.Data,
+            flags: ISO_9945.Kernel.IO.Uring.Message.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .ring.msg
@@ -1216,11 +1216,11 @@
         @inlinable @unsafe
         public mutating func provide(
             buffer: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
+            length: ISO_9945.Kernel.IO.Uring.Length,
             count: Int32,
-            group: Kernel.IO.Uring.Buffer.Group,
+            group: ISO_9945.Kernel.IO.Uring.Buffer.Group,
             startId: UInt16,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .buffer.provide
@@ -1241,8 +1241,8 @@
         @inlinable
         public mutating func remove(
             bufferCount count: Int32,
-            group: Kernel.IO.Uring.Buffer.Group,
-            data: Kernel.IO.Uring.Operation.Data
+            group: ISO_9945.Kernel.IO.Uring.Buffer.Group,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .buffer.remove
@@ -1263,11 +1263,11 @@
             update fds: UnsafePointer<Int32>,
             count: UInt32,
             offset: UInt32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.update
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(fds)
             self._rawLength = count
             self._rawOffset = UInt64(offset)
@@ -1285,9 +1285,9 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func command(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             op: UInt32,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .ring.cmd
@@ -1308,8 +1308,8 @@
         @inlinable
         public mutating func install(
             fd: UInt32,
-            flags: Kernel.IO.Uring.Fixed.Install.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.IO.Uring.Fixed.Install.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .fixed.install
@@ -1327,12 +1327,12 @@
         @inlinable @unsafe
         public mutating func pipe(
             fds: UnsafeMutablePointer<Int32>,
-            flags: Kernel.Pipe.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.Pipe.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .pipe.create
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(fds)
             self.pipeCreateFlags = flags
             self.data = data
@@ -1342,7 +1342,7 @@
         ///
         /// - Parameter data: Operation data to return with completion.
         @inlinable
-        public mutating func nop128(data: Kernel.IO.Uring.Operation.Data) {
+        public mutating func nop128(data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
             self = .init()
             self.opcode = .nop128
             self.data = data
@@ -1361,12 +1361,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func waitid(
-            kind: Kernel.Process.Wait.Kind,
-            id: Kernel.Process.ID,
-            info: UnsafeMutablePointer<Kernel.Signal.Information>,
-            options: Kernel.Process.Wait.Options,
-            flags: Kernel.IO.Uring.Wait.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            kind: ISO_9945.Kernel.Process.Wait.Kind,
+            id: ISO_9945.Kernel.Process.ID,
+            info: UnsafeMutablePointer<ISO_9945.Kernel.Signal.Information>,
+            options: ISO_9945.Kernel.Process.Wait.Options,
+            flags: ISO_9945.Kernel.IO.Uring.Wait.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .wait.id
@@ -1381,7 +1381,7 @@
 
     // MARK: - File and Memory Advisory
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a file advisory operation (fadvise).
         ///
         /// - Parameters:
@@ -1392,11 +1392,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func fadvise(
-            target: borrowing Kernel.IO.Uring.Target,
-            offset: Kernel.IO.Uring.Offset,
-            length: Kernel.IO.Uring.Length,
-            advice: Kernel.File.Advice,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            advice: ISO_9945.Kernel.File.Advice,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .file.fadvise
@@ -1417,13 +1417,13 @@
         @inlinable @unsafe
         public mutating func madvise(
             addr: UnsafeMutableRawPointer,
-            length: Kernel.IO.Uring.Length,
+            length: ISO_9945.Kernel.IO.Uring.Length,
             advice: Memory.Map.Advice,
-            data: Kernel.IO.Uring.Operation.Data
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .memory.madvise
-            Kernel.IO.Uring.Target.none.apply(to: &self)
+            ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(addr)
             self.len = length
             self.memoryAdvice = advice
@@ -1440,11 +1440,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func sync(
-            target: borrowing Kernel.IO.Uring.Target,
-            offset: Kernel.IO.Uring.Offset,
-            length: Kernel.IO.Uring.Length,
-            flags: Kernel.File.Sync.Range.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
+            offset: ISO_9945.Kernel.IO.Uring.Offset,
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            flags: ISO_9945.Kernel.File.Sync.Range.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .sync.file.range
@@ -1458,7 +1458,7 @@
 
     // MARK: - Futex
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for a futex wait operation (kernel 6.7+).
         ///
         /// - Parameters:
@@ -1472,14 +1472,14 @@
             wait futex: UnsafePointer<UInt32>,
             value: UInt64,
             mask: UInt64,
-            flags: Kernel.Futex.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.Futex.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .futex.wait
 
             unsafe self.setAddr(futex)
-            self.offset = Kernel.IO.Uring.Offset(value)
+            self.offset = ISO_9945.Kernel.IO.Uring.Offset(value)
             self.futexFlags = flags
             self._addr3 = mask
             self.data = data
@@ -1498,14 +1498,14 @@
             wake futex: UnsafePointer<UInt32>,
             value: UInt64,
             mask: UInt64,
-            flags: Kernel.Futex.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.Futex.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .futex.wake
 
             unsafe self.setAddr(futex)
-            self.offset = Kernel.IO.Uring.Offset(value)
+            self.offset = ISO_9945.Kernel.IO.Uring.Offset(value)
             self.futexFlags = flags
             self._addr3 = mask
             self.data = data
@@ -1522,10 +1522,10 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func futex(
-            wait entries: UnsafePointer<Kernel.Futex.Wait.Entry>,
+            wait entries: UnsafePointer<ISO_9945.Kernel.Futex.Wait.Entry>,
             count: UInt32,
-            flags: Kernel.Futex.Options,
-            data: Kernel.IO.Uring.Operation.Data
+            flags: ISO_9945.Kernel.Futex.Options,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .futex.waitv
@@ -1539,7 +1539,7 @@
 
     // MARK: - Extended Attributes
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Configures this entry for an fsetxattr operation.
         ///
         /// Sets an extended attribute on a file descriptor.
@@ -1553,12 +1553,12 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func fsetxattr(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
-            length: Kernel.IO.Uring.Length,
-            disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            disposition: ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .xattr.fset
@@ -1586,9 +1586,9 @@
             name: UnsafePointer<CChar>,
             value: UnsafeRawPointer,
             path: UnsafePointer<CChar>,
-            length: Kernel.IO.Uring.Length,
-            disposition: Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            disposition: ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition = .createOrReplace,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .xattr.set
@@ -1613,11 +1613,11 @@
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func fgetxattr(
-            target: borrowing Kernel.IO.Uring.Target,
+            target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             name: UnsafePointer<CChar>,
             value: UnsafeMutableRawPointer,
-            length: Kernel.IO.Uring.Length,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .xattr.fget
@@ -1643,8 +1643,8 @@
             name: UnsafePointer<CChar>,
             value: UnsafeMutableRawPointer,
             path: UnsafePointer<CChar>,
-            length: Kernel.IO.Uring.Length,
-            data: Kernel.IO.Uring.Operation.Data
+            length: ISO_9945.Kernel.IO.Uring.Length,
+            data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
             self.opcode = .xattr.get

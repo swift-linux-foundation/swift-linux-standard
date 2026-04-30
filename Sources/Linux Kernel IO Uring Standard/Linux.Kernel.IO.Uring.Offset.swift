@@ -15,7 +15,7 @@
 
     public import Binary_Primitives_Core
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// File offset for io_uring operations.
         ///
         /// A type-safe coordinate for io_uring file positions.
@@ -35,7 +35,7 @@
 
     // MARK: - Offset Constants
 
-    extension Kernel.IO.Uring.Offset {
+    extension ISO_9945.Kernel.IO.Uring.Offset {
         /// Zero offset (beginning of file).
         public static let zero: Self = .init(UInt64(0))
 
@@ -48,12 +48,12 @@
 
     // MARK: - Cross-Space Conversion
 
-    extension Kernel.IO.Uring.Offset {
+    extension ISO_9945.Kernel.IO.Uring.Offset {
         /// Creates an io_uring offset from a file offset.
         ///
         /// Negative file offsets (indicating "current position") are
         /// converted to `.current` (UInt64.max).
-        public init(_ fileOffset: Kernel.File.Offset) {
+        public init(_ fileOffset: ISO_9945.Kernel.File.Offset) {
             if fileOffset.rawValue >= 0 {
                 self.init(UInt64(fileOffset.rawValue))
             } else {
@@ -64,7 +64,7 @@
 
     // MARK: - CustomStringConvertible
 
-    extension Kernel.IO.Uring.Offset: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Uring.Offset: CustomStringConvertible {
         public var description: Swift.String {
             if self == .current {
                 return "current"

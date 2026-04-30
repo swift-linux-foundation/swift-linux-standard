@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Accept {
+    extension ISO_9945.Kernel.IO.Uring.Accept {
         /// Flags controlling accept operation behavior.
         ///
         /// ## Usage
@@ -35,7 +35,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Accept.Options {
+    extension ISO_9945.Kernel.IO.Uring.Accept.Options {
         /// Accept multiple connections from a single SQE (kernel 5.19+).
         ///
         /// Each accepted connection produces a CQE with `IORING_CQE_F_MORE`.

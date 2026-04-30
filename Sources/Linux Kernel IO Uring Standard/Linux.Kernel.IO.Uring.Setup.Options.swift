@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Setup {
+    extension ISO_9945.Kernel.IO.Uring.Setup {
         /// Configuration flags for io_uring instance creation.
         ///
         /// These flags control how the io_uring instance behaves, including
@@ -23,13 +23,13 @@
         ///
         /// ```swift
         /// // Create a high-performance ring with kernel-side polling
-        /// let params = try Kernel.IO.Uring.Setup.setup(
+        /// let params = try ISO_9945.Kernel.IO.Uring.Setup.setup(
         ///     entries: 256,
         ///     flags: [.sqPoll, .singleIssuer]
         /// )
         ///
         /// // Create a ring with custom CQ size
-        /// let params = try Kernel.IO.Uring.Setup.setup(
+        /// let params = try ISO_9945.Kernel.IO.Uring.Setup.setup(
         ///     entries: 64,
         ///     flags: [.cqSize],
         ///     cqEntries: 256
@@ -59,7 +59,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Setup.Options {
+    extension ISO_9945.Kernel.IO.Uring.Setup.Options {
         /// Enables busy-waiting for I/O completion.
         ///
         /// The kernel will poll for completions instead of using interrupts.

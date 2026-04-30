@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Read operation opcodes.
         public struct Read {
             /// Read from file (pread-like, kernel 5.6+).
@@ -29,9 +29,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to read operation opcodes.
-        public static var read: Kernel.IO.Uring.Read.Type { Kernel.IO.Uring.Read.self }
+        public static var read: ISO_9945.Kernel.IO.Uring.Read.Type { ISO_9945.Kernel.IO.Uring.Read.self }
     }
 
 #endif

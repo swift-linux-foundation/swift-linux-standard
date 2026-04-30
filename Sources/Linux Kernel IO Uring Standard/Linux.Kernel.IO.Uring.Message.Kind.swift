@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Message {
+    extension ISO_9945.Kernel.IO.Uring.Message {
         /// The kind of message sent between rings.
         public enum Kind: UInt32, Sendable {
             /// Send arbitrary data to the target ring's CQ.

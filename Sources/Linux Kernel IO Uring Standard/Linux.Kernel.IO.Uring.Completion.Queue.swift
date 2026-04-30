@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion {
+    extension ISO_9945.Kernel.IO.Uring.Completion {
         /// Namespace for completion queue ring buffer types.
         ///
         /// The completion queue is a ring buffer where the kernel places

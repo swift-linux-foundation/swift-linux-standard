@@ -13,7 +13,7 @@
     public import Kernel_IO_Primitives
     public import Error_Primitives
 
-    extension Kernel.IO.Uring.Wakeup {
+    extension ISO_9945.Kernel.IO.Uring.Wakeup {
         /// Error during wakeup channel creation.
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
             /// eventfd creation failed.

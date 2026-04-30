@@ -21,7 +21,7 @@ public import Path_Primitives
 
 // MARK: - Linux-specific Open Options
 
-extension Kernel.File.Open.Options {
+extension ISO_9945.Kernel.File.Open.Options {
     /// Requests direct I/O, bypassing page cache (O_DIRECT).
     ///
     /// Linux-specific. Not available on Darwin.

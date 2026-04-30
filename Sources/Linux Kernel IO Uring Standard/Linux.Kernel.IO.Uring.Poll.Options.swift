@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Poll {
+    extension ISO_9945.Kernel.IO.Uring.Poll {
         /// Options for io_uring poll operations.
         ///
         /// Controls trigger mode and multishot behavior for poll submissions.
@@ -55,10 +55,10 @@
         }
     }
 
-    extension Kernel.IO.Uring.Poll.Trigger {
+    extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
         /// Convert this trigger mode to the equivalent poll option.
         @usableFromInline
-        var option: Kernel.IO.Uring.Poll.Options {
+        var option: ISO_9945.Kernel.IO.Uring.Poll.Options {
             switch self {
             case .edge: []
             case .level: .level

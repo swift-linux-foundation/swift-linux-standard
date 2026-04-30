@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Poll operation opcodes.
         public struct Poll {
             /// Poll for events on fd.
@@ -23,9 +23,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to poll operation opcodes.
-        public static var poll: Kernel.IO.Uring.Poll.Type { Kernel.IO.Uring.Poll.self }
+        public static var poll: ISO_9945.Kernel.IO.Uring.Poll.Type { ISO_9945.Kernel.IO.Uring.Poll.self }
     }
 
 #endif

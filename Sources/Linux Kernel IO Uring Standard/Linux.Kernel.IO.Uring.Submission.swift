@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for submission queue types.
         ///
         /// Contains types for the submission queue (SQ) side of io_uring,
@@ -26,13 +26,13 @@
         public enum Submission {}
     }
 
-    extension Kernel.IO.Uring.Submission {
+    extension ISO_9945.Kernel.IO.Uring.Submission {
         /// Number of submission queue entries.
         ///
         /// Used for ring setup (how many SQEs to allocate), submission
         /// batching (how many to submit per enter call), and tracking
         /// pending submissions.
-        public typealias Count = Tagged<Kernel.IO.Uring.Submission, Cardinal>
+        public typealias Count = Tagged<ISO_9945.Kernel.IO.Uring.Submission, Cardinal>
     }
 
 #endif

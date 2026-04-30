@@ -5,7 +5,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.File.Statx {
+extension ISO_9945.Kernel.File.Statx {
     /// Mask indicating which statx fields to populate or were populated.
     public struct Mask: OptionSet, Sendable {
         public let rawValue: UInt32
@@ -18,7 +18,7 @@ extension Kernel.File.Statx {
 
 // MARK: - Constants
 
-extension Kernel.File.Statx.Mask {
+extension ISO_9945.Kernel.File.Statx.Mask {
     /// File type (from mode).
     public static let type = Self(rawValue: UInt32(STATX_TYPE))
 

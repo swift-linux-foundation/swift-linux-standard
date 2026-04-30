@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Buffer {
+    extension ISO_9945.Kernel.IO.Uring.Buffer {
         /// Buffer group identifier for automatic buffer selection.
         ///
         /// Used with `IOSQE_BUFFER_SELECT` flag to let the kernel select a buffer
@@ -46,7 +46,7 @@
 
     // MARK: - Buffer.Group + ExpressibleByIntegerLiteral
 
-    extension Kernel.IO.Uring.Buffer.Group: ExpressibleByIntegerLiteral {
+    extension ISO_9945.Kernel.IO.Uring.Buffer.Group: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {
             self.rawValue = value
         }
@@ -54,7 +54,7 @@
 
     // MARK: - Buffer.Group + CustomStringConvertible
 
-    extension Kernel.IO.Uring.Buffer.Group: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Uring.Buffer.Group: CustomStringConvertible {
         public var description: Swift.String {
             "\(rawValue)"
         }

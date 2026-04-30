@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Opcode.Ring {
+    extension ISO_9945.Kernel.IO.Uring.Opcode.Ring {
         /// Uring command modifiers.
         public struct Command {}
     }

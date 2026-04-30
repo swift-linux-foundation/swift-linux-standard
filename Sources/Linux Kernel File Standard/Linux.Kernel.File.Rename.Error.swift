@@ -9,5 +9,5 @@
 //
 // ===----------------------------------------------------------------------===//
 
-// Kernel.File.Rename.Error is declared in swift-kernel-primitives
+// ISO_9945.Kernel.File.Rename.Error is declared in swift-kernel-primitives
 // (Kernel File Primitives module). No Linux-specific redeclaration needed.

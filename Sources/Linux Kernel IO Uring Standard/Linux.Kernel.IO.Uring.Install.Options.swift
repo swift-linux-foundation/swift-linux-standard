@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Fixed {
+    extension ISO_9945.Kernel.IO.Uring.Fixed {
         /// Flags for fixed file descriptor installation.
         ///
         /// Wraps IORING_FIXED_FD_* constants.

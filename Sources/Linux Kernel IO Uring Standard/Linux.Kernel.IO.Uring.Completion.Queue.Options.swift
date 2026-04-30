@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Runtime flags on the CQ ring shared-memory flags field.
         ///
         /// These flags are read from the mmap'd `flags` field at
@@ -31,7 +31,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Completion.Queue.Options {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Options {
         /// Disable eventfd notifications.
         ///
         /// When set, completions do not signal the registered eventfd.

@@ -22,7 +22,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Configuration and result parameters for io_uring setup.
         ///
         /// This struct serves dual purpose: you provide setup flags and thread
@@ -33,13 +33,13 @@
         ///
         /// ```swift
         /// // Create params with configuration
-        /// var params = Kernel.IO.Uring.Params(
+        /// var params = ISO_9945.Kernel.IO.Uring.Params(
         ///     flags: [.sqPoll, .singleIssuer],
         ///     submission: .init(thread: .init(idle: .milliseconds(1000)))
         /// )
         ///
         /// // Setup fills in kernel-provided values
-        /// let fd = try Kernel.IO.Uring.setup(entries: 256, params: &params)
+        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: 256, params: &params)
         ///
         /// // Now params contains ring offsets for mmap
         /// print("SQ entries: \(params.sqEntries)")
@@ -52,10 +52,10 @@
         /// - ``Kernel/IO/Uring/Setup/Options``
         public struct Params: Sendable, Equatable {
             /// Number of submission queue entries (filled by kernel).
-            public private(set) var sqEntries: Kernel.IO.Uring.Submission.Count
+            public private(set) var sqEntries: ISO_9945.Kernel.IO.Uring.Submission.Count
 
             /// Number of completion queue entries (filled by kernel).
-            public private(set) var cqEntries: Kernel.IO.Uring.Completion.Count
+            public private(set) var cqEntries: ISO_9945.Kernel.IO.Uring.Completion.Count
 
             /// Setup flags.
             public var flags: Setup.Options
@@ -67,10 +67,10 @@
             public private(set) var features: Features
 
             /// Submission queue ring offset info (filled by kernel).
-            public private(set) var sqOff: Kernel.IO.Uring.Submission.Queue.Offsets
+            public private(set) var sqOff: ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets
 
             /// Completion queue ring offset info (filled by kernel).
-            public private(set) var cqOff: Kernel.IO.Uring.Completion.Queue.Offsets
+            public private(set) var cqOff: ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets
 
             /// Creates io_uring parameters for setup.
             ///
@@ -81,21 +81,21 @@
                 flags: Setup.Options = [],
                 submission: Submission = Submission()
             ) {
-                self.sqEntries = Kernel.IO.Uring.Submission.Count.zero
-                self.cqEntries = Kernel.IO.Uring.Completion.Count.zero
+                self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count.zero
+                self.cqEntries = ISO_9945.Kernel.IO.Uring.Completion.Count.zero
                 self.flags = flags
                 self.submission = submission
                 self.features = Features(rawValue: 0)
-                self.sqOff = Kernel.IO.Uring.Submission.Queue.Offsets()
-                self.cqOff = Kernel.IO.Uring.Completion.Queue.Offsets()
+                self.sqOff = ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets()
+                self.cqOff = ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets()
             }
 
             /// Creates params from the C struct (after setup).
             internal init(_ cParams: io_uring_params) {
-                self.sqEntries = Kernel.IO.Uring.Submission.Count(
+                self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count(
                     __unchecked: (), Cardinal(UInt(cParams.sq_entries))
                 )
-                self.cqEntries = Kernel.IO.Uring.Completion.Count(
+                self.cqEntries = ISO_9945.Kernel.IO.Uring.Completion.Count(
                     __unchecked: (), Cardinal(UInt(cParams.cq_entries))
                 )
                 self.flags = Setup.Options(rawValue: cParams.flags)
@@ -106,14 +106,14 @@
                     )
                 )
                 self.features = Features(rawValue: cParams.features)
-                self.sqOff = Kernel.IO.Uring.Submission.Queue.Offsets(cParams.sq_off)
-                self.cqOff = Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
+                self.sqOff = ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets(cParams.sq_off)
+                self.cqOff = ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
             }
 
         }
     }
 
-    extension Kernel.IO.Uring.Params {
+    extension ISO_9945.Kernel.IO.Uring.Params {
         /// Converts to the C io_uring_params struct.
         internal var cValue: io_uring_params {
             var params = io_uring_params()

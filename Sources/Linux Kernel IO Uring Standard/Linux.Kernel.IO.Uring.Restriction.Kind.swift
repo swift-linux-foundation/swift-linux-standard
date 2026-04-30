@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Restriction {
+    extension ISO_9945.Kernel.IO.Uring.Restriction {
         /// The kind of restriction to apply.
         public enum Kind: UInt16, Sendable {
             /// Restrict which register opcodes are allowed.

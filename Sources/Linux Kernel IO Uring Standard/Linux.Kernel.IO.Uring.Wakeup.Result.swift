@@ -13,7 +13,7 @@
     public import Kernel_IO_Primitives
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
-    extension Kernel.IO.Uring.Wakeup {
+    extension ISO_9945.Kernel.IO.Uring.Wakeup {
         /// Bundle returned by ``Kernel/IO/Uring/createWakeup()``.
         ///
         /// ~Copyable because it contains a ~Copyable ``Kernel/Event/Descriptor``.
@@ -21,13 +21,13 @@
         public struct Result: ~Copyable {
             /// The wakeup channel — signals completions via eventfd.
             /// Sendable, safe to capture in cross-thread closures.
-            public let channel: Kernel.Wakeup.Channel
+            public let channel: ISO_9945.Kernel.Wakeup.Channel
 
-            private var _eventfd: Kernel.Event.Descriptor?
+            private var _eventfd: ISO_9945.Kernel.Event.Descriptor?
 
             init(
-                channel: Kernel.Wakeup.Channel,
-                eventfd: consuming Kernel.Event.Descriptor
+                channel: ISO_9945.Kernel.Wakeup.Channel,
+                eventfd: consuming ISO_9945.Kernel.Event.Descriptor
             ) {
                 self.channel = channel
                 self._eventfd = consume eventfd
@@ -36,7 +36,7 @@
             /// Extract the eventfd descriptor, consuming this result.
             ///
             /// The caller takes ownership of the eventfd — its deinit closes the fd.
-            public consuming func eventfd() -> Kernel.Event.Descriptor {
+            public consuming func eventfd() -> ISO_9945.Kernel.Event.Descriptor {
                 _eventfd.take()!
             }
         }

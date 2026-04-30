@@ -26,7 +26,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO {
+    extension ISO_9945.Kernel.IO {
         /// io_uring ring — owns the ring descriptor and mmap'd SQ/CQ shared-memory regions.
         ///
         /// io_uring is a high-performance asynchronous I/O interface for Linux (kernel 5.1+).
@@ -44,9 +44,9 @@
         /// ## Lifecycle
         ///
         /// ```swift
-        /// var params = Kernel.IO.Uring.Params()
-        /// let fd = try Kernel.IO.Uring.setup(entries: .init(__unchecked: (), Cardinal(256)), params: &params)
-        /// var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
+        /// var params = ISO_9945.Kernel.IO.Uring.Params()
+        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: .init(__unchecked: (), Cardinal(256)), params: &params)
+        /// var ring = try ISO_9945.Kernel.IO.Uring(descriptor: consume fd, params: params)
         /// // ring now owns the descriptor — deinit unmaps regions then closes fd
         /// ```
         ///
@@ -67,7 +67,7 @@
             // Ring descriptor (owned — deinit closes fd after regions are unmapped).
             // The explicit deinit body unmaps mmap'd regions first; then stored-
             // property destruction closes the descriptor.
-            @usableFromInline let ringDescriptor: Kernel.Descriptor
+            @usableFromInline let ringDescriptor: ISO_9945.Kernel.Descriptor
 
             // SQ ring (shared-memory pointers into mmap'd region)
             @usableFromInline let sqHead: UnsafeMutablePointer<UInt32>
@@ -95,15 +95,15 @@
 
             // mmap regions (owned — deinit unmaps)
             @usableFromInline let sqRingAddr: Memory.Address
-            @usableFromInline let sqRingSize: Kernel.File.Size
+            @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
             @usableFromInline let cqRingAddr: Memory.Address
-            @usableFromInline let cqRingSize: Kernel.File.Size
+            @usableFromInline let cqRingSize: ISO_9945.Kernel.File.Size
             @usableFromInline let sqeAddr: Memory.Address
-            @usableFromInline let sqeSize: Kernel.File.Size
+            @usableFromInline let sqeSize: ISO_9945.Kernel.File.Size
 
             @unsafe
             init(
-                ringDescriptor: consuming Kernel.Descriptor,
+                ringDescriptor: consuming ISO_9945.Kernel.Descriptor,
                 sqHead: UnsafeMutablePointer<UInt32>,
                 sqTail: UnsafeMutablePointer<UInt32>,
                 sqMask: Submission.Queue.Mask,
@@ -115,9 +115,9 @@
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Memory.Address, sqRingSize: Kernel.File.Size,
-                cqRingAddr: Memory.Address, cqRingSize: Kernel.File.Size,
-                sqeAddr: Memory.Address, sqeSize: Kernel.File.Size
+                sqRingAddr: Memory.Address, sqRingSize: ISO_9945.Kernel.File.Size,
+                cqRingAddr: Memory.Address, cqRingSize: ISO_9945.Kernel.File.Size,
+                sqeAddr: Memory.Address, sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
                 self.sqHead = sqHead
@@ -153,7 +153,7 @@
 
     // MARK: - Syscalls
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Creates a new io_uring instance.
         ///
         /// - Parameters:
@@ -174,7 +174,7 @@
         public static func setup(
             entries: Submission.Count,
             params: inout Params
-        ) throws(Kernel.IO.Uring.Error) -> Kernel.Descriptor {
+        ) throws(ISO_9945.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
             var cParams = params.cValue
             let fd = swift_io_uring_setup(UInt32(entries.rawValue.rawValue), &cParams)
             guard fd >= 0 else {
@@ -182,7 +182,7 @@
             }
             // Update params with kernel-filled values
             params = Params(cParams)
-            return Kernel.Descriptor(_rawValue: fd)
+            return ISO_9945.Kernel.Descriptor(_rawValue: fd)
         }
 
         /// Submits operations and/or waits for completions.
@@ -206,11 +206,11 @@
         /// If interrupted by a signal, throws `Error.interrupted`. Callers
         /// should typically retry on interruption unless cancellation is desired.
         public static func enter(
-            _ fd: borrowing Kernel.Descriptor,
+            _ fd: borrowing ISO_9945.Kernel.Descriptor,
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
             flags: Enter.Options
-        ) throws(Kernel.IO.Uring.Error) -> Submission.Count {
+        ) throws(ISO_9945.Kernel.IO.Uring.Error) -> Submission.Count {
             let result = swift_io_uring_enter(
                 fd._rawValue,
                 UInt32(toSubmit.rawValue.rawValue),
@@ -247,11 +247,11 @@
         /// before calling if cooperative cancellation is needed.
         @unsafe
         public static func register(
-            _ fd: borrowing Kernel.Descriptor,
+            _ fd: borrowing ISO_9945.Kernel.Descriptor,
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
-        ) throws(Kernel.IO.Uring.Error) {
+        ) throws(ISO_9945.Kernel.IO.Uring.Error) {
             let result = unsafe swift_io_uring_register(
                 fd._rawValue,
                 opcode.rawValue,
@@ -265,7 +265,7 @@
 
         /// Closes an io_uring instance.
         ///
-        /// Uses `Kernel.Close.close()` for consistency. Ignores errors.
+        /// Uses `ISO_9945.Kernel.Close.close()` for consistency. Ignores errors.
         ///
         /// - Parameter fd: The io_uring file descriptor to close.
         ///
@@ -278,14 +278,14 @@
         /// Closing the ring immediately invalidates all pending submissions and
         /// completions. Ensure all in-flight operations are completed or cancelled
         /// before closing.
-        public static func close(_ fd: consuming Kernel.Descriptor) {
-            try? Kernel.Close.close(consume fd)
+        public static func close(_ fd: consuming ISO_9945.Kernel.Descriptor) {
+            try? ISO_9945.Kernel.Close.close(consume fd)
         }
     }
 
     // MARK: - Instance API (descriptor-bound)
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Submit pending operations and/or wait for completions using the
         /// ring's owned descriptor.
         ///
@@ -331,7 +331,7 @@
         /// - Parameter descriptor: The eventfd file descriptor.
         /// - Throws: `Error.register` on failure.
         public func register(
-            eventfd descriptor: borrowing Kernel.Descriptor
+            eventfd descriptor: borrowing ISO_9945.Kernel.Descriptor
         ) throws(Error) {
             var fd = descriptor._rawValue
             try unsafe withUnsafeMutablePointer(to: &fd) {
@@ -347,7 +347,7 @@
 
     // MARK: - Factory
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Create a ring by mmap'ing the io_uring shared-memory regions.
         ///
         /// Maps three regions (SQ ring, CQ ring, SQE array) using the
@@ -359,17 +359,17 @@
         ///   - params: Kernel-filled params containing ring offsets and sizes.
         /// - Throws: ``Error/setup(_:)`` on mmap failure.
         public init(
-            descriptor: consuming Kernel.Descriptor,
-            params: Kernel.IO.Uring.Params
-        ) throws(Kernel.IO.Uring.Error) {
+            descriptor: consuming ISO_9945.Kernel.Descriptor,
+            params: ISO_9945.Kernel.IO.Uring.Params
+        ) throws(ISO_9945.Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
             let isSingleMmap = params.features.contains(.singleMmap)
 
             let sqEntryCount = Int(bitPattern: params.sqEntries)
             let cqEntryCount = Int(bitPattern: params.cqEntries)
             let sqRingSz = params.sqOff.array.vector.rawValue + sqEntryCount * MemoryLayout<UInt32>.size
-            let cqRingSz = params.cqOff.cqes.vector.rawValue + cqEntryCount * MemoryLayout<Kernel.IO.Uring.Completion.Queue.Entry>.size
-            let sqeSz = sqEntryCount * MemoryLayout<Kernel.IO.Uring.Submission.Queue.Entry>.size
+            let cqRingSz = params.cqOff.cqes.vector.rawValue + cqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry>.size
+            let sqeSz = sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             // -- Map SQ ring --
             // With SINGLE_MMAP (kernel 5.4+), size the region to cover both SQ and CQ.
@@ -391,7 +391,7 @@
                 cqMmapSz = 0  // Not separately mapped.
             } else {
                 cqMmapSz = cqRingSz
-                guard let cqPtr = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(Kernel.IO.Uring.Mmap.Offset.cqRing)),
+                guard let cqPtr = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.cqRing)),
                       unsafe cqPtr != MAP_FAILED else {
                     unsafe munmap(sq, sqMmapSz)
                     throw .setup(.posix(errno))
@@ -401,7 +401,7 @@
 
             // -- Map SQE array (always separate) --
 
-            guard let sqe = unsafe mmap(nil, sqeSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(Kernel.IO.Uring.Mmap.Offset.sqes)),
+            guard let sqe = unsafe mmap(nil, sqeSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqes)),
                   unsafe sqe != MAP_FAILED else {
                 unsafe munmap(sq, sqMmapSz)
                 if !isSingleMmap { unsafe munmap(cq, cqMmapSz) }
@@ -419,23 +419,23 @@
                 sqMask: Submission.Queue.Mask(rawValue: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self)),
                 sqEntries: params.sqEntries,
                 sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                sqes: sqe.assumingMemoryBound(to: Kernel.IO.Uring.Submission.Queue.Entry.self),
+                sqes: sqe.assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.self),
                 cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 cqMask: Completion.Queue.Mask(rawValue: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self)),
                 cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
-                    .assumingMemoryBound(to: Kernel.IO.Uring.Completion.Queue.Entry.self)),
+                    .assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self)),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Memory.Address(sq), sqRingSize: Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Memory.Address(cq), cqRingSize: Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Memory.Address(sqe), sqeSize: Kernel.File.Size(sqeSz)
+                sqRingAddr: unsafe Memory.Address(sq), sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
+                cqRingAddr: unsafe Memory.Address(cq), cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
+                sqeAddr: unsafe Memory.Address(sqe), sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
             )
         }
     }
 
     // MARK: - Submission Queue Operations
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// The current submission queue slot.
         ///
         /// Yields a `~Copyable ~Escapable` ``Slot`` via `mutating _read` coroutine.
@@ -516,7 +516,7 @@
 
     // MARK: - Completion Queue Operations
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Drain completed events from the CQ.
         ///
         /// Reads the CQ tail with acquire ordering (sees kernel's CQE writes),

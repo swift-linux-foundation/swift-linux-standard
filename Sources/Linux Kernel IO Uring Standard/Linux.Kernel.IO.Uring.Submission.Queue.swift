@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Submission {
+    extension ISO_9945.Kernel.IO.Uring.Submission {
         /// Namespace for submission queue ring buffer types.
         ///
         /// The submission queue is a ring buffer where applications place

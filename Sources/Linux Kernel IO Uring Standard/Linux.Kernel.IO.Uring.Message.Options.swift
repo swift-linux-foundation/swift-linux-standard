@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Types for io_uring MSG_RING operations (inter-ring messaging).
         public struct Message: Sendable {
             /// Flags controlling MSG_RING behavior.

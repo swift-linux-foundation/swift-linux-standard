@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register.Worker {
+    extension ISO_9945.Kernel.IO.Uring.Register.Worker {
         /// Worker pool types.
         public enum Kind: UInt32, Sendable {
             /// Bound workers — pinned to the submitting task.

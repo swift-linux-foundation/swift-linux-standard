@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Wait {
+    extension ISO_9945.Kernel.IO.Uring.Wait {
         /// Flags for waitid operations.
         ///
         /// Reserved for kernel use. Pass `.none` unless a specific

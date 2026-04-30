@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// How an io_uring operation references a file.
         ///
         /// The SQE's `fd` field is a sum: either a raw file descriptor or a
@@ -60,7 +60,7 @@
 
     // MARK: - Typed Construction (Phase 1.5)
 
-    extension Kernel.IO.Uring.Target {
+    extension ISO_9945.Kernel.IO.Uring.Target {
         /// Creates a descriptor target by borrowing a typed descriptor.
         ///
         /// Phase 1.5 typed L2 form. The target borrows the descriptor's
@@ -71,18 +71,18 @@
         /// The public enum case `Target.descriptor(Int32)` remains the
         /// spec-literal raw constructor.
         @_lifetime(borrow descriptor)
-        public init(descriptor: borrowing Kernel.Descriptor) {
+        public init(descriptor: borrowing ISO_9945.Kernel.Descriptor) {
             self = .descriptor(descriptor._rawValue)
         }
     }
 
     // MARK: - SQE Application
 
-    extension Kernel.IO.Uring.Target {
+    extension ISO_9945.Kernel.IO.Uring.Target {
         /// Write the target's fd value and flags to the SQE.
         @usableFromInline
         func apply(
-            to sqe: inout Kernel.IO.Uring.Submission.Queue.Entry
+            to sqe: inout ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry
         ) {
             switch self {
             case .descriptor(let fd):

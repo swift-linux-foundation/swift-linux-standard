@@ -22,11 +22,11 @@
 
 // MARK: - copy_file_range Implementation — raw fd SPI
 
-extension Kernel.Copy.Range {
+extension ISO_9945.Kernel.Copy.Range {
     /// Copies bytes between file descriptors using copy_file_range(2) — raw fd SPI.
     ///
     /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
-    /// convenience (with `Kernel.Descriptor.Validity` checks) lives at
+    /// convenience (with `ISO_9945.Kernel.Descriptor.Validity` checks) lives at
     /// swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
     ///
     /// This Linux-specific syscall performs efficient kernel-space copying,
@@ -62,11 +62,11 @@ extension Kernel.Copy.Range {
     @_spi(Syscall)
     public static func copy(
         fromFd sourceFd: Int32,
-        sourceOffset: inout Kernel.File.Offset,
+        sourceOffset: inout ISO_9945.Kernel.File.Offset,
         toFd destinationFd: Int32,
-        destOffset: inout Kernel.File.Offset,
-        length: Kernel.File.Size
-    ) throws(Kernel.Copy.Error) -> Kernel.File.Size {
+        destOffset: inout ISO_9945.Kernel.File.Offset,
+        length: ISO_9945.Kernel.File.Size
+    ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
         var srcOff = off_t(sourceOffset.rawValue)
         var dstOff = off_t(destOffset.rawValue)
 
@@ -82,24 +82,24 @@ extension Kernel.Copy.Range {
         )
 
         guard result >= 0 else {
-            throw Kernel.Copy.Error(posixErrno: errno)
+            throw ISO_9945.Kernel.Copy.Error(posixErrno: errno)
         }
 
-        sourceOffset = Kernel.File.Offset(Int64(srcOff))
-        destOffset = Kernel.File.Offset(Int64(dstOff))
-        return Kernel.File.Size(Int64(result))
+        sourceOffset = ISO_9945.Kernel.File.Offset(Int64(srcOff))
+        destOffset = ISO_9945.Kernel.File.Offset(Int64(dstOff))
+        return ISO_9945.Kernel.File.Size(Int64(result))
     }
 
     /// Copies bytes between file descriptors using copy_file_range(2) — typed L2 form.
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `copy(fromFd:...:toFd:...:length:)` SPI.
     public static func copy(
-        from source: borrowing Kernel.Descriptor,
-        sourceOffset: inout Kernel.File.Offset,
-        to destination: borrowing Kernel.Descriptor,
-        destOffset: inout Kernel.File.Offset,
-        length: Kernel.File.Size
-    ) throws(Kernel.Copy.Error) -> Kernel.File.Size {
+        from source: borrowing ISO_9945.Kernel.Descriptor,
+        sourceOffset: inout ISO_9945.Kernel.File.Offset,
+        to destination: borrowing ISO_9945.Kernel.Descriptor,
+        destOffset: inout ISO_9945.Kernel.File.Offset,
+        length: ISO_9945.Kernel.File.Size
+    ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
         try copy(
             fromFd: source._rawValue,
             sourceOffset: &sourceOffset,

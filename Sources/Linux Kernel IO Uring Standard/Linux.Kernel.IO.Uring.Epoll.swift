@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Epoll operation opcodes.
         public struct Epoll {
             /// Add to epoll set.
@@ -24,9 +24,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to epoll operation opcodes.
-        public static var epoll: Kernel.IO.Uring.Epoll.Type { Kernel.IO.Uring.Epoll.self }
+        public static var epoll: ISO_9945.Kernel.IO.Uring.Epoll.Type { ISO_9945.Kernel.IO.Uring.Epoll.self }
     }
 
 #endif

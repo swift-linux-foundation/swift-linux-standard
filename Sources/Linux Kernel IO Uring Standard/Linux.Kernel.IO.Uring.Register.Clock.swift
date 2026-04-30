@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Clock source registration opcodes.
         public struct Clock {
             /// Registers the default clock source for the ring (kernel 6.10+).
@@ -25,9 +25,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to clock registration opcodes.
-        public static var clock: Kernel.IO.Uring.Register.Clock.Type { Kernel.IO.Uring.Register.Clock.self }
+        public static var clock: ISO_9945.Kernel.IO.Uring.Register.Clock.Type { ISO_9945.Kernel.IO.Uring.Register.Clock.self }
     }
 
 #endif

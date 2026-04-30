@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for personality (credential) types.
         ///
         /// Personalities allow io_uring operations to run with different
@@ -27,7 +27,7 @@
 
     // MARK: - Personality.ID
 
-    extension Kernel.IO.Uring.Personality {
+    extension ISO_9945.Kernel.IO.Uring.Personality {
         /// Personality identifier for credential switching.
         ///
         /// Used to execute I/O operations with different credentials than the
@@ -43,12 +43,12 @@
         /// // Use in SQE to run with those credentials
         /// sqe.personality = personality
         /// ```
-        public typealias ID = Tagged<Kernel.IO.Uring.Personality, UInt16>
+        public typealias ID = Tagged<ISO_9945.Kernel.IO.Uring.Personality, UInt16>
     }
 
     // MARK: - Personality.ID Constants
 
-    extension Tagged where Tag == Kernel.IO.Uring.Personality, RawValue == UInt16 {
+    extension Tagged where Tag == ISO_9945.Kernel.IO.Uring.Personality, RawValue == UInt16 {
         /// No personality (use process credentials).
         public static var none: Self { Self(__unchecked: (), 0) }
     }

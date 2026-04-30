@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// NAPI (New API) busy-poll registration opcodes.
         ///
         /// Controls Linux networking subsystem busy-polling integration
@@ -30,9 +30,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to NAPI registration opcodes.
-        public static var napi: Kernel.IO.Uring.Register.NAPI.Type { Kernel.IO.Uring.Register.NAPI.self }
+        public static var napi: ISO_9945.Kernel.IO.Uring.Register.NAPI.Type { ISO_9945.Kernel.IO.Uring.Register.NAPI.self }
     }
 
 #endif

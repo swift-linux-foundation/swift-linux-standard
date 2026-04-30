@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// I/O worker pool management opcodes.
         ///
         /// Controls the io-wq worker threads that execute async
@@ -28,9 +28,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to worker pool management opcodes.
-        public static var worker: Kernel.IO.Uring.Register.Worker.Type { Kernel.IO.Uring.Register.Worker.self }
+        public static var worker: ISO_9945.Kernel.IO.Uring.Register.Worker.Type { ISO_9945.Kernel.IO.Uring.Register.Worker.self }
     }
 
 #endif

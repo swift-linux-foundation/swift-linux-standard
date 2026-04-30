@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.Event.Poll.Create {
+    extension ISO_9945.Kernel.Event.Poll.Create {
         /// Flags for creating an epoll instance.
         ///
         /// Used with `epoll_create1` to control the behavior of the
@@ -33,8 +33,8 @@
         ///
         /// ```swift
         /// // Create epoll with close-on-exec (recommended)
-        /// let epfd = try Kernel.Event.Poll.create(flags: .cloexec)
-        /// defer { try? Kernel.Close.close(epfd) }
+        /// let epfd = try ISO_9945.Kernel.Event.Poll.create(flags: .cloexec)
+        /// defer { try? ISO_9945.Kernel.Close.close(epfd) }
         ///
         /// // Add descriptors and poll for events...
         /// ```
@@ -52,7 +52,7 @@
         }
     }
 
-    extension Kernel.Event.Poll.Create.Flags {
+    extension ISO_9945.Kernel.Event.Poll.Create.Flags {
         /// No flags.
         public static let none = Self(rawValue: 0)
 

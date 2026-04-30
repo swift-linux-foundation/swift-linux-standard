@@ -11,14 +11,14 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    extension Kernel.IO.Uring.Socket {
+    extension ISO_9945.Kernel.IO.Uring.Socket {
         /// Message-oriented socket operations.
         public struct Message {
             /// Send message on socket (sendmsg).
-            public static let send = Kernel.IO.Uring.Opcode(rawValue: 9)
+            public static let send = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 9)
 
             /// Receive message from socket (recvmsg).
-            public static let receive = Kernel.IO.Uring.Opcode(rawValue: 10)
+            public static let receive = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 10)
         }
     }
 

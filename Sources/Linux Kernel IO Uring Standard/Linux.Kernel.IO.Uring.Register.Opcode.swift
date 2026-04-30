@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Opcodes for registering resources with io_uring.
         ///
         /// Registration allows pre-registering buffers, files, and other
@@ -25,7 +25,7 @@
         /// // Register file descriptors for fast access
         /// var fds: [Int32] = [fd1.rawValue, fd2.rawValue]
         /// try fds.withUnsafeMutableBufferPointer { buffer in
-        ///     try Kernel.IO.Uring.register(
+        ///     try ISO_9945.Kernel.IO.Uring.register(
         ///         ring,
         ///         opcode: .files.register,
         ///         argument: buffer.baseAddress,
@@ -51,7 +51,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// High-bit flag: use a registered ring descriptor for the register call.
         ///
         /// OR this with any register opcode to indicate the ring fd
@@ -61,7 +61,7 @@
         public static let useRegisteredRing = Self(rawValue: 1 << 31)
     }
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Flags for v2 resource registration arguments (`io_uring_rsrc_register`).
         public struct Resource {
             /// Register resources sparsely (leave unset slots as holes).

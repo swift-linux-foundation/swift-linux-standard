@@ -19,7 +19,7 @@ public import Kernel_Socket_Primitives
     internal import Musl
 #endif
 
-extension Kernel.Socket {
+extension ISO_9945.Kernel.Socket {
     /// Network protocol for socket(2).
     ///
     /// Wraps `IPPROTO_*` constants. Use `.auto` (0) to let the kernel
@@ -35,7 +35,7 @@ extension Kernel.Socket {
 
 // MARK: - Constants
 
-extension Kernel.Socket.`Protocol` {
+extension ISO_9945.Kernel.Socket.`Protocol` {
     /// Kernel selects the default protocol for the domain and kind.
     public static let auto = Self(rawValue: 0)
 

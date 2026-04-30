@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Restriction registration opcodes.
         public struct Restriction {
             /// Registers restrictions on the ring (kernel 5.10+).
@@ -25,9 +25,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to restriction registration opcodes.
-        public static var restriction: Kernel.IO.Uring.Register.Restriction.Type { Kernel.IO.Uring.Register.Restriction.self }
+        public static var restriction: ISO_9945.Kernel.IO.Uring.Register.Restriction.Type { ISO_9945.Kernel.IO.Uring.Register.Restriction.self }
     }
 
 #endif

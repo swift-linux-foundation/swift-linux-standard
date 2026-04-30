@@ -5,7 +5,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.File.Statx {
+extension ISO_9945.Kernel.File.Statx {
     /// Extended file attribute flags.
     public struct Attributes: OptionSet, Sendable {
         public let rawValue: UInt64
@@ -18,7 +18,7 @@ extension Kernel.File.Statx {
 
 // MARK: - Constants
 
-extension Kernel.File.Statx.Attributes {
+extension ISO_9945.Kernel.File.Statx.Attributes {
     /// File is compressed by the filesystem.
     public static let compressed = Self(rawValue: UInt64(STATX_ATTR_COMPRESSED))
 

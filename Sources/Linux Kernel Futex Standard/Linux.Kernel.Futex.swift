@@ -17,7 +17,7 @@ public import Path_Primitives
 
 // MARK: - Linux Futex Namespace
 
-extension Kernel {
+extension ISO_9945.Kernel {
     /// Linux futex (fast userspace mutex) operations.
     ///
     /// Namespace for futex(2) related types. Futexes provide the kernel-side

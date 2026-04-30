@@ -15,7 +15,7 @@
     public import Memory_Primitives
     public import Path_Primitives
 
-    extension Kernel.File.Rename {
+    extension ISO_9945.Kernel.File.Rename {
         /// Options for renameat2(2).
         ///
         /// Controls the behavior of atomic rename operations.

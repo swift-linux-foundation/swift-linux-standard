@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.Event {
+    extension ISO_9945.Kernel.Event {
         /// Epoll event notification (Linux).
         ///
         /// Owns the epoll file descriptor via `~Copyable` — deinit closes
@@ -33,7 +33,7 @@
         /// ## Usage
         ///
         /// ```swift
-        /// var epoll = try Kernel.Event.Poll()
+        /// var epoll = try ISO_9945.Kernel.Event.Poll()
         /// try epoll.add(fd: socketFd, event: event)
         /// let count = try epoll.poll(events: &events, timeout: .seconds(1))
         /// // epoll deinit closes the epoll fd
@@ -42,7 +42,7 @@
         public struct Poll: ~Copyable, Sendable {
             /// The underlying epoll file descriptor.
             @_spi(Syscall)
-            public let descriptor: Kernel.Descriptor
+            public let descriptor: ISO_9945.Kernel.Descriptor
 
             /// Creates a new epoll instance.
             ///
@@ -56,7 +56,7 @@
 
     // MARK: - Public Instance API
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Adds a file descriptor to the epoll instance.
         ///
         /// - Parameters:
@@ -64,7 +64,7 @@
         ///   - event: The event structure describing interests.
         /// - Throws: `Error.ctl` on failure.
         public func add(
-            fd: borrowing Kernel.Descriptor,
+            fd: borrowing ISO_9945.Kernel.Descriptor,
             event: Event
         ) throws(Error) {
             try Self.ctl(self, op: .add, fd: fd, event: event)
@@ -77,7 +77,7 @@
         ///   - event: The updated event structure.
         /// - Throws: `Error.ctl` on failure.
         public func modify(
-            fd: borrowing Kernel.Descriptor,
+            fd: borrowing ISO_9945.Kernel.Descriptor,
             event: Event
         ) throws(Error) {
             try Self.ctl(self, op: .modify, fd: fd, event: event)
@@ -88,7 +88,7 @@
         /// - Parameter fd: The target file descriptor.
         /// - Throws: `Error.ctl` on failure.
         public func remove(
-            fd: borrowing Kernel.Descriptor
+            fd: borrowing ISO_9945.Kernel.Descriptor
         ) throws(Error) {
             try Self.ctl(self, op: .delete, fd: fd)
         }
@@ -116,36 +116,36 @@
         /// - Parameter eventfd: The eventfd to register for wakeup signaling.
         /// - Returns: A Sendable wakeup channel.
         public func wakeup(
-            eventfd: borrowing Kernel.Event.Descriptor
-        ) throws(Error) -> Kernel.Wakeup.Channel {
+            eventfd: borrowing ISO_9945.Kernel.Event.Descriptor
+        ) throws(Error) -> ISO_9945.Kernel.Wakeup.Channel {
             let wakeupEvent = Event(events: [.in, .et])
             try self.add(fd: eventfd.descriptor, event: wakeupEvent)
             let rawEfd = eventfd.descriptor._rawValue
-            return Kernel.Wakeup.Channel {
-                Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
+            return ISO_9945.Kernel.Wakeup.Channel {
+                ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
         }
     }
 
     // MARK: - Package Statics (C API Mirror)
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Creates a new epoll instance.
-        package static func create(flags: Create.Flags = .cloexec) throws(Kernel.Event.Poll.Error) -> Kernel.Descriptor {
+        package static func create(flags: Create.Flags = .cloexec) throws(ISO_9945.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return Kernel.Descriptor(_rawValue: epfd)
+            return ISO_9945.Kernel.Descriptor(_rawValue: epfd)
         }
 
         /// Controls the epoll instance (add/modify/delete).
         package static func ctl(
-            _ epoll: borrowing Kernel.Event.Poll,
+            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
             op: Operation,
-            fd: borrowing Kernel.Descriptor,
+            fd: borrowing ISO_9945.Kernel.Descriptor,
             event: Event? = nil
-        ) throws(Kernel.Event.Poll.Error) {
+        ) throws(ISO_9945.Kernel.Event.Poll.Error) {
             let result: Int32
             if var cEvent = event?.cValue {
                 result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
@@ -159,10 +159,10 @@
 
         /// Waits for events (millisecond timeout, internal).
         internal static func wait(
-            _ epoll: borrowing Kernel.Event.Poll,
+            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
             events: inout [Event],
             timeout: Int32
-        ) throws(Kernel.Event.Poll.Error) -> Int {
+        ) throws(ISO_9945.Kernel.Event.Poll.Error) -> Int {
             guard !events.isEmpty else { return 0 }
 
             let count = events.count
@@ -190,11 +190,11 @@
 
         /// Waits for events with a Duration timeout.
         package static func wait(
-            _ epoll: borrowing Kernel.Event.Poll,
+            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
             events: inout [Event],
             timeout: Duration?
-        ) throws(Kernel.Event.Poll.Error) -> Int {
-            let ms = Kernel.Time.milliseconds(from: timeout)
+        ) throws(ISO_9945.Kernel.Event.Poll.Error) -> Int {
+            let ms = ISO_9945.Kernel.Time.milliseconds(from: timeout)
             return try wait(epoll, events: &events, timeout: ms)
         }
     }

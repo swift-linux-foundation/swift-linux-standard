@@ -17,7 +17,7 @@ public import Path_Primitives
 
 // MARK: - Linux Futex Flags
 
-extension Kernel.Futex {
+extension ISO_9945.Kernel.Futex {
     /// Flags for futex operations.
     ///
     /// Wraps FUTEX_* constants from `<linux/futex.h>`.

@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Nop {
+    extension ISO_9945.Kernel.IO.Uring.Nop {
         /// Flags for NOP operations.
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -24,7 +24,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Nop.Options {
+    extension ISO_9945.Kernel.IO.Uring.Nop.Options {
         /// Inject a specific result value into the NOP completion.
         ///
         /// The CQE `res` field will contain the value from the

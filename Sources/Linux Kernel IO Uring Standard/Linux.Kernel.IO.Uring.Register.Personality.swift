@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Personality registration opcodes.
         public struct Personality {
             /// Registers a personality (credentials) for operations.
@@ -29,9 +29,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to personality registration opcodes.
-        public static var personality: Kernel.IO.Uring.Register.Personality.Type { Kernel.IO.Uring.Register.Personality.self }
+        public static var personality: ISO_9945.Kernel.IO.Uring.Register.Personality.Type { ISO_9945.Kernel.IO.Uring.Register.Personality.self }
     }
 
 #endif

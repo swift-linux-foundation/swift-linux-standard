@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Mmap {
+    extension ISO_9945.Kernel.IO.Uring.Mmap {
         /// Mmap offsets for io_uring ring buffers.
         ///
         /// These magic offset values are passed to `mmap()` to map different
@@ -31,7 +31,7 @@
         ///     protection: .readWrite,
         ///     flags: .shared,
         ///     fd: ringFd,
-        ///     offset: Kernel.IO.Uring.Mmap.Offset.sqRing
+        ///     offset: ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqRing
         /// )
         /// ```
         public enum Offset {

@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for completion queue types.
         ///
         /// Contains types for the completion queue (CQ) side of io_uring,
@@ -26,12 +26,12 @@
         public enum Completion {}
     }
 
-    extension Kernel.IO.Uring.Completion {
+    extension ISO_9945.Kernel.IO.Uring.Completion {
         /// Number of completion queue entries.
         ///
         /// Used for specifying how many completions to wait for in
         /// ``Kernel/IO/Uring/enter(_:toSubmit:minComplete:flags:)``.
-        public typealias Count = Tagged<Kernel.IO.Uring.Completion, Cardinal>
+        public typealias Count = Tagged<ISO_9945.Kernel.IO.Uring.Completion, Cardinal>
     }
 
 #endif

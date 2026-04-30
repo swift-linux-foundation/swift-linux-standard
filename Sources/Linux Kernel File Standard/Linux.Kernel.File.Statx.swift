@@ -5,7 +5,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.File {
+extension ISO_9945.Kernel.File {
     /// Extended file status information from statx(2).
     ///
     /// Wraps the platform `struct statx`. An `UnsafeMutablePointer<Statx>`
@@ -22,7 +22,7 @@ extension Kernel.File {
 
 // MARK: - Accessors
 
-extension Kernel.File.Statx {
+extension ISO_9945.Kernel.File.Statx {
     /// Which fields the kernel populated.
     public var mask: Mask {
         get { Mask(rawValue: cValue.stx_mask) }
@@ -45,13 +45,13 @@ extension Kernel.File.Statx {
     }
 
     /// Owner user ID.
-    public var uid: Kernel.User.ID {
-        get { Kernel.User.ID(__unchecked: (), cValue.stx_uid) }
+    public var uid: ISO_9945.Kernel.User.ID {
+        get { ISO_9945.Kernel.User.ID(__unchecked: (), cValue.stx_uid) }
     }
 
     /// Owner group ID.
-    public var gid: Kernel.Group.ID {
-        get { Kernel.Group.ID(__unchecked: (), cValue.stx_gid) }
+    public var gid: ISO_9945.Kernel.Group.ID {
+        get { ISO_9945.Kernel.Group.ID(__unchecked: (), cValue.stx_gid) }
     }
 
     /// Raw file mode (type + permission bits).
@@ -60,8 +60,8 @@ extension Kernel.File.Statx {
     }
 
     /// File permission bits only.
-    public var permissions: Kernel.File.Permissions {
-        get { Kernel.File.Permissions(rawValue: cValue.stx_mode & 0o7777) }
+    public var permissions: ISO_9945.Kernel.File.Permissions {
+        get { ISO_9945.Kernel.File.Permissions(rawValue: cValue.stx_mode & 0o7777) }
     }
 
     /// Inode number.
@@ -70,8 +70,8 @@ extension Kernel.File.Statx {
     }
 
     /// File size in bytes.
-    public var size: Kernel.File.Size {
-        get { Kernel.File.Size(Int64(cValue.stx_size)) }
+    public var size: ISO_9945.Kernel.File.Size {
+        get { ISO_9945.Kernel.File.Size(Int64(cValue.stx_size)) }
     }
 
     /// Number of 512-byte blocks allocated.

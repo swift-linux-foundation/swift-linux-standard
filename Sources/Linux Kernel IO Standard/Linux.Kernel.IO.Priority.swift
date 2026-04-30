@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO {
+    extension ISO_9945.Kernel.IO {
         /// I/O scheduling priority.
         ///
         /// Wraps the Linux `ioprio` format used by `ioprio_set(2)` and shared
@@ -26,7 +26,7 @@
         ///
         /// ```swift
         /// sqe.priority = .default
-        /// sqe.priority = Kernel.IO.Priority(rawValue: IOPRIO_PRIO_VALUE(IOPRIO_CLASS_BE, 4))
+        /// sqe.priority = ISO_9945.Kernel.IO.Priority(rawValue: IOPRIO_PRIO_VALUE(IOPRIO_CLASS_BE, 4))
         /// ```
         public struct Priority: RawRepresentable, Sendable, Equatable, Hashable, Comparable {
             public let rawValue: UInt16
@@ -40,7 +40,7 @@
 
     // MARK: - Common Values
 
-    extension Kernel.IO.Priority {
+    extension ISO_9945.Kernel.IO.Priority {
         /// Creates a priority from a UInt16 value.
         public init(_ value: UInt16) {
             self.rawValue = value
@@ -55,7 +55,7 @@
 
     // MARK: - Comparable
 
-    extension Kernel.IO.Priority {
+    extension ISO_9945.Kernel.IO.Priority {
         public static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.rawValue < rhs.rawValue
         }
@@ -63,7 +63,7 @@
 
     // MARK: - ExpressibleByIntegerLiteral
 
-    extension Kernel.IO.Priority: ExpressibleByIntegerLiteral {
+    extension ISO_9945.Kernel.IO.Priority: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {
             self.rawValue = value
         }
@@ -71,7 +71,7 @@
 
     // MARK: - CustomStringConvertible
 
-    extension Kernel.IO.Priority: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Priority: CustomStringConvertible {
         public var description: Swift.String {
             "\(rawValue)"
         }

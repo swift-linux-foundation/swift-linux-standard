@@ -17,7 +17,7 @@ public import Path_Primitives
 
 // MARK: - Linux-specific Seek Whence
 
-extension Kernel.File.Seek.Whence {
+extension ISO_9945.Kernel.File.Seek.Whence {
     /// Seek to the next hole (Linux 3.1+, SEEK_HOLE = 4).
     public static let hole = Self(rawValue: 4)
 

@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Extended attribute operation opcodes.
         public struct Xattr {
             /// File set xattr.
@@ -29,9 +29,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to extended attribute operation opcodes.
-        public static var xattr: Kernel.IO.Uring.Xattr.Type { Kernel.IO.Uring.Xattr.self }
+        public static var xattr: ISO_9945.Kernel.IO.Uring.Xattr.Type { ISO_9945.Kernel.IO.Uring.Xattr.self }
     }
 
 #endif

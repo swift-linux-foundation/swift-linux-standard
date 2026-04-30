@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Operation {
+    extension ISO_9945.Kernel.IO.Uring.Operation {
         /// Opaque data associated with an io_uring operation.
         ///
         /// Operation data is a 64-bit value that the kernel returns unchanged
@@ -23,17 +23,17 @@
         ///
         /// ```swift
         /// // Use as an operation identifier
-        /// let data = Kernel.IO.Uring.Operation.Data(operationId)
+        /// let data = ISO_9945.Kernel.IO.Uring.Operation.Data(operationId)
         ///
         /// // Use with pointer-based context lookup
-        /// let data = Kernel.IO.Uring.Operation.Data(pointer: contextPtr)
+        /// let data = ISO_9945.Kernel.IO.Uring.Operation.Data(pointer: contextPtr)
         /// ```
-        public typealias Data = Tagged<Kernel.IO.Uring.Operation, UInt64>
+        public typealias Data = Tagged<ISO_9945.Kernel.IO.Uring.Operation, UInt64>
     }
 
     // MARK: - Pointer Conversions
 
-    extension Kernel.IO.Uring.Operation.Data {
+    extension ISO_9945.Kernel.IO.Uring.Operation.Data {
         /// Creates operation data from a raw pointer.
         ///
         /// This is useful when you want to associate a context object
@@ -64,7 +64,7 @@
 
     // MARK: - Common Values
 
-    extension Kernel.IO.Uring.Operation.Data {
+    extension ISO_9945.Kernel.IO.Uring.Operation.Data {
         /// Zero operation data.
         public static let zero: Self = .init(__unchecked: (), 0)
     }

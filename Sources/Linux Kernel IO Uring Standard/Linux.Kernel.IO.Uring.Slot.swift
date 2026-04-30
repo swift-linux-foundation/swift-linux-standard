@@ -12,7 +12,7 @@
 #if os(Linux)
     @_spi(Syscall) public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// A slot in the submission queue ring buffer.
         ///
         /// `~Copyable` prevents aliasing the underlying mmap'd SQE.

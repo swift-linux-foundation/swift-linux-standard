@@ -16,11 +16,11 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Timeout {
+    extension ISO_9945.Kernel.IO.Uring.Timeout {
         /// Options for io_uring timeout operations.
         ///
         /// Combines modifier flags for timeout submissions. Clock source
-        /// is provided separately via `Kernel.IO.Uring.Clock`.
+        /// is provided separately via `ISO_9945.Kernel.IO.Uring.Clock`.
         ///
         /// - `.absolute`: Interpret the timeout as a deadline, not a duration.
         /// - `.multishot`: Repeat the timeout automatically after each firing.

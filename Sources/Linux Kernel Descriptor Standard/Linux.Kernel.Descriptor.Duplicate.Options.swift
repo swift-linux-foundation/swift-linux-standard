@@ -21,7 +21,7 @@
         internal import Musl
     #endif
 
-    extension Kernel.Descriptor.Duplicate {
+    extension ISO_9945.Kernel.Descriptor.Duplicate {
         /// Options for dup3(2).
         ///
         /// Controls the behavior of file descriptor duplication with flags.

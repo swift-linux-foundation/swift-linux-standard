@@ -21,19 +21,19 @@
 
     internal import CLinuxKernelShim
 
-    extension Kernel.Descriptor.Duplicate {
+    extension ISO_9945.Kernel.Descriptor.Duplicate {
         /// Duplicates a file descriptor into an existing descriptor slot with
         /// flags (Linux) — raw fd SPI.
         ///
         /// Spec-literal: takes raw `Int32` source/destination fds. The L3-policy
-        /// typed-descriptor convenience (with `inout Kernel.Descriptor`
+        /// typed-descriptor convenience (with `inout ISO_9945.Kernel.Descriptor`
         /// semantic-marker) lives at swift-linux per [PLAT-ARCH-005] /
         /// [PLAT-ARCH-008e]. Per Path X Phase 1 sub-cycle 1.7 Wave D Option A:
         /// dup3's destFd is a pure input from the kernel's perspective (the
         /// kernel atomically rebinds the resource at the slot; the slot number
         /// is unchanged on return), so L2 takes pure `Int32` inputs — no inout
         /// at L2 is needed and would be unrepresentable anyway because L1
-        /// `Kernel.Descriptor._rawValue` is an SPI getter, not inout-projectable.
+        /// `ISO_9945.Kernel.Descriptor._rawValue` is an SPI getter, not inout-projectable.
         ///
         /// Uses `dup3(2)` to duplicate a file descriptor while atomically
         /// setting flags on the new descriptor. The kernel resource previously
@@ -44,7 +44,7 @@
         ///   - sourceFd: The raw fd to duplicate.
         ///   - destinationFd: The raw fd of the target slot.
         ///   - flags: Flags to apply (currently only O_CLOEXEC).
-        /// - Throws: `Kernel.Descriptor.Duplicate.Error` on failure. On throw,
+        /// - Throws: `ISO_9945.Kernel.Descriptor.Duplicate.Error` on failure. On throw,
         ///   the destination slot is unchanged and still refers to its original
         ///   resource.
         @_spi(Syscall)
@@ -73,8 +73,8 @@
         /// Phase 1.5 typed L2 form. Delegates to the raw
         /// `duplicate(sourceFd:destinationFd:flags:)` SPI.
         public static func duplicate(
-            source: borrowing Kernel.Descriptor,
-            destination: borrowing Kernel.Descriptor,
+            source: borrowing ISO_9945.Kernel.Descriptor,
+            destination: borrowing ISO_9945.Kernel.Descriptor,
             flags: Options
         ) throws(Error) {
             try duplicate(

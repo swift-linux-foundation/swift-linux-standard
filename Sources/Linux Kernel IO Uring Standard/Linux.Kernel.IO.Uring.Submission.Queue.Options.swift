@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Submission.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
         /// Runtime flags on the SQ ring shared-memory flags field.
         ///
         /// These flags are set by the kernel and read by userspace from
@@ -30,7 +30,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Submission.Queue.Options {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Options {
         /// The kernel SQ poll thread needs a wakeup.
         ///
         /// When set, the application must call `io_uring_enter` with

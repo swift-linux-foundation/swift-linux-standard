@@ -12,7 +12,7 @@
 #if os(Linux)
 
 
-extension Kernel.Futex {
+extension ISO_9945.Kernel.Futex {
     /// Vectored futex wait operations.
     public struct Wait: Sendable {}
 }

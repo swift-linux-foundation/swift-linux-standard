@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Buffer {
+    extension ISO_9945.Kernel.IO.Uring.Buffer {
         /// Index into a registered buffer array.
         ///
         /// Used with `IORING_OP_READ_FIXED` and `IORING_OP_WRITE_FIXED` to reference
@@ -45,7 +45,7 @@
 
     // MARK: - Buffer.Index + ExpressibleByIntegerLiteral
 
-    extension Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
+    extension ISO_9945.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {
             self.rawValue = value
         }
@@ -53,7 +53,7 @@
 
     // MARK: - Buffer.Index + CustomStringConvertible
 
-    extension Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
         public var description: Swift.String {
             "\(rawValue)"
         }
