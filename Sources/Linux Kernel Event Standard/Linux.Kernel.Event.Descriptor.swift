@@ -23,7 +23,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.Event {
+extension ISO_9945.Kernel.Event {
     /// Event file descriptor — a Linux signaling primitive (`eventfd(2)`).
     ///
     /// `~Copyable`: single ownership, consumed on `close()` or deinit.
@@ -36,12 +36,12 @@ extension Kernel.Event {
     public struct Descriptor: ~Copyable, Sendable {
         /// The underlying kernel file descriptor.
         @_spi(Syscall)
-        public let descriptor: Kernel.Descriptor
+        public let descriptor: ISO_9945.Kernel.Descriptor
 
         /// Creates an event descriptor wrapping the given fd.
         @_spi(Syscall)
         @inlinable
-        public init(descriptor: consuming Kernel.Descriptor) {
+        public init(descriptor: consuming ISO_9945.Kernel.Descriptor) {
             self.descriptor = descriptor
         }
     }
@@ -49,7 +49,7 @@ extension Kernel.Event {
 
 // MARK: - Factory
 
-extension Kernel.Event.Descriptor {
+extension ISO_9945.Kernel.Event.Descriptor {
     /// Creates a new event descriptor.
     ///
     /// - Parameters:
@@ -60,18 +60,18 @@ extension Kernel.Event.Descriptor {
     public static func create(
         value: UInt32 = 0,
         flags: Flags = .cloexec
-    ) throws(Kernel.Event.Descriptor.Error) -> Kernel.Event.Descriptor {
+    ) throws(ISO_9945.Kernel.Event.Descriptor.Error) -> ISO_9945.Kernel.Event.Descriptor {
         let fd = eventfd(value, flags.rawValue)
         guard fd >= 0 else {
             throw .create(.posix(errno))
         }
-        return Kernel.Event.Descriptor(descriptor: Kernel.Descriptor(_rawValue: fd))
+        return ISO_9945.Kernel.Event.Descriptor(descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd))
     }
 }
 
 // MARK: - Operations
 
-extension Kernel.Event.Descriptor {
+extension ISO_9945.Kernel.Event.Descriptor {
     /// Reads the counter value.
     ///
     /// In default mode, returns the current counter and resets it to zero.
@@ -79,7 +79,7 @@ extension Kernel.Event.Descriptor {
     ///
     /// Blocks if the counter is zero and the fd is blocking.
     /// Throws `.wouldBlock` if the counter is zero and the fd is non-blocking.
-    public mutating func read() throws(Kernel.Event.Descriptor.Error) -> UInt64 {
+    public mutating func read() throws(ISO_9945.Kernel.Event.Descriptor.Error) -> UInt64 {
         var value: UInt64 = 0
         #if canImport(Glibc)
         let result = unsafe Glibc.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
@@ -101,7 +101,7 @@ extension Kernel.Event.Descriptor {
     /// The maximum value is `UInt64.max - 1`. If adding `value` would
     /// overflow, the write blocks (blocking mode) or throws `.wouldBlock`
     /// (non-blocking mode).
-    public mutating func write(_ value: UInt64) throws(Kernel.Event.Descriptor.Error) {
+    public mutating func write(_ value: UInt64) throws(ISO_9945.Kernel.Event.Descriptor.Error) {
         var val = value
         #if canImport(Glibc)
         let result = unsafe Glibc.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
@@ -122,13 +122,13 @@ extension Kernel.Event.Descriptor {
     /// Suppresses EAGAIN (counter near max, benign coalescing) and
     /// EBADF (fd closed during shutdown, benign teardown race).
     public func signal() {
-        Kernel.Event.Descriptor.signal(rawDescriptor: descriptor._rawValue)
+        ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: descriptor._rawValue)
     }
 
     /// Fire-and-forget signal using a raw file descriptor.
     ///
     /// For use in `Sendable` closures that cannot capture `~Copyable`
-    /// `Kernel.Event.Descriptor`.
+    /// `ISO_9945.Kernel.Event.Descriptor`.
     ///
     /// Suppresses EAGAIN and EBADF.
     @_spi(Syscall)
@@ -152,7 +152,7 @@ extension Kernel.Event.Descriptor {
 
 // MARK: - Consuming Extraction
 
-extension Kernel.Descriptor {
+extension ISO_9945.Kernel.Descriptor {
     /// Extract the kernel descriptor from an event descriptor, consuming it.
     ///
     /// The caller takes ownership of the returned descriptor — its deinit
@@ -160,14 +160,14 @@ extension Kernel.Descriptor {
     ///
     /// Enables cross-platform code that needs a ``Kernel/Descriptor``
     /// rather than the Linux-specific ``Kernel/Event/Descriptor``.
-    public init(_ eventDescriptor: consuming Kernel.Event.Descriptor) {
+    public init(_ eventDescriptor: consuming ISO_9945.Kernel.Event.Descriptor) {
         self = eventDescriptor.descriptor
     }
 }
 
 // MARK: - Lifecycle
 
-extension Kernel.Event.Descriptor {
+extension ISO_9945.Kernel.Event.Descriptor {
     /// Explicitly closes the event descriptor.
     ///
     /// After this call, the descriptor is invalid. If not called,

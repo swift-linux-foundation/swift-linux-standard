@@ -23,7 +23,7 @@ public import ISO_9945_Kernel_File
     internal import Musl
 #endif
 
-extension Kernel.File.At.Options {
+extension ISO_9945.Kernel.File.At.Options {
     /// Allow operations on empty path with fd (AT_EMPTY_PATH).
     ///
     /// Linux-specific extension to POSIX AT_* flags.

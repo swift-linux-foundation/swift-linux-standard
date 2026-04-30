@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Socket {
+    extension ISO_9945.Kernel.IO.Uring.Socket {
         /// Socket data transfer modifiers.
         ///
         /// Namespace for flags shared across send, receive, sendmsg,

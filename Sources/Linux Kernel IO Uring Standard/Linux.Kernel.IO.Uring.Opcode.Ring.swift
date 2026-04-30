@@ -12,18 +12,18 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Ring operation opcodes.
         public struct Ring {
             /// Send message between rings.
-            public static let msg = Kernel.IO.Uring.Opcode(rawValue: 40)
+            public static let msg = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 40)
 
             /// Uring command.
-            public static let cmd = Kernel.IO.Uring.Opcode(rawValue: 46)
+            public static let cmd = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 46)
 
             /// 128-byte uring command (kernel 6.13+).
             // TRACKING: Opcode 64 exceeds IORING_OP_LAST=58 in kernel 6.12.
-            public static let cmd128 = Kernel.IO.Uring.Opcode(rawValue: 64)
+            public static let cmd128 = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 64)
         }
 
         /// Access to ring operation opcodes.

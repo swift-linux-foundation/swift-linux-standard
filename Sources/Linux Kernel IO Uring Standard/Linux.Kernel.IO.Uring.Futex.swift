@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Futex operation opcodes (kernel 6.7+).
         public struct Futex {
             /// Futex wait (kernel 6.7+).
@@ -26,9 +26,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to futex operation opcodes.
-        public static var futex: Kernel.IO.Uring.Futex.Type { Kernel.IO.Uring.Futex.self }
+        public static var futex: ISO_9945.Kernel.IO.Uring.Futex.Type { ISO_9945.Kernel.IO.Uring.Futex.self }
     }
 
 #endif

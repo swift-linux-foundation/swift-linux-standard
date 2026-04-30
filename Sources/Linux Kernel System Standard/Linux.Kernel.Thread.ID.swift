@@ -21,7 +21,7 @@ internal import Musl
 internal import Bionic
 #endif
 
-extension Kernel.Thread {
+extension ISO_9945.Kernel.Thread {
     /// Opaque OS thread identifier on Linux-family kernels.
     ///
     /// The raw value is the kernel TID (thread ID) as returned by the
@@ -45,7 +45,7 @@ extension Kernel.Thread {
     }
 }
 
-extension Kernel.Thread.ID {
+extension ISO_9945.Kernel.Thread.ID {
     /// The ID of the calling thread.
     public static var current: Self {
         .init(rawValue: Int32(unsafe swift_gettid()))

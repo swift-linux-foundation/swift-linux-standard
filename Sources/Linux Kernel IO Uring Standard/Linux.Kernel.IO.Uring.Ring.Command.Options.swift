@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Opcode.Ring.Command {
+    extension ISO_9945.Kernel.IO.Uring.Opcode.Ring.Command {
         /// Flags for uring command operations (`IORING_OP_URING_CMD`).
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -24,7 +24,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode.Ring.Command.Options {
+    extension ISO_9945.Kernel.IO.Uring.Opcode.Ring.Command.Options {
         /// Use a fixed (registered) file descriptor for the command.
         ///
         /// - Linux: `IORING_URING_CMD_FIXED`

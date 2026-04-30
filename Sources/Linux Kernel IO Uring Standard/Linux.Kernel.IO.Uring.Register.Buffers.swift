@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Buffer registration opcodes.
         public struct Buffers {
             /// Registers buffers for zero-copy I/O.
@@ -55,9 +55,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to buffer registration opcodes.
-        public static var buffers: Kernel.IO.Uring.Register.Buffers.Type { Kernel.IO.Uring.Register.Buffers.self }
+        public static var buffers: ISO_9945.Kernel.IO.Uring.Register.Buffers.Type { ISO_9945.Kernel.IO.Uring.Register.Buffers.self }
     }
 
 #endif

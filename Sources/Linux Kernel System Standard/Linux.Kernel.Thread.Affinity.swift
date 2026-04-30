@@ -24,22 +24,22 @@ internal import Bionic
 // MARK: - Set Mask
 
 // Adds L2 syscall wrappers to the existing cross-platform
-// `Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
+// `ISO_9945.Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
 // Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`) delegate here
 // per [PLAT-ARCH-008c].
 
-extension Kernel.Thread.Affinity {
+extension ISO_9945.Kernel.Thread.Affinity {
     /// Sets the CPU affinity mask for a thread via `sched_setaffinity(2)`.
     ///
     /// - Parameters:
     ///   - tid: Thread ID; `0` denotes the calling thread.
     ///   - cores: Set of CPU core IDs to include in the mask.
-    /// - Throws: `Kernel.Thread.Affinity.Error.platform` with the POSIX errno
+    /// - Throws: `ISO_9945.Kernel.Thread.Affinity.Error.platform` with the POSIX errno
     ///   if the syscall fails.
     public static func setMask(
         tid: Int32 = 0,
         cores: Set<Int>
-    ) throws(Kernel.Thread.Affinity.Error) {
+    ) throws(ISO_9945.Kernel.Thread.Affinity.Error) {
         var mask = cpu_set_t()
 
         // Zero the mask

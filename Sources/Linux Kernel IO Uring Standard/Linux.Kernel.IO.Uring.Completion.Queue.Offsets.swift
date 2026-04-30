@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Completion.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Byte offsets for completion queue ring mapping.
         ///
         /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.

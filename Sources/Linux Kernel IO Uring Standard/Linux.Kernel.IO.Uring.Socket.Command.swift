@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Socket {
+    extension ISO_9945.Kernel.IO.Uring.Socket {
         /// Socket uring_cmd sub-operations.
         ///
         /// Used with `IORING_OP_URING_CMD` on socket file descriptors
@@ -27,7 +27,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Socket.Command {
+    extension ISO_9945.Kernel.IO.Uring.Socket.Command {
         /// Query the number of bytes in the receive queue.
         ///
         /// - Linux: `SOCKET_URING_OP_SIOCINQ`

@@ -13,7 +13,7 @@
 
     public import Error_Primitives
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Opaque data associated with an epoll event.
         ///
         /// Poll data is a 64-bit value that the kernel returns unchanged
@@ -23,17 +23,17 @@
         ///
         /// ```swift
         /// // Use as an identifier
-        /// let data = Kernel.Event.Poll.Data(id)
+        /// let data = ISO_9945.Kernel.Event.Poll.Data(id)
         ///
         /// // Use with pointer-based context lookup
-        /// let data = Kernel.Event.Poll.Data(pointer: contextPtr)
+        /// let data = ISO_9945.Kernel.Event.Poll.Data(pointer: contextPtr)
         /// ```
-        public typealias Data = Tagged<Kernel.Event.Poll, UInt64>
+        public typealias Data = Tagged<ISO_9945.Kernel.Event.Poll, UInt64>
     }
 
     // MARK: - Pointer Conversions
 
-    extension Kernel.Event.Poll.Data {
+    extension ISO_9945.Kernel.Event.Poll.Data {
         /// Creates poll data from a raw pointer.
         ///
         /// This is useful when you want to associate a context object
@@ -64,7 +64,7 @@
 
     // MARK: - Common Values
 
-    extension Kernel.Event.Poll.Data {
+    extension ISO_9945.Kernel.Event.Poll.Data {
         /// Zero poll data.
         public static let zero: Self = .init(__unchecked: (), 0)
     }

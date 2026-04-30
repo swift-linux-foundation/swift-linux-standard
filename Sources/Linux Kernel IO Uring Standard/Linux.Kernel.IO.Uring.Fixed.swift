@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Fixed fd operation opcodes.
         public struct Fixed {
             /// Install fixed fd into process table (kernel 6.7+).
@@ -20,9 +20,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to fixed fd operation opcodes.
-        public static var fixed: Kernel.IO.Uring.Fixed.Type { Kernel.IO.Uring.Fixed.self }
+        public static var fixed: ISO_9945.Kernel.IO.Uring.Fixed.Type { ISO_9945.Kernel.IO.Uring.Fixed.self }
     }
 
 #endif

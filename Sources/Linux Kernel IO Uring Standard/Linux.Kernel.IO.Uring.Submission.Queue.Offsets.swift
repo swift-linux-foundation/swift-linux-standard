@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Submission.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
         /// Byte offsets for submission queue ring mapping.
         ///
         /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.

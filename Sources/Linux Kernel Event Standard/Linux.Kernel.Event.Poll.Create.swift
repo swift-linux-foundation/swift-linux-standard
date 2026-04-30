@@ -13,7 +13,7 @@
 
     public import Error_Primitives
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Namespace for epoll creation types.
         ///
         /// ## See Also

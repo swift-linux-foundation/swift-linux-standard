@@ -16,7 +16,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Clock source for io_uring timeout operations.
         ///
         /// Determines which kernel clock is used to interpret timeout values.
@@ -43,7 +43,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Clock {
+    extension ISO_9945.Kernel.IO.Uring.Clock {
         /// The io_uring timeout flag bits for this clock source.
         @usableFromInline
         var timeoutBits: UInt32 {

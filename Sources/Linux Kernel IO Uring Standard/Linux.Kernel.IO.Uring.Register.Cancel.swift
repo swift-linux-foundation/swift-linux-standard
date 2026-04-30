@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Cancellation registration opcodes.
         public struct Cancel {
             /// Synchronously cancels a pending operation (kernel 6.0+).
@@ -26,9 +26,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to cancellation registration opcodes.
-        public static var cancel: Kernel.IO.Uring.Register.Cancel.Type { Kernel.IO.Uring.Register.Cancel.self }
+        public static var cancel: ISO_9945.Kernel.IO.Uring.Register.Cancel.Type { ISO_9945.Kernel.IO.Uring.Register.Cancel.self }
     }
 
 #endif

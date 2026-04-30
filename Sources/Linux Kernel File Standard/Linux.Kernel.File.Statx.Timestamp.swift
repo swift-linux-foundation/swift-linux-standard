@@ -5,7 +5,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.File.Statx {
+extension ISO_9945.Kernel.File.Statx {
     /// Timestamp from a statx result.
     ///
     /// Wraps `struct statx_timestamp` — seconds since the epoch
@@ -32,7 +32,7 @@ extension Kernel.File.Statx {
 
 // MARK: - Accessors
 
-extension Kernel.File.Statx.Timestamp {
+extension ISO_9945.Kernel.File.Statx.Timestamp {
     /// Seconds since the epoch.
     public var seconds: Int64 {
         get { cValue.tv_sec }
@@ -46,7 +46,7 @@ extension Kernel.File.Statx.Timestamp {
 
 // MARK: - Equatable
 
-extension Kernel.File.Statx.Timestamp {
+extension ISO_9945.Kernel.File.Statx.Timestamp {
     public static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.cValue.tv_sec == rhs.cValue.tv_sec && lhs.cValue.tv_nsec == rhs.cValue.tv_nsec
     }

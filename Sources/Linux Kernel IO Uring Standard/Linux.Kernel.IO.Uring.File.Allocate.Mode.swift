@@ -22,7 +22,7 @@
         internal import Musl
     #endif
 
-    extension Kernel.IO.Uring.File {
+    extension ISO_9945.Kernel.IO.Uring.File {
         /// Allocation mode for fallocate operations.
         ///
         /// Each case represents a distinct kernel operation. The associated
@@ -63,7 +63,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.File.Allocate.Mode {
+    extension ISO_9945.Kernel.IO.Uring.File.Allocate.Mode {
         /// The raw fallocate mode bits for the kernel.
         @usableFromInline
         var rawBits: Int32 {

@@ -12,7 +12,7 @@
 #if os(Linux)
 
 
-extension Kernel.Futex.Wait {
+extension ISO_9945.Kernel.Futex.Wait {
     /// A single entry in a vectored futex wait operation.
     ///
     /// Layout-compatible with `struct futex_waitv` from `<linux/futex.h>`.

@@ -13,30 +13,30 @@
     public import Binary_Primitives_Core
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Buffer length for io_uring operations.
         ///
         /// A type-safe 32-bit length value using the Dimension pattern.
-        /// Follows the same pattern as `Kernel.File.Size`.
+        /// Follows the same pattern as `ISO_9945.Kernel.File.Size`.
         ///
         /// ## Usage
         ///
         /// ```swift
         /// // From an integer literal
-        /// let length: Kernel.IO.Uring.Length = 4096
+        /// let length: ISO_9945.Kernel.IO.Uring.Length = 4096
         ///
         /// // From a File.Size
-        /// let length = Kernel.IO.Uring.Length(fileSize)
+        /// let length = ISO_9945.Kernel.IO.Uring.Length(fileSize)
         ///
         /// // From a buffer pointer
-        /// let length = Kernel.IO.Uring.Length(buffer)
+        /// let length = ISO_9945.Kernel.IO.Uring.Length(buffer)
         /// ```
         public typealias Length = Magnitude<Space>.Value<UInt32>
     }
 
     // MARK: - Convenience Initializers
 
-    extension Kernel.IO.Uring.Length {
+    extension ISO_9945.Kernel.IO.Uring.Length {
         /// Zero length.
         public static let zero: Self = .init(UInt32(0))
 
@@ -86,11 +86,11 @@
 
     // MARK: - File.Size Conversion
 
-    extension Kernel.IO.Uring.Length {
+    extension ISO_9945.Kernel.IO.Uring.Length {
         /// Creates a Length from a File.Size.
         ///
         /// Saturates at `UInt32.max` for sizes larger than 4GB.
-        public init(_ size: Kernel.File.Size) {
+        public init(_ size: ISO_9945.Kernel.File.Size) {
             if size.rawValue > Int64(UInt32.max) {
                 self.init(UInt32.max)
             } else if size.rawValue < 0 {

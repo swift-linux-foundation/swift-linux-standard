@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Cancel operation opcodes.
         public struct Cancel {
             /// Cancel in-flight async operation.
@@ -20,9 +20,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to cancel operation opcodes.
-        public static var cancel: Kernel.IO.Uring.Cancel.Type { Kernel.IO.Uring.Cancel.self }
+        public static var cancel: ISO_9945.Kernel.IO.Uring.Cancel.Type { ISO_9945.Kernel.IO.Uring.Cancel.self }
     }
 
 #endif

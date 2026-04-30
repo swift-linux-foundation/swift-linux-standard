@@ -13,7 +13,7 @@
     public import Kernel_IO_Primitives
     public import System_Primitives
 
-    extension Kernel.IO.Uring.Params.Submission {
+    extension ISO_9945.Kernel.IO.Uring.Params.Submission {
         /// Thread configuration for submission queue polling.
         public struct Thread: Sendable, Equatable {
             /// CPU affinity for the SQ poll thread (when using `.sqAff` flag).
@@ -39,7 +39,7 @@
 
     // MARK: - C Boundary
 
-    extension Kernel.IO.Uring.Params.Submission.Thread {
+    extension ISO_9945.Kernel.IO.Uring.Params.Submission.Thread {
         /// Creates from C struct fields.
         internal init(cCpu: UInt32, cIdle: UInt32) {
             self.cpu = System.Processor.ID(__unchecked: (), Ordinal(UInt(cCpu)))

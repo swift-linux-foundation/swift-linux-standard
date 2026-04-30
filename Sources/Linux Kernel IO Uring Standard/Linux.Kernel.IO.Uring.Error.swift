@@ -13,7 +13,7 @@
     public import Kernel_IO_Primitives
     public import Error_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Errors from io_uring operations.
         ///
         /// Low-level errors from io_uring syscalls. Each case wraps the
@@ -24,8 +24,8 @@
         ///
         /// ```swift
         /// do {
-        ///     let ring = try Kernel.IO.Uring.Setup.setup(entries: 256)
-        /// } catch let error as Kernel.IO.Uring.Error {
+        ///     let ring = try ISO_9945.Kernel.IO.Uring.Setup.setup(entries: 256)
+        /// } catch let error as ISO_9945.Kernel.IO.Uring.Error {
         ///     switch error {
         ///     case .setup(let code):
         ///         print("Setup failed: \(code)")
@@ -68,7 +68,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Error: CustomStringConvertible {
+    extension ISO_9945.Kernel.IO.Uring.Error: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             case .setup(let code):

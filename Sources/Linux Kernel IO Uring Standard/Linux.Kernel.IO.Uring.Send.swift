@@ -12,23 +12,23 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Send operation opcodes.
         public struct Send {
             /// Send standard (kernel 5.6+).
-            public static let standard = Kernel.IO.Uring.Opcode(rawValue: 26)
+            public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 26)
 
             /// Send message (sendmsg).
-            public static let message = Kernel.IO.Uring.Opcode(rawValue: 9)
+            public static let message = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 9)
 
             /// Access to zero-copy send operations.
             public static var zero: Zero.Type { Zero.self }
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to send zero-copy operation opcodes.
-        public static var send: Kernel.IO.Uring.Send.Type { Kernel.IO.Uring.Send.self }
+        public static var send: ISO_9945.Kernel.IO.Uring.Send.Type { ISO_9945.Kernel.IO.Uring.Send.self }
     }
 
 #endif

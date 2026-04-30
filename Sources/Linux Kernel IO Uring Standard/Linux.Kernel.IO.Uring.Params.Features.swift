@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Params {
+    extension ISO_9945.Kernel.IO.Uring.Params {
         /// Kernel-reported feature flags from io_uring setup.
         ///
         /// These flags indicate which features the running kernel supports.
@@ -30,7 +30,7 @@
 
     // MARK: - Feature Constants
 
-    extension Kernel.IO.Uring.Params.Features {
+    extension ISO_9945.Kernel.IO.Uring.Params.Features {
         /// SQ and CQ rings can share a single mmap region.
         public static let singleMmap = Self(rawValue: 1 << 0)
 
@@ -82,7 +82,7 @@
 
     // MARK: - Query
 
-    extension Kernel.IO.Uring.Params.Features {
+    extension ISO_9945.Kernel.IO.Uring.Params.Features {
         /// Whether a specific feature is supported.
         @inlinable
         public func contains(_ feature: Self) -> Bool {

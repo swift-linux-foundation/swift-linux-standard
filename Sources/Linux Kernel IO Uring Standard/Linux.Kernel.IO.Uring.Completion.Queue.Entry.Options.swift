@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Flags returned with completion queue entries.
         ///
         /// These flags provide additional information about the completed
@@ -44,7 +44,7 @@
         }
     }
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry.Options {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Options {
         /// Indicates that a buffer was selected from a buffer group.
         ///
         /// When set, the upper 16 bits of the flags field contain the

@@ -14,7 +14,7 @@
     public import Error_Primitives
     public import Memory_Primitives
 
-    extension Kernel.IO.Uring.Cancel {
+    extension ISO_9945.Kernel.IO.Uring.Cancel {
         /// Flags controlling how cancel operations match their targets.
         ///
         /// These flags determine the matching strategy for cancelling
@@ -26,7 +26,7 @@
         ///
         /// ```swift
         /// // Cancel all operations matching a file descriptor
-        /// let options: Kernel.IO.Uring.Cancel.Options = [.all, .fd]
+        /// let options: ISO_9945.Kernel.IO.Uring.Cancel.Options = [.all, .fd]
         /// ```
         ///
         /// ## See Also

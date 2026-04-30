@@ -16,7 +16,7 @@
 
     // MARK: - createWakeup
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Create an eventfd registered with this io_uring for completion notification.
         ///
         /// Encapsulates:
@@ -33,7 +33,7 @@
             let eventfd = try Self.createEventfd()
 
             // 2. Register with io_uring
-            do throws(Kernel.IO.Uring.Error) {
+            do throws(ISO_9945.Kernel.IO.Uring.Error) {
                 try self.register(eventfd: eventfd.descriptor)
             } catch {
                 throw .register(error.code)
@@ -41,10 +41,10 @@
 
             // 3. Build wakeup channel
             // Raw fd extracted for @Sendable closure capture —
-            // ~Copyable Kernel.Event.Descriptor cannot be captured.
+            // ~Copyable ISO_9945.Kernel.Event.Descriptor cannot be captured.
             let rawEfd = eventfd.descriptor._rawValue
-            let channel = Kernel.Wakeup.Channel {
-                Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
+            let channel = ISO_9945.Kernel.Wakeup.Channel {
+                ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
 
             return Wakeup.Result(
@@ -62,9 +62,9 @@
         /// immediately, causing the completion Loop's run loop to hot-spin
         /// (~10k iterations/sec per Loop thread). `CLOEXEC` is retained
         /// so child processes don't inherit the eventfd.
-        private static func createEventfd() throws(Wakeup.Error) -> Kernel.Event.Descriptor {
-            do throws(Kernel.Event.Descriptor.Error) {
-                return try Kernel.Event.Descriptor.create(flags: .cloexec)
+        private static func createEventfd() throws(Wakeup.Error) -> ISO_9945.Kernel.Event.Descriptor {
+            do throws(ISO_9945.Kernel.Event.Descriptor.Error) {
+                return try ISO_9945.Kernel.Event.Descriptor.create(flags: .cloexec)
             } catch {
                 switch error {
                 case .create(let code): throw .eventfd(code)
@@ -77,7 +77,7 @@
 
     // MARK: - Error code extraction
 
-    extension Kernel.IO.Uring.Error {
+    extension ISO_9945.Kernel.IO.Uring.Error {
         /// Extract the platform error code from any io_uring error case.
         var code: Error_Primitives.Error.Code {
             switch self {

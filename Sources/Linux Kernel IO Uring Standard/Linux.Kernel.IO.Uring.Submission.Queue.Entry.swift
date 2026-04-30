@@ -34,7 +34,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Submission.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
         /// Swift wrapper for io_uring submission queue entry.
         ///
         /// An Entry describes an I/O operation to be performed by the kernel.
@@ -72,10 +72,10 @@
 
     // MARK: - Accessors
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// The operation code.
-        public var opcode: Kernel.IO.Uring.Opcode {
-            get { Kernel.IO.Uring.Opcode(rawValue: cValue.opcode) }
+        public var opcode: ISO_9945.Kernel.IO.Uring.Opcode {
+            get { ISO_9945.Kernel.IO.Uring.Opcode(rawValue: cValue.opcode) }
             set { cValue.opcode = newValue.rawValue }
         }
 
@@ -96,8 +96,8 @@
         }
 
         /// I/O priority.
-        public var priority: Kernel.IO.Priority {
-            get { Kernel.IO.Priority(rawValue: cValue.ioprio) }
+        public var priority: ISO_9945.Kernel.IO.Priority {
+            get { ISO_9945.Kernel.IO.Priority(rawValue: cValue.ioprio) }
             set { cValue.ioprio = newValue.rawValue }
         }
 
@@ -106,14 +106,14 @@
         /// Used by send, recv, sendmsg, recvmsg, send_zc, sendmsg_zc
         /// operations. Overlaps the ioprio field — set one or the other.
         @usableFromInline
-        internal var transferOptions: Kernel.IO.Uring.Socket.Transfer.Options {
+        internal var transferOptions: ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options {
             get { .init(rawValue: cValue.ioprio) }
             set { cValue.ioprio = newValue.rawValue }
         }
 
         /// File offset for read/write operations.
-        public var offset: Kernel.IO.Uring.Offset {
-            get { Kernel.IO.Uring.Offset(cValue.off) }
+        public var offset: ISO_9945.Kernel.IO.Uring.Offset {
+            get { ISO_9945.Kernel.IO.Uring.Offset(cValue.off) }
             set { cValue.off = newValue.rawValue }
         }
 
@@ -128,20 +128,20 @@
         }
 
         /// Buffer length.
-        public var len: Kernel.IO.Uring.Length {
-            get { Kernel.IO.Uring.Length(cValue.len) }
+        public var len: ISO_9945.Kernel.IO.Uring.Length {
+            get { ISO_9945.Kernel.IO.Uring.Length(cValue.len) }
             set { cValue.len = newValue.rawValue }
         }
 
         /// Operation data returned with completion.
-        public var data: Kernel.IO.Uring.Operation.Data {
-            get { Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data) }
+        public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
+            get { ISO_9945.Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data) }
             set { cValue.user_data = newValue.rawValue }
         }
 
         /// Personality ID (for credentials).
-        public var personality: Kernel.IO.Uring.Personality.ID {
-            get { Kernel.IO.Uring.Personality.ID(__unchecked: (), cValue.personality) }
+        public var personality: ISO_9945.Kernel.IO.Uring.Personality.ID {
+            get { ISO_9945.Kernel.IO.Uring.Personality.ID(__unchecked: (), cValue.personality) }
             set { cValue.personality = newValue.rawValue }
         }
     }
@@ -152,18 +152,18 @@
     // Compound names permitted at @usableFromInline internal scope
     // per feedback_compound_package_scope.
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Unlink AT_* flags (e.g., `AT_REMOVEDIR`).
         @usableFromInline
-        internal var atFlags: Kernel.File.At.Options {
-            get { Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var atFlags: ISO_9945.Kernel.File.At.Options {
+            get { ISO_9945.Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// File access pattern advisory hint.
         @usableFromInline
-        internal var fileAdvice: Kernel.File.Advice {
-            get { Kernel.File.Advice(rawValue: cValue.rw_flags) }
+        internal var fileAdvice: ISO_9945.Kernel.File.Advice {
+            get { ISO_9945.Kernel.File.Advice(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
@@ -176,36 +176,36 @@
 
         /// Sync range flags.
         @usableFromInline
-        internal var syncRangeFlags: Kernel.File.Sync.Range.Options {
-            get { Kernel.File.Sync.Range.Options(rawValue: cValue.rw_flags) }
+        internal var syncRangeFlags: ISO_9945.Kernel.File.Sync.Range.Options {
+            get { ISO_9945.Kernel.File.Sync.Range.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// Pipe creation flags.
         @usableFromInline
-        internal var pipeCreateFlags: Kernel.Pipe.Options {
-            get { Kernel.Pipe.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var pipeCreateFlags: ISO_9945.Kernel.Pipe.Options {
+            get { ISO_9945.Kernel.Pipe.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Fixed file descriptor installation flags.
         @usableFromInline
-        internal var installFlags: Kernel.IO.Uring.Fixed.Install.Options {
-            get { Kernel.IO.Uring.Fixed.Install.Options(rawValue: cValue.rw_flags) }
+        internal var installFlags: ISO_9945.Kernel.IO.Uring.Fixed.Install.Options {
+            get { ISO_9945.Kernel.IO.Uring.Fixed.Install.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// File permissions mode (for openat, mkdirat, chmod).
         @usableFromInline
-        internal var filePermissions: Kernel.File.Permissions {
-            get { Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len)) }
+        internal var filePermissions: ISO_9945.Kernel.File.Permissions {
+            get { ISO_9945.Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len)) }
             set { cValue.len = UInt32(newValue.rawValue) }
         }
 
         /// Socket shutdown mode.
         @usableFromInline
-        internal var shutdownMode: Kernel.Socket.Shutdown.Mode {
-            get { Kernel.Socket.Shutdown.Mode(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var shutdownMode: ISO_9945.Kernel.Socket.Shutdown.Mode {
+            get { ISO_9945.Kernel.Socket.Shutdown.Mode(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
@@ -225,15 +225,15 @@
 
         /// Socket message flags (for send, recv, sendmsg, recvmsg).
         @usableFromInline
-        internal var messageFlags: Kernel.Socket.Message.Options {
-            get { Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var messageFlags: ISO_9945.Kernel.Socket.Message.Options {
+            get { ISO_9945.Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Accept flags.
         @usableFromInline
-        internal var acceptFlags: Kernel.Socket.Options {
-            get { Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var acceptFlags: ISO_9945.Kernel.Socket.Options {
+            get { ISO_9945.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
     }
@@ -243,7 +243,7 @@
     // For uses where no domain type exists: sentinels, struct sizes,
     // compile-time constants, and misc raw values.
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Fsync datasync-only flag (IORING_FSYNC_DATASYNC).
         @usableFromInline
         internal static let fsyncDatasync: Int32 = Int32(IORING_FSYNC_DATASYNC)
@@ -280,33 +280,33 @@
 
         /// Registered buffer index.
         @usableFromInline
-        internal var _bufferIndex: Kernel.IO.Uring.Buffer.Index {
-            get { Kernel.IO.Uring.Buffer.Index(rawValue: cValue.buf_index) }
+        internal var _bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index {
+            get { ISO_9945.Kernel.IO.Uring.Buffer.Index(rawValue: cValue.buf_index) }
             set { cValue.buf_index = newValue.rawValue }
         }
 
         /// Buffer group for kernel-selected buffers.
         @usableFromInline
-        internal var _bufferGroup: Kernel.IO.Uring.Buffer.Group {
-            get { Kernel.IO.Uring.Buffer.Group(rawValue: cValue.buf_group) }
+        internal var _bufferGroup: ISO_9945.Kernel.IO.Uring.Buffer.Group {
+            get { ISO_9945.Kernel.IO.Uring.Buffer.Group(rawValue: cValue.buf_group) }
             set { cValue.buf_group = newValue.rawValue }
         }
 
         /// Set splice source from a descriptor.
         ///
-        /// Absorbs `Kernel.Descriptor._rawValue` extraction — SPI access
+        /// Absorbs `ISO_9945.Kernel.Descriptor._rawValue` extraction — SPI access
         /// hidden from @inlinable callers.
         @usableFromInline
-        internal mutating func setSpliceSource(_ descriptor: borrowing Kernel.Descriptor) {
+        internal mutating func setSpliceSource(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) {
             cValue.splice_fd_in = descriptor._rawValue
         }
 
         /// Set epoll target descriptor in the offset field.
         ///
-        /// Absorbs `Kernel.Descriptor._rawValue` extraction — SPI access
+        /// Absorbs `ISO_9945.Kernel.Descriptor._rawValue` extraction — SPI access
         /// hidden from @inlinable callers.
         @usableFromInline
-        internal mutating func setEpollDescriptor(_ descriptor: borrowing Kernel.Descriptor) {
+        internal mutating func setEpollDescriptor(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) {
             cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue))
         }
 
@@ -330,32 +330,32 @@
     // Each opcode interprets rw_flags differently. These typed accessors
     // push .rawValue extraction out of @inlinable bodies.
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Splice/tee operation flags.
         @usableFromInline
-        internal var spliceFlags: Kernel.Pipe.Splice.Options {
-            get { Kernel.Pipe.Splice.Options(rawValue: cValue.rw_flags) }
+        internal var spliceFlags: ISO_9945.Kernel.Pipe.Splice.Options {
+            get { ISO_9945.Kernel.Pipe.Splice.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// Rename operation flags.
         @usableFromInline
-        internal var renameFlags: Kernel.File.Rename.Options {
-            get { Kernel.File.Rename.Options(rawValue: cValue.rw_flags) }
+        internal var renameFlags: ISO_9945.Kernel.File.Rename.Options {
+            get { ISO_9945.Kernel.File.Rename.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// Ring-to-ring message flags.
         @usableFromInline
-        internal var messageRingFlags: Kernel.IO.Uring.Message.Options {
-            get { Kernel.IO.Uring.Message.Options(rawValue: cValue.rw_flags) }
+        internal var messageRingFlags: ISO_9945.Kernel.IO.Uring.Message.Options {
+            get { ISO_9945.Kernel.IO.Uring.Message.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// Futex operation flags.
         @usableFromInline
-        internal var futexFlags: Kernel.Futex.Options {
-            get { Kernel.Futex.Options(rawValue: cValue.rw_flags) }
+        internal var futexFlags: ISO_9945.Kernel.Futex.Options {
+            get { ISO_9945.Kernel.Futex.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
@@ -365,50 +365,50 @@
         /// that cannot be losslessly round-tripped through the enum.
         @usableFromInline
         internal mutating func setXattrDisposition(
-            _ disposition: Kernel.IO.Uring.File.Xattr.Disposition
+            _ disposition: ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition
         ) {
             cValue.rw_flags = disposition.rawBits
         }
 
         /// Waitid io_uring-level flags.
         @usableFromInline
-        internal var waitidFlags: Kernel.IO.Uring.Wait.Options {
-            get { Kernel.IO.Uring.Wait.Options(rawValue: cValue.rw_flags) }
+        internal var waitidFlags: ISO_9945.Kernel.IO.Uring.Wait.Options {
+            get { ISO_9945.Kernel.IO.Uring.Wait.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         /// Poll event mask.
         @usableFromInline
-        internal var pollEvents: Kernel.Event.Poll.Events {
-            get { Kernel.Event.Poll.Events(rawValue: cValue.poll32_events) }
+        internal var pollEvents: ISO_9945.Kernel.Event.Poll.Events {
+            get { ISO_9945.Kernel.Event.Poll.Events(rawValue: cValue.poll32_events) }
             set { cValue.poll32_events = newValue.rawValue }
         }
 
         /// Poll options (trigger mode + multishot).
         @usableFromInline
-        internal var pollOptions: Kernel.IO.Uring.Poll.Options {
-            get { Kernel.IO.Uring.Poll.Options(rawValue: cValue.len) }
+        internal var pollOptions: ISO_9945.Kernel.IO.Uring.Poll.Options {
+            get { ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: cValue.len) }
             set { cValue.len = newValue.rawValue }
         }
 
         /// Waitid process kind.
         @usableFromInline
-        internal var waitidKind: Kernel.Process.Wait.Kind {
-            get { Kernel.Process.Wait.Kind(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var waitidKind: ISO_9945.Kernel.Process.Wait.Kind {
+            get { ISO_9945.Kernel.Process.Wait.Kind(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Waitid POSIX wait options.
         @usableFromInline
-        internal var waitidOptions: Kernel.Process.Wait.Options {
-            get { Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index)) }
+        internal var waitidOptions: ISO_9945.Kernel.Process.Wait.Options {
+            get { ISO_9945.Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index)) }
             set { cValue.file_index = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Epoll control operation.
         @usableFromInline
-        internal var epollOperation: Kernel.Event.Poll.Operation {
-            get { Kernel.Event.Poll.Operation(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var epollOperation: ISO_9945.Kernel.Event.Poll.Operation {
+            get { ISO_9945.Kernel.Event.Poll.Operation(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
@@ -421,44 +421,44 @@
 
         /// Socket address family (stored in fd field for IORING_OP_SOCKET).
         @usableFromInline
-        internal var socketDomain: Kernel.Socket.Address.Family {
-            get { Kernel.Socket.Address.Family(rawValue: cValue.fd) }
+        internal var socketDomain: ISO_9945.Kernel.Socket.Address.Family {
+            get { ISO_9945.Kernel.Socket.Address.Family(rawValue: cValue.fd) }
             set { cValue.fd = newValue.rawValue }
         }
 
         /// Socket kind (stored in off field for IORING_OP_SOCKET).
         @usableFromInline
-        internal var socketKind: Kernel.Socket.Kind {
-            get { Kernel.Socket.Kind(rawValue: Int32(truncatingIfNeeded: cValue.off)) }
+        internal var socketKind: ISO_9945.Kernel.Socket.Kind {
+            get { ISO_9945.Kernel.Socket.Kind(rawValue: Int32(truncatingIfNeeded: cValue.off)) }
             set { cValue.off = UInt64(UInt32(bitPattern: newValue.rawValue)) }
         }
 
         /// Socket protocol (stored in len field for IORING_OP_SOCKET).
         @usableFromInline
-        internal var socketProtocol: Kernel.Socket.`Protocol` {
+        internal var socketProtocol: ISO_9945.Kernel.Socket.`Protocol` {
             get { .init(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Socket creation flags (stored in rw_flags for IORING_OP_SOCKET).
         @usableFromInline
-        internal var socketFlags: Kernel.Socket.Options {
-            get { Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var socketFlags: ISO_9945.Kernel.Socket.Options {
+            get { ISO_9945.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         /// Configure timeout from clock and options.
         @usableFromInline
         internal mutating func configureTimeout(
-            clock: Kernel.IO.Uring.Clock,
-            options: Kernel.IO.Uring.Timeout.Options = []
+            clock: ISO_9945.Kernel.IO.Uring.Clock,
+            options: ISO_9945.Kernel.IO.Uring.Timeout.Options = []
         ) {
             cValue.rw_flags = clock.timeoutBits | options.rawValue
         }
 
         /// Set the target process ID for waitid.
         @usableFromInline
-        internal mutating func setWaitidProcess(_ id: Kernel.Process.ID) {
+        internal mutating func setWaitidProcess(_ id: ISO_9945.Kernel.Process.ID) {
             cValue.fd = id.rawValue
         }
 
@@ -470,7 +470,7 @@
 
         /// Set the addr field from operation data (cancel/timeout-remove/poll-remove target).
         @usableFromInline
-        internal mutating func setAddr(_ data: Kernel.IO.Uring.Operation.Data) {
+        internal mutating func setAddr(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
             cValue.addr = data.rawValue
         }
 
@@ -509,7 +509,7 @@
 
         /// Message ring target data (stored in off).
         @usableFromInline
-        internal mutating func setMessageTarget(_ data: Kernel.IO.Uring.Operation.Data) {
+        internal mutating func setMessageTarget(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
             cValue.off = data.rawValue
         }
 

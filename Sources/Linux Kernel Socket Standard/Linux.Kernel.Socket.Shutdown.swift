@@ -19,7 +19,7 @@ public import Kernel_Socket_Primitives
     internal import Musl
 #endif
 
-extension Kernel.Socket.Shutdown {
+extension ISO_9945.Kernel.Socket.Shutdown {
     /// Shutdown mode for shutdown(2).
     public struct Mode: RawRepresentable, Sendable, Equatable, Hashable {
         public let rawValue: Int32
@@ -32,7 +32,7 @@ extension Kernel.Socket.Shutdown {
 
 // MARK: - Constants
 
-extension Kernel.Socket.Shutdown.Mode {
+extension ISO_9945.Kernel.Socket.Shutdown.Mode {
     /// Shut down the reading side of the socket.
     public static let read = Self(rawValue: Int32(SHUT_RD))
 

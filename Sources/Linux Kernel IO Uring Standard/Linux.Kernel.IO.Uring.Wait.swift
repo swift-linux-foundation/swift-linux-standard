@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Wait operation opcodes.
         public struct Wait {
             /// Wait ID (kernel 6.4+).
@@ -20,9 +20,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to wait operation opcodes.
-        public static var wait: Kernel.IO.Uring.Wait.Type { Kernel.IO.Uring.Wait.self }
+        public static var wait: ISO_9945.Kernel.IO.Uring.Wait.Type { ISO_9945.Kernel.IO.Uring.Wait.self }
     }
 
 #endif

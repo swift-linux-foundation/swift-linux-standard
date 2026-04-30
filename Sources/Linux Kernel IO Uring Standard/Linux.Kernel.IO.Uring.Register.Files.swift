@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// File registration opcodes.
         public struct Files {
             /// Registers file descriptors for fast access.
@@ -60,9 +60,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to file registration opcodes.
-        public static var files: Kernel.IO.Uring.Register.Files.Type { Kernel.IO.Uring.Register.Files.self }
+        public static var files: ISO_9945.Kernel.IO.Uring.Register.Files.Type { ISO_9945.Kernel.IO.Uring.Register.Files.self }
     }
 
 #endif

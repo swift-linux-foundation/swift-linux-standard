@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Eventfd registration opcodes.
         public struct Eventfd {
             /// Registers an eventfd for completion notifications.
@@ -37,9 +37,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to eventfd registration opcodes.
-        public static var eventfd: Kernel.IO.Uring.Register.Eventfd.Type { Kernel.IO.Uring.Register.Eventfd.self }
+        public static var eventfd: ISO_9945.Kernel.IO.Uring.Register.Eventfd.Type { ISO_9945.Kernel.IO.Uring.Register.Eventfd.self }
     }
 
 #endif

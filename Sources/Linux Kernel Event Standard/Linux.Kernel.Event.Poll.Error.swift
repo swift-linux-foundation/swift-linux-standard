@@ -13,7 +13,7 @@
 
     public import Error_Primitives
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Errors from epoll operations.
         ///
         /// Low-level errors from epoll syscalls. Each case wraps the
@@ -24,8 +24,8 @@
         ///
         /// ```swift
         /// do {
-        ///     let epfd = try Kernel.Event.Poll.create(flags: .cloexec)
-        /// } catch let error as Kernel.Event.Poll.Error {
+        ///     let epfd = try ISO_9945.Kernel.Event.Poll.create(flags: .cloexec)
+        /// } catch let error as ISO_9945.Kernel.Event.Poll.Error {
         ///     switch error {
         ///     case .create(let code):
         ///         print("epoll_create1 failed: \(code)")
@@ -67,7 +67,7 @@
         }
     }
 
-    extension Kernel.Event.Poll.Error: CustomStringConvertible {
+    extension ISO_9945.Kernel.Event.Poll.Error: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             case .create(let code):

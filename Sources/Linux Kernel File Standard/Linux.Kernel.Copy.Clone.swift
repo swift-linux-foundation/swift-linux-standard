@@ -22,11 +22,11 @@
 
 // MARK: - Linux FICLONE Implementation — raw fd SPI
 
-extension Kernel.Copy.Clone {
+extension ISO_9945.Kernel.Copy.Clone {
     /// Clones a file using FICLONE ioctl — raw fd SPI.
     ///
     /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
-    /// convenience (with `Kernel.Descriptor.Validity` checks) lives at
+    /// convenience (with `ISO_9945.Kernel.Descriptor.Validity` checks) lives at
     /// swift-linux per [PLAT-ARCH-005] / [PLAT-ARCH-008e].
     ///
     /// Both files share the same data blocks until one is modified, making this
@@ -54,10 +54,10 @@ extension Kernel.Copy.Clone {
     public static func perform(
         fromFd sourceFd: Int32,
         toFd destinationFd: Int32
-    ) throws(Kernel.Copy.Error) {
+    ) throws(ISO_9945.Kernel.Copy.Error) {
         let result = swift_ficlone(destinationFd, sourceFd)
         guard result == 0 else {
-            throw Kernel.Copy.Error(posixErrno: errno)
+            throw ISO_9945.Kernel.Copy.Error(posixErrno: errno)
         }
     }
 
@@ -65,9 +65,9 @@ extension Kernel.Copy.Clone {
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `perform(fromFd:toFd:)` SPI.
     public static func perform(
-        from source: borrowing Kernel.Descriptor,
-        to destination: borrowing Kernel.Descriptor
-    ) throws(Kernel.Copy.Error) {
+        from source: borrowing ISO_9945.Kernel.Descriptor,
+        to destination: borrowing ISO_9945.Kernel.Descriptor
+    ) throws(ISO_9945.Kernel.Copy.Error) {
         try perform(fromFd: source._rawValue, toFd: destination._rawValue)
     }
 }

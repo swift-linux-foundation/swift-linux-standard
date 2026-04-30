@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Whether this entry indicates more completions will follow (multishot).
         public var hasMore: Bool {
             flags.contains(.more)

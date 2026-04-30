@@ -5,7 +5,7 @@
     internal import CLinuxKernelShim
 #endif
 
-extension Kernel.File.Open {
+extension ISO_9945.Kernel.File.Open {
     /// Path resolution flags for openat2(2).
     ///
     /// Controls how path components are resolved during the open operation.
@@ -20,7 +20,7 @@ extension Kernel.File.Open {
 
 // MARK: - Constants
 
-extension Kernel.File.Open.Resolve {
+extension ISO_9945.Kernel.File.Open.Resolve {
     /// Disallow path resolution to escape beneath the directory fd.
     public static let beneath = Self(rawValue: UInt64(RESOLVE_BENEATH))
 

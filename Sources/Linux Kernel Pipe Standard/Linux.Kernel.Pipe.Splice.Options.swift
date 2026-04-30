@@ -27,7 +27,7 @@ public import Path_Primitives
 
 // MARK: - Linux Splice Flags
 
-extension Kernel.Pipe {
+extension ISO_9945.Kernel.Pipe {
     /// Linux splice operations.
     ///
     /// Namespace for splice(2) and tee(2) related types.

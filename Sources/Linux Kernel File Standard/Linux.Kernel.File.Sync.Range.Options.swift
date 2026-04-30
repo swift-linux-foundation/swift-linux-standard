@@ -27,7 +27,7 @@ public import Path_Primitives
 
 // MARK: - Linux sync_file_range Flags
 
-extension Kernel.File {
+extension ISO_9945.Kernel.File {
     /// Linux file sync operations.
     public struct Sync: Sendable {
         /// Range-based sync operations.

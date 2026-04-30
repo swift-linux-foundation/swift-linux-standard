@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Socket operation opcodes.
         public struct Socket {
             /// Accept connection on socket.
@@ -51,9 +51,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to socket operation opcodes.
-        public static var socket: Kernel.IO.Uring.Socket.Type { Kernel.IO.Uring.Socket.self }
+        public static var socket: ISO_9945.Kernel.IO.Uring.Socket.Type { ISO_9945.Kernel.IO.Uring.Socket.self }
     }
 
 #endif

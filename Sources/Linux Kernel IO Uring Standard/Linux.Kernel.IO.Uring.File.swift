@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// File operation opcodes.
         public struct File {
             /// Open file.
@@ -53,9 +53,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to file operation opcodes.
-        public static var file: Kernel.IO.Uring.File.Type { Kernel.IO.Uring.File.self }
+        public static var file: ISO_9945.Kernel.IO.Uring.File.Type { ISO_9945.Kernel.IO.Uring.File.self }
     }
 
 #endif

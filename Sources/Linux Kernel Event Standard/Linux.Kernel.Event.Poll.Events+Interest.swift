@@ -12,7 +12,7 @@
 #if os(Linux)
 
 
-    extension Kernel.Event.Poll.Events {
+    extension ISO_9945.Kernel.Event.Poll.Events {
         /// Project a cross-platform ``Kernel/Descriptor/Interest`` onto the
         /// Linux epoll event mask.
         ///
@@ -34,16 +34,16 @@
         ///
         /// ```swift
         /// // Reactor: add edge-triggered + oneshot policy
-        /// var events = Kernel.Event.Poll.Events(interest: interest)
+        /// var events = ISO_9945.Kernel.Event.Poll.Events(interest: interest)
         /// events.insert(.et)
         /// events.insert(.oneshot)
         ///
         /// // io_uring POLL_ADD: just the base mask; multishot=false on SQE
-        /// let events = Kernel.Event.Poll.Events(interest: interest)
+        /// let events = ISO_9945.Kernel.Event.Poll.Events(interest: interest)
         /// entry.poll(target: ..., events: events, multishot: false, ...)
         /// ```
         @inlinable
-        public init(interest: Kernel.Descriptor.Interest) {
+        public init(interest: ISO_9945.Kernel.Descriptor.Interest) {
             var events: Self = []
             if interest.contains(.read) {
                 events.insert(.in)

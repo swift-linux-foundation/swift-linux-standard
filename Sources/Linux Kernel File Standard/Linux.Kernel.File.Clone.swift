@@ -23,15 +23,15 @@
 
 // MARK: - Capability Probing
 
-extension Kernel.File.Clone.Capability {
+extension ISO_9945.Kernel.File.Clone.Capability {
     /// Probes whether the filesystem at the given path supports cloning.
-    public static func probe(at path: borrowing Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Kernel.File.Clone.Capability {
-        try unsafe path.withUnsafePointer { cString throws(Kernel.File.Clone.Error.Syscall) in
+    public static func probe(at path: borrowing Path.Borrowed) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> ISO_9945.Kernel.File.Clone.Capability {
+        try unsafe path.withUnsafePointer { cString throws(ISO_9945.Kernel.File.Clone.Error.Syscall) in
             var statfsBuf = statfs()
             let result = statfs(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statfsBuf)
 
             guard result == 0 else {
-                throw Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .statfs)
+                throw ISO_9945.Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .statfs)
             }
 
             // Known filesystems that support FICLONE
@@ -49,15 +49,15 @@ extension Kernel.File.Clone.Capability {
 
 // MARK: - File Size
 
-extension Kernel.File.Clone.Metadata {
+extension ISO_9945.Kernel.File.Clone.Metadata {
     /// Gets the size of a file.
-    public static func size(at path: borrowing Path.Borrowed) throws(Kernel.File.Clone.Error.Syscall) -> Int {
-        try unsafe path.withUnsafePointer { cString throws(Kernel.File.Clone.Error.Syscall) in
+    public static func size(at path: borrowing Path.Borrowed) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Int {
+        try unsafe path.withUnsafePointer { cString throws(ISO_9945.Kernel.File.Clone.Error.Syscall) in
             var statBuf = Glibc.stat()
             let result = stat(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statBuf)
 
             guard result == 0 else {
-                throw Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .stat)
+                throw ISO_9945.Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .stat)
             }
 
             return Int(statBuf.st_size)
@@ -69,7 +69,7 @@ extension Kernel.File.Clone.Metadata {
 
 private let _FICLONE: UInt = 0x4004_9409
 
-extension Kernel.File.Clone {
+extension ISO_9945.Kernel.File.Clone {
     /// Linux FICLONE operations.
     public enum Ficlone {
         /// Attempts to clone a file using ioctl(FICLONE) — raw fd SPI.
@@ -86,7 +86,7 @@ extension Kernel.File.Clone {
         public static func attempt(
             sourceFd: Int32,
             destinationFd: Int32
-        ) throws(Kernel.File.Clone.Error.Syscall) -> Bool {
+        ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Bool {
             let result = ioctl(destinationFd, _FICLONE, sourceFd)
 
             if result == 0 {
@@ -104,19 +104,19 @@ extension Kernel.File.Clone {
 
 }
 
-extension Kernel.File.Clone.Ficlone {
+extension ISO_9945.Kernel.File.Clone.Ficlone {
     /// Attempts to clone a file using ioctl(FICLONE) — typed L2 form.
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `attempt(sourceFd:destinationFd:)` SPI.
     public static func attempt(
-        source: borrowing Kernel.Descriptor,
-        destination: borrowing Kernel.Descriptor
-    ) throws(Kernel.File.Clone.Error.Syscall) -> Bool {
+        source: borrowing ISO_9945.Kernel.Descriptor,
+        destination: borrowing ISO_9945.Kernel.Descriptor
+    ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Bool {
         try attempt(sourceFd: source._rawValue, destinationFd: destination._rawValue)
     }
 }
 
-extension Kernel.File.Clone {
+extension ISO_9945.Kernel.File.Clone {
     /// Linux copy_file_range operations.
     public enum CopyRange {
         /// Copies file data using copy_file_range() — raw fd SPI.
@@ -133,15 +133,15 @@ extension Kernel.File.Clone {
             sourceFd: Int32,
             destinationFd: Int32,
             length: Int
-        ) throws(Kernel.File.Clone.Error.Syscall) {
-            var remaining = Kernel.File.Size(length)
-            var srcOffset = Kernel.File.Offset(0)
-            var dstOffset = Kernel.File.Offset(0)
+        ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) {
+            var remaining = ISO_9945.Kernel.File.Size(length)
+            var srcOffset = ISO_9945.Kernel.File.Offset(0)
+            var dstOffset = ISO_9945.Kernel.File.Offset(0)
 
             while remaining > .zero {
-                let copied: Kernel.File.Size
+                let copied: ISO_9945.Kernel.File.Size
                 do {
-                    copied = try Kernel.Copy.Range.copy(
+                    copied = try ISO_9945.Kernel.Copy.Range.copy(
                         fromFd: sourceFd,
                         sourceOffset: &srcOffset,
                         toFd: destinationFd,
@@ -162,15 +162,15 @@ extension Kernel.File.Clone {
     }
 }
 
-extension Kernel.File.Clone.CopyRange {
+extension ISO_9945.Kernel.File.Clone.CopyRange {
     /// Copies file data using copy_file_range — typed L2 form.
     ///
     /// Phase 1.5 typed L2 form. Delegates to the raw `copy(sourceFd:destinationFd:length:)` SPI.
     public static func copy(
-        source: borrowing Kernel.Descriptor,
-        destination: borrowing Kernel.Descriptor,
+        source: borrowing ISO_9945.Kernel.Descriptor,
+        destination: borrowing ISO_9945.Kernel.Descriptor,
         length: Int
-    ) throws(Kernel.File.Clone.Error.Syscall) {
+    ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) {
         try copy(sourceFd: source._rawValue, destinationFd: destination._rawValue, length: length)
     }
 }

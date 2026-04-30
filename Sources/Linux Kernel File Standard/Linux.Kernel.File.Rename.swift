@@ -23,7 +23,7 @@
 
     internal import CLinuxKernelShim
 
-    extension Kernel.File.Rename {
+    extension ISO_9945.Kernel.File.Rename {
         /// Atomically renames a file with flags.
         ///
         /// Uses renameat2(2) to perform atomic rename operations with

@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.Event.Poll {
+    extension ISO_9945.Kernel.Event.Poll {
         /// Event flags for epoll specifying interests and returned conditions.
         ///
         /// Used both when registering interest (what to monitor) and when
@@ -34,7 +34,7 @@
         ///
         /// ```swift
         /// // Register interest in read readiness, edge-triggered
-        /// try Kernel.Event.Poll.control(
+        /// try ISO_9945.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .add,
         ///     descriptor: fd,
@@ -67,7 +67,7 @@
 
     // MARK: - Event Flags
 
-    extension Kernel.Event.Poll.Events {
+    extension ISO_9945.Kernel.Event.Poll.Events {
         /// File descriptor is available for read operations.
         ///
         /// Data can be read without blocking. For sockets, also indicates

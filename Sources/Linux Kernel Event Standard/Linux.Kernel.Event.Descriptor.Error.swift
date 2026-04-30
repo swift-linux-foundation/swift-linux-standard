@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Error_Primitives
 
-    extension Kernel.Event.Descriptor {
+    extension ISO_9945.Kernel.Event.Descriptor {
         /// Errors from event descriptor operations.
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
             /// Failed to create event descriptor.
@@ -29,7 +29,7 @@
         }
     }
 
-    extension Kernel.Event.Descriptor.Error: CustomStringConvertible {
+    extension ISO_9945.Kernel.Event.Descriptor.Error: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             case .create(let code):
@@ -44,7 +44,7 @@
         }
     }
 
-    extension Kernel.Event.Descriptor.Error {
+    extension ISO_9945.Kernel.Event.Descriptor.Error {
         /// The error code associated with this error, if any.
         public var code: Error_Primitives.Error.Code? {
             switch self {

@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Submission.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Flags controlling submission queue entry behavior.
         ///
         /// These flags modify how individual SQEs are processed by the kernel,

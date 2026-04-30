@@ -23,7 +23,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension Kernel.IO.Uring.Completion.Queue {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Swift wrapper for io_uring completion queue entry.
         ///
         /// An Entry contains the result of a completed I/O operation.
@@ -34,7 +34,7 @@
         /// Entries are read from the completion queue ring buffer:
         /// ```swift
         /// let entryPtr = ring.cqes.advanced(by: index)
-        /// let entry = Kernel.IO.Uring.Completion.Queue.Entry(entryPtr.pointee)
+        /// let entry = ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry(entryPtr.pointee)
         /// if entry.isSuccess {
         ///     print("Completed: \(entry.result) bytes")
         /// }
@@ -57,13 +57,13 @@
 
     // MARK: - Accessors
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Operation data from the corresponding submission queue entry.
         ///
         /// This is the value set via `entry.data` when the operation was submitted.
         /// Typically used to recover the operation context (e.g., a pointer to Storage).
-        public var data: Kernel.IO.Uring.Operation.Data {
-            Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data)
+        public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
+            ISO_9945.Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data)
         }
 
         /// Raw result of the operation.
@@ -87,7 +87,7 @@
 
     // MARK: - Result Interpretation
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Whether the operation completed successfully.
         public var isSuccess: Bool {
             res >= 0

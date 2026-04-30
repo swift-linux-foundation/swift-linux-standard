@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Ring registration opcodes.
         public struct Rings {
             /// Enables a disabled ring.
@@ -27,9 +27,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to ring registration opcodes.
-        public static var rings: Kernel.IO.Uring.Register.Rings.Type { Kernel.IO.Uring.Register.Rings.self }
+        public static var rings: ISO_9945.Kernel.IO.Uring.Register.Rings.Type { ISO_9945.Kernel.IO.Uring.Register.Rings.self }
     }
 
 #endif

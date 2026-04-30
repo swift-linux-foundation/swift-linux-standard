@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring {
+    extension ISO_9945.Kernel.IO.Uring {
         /// Sync operation opcodes.
         public struct Sync {
             /// Access to file sync operations.
@@ -20,9 +20,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to sync operation opcodes.
-        public static var sync: Kernel.IO.Uring.Sync.Type { Kernel.IO.Uring.Sync.self }
+        public static var sync: ISO_9945.Kernel.IO.Uring.Sync.Type { ISO_9945.Kernel.IO.Uring.Sync.self }
     }
 
 #endif

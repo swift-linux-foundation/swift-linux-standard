@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Register {
+    extension ISO_9945.Kernel.IO.Uring.Register {
         /// Probe registration opcodes.
         public struct Probe {
             /// Probes supported operations.
@@ -25,9 +25,9 @@
         }
     }
 
-    extension Kernel.IO.Uring.Register.Opcode {
+    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to probe registration opcodes.
-        public static var probe: Kernel.IO.Uring.Register.Probe.Type { Kernel.IO.Uring.Register.Probe.self }
+        public static var probe: ISO_9945.Kernel.IO.Uring.Register.Probe.Type { ISO_9945.Kernel.IO.Uring.Register.Probe.self }
     }
 
 #endif

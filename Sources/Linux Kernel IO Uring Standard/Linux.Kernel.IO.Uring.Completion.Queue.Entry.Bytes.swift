@@ -12,15 +12,15 @@
 #if os(Linux)
     public import Kernel_IO_Primitives
 
-    extension Kernel.IO.Uring.Completion.Queue.Entry {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Accessor for byte-related properties.
         public var bytes: Bytes { Bytes(entry: self) }
 
         /// Byte-related properties for completion entry.
         public struct Bytes: Sendable {
-            let entry: Kernel.IO.Uring.Completion.Queue.Entry
+            let entry: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry
 
-            init(entry: Kernel.IO.Uring.Completion.Queue.Entry) {
+            init(entry: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry) {
                 self.entry = entry
             }
 
