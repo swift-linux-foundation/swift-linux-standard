@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-    public import Kernel_Event_Primitives
 
     extension Kernel.Event.Poll.Events {
         /// Project a cross-platform ``Kernel/Descriptor/Interest`` onto the
