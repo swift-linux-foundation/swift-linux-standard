@@ -15,7 +15,6 @@
 @_spi(Syscall) public import Error_Primitives
 @_spi(Syscall) public import Kernel_File_Primitives
 @_spi(Syscall) public import Path_Primitives
-@_spi(Syscall) public import Kernel_Descriptor_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
