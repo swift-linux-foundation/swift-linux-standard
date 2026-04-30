@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
 
     #if canImport(Glibc)
         internal import Glibc

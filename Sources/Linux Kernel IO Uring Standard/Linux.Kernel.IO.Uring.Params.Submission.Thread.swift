@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
     public import System_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Params.Submission {

@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Kernel_IO_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Restriction {
         /// The kind of restriction to apply.

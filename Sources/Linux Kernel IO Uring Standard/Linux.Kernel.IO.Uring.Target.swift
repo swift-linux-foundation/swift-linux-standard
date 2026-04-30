@@ -10,7 +10,6 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    @_spi(Syscall) public import Kernel_IO_Primitives
 
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
