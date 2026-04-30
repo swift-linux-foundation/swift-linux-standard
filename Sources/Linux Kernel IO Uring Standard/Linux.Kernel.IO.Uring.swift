@@ -13,7 +13,6 @@
     @_spi(Syscall) public import Kernel_IO_Primitives
     @_spi(Syscall) public import Error_Primitives
     @_spi(Syscall) public import Memory_Primitives
-    @_spi(Syscall) public import Kernel_File_Primitives
 
     public import CPU_Primitives
 
