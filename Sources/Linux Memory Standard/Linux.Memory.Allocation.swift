@@ -11,7 +11,7 @@
 
 public import Linux_Standard_Core
 
-extension Linux_Standard_Core.Memory {
+extension Linux_Standard_Core.Linux.Memory {
     /// Allocation namespace for Linux memory allocation tracking.
     public enum Allocation: Sendable {}
 }
