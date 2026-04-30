@@ -11,7 +11,6 @@
 
 #if os(Linux)
     public import Kernel_IO_Primitives
-    public import Kernel_Primitives_Core
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
     extension Kernel.IO.Uring.Wakeup {

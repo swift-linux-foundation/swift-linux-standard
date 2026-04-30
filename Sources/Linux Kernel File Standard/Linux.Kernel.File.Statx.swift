@@ -1,6 +1,5 @@
 #if os(Linux)
 
-@_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Kernel_File_Primitives
 
 #if canImport(CLinuxKernelShim)

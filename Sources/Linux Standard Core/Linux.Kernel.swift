@@ -9,7 +9,6 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Kernel_Primitives_Core
 
 extension Linux {
     /// Linux kernel mechanisms.

@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-public import Kernel_Primitives_Core
 
 extension Kernel.Futex.Wait {
     /// A single entry in a vectored futex wait operation.

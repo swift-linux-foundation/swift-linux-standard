@@ -13,7 +13,6 @@
 import Testing
     import Kernel_Primitives_Test_Support
 
-    import Kernel_Primitives_Core
     import Kernel_IO_Primitives
     import Error_Primitives
     import Kernel_File_Primitives

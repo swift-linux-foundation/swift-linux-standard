@@ -11,7 +11,6 @@
 
 #if os(Linux)
 
-public import Kernel_Primitives_Core
 public import Error_Primitives
 public import Kernel_File_Primitives
 public import Memory_Primitives

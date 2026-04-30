@@ -11,7 +11,6 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-@_spi(Syscall) public import Kernel_Primitives_Core
 @_spi(Syscall) public import Random_Primitives
 public import ISO_9945_Kernel_System
 
