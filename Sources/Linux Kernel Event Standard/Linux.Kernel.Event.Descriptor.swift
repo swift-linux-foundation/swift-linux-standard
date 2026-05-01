@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
+public import Error_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -131,8 +131,7 @@ extension ISO_9945.Kernel.Event.Descriptor {
     /// `ISO_9945.Kernel.Event.Descriptor`.
     ///
     /// Suppresses EAGAIN and EBADF.
-    @_spi(Syscall)
-    public static func signal(rawDescriptor fd: Int32) {
+    package static func signal(rawDescriptor fd: Int32) {
         var val: UInt64 = 1
         #if canImport(Glibc)
         let result = unsafe Glibc.write(fd, &val, MemoryLayout<UInt64>.size)

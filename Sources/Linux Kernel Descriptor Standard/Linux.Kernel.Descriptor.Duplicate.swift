@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-    @_spi(Syscall) public import Error_Primitives
+    public import Error_Primitives
 
     #if canImport(Glibc)
         internal import Glibc
@@ -47,8 +47,7 @@
         /// - Throws: `ISO_9945.Kernel.Descriptor.Duplicate.Error` on failure. On throw,
         ///   the destination slot is unchanged and still refers to its original
         ///   resource.
-        @_spi(Syscall)
-        public static func duplicate(
+        internal static func duplicate(
             sourceFd: Int32,
             destinationFd: Int32,
             flags: Options

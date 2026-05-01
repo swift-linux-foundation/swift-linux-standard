@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
+public import Error_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -59,8 +59,7 @@ extension ISO_9945.Kernel.Copy.Range {
     ///   - length: Maximum number of bytes to copy.
     /// - Returns: Number of bytes copied (may be less than `length`).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-    @_spi(Syscall)
-    public static func copy(
+    internal static func copy(
         fromFd sourceFd: Int32,
         sourceOffset: inout ISO_9945.Kernel.File.Offset,
         toFd destinationFd: Int32,

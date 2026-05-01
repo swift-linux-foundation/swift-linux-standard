@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
-@_spi(Syscall) public import Path_Primitives
+public import Error_Primitives
+public import Path_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -82,8 +82,7 @@ extension ISO_9945.Kernel.File.Clone {
         ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
         /// - Returns: `true` if cloned via FICLONE, `false` if the filesystem
         ///   does not support reflink (caller falls back to byte copy).
-        @_spi(Syscall)
-        public static func attempt(
+        internal static func attempt(
             sourceFd: Int32,
             destinationFd: Int32
         ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Bool {
@@ -128,8 +127,7 @@ extension ISO_9945.Kernel.File.Clone {
         ///   - sourceFd: Source file raw fd (open for reading).
         ///   - destinationFd: Destination file raw fd (open for writing).
         ///   - length: Total number of bytes to copy.
-        @_spi(Syscall)
-        public static func copy(
+        internal static func copy(
             sourceFd: Int32,
             destinationFd: Int32,
             length: Int

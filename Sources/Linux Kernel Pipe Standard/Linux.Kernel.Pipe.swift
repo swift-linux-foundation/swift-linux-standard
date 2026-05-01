@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
+public import Error_Primitives
 public import Algebra_Primitives_Core
 
 #if canImport(Glibc)
@@ -44,8 +44,7 @@ extension ISO_9945.Kernel.Pipe {
     ///   write end of the pipe.
     /// - Throws: `ISO_9945.Kernel.Pipe.Error.platform` on failure. L3-policy refines
     ///   to `.handle(...)` for `ISO_9945.Kernel.Descriptor.Validity.Error` codes.
-    @_spi(Syscall)
-    public static func pipe2(
+    internal static func pipe2(
         flags: Options
     ) throws(Error) -> (read: Int32, write: Int32) {
         var fds: (Int32, Int32) = (0, 0)

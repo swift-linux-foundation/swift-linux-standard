@@ -11,7 +11,7 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-@_spi(Syscall) public import Random_Primitives
+public import Random_Primitives
 
 #if canImport(Glibc)
     internal import Glibc

@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
+public import Error_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -50,8 +50,7 @@ extension ISO_9945.Kernel.Copy.Clone {
     ///   - sourceFd: Source file raw fd (open for reading).
     ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-    @_spi(Syscall)
-    public static func perform(
+    internal static func perform(
         fromFd sourceFd: Int32,
         toFd destinationFd: Int32
     ) throws(ISO_9945.Kernel.Copy.Error) {
