@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import Error_Primitives
+public import Error_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
