@@ -21,11 +21,14 @@
         /// Encapsulates:
         /// 1. eventfd creation (cloexec + nonblock)
         /// 2. io_uring registration (eventfd signals completions)
-        /// 3. Wakeup channel construction (fire-and-forget signal closure)
+        /// 3. Signal closure construction (fire-and-forget @Sendable closure)
         ///
-        /// All raw fd handling is L1-local. The caller sees only typed values.
+        /// All raw fd handling is L2-local. L3 consumers wrap the returned
+        /// `signal` closure into `Kernel.Wakeup.Channel(signal:)` at the site
+        /// of use; the closure carries the raw fd capture so L3 callers never
+        /// see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
         ///
-        /// - Returns: A ``Wakeup/Result`` containing the wakeup channel and eventfd.
+        /// - Returns: A ``Wakeup/Result`` containing the signal closure and eventfd.
         /// - Throws: ``Wakeup/Error`` on eventfd creation or registration failure.
         public func createWakeup() throws(Wakeup.Error) -> Wakeup.Result {
             // 1. Create eventfd
@@ -38,16 +41,16 @@
                 throw .register(error.code)
             }
 
-            // 3. Build wakeup channel
+            // 3. Build signal closure
             // Raw fd extracted for @Sendable closure capture —
             // ~Copyable ISO_9945.Kernel.Event.Descriptor cannot be captured.
             let rawEfd = eventfd.descriptor._rawValue
-            let channel = ISO_9945.Kernel.Wakeup.Channel {
+            let signal: @Sendable () -> Void = {
                 ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
 
             return Wakeup.Result(
-                channel: channel,
+                signal: signal,
                 eventfd: consume eventfd
             )
         }

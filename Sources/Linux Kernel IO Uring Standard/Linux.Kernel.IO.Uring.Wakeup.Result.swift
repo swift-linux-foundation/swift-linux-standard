@@ -16,19 +16,23 @@
         /// Bundle returned by ``Kernel/IO/Uring/createWakeup()``.
         ///
         /// ~Copyable because it contains a ~Copyable ``Kernel/Event/Descriptor``.
-        /// Access `channel` directly; extract `eventfd` via consuming call.
+        /// Access `signal` directly; extract `eventfd` via consuming call.
         public struct Result: ~Copyable {
-            /// The wakeup channel — signals completions via eventfd.
-            /// Sendable, safe to capture in cross-thread closures.
-            public let channel: ISO_9945.Kernel.Wakeup.Channel
+            /// The signal closure — signals completions via eventfd.
+            /// `@Sendable`, safe to capture in cross-thread closures.
+            ///
+            /// L3 consumers wrap into `Kernel.Wakeup.Channel(signal:)` at the
+            /// site of use; the closure carries the raw fd capture so L3 callers
+            /// never see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
+            public let signal: @Sendable () -> Void
 
             private var _eventfd: ISO_9945.Kernel.Event.Descriptor?
 
             init(
-                channel: ISO_9945.Kernel.Wakeup.Channel,
+                signal: @escaping @Sendable () -> Void,
                 eventfd: consuming ISO_9945.Kernel.Event.Descriptor
             ) {
-                self.channel = channel
+                self.signal = signal
                 self._eventfd = consume eventfd
             }
 
