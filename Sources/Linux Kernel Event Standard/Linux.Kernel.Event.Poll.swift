@@ -107,21 +107,25 @@
             try Self.wait(self, events: &events, timeout: timeout)
         }
 
-        /// Registers an eventfd for wakeup signaling and returns a Sendable channel.
+        /// Registers an eventfd for wakeup signaling and returns a Sendable signal closure.
         ///
         /// Adds the eventfd to this epoll instance with `EPOLLIN | EPOLLET` and
-        /// returns a channel whose `wake()` method signals the eventfd from any thread.
+        /// returns a `@Sendable` closure that signals the eventfd from any thread.
         /// Call before transferring the Poll to the poll thread via `sending`.
         ///
+        /// L3 consumers wrap the returned closure into `Kernel.Wakeup.Channel(signal:)`
+        /// at the site of use; the closure carries the raw fd capture so L3 callers
+        /// never see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
+        ///
         /// - Parameter eventfd: The eventfd to register for wakeup signaling.
-        /// - Returns: A Sendable wakeup channel.
+        /// - Returns: A `@Sendable` signal closure.
         public func wakeup(
             eventfd: borrowing ISO_9945.Kernel.Event.Descriptor
-        ) throws(Error) -> ISO_9945.Kernel.Wakeup.Channel {
+        ) throws(Error) -> @Sendable () -> Void {
             let wakeupEvent = Event(events: [.in, .et])
             try self.add(fd: eventfd.descriptor, event: wakeupEvent)
             let rawEfd = eventfd.descriptor._rawValue
-            return ISO_9945.Kernel.Wakeup.Channel {
+            return {
                 ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
         }
