@@ -12,7 +12,7 @@
 #if os(Linux)
     public import Dimension_Primitives
 
-    public import Binary_Primitives_Core
+    public import Binary_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
         /// File offset for io_uring operations.
