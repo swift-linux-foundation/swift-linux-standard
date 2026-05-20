@@ -10,7 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import Binary_Primitives_Core
+    public import Binary_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
         /// Buffer length for io_uring operations.
