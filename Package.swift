@@ -92,7 +92,7 @@ let package = Package(
                             .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
-                .product(name: "Algebra Primitives Core", package: "swift-algebra-primitives"),
+                .product(name: "Algebra Primitives", package: "swift-algebra-primitives"),
             ]
         ),
         // MARK: - Kernel Socket
