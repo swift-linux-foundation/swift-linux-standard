@@ -69,7 +69,7 @@
         /// This is the safe, normative API for creating a Length from contiguous storage.
         ///
         /// - Parameter span: The span whose count to use.
-        public init(_ span: Span<UInt8>) {
+        public init(_ span: Swift.Span<UInt8>) {
             self.init(UInt32(clamping: span.count))
         }
 
