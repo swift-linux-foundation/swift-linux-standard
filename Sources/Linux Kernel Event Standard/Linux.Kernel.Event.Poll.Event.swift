@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -64,7 +65,7 @@
             public init(events: Events = [], data: ISO_9945.Kernel.Event.Poll.Data = .zero) {
                 self.cValue = epoll_event()
                 self.cValue.events = events.rawValue
-                self.cValue.data.u64 = data.rawValue
+                self.cValue.data.u64 = data.underlying
             }
         }
     }
@@ -80,8 +81,8 @@
 
         /// Data associated with the file descriptor.
         public var data: ISO_9945.Kernel.Event.Poll.Data {
-            get { ISO_9945.Kernel.Event.Poll.Data(__unchecked: (), cValue.data.u64) }
-            set { cValue.data.u64 = newValue.rawValue }
+            get { ISO_9945.Kernel.Event.Poll.Data(_unchecked: cValue.data.u64) }
+            set { cValue.data.u64 = newValue.underlying }
         }
     }
 

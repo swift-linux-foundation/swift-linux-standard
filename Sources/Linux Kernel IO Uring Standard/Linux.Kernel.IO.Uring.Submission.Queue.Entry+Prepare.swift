@@ -10,8 +10,13 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Kernel_Process
+public import ISO_9945_Kernel_Socket_Address
+public import ISO_9945_Kernel_Socket
     public import Error_Primitives
     public import Memory_Primitives
+    public import Memory_Map_Primitives
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard
@@ -458,7 +463,7 @@
             self.opcode = .pipe.splice
             target.apply(to: &self)
             self.setSpliceSource(source)
-            self.addr = offsetIn.rawValue
+            self.addr = offsetIn.underlying
             self.offset = offsetOut
             self.len = length
             self.spliceFlags = flags

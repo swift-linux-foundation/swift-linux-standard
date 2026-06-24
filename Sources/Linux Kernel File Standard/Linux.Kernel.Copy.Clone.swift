@@ -11,6 +11,8 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
+public import ISO_9945_Kernel_File
 public import Error_Primitives
 
 #if canImport(Glibc)

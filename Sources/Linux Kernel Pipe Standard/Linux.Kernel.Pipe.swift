@@ -11,8 +11,9 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
 public import Error_Primitives
-public import Algebra_Primitives_Core
+public import Pair_Primitives
 
 #if canImport(Glibc)
     internal import Glibc
@@ -72,7 +73,7 @@ extension ISO_9945.Kernel.Pipe {
     /// `ISO_9945.Kernel.Descriptor(_rawValue:)` construction for both ends. § 5.6
     /// handle-returning bifurcation generalized to a pair: kernel produces
     /// both fds; this typed form wraps each in the L1 descriptor type.
-    /// Returns an `Algebra.Pair` (`first` = read, `second` = write) because
+    /// Returns a `Pair` (`first` = read, `second` = write) because
     /// Swift 6.3 doesn't allow tuples of ~Copyable types.
     public static func pipe2(
         flags: Options

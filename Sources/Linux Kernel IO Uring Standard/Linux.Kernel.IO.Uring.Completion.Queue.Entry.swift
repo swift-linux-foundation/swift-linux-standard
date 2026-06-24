@@ -10,6 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -62,7 +64,7 @@
         /// This is the value set via `entry.data` when the operation was submitted.
         /// Typically used to recover the operation context (e.g., a pointer to Storage).
         public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
-            ISO_9945.Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data)
+            ISO_9945.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data)
         }
 
         /// Raw result of the operation.
@@ -106,7 +108,7 @@
         ///
         /// Returns nil if the operation succeeded.
         public var errorNumber: Error_Primitives.Error.Number? {
-            isError ? Error_Primitives.Error.Number(__unchecked: (), -res) : nil
+            isError ? Error_Primitives.Error.Number(_unchecked: -res) : nil
         }
     }
 

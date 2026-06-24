@@ -10,6 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
     public import Memory_Primitives
 
     #if canImport(Glibc)
@@ -78,7 +80,7 @@
         /// Creates a byte offset from a kernel-provided UInt32 value.
         @inlinable
         package init(_ cOffset: UInt32) {
-            self.init(__unchecked: (), Affine.Discrete.Vector(Int(cOffset)))
+            self.init(_unchecked: Affine.Discrete.Vector(Int(cOffset)))
         }
     }
 

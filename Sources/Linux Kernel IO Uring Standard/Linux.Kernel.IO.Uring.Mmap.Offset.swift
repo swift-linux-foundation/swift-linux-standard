@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Mmap {
         /// Mmap offsets for io_uring ring buffers.
         ///

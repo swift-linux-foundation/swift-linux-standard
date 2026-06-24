@@ -11,6 +11,8 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
+@_spi(Syscall) public import ISO_9945_Kernel_Signal
 public import Error_Primitives
 
 #if canImport(Glibc)
@@ -61,16 +63,25 @@ extension ISO_9945.Kernel.Signal.Descriptor {
     /// otherwise they are still delivered to the default handler.
     ///
     /// - Parameters:
-    ///   - mask: Signal set the descriptor should deliver. Pass via
-    ///     `withUnsafePointer(to:)` against a populated `sigset_t`.
+    ///   - mask: Signal set the descriptor should deliver, a populated
+    ///     ``ISO_9945/Kernel/Signal/Set``.
     ///   - flags: Creation flags (`SFD_CLOEXEC`, `SFD_NONBLOCK`).
     /// - Returns: An owned signal descriptor.
     /// - Throws: ``Error/create(_:)`` on failure.
     public static func create(
-        mask: UnsafePointer<sigset_t>,
-        flags: Int32 = SFD_CLOEXEC
+        mask: borrowing ISO_9945.Kernel.Signal.Set,
+        flags: Int32? = nil
     ) throws(ISO_9945.Kernel.Signal.Descriptor.Error) -> ISO_9945.Kernel.Signal.Descriptor {
-        let fd = unsafe signalfd(-1, mask, flags)
+        // `SFD_CLOEXEC` is imported `internal` from Glibc and so cannot appear
+        // in a default-argument value; resolve it in the body instead.
+        let resolvedFlags = flags ?? Int32(SFD_CLOEXEC)
+        // The set's `sigset_t` is owned by iso-9945 (kept off its public API
+        // per PLAT-ARCH-005a); reach it via the opaque raw-pointer bridge and
+        // bind to the platform `sigset_t` here, inside linux-standard's own
+        // platform-C scope, to hand it to the Linux-only `signalfd(2)`.
+        let fd = unsafe mask.withUnsafeRawPointer { raw in
+            unsafe signalfd(-1, raw.assumingMemoryBound(to: sigset_t.self), resolvedFlags)
+        }
         guard fd >= 0 else {
             throw .create(.posix(errno))
         }

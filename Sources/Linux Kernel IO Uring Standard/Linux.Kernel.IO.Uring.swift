@@ -10,6 +10,9 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+@_spi(Syscall) public import ISO_9945_Core
+public import ISO_9945_Kernel_File
     public import Error_Primitives
     public import Memory_Primitives
 
@@ -44,7 +47,7 @@
         ///
         /// ```swift
         /// var params = ISO_9945.Kernel.IO.Uring.Params()
-        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: .init(__unchecked: (), Cardinal(256)), params: &params)
+        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: .init(_unchecked: Cardinal(256)), params: &params)
         /// var ring = try ISO_9945.Kernel.IO.Uring(descriptor: consume fd, params: params)
         /// // ring now owns the descriptor — deinit unmaps regions then closes fd
         /// ```
@@ -93,11 +96,11 @@
             @usableFromInline let singleMmap: Bool
 
             // mmap regions (owned — deinit unmaps)
-            @usableFromInline let sqRingAddr: Memory.Address
+            @usableFromInline let sqRingAddr: Memory_Primitives.Memory.Address
             @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let cqRingAddr: Memory.Address
+            @usableFromInline let cqRingAddr: Memory_Primitives.Memory.Address
             @usableFromInline let cqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let sqeAddr: Memory.Address
+            @usableFromInline let sqeAddr: Memory_Primitives.Memory.Address
             @usableFromInline let sqeSize: ISO_9945.Kernel.File.Size
 
             @unsafe
@@ -114,9 +117,9 @@
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Memory.Address, sqRingSize: ISO_9945.Kernel.File.Size,
-                cqRingAddr: Memory.Address, cqRingSize: ISO_9945.Kernel.File.Size,
-                sqeAddr: Memory.Address, sqeSize: ISO_9945.Kernel.File.Size
+                sqRingAddr: Memory_Primitives.Memory.Address, sqRingSize: ISO_9945.Kernel.File.Size,
+                cqRingAddr: Memory_Primitives.Memory.Address, cqRingSize: ISO_9945.Kernel.File.Size,
+                sqeAddr: Memory_Primitives.Memory.Address, sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
                 self.sqHead = sqHead
@@ -175,7 +178,7 @@
             params: inout Params
         ) throws(ISO_9945.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
             var cParams = params.cValue
-            let fd = swift_io_uring_setup(UInt32(entries.rawValue.rawValue), &cParams)
+            let fd = swift_io_uring_setup(UInt32(entries.underlying.rawValue), &cParams)
             guard fd >= 0 else {
                 throw .setup(.posix(errno))
             }
@@ -212,8 +215,8 @@
         ) throws(ISO_9945.Kernel.IO.Uring.Error) -> Submission.Count {
             let result = swift_io_uring_enter(
                 fd._rawValue,
-                UInt32(toSubmit.rawValue.rawValue),
-                UInt32(minComplete.rawValue.rawValue),
+                UInt32(toSubmit.underlying.rawValue),
+                UInt32(minComplete.underlying.rawValue),
                 flags.rawValue,
                 nil,
                 0
@@ -223,7 +226,7 @@
                 if code.posix == EINTR { throw .interrupted }
                 throw .enter(code)
             }
-            return Submission.Count(__unchecked: (), Cardinal(UInt(result)))
+            return Submission.Count(_unchecked: Cardinal(UInt(result)))
         }
 
         /// Registers resources with the io_uring instance.
@@ -407,7 +410,7 @@
                 throw .setup(.posix(errno))
             }
 
-            // WHY: .vector.rawValue extracts Int from Memory.Address.Offset for stdlib
+            // WHY: .vector.rawValue extracts Int from Memory_Primitives.Memory.Address.Offset for stdlib
             // pointer arithmetic. Memory Primitives Standard Library Integration provides
             // typed overloads but isn't in the dependency chain.
             // WHEN TO REMOVE: when kernel-primitives re-exports the integration module.
@@ -425,9 +428,9 @@
                 cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
                     .assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self)),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Memory.Address(sq), sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Memory.Address(cq), cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Memory.Address(sqe), sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
+                sqRingAddr: unsafe Memory_Primitives.Memory.Address(sq), sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
+                cqRingAddr: unsafe Memory_Primitives.Memory.Address(cq), cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
+                sqeAddr: unsafe Memory_Primitives.Memory.Address(sqe), sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
             )
         }
     }
@@ -471,7 +474,7 @@
         public var hasCapacity: Bool {
             mutating get {
                 let head = unsafe CPU.Atomic.load(sqHead, ordering: .acquiring)
-                return sqEntries.rawValue.rawValue > UInt(sqeTail &- head)
+                return sqEntries.underlying.rawValue > UInt(sqeTail &- head)
             }
         }
 
@@ -504,12 +507,12 @@
             // Single atomic store-release: makes SQE writes visible to the kernel.
             unsafe CPU.Atomic.store(sqTail, localTail, ordering: .releasing)
 
-            return Submission.Count(__unchecked: (), Cardinal(UInt(flushed)))
+            return Submission.Count(_unchecked: Cardinal(UInt(flushed)))
         }
 
         /// Number of SQEs locally queued but not yet flushed to the kernel.
         public var pending: Submission.Count {
-            Submission.Count(__unchecked: (), Cardinal(UInt(sqeTail &- sqeHead)))
+            Submission.Count(_unchecked: Cardinal(UInt(sqeTail &- sqeHead)))
         }
     }
 
@@ -546,14 +549,14 @@
 
             // Release-store head: makes consumed CQ slots available to the kernel.
             unsafe CPU.Atomic.store(cqHead, head, ordering: .releasing)
-            return Completion.Count(__unchecked: (), Cardinal(UInt(count)))
+            return Completion.Count(_unchecked: Cardinal(UInt(count)))
         }
 
         /// Number of completions available without entering the kernel.
         public var completionsAvailable: Completion.Count {
             let tail = unsafe CPU.Atomic.load(cqTail, ordering: .acquiring)
             let head = unsafe cqHead.pointee
-            return Completion.Count(__unchecked: (), Cardinal(UInt(tail &- head)))
+            return Completion.Count(_unchecked: Cardinal(UInt(tail &- head)))
         }
     }
 

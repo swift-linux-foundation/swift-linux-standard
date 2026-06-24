@@ -1,6 +1,7 @@
 #if os(Linux)
 
-
+public import ISO_9945_Core
+public import ISO_9945_Kernel_Socket
 #if canImport(Glibc)
     internal import Glibc
 #elseif canImport(Musl)

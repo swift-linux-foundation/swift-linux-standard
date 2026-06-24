@@ -1,6 +1,7 @@
 #if os(Linux)
 
-
+public import ISO_9945_Core
+public import ISO_9945_Kernel_File
 #if canImport(CLinuxKernelShim)
     internal import CLinuxKernelShim
 #endif
@@ -46,12 +47,12 @@ extension ISO_9945.Kernel.File.Statx {
 
     /// Owner user ID.
     public var uid: ISO_9945.Kernel.User.ID {
-        get { ISO_9945.Kernel.User.ID(__unchecked: (), cValue.stx_uid) }
+        get { ISO_9945.Kernel.User.ID(_unchecked: cValue.stx_uid) }
     }
 
     /// Owner group ID.
     public var gid: ISO_9945.Kernel.Group.ID {
-        get { ISO_9945.Kernel.Group.ID(__unchecked: (), cValue.stx_gid) }
+        get { ISO_9945.Kernel.Group.ID(_unchecked: cValue.stx_gid) }
     }
 
     /// Raw file mode (type + permission bits).

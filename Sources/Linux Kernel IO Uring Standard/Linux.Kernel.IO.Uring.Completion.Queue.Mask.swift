@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Ring mask — extracts physical slot from a monotonic UInt32 counter.
         ///

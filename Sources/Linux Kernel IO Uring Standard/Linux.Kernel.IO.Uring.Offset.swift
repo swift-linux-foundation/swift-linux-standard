@@ -10,6 +10,9 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
+public import ISO_9945_Kernel_File
     public import Dimension_Primitives
 
     public import Binary_Primitives
@@ -53,8 +56,8 @@
         /// Negative file offsets (indicating "current position") are
         /// converted to `.current` (UInt64.max).
         public init(_ fileOffset: ISO_9945.Kernel.File.Offset) {
-            if fileOffset.rawValue >= 0 {
-                self.init(UInt64(fileOffset.rawValue))
+            if fileOffset.underlying >= 0 {
+                self.init(UInt64(fileOffset.underlying))
             } else {
                 self = .current
             }
@@ -68,7 +71,7 @@
             if self == .current {
                 return "current"
             }
-            return "\(rawValue)"
+            return "\(underlying)"
         }
     }
 

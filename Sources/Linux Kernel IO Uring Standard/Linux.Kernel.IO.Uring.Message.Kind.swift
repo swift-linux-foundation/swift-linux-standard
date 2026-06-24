@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Message {
         /// The kind of message sent between rings.
         public enum Kind: UInt32, Sendable {

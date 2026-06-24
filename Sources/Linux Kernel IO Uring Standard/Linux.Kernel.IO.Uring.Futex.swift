@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Futex operation opcodes (kernel 6.7+).
         public struct Futex {

@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     #if canImport(Glibc)
         internal import Glibc
     #elseif canImport(Musl)
@@ -92,10 +93,10 @@
             /// Creates params from the C struct (after setup).
             internal init(_ cParams: io_uring_params) {
                 self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count(
-                    __unchecked: (), Cardinal(UInt(cParams.sq_entries))
+                    _unchecked: Cardinal(UInt(cParams.sq_entries))
                 )
                 self.cqEntries = ISO_9945.Kernel.IO.Uring.Completion.Count(
-                    __unchecked: (), Cardinal(UInt(cParams.cq_entries))
+                    _unchecked: Cardinal(UInt(cParams.cq_entries))
                 )
                 self.flags = Setup.Options(rawValue: cParams.flags)
                 self.submission = Submission(

@@ -10,6 +10,9 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
+public import ISO_9945_Kernel_File
     public import Binary_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
@@ -90,12 +93,12 @@
         ///
         /// Saturates at `UInt32.max` for sizes larger than 4GB.
         public init(_ size: ISO_9945.Kernel.File.Size) {
-            if size.rawValue > Int64(UInt32.max) {
+            if size.underlying > Int64(UInt32.max) {
                 self.init(UInt32.max)
-            } else if size.rawValue < 0 {
+            } else if size.underlying < 0 {
                 self.init(UInt32(0))
             } else {
-                self.init(UInt32(size.rawValue))
+                self.init(UInt32(size.underlying))
             }
         }
     }

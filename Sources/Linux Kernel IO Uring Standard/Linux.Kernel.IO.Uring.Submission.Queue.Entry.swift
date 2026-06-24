@@ -10,8 +10,12 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Kernel_Socket_Address
+public import ISO_9945_Kernel_Socket
     public import Error_Primitives
     public import Memory_Primitives
+    public import Memory_Map_Primitives
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard
@@ -20,7 +24,7 @@
     public import Linux_Kernel_Memory_Standard
     public import ISO_9945_Kernel_File
     public import ISO_9945_Kernel_Process
-    public import ISO_9945_Core
+    @_spi(Syscall) public import ISO_9945_Core
 
     #if canImport(Glibc)
         internal import Glibc
@@ -112,7 +116,7 @@
         /// File offset for read/write operations.
         public var offset: ISO_9945.Kernel.IO.Uring.Offset {
             get { ISO_9945.Kernel.IO.Uring.Offset(cValue.off) }
-            set { cValue.off = newValue.rawValue }
+            set { cValue.off = newValue.underlying }
         }
 
         /// Buffer address or other address field.
@@ -128,19 +132,19 @@
         /// Buffer length.
         public var len: ISO_9945.Kernel.IO.Uring.Length {
             get { ISO_9945.Kernel.IO.Uring.Length(cValue.len) }
-            set { cValue.len = newValue.rawValue }
+            set { cValue.len = newValue.underlying }
         }
 
         /// Operation data returned with completion.
         public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
-            get { ISO_9945.Kernel.IO.Uring.Operation.Data(__unchecked: (), cValue.user_data) }
-            set { cValue.user_data = newValue.rawValue }
+            get { ISO_9945.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data) }
+            set { cValue.user_data = newValue.underlying }
         }
 
         /// Personality ID (for credentials).
         public var personality: ISO_9945.Kernel.IO.Uring.Personality.ID {
-            get { ISO_9945.Kernel.IO.Uring.Personality.ID(__unchecked: (), cValue.personality) }
-            set { cValue.personality = newValue.rawValue }
+            get { ISO_9945.Kernel.IO.Uring.Personality.ID(_unchecked: cValue.personality) }
+            set { cValue.personality = newValue.underlying }
         }
     }
 
@@ -469,7 +473,7 @@
         /// Set the addr field from operation data (cancel/timeout-remove/poll-remove target).
         @usableFromInline
         internal mutating func setAddr(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
-            cValue.addr = data.rawValue
+            cValue.addr = data.underlying
         }
 
         /// Set the offset field from a pointer (openat2 how, statx buffer, etc.).
@@ -508,7 +512,7 @@
         /// Message ring target data (stored in off).
         @usableFromInline
         internal mutating func setMessageTarget(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
-            cValue.off = data.rawValue
+            cValue.off = data.underlying
         }
 
         /// Buffer provide/remove count (stored in fd).

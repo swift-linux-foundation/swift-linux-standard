@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-
+public import ISO_9945_Core
 extension ISO_9945.Kernel.Futex {
     /// Vectored futex wait operations.
     public struct Wait: Sendable {}

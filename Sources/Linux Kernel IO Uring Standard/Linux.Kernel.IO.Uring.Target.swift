@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
