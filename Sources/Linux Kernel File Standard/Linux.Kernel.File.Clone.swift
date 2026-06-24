@@ -84,7 +84,7 @@ extension ISO_9945.Kernel.File.Clone {
         ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
         /// - Returns: `true` if cloned via FICLONE, `false` if the filesystem
         ///   does not support reflink (caller falls back to byte copy).
-        internal static func attempt(
+        @_spi(Syscall) public static func attempt(
             sourceFd: Int32,
             destinationFd: Int32
         ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Bool {
@@ -105,18 +105,6 @@ extension ISO_9945.Kernel.File.Clone {
 
 }
 
-extension ISO_9945.Kernel.File.Clone.Ficlone {
-    /// Attempts to clone a file using ioctl(FICLONE) — typed L2 form.
-    ///
-    /// Phase 1.5 typed L2 form. Delegates to the raw `attempt(sourceFd:destinationFd:)` SPI.
-    public static func attempt(
-        source: borrowing ISO_9945.Kernel.Descriptor,
-        destination: borrowing ISO_9945.Kernel.Descriptor
-    ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) -> Bool {
-        try attempt(sourceFd: source._rawValue, destinationFd: destination._rawValue)
-    }
-}
-
 extension ISO_9945.Kernel.File.Clone {
     /// Linux copy_file_range operations.
     public enum CopyRange {
@@ -129,7 +117,7 @@ extension ISO_9945.Kernel.File.Clone {
         ///   - sourceFd: Source file raw fd (open for reading).
         ///   - destinationFd: Destination file raw fd (open for writing).
         ///   - length: Total number of bytes to copy.
-        internal static func copy(
+        @_spi(Syscall) public static func copy(
             sourceFd: Int32,
             destinationFd: Int32,
             length: Int
@@ -159,19 +147,6 @@ extension ISO_9945.Kernel.File.Clone {
                 remaining -= copied
             }
         }
-    }
-}
-
-extension ISO_9945.Kernel.File.Clone.CopyRange {
-    /// Copies file data using copy_file_range — typed L2 form.
-    ///
-    /// Phase 1.5 typed L2 form. Delegates to the raw `copy(sourceFd:destinationFd:length:)` SPI.
-    public static func copy(
-        source: borrowing ISO_9945.Kernel.Descriptor,
-        destination: borrowing ISO_9945.Kernel.Descriptor,
-        length: Int
-    ) throws(ISO_9945.Kernel.File.Clone.Error.Syscall) {
-        try copy(sourceFd: source._rawValue, destinationFd: destination._rawValue, length: length)
     }
 }
 

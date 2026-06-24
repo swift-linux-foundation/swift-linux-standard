@@ -52,7 +52,7 @@ extension ISO_9945.Kernel.Copy.Clone {
     ///   - sourceFd: Source file raw fd (open for reading).
     ///   - destinationFd: Destination file raw fd (must be empty, open for writing).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-    internal static func perform(
+    @_spi(Syscall) public static func perform(
         fromFd sourceFd: Int32,
         toFd destinationFd: Int32
     ) throws(ISO_9945.Kernel.Copy.Error) {
@@ -60,16 +60,6 @@ extension ISO_9945.Kernel.Copy.Clone {
         guard result == 0 else {
             throw ISO_9945.Kernel.Copy.Error(posixErrno: errno)
         }
-    }
-
-    /// Clones a file using FICLONE — typed L2 form.
-    ///
-    /// Phase 1.5 typed L2 form. Delegates to the raw `perform(fromFd:toFd:)` SPI.
-    public static func perform(
-        from source: borrowing ISO_9945.Kernel.Descriptor,
-        to destination: borrowing ISO_9945.Kernel.Descriptor
-    ) throws(ISO_9945.Kernel.Copy.Error) {
-        try perform(fromFd: source._rawValue, toFd: destination._rawValue)
     }
 }
 
