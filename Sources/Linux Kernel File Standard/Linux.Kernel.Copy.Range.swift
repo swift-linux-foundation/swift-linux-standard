@@ -61,7 +61,7 @@ extension ISO_9945.Kernel.Copy.Range {
     ///   - length: Maximum number of bytes to copy.
     /// - Returns: Number of bytes copied (may be less than `length`).
     /// - Throws: ``Kernel/Copy/Error`` on failure.
-    internal static func copy(
+    @_spi(Syscall) public static func copy(
         fromFd sourceFd: Int32,
         sourceOffset: inout ISO_9945.Kernel.File.Offset,
         toFd destinationFd: Int32,
@@ -89,25 +89,6 @@ extension ISO_9945.Kernel.Copy.Range {
         sourceOffset = ISO_9945.Kernel.File.Offset(Int64(srcOff))
         destOffset = ISO_9945.Kernel.File.Offset(Int64(dstOff))
         return ISO_9945.Kernel.File.Size(Int64(result))
-    }
-
-    /// Copies bytes between file descriptors using copy_file_range(2) — typed L2 form.
-    ///
-    /// Phase 1.5 typed L2 form. Delegates to the raw `copy(fromFd:...:toFd:...:length:)` SPI.
-    public static func copy(
-        from source: borrowing ISO_9945.Kernel.Descriptor,
-        sourceOffset: inout ISO_9945.Kernel.File.Offset,
-        to destination: borrowing ISO_9945.Kernel.Descriptor,
-        destOffset: inout ISO_9945.Kernel.File.Offset,
-        length: ISO_9945.Kernel.File.Size
-    ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
-        try copy(
-            fromFd: source._rawValue,
-            sourceOffset: &sourceOffset,
-            toFd: destination._rawValue,
-            destOffset: &destOffset,
-            length: length
-        )
     }
 }
 
