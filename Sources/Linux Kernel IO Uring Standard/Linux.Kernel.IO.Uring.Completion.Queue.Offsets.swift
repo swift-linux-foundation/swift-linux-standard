@@ -10,6 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
     public import Memory_Primitives
 
     #if canImport(Glibc)

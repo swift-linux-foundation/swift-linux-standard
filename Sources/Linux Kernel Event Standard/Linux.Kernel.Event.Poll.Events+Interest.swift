@@ -10,10 +10,11 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+public import ISO_9945_Core
 
 
     extension ISO_9945.Kernel.Event.Poll.Events {
-        /// Project a cross-platform ``Kernel/Descriptor/Interest`` onto the
+        /// Project a cross-platform ``Kernel/Event/Interest`` onto the
         /// Linux epoll event mask.
         ///
         /// Maps the request-side readiness categories (`.read`, `.write`,
@@ -43,7 +44,7 @@
         /// entry.poll(target: ..., events: events, multishot: false, ...)
         /// ```
         @inlinable
-        public init(interest: ISO_9945.Kernel.Descriptor.Interest) {
+        public init(interest: ISO_9945.Kernel.Event.Interest) {
             var events: Self = []
             if interest.contains(.read) {
                 events.insert(.in)

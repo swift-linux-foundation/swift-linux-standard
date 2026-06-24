@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     public import Error_Primitives
 
     extension ISO_9945.Kernel.Event.Poll {
@@ -42,7 +43,7 @@
         /// - Parameter pointer: A pointer to associate with the event.
         @unsafe
         public init(_ pointer: UnsafeRawPointer) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a typed pointer.
@@ -50,7 +51,7 @@
         /// - Parameter pointer: A pointer to associate with the event.
         @unsafe
         public init<T>(pointer: UnsafePointer<T>) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates poll data from a mutable typed pointer.
@@ -58,7 +59,7 @@
         /// - Parameter pointer: A mutable pointer to associate with the event.
         @unsafe
         public init<T>(pointer: UnsafeMutablePointer<T>) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
     }
 
@@ -66,7 +67,7 @@
 
     extension ISO_9945.Kernel.Event.Poll.Data {
         /// Zero poll data.
-        public static let zero: Self = .init(__unchecked: (), 0)
+        public static let zero: Self = .init(_unchecked: 0)
     }
 
 #endif

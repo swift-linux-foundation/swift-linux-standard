@@ -10,6 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Sync {
         /// File sync operations.
         public struct File {

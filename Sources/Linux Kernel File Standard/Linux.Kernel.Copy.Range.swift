@@ -11,6 +11,8 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
+public import ISO_9945_Kernel_File
 public import Error_Primitives
 
 #if canImport(Glibc)
@@ -66,8 +68,8 @@ extension ISO_9945.Kernel.Copy.Range {
         destOffset: inout ISO_9945.Kernel.File.Offset,
         length: ISO_9945.Kernel.File.Size
     ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
-        var srcOff = off_t(sourceOffset.rawValue)
-        var dstOff = off_t(destOffset.rawValue)
+        var srcOff = off_t(sourceOffset.underlying)
+        var dstOff = off_t(destOffset.underlying)
 
         let result = Int(
             swift_copy_file_range(

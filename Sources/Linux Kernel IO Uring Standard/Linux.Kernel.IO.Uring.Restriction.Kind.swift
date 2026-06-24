@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Restriction {
         /// The kind of restriction to apply.
         public enum Kind: UInt16, Sendable {

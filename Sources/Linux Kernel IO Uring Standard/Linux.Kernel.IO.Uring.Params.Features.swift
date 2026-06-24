@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Params {
         /// Kernel-reported feature flags from io_uring setup.
         ///

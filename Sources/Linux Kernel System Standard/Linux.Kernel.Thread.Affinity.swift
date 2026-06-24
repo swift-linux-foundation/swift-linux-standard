@@ -11,6 +11,9 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
+public import ISO_9945_Core
+public import ISO_9945_Kernel_Thread
+
 internal import CLinuxKernelShim
 
 #if canImport(Glibc)

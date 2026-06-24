@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Operation {
         /// Opaque data associated with an io_uring operation.
         ///
@@ -41,7 +42,7 @@
         /// - Parameter pointer: A pointer to associate with the operation.
         @unsafe
         public init(_ pointer: UnsafeRawPointer) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates operation data from a typed pointer.
@@ -49,7 +50,7 @@
         /// - Parameter pointer: A pointer to associate with the operation.
         @unsafe
         public init<T>(pointer: UnsafePointer<T>) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
 
         /// Creates operation data from a mutable typed pointer.
@@ -57,7 +58,7 @@
         /// - Parameter pointer: A mutable pointer to associate with the operation.
         @unsafe
         public init<T>(pointer: UnsafeMutablePointer<T>) {
-            self.init(__unchecked: (), UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
         }
     }
 
@@ -65,7 +66,7 @@
 
     extension ISO_9945.Kernel.IO.Uring.Operation.Data {
         /// Zero operation data.
-        public static let zero: Self = .init(__unchecked: (), 0)
+        public static let zero: Self = .init(_unchecked: 0)
     }
 
 #endif

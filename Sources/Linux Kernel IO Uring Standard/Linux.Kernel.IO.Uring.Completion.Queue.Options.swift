@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Runtime flags on the CQ ring shared-memory flags field.
         ///

@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Namespace for personality (credential) types.
         ///
@@ -47,9 +48,9 @@
 
     // MARK: - Personality.ID Constants
 
-    extension Tagged where Tag == ISO_9945.Kernel.IO.Uring.Personality, RawValue == UInt16 {
+    extension Tagged where Tag == ISO_9945.Kernel.IO.Uring.Personality, Underlying == UInt16 {
         /// No personality (use process credentials).
-        public static var none: Self { Self(__unchecked: (), 0) }
+        public static var none: Self { Self(_unchecked: 0) }
     }
 
 #endif

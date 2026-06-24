@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+@_spi(Syscall) public import ISO_9945_Core
 public import Error_Primitives
 
 #if canImport(Glibc)
@@ -63,10 +64,16 @@ extension ISO_9945.Kernel.Timer.Descriptor {
     /// - Returns: An owned timer descriptor.
     /// - Throws: ``Error/create(_:)`` on failure.
     public static func create(
-        clockId: Int32 = CLOCK_MONOTONIC,
-        flags: Int32 = TFD_CLOEXEC
+        clockId: Int32? = nil,
+        flags: Int32? = nil
     ) throws(ISO_9945.Kernel.Timer.Descriptor.Error) -> ISO_9945.Kernel.Timer.Descriptor {
-        let fd = unsafe timerfd_create(clockId, flags)
+        // Defaults resolve in the body: the Glibc constants are imported
+        // `internal`, so they cannot appear in default-argument values (which
+        // are emitted into the calling module). `CLOCK_MONOTONIC` / `TFD_CLOEXEC`.
+        let fd = unsafe timerfd_create(
+            clockId ?? Int32(CLOCK_MONOTONIC),
+            flags ?? Int32(TFD_CLOEXEC)
+        )
         guard fd >= 0 else {
             throw .create(.posix(errno))
         }

@@ -20,13 +20,13 @@ extension System.Memory {
     /// first line of `/proc/meminfo` (format: `MemTotal: <kB> kB`).
     public static var total: System.Memory.Capacity {
         guard let file = unsafe fopen("/proc/meminfo", "r") else {
-            return System.Memory.Capacity(__unchecked: (), Cardinal(UInt(0)))
+            return System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
         }
         defer { unsafe fclose(file) }
 
         var buffer = [CChar](repeating: 0, count: 256)
         guard unsafe fgets(&buffer, Int32(buffer.count), file) != nil else {
-            return System.Memory.Capacity(__unchecked: (), Cardinal(UInt(0)))
+            return System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
         }
 
         // First line: "MemTotal:       16384000 kB"
@@ -42,7 +42,7 @@ extension System.Memory {
         // /proc/meminfo reports in kB
         bytes = bytes &* 1024
 
-        return System.Memory.Capacity(__unchecked: (), Cardinal(bytes))
+        return System.Memory.Capacity(_unchecked: Cardinal(bytes))
     }
 }
 #else
@@ -51,7 +51,7 @@ public import System_Primitives
 extension System.Memory {
     /// Stub for non-Linux platforms.
     public static var total: System.Memory.Capacity {
-        System.Memory.Capacity(__unchecked: (), Cardinal(UInt(0)))
+        System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
     }
 }
 #endif

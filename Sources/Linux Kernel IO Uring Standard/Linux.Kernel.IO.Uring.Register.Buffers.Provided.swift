@@ -11,6 +11,7 @@
 
 #if os(Linux)
 
+public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
         /// Provided buffer ring sub-operations.
         public struct Provided {

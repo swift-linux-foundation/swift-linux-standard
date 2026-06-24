@@ -10,6 +10,8 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
+
+public import ISO_9945_Core
     public import System_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Params.Submission {
@@ -41,13 +43,13 @@
     extension ISO_9945.Kernel.IO.Uring.Params.Submission.Thread {
         /// Creates from C struct fields.
         internal init(cCpu: UInt32, cIdle: UInt32) {
-            self.cpu = System.Processor.ID(__unchecked: (), Ordinal(UInt(cCpu)))
+            self.cpu = System.Processor.ID(_unchecked: Ordinal(UInt(cCpu)))
             self.idle = .milliseconds(Int(cIdle))
         }
 
         /// CPU as UInt32 for C struct.
         internal var cCpu: UInt32 {
-            UInt32(cpu.rawValue.rawValue)
+            UInt32(cpu.underlying.rawValue)
         }
 
         /// Idle as UInt32 milliseconds for C struct.
