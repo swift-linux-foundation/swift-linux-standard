@@ -37,8 +37,6 @@ let package = Package(
         .package(url: "https://github.com/swift-primitives/swift-loader-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-string-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-system-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-standard-library-extensions.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-witness-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-error-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-random-primitives.git", branch: "main"),
         .package(url: "https://github.com/swift-primitives/swift-path-primitives.git", branch: "main"),
