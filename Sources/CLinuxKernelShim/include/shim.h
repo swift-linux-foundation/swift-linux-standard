@@ -199,12 +199,27 @@ static inline int swift_pidfd_send_signal(int pidfd, int sig, void *info, unsign
 #undef _CLINUX_SHIM_DEFINED_GNU_SOURCE
 #endif
 
+// The _GNU_SOURCE re-define above is inert when an earlier glibc include
+// (sys/epoll.h at the top of this header) has already run <features.h>,
+// which latches __USE_GNU off for the whole translation unit — dlfcn.h
+// then hides both macros. Toolchains that define _GNU_SOURCE globally
+// masked this; newer ones don't. Fall back to the documented ABI values,
+// identical on glibc and musl (bits/dlfcn.h / musl dlfcn.h).
+
 static inline void *swift_RTLD_DEFAULT(void) {
+#ifdef RTLD_DEFAULT
     return RTLD_DEFAULT;
+#else
+    return (void *)0;
+#endif
 }
 
 static inline void *swift_RTLD_NEXT(void) {
+#ifdef RTLD_NEXT
     return RTLD_NEXT;
+#else
+    return (void *)-1l;
+#endif
 }
 
 #endif /* __linux__ */
