@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import Error_Primitives
 
     extension ISO_9945.Kernel.Event.Poll {
@@ -19,6 +19,7 @@ public import ISO_9945_Core
         ///
         /// Low-level errors from epoll syscalls. Each case wraps the
         /// underlying `Error_Primitives.Error.Code` for platform-specific details.
+        ///
         /// Convert to `Error_Primitives.Error` for semantic error handling.
         ///
         /// ## Usage

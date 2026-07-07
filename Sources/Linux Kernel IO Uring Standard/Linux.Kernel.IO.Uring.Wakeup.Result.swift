@@ -11,16 +11,18 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import ISO_9945_Core
+    @_spi(Syscall) public import ISO_9945_Core
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
     extension ISO_9945.Kernel.IO.Uring.Wakeup {
         /// Bundle returned by ``Kernel/IO/Uring/createWakeup()``.
         ///
         /// ~Copyable because it contains a ~Copyable ``Kernel/Event/Descriptor``.
+        ///
         /// Access `signal` directly; extract `eventfd` via consuming call.
         public struct Result: ~Copyable {
             /// The signal closure — signals completions via eventfd.
+            ///
             /// `@Sendable`, safe to capture in cross-thread closures.
             ///
             /// L3 consumers wrap into `Kernel.Wakeup.Channel(signal:)` at the

@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
@@ -23,6 +23,7 @@ public import ISO_9945_Core
         ///
         /// - `.level`: Level-triggered — fires while the condition holds.
         ///   Default (empty set) is edge-triggered — fires on state change.
+        ///
         /// - `.multishot`: Produce a CQE on every event without resubmission.
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -33,6 +34,7 @@ public import ISO_9945_Core
             }
 
             /// Level-triggered mode — fires while the condition holds.
+            ///
             /// Default (absent) is edge-triggered — fires on state change.
             public static let level = Options(rawValue: UInt32(IORING_POLL_ADD_LEVEL))
 
@@ -44,6 +46,7 @@ public import ISO_9945_Core
             /// Update the poll event mask of an existing poll request.
             ///
             /// Used with `POLL_REMOVE` opcode to modify rather than cancel.
+            ///
             /// The new mask is provided in the SQE's poll events field.
             public static let updateEvents = Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
 

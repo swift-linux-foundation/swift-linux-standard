@@ -7,35 +7,35 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import Error_Primitives
+    public import ISO_9945_Core
+    public import Error_Primitives
 
-#if canImport(Glibc)
-    internal import Glibc
-#elseif canImport(Musl)
-    internal import Musl
-#endif
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
 
-#if canImport(CLinuxKernelShim)
-    internal import CLinuxKernelShim
-#endif
+    #if canImport(CLinuxKernelShim)
+        internal import CLinuxKernelShim
+    #endif
 
-extension ISO_9945.Kernel.Event.Descriptor.Flags {
-    /// Close-on-exec: prevents the fd from leaking to child processes.
-    ///
-    /// - Linux: `EFD_CLOEXEC`
-    public static let cloexec = Self(rawValue: Int32(EFD_CLOEXEC))
+    extension ISO_9945.Kernel.Event.Descriptor.Flags {
+        /// Close-on-exec: prevents the fd from leaking to child processes.
+        ///
+        /// - Linux: `EFD_CLOEXEC`
+        public static let cloexec = Self(rawValue: Int32(EFD_CLOEXEC))
 
-    /// Non-blocking: read/write return EAGAIN instead of blocking.
-    ///
-    /// - Linux: `EFD_NONBLOCK`
-    public static let nonblock = Self(rawValue: Int32(EFD_NONBLOCK))
+        /// Non-blocking: read/write return EAGAIN instead of blocking.
+        ///
+        /// - Linux: `EFD_NONBLOCK`
+        public static let nonblock = Self(rawValue: Int32(EFD_NONBLOCK))
 
-    /// Semaphore mode: read returns 1 and decrements by 1 instead
-    /// of returning the full counter and resetting to zero.
-    ///
-    /// - Linux: `EFD_SEMAPHORE`
-    public static let semaphore = Self(rawValue: Int32(EFD_SEMAPHORE))
-}
+        /// Semaphore mode: read returns 1 and decrements by 1 instead
+        /// of returning the full counter and resetting to zero.
+        ///
+        /// - Linux: `EFD_SEMAPHORE`
+        public static let semaphore = Self(rawValue: Int32(EFD_SEMAPHORE))
+    }
 
 #endif

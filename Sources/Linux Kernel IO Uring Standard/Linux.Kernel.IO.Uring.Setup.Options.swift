@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Setup {
         /// Configuration flags for io_uring instance creation.
         ///
@@ -63,6 +63,7 @@ public import ISO_9945_Core
         /// Enables busy-waiting for I/O completion.
         ///
         /// The kernel will poll for completions instead of using interrupts.
+        ///
         /// Best for devices that support polling (NVMe). Increases CPU usage
         /// but reduces latency.
         ///
@@ -76,6 +77,7 @@ public import ISO_9945_Core
         /// an idle period (configurable via `sq_thread_idle`).
         ///
         /// - Note: Requires `CAP_SYS_NICE` or root for real-time priority.
+        ///
         /// - Linux: `IORING_SETUP_SQPOLL`
         public static let sqPoll = Self(rawValue: 1 << 1)
 
@@ -107,6 +109,7 @@ public import ISO_9945_Core
         /// Shares the async backend with another io_uring instance.
         ///
         /// Multiple rings share worker threads, reducing resource usage.
+        ///
         /// Pass the fd of the existing ring in `wq_fd` parameter.
         ///
         /// - Linux: `IORING_SETUP_ATTACH_WQ`
@@ -124,6 +127,7 @@ public import ISO_9945_Core
         /// Continue submitting remaining SQEs on error (kernel 5.18+).
         ///
         /// Without this flag, an SQE error aborts the entire batch.
+        ///
         /// With it, the kernel skips the failing SQE and continues
         /// submitting the rest.
         ///
@@ -133,6 +137,7 @@ public import ISO_9945_Core
         /// Enables cooperative task running (kernel 5.19+).
         ///
         /// Completions are processed cooperatively, reducing context switches.
+        ///
         /// Best for single-threaded applications.
         ///
         /// - Linux: `IORING_SETUP_COOP_TASKRUN`
@@ -150,7 +155,7 @@ public import ISO_9945_Core
         /// Uses 128-byte SQE format (kernel 5.19+).
         ///
         /// Extended SQE format for operations needing more space
-        /// (e.g., `IORING_OP_URING_CMD`).
+        /// (for example, `IORING_OP_URING_CMD`).
         ///
         /// - Linux: `IORING_SETUP_SQE128`
         public static let sqe128 = Self(rawValue: 1 << 10)
@@ -158,6 +163,7 @@ public import ISO_9945_Core
         /// Uses 32-byte CQE format (kernel 5.19+).
         ///
         /// Extended CQE format providing more space for result data.
+        ///
         /// Required by some operations.
         ///
         /// - Linux: `IORING_SETUP_CQE32`

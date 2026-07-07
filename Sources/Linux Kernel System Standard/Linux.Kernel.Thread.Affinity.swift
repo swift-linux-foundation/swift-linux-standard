@@ -11,73 +11,74 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_Thread
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_Thread
 
-internal import CLinuxKernelShim
+    internal import CLinuxKernelShim
 
-#if canImport(Glibc)
-internal import Glibc
-#elseif canImport(Musl)
-internal import Musl
-#elseif canImport(Bionic)
-internal import Bionic
-#endif
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #elseif canImport(Bionic)
+        internal import Bionic
+    #endif
 
-// MARK: - Set Mask
+    // MARK: - Set Mask
 
-// Adds L2 syscall wrappers to the existing cross-platform
-// `ISO_9945.Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
-// Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`) delegate here
-// per [PLAT-ARCH-008c].
+    // Adds L2 syscall wrappers to the existing cross-platform
+    // `ISO_9945.Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
+    // Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`) delegate here
+    // per [PLAT-ARCH-008c].
 
-extension ISO_9945.Kernel.Thread.Affinity {
-    /// Sets the CPU affinity mask for a thread via `sched_setaffinity(2)`.
-    ///
-    /// - Parameters:
-    ///   - tid: Thread ID; `0` denotes the calling thread.
-    ///   - cores: Set of CPU core IDs to include in the mask.
-    /// - Throws: `ISO_9945.Kernel.Thread.Affinity.Error.platform` with the POSIX errno
-    ///   if the syscall fails.
-    public static func setMask(
-        tid: Int32 = 0,
-        cores: Set<Int>
-    ) throws(ISO_9945.Kernel.Thread.Affinity.Error) {
-        var mask = cpu_set_t()
+    extension ISO_9945.Kernel.Thread.Affinity {
+        /// Sets the CPU affinity mask for a thread via `sched_setaffinity(2)`.
+        ///
+        /// - Parameters:
+        ///   - tid: Thread ID; `0` denotes the calling thread.
+        ///   - cores: Set of CPU core IDs to include in the mask.
+        ///
+        /// - Throws: `ISO_9945.Kernel.Thread.Affinity.Error.platform` with the POSIX errno
+        ///   if the syscall fails.
+        public static func setMask(
+            tid: Int32 = 0,
+            cores: Set<Int>
+        ) throws(ISO_9945.Kernel.Thread.Affinity.Error) {
+            var mask = cpu_set_t()
 
-        // Zero the mask
-        unsafe withUnsafeMutablePointer(to: &mask) { ptr in
-            let rawPtr = unsafe UnsafeMutableRawPointer(ptr)
-            unsafe rawPtr.initializeMemory(as: UInt8.self, repeating: 0, count: MemoryLayout<cpu_set_t>.size)
-        }
+            // Zero the mask
+            unsafe withUnsafeMutablePointer(to: &mask) { ptr in
+                let rawPtr = unsafe UnsafeMutableRawPointer(ptr)
+                unsafe rawPtr.initializeMemory(as: UInt8.self, repeating: 0, count: MemoryLayout<cpu_set_t>.size)
+            }
 
-        // Set bits for each CPU (open-coded CPU_SET)
-        for cpu in cores {
-            unsafe withUnsafeMutablePointer(to: &mask) { maskPtr in
-                let cpusPerLong = MemoryLayout<UInt>.size * 8
-                let index = cpu / cpusPerLong
-                let offset = cpu % cpusPerLong
-                unsafe maskPtr.withMemoryRebound(
-                    to: UInt.self,
-                    capacity: MemoryLayout<cpu_set_t>.size / MemoryLayout<UInt>.size
-                ) { longs in
-                    unsafe longs[index] |= UInt(1) << offset
+            // Set bits for each CPU (open-coded CPU_SET)
+            for cpu in cores {
+                unsafe withUnsafeMutablePointer(to: &mask) { maskPtr in
+                    let cpusPerLong = MemoryLayout<UInt>.size * 8
+                    let index = cpu / cpusPerLong
+                    let offset = cpu % cpusPerLong
+                    unsafe maskPtr.withMemoryRebound(
+                        to: UInt.self,
+                        capacity: MemoryLayout<cpu_set_t>.size / MemoryLayout<UInt>.size
+                    ) { longs in
+                        unsafe longs[index] |= UInt(1) << offset
+                    }
                 }
             }
-        }
 
-        let result = unsafe withUnsafePointer(to: &mask) { maskPtr -> Int32 in
-            unsafe swift_sched_setaffinity(
-                tid,
-                MemoryLayout<cpu_set_t>.size,
-                UnsafeRawPointer(maskPtr)
-            )
-        }
+            let result = unsafe withUnsafePointer(to: &mask) { maskPtr -> Int32 in
+                unsafe swift_sched_setaffinity(
+                    tid,
+                    MemoryLayout<cpu_set_t>.size,
+                    UnsafeRawPointer(maskPtr)
+                )
+            }
 
-        guard result == 0 else {
-            throw .platform(.posix(errno))
+            guard result == 0 else {
+                throw .platform(.posix(errno))
+            }
         }
     }
-}
 
 #endif

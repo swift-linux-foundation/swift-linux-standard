@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Runtime flags on the CQ ring shared-memory flags field.
         ///
@@ -35,6 +35,7 @@ public import ISO_9945_Core
         /// Disable eventfd notifications.
         ///
         /// When set, completions do not signal the registered eventfd.
+        ///
         /// Userspace can toggle this flag to temporarily suppress
         /// notifications.
         ///

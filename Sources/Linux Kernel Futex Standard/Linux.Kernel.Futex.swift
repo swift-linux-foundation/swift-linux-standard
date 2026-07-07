@@ -11,19 +11,19 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import Error_Primitives
-public import Memory_Primitives
-public import Path_Primitives
+    public import ISO_9945_Core
+    public import Error_Primitives
+    public import Memory_Primitives
+    public import Path_Primitives
 
-// MARK: - Linux Futex Namespace
+    // MARK: - Linux Futex Namespace
 
-extension ISO_9945.Kernel {
-    /// Linux futex (fast userspace mutex) operations.
-    ///
-    /// Namespace for futex(2) related types. Futexes provide the kernel-side
-    /// building block for userspace synchronization primitives.
-    public struct Futex: Sendable {}
-}
+    extension ISO_9945.Kernel {
+        /// Linux futex (fast userspace mutex) operations.
+        ///
+        /// Namespace for futex(2) related types. Futexes provide the kernel-side
+        /// building block for userspace synchronization primitives.
+        public struct Futex: Sendable {}
+    }
 
 #endif

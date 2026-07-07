@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import ISO_9945_Core
+    @_spi(Syscall) public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -45,6 +45,7 @@
         ///   - sourceFd: The raw fd to duplicate.
         ///   - destinationFd: The raw fd of the target slot.
         ///   - flags: Flags to apply (currently only O_CLOEXEC).
+        ///
         /// - Throws: `ISO_9945.Kernel.Descriptor.Duplicate.Error` on failure. On throw,
         ///   the destination slot is unchanged and still refers to its original
         ///   resource.

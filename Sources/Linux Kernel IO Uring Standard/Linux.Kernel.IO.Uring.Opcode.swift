@@ -11,11 +11,12 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Opcodes specifying which operation to submit to io_uring.
         ///
         /// Each opcode corresponds to an `IORING_OP_*` constant from `<linux/io_uring.h>`.
+        ///
         /// When preparing a submission queue entry (SQE), the opcode determines what
         /// the kernel will do when processing that entry.
         ///
@@ -60,8 +61,8 @@ public import ISO_9945_Core
         /// Close file descriptor.
         public static let close = Self(rawValue: 19)
 
-        /// 128-byte no-op (kernel 6.13+).
         // TRACKING: Opcode 63 exceeds IORING_OP_LAST=58 in kernel 6.12.
+        /// 128-byte no-op (kernel 6.13+).
         public static let nop128 = Self(rawValue: 63)
     }
 

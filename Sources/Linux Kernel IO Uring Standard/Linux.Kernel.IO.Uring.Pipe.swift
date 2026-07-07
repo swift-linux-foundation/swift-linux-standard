@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Pipe/splice operation opcodes.
         public struct Pipe {
@@ -21,8 +21,8 @@ public import ISO_9945_Core
             /// Transfer data between fds (tee).
             public static let tee = Opcode(rawValue: 33)
 
-            /// Create pipe (kernel 6.13+).
             // TRACKING: Opcode 62 exceeds IORING_OP_LAST=58 in kernel 6.12.
+            /// Create pipe (kernel 6.13+).
             public static let create = Opcode(rawValue: 62)
 
             /// Use a fixed (registered) file descriptor as the splice source.

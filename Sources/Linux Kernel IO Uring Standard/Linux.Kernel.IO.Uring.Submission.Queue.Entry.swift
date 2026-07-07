@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Kernel_Socket_Address
-public import ISO_9945_Kernel_Socket
+    public import ISO_9945_Kernel_Socket_Address
+    public import ISO_9945_Kernel_Socket
     public import Error_Primitives
     public import Memory_Primitives
     public import Memory_Map_Primitives
@@ -40,6 +40,7 @@ public import ISO_9945_Kernel_Socket
         /// Swift wrapper for io_uring submission queue entry.
         ///
         /// An Entry describes an I/O operation to be performed by the kernel.
+        ///
         /// This wrapper provides a Swift-native interface to the C `io_uring_sqe` struct.
         ///
         /// ## Usage
@@ -54,6 +55,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// `~Copyable` — an Entry represents a unique SQE slot. Copying would
         /// create a disconnected value that does not write back to the ring.
+        ///
         /// Entries are filled in-place through the ``Kernel/IO/Uring/Slot``
         /// coroutine, confined to the io_uring poll thread.
         public struct Entry: ~Copyable {
@@ -90,7 +92,7 @@ public import ISO_9945_Kernel_Socket
         /// Operation-specific flags (rw_flags field).
         ///
         /// Raw access for opcodes where the typed union accessors
-        /// don't apply (e.g., openat combines access + options).
+        /// don't apply (for example, openat combines access + options).
         @usableFromInline
         internal var opFlags: Int32 {
             get { Int32(bitPattern: cValue.rw_flags) }
@@ -155,7 +157,7 @@ public import ISO_9945_Kernel_Socket
     // per feedback_compound_package_scope.
 
     extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
-        /// Unlink AT_* flags (e.g., `AT_REMOVEDIR`).
+        /// Unlink AT_* flags (for example, `AT_REMOVEDIR`).
         @usableFromInline
         internal var atFlags: ISO_9945.Kernel.File.At.Options {
             get { ISO_9945.Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
@@ -253,6 +255,7 @@ public import ISO_9945_Kernel_Socket
         /// Raw file descriptor field.
         ///
         /// For install registered fd and uring command target only.
+        ///
         /// Domain-typed uses go through view types or Target.
         @usableFromInline
         internal var _fd: Int32 {
@@ -263,6 +266,7 @@ public import ISO_9945_Kernel_Socket
         /// Raw length field.
         ///
         /// For openat2 struct size, mkdirat mode, literal 1, and misc counts.
+        ///
         /// Domain-typed uses go through view types or typed accessors.
         @usableFromInline
         internal var _rawLength: UInt32 {
@@ -476,7 +480,7 @@ public import ISO_9945_Kernel_Socket
             cValue.addr = data.underlying
         }
 
-        /// Set the offset field from a pointer (openat2 how, statx buffer, etc.).
+        /// Set the offset field from a pointer (openat2 how, statx buffer, and similar).
         @usableFromInline @unsafe
         internal mutating func setOffset(_ pointer: UnsafeRawPointer?) {
             cValue.off = unsafe UInt64(UInt(bitPattern: pointer))

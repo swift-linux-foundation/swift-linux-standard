@@ -10,34 +10,33 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-public import ISO_9945_Core
-public import Error_Primitives
+    public import ISO_9945_Core
+    public import Error_Primitives
 
-extension ISO_9945.Kernel.Event.Descriptor {
-    /// Flags for event descriptor creation.
-    ///
-    /// ## Platform Implementation
-    ///
-    /// Flag constants are in platform-specific packages:
-    /// - Linux: `swift-linux-primitives` (`Linux_Kernel_Event_Standard`)
-    public struct Flags: Sendable, Equatable, Hashable {
-        public let rawValue: Int32
+    extension ISO_9945.Kernel.Event.Descriptor {
+        /// Flags for event descriptor creation.
+        ///
+        /// ## Platform Implementation
+        ///
+        /// Flag constants are in platform-specific packages:
+        /// - Linux: `swift-linux-primitives` (`Linux_Kernel_Event_Standard`)
+        public struct Flags: Sendable, Equatable, Hashable {
+            public let rawValue: Int32
 
-        @inlinable
-        public init(rawValue: Int32) {
-            self.rawValue = rawValue
-        }
+            @inlinable
+            public init(rawValue: Int32) {
+                self.rawValue = rawValue
+            }
 
-        /// No flags.
-        public static let none = Flags(rawValue: 0)
+            /// No flags.
+            public static let none = Flags(rawValue: 0)
 
-        /// Combines multiple flags.
-        @inlinable
-        public static func | (lhs: Flags, rhs: Flags) -> Flags {
-            Flags(rawValue: lhs.rawValue | rhs.rawValue)
+            /// Combines multiple flags.
+            @inlinable
+            public static func | (lhs: Flags, rhs: Flags) -> Flags {
+                Flags(rawValue: lhs.rawValue | rhs.rawValue)
+            }
         }
     }
-}
 
 #endif
-

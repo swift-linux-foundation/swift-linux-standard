@@ -11,9 +11,9 @@
 
 #if os(Linux)
 
-public import ISO_9945_Kernel_Process
-public import ISO_9945_Kernel_Socket_Address
-public import ISO_9945_Kernel_Socket
+    public import ISO_9945_Kernel_Process
+    public import ISO_9945_Kernel_Socket_Address
+    public import ISO_9945_Kernel_Socket
     public import Error_Primitives
     public import Memory_Primitives
     public import Memory_Map_Primitives
@@ -407,6 +407,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// Produces multiple CQEs from a single SQE. Requires buffer selection —
         /// the kernel picks a buffer from the specified group for each completion.
+        ///
         /// Check `IORING_CQE_F_MORE` on each CQE; resubmit when absent.
         ///
         /// - Parameters:
@@ -447,7 +448,7 @@ public import ISO_9945_Kernel_Socket
         ///   - offsetIn: Offset in the source file.
         ///   - offsetOut: Offset in the destination file.
         ///   - length: Number of bytes to transfer.
-        ///   - flags: Splice flags (e.g., `SPLICE_F_MOVE`).
+        ///   - flags: Splice flags (for example, `SPLICE_F_MOVE`).
         ///   - data: Operation data to return with completion.
         @inlinable
         public mutating func splice(
@@ -528,7 +529,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// The kernel's open flags are decomposed into two parameters:
         /// - `access`: The access mode (read-only, write-only, read-write)
-        /// - `options`: Additional open options (create, truncate, append, etc.)
+        /// - `options`: Additional open options (create, truncate, append, and similar)
         ///
         /// These are combined into a single flags field in the SQE.
         ///
@@ -536,7 +537,7 @@ public import ISO_9945_Kernel_Socket
         ///   - target: Directory fd targeting (use `.descriptor` for dirfd, `.allocate` for direct open).
         ///   - path: Null-terminated path to open.
         ///   - access: File access mode (default: `.readOnly`).
-        ///   - options: Additional open options (create, truncate, etc.).
+        ///   - options: Additional open options (create, truncate, and similar).
         ///   - mode: File mode for creation.
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
@@ -586,7 +587,7 @@ public import ISO_9945_Kernel_Socket
         /// - Parameters:
         ///   - target: Directory fd targeting.
         ///   - path: Null-terminated path to stat.
-        ///   - flags: Statx flags (e.g., `AT_SYMLINK_NOFOLLOW`).
+        ///   - flags: Statx flags (for example, `AT_SYMLINK_NOFOLLOW`).
         ///   - mask: Statx mask (which fields to populate).
         ///   - buffer: Pointer to statx buffer for results (kernel writes here).
         ///   - data: Operation data to return with completion.
@@ -642,7 +643,7 @@ public import ISO_9945_Kernel_Socket
         /// - Parameters:
         ///   - target: Directory fd targeting.
         ///   - path: Null-terminated path to unlink.
-        ///   - flags: Unlink flags (e.g., `AT_REMOVEDIR`).
+        ///   - flags: Unlink flags (for example, `AT_REMOVEDIR`).
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func unlinkat(
@@ -710,7 +711,7 @@ public import ISO_9945_Kernel_Socket
         ///   - oldPath: Null-terminated old path.
         ///   - newDirFd: New directory file descriptor.
         ///   - newPath: Null-terminated new path.
-        ///   - flags: Link flags (e.g., `AT_SYMLINK_FOLLOW`).
+        ///   - flags: Link flags (for example, `AT_SYMLINK_FOLLOW`).
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func linkat(
@@ -737,7 +738,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// - Parameters:
         ///   - target: File targeting (descriptor or registered index).
-        ///   - mode: Allocation mode (e.g., `.allocate()`, `.punch`, `.zero(keepSize: true)`).
+        ///   - mode: Allocation mode (for example, `.allocate()`, `.punch`, `.zero(keepSize: true)`).
         ///   - offset: Starting offset in the file.
         ///   - length: Number of bytes to allocate.
         ///   - data: Operation data to return with completion.
@@ -767,8 +768,8 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for a socket creation operation.
         ///
         /// - Parameters:
-        ///   - domain: Address family (e.g., `.inet`, `.inet6`).
-        ///   - kind: Socket kind (e.g., `.stream`, `.datagram`).
+        ///   - domain: Address family (for example, `.inet`, `.inet6`).
+        ///   - kind: Socket kind (for example, `.stream`, `.datagram`).
         ///   - protocol: Network protocol (default: `.auto`).
         ///   - flags: Socket flags.
         ///   - data: Operation data to return with completion.
@@ -879,6 +880,7 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for a zero-copy send operation.
         ///
         /// Transmits directly from user memory to NIC without kernel copy.
+        ///
         /// Produces two CQEs: one for acceptance, one with `IORING_CQE_F_NOTIF`
         /// when the buffer is safe to reuse.
         ///
@@ -1081,6 +1083,7 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for a relative link timeout operation.
         ///
         /// Must be submitted immediately after the linked SQE it guards.
+        ///
         /// If the linked operation doesn't complete within the duration,
         /// it is cancelled.
         ///
@@ -1106,6 +1109,7 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for an absolute link timeout operation.
         ///
         /// Must be submitted immediately after the linked SQE it guards.
+        ///
         /// If the linked operation doesn't complete by the deadline,
         /// it is cancelled.
         ///
@@ -1134,7 +1138,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// - Parameters:
         ///   - target: File targeting for the fd to poll.
-        ///   - events: Poll event mask (e.g., `.in`, `.out`).
+        ///   - events: Poll event mask (for example, `.in`, `.out`).
         ///   - multishot: If true, produces CQEs on every event without resubmission.
         ///   - trigger: Trigger mode — edge (default) or level.
         ///   - data: Operation data to return with completion.
@@ -1207,6 +1211,7 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for a provide buffers operation (legacy).
         ///
         /// Provides a set of buffers to the kernel for automatic buffer selection.
+        ///
         /// Prefer ring-mapped buffers (`IORING_REGISTER_PBUF_RING`) for new code.
         ///
         /// - Parameters:
@@ -1280,7 +1285,7 @@ public import ISO_9945_Kernel_Socket
         /// Configures this entry for a uring passthrough command.
         ///
         /// Passes a device-specific command through the io_uring framework
-        /// (e.g., NVMe passthrough).
+        /// (for example, NVMe passthrough).
         ///
         /// - Parameters:
         ///   - target: Device file targeting.
@@ -1325,7 +1330,7 @@ public import ISO_9945_Kernel_Socket
         ///
         /// - Parameters:
         ///   - fds: Pointer to two-element Int32 array for read/write fds.
-        ///   - flags: Pipe flags (e.g., `O_NONBLOCK`, `O_CLOEXEC`).
+        ///   - flags: Pipe flags (for example, `O_NONBLOCK`, `O_CLOEXEC`).
         ///   - data: Operation data to return with completion.
         @inlinable @unsafe
         public mutating func pipe(

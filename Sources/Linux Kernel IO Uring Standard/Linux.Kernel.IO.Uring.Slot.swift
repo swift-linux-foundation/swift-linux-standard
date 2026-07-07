@@ -11,11 +11,12 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// A slot in the submission queue ring buffer.
         ///
         /// `~Copyable` prevents aliasing the underlying mmap'd SQE.
+        ///
         /// `~Escapable` confines the slot to the coroutine scope that yielded it —
         /// the `_read` scope on ``Kernel/IO/Uring/next`` IS the lifetime boundary.
         ///
@@ -38,6 +39,7 @@ public import ISO_9945_Core
             /// The submission queue entry at this slot.
             ///
             /// `_read` yields a copy for inspection.
+            ///
             /// `nonmutating _modify` yields an `inout` reference that writes
             /// through the stored pointer directly into mmap'd shared memory —
             /// zero copies, no write-back.

@@ -11,23 +11,23 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
-public import Error_Primitives
-public import Memory_Primitives
-public import Path_Primitives
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
+    public import Error_Primitives
+    public import Memory_Primitives
+    public import Path_Primitives
 
-#if canImport(Glibc)
-    internal import CLinuxKernelShim
-#endif
+    #if canImport(Glibc)
+        internal import CLinuxKernelShim
+    #endif
 
-// MARK: - Linux-specific Open Options
+    // MARK: - Linux-specific Open Options
 
-extension ISO_9945.Kernel.File.Open.Options {
-    /// Requests direct I/O, bypassing page cache (O_DIRECT).
-    ///
-    /// Linux-specific. Not available on Darwin.
-    public static let direct = Self(rawValue: O_DIRECT)
-}
+    extension ISO_9945.Kernel.File.Open.Options {
+        /// Requests direct I/O, bypassing page cache (O_DIRECT).
+        ///
+        /// Linux-specific. Not available on Darwin.
+        public static let direct = Self(rawValue: O_DIRECT)
+    }
 
 #endif

@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
     public import Error_Primitives
     public import Memory_Primitives
     public import Path_Primitives
@@ -31,6 +31,7 @@ public import ISO_9945_Kernel_File
             /// Don't overwrite destination if it exists.
             ///
             /// The rename fails with EEXIST if the destination already exists.
+            ///
             /// Provides atomic "create if not exists" semantics.
             public static let noreplace = Self(rawValue: 1)  // RENAME_NOREPLACE
 

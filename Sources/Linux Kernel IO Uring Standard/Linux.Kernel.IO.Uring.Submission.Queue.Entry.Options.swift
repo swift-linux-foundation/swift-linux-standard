@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
         /// Flags controlling submission queue entry behavior.
         ///
@@ -56,6 +56,7 @@ public import ISO_9945_Core
             /// Drains the submission queue before starting this entry.
             ///
             /// All previously submitted SQEs complete before this one begins.
+            ///
             /// Provides ordering guarantees across unlinked submissions.
             ///
             /// - Linux: `IOSQE_IO_DRAIN` (bit 1)
@@ -64,6 +65,7 @@ public import ISO_9945_Core
             /// Links this entry to the next entry in the submission queue.
             ///
             /// The next SQE won't start until this one completes successfully.
+            ///
             /// If this operation fails, the linked operation is cancelled with
             /// `-ECANCELED`. Use for dependent operations.
             ///
@@ -98,6 +100,7 @@ public import ISO_9945_Core
             /// Skips CQE generation on successful completion (kernel 5.17+).
             ///
             /// No completion entry is posted if the operation succeeds.
+            ///
             /// Failures still generate CQEs. Use to reduce completion overhead
             /// when success confirmation isn't needed.
             ///

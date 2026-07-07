@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import System_Primitives
 
     extension ISO_9945.Kernel.IO.Uring.Params.Submission {

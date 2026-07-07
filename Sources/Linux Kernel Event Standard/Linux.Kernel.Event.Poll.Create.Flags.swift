@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -38,6 +38,7 @@ public import ISO_9945_Core
         /// defer { try? ISO_9945.Kernel.Close.close(epfd) }
         ///
         /// // Add descriptors and poll for events...
+        ///
         /// ```
         ///
         /// ## See Also

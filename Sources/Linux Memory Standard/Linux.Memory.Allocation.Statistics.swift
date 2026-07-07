@@ -10,8 +10,9 @@
 // ===----------------------------------------------------------------------===//
 
 public import Linux_Standard_Core
+
 #if os(Linux)
-import CLinuxMemoryShim
+    import CLinuxMemoryShim
 #endif
 
 extension Linux.Memory.Allocation {
@@ -46,29 +47,31 @@ extension Linux.Memory.Allocation.Statistics {
     /// Capture current allocation statistics.
     ///
     /// Returns the current state of allocation tracking counters.
+    ///
     /// Requires `startTracking()` to have been called first.
     ///
     /// - Returns: Current allocation statistics.
     public static func capture() -> Self {
         #if os(Linux)
-        let stats = tracking_current()
-        return Self(
-            allocations: Int(stats.allocations),
-            deallocations: Int(stats.deallocations),
-            bytesAllocated: Int(stats.bytes_allocated)
-        )
+            let stats = tracking_current()
+            return Self(
+                allocations: Int(stats.allocations),
+                deallocations: Int(stats.deallocations),
+                bytesAllocated: Int(stats.bytes_allocated)
+            )
         #else
-        return Self()
+            return Self()
         #endif
     }
 
     /// Start tracking allocations.
     ///
     /// Enables the LD_PRELOAD malloc/free hooks.
+    ///
     /// Must be called before measuring allocations.
     public static func startTracking() {
         #if os(Linux)
-        tracking_start()
+            tracking_start()
         #endif
     }
 
@@ -77,14 +80,14 @@ extension Linux.Memory.Allocation.Statistics {
     /// - Returns: Final allocation statistics since `startTracking()`.
     public static func stopTracking() -> Self {
         #if os(Linux)
-        let stats = tracking_stop()
-        return Self(
-            allocations: Int(stats.allocations),
-            deallocations: Int(stats.deallocations),
-            bytesAllocated: Int(stats.bytes_allocated)
-        )
+            let stats = tracking_stop()
+            return Self(
+                allocations: Int(stats.allocations),
+                deallocations: Int(stats.deallocations),
+                bytesAllocated: Int(stats.bytes_allocated)
+            )
         #else
-        return Self()
+            return Self()
         #endif
     }
 
@@ -93,7 +96,7 @@ extension Linux.Memory.Allocation.Statistics {
     /// Keeps tracking enabled but resets counters.
     public static func resetTracking() {
         #if os(Linux)
-        tracking_reset()
+            tracking_reset()
         #endif
     }
 }

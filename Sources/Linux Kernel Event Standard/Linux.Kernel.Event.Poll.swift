@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Kernel_Time
-@_spi(Syscall) public import ISO_9945_Core
+    public import ISO_9945_Kernel_Time
+    @_spi(Syscall) public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -49,6 +49,7 @@ public import ISO_9945_Kernel_Time
             /// Creates a new epoll instance.
             ///
             /// - Parameter flags: Creation flags. Default: `.cloexec`.
+            ///
             /// - Throws: `Error.create` if creation fails.
             public init(flags: Create.Flags = .cloexec) throws(Error) {
                 self.descriptor = try Self.create(flags: flags)
@@ -64,6 +65,7 @@ public import ISO_9945_Kernel_Time
         /// - Parameters:
         ///   - fd: The target file descriptor.
         ///   - event: The event structure describing interests.
+        ///
         /// - Throws: `Error.ctl` on failure.
         public func add(
             fd: borrowing ISO_9945.Kernel.Descriptor,
@@ -77,6 +79,7 @@ public import ISO_9945_Kernel_Time
         /// - Parameters:
         ///   - fd: The target file descriptor.
         ///   - event: The updated event structure.
+        ///
         /// - Throws: `Error.ctl` on failure.
         public func modify(
             fd: borrowing ISO_9945.Kernel.Descriptor,
@@ -88,6 +91,7 @@ public import ISO_9945_Kernel_Time
         /// Removes a file descriptor from the epoll instance.
         ///
         /// - Parameter fd: The target file descriptor.
+        ///
         /// - Throws: `Error.ctl` on failure.
         public func remove(
             fd: borrowing ISO_9945.Kernel.Descriptor
@@ -100,7 +104,9 @@ public import ISO_9945_Kernel_Time
         /// - Parameters:
         ///   - events: Buffer for returned events (pre-sized).
         ///   - timeout: Timeout duration, or `nil` for infinite.
+        ///
         /// - Returns: Number of events written to buffer, or 0 on timeout.
+        ///
         /// - Throws: `Error.wait` on failure, `.interrupted` on EINTR.
         public func poll(
             events: inout [Event],
@@ -113,6 +119,7 @@ public import ISO_9945_Kernel_Time
         ///
         /// Adds the eventfd to this epoll instance with `EPOLLIN | EPOLLET` and
         /// returns a `@Sendable` closure that signals the eventfd from any thread.
+        ///
         /// Call before transferring the Poll to the poll thread via `sending`.
         ///
         /// L3 consumers wrap the returned closure into `Kernel.Wakeup.Channel(signal:)`
@@ -120,6 +127,7 @@ public import ISO_9945_Kernel_Time
         /// never see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
         ///
         /// - Parameter eventfd: The eventfd to register for wakeup signaling.
+        ///
         /// - Returns: A `@Sendable` signal closure.
         public func wakeup(
             eventfd: borrowing ISO_9945.Kernel.Event.Descriptor

@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Opcode.Ring.Command {
         /// Flags for uring command operations (`IORING_OP_URING_CMD`).
         public struct Options: OptionSet, Sendable {

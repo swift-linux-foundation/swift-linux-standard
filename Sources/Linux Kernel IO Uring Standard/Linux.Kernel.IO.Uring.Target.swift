@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import ISO_9945_Core
+    @_spi(Syscall) public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
@@ -32,8 +32,10 @@
         ///
         /// - `.descriptor`: A kernel file descriptor (the common case).
         ///   Created via ``init(descriptor:)`` which borrows the descriptor.
+        ///
         /// - `.registered`: An index into the io_uring registered file table.
         ///   Sets `IOSQE_FIXED_FILE` automatically.
+        ///
         /// - `.allocate`: Kernel auto-allocates a registered file slot
         ///   (`IORING_FILE_INDEX_ALLOC`). For accept-direct, openat-direct,
         ///   socket-direct. Sets both `IOSQE_FIXED_FILE` and `file_index = ~0`.
