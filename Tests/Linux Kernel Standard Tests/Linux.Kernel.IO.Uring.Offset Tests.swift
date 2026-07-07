@@ -16,6 +16,9 @@
     import Memory_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
 
+    import ISO_9945_Core
+    private typealias Kernel = ISO_9945.Kernel
+
     /// Tests for Kernel.IO.Uring.Offset (typealias to Coordinate.X.Value).
     extension Kernel.IO.Uring {
         @Suite
