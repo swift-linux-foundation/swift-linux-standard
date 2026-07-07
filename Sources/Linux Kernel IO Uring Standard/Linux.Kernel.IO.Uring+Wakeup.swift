@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import ISO_9945_Core
+    @_spi(Syscall) public import ISO_9945_Core
     public import Error_Primitives
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
@@ -31,6 +31,7 @@
         /// see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
         ///
         /// - Returns: A ``Wakeup/Result`` containing the signal closure and eventfd.
+        ///
         /// - Throws: ``Wakeup/Error`` on eventfd creation or registration failure.
         public func createWakeup() throws(Wakeup.Error) -> Wakeup.Result {
             // 1. Create eventfd

@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-@_spi(Syscall) public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    @_spi(Syscall) public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
     public import Error_Primitives
     public import Memory_Primitives
 
@@ -32,6 +32,7 @@ public import ISO_9945_Kernel_File
         /// io_uring ring — owns the ring descriptor and mmap'd SQ/CQ shared-memory regions.
         ///
         /// io_uring is a high-performance asynchronous I/O interface for Linux (kernel 5.1+).
+        ///
         /// This struct IS the ring: it owns the ring file descriptor, three mmap'd regions
         /// (SQ ring, CQ ring, SQE array), and provides typed access to submission and
         /// completion queues. All raw pointer arithmetic and UInt32 ring index masking is
@@ -39,6 +40,7 @@ public import ISO_9945_Kernel_File
         ///
         /// Instance methods provide both descriptor-bound syscalls (``enter(toSubmit:minComplete:flags:)``,
         /// ``register(opcode:argument:count:)``) and the shared-memory SQ/CQ protocol.
+        ///
         /// Static methods remain available for detached-descriptor workflows.
         ///
         /// NOT Sendable — thread-confined to the io_uring poll thread.
@@ -117,9 +119,12 @@ public import ISO_9945_Kernel_File
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Memory_Primitives.Memory.Address, sqRingSize: ISO_9945.Kernel.File.Size,
-                cqRingAddr: Memory_Primitives.Memory.Address, cqRingSize: ISO_9945.Kernel.File.Size,
-                sqeAddr: Memory_Primitives.Memory.Address, sqeSize: ISO_9945.Kernel.File.Size
+                sqRingAddr: Memory_Primitives.Memory.Address,
+                sqRingSize: ISO_9945.Kernel.File.Size,
+                cqRingAddr: Memory_Primitives.Memory.Address,
+                cqRingSize: ISO_9945.Kernel.File.Size,
+                sqeAddr: Memory_Primitives.Memory.Address,
+                sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
                 self.sqHead = sqHead
@@ -135,9 +140,12 @@ public import ISO_9945_Kernel_File
                 self.sqeHead = 0
                 self.sqeTail = 0
                 self.singleMmap = singleMmap
-                self.sqRingAddr = sqRingAddr; self.sqRingSize = sqRingSize
-                self.cqRingAddr = cqRingAddr; self.cqRingSize = cqRingSize
-                self.sqeAddr = sqeAddr; self.sqeSize = sqeSize
+                self.sqRingAddr = sqRingAddr
+                self.sqRingSize = sqRingSize
+                self.cqRingAddr = cqRingAddr
+                self.cqRingSize = cqRingSize
+                self.sqeAddr = sqeAddr
+                self.sqeSize = sqeSize
             }
 
             deinit {
@@ -161,7 +169,9 @@ public import ISO_9945_Kernel_File
         /// - Parameters:
         ///   - entries: Number of SQ entries (rounded up to power of 2).
         ///   - params: Parameters struct (modified on return with ring offsets).
+        ///
         /// - Returns: File descriptor for the io_uring instance.
+        ///
         /// - Throws: `Error.setup` if creation fails.
         ///
         /// ## Blocking Behavior
@@ -194,12 +204,15 @@ public import ISO_9945_Kernel_File
         ///   - toSubmit: Number of SQEs to submit.
         ///   - minComplete: Minimum completions to wait for.
         ///   - flags: Enter flags.
+        ///
         /// - Returns: Number of SQEs submitted.
+        ///
         /// - Throws: `Error.enter` on failure, `Error.interrupted` on EINTR.
         ///
         /// ## Blocking Behavior
         ///
         /// May block if `minComplete > 0` or if `.getEvents` flag is set.
+        ///
         /// Call from a blocking context (dedicated thread pool), not the
         /// Swift cooperative thread pool.
         ///
@@ -236,6 +249,7 @@ public import ISO_9945_Kernel_File
         ///   - opcode: The registration operation to perform.
         ///   - argument: Pointer to the arguments for the operation.
         ///   - count: Number of arguments.
+        ///
         /// - Throws: `Error.register` on failure.
         ///
         /// ## Blocking Behavior
@@ -295,7 +309,9 @@ public import ISO_9945_Kernel_File
         ///   - toSubmit: Number of SQEs to submit.
         ///   - minComplete: Minimum completions to wait for.
         ///   - flags: Enter flags.
+        ///
         /// - Returns: Number of SQEs submitted.
+        ///
         /// - Throws: `Error.enter` on failure, `Error.interrupted` on EINTR.
         public func enter(
             toSubmit: Submission.Count,
@@ -331,6 +347,7 @@ public import ISO_9945_Kernel_File
         /// integration with poll-based event loops (epoll).
         ///
         /// - Parameter descriptor: The eventfd file descriptor.
+        ///
         /// - Throws: `Error.register` on failure.
         public func register(
             eventfd descriptor: borrowing ISO_9945.Kernel.Descriptor
@@ -359,6 +376,7 @@ public import ISO_9945_Kernel_File
         /// - Parameters:
         ///   - descriptor: The io_uring file descriptor from ``setup(entries:params:)``.
         ///   - params: Kernel-filled params containing ring offsets and sizes.
+        ///
         /// - Throws: ``Error/setup(_:)`` on mmap failure.
         public init(
             descriptor: consuming ISO_9945.Kernel.Descriptor,
@@ -379,7 +397,8 @@ public import ISO_9945_Kernel_File
             let sqMmapSz = isSingleMmap ? max(sqRingSz, cqRingSz) : sqRingSz
 
             guard let sq = unsafe mmap(nil, sqMmapSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, 0),
-                  unsafe sq != MAP_FAILED else {
+                unsafe sq != MAP_FAILED
+            else {
                 throw .setup(.posix(errno))
             }
 
@@ -394,7 +413,8 @@ public import ISO_9945_Kernel_File
             } else {
                 cqMmapSz = cqRingSz
                 guard let cqPtr = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.cqRing)),
-                      unsafe cqPtr != MAP_FAILED else {
+                    unsafe cqPtr != MAP_FAILED
+                else {
                     unsafe munmap(sq, sqMmapSz)
                     throw .setup(.posix(errno))
                 }
@@ -404,7 +424,8 @@ public import ISO_9945_Kernel_File
             // -- Map SQE array (always separate) --
 
             guard let sqe = unsafe mmap(nil, sqeSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqes)),
-                  unsafe sqe != MAP_FAILED else {
+                unsafe sqe != MAP_FAILED
+            else {
                 unsafe munmap(sq, sqMmapSz)
                 if !isSingleMmap { unsafe munmap(cq, cqMmapSz) }
                 throw .setup(.posix(errno))
@@ -425,12 +446,17 @@ public import ISO_9945_Kernel_File
                 cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
                 cqMask: Completion.Queue.Mask(rawValue: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self)),
-                cqes: UnsafePointer(cq.advanced(by: params.cqOff.cqes.vector.rawValue)
-                    .assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self)),
+                cqes: UnsafePointer(
+                    cq.advanced(by: params.cqOff.cqes.vector.rawValue)
+                        .assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self)
+                ),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Memory_Primitives.Memory.Address(sq), sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Memory_Primitives.Memory.Address(cq), cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Memory_Primitives.Memory.Address(sqe), sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
+                sqRingAddr: unsafe Memory_Primitives.Memory.Address(sq),
+                sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
+                cqRingAddr: unsafe Memory_Primitives.Memory.Address(cq),
+                cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
+                sqeAddr: unsafe Memory_Primitives.Memory.Address(sqe),
+                sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
             )
         }
     }
@@ -441,7 +467,9 @@ public import ISO_9945_Kernel_File
         /// The current submission queue slot.
         ///
         /// Yields a `~Copyable ~Escapable` ``Slot`` via `mutating _read` coroutine.
+        ///
         /// The coroutine scope confines the slot's lifetime — it cannot escape.
+        ///
         /// Write to the SQE through ``Slot/entry``:
         ///
         /// ```swift
@@ -451,6 +479,7 @@ public import ISO_9945_Kernel_File
         /// ```
         ///
         /// Multiple accesses without ``advance()`` hit the same slot (by design).
+        ///
         /// Call ``advance()`` after each SQE is fully configured.
         ///
         /// - Precondition: The submission queue is not full. Check capacity
@@ -528,6 +557,7 @@ public import ISO_9945_Kernel_File
         /// - Parameters:
         ///   - limit: Maximum number of completions to drain.
         ///   - visitor: Called for each CQE.
+        ///
         /// - Returns: Number of completions drained.
         public mutating func drain(
             limit: Completion.Count,

@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Socket operation opcodes.
         public struct Socket {
@@ -42,11 +42,11 @@ public import ISO_9945_Core
             /// Listen on socket (kernel 6.11+).
             public static let listen = Opcode(rawValue: 57)
 
-            /// Zero-copy receive (kernel 6.13+).
             // WHY: Compound name — the non-compound path would be `.receive.zero.copy`
             // via a dedicated Receive namespace (symmetric with Send.Zero). Deferred to
             // avoid scope creep; this provides immediate coverage.
             // TRACKING: Opcode 58 exceeds IORING_OP_LAST=58 in kernel 6.12.
+            /// Zero-copy receive (kernel 6.13+).
             public static let receiveZeroCopy = Opcode(rawValue: 58)
         }
     }

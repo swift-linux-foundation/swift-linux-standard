@@ -11,40 +11,40 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
-#if canImport(Glibc)
-    internal import Glibc
-#elseif canImport(Musl)
-    internal import Musl
-#endif
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
 
-// MARK: - POSIX errno to Copy.Error Mapping
+    // MARK: - POSIX errno to Copy.Error Mapping
 
-extension ISO_9945.Kernel.Copy.Error {
-    /// Creates a copy error from a POSIX errno value.
-    internal init(posixErrno: Int32) {
-        switch posixErrno {
-        case EBADF:
-            self = .invalidDescriptor
-        case EXDEV:
-            self = .crossDevice
-        case ENOSPC:
-            self = .noSpace
-        case EIO:
-            self = .io
-        case EACCES, EPERM:
-            self = .permissionDenied
-        case ENOENT:
-            self = .notFound
-        case EEXIST:
-            self = .exists
-        case EINVAL, ENOTSUP:
-            self = .unsupported
-        default:
-            self = .unsupported
+    extension ISO_9945.Kernel.Copy.Error {
+        /// Creates a copy error from a POSIX errno value.
+        internal init(posixErrno: Int32) {
+            switch posixErrno {
+            case EBADF:
+                self = .invalidDescriptor
+            case EXDEV:
+                self = .crossDevice
+            case ENOSPC:
+                self = .noSpace
+            case EIO:
+                self = .io
+            case EACCES, EPERM:
+                self = .permissionDenied
+            case ENOENT:
+                self = .notFound
+            case EEXIST:
+                self = .exists
+            case EINVAL, ENOTSUP:
+                self = .unsupported
+            default:
+                self = .unsupported
+            }
         }
     }
-}
 
 #endif

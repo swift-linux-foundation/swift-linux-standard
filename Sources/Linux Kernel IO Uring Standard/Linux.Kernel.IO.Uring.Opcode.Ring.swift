@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Ring operation opcodes.
         public struct Ring {
@@ -21,8 +21,8 @@ public import ISO_9945_Core
             /// Uring command.
             public static let cmd = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 46)
 
-            /// 128-byte uring command (kernel 6.13+).
             // TRACKING: Opcode 64 exceeds IORING_OP_LAST=58 in kernel 6.12.
+            /// 128-byte uring command (kernel 6.13+).
             public static let cmd128 = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 64)
         }
 

@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import Memory_Primitives
 
     #if canImport(Glibc)
@@ -28,6 +28,7 @@ public import ISO_9945_Core
         /// Byte offsets for completion queue ring mapping.
         ///
         /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.
+        ///
         /// Used by ``Kernel/IO/Uring/init(descriptor:params:)`` to locate
         /// shared-memory fields within the mmap'd CQ ring region.
         public struct Offsets: Sendable, Equatable {

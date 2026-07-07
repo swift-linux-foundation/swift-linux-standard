@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Register {
         /// File registration opcodes.
         public struct Files {
@@ -56,7 +56,7 @@ public import ISO_9945_Core
             /// Auto-allocate the next available file slot.
             ///
             /// - Linux: `IORING_FILE_INDEX_ALLOC`
-            public static let indexAlloc: UInt32 = 0xFFFFFFFF
+            public static let indexAlloc: UInt32 = 0xFFFF_FFFF
         }
     }
 

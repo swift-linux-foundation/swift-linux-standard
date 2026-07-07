@@ -9,7 +9,6 @@
 //
 // ===----------------------------------------------------------------------===//
 
-
 extension Linux {
     /// Linux kernel mechanisms — distinct nominal type per [PLAT-ARCH-008k]
     /// Spec/Policy Namespace Split. Linux-specific spec content (ABI structs,

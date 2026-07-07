@@ -11,24 +11,24 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
 
-#if canImport(CLinuxKernelShim)
-    internal import CLinuxKernelShim
-#endif
+    #if canImport(CLinuxKernelShim)
+        internal import CLinuxKernelShim
+    #endif
 
-#if canImport(Glibc)
-    internal import Glibc
-#elseif canImport(Musl)
-    internal import Musl
-#endif
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
 
-extension ISO_9945.Kernel.File.At.Options {
-    /// Allow operations on empty path with fd (AT_EMPTY_PATH).
-    ///
-    /// Linux-specific extension to POSIX AT_* flags.
-    public static let emptyPath = Self(rawValue: Int32(AT_EMPTY_PATH))
-}
+    extension ISO_9945.Kernel.File.At.Options {
+        /// Allow operations on empty path with fd (AT_EMPTY_PATH).
+        ///
+        /// Linux-specific extension to POSIX AT_* flags.
+        public static let emptyPath = Self(rawValue: Int32(AT_EMPTY_PATH))
+    }
 
 #endif

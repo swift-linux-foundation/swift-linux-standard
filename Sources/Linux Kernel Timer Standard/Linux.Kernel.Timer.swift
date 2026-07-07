@@ -11,15 +11,15 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-extension ISO_9945.Kernel {
-    /// Linux kernel timer mechanisms — `timerfd_create(2)` family.
-    ///
-    /// Distinct from ``ISO_9945/Kernel/Time`` (which models POSIX time
-    /// concepts: timespec, clocks). The ``Timer`` namespace contains
-    /// kernel timer objects that deliver expirations via file descriptors
-    /// — enabling integration with `poll(2)`/`epoll(2)`/`io_uring`.
-    public enum Timer: Sendable {}
-}
+    public import ISO_9945_Core
+    extension ISO_9945.Kernel {
+        /// Linux kernel timer mechanisms — `timerfd_create(2)` family.
+        ///
+        /// Distinct from ``ISO_9945/Kernel/Time`` (which models POSIX time
+        /// concepts: timespec, clocks). The ``Timer`` namespace contains
+        /// kernel timer objects that deliver expirations via file descriptors
+        /// — enabling integration with `poll(2)`/`epoll(2)`/`io_uring`.
+        public enum Timer: Sendable {}
+    }
 
 #endif

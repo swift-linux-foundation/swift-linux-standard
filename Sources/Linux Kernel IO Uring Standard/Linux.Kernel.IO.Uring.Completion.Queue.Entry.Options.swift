@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Flags returned with completion queue entries.
         ///
@@ -55,7 +55,7 @@ public import ISO_9945_Core
 
         /// Indicates more completions will follow for this submission.
         ///
-        /// Used with multishot operations (e.g., multishot recv) to indicate
+        /// Used with multishot operations (for example, multishot recv) to indicate
         /// that this is not the final completion. The operation remains active.
         ///
         /// - Linux: `IORING_CQE_F_MORE`

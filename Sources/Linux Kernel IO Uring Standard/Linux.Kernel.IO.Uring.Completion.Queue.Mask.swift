@@ -11,11 +11,12 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
         /// Ring mask — extracts physical slot from a monotonic UInt32 counter.
         ///
         /// Invariant: `rawValue == entries - 1` (always one less than power-of-2).
+        ///
         /// This mirrors the kernel's `ring_mask` field in shared memory.
         public struct Mask: Sendable, Equatable {
             @usableFromInline

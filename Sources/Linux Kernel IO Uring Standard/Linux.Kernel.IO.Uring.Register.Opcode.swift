@@ -11,12 +11,13 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Register {
         /// Opcodes for registering resources with io_uring.
         ///
         /// Registration allows pre-registering buffers, files, and other
         /// resources with the kernel to avoid per-operation lookup overhead.
+        ///
         /// This improves performance for frequently-used resources.
         ///
         /// ## Usage

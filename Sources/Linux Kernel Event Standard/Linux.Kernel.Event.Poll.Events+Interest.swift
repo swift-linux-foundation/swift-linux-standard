@@ -10,8 +10,7 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-public import ISO_9945_Core
-
+    public import ISO_9945_Core
 
     extension ISO_9945.Kernel.Event.Poll.Events {
         /// Project a cross-platform ``Kernel/Event/Interest`` onto the
@@ -25,8 +24,9 @@ public import ISO_9945_Core
         /// ## Policy bits stay at the call site
         ///
         /// This init does NOT set `.et` (edge-triggered) or `.oneshot`.
+        ///
         /// Those are backend policy and belong where the registration /
-        /// submission is built (e.g., the reactor's one-shot helper or the
+        /// submission is built (for example, the reactor's one-shot helper or the
         /// io_uring `POLL_ADD` submission path — io_uring single-shot is
         /// controlled by the SQE `multishot: false` parameter, not by the
         /// epoll flag).

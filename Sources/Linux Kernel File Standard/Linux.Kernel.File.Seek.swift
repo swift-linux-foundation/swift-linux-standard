@@ -11,20 +11,20 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
-public import Error_Primitives
-public import Memory_Primitives
-public import Path_Primitives
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
+    public import Error_Primitives
+    public import Memory_Primitives
+    public import Path_Primitives
 
-// MARK: - Linux-specific Seek Whence
+    // MARK: - Linux-specific Seek Whence
 
-extension ISO_9945.Kernel.File.Seek.Whence {
-    /// Seek to the next hole (Linux 3.1+, SEEK_HOLE = 4).
-    public static let hole = Self(rawValue: 4)
+    extension ISO_9945.Kernel.File.Seek.Whence {
+        /// Seek to the next hole (Linux 3.1+, SEEK_HOLE = 4).
+        public static let hole = Self(rawValue: 4)
 
-    /// Seek to the next data region (Linux 3.1+, SEEK_DATA = 3).
-    public static let data = Self(rawValue: 3)
-}
+        /// Seek to the next data region (Linux 3.1+, SEEK_DATA = 3).
+        public static let data = Self(rawValue: 3)
+    }
 
 #endif

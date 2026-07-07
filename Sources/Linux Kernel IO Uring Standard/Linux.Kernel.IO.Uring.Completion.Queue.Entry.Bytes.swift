@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
         /// Accessor for byte-related properties.
         public var bytes: Bytes { Bytes(entry: self) }

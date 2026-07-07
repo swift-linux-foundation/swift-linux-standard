@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
@@ -23,6 +23,7 @@ public import ISO_9945_Core
         /// is provided separately via `ISO_9945.Kernel.IO.Uring.Clock`.
         ///
         /// - `.absolute`: Interpret the timeout as a deadline, not a duration.
+        ///
         /// - `.multishot`: Repeat the timeout automatically after each firing.
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32

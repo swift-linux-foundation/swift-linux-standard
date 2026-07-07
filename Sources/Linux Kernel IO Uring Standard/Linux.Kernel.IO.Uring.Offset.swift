@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
     public import Dimension_Primitives
 
     public import Binary_Primitives
@@ -21,6 +21,7 @@ public import ISO_9945_Kernel_File
         /// File offset for io_uring operations.
         ///
         /// A type-safe coordinate for io_uring file positions.
+        ///
         /// Uses UInt64 where `UInt64.max` indicates "use current file position".
         ///
         /// ## Usage

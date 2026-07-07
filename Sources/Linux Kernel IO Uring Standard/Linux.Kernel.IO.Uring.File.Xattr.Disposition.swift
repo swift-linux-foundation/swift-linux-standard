@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
@@ -32,7 +32,9 @@ public import ISO_9945_Core
         ///
         /// The three dispositions are mutually exclusive:
         /// - `.createOrReplace`: Set regardless of existence (default).
+        ///
         /// - `.createOnly`: Fail with `EEXIST` if the attribute already exists.
+        ///
         /// - `.replaceOnly`: Fail with `ENODATA` if the attribute does not exist.
         public enum Disposition: Sendable, Hashable {
             /// Set the attribute, creating or replacing as needed.

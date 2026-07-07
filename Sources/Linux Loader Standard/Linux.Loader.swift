@@ -11,20 +11,20 @@
 
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-@_exported public import Linux_Standard_Core
-@_exported public import Loader_Primitives
+    @_exported public import Linux_Standard_Core
+    @_exported public import Loader_Primitives
 
-extension Linux_Standard_Core.Linux {
-    /// Linux dynamic loader interface.
-    ///
-    /// Provides access to Linux-specific loader functionality including:
-    /// - Section enumeration via `swift_enumerateAllMetadataSections`
-    ///
-    /// ## Implementation
-    ///
-    /// Uses the Swift runtime's metadata section enumeration to discover
-    /// sections across all loaded ELF images.
-    public enum Loader: Sendable {}
-}
+    extension Linux_Standard_Core.Linux {
+        /// Linux dynamic loader interface.
+        ///
+        /// Provides access to Linux-specific loader functionality including:
+        /// - Section enumeration via `swift_enumerateAllMetadataSections`
+        ///
+        /// ## Implementation
+        ///
+        /// Uses the Swift runtime's metadata section enumeration to discover
+        /// sections across all loaded ELF images.
+        public enum Loader: Sendable {}
+    }
 
 #endif

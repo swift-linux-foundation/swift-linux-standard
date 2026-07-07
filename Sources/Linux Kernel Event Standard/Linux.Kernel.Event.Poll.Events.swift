@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -87,6 +87,7 @@ public import ISO_9945_Core
         /// Stream socket peer closed connection or shut down writing.
         ///
         /// Useful for detecting half-close before `read()` returns 0.
+        ///
         /// Must be explicitly requested; not always returned by default.
         ///
         /// - Linux: `EPOLLRDHUP`
@@ -127,6 +128,7 @@ public import ISO_9945_Core
         /// Enables one-shot mode.
         ///
         /// After delivering one event, the descriptor is disabled (not removed).
+        ///
         /// Re-arm with `EPOLL_CTL_MOD` to receive more events.
         ///
         /// - Linux: `EPOLLONESHOT`

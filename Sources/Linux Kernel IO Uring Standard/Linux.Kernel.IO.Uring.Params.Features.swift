@@ -11,11 +11,12 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Params {
         /// Kernel-reported feature flags from io_uring setup.
         ///
         /// These flags indicate which features the running kernel supports.
+        ///
         /// Filled by the kernel during ``Kernel/IO/Uring/setup(entries:params:)``;
         /// not set by the application.
         public struct Features: Sendable, Equatable, Hashable {

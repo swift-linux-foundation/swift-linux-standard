@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Socket.Transfer {
         /// Flags modifying socket send/receive behavior.
         ///
@@ -53,6 +53,7 @@ public import ISO_9945_Core
         /// Enable multishot receive mode.
         ///
         /// A single SQE produces multiple CQEs as data arrives.
+        ///
         /// The operation stays active until explicitly cancelled
         /// or a CQE without `IORING_CQE_F_MORE` is posted.
         ///

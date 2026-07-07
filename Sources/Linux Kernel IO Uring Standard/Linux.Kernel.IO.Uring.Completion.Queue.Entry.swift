@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -28,6 +28,7 @@ public import ISO_9945_Core
         /// Swift wrapper for io_uring completion queue entry.
         ///
         /// An Entry contains the result of a completed I/O operation.
+        ///
         /// This wrapper provides a Swift-native interface to the C `io_uring_cqe` struct.
         ///
         /// ## Usage
@@ -62,7 +63,8 @@ public import ISO_9945_Core
         /// Operation data from the corresponding submission queue entry.
         ///
         /// This is the value set via `entry.data` when the operation was submitted.
-        /// Typically used to recover the operation context (e.g., a pointer to Storage).
+        ///
+        /// Typically used to recover the operation context (for example, a pointer to Storage).
         public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
             ISO_9945.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data)
         }
@@ -70,7 +72,7 @@ public import ISO_9945_Core
         /// Raw result of the operation.
         ///
         /// Negative values are negated errno codes. Non-negative values
-        /// are operation-specific success results (bytes transferred, fd, etc.).
+        /// are operation-specific success results (bytes transferred, fd, and similar).
         ///
         /// Prefer ``isSuccess`` and ``error`` for typed access.
         @usableFromInline

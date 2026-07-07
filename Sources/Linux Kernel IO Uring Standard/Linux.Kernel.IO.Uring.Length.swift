@@ -11,14 +11,15 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
     public import Binary_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
         /// Buffer length for io_uring operations.
         ///
         /// A type-safe 32-bit length value using the Dimension pattern.
+        ///
         /// Follows the same pattern as `ISO_9945.Kernel.File.Size`.
         ///
         /// ## Usage

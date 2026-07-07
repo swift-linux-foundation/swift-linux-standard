@@ -11,15 +11,15 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
         /// Epoll operation opcodes.
         public struct Epoll {
             /// Add to epoll set.
             public static let ctl = Opcode(rawValue: 29)
 
-            /// Epoll wait (kernel 6.13+).
             // TRACKING: Opcode 59 exceeds IORING_OP_LAST=58 in kernel 6.12.
+            /// Epoll wait (kernel 6.13+).
             public static let wait = Opcode(rawValue: 59)
         }
     }

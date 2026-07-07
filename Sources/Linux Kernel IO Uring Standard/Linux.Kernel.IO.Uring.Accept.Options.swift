@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Accept {
         /// Flags controlling accept operation behavior.
         ///
@@ -39,6 +39,7 @@ public import ISO_9945_Core
         /// Accept multiple connections from a single SQE (kernel 5.19+).
         ///
         /// Each accepted connection produces a CQE with `IORING_CQE_F_MORE`.
+        ///
         /// The accept remains active until cancelled or a CQE without
         /// `.more` is posted.
         ///

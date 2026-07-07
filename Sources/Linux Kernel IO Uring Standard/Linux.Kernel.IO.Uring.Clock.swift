@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
+    public import ISO_9945_Core
     #if canImport(CLinuxKernelShim)
         internal import CLinuxKernelShim
     #endif
@@ -20,6 +20,7 @@ public import ISO_9945_Core
         /// Clock source for io_uring timeout operations.
         ///
         /// Determines which kernel clock is used to interpret timeout values.
+        ///
         /// The default is `.monotonic` — a clock that never goes backward and
         /// is unaffected by NTP adjustments, but does NOT advance during system
         /// suspend.

@@ -11,8 +11,8 @@
 
 #if os(Linux)
 
-public import ISO_9945_Core
-public import ISO_9945_Kernel_File
+    public import ISO_9945_Core
+    public import ISO_9945_Kernel_File
     public import Error_Primitives
     public import Memory_Primitives
     public import Path_Primitives
@@ -37,6 +37,7 @@ public import ISO_9945_Kernel_File
         ///   - newDirFD: Directory fd for newPath (AT_FDCWD for cwd).
         ///   - newPath: Destination path.
         ///   - flags: Rename flags controlling behavior.
+        ///
         /// - Throws: `Error` if the rename fails.
         ///
         /// ## Blocking Behavior
@@ -90,6 +91,7 @@ public import ISO_9945_Kernel_File
         /// - Parameters:
         ///   - oldPath: Source path.
         ///   - newPath: Destination path.
+        ///
         /// - Throws: `Error.exists` if destination exists, other errors on failure.
         @unsafe
         public static func noClobber(
@@ -108,11 +110,13 @@ public import ISO_9945_Kernel_File
         /// Atomically exchanges two files.
         ///
         /// Convenience wrapper that uses RENAME_EXCHANGE flag.
+        ///
         /// Both paths must exist.
         ///
         /// - Parameters:
         ///   - path1: First path.
         ///   - path2: Second path.
+        ///
         /// - Throws: `Error` on failure.
         @unsafe
         public static func exchange(
