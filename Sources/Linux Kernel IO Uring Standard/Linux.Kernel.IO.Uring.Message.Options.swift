@@ -16,6 +16,14 @@
         internal import CLinuxKernelShim
     #endif
 
+    // MARK: - IORING_MSG_RING_CQE_SKIP
+    //
+    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
+    // headers that predate this constant, so it is not always available from
+    // CLinuxKernelShim. Defined locally with the documented kernel value,
+    // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    private let _IORING_MSG_RING_CQE_SKIP: UInt32 = 1 << 0
+
     extension ISO_9945.Kernel.IO.Uring {
         /// Types for io_uring MSG_RING operations (inter-ring messaging).
         public struct Message: Sendable {
@@ -29,7 +37,7 @@
                 }
 
                 /// Skip CQE on the source ring for this message.
-                public static let cqeSkip = Options(rawValue: UInt32(IORING_MSG_RING_CQE_SKIP))
+                public static let cqeSkip = Options(rawValue: _IORING_MSG_RING_CQE_SKIP)
 
                 /// Pass flags from the source SQE to the target CQE.
                 public static let flagsPass = Options(rawValue: UInt32(IORING_MSG_RING_FLAGS_PASS))

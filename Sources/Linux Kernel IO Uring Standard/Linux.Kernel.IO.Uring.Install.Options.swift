@@ -16,6 +16,14 @@
         internal import CLinuxKernelShim
     #endif
 
+    // MARK: - IORING_FIXED_FD_NO_CLOEXEC
+    //
+    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
+    // headers that predate this constant, so it is not always available from
+    // CLinuxKernelShim. Defined locally with the documented kernel value,
+    // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    private let _IORING_FIXED_FD_NO_CLOEXEC: UInt32 = 1 << 0
+
     extension ISO_9945.Kernel.IO.Uring.Fixed {
         /// Flags for fixed file descriptor installation.
         ///
@@ -30,7 +38,7 @@
                 }
 
                 /// Don't set close-on-exec on the installed fd.
-                public static let noCloseOnExec = Options(rawValue: UInt32(IORING_FIXED_FD_NO_CLOEXEC))
+                public static let noCloseOnExec = Options(rawValue: _IORING_FIXED_FD_NO_CLOEXEC)
             }
         }
     }
