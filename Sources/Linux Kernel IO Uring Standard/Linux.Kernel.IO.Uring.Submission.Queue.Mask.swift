@@ -23,7 +23,7 @@
             let rawValue: UInt32
 
             @inlinable
-            init(rawValue: UInt32) {
+            package init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
 
