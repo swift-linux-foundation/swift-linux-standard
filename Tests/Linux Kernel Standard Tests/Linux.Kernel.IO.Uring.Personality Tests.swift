@@ -58,19 +58,19 @@
         @Test
         func `ID literal construction`() {
             let id: Kernel.IO.Uring.Personality.ID = 42
-            #expect(id.rawValue == 42)
+            #expect(id.underlying == 42)
         }
 
         @Test
         func `ID.none constant has rawValue 0`() {
             let none = Kernel.IO.Uring.Personality.ID.none
-            #expect(none.rawValue == 0)
+            #expect(none.underlying == 0)
         }
 
         @Test
         func `ID rawValue access`() {
             let id: Kernel.IO.Uring.Personality.ID = 7
-            #expect(id.rawValue == 7)
+            #expect(id.underlying == 7)
         }
 
         @Test
@@ -104,15 +104,15 @@
     extension Kernel.IO.Uring.Personality.Test.`Edge Case` {
         @Test
         func `ID UInt16.max value`() {
-            let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), UInt16.max)
-            #expect(id.rawValue == UInt16.max)
+            let id = Kernel.IO.Uring.Personality.ID(_unchecked: UInt16.max)
+            #expect(id.underlying == UInt16.max)
         }
 
         @Test
         func `ID rawValue roundtrip`() {
             for value: UInt16 in [0, 1, 100, UInt16.max] {
-                let id = Kernel.IO.Uring.Personality.ID(__unchecked: (), value)
-                #expect(id.rawValue == value)
+                let id = Kernel.IO.Uring.Personality.ID(_unchecked: value)
+                #expect(id.underlying == value)
             }
         }
     }

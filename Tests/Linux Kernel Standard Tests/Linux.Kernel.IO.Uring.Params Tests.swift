@@ -43,8 +43,8 @@
         @Test
         func `Params default init produces zeroed state`() {
             let params = Kernel.IO.Uring.Params()
-            #expect(params.sqEntries.rawValue == Cardinal(0))
-            #expect(params.cqEntries.rawValue == Cardinal(0))
+            #expect(params.sqEntries.underlying == Cardinal(0))
+            #expect(params.cqEntries.underlying == Cardinal(0))
             #expect(params.flags.isEmpty)
         }
 

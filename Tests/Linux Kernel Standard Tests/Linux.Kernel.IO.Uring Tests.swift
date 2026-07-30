@@ -46,7 +46,7 @@
 
             #expect(throws: Kernel.IO.Uring.Error.self) {
                 _ = try Kernel.IO.Uring.setup(
-                    entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(0)),
+                    entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(0)),
                     params: &params
                 )
             }
@@ -66,7 +66,7 @@
             // Setup ring with 4 entries
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
-                entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(4)),
+                entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(4)),
                 params: &params
             )
             var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
@@ -78,7 +78,7 @@
             ring.advance()
 
             let flushed = ring.flush()
-            #expect(flushed.rawValue.rawValue > 0)
+            #expect(flushed.underlying.rawValue > 0)
 
             // Enter: submit 1, wait for 1 completion
             let submitted = try ring.enter(
@@ -86,7 +86,7 @@
                 minComplete: 1,
                 flags: .getEvents
             )
-            #expect(submitted.rawValue.rawValue > 0)
+            #expect(submitted.underlying.rawValue > 0)
 
             // Drain the CQE and verify the operation data round-tripped
             var receivedData: Kernel.IO.Uring.Operation.Data = 0
@@ -98,7 +98,7 @@
                 receivedData = cqe.data
                 receivedResult = cqe.res
             }
-            #expect(drained.rawValue.rawValue == 1)
+            #expect(drained.underlying.rawValue == 1)
             #expect(receivedData == nopData)
             #expect(receivedResult == 0)  // NOP always succeeds with res=0
         }
@@ -109,7 +109,7 @@
         func `batch nop submission via Slot`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
-                entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(8)),
+                entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(8)),
                 params: &params
             )
             var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
@@ -117,17 +117,17 @@
             // Submit 4 NOPs with distinct data values
             let count = 4
             for i in 0..<count {
-                let data = Kernel.IO.Uring.Operation.Data(__unchecked: (), UInt64(0x100 + i))
+                let data = Kernel.IO.Uring.Operation.Data(_unchecked: UInt64(0x100 + i))
                 ring.next.entry.nop(data: data)
                 ring.advance()
             }
 
             let flushed = ring.flush()
-            #expect(flushed.rawValue.rawValue == UInt(count))
+            #expect(flushed.underlying.rawValue == UInt(count))
 
             _ = try ring.enter(
                 toSubmit: flushed,
-                minComplete: Kernel.IO.Uring.Completion.Count(__unchecked: (), Cardinal(UInt(count))),
+                minComplete: Kernel.IO.Uring.Completion.Count(_unchecked: Cardinal(UInt(count))),
                 flags: .getEvents
             )
 
@@ -136,10 +136,10 @@
             let drained = ring.drain(
                 limit: 16
             ) { cqe in
-                received.insert(cqe.data.rawValue)
+                received.insert(cqe.data.underlying)
                 #expect(cqe.isSuccess)  // all NOPs succeed
             }
-            #expect(drained.rawValue.rawValue == UInt(count))
+            #expect(drained.underlying.rawValue == UInt(count))
             #expect(received == [0x100, 0x101, 0x102, 0x103])
         }
 
@@ -149,7 +149,7 @@
         func `repeated next access without advance writes same slot`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
-                entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(4)),
+                entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(4)),
                 params: &params
             )
             var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
@@ -186,7 +186,7 @@
         func `Slot.entry _modify writes through to mmap'd memory`() throws {
             var params = Kernel.IO.Uring.Params()
             let fd = try Kernel.IO.Uring.setup(
-                entries: Kernel.IO.Uring.Submission.Count(__unchecked: (), Cardinal(4)),
+                entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(4)),
                 params: &params
             )
             var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)

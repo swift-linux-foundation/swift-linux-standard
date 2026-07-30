@@ -43,19 +43,19 @@
         @Test
         func `Data literal construction`() {
             let data: Kernel.IO.Uring.Operation.Data = 42
-            #expect(data.rawValue == 42)
+            #expect(data.underlying == 42)
         }
 
         @Test
         func `Data.zero constant`() {
             let zero = Kernel.IO.Uring.Operation.Data.zero
-            #expect(zero.rawValue == 0)
+            #expect(zero.underlying == 0)
         }
 
         @Test
         func `Data rawValue access`() {
             let data: Kernel.IO.Uring.Operation.Data = 99
-            #expect(data.rawValue == 99)
+            #expect(data.underlying == 99)
         }
 
         @Test
@@ -65,7 +65,7 @@
                 let rawPtr = unsafe UnsafeRawPointer(ptr)
                 let data = unsafe Kernel.IO.Uring.Operation.Data(rawPtr)
                 let expected = unsafe UInt64(UInt(bitPattern: ptr))
-                #expect(data.rawValue == expected)
+                #expect(data.underlying == expected)
             }
         }
 
@@ -75,7 +75,7 @@
             withUnsafePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
                 let expected = unsafe UInt64(UInt(bitPattern: ptr))
-                #expect(data.rawValue == expected)
+                #expect(data.underlying == expected)
             }
         }
 
@@ -85,7 +85,7 @@
             withUnsafeMutablePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
                 let expected = unsafe UInt64(UInt(bitPattern: ptr))
-                #expect(data.rawValue == expected)
+                #expect(data.underlying == expected)
             }
         }
 
@@ -120,8 +120,8 @@
     extension Kernel.IO.Uring.Operation.DataTest.`Edge Case` {
         @Test
         func `Data UInt64.max value`() {
-            let data = Kernel.IO.Uring.Operation.Data(__unchecked: (), UInt64.max)
-            #expect(data.rawValue == UInt64.max)
+            let data = Kernel.IO.Uring.Operation.Data(_unchecked: UInt64.max)
+            #expect(data.underlying == UInt64.max)
         }
 
         @Test
@@ -139,8 +139,8 @@
         @Test
         func `Data rawValue roundtrip`() {
             for value: UInt64 in [0, 1, 100, 0xDEAD_BEEF, UInt64.max] {
-                let data = Kernel.IO.Uring.Operation.Data(__unchecked: (), value)
-                #expect(data.rawValue == value)
+                let data = Kernel.IO.Uring.Operation.Data(_unchecked: value)
+                #expect(data.underlying == value)
             }
         }
     }

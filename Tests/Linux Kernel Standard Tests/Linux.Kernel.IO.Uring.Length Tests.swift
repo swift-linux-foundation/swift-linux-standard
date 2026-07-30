@@ -43,24 +43,24 @@
         @Test
         func `Length from Int`() {
             let length = Kernel.IO.Uring.Length(1024)
-            #expect(length.rawValue == 1024)
+            #expect(length.underlying == 1024)
         }
 
         @Test
         func `Length from rawValue`() {
-            let length = Kernel.IO.Uring.Length(__unchecked: (), 4096)
-            #expect(length.rawValue == 4096)
+            let length = Kernel.IO.Uring.Length(_unchecked: 4096)
+            #expect(length.underlying == 4096)
         }
 
         @Test
         func `Length.zero constant`() {
-            #expect(Kernel.IO.Uring.Length.zero.rawValue == 0)
+            #expect(Kernel.IO.Uring.Length.zero.underlying == 0)
         }
 
         @Test
         func `Length integer literal`() {
             let length: Kernel.IO.Uring.Length = 8192
-            #expect(length.rawValue == 8192)
+            #expect(length.underlying == 8192)
         }
 
         @Test
@@ -89,7 +89,7 @@
         @Test
         func `Length rawValue access`() {
             let length = Kernel.IO.Uring.Length(512)
-            #expect(length.rawValue == 512)
+            #expect(length.underlying == 512)
         }
     }
 
@@ -98,8 +98,8 @@
     extension Kernel.IO.Uring.LengthTest.`Edge Case` {
         @Test
         func `Length max UInt32 value`() {
-            let length = Kernel.IO.Uring.Length(__unchecked: (), UInt32.max)
-            #expect(length.rawValue == UInt32.max)
+            let length = Kernel.IO.Uring.Length(_unchecked: UInt32.max)
+            #expect(length.underlying == UInt32.max)
         }
 
         @Test
@@ -112,7 +112,7 @@
         @Test
         func `Length clamping large Int values`() {
             let length = Kernel.IO.Uring.Length(Int(UInt32.max) + 1000)
-            #expect(length.rawValue == UInt32.max)
+            #expect(length.underlying == UInt32.max)
         }
 
         @Test
@@ -123,9 +123,9 @@
                 Kernel.IO.Uring.Length(200),
             ]
             let sorted = lengths.sorted()
-            #expect(sorted[0].rawValue == 50)
-            #expect(sorted[1].rawValue == 100)
-            #expect(sorted[2].rawValue == 200)
+            #expect(sorted[0].underlying == 50)
+            #expect(sorted[1].underlying == 100)
+            #expect(sorted[2].underlying == 200)
         }
     }
 #endif

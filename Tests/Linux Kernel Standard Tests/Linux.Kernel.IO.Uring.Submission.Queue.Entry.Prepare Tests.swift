@@ -14,6 +14,7 @@
 
     import Error_Primitives
     import Memory_Primitives
+    import Memory_Map_Primitives
     @testable import Linux_Kernel_IO_Uring_Standard
 
     import ISO_9945_Core
@@ -194,7 +195,7 @@
             unsafe entry.unlinkat(
                 target: .registered(2),
                 path: path,
-                flags: Kernel.File.At.Options(rawValue: Int32(bitPattern: 0x200)),
+                flags: Kernel.File.At.Options(rawValue: Int32(bitPattern: UInt32(0x200))),
                 data: data
             )
             #expect(entry.opcode == .file.unlinkat)
@@ -365,7 +366,7 @@
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 85
             let fds = unsafe UnsafeMutablePointer<Int32>(bitPattern: 0xE000)!
-            unsafe entry.pipe(fds: fds, flags: Kernel.Pipe.Options(rawValue: Int32(bitPattern: 0x80000)), data: data)
+            unsafe entry.pipe(fds: fds, flags: Kernel.Pipe.Options(rawValue: Int32(bitPattern: UInt32(0x80000))), data: data)
             #expect(entry.opcode == .pipe.create)
             #expect(entry.cValue.fd == -1)
             #expect(entry.addr == 0xE000)

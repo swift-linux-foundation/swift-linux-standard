@@ -40,7 +40,7 @@
                 @Test
                 func `Offset.current constant`() {
                     let current = Kernel.IO.Uring.Offset.current
-                    #expect(current.rawValue == UInt64.max)
+                    #expect(current.underlying == UInt64.max)
                 }
 
                 @Test
