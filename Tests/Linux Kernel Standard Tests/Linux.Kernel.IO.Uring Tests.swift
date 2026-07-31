@@ -28,11 +28,40 @@
         import CLinuxKernelShim
     #endif
 
+    // MARK: - Capability Probe
+
+    /// Whether the current environment permits `io_uring_setup(2)`.
+    ///
+    /// CI containers commonly deny io_uring via seccomp/capability
+    /// restriction (`EPERM`) or run kernels without io_uring support
+    /// (`ENOSYS`); neither is a code defect. Probes with a minimal,
+    /// immediately-torn-down ring rather than assuming availability —
+    /// per the coordinator ruling in
+    /// swift-linux-foundation/swift-linux-standard#5 (comment 5135876054).
+    ///
+    /// Any other `setup` failure mode is a genuine bug, not an environment
+    /// capability gap, and is left to propagate so the suite fails loudly
+    /// instead of silently skipping.
+    private func probeIOUringSupported() throws -> Bool {
+        var params = Kernel.IO.Uring.Params()
+        do {
+            // Descriptor is ~Copyable; discarding it here runs its deinit,
+            // which closes the fd — no explicit close needed for the probe.
+            _ = try Kernel.IO.Uring.setup(
+                entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(1)),
+                params: &params
+            )
+            return true
+        } catch Kernel.IO.Uring.Error.setup(let code) where code == .posix(EPERM) || code == .posix(ENOSYS) {
+            return false
+        }
+    }
+
     extension Kernel.IO.Uring {
         enum Test {
             @Suite struct Unit {}
             @Suite struct `Edge Case` {}
-            @Suite struct Integration {}
+            @Suite(.enabled(if: try probeIOUringSupported())) struct Integration {}
             @Suite(.serialized) struct Performance {}
         }
     }

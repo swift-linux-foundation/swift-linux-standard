@@ -16,6 +16,14 @@
         internal import CLinuxKernelShim
     #endif
 
+    // MARK: - IORING_POLL_ADD_LEVEL
+    //
+    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
+    // headers that predate this constant, so it is not always available from
+    // CLinuxKernelShim. Defined locally with the documented kernel value,
+    // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
+
     extension ISO_9945.Kernel.IO.Uring.Poll {
         /// Options for io_uring poll operations.
         ///
@@ -36,7 +44,7 @@
             /// Level-triggered mode — fires while the condition holds.
             ///
             /// Default (absent) is edge-triggered — fires on state change.
-            public static let level = Options(rawValue: UInt32(IORING_POLL_ADD_LEVEL))
+            public static let level = Options(rawValue: _IORING_POLL_ADD_LEVEL)
 
             /// Multishot mode — produces CQEs on every event without
             /// requiring resubmission. Check `IORING_CQE_F_MORE` on each

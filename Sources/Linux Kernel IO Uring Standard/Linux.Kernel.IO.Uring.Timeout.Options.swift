@@ -16,6 +16,15 @@
         internal import CLinuxKernelShim
     #endif
 
+    // MARK: - IORING_TIMEOUT_MULTISHOT / IORING_TIMEOUT_ETIME_SUCCESS
+    //
+    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
+    // headers that predate these constants, so they are not always available
+    // from CLinuxKernelShim. Defined locally with the documented kernel
+    // values, matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    private let _IORING_TIMEOUT_ETIME_SUCCESS: UInt32 = 1 << 5
+    private let _IORING_TIMEOUT_MULTISHOT: UInt32 = 1 << 6
+
     extension ISO_9945.Kernel.IO.Uring.Timeout {
         /// Options for io_uring timeout operations.
         ///
@@ -40,7 +49,7 @@
             /// Repeat the timeout automatically. Each firing produces a CQE
             /// with `IORING_CQE_F_MORE`; the timeout remains active until
             /// explicitly removed.
-            public static let multishot = Options(rawValue: UInt32(IORING_TIMEOUT_MULTISHOT))
+            public static let multishot = Options(rawValue: _IORING_TIMEOUT_MULTISHOT)
 
             /// Update an existing timeout instead of adding a new one.
             ///
@@ -52,7 +61,7 @@
             ///
             /// By default, timeout expiry returns `-ETIME`. With this
             /// flag, expiry returns `0` (success) in the CQE result.
-            public static let expirySuccess = Options(rawValue: UInt32(IORING_TIMEOUT_ETIME_SUCCESS))
+            public static let expirySuccess = Options(rawValue: _IORING_TIMEOUT_ETIME_SUCCESS)
 
             /// Update a linked timeout.
             ///

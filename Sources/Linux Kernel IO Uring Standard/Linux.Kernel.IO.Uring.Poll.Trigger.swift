@@ -16,6 +16,16 @@
         internal import CLinuxKernelShim
     #endif
 
+    // MARK: - IORING_POLL_ADD_LEVEL
+    //
+    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
+    // headers that predate this constant, so it is not always available from
+    // CLinuxKernelShim. Defined locally with the documented kernel value,
+    // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    // (Redeclared file-locally alongside Linux.Kernel.IO.Uring.Poll.Options.swift's
+    // copy since `private` is file-scoped.)
+    private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
+
     extension ISO_9945.Kernel.IO.Uring.Poll {
         /// Trigger mode for io_uring poll operations.
         ///
@@ -43,7 +53,7 @@
         var pollBits: UInt32 {
             switch self {
             case .edge: 0
-            case .level: UInt32(IORING_POLL_ADD_LEVEL)
+            case .level: _IORING_POLL_ADD_LEVEL
             }
         }
     }
