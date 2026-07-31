@@ -11,8 +11,8 @@
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import ISO_9945_Core
-    public import ISO_9945_Kernel_Thread
+    public import Linux_Standard_Core
+    public import Error_Primitives
 
     internal import CLinuxKernelShim
 
@@ -24,26 +24,37 @@
         internal import Bionic
     #endif
 
+    // MARK: - Namespace
+
+    extension Linux.Kernel.Thread {
+        /// Linux thread CPU affinity mechanisms, via `sched_setaffinity(2)`.
+        ///
+        /// Re-anchored (swift-iso/swift-iso-9945#64) from the hoisted
+        /// `ISO_9945.Kernel.Thread.Affinity` vocabulary onto this package's own
+        /// `Linux.Kernel` root. The unified cross-platform vocabulary now
+        /// lives at L3 in `Kernel.Thread.Affinity` (swift-kernel).
+        public enum Affinity: Sendable {}
+    }
+
     // MARK: - Set Mask
 
-    // Adds L2 syscall wrappers to the existing cross-platform
-    // `ISO_9945.Kernel.Thread.Affinity` struct defined in swift-kernel-primitives.
-    // Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`) delegate here
-    // per [PLAT-ARCH-008c].
+    // Adds L2 syscall wrappers below the package-local `Linux.Kernel.Thread.Affinity`
+    // namespace. Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`)
+    // delegate here per [PLAT-ARCH-008c].
 
-    extension ISO_9945.Kernel.Thread.Affinity {
+    extension Linux.Kernel.Thread.Affinity {
         /// Sets the CPU affinity mask for a thread via `sched_setaffinity(2)`.
         ///
         /// - Parameters:
         ///   - tid: Thread ID; `0` denotes the calling thread.
         ///   - cores: Set of CPU core IDs to include in the mask.
         ///
-        /// - Throws: `ISO_9945.Kernel.Thread.Affinity.Error.platform` with the POSIX errno
+        /// - Throws: `Linux.Kernel.Thread.Affinity.Error.platform` with the POSIX errno
         ///   if the syscall fails.
         public static func setMask(
             tid: Int32 = 0,
             cores: Set<Int>
-        ) throws(ISO_9945.Kernel.Thread.Affinity.Error) {
+        ) throws(Linux.Kernel.Thread.Affinity.Error) {
             var mask = cpu_set_t()
 
             // Zero the mask

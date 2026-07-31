@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -24,7 +24,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event.Poll {
+    extension Linux.Kernel.Event.Poll {
         /// Event flags for epoll specifying interests and returned conditions.
         ///
         /// Used both when registering interest (what to monitor) and when
@@ -35,7 +35,7 @@
         ///
         /// ```swift
         /// // Register interest in read readiness, edge-triggered
-        /// try ISO_9945.Kernel.Event.Poll.control(
+        /// try Linux.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .add,
         ///     descriptor: fd,
@@ -68,7 +68,7 @@
 
     // MARK: - Event Flags
 
-    extension ISO_9945.Kernel.Event.Poll.Events {
+    extension Linux.Kernel.Event.Poll.Events {
         /// File descriptor is available for read operations.
         ///
         /// Data can be read without blocking. For sockets, also indicates

@@ -22,8 +22,8 @@
     import Memory_Primitives
     @testable import Linux_Kernel_Event_Standard
 
-    import ISO_9945_Core
-    private typealias Kernel = ISO_9945.Kernel
+    import Linux_Standard_Core
+    private typealias Kernel = Linux.Kernel
 
     extension Kernel.Event.Poll.Error {
         enum Test {

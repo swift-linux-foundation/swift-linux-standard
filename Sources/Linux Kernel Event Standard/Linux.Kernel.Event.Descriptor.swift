@@ -12,6 +12,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -24,7 +25,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event {
+    extension Linux.Kernel.Event {
         /// Event file descriptor — a Linux signaling primitive (`eventfd(2)`).
         ///
         /// `~Copyable`: single ownership, consumed on `close()` or deinit.
@@ -52,7 +53,7 @@
 
     // MARK: - Factory
 
-    extension ISO_9945.Kernel.Event.Descriptor {
+    extension Linux.Kernel.Event.Descriptor {
         /// Creates a new event descriptor.
         ///
         /// - Parameters:
@@ -65,18 +66,18 @@
         public static func create(
             value: UInt32 = 0,
             flags: Flags = .cloexec
-        ) throws(ISO_9945.Kernel.Event.Descriptor.Error) -> ISO_9945.Kernel.Event.Descriptor {
+        ) throws(Linux.Kernel.Event.Descriptor.Error) -> Linux.Kernel.Event.Descriptor {
             let fd = eventfd(value, flags.rawValue)
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return ISO_9945.Kernel.Event.Descriptor(descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd))
+            return Linux.Kernel.Event.Descriptor(descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd))
         }
     }
 
     // MARK: - Operations
 
-    extension ISO_9945.Kernel.Event.Descriptor {
+    extension Linux.Kernel.Event.Descriptor {
         /// Reads the counter value.
         ///
         /// In default mode, returns the current counter and resets it to zero.
@@ -86,7 +87,7 @@
         /// Blocks if the counter is zero and the fd is blocking.
         ///
         /// Throws `.wouldBlock` if the counter is zero and the fd is non-blocking.
-        public mutating func read() throws(ISO_9945.Kernel.Event.Descriptor.Error) -> UInt64 {
+        public mutating func read() throws(Linux.Kernel.Event.Descriptor.Error) -> UInt64 {
             var value: UInt64 = 0
             #if canImport(Glibc)
                 let result = unsafe Glibc.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
@@ -108,7 +109,7 @@
         /// The maximum value is `UInt64.max - 1`. If adding `value` would
         /// overflow, the write blocks (blocking mode) or throws `.wouldBlock`
         /// (non-blocking mode).
-        public mutating func write(_ value: UInt64) throws(ISO_9945.Kernel.Event.Descriptor.Error) {
+        public mutating func write(_ value: UInt64) throws(Linux.Kernel.Event.Descriptor.Error) {
             var val = value
             #if canImport(Glibc)
                 let result = unsafe Glibc.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
@@ -129,13 +130,13 @@
         /// Suppresses EAGAIN (counter near max, benign coalescing) and
         /// EBADF (fd closed during shutdown, benign teardown race).
         public func signal() {
-            ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: descriptor._rawValue)
+            Linux.Kernel.Event.Descriptor.signal(rawDescriptor: descriptor._rawValue)
         }
 
         /// Fire-and-forget signal using a raw file descriptor.
         ///
         /// For use in `Sendable` closures that cannot capture `~Copyable`
-        /// `ISO_9945.Kernel.Event.Descriptor`.
+        /// `Linux.Kernel.Event.Descriptor`.
         ///
         /// Suppresses EAGAIN and EBADF.
         package static func signal(rawDescriptor fd: Int32) {
@@ -166,14 +167,14 @@
         ///
         /// Enables cross-platform code that needs a ``Kernel/Descriptor``
         /// rather than the Linux-specific ``Kernel/Event/Descriptor``.
-        public init(_ eventDescriptor: consuming ISO_9945.Kernel.Event.Descriptor) {
+        public init(_ eventDescriptor: consuming Linux.Kernel.Event.Descriptor) {
             self = eventDescriptor.descriptor
         }
     }
 
     // MARK: - Lifecycle
 
-    extension ISO_9945.Kernel.Event.Descriptor {
+    extension Linux.Kernel.Event.Descriptor {
         /// Explicitly closes the event descriptor.
         ///
         /// After this call, the descriptor is invalid. If not called,

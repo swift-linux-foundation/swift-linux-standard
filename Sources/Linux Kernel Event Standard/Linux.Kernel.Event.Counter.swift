@@ -10,10 +10,10 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
-    extension ISO_9945.Kernel.Event {
+    extension Linux.Kernel.Event {
         /// Counter value for eventfd operations.
         ///
         /// Eventfd maintains an internal 64-bit counter. Reading returns
@@ -23,13 +23,13 @@
         ///
         /// ```swift
         /// // Create an eventfd with initial value 0
-        /// let efd = try ISO_9945.Kernel.Event.Descriptor.create(initval: .zero)
+        /// let efd = try Linux.Kernel.Event.Descriptor.create(initval: .zero)
         ///
         /// // Signal the eventfd (add 1 to counter)
-        /// try ISO_9945.Kernel.Event.Descriptor.write(efd, value: .one)
+        /// try Linux.Kernel.Event.Descriptor.write(efd, value: .one)
         ///
         /// // Read the counter value
-        /// let count = try ISO_9945.Kernel.Event.Descriptor.read(efd)
+        /// let count = try Linux.Kernel.Event.Descriptor.read(efd)
         /// ```
         public struct Counter: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt64
@@ -46,7 +46,7 @@
 
     // MARK: - Convenience
 
-    extension ISO_9945.Kernel.Event.Counter {
+    extension Linux.Kernel.Event.Counter {
         /// Creates a counter value from an integer.
         ///
         /// - Parameter value: The counter value.
@@ -80,7 +80,7 @@
 
     // MARK: - Comparable
 
-    extension ISO_9945.Kernel.Event.Counter: Comparable {
+    extension Linux.Kernel.Event.Counter: Comparable {
         @inlinable
         public static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.rawValue < rhs.rawValue
@@ -96,14 +96,14 @@
         ///
         /// - Parameter counter: The counter value.
         @inlinable
-        public init(_ counter: ISO_9945.Kernel.Event.Counter) {
+        public init(_ counter: Linux.Kernel.Event.Counter) {
             self = UInt32(clamping: counter.rawValue)
         }
     }
 
     // MARK: - ExpressibleByIntegerLiteral
 
-    extension ISO_9945.Kernel.Event.Counter: ExpressibleByIntegerLiteral {
+    extension Linux.Kernel.Event.Counter: ExpressibleByIntegerLiteral {
         @inlinable
         public init(integerLiteral value: UInt64) {
             self.rawValue = value
@@ -112,7 +112,7 @@
 
     // MARK: - CustomStringConvertible
 
-    extension ISO_9945.Kernel.Event.Counter: CustomStringConvertible {
+    extension Linux.Kernel.Event.Counter: CustomStringConvertible {
         public var description: Swift.String {
             "\(rawValue)"
         }

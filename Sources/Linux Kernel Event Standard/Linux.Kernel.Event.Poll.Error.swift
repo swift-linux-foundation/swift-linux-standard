@@ -11,10 +11,10 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
-    extension ISO_9945.Kernel.Event.Poll {
+    extension Linux.Kernel.Event.Poll {
         /// Errors from epoll operations.
         ///
         /// Low-level errors from epoll syscalls. Each case wraps the
@@ -26,8 +26,8 @@
         ///
         /// ```swift
         /// do {
-        ///     let epfd = try ISO_9945.Kernel.Event.Poll.create(flags: .cloexec)
-        /// } catch let error as ISO_9945.Kernel.Event.Poll.Error {
+        ///     let epfd = try Linux.Kernel.Event.Poll.create(flags: .cloexec)
+        /// } catch let error as Linux.Kernel.Event.Poll.Error {
         ///     switch error {
         ///     case .create(let code):
         ///         print("epoll_create1 failed: \(code)")
@@ -69,7 +69,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Event.Poll.Error: CustomStringConvertible {
+    extension Linux.Kernel.Event.Poll.Error: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             case .create(let code):

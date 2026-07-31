@@ -30,11 +30,11 @@
             /// never see `_rawValue` (typed-everywhere discipline per [PLAT-ARCH-008j]).
             public let signal: @Sendable () -> Void
 
-            private var _eventfd: ISO_9945.Kernel.Event.Descriptor?
+            private var _eventfd: Linux.Kernel.Event.Descriptor?
 
             init(
                 signal: @escaping @Sendable () -> Void,
-                eventfd: consuming ISO_9945.Kernel.Event.Descriptor
+                eventfd: consuming Linux.Kernel.Event.Descriptor
             ) {
                 self.signal = signal
                 self._eventfd = consume eventfd
@@ -43,7 +43,7 @@
             /// Extract the eventfd descriptor, consuming this result.
             ///
             /// The caller takes ownership of the eventfd — its deinit closes the fd.
-            public consuming func eventfd() -> ISO_9945.Kernel.Event.Descriptor {
+            public consuming func eventfd() -> Linux.Kernel.Event.Descriptor {
                 _eventfd.take()!
             }
         }

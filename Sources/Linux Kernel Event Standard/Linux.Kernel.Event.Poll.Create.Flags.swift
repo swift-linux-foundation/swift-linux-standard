@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -24,7 +24,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event.Poll.Create {
+    extension Linux.Kernel.Event.Poll.Create {
         /// Flags for creating an epoll instance.
         ///
         /// Used with `epoll_create1` to control the behavior of the
@@ -34,7 +34,7 @@
         ///
         /// ```swift
         /// // Create epoll with close-on-exec (recommended)
-        /// let epfd = try ISO_9945.Kernel.Event.Poll.create(flags: .cloexec)
+        /// let epfd = try Linux.Kernel.Event.Poll.create(flags: .cloexec)
         /// defer { try? ISO_9945.Kernel.Close.close(epfd) }
         ///
         /// // Add descriptors and poll for events...
@@ -54,7 +54,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Event.Poll.Create.Flags {
+    extension Linux.Kernel.Event.Poll.Create.Flags {
         /// No flags.
         public static let none = Self(rawValue: 0)
 

@@ -7,7 +7,7 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -20,7 +20,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event.Descriptor.Flags {
+    extension Linux.Kernel.Event.Descriptor.Flags {
         /// Close-on-exec: prevents the fd from leaking to child processes.
         ///
         /// - Linux: `EFD_CLOEXEC`

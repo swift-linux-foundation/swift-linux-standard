@@ -385,8 +385,8 @@
 
         /// Poll event mask.
         @usableFromInline
-        internal var pollEvents: ISO_9945.Kernel.Event.Poll.Events {
-            get { ISO_9945.Kernel.Event.Poll.Events(rawValue: cValue.poll32_events) }
+        internal var pollEvents: Linux.Kernel.Event.Poll.Events {
+            get { Linux.Kernel.Event.Poll.Events(rawValue: cValue.poll32_events) }
             set { cValue.poll32_events = newValue.rawValue }
         }
 
@@ -413,8 +413,8 @@
 
         /// Epoll control operation.
         @usableFromInline
-        internal var epollOperation: ISO_9945.Kernel.Event.Poll.Operation {
-            get { ISO_9945.Kernel.Event.Poll.Operation(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var epollOperation: Linux.Kernel.Event.Poll.Operation {
+            get { Linux.Kernel.Event.Poll.Operation(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 

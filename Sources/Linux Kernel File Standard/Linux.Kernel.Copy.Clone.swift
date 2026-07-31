@@ -13,6 +13,7 @@
 
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -22,9 +23,16 @@
         internal import Musl
     #endif
 
+    // MARK: - Namespace
+
+    extension Linux.Kernel.Copy {
+        /// Linux clone operations (copy-on-write), via `FICLONE`.
+        public enum Clone: Sendable {}
+    }
+
     // MARK: - Linux FICLONE Implementation — raw fd SPI
 
-    extension ISO_9945.Kernel.Copy.Clone {
+    extension Linux.Kernel.Copy.Clone {
         /// Clones a file using FICLONE ioctl — raw fd SPI.
         ///
         /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
@@ -56,10 +64,10 @@
         internal static func perform(
             fromFd sourceFd: Int32,
             toFd destinationFd: Int32
-        ) throws(ISO_9945.Kernel.Copy.Error) {
+        ) throws(Linux.Kernel.Copy.Error) {
             let result = swift_ficlone(destinationFd, sourceFd)
             guard result == 0 else {
-                throw ISO_9945.Kernel.Copy.Error(posixErrno: errno)
+                throw Linux.Kernel.Copy.Error(posixErrno: errno)
             }
         }
 
@@ -69,7 +77,7 @@
         public static func perform(
             from source: borrowing ISO_9945.Kernel.Descriptor,
             to destination: borrowing ISO_9945.Kernel.Descriptor
-        ) throws(ISO_9945.Kernel.Copy.Error) {
+        ) throws(Linux.Kernel.Copy.Error) {
             try perform(fromFd: source._rawValue, toFd: destination._rawValue)
         }
     }

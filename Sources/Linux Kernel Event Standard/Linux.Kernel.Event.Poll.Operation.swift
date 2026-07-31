@@ -11,7 +11,7 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -24,7 +24,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event.Poll {
+    extension Linux.Kernel.Event.Poll {
         /// Operations for modifying an epoll interest list.
         ///
         /// Used with `epoll_ctl` to add, modify, or remove file descriptors
@@ -35,7 +35,7 @@
         ///
         /// ```swift
         /// // Add a socket to the epoll instance
-        /// try ISO_9945.Kernel.Event.Poll.control(
+        /// try Linux.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .add,
         ///     descriptor: socketFd,
@@ -43,7 +43,7 @@
         /// )
         ///
         /// // Later, modify the interest set
-        /// try ISO_9945.Kernel.Event.Poll.control(
+        /// try Linux.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .modify,
         ///     descriptor: socketFd,
@@ -51,7 +51,7 @@
         /// )
         ///
         /// // Remove when done
-        /// try ISO_9945.Kernel.Event.Poll.control(
+        /// try Linux.Kernel.Event.Poll.control(
         ///     epfd,
         ///     operation: .delete,
         ///     descriptor: socketFd,
@@ -72,7 +72,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Event.Poll.Operation {
+    extension Linux.Kernel.Event.Poll.Operation {
         /// Adds a file descriptor to the epoll interest list.
         ///
         /// The descriptor must not already be in the interest list. If it is,

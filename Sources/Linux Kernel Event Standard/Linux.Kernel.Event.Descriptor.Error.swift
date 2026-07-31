@@ -10,10 +10,10 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
-    extension ISO_9945.Kernel.Event.Descriptor {
+    extension Linux.Kernel.Event.Descriptor {
         /// Errors from event descriptor operations.
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
             /// Failed to create event descriptor.
@@ -30,7 +30,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Event.Descriptor.Error: CustomStringConvertible {
+    extension Linux.Kernel.Event.Descriptor.Error: CustomStringConvertible {
         public var description: Swift.String {
             switch self {
             case .create(let code):
@@ -45,7 +45,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Event.Descriptor.Error {
+    extension Linux.Kernel.Event.Descriptor.Error {
         /// The error code associated with this error, if any.
         public var code: Error_Primitives.Error.Code? {
             switch self {

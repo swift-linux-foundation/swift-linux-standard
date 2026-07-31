@@ -46,10 +46,10 @@
 
             // 3. Build signal closure
             // Raw fd extracted for @Sendable closure capture —
-            // ~Copyable ISO_9945.Kernel.Event.Descriptor cannot be captured.
+            // ~Copyable Linux.Kernel.Event.Descriptor cannot be captured.
             let rawEfd = eventfd.descriptor._rawValue
             let signal: @Sendable () -> Void = {
-                ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
+                Linux.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
 
             return Wakeup.Result(
@@ -67,9 +67,9 @@
         /// immediately, causing the completion Loop's run loop to hot-spin
         /// (~10k iterations/sec per Loop thread). `CLOEXEC` is retained
         /// so child processes don't inherit the eventfd.
-        private static func createEventfd() throws(Wakeup.Error) -> ISO_9945.Kernel.Event.Descriptor {
-            do throws(ISO_9945.Kernel.Event.Descriptor.Error) {
-                return try ISO_9945.Kernel.Event.Descriptor.create(flags: .cloexec)
+        private static func createEventfd() throws(Wakeup.Error) -> Linux.Kernel.Event.Descriptor {
+            do throws(Linux.Kernel.Event.Descriptor.Error) {
+                return try Linux.Kernel.Event.Descriptor.create(flags: .cloexec)
             } catch {
                 switch error {
                 case .create(let code): throw .eventfd(code)

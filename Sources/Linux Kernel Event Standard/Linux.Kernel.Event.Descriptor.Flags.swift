@@ -10,10 +10,10 @@
 // ===----------------------------------------------------------------------===//
 
 #if os(Linux)
-    public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
-    extension ISO_9945.Kernel.Event.Descriptor {
+    extension Linux.Kernel.Event.Descriptor {
         /// Flags for event descriptor creation.
         ///
         /// ## Platform Implementation

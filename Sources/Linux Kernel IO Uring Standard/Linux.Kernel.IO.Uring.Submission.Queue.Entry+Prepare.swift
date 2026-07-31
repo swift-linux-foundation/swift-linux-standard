@@ -967,8 +967,8 @@
         public mutating func epoll(
             target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             descriptor: borrowing ISO_9945.Kernel.Descriptor,
-            operation: ISO_9945.Kernel.Event.Poll.Operation,
-            event: UnsafeMutablePointer<ISO_9945.Kernel.Event.Poll.Event>?,
+            operation: Linux.Kernel.Event.Poll.Operation,
+            event: UnsafeMutablePointer<Linux.Kernel.Event.Poll.Event>?,
             data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -990,7 +990,7 @@
         @inlinable @unsafe
         public mutating func epoll(
             target: borrowing ISO_9945.Kernel.IO.Uring.Target,
-            events: UnsafeMutablePointer<ISO_9945.Kernel.Event.Poll.Event>,
+            events: UnsafeMutablePointer<Linux.Kernel.Event.Poll.Event>,
             maxEvents: Int32,
             data: ISO_9945.Kernel.IO.Uring.Operation.Data
         ) {
@@ -1145,7 +1145,7 @@
         @inlinable
         public mutating func poll(
             target: borrowing ISO_9945.Kernel.IO.Uring.Target,
-            events: ISO_9945.Kernel.Event.Poll.Events,
+            events: Linux.Kernel.Event.Poll.Events,
             multishot: Bool = false,
             trigger: ISO_9945.Kernel.IO.Uring.Poll.Trigger = .edge,
             data: ISO_9945.Kernel.IO.Uring.Operation.Data

@@ -11,8 +11,7 @@
 
 #if os(Linux)
 
-    public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
+    public import Linux_Standard_Core
     #if canImport(Glibc)
         internal import Glibc
     #elseif canImport(Musl)
@@ -21,7 +20,7 @@
 
     // MARK: - POSIX errno to Copy.Error Mapping
 
-    extension ISO_9945.Kernel.Copy.Error {
+    extension Linux.Kernel.Copy.Error {
         /// Creates a copy error from a POSIX errno value.
         internal init(posixErrno: Int32) {
             switch posixErrno {

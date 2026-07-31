@@ -13,6 +13,7 @@
 
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -22,9 +23,16 @@
         internal import Musl
     #endif
 
+    // MARK: - Namespace
+
+    extension Linux.Kernel.Copy {
+        /// Linux range-based copy operations, via `copy_file_range(2)`.
+        public enum Range: Sendable {}
+    }
+
     // MARK: - copy_file_range Implementation — raw fd SPI
 
-    extension ISO_9945.Kernel.Copy.Range {
+    extension Linux.Kernel.Copy.Range {
         /// Copies bytes between file descriptors using copy_file_range(2) — raw fd SPI.
         ///
         /// Spec-literal: takes raw `Int32` fds. The L3-policy typed-descriptor
@@ -70,7 +78,7 @@
             toFd destinationFd: Int32,
             destOffset: inout ISO_9945.Kernel.File.Offset,
             length: ISO_9945.Kernel.File.Size
-        ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
+        ) throws(Linux.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
             var srcOff = off_t(sourceOffset.underlying)
             var dstOff = off_t(destOffset.underlying)
 
@@ -86,7 +94,7 @@
             )
 
             guard result >= 0 else {
-                throw ISO_9945.Kernel.Copy.Error(posixErrno: errno)
+                throw Linux.Kernel.Copy.Error(posixErrno: errno)
             }
 
             sourceOffset = ISO_9945.Kernel.File.Offset(Int64(srcOff))
@@ -103,7 +111,7 @@
             to destination: borrowing ISO_9945.Kernel.Descriptor,
             destOffset: inout ISO_9945.Kernel.File.Offset,
             length: ISO_9945.Kernel.File.Size
-        ) throws(ISO_9945.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
+        ) throws(Linux.Kernel.Copy.Error) -> ISO_9945.Kernel.File.Size {
             try copy(
                 fromFd: source._rawValue,
                 sourceOffset: &sourceOffset,

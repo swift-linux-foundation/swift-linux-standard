@@ -243,7 +243,9 @@ let package = Package(
                 .target(name: "Linux Standard Core"),
                 .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
                 .product(name: "Loader Primitives", package: "swift-loader-primitives"),
-                .product(name: "String Primitives", package: "swift-string-primitives")
+                .product(name: "String Primitives", package: "swift-string-primitives"),
+                .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Loader", package: "swift-iso-9945"),
             ]
         ),
 

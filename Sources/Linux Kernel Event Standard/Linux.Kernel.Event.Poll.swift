@@ -13,6 +13,7 @@
 
     public import ISO_9945_Kernel_Time
     @_spi(Syscall) public import ISO_9945_Core
+    public import Linux_Standard_Core
     public import Error_Primitives
 
     #if canImport(Glibc)
@@ -25,7 +26,7 @@
         internal import CLinuxKernelShim
     #endif
 
-    extension ISO_9945.Kernel.Event {
+    extension Linux.Kernel.Event {
         /// Epoll event notification (Linux).
         ///
         /// Owns the epoll file descriptor via `~Copyable` — deinit closes
@@ -35,7 +36,7 @@
         /// ## Usage
         ///
         /// ```swift
-        /// var epoll = try ISO_9945.Kernel.Event.Poll()
+        /// var epoll = try Linux.Kernel.Event.Poll()
         /// try epoll.add(fd: socketFd, event: event)
         /// let count = try epoll.poll(events: &events, timeout: .seconds(1))
         /// // epoll deinit closes the epoll fd
@@ -59,7 +60,7 @@
 
     // MARK: - Public Instance API
 
-    extension ISO_9945.Kernel.Event.Poll {
+    extension Linux.Kernel.Event.Poll {
         /// Adds a file descriptor to the epoll instance.
         ///
         /// - Parameters:
@@ -130,22 +131,22 @@
         ///
         /// - Returns: A `@Sendable` signal closure.
         public func wakeup(
-            eventfd: borrowing ISO_9945.Kernel.Event.Descriptor
+            eventfd: borrowing Linux.Kernel.Event.Descriptor
         ) throws(Error) -> @Sendable () -> Void {
             let wakeupEvent = Event(events: [.in, .et])
             try self.add(fd: eventfd.descriptor, event: wakeupEvent)
             let rawEfd = eventfd.descriptor._rawValue
             return {
-                ISO_9945.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
+                Linux.Kernel.Event.Descriptor.signal(rawDescriptor: rawEfd)
             }
         }
     }
 
     // MARK: - Package Statics (C API Mirror)
 
-    extension ISO_9945.Kernel.Event.Poll {
+    extension Linux.Kernel.Event.Poll {
         /// Creates a new epoll instance.
-        package static func create(flags: Create.Flags = .cloexec) throws(ISO_9945.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
+        package static func create(flags: Create.Flags = .cloexec) throws(Linux.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
@@ -155,11 +156,11 @@
 
         /// Controls the epoll instance (add/modify/delete).
         package static func ctl(
-            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
+            _ epoll: borrowing Linux.Kernel.Event.Poll,
             op: Operation,
             fd: borrowing ISO_9945.Kernel.Descriptor,
             event: Event? = nil
-        ) throws(ISO_9945.Kernel.Event.Poll.Error) {
+        ) throws(Linux.Kernel.Event.Poll.Error) {
             let result: Int32
             if var cEvent = event?.cValue {
                 result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
@@ -173,10 +174,10 @@
 
         /// Waits for events (millisecond timeout, internal).
         internal static func wait(
-            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
+            _ epoll: borrowing Linux.Kernel.Event.Poll,
             events: inout [Event],
             timeout: Int32
-        ) throws(ISO_9945.Kernel.Event.Poll.Error) -> Int {
+        ) throws(Linux.Kernel.Event.Poll.Error) -> Int {
             guard !events.isEmpty else { return 0 }
 
             let count = events.count
@@ -204,10 +205,10 @@
 
         /// Waits for events with a Duration timeout.
         package static func wait(
-            _ epoll: borrowing ISO_9945.Kernel.Event.Poll,
+            _ epoll: borrowing Linux.Kernel.Event.Poll,
             events: inout [Event],
             timeout: Duration?
-        ) throws(ISO_9945.Kernel.Event.Poll.Error) -> Int {
+        ) throws(Linux.Kernel.Event.Poll.Error) -> Int {
             let ms = ISO_9945.Kernel.Time.milliseconds(from: timeout)
             return try wait(epoll, events: &events, timeout: ms)
         }
