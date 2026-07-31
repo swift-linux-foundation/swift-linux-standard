@@ -9,8 +9,8 @@
 //
 // ===----------------------------------------------------------------------===//
 
-public import Linux_Standard_Core
 public import Error_Primitives
+public import Linux_Standard_Core
 
 extension Linux.Kernel.Thread.Affinity {
     /// Errors from `sched_setaffinity(2)`.
