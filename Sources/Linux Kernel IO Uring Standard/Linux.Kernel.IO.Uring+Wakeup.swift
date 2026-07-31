@@ -73,6 +73,7 @@
             } catch {
                 switch error {
                 case .create(let code): throw .eventfd(code)
+
                 case .read, .write, .wouldBlock:
                     throw .eventfd(.POSIX.EINVAL)
                 }

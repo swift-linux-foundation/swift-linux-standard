@@ -295,7 +295,11 @@
         /// completions. Ensure all in-flight operations are completed or cancelled
         /// before closing.
         public static func close(_ fd: consuming ISO_9945.Kernel.Descriptor) {
-            try? ISO_9945.Kernel.Close.close(consume fd)
+            do throws(ISO_9945.Kernel.Close.Error) {
+                try ISO_9945.Kernel.Close.close(consume fd)
+            } catch {
+                // Intentionally ignored — see doc comment above ("Ignores errors").
+            }
         }
     }
 

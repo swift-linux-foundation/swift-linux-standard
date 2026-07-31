@@ -35,7 +35,11 @@
         /// ```swift
         /// // Create epoll with close-on-exec (recommended)
         /// let epfd = try Linux.Kernel.Event.Poll.create(flags: .cloexec)
-        /// defer { try? ISO_9945.Kernel.Close.close(epfd) }
+        /// defer {
+        ///     do throws(ISO_9945.Kernel.Close.Error) {
+        ///         try ISO_9945.Kernel.Close.close(epfd)
+        ///     } catch { }
+        /// }
         ///
         /// // Add descriptors and poll for events...
         ///

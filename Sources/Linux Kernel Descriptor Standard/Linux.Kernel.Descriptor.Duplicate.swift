@@ -61,8 +61,10 @@
                 switch e {
                 case EBADF:
                     throw .handle(.invalid)
+
                 case EMFILE:
                     throw .tooManyOpen
+
                 default:
                     throw .platform(Error_Primitives.Error(code: .posix(e)))
                 }

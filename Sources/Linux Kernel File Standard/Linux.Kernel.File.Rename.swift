@@ -70,14 +70,18 @@
                 switch code.posix {
                 case EEXIST:
                     throw .exists
+
                 case ENOSYS, EINVAL:
                     // ENOSYS: syscall not available (old kernel < 3.15)
                     // EINVAL: flags not supported by filesystem
                     throw .notSupported
+
                 case EOPNOTSUPP, ENOTSUP:
                     throw .notSupported
+
                 case EPERM, EACCES:
                     throw .permission(code)
+
                 default:
                     throw .platform(code)
                 }

@@ -76,10 +76,13 @@
             switch self {
             case .setup(let code):
                 return "io_uring_setup failed (\(code))"
+
             case .enter(let code):
                 return "io_uring_enter failed (\(code))"
+
             case .register(let code):
                 return "io_uring_register failed (\(code))"
+
             case .interrupted:
                 return "operation interrupted"
             }

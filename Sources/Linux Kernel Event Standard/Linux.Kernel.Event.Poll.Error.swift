@@ -74,10 +74,13 @@
             switch self {
             case .create(let code):
                 return "epoll_create1 failed (\(code))"
+
             case .ctl(let code):
                 return "epoll_ctl failed (\(code))"
+
             case .wait(let code):
                 return "epoll_wait failed (\(code))"
+
             case .interrupted:
                 return "operation interrupted"
             }

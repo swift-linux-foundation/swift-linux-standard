@@ -33,8 +33,10 @@
             switch unsafe self {
             case .handle(let h):
                 return unsafe h.rawValue
+
             case .default:
                 return unsafe swift_RTLD_DEFAULT()
+
             case .next:
                 return unsafe swift_RTLD_NEXT()
             }

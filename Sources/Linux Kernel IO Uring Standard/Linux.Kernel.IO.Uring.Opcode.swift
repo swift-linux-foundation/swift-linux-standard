@@ -75,20 +75,24 @@
             case .nop: return "NOP"
             case .close: return "CLOSE"
             case .nop128: return "NOP128"
+
             // Read
             case .read.standard: return "READ"
             case .read.vectored.standard: return "READV"
             case .read.vectored.fixed: return "READV_FIXED"
             case .read.fixed: return "READ_FIXED"
             case .read.multishot: return "READ_MULTISHOT"
+
             // Write
             case .write.standard: return "WRITE"
             case .write.vectored.standard: return "WRITEV"
             case .write.vectored.fixed: return "WRITEV_FIXED"
             case .write.fixed: return "WRITE_FIXED"
+
             // Sync
             case .sync.file.standard: return "FSYNC"
             case .sync.file.range: return "SYNC_FILE_RANGE"
+
             // File
             case .file.openat: return "OPENAT"
             case .file.openat2: return "OPENAT2"
@@ -102,6 +106,7 @@
             case .file.symlinkat: return "SYMLINKAT"
             case .file.linkat: return "LINKAT"
             case .file.update: return "FILES_UPDATE"
+
             // Socket
             case .socket.accept: return "ACCEPT"
             case .socket.connect: return "CONNECT"
@@ -114,47 +119,61 @@
             case .socket.bind: return "BIND"
             case .socket.listen: return "LISTEN"
             case .socket.receiveZeroCopy: return "RECV_ZC"
+
             // Send (zero-copy)
             case .send.zero.copy: return "SEND_ZC"
             case .send.zero.msg: return "SENDMSG_ZC"
+
             // Cancel
             case .cancel.async: return "ASYNC_CANCEL"
+
             // Timeout
             case .timeout.standard: return "TIMEOUT"
             case .timeout.remove: return "TIMEOUT_REMOVE"
             case .timeout.link: return "LINK_TIMEOUT"
+
             // Poll
             case .poll.add: return "POLL_ADD"
             case .poll.remove: return "POLL_REMOVE"
+
             // Pipe
             case .pipe.splice: return "SPLICE"
             case .pipe.tee: return "TEE"
             case .pipe.create: return "PIPE"
+
             // Buffer
             case .buffer.provide: return "PROVIDE_BUFFERS"
             case .buffer.remove: return "REMOVE_BUFFERS"
+
             // Epoll
             case .epoll.ctl: return "EPOLL_CTL"
             case .epoll.wait: return "EPOLL_WAIT"
+
             // Ring
             case .ring.msg: return "MSG_RING"
             case .ring.cmd: return "URING_CMD"
             case .ring.cmd128: return "URING_CMD128"
+
             // Xattr
             case .xattr.fset: return "FSETXATTR"
             case .xattr.set: return "SETXATTR"
             case .xattr.fget: return "FGETXATTR"
             case .xattr.get: return "GETXATTR"
+
             // Memory
             case .memory.madvise: return "MADVISE"
+
             // Futex
             case .futex.wait: return "FUTEX_WAIT"
             case .futex.wake: return "FUTEX_WAKE"
             case .futex.waitv: return "FUTEX_WAITV"
+
             // Wait
             case .wait.id: return "WAITID"
+
             // Fixed
             case .fixed.install: return "FIXED_FD_INSTALL"
+
             default: return "OPCODE(\(rawValue))"
             }
         }

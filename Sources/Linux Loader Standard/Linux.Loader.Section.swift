@@ -77,8 +77,6 @@
         /// This function uses platform-specific mechanisms to enumerate
         /// sections across all loaded images.
         private static func enumerateSections(named sectionName: StaticString) -> [Bounds] {
-            var result: [Bounds] = []
-
             // The Swift runtime provides swift_enumerateAllMetadataSections
             // which calls a callback for each loaded image with its metadata
             // sections. The callback receives a MetadataSections structure
@@ -92,7 +90,7 @@
             // to enumerate ELF sections directly.
 
             // Placeholder: Return empty array until runtime integration is complete
-            return result
+            return []
         }
     }
 

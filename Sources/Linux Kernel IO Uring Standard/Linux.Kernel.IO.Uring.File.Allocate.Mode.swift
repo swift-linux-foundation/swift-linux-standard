@@ -70,14 +70,19 @@
             switch self {
             case .allocate(let keepSize):
                 keepSize ? FALLOC_FL_KEEP_SIZE : 0
+
             case .punch:
                 FALLOC_FL_PUNCH_HOLE | FALLOC_FL_KEEP_SIZE
+
             case .collapse:
                 FALLOC_FL_COLLAPSE_RANGE
+
             case .zero(let keepSize):
                 FALLOC_FL_ZERO_RANGE | (keepSize ? FALLOC_FL_KEEP_SIZE : 0)
+
             case .insert:
                 FALLOC_FL_INSERT_RANGE
+
             case .unshare:
                 FALLOC_FL_UNSHARE_RANGE
             }

@@ -35,10 +35,13 @@
             switch self {
             case .create(let code):
                 return "event descriptor creation failed (\(code))"
+
             case .read(let code):
                 return "event descriptor read failed (\(code))"
+
             case .write(let code):
                 return "event descriptor write failed (\(code))"
+
             case .wouldBlock:
                 return "operation would block"
             }
