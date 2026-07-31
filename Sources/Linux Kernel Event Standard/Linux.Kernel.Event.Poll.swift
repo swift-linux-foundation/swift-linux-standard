@@ -181,7 +181,7 @@
             guard !events.isEmpty else { return 0 }
 
             let count = events.count
-            let outcome: Result<Int, Error> = withUnsafeTemporaryAllocation(
+            let outcome: Result<Int, Linux.Kernel.Event.Poll.Error> = withUnsafeTemporaryAllocation(
                 of: epoll_event.self,
                 capacity: count
             ) { buffer in
