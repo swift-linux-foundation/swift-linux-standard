@@ -346,7 +346,11 @@
             let data: Kernel.IO.Uring.Operation.Data = 83
             entry.command(target: .registered(25), op: 0x7F, data: data)
             #expect(entry.opcode == .ring.cmd)
-            #expect(entry.cValue.cmd_op == 0x7F)
+            // Routed through the `commandOpcode` accessor (backed by the
+            // CLinuxKernelShim guard) rather than `cValue.cmd_op` directly —
+            // that field name is absent from some kernel-headers packages.
+            // See swift-linux-standard#7.
+            #expect(entry.commandOpcode == 0x7F)
             #expect(entry.data == data)
         }
 
