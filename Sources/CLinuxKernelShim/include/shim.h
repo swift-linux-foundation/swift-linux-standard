@@ -72,6 +72,81 @@
 #define FICLONE 0x40049409
 #endif
 
+// ---------------------------------------------------------------------
+// Kernel-header-version-dependent struct member compatibility
+// ---------------------------------------------------------------------
+// Some struct fields were added to their containing UAPI structs well
+// after those structs' original release, carved out of byte ranges the
+// kernel has always reserved for future expansion (struct io_uring_sqe
+// has been a fixed 64-byte struct since io_uring's introduction in Linux
+// 5.1; struct statx has been a fixed 256-byte struct since Linux 4.11).
+// The *name* for a given field can therefore be missing from the
+// <linux/...> header a build container's kernel-headers package happens
+// to ship, even though the bytes at that fixed offset have always
+// existed. Detect the capability macro that shipped in the same header
+// revision as the field and fall back to reading/writing the
+// always-present reserved bytes by fixed offset, so this compiles
+// against older headers without depending on the newer field names.
+//
+// Evidence: swift-linux-standard#7 — io_uring_sqe.addr3 / .cmd_op failed
+// to compile on a Swift 6.4.x-nightly CI container's kernel headers
+// (swift-foundations/swift-kernel push run 30625365398).
+
+// io_uring_sqe.cmd_op - offset 8, aliases the `off`/`addr2` union member
+// present since io_uring's introduction (Linux 5.1). Only the `cmd_op`
+// name is newer (added alongside IORING_OP_URING_CMD / big-SQE support,
+// signalled by IORING_SETUP_SQE128 in the same header revision).
+//
+// io_uring_sqe.addr3 - offset 48, part of the trailing union carved out
+// of what was originally reserved padding (`__pad2`), added in the same
+// header revision as IORING_SETUP_SQE128.
+#if defined(IORING_SETUP_SQE128)
+static inline __u32 swift_io_uring_sqe_get_cmd_op(const struct io_uring_sqe *sqe) {
+    return sqe->cmd_op;
+}
+static inline void swift_io_uring_sqe_set_cmd_op(struct io_uring_sqe *sqe, __u32 value) {
+    sqe->cmd_op = value;
+}
+static inline __u64 swift_io_uring_sqe_get_addr3(const struct io_uring_sqe *sqe) {
+    return sqe->addr3;
+}
+static inline void swift_io_uring_sqe_set_addr3(struct io_uring_sqe *sqe, __u64 value) {
+    sqe->addr3 = value;
+}
+#else
+static inline __u32 swift_io_uring_sqe_get_cmd_op(const struct io_uring_sqe *sqe) {
+    __u32 value;
+    __builtin_memcpy(&value, (const unsigned char *)sqe + 8, sizeof(value));
+    return value;
+}
+static inline void swift_io_uring_sqe_set_cmd_op(struct io_uring_sqe *sqe, __u32 value) {
+    __builtin_memcpy((unsigned char *)sqe + 8, &value, sizeof(value));
+}
+static inline __u64 swift_io_uring_sqe_get_addr3(const struct io_uring_sqe *sqe) {
+    __u64 value;
+    __builtin_memcpy(&value, (const unsigned char *)sqe + 48, sizeof(value));
+    return value;
+}
+static inline void swift_io_uring_sqe_set_addr3(struct io_uring_sqe *sqe, __u64 value) {
+    __builtin_memcpy((unsigned char *)sqe + 48, &value, sizeof(value));
+}
+#endif
+
+// struct statx.stx_mnt_id - offset 0x90 (144), carved out of previously
+// reserved spare space in Linux 5.8 (signalled by STATX_MNT_ID in the
+// same header revision).
+#if defined(STATX_MNT_ID)
+static inline __u64 swift_statx_get_mnt_id(const struct statx *stx) {
+    return stx->stx_mnt_id;
+}
+#else
+static inline __u64 swift_statx_get_mnt_id(const struct statx *stx) {
+    __u64 value;
+    __builtin_memcpy(&value, (const unsigned char *)stx + 0x90, sizeof(value));
+    return value;
+}
+#endif
+
 // Forward declarations of syscall/ioctl - already in glibc, just need signatures.
 // These avoid including <unistd.h> and <sys/ioctl.h> which cause fd_set conflicts.
 extern long int syscall(long int __sysno, ...) __attribute__((__nothrow__, __leaf__));

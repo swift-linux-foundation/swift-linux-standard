@@ -126,8 +126,15 @@
         }
 
         /// Mount ID.
+        ///
+        /// Read via a `CLinuxKernelShim` accessor rather than the named
+        /// `statx.stx_mnt_id` member directly — that field name is absent
+        /// from the `<linux/stat.h>` shipped by some kernel-headers
+        /// packages (added Linux 5.8) even though the kernel has reserved
+        /// this exact byte range since statx's ABI was introduced. See
+        /// swift-linux-standard#7.
         public var mountId: UInt64 {
-            cValue.stx_mnt_id
+            withUnsafePointer(to: cValue) { swift_statx_get_mnt_id($0) }
         }
     }
 

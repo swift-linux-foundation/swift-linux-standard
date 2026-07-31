@@ -9,11 +9,26 @@
 //
 // ===----------------------------------------------------------------------===//
 
+public import Linux_Standard_Core
+
+// MARK: - Namespace
+
+// Declared unconditionally: extended unguarded (no `#if os(Linux)`) by
+// Clone.Capability.swift, Clone.Error.swift, and Clone.Metadata.swift,
+// which are pure vocabulary with no platform dependency. Only the syscall
+// bodies below (statfs/stat/ioctl/copy_file_range) require Linux — those
+// stay gated. Same D1 disposition as the Affinity fix (vocabulary
+// unconditional, syscall bodies gated). See swift-linux-standard#7.
+extension Linux.Kernel.File {
+    /// Linux file cloning (copy-on-write reflink) mechanisms — `FICLONE`
+    /// and `copy_file_range(2)`.
+    public enum Clone: Sendable {}
+}
+
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Linux_Standard_Core
     public import Error_Primitives
     public import Path_Primitives
 
@@ -23,14 +38,6 @@
     #elseif canImport(Musl)
         internal import Musl
     #endif
-
-    // MARK: - Namespace
-
-    extension Linux.Kernel.File {
-        /// Linux file cloning (copy-on-write reflink) mechanisms — `FICLONE`
-        /// and `copy_file_range(2)`.
-        public enum Clone: Sendable {}
-    }
 
     // MARK: - Capability Probing
 

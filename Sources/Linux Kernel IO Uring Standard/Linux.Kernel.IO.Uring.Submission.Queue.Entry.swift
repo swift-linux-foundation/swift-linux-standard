@@ -317,17 +317,27 @@
         }
 
         /// Third address field (addr3).
+        ///
+        /// Read/written via `CLinuxKernelShim` accessors rather than the
+        /// named `io_uring_sqe.addr3` member directly — that field name is
+        /// absent from the `<linux/io_uring.h>` shipped by some
+        /// kernel-headers packages even though the kernel has reserved
+        /// this exact byte range since io_uring's ABI was introduced.
+        /// See swift-linux-standard#7.
         @usableFromInline
         internal var _addr3: UInt64 {
-            get { cValue.addr3 }
-            set { cValue.addr3 = newValue }
+            get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_addr3($0) } }
+            set { withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, newValue) } }
         }
 
         /// Uring command opcode (32-bit union with off).
+        ///
+        /// Read/written via `CLinuxKernelShim` accessors — see `_addr3`
+        /// above for why the named `cmd_op` member isn't used directly.
         @usableFromInline
         internal var commandOpcode: UInt32 {
-            get { cValue.cmd_op }
-            set { cValue.cmd_op = newValue }
+            get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_cmd_op($0) } }
+            set { withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_cmd_op($0, newValue) } }
         }
     }
 
@@ -489,7 +499,8 @@
         /// Set the addr3 field from a pointer (xattr path).
         @usableFromInline @unsafe
         internal mutating func setAddr3(_ pointer: UnsafeRawPointer) {
-            cValue.addr3 = unsafe UInt64(UInt(bitPattern: pointer))
+            let raw = unsafe UInt64(UInt(bitPattern: pointer))
+            withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, raw) }
         }
 
         /// Rename/link target directory fd (stored in len as UInt32(bitPattern:)).
