@@ -133,7 +133,7 @@
         public func wakeup(
             eventfd: borrowing Linux.Kernel.Event.Descriptor
         ) throws(Error) -> @Sendable () -> Void {
-            let wakeupEvent = Event(events: [.in, .et])
+            let wakeupEvent = Linux.Kernel.Event.Poll.Event(events: [.in, .et])
             try self.add(fd: eventfd.descriptor, event: wakeupEvent)
             let rawEfd = eventfd.descriptor._rawValue
             return {
