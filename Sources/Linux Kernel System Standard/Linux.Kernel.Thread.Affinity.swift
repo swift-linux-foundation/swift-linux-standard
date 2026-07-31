@@ -9,9 +9,28 @@
 //
 // ===----------------------------------------------------------------------===//
 
+public import Linux_Standard_Core
+
+// MARK: - Namespace
+
+extension Linux.Kernel.Thread {
+    /// Linux thread CPU affinity mechanisms, via `sched_setaffinity(2)`.
+    ///
+    /// Re-anchored (swift-iso/swift-iso-9945#64) from the hoisted
+    /// `ISO_9945.Kernel.Thread.Affinity` vocabulary onto this package's own
+    /// `Linux.Kernel` root. The unified cross-platform vocabulary now
+    /// lives at L3 in `Kernel.Thread.Affinity` (swift-kernel).
+    ///
+    /// Declared unconditionally per [PLAT-ARCH-008c] / swift-iso-9945#65
+    /// gate comment 5141148099: unified vocabulary is never os-gated, only
+    /// the mechanisms (syscall bodies) that populate it are.
+    public enum Affinity: Sendable {}
+}
+
+// MARK: - Set Mask
+
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import Linux_Standard_Core
     public import Error_Primitives
 
     internal import CLinuxKernelShim
@@ -23,20 +42,6 @@
     #elseif canImport(Bionic)
         internal import Bionic
     #endif
-
-    // MARK: - Namespace
-
-    extension Linux.Kernel.Thread {
-        /// Linux thread CPU affinity mechanisms, via `sched_setaffinity(2)`.
-        ///
-        /// Re-anchored (swift-iso/swift-iso-9945#64) from the hoisted
-        /// `ISO_9945.Kernel.Thread.Affinity` vocabulary onto this package's own
-        /// `Linux.Kernel` root. The unified cross-platform vocabulary now
-        /// lives at L3 in `Kernel.Thread.Affinity` (swift-kernel).
-        public enum Affinity: Sendable {}
-    }
-
-    // MARK: - Set Mask
 
     // Adds L2 syscall wrappers below the package-local `Linux.Kernel.Thread.Affinity`
     // namespace. Consumers at L3 (`swift-linux`'s `Linux.Thread.Affinity`)
