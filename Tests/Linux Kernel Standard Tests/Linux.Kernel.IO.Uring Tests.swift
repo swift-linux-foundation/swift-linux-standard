@@ -45,14 +45,21 @@
     private func probeIOUringSupported() throws -> Bool {
         var params = Kernel.IO.Uring.Params()
         do {
-            // Descriptor is ~Copyable; discarding it here runs its deinit,
-            // which closes the fd — no explicit close needed for the probe.
-            _ = try Kernel.IO.Uring.setup(
+            let descriptor = try Kernel.IO.Uring.setup(
                 entries: Kernel.IO.Uring.Submission.Count(_unchecked: Cardinal(1)),
                 params: &params
             )
+            // Descriptor is ~Copyable; consuming it here runs its deinit,
+            // which closes the fd — no explicit close needed for the probe.
+            consume descriptor
             return true
-        } catch Kernel.IO.Uring.Error.setup(let code) where code == .posix(EPERM) || code == .posix(ENOSYS) {
+        } catch let error {
+            guard case Kernel.IO.Uring.Error.setup(let code) = error else {
+                throw error
+            }
+            guard code == .posix(EPERM) || code == .posix(ENOSYS) else {
+                throw error
+            }
             return false
         }
     }
