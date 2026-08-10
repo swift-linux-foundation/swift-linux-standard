@@ -32,8 +32,8 @@
         internal import Musl
     #endif
 
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
@@ -318,7 +318,7 @@
 
         /// Third address field (addr3).
         ///
-        /// Read/written via `CLinuxKernelShim` accessors rather than the
+        /// Read/written via `Linux_Kernel_Shims` accessors rather than the
         /// named `io_uring_sqe.addr3` member directly — that field name is
         /// absent from the `<linux/io_uring.h>` shipped by some
         /// kernel-headers packages even though the kernel has reserved
@@ -332,7 +332,7 @@
 
         /// Uring command opcode (32-bit union with off).
         ///
-        /// Read/written via `CLinuxKernelShim` accessors — see `_addr3`
+        /// Read/written via `Linux_Kernel_Shims` accessors — see `_addr3`
         /// above for why the named `cmd_op` member isn't used directly.
         @usableFromInline
         internal var commandOpcode: UInt32 {

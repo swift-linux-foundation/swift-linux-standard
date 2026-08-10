@@ -20,8 +20,8 @@
         internal import Musl
     #endif
 
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     extension Linux.Kernel.Event.Poll {

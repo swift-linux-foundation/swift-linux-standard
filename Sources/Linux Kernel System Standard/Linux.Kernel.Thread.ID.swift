@@ -14,7 +14,7 @@
     public import ISO_9945_Core
     public import ISO_9945_Kernel_Thread
 
-    internal import CLinuxKernelShim
+    internal import Linux_Kernel_Shims
 
     #if canImport(Glibc)
         internal import Glibc

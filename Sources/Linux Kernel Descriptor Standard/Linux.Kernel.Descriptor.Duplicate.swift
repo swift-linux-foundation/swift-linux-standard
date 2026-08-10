@@ -20,7 +20,7 @@
         internal import Musl
     #endif
 
-    internal import CLinuxKernelShim
+    internal import Linux_Kernel_Shims
 
     extension ISO_9945.Kernel.Descriptor.Duplicate {
         /// Duplicates a file descriptor into an existing descriptor slot with

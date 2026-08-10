@@ -18,7 +18,7 @@
     #elseif canImport(Musl)
         internal import Musl
     #endif
-    internal import CLinuxKernelShim
+    internal import Linux_Kernel_Shims
 
     // MARK: - dlsym Handle Conversion
 
@@ -26,7 +26,7 @@
         /// Converts scope to the `dlsym` handle pointer for Linux.
         ///
         /// `RTLD_DEFAULT` and `RTLD_NEXT` are GNU extensions gated by `_GNU_SOURCE`
-        /// on glibc; `CLinuxKernelShim` exposes them via simple C functions so the
+        /// on glibc; `Linux_Kernel_Shims` exposes them via simple C functions so the
         /// L2 Swift code does not have to carry the feature-test macro.
         @unsafe
         fileprivate var dlsymHandle: UnsafeMutableRawPointer? {

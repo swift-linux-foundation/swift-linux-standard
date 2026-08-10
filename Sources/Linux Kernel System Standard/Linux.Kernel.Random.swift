@@ -15,7 +15,7 @@
 
     #if canImport(Glibc)
         internal import Glibc
-        internal import CLinuxKernelShim
+        internal import Linux_Kernel_Shims
     #elseif canImport(Musl)
         internal import Musl
     #endif

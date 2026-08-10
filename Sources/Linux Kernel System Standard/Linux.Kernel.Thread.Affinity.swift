@@ -33,7 +33,7 @@ extension Linux.Kernel.Thread {
 
     public import Error_Primitives
 
-    internal import CLinuxKernelShim
+    internal import Linux_Kernel_Shims
 
     #if canImport(Glibc)
         internal import Glibc

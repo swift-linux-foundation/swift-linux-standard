@@ -12,7 +12,7 @@
 public import Linux_Standard_Core
 
 #if os(Linux)
-    import CLinuxMemoryShim
+    import Linux_Memory_Shims
 #endif
 
 extension Linux.Memory.Allocation {

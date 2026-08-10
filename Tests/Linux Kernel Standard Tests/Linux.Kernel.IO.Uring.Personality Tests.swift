@@ -24,8 +24,8 @@
         import Musl
     #endif
 
-    #if canImport(CLinuxKernelShim)
-        import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        import Linux_Kernel_Shims
     #endif
 
     extension Kernel.IO.Uring.Personality {

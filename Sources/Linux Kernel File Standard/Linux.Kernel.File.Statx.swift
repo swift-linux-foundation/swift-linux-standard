@@ -2,8 +2,8 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     extension ISO_9945.Kernel.File {
@@ -127,7 +127,7 @@
 
         /// Mount ID.
         ///
-        /// Read via a `CLinuxKernelShim` accessor rather than the named
+        /// Read via a `Linux_Kernel_Shims` accessor rather than the named
         /// `statx.stx_mnt_id` member directly — that field name is absent
         /// from the `<linux/stat.h>` shipped by some kernel-headers
         /// packages (added Linux 5.8) even though the kernel has reserved

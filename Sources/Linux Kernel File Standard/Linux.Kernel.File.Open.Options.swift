@@ -18,7 +18,7 @@
     public import Path_Primitives
 
     #if canImport(Glibc)
-        internal import CLinuxKernelShim
+        internal import Linux_Kernel_Shims
     #endif
 
     // MARK: - Linux-specific Open Options
