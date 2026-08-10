@@ -17,8 +17,8 @@
     public import Memory_Primitives
     public import Path_Primitives
 
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     #if canImport(Glibc)

@@ -12,15 +12,15 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     // MARK: - IORING_MSG_RING_CQE_SKIP / IORING_MSG_RING_FLAGS_PASS
     //
     // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
     // headers that predate these constants, so they are not always available
-    // from CLinuxKernelShim. Defined locally with the documented kernel
+    // from Linux_Kernel_Shims. Defined locally with the documented kernel
     // values, matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
     private let _IORING_MSG_RING_CQE_SKIP: UInt32 = 1 << 0
     private let _IORING_MSG_RING_FLAGS_PASS: UInt32 = 1 << 1

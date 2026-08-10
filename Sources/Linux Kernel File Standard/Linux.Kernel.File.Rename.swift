@@ -23,7 +23,7 @@
         internal import Musl
     #endif
 
-    internal import CLinuxKernelShim
+    internal import Linux_Kernel_Shims
 
     extension ISO_9945.Kernel.File.Rename {
         /// Atomically renames a file with flags.

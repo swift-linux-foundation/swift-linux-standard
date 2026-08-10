@@ -2,7 +2,7 @@
 // Native UUID parsing using libuuid
 
 #if os(Linux)
-    import CLinuxKernelShim
+    import Linux_Kernel_Shims
     public import Linux_Standard_Core
 
     extension Linux_Standard_Core.Linux {

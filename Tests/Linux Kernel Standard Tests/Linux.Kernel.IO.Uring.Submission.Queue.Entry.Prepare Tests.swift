@@ -33,8 +33,8 @@
         import Musl
     #endif
 
-    #if canImport(CLinuxKernelShim)
-        import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        import Linux_Kernel_Shims
     #endif
 
     extension Kernel.IO.Uring.Submission.Queue.Entry {
@@ -347,7 +347,7 @@
             entry.command(target: .registered(25), op: 0x7F, data: data)
             #expect(entry.opcode == .ring.cmd)
             // Routed through the `commandOpcode` accessor (backed by the
-            // CLinuxKernelShim guard) rather than `cValue.cmd_op` directly —
+            // Linux_Kernel_Shims guard) rather than `cValue.cmd_op` directly —
             // that field name is absent from some kernel-headers packages.
             // See swift-linux-standard#7.
             #expect(entry.commandOpcode == 0x7F)

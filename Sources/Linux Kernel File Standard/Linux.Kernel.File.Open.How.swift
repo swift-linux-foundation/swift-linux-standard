@@ -2,8 +2,8 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     extension ISO_9945.Kernel.File.Open {

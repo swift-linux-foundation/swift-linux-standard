@@ -56,14 +56,14 @@ let package = Package(
 
         // MARK: - C Shims
         .target(
-            name: "CLinuxKernelShim",
+            name: "Linux Kernel Shims",
             dependencies: [],
             linkerSettings: [
                 .linkedLibrary("uuid", .when(platforms: [.linux]))
             ]
         ),
         .target(
-            name: "CLinuxMemoryShim",
+            name: "Linux Memory Shims",
             dependencies: [],
             linkerSettings: [
                 .linkedLibrary("dl", .when(platforms: [.linux]))
@@ -75,7 +75,7 @@ let package = Package(
             name: "Linux Kernel File Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
@@ -86,7 +86,7 @@ let package = Package(
             name: "Linux Kernel Pipe Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                             .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Random Primitives", package: "swift-random-primitives"),
@@ -120,7 +120,7 @@ let package = Package(
             name: "Linux Kernel Descriptor Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Random Primitives", package: "swift-random-primitives"),
@@ -143,7 +143,7 @@ let package = Package(
             name: "Linux Kernel System Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "System Primitives", package: "swift-system-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
@@ -161,7 +161,7 @@ let package = Package(
             name: "Linux Kernel Event Standard",
             dependencies: [
                 "Linux Standard Core",
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Time", package: "swift-iso-9945"),
             ]
@@ -172,7 +172,7 @@ let package = Package(
             name: "Linux Kernel Process Standard",
             dependencies: [
                 "Linux Standard Core",
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
             ]
@@ -183,7 +183,7 @@ let package = Package(
             name: "Linux Kernel Timer Standard",
             dependencies: [
                 "Linux Standard Core",
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
             ]
         ),
@@ -193,7 +193,7 @@ let package = Package(
             name: "Linux Kernel Signal Standard",
             dependencies: [
                 "Linux Standard Core",
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
             ]
@@ -241,7 +241,7 @@ let package = Package(
             name: "Linux Loader Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxKernelShim", condition: .when(platforms: [.linux])),
+                .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Loader Primitives", package: "swift-loader-primitives"),
                 .product(name: "String Primitives", package: "swift-string-primitives"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
@@ -254,7 +254,7 @@ let package = Package(
             name: "Linux Memory Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "CLinuxMemoryShim", condition: .when(platforms: [.linux]))
+                .target(name: "Linux Memory Shims", condition: .when(platforms: [.linux]))
             ]
         ),
 

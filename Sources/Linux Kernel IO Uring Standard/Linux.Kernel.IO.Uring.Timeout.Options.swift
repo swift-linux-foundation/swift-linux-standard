@@ -12,15 +12,15 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    #if canImport(CLinuxKernelShim)
-        internal import CLinuxKernelShim
+    #if canImport(Linux_Kernel_Shims)
+        internal import Linux_Kernel_Shims
     #endif
 
     // MARK: - IORING_TIMEOUT_MULTISHOT / IORING_TIMEOUT_ETIME_SUCCESS
     //
     // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
     // headers that predate these constants, so they are not always available
-    // from CLinuxKernelShim. Defined locally with the documented kernel
+    // from Linux_Kernel_Shims. Defined locally with the documented kernel
     // values, matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
     private let _IORING_TIMEOUT_ETIME_SUCCESS: UInt32 = 1 << 5
     private let _IORING_TIMEOUT_MULTISHOT: UInt32 = 1 << 6
