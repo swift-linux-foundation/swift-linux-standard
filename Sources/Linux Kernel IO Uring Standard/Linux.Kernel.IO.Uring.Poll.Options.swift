@@ -22,6 +22,7 @@
     // headers that predate this constant, so it is not always available from
     // Linux_Kernel_Shims. Defined locally with the documented kernel value,
     // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
 
     extension ISO_9945.Kernel.IO.Uring.Poll {
@@ -62,7 +63,9 @@
             ///
             /// Used with `POLL_REMOVE` opcode to change the user data
             /// returned in the CQE without removing the poll.
-            public static let updateUserData = Options(rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA))
+            public static let updateUserData = Options(
+                rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA)
+            )
         }
     }
 

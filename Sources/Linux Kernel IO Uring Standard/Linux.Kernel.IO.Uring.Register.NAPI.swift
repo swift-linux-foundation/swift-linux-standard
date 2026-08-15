@@ -32,7 +32,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to NAPI registration opcodes.
-        public static var napi: ISO_9945.Kernel.IO.Uring.Register.NAPI.Type { ISO_9945.Kernel.IO.Uring.Register.NAPI.self }
+        public static var napi: ISO_9945.Kernel.IO.Uring.Register.NAPI.Type {
+            ISO_9945.Kernel.IO.Uring.Register.NAPI.self
+        }
     }
 
 #endif

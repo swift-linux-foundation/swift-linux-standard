@@ -391,16 +391,28 @@
 
             let sqEntryCount = Int(bitPattern: params.sqEntries)
             let cqEntryCount = Int(bitPattern: params.cqEntries)
-            let sqRingSz = params.sqOff.array.vector.rawValue + sqEntryCount * MemoryLayout<UInt32>.size
-            let cqRingSz = params.cqOff.cqes.vector.rawValue + cqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry>.size
-            let sqeSz = sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
+            let sqRingSz =
+                params.sqOff.array.vector.rawValue + sqEntryCount * MemoryLayout<UInt32>.size
+            let cqRingSz =
+                params.cqOff.cqes.vector.rawValue + cqEntryCount
+                * MemoryLayout<ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry>.size
+            let sqeSz =
+                sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             // -- Map SQ ring --
             // With SINGLE_MMAP (kernel 5.4+), size the region to cover both SQ and CQ.
 
             let sqMmapSz = isSingleMmap ? max(sqRingSz, cqRingSz) : sqRingSz
 
-            guard let sq = unsafe mmap(nil, sqMmapSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, 0),
+            guard
+                let sq = unsafe mmap(
+                    nil,
+                    sqMmapSz,
+                    PROT_READ | PROT_WRITE,
+                    MAP_SHARED | MAP_POPULATE,
+                    fd,
+                    0
+                ),
                 unsafe sq != MAP_FAILED
             else {
                 throw .setup(.posix(errno))
@@ -416,7 +428,15 @@
                 cqMmapSz = 0  // Not separately mapped.
             } else {
                 cqMmapSz = cqRingSz
-                guard let cqPtr = unsafe mmap(nil, cqRingSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.cqRing)),
+                guard
+                    let cqPtr = unsafe mmap(
+                        nil,
+                        cqRingSz,
+                        PROT_READ | PROT_WRITE,
+                        MAP_SHARED | MAP_POPULATE,
+                        fd,
+                        Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.cqRing)
+                    ),
                     unsafe cqPtr != MAP_FAILED
                 else {
                     unsafe munmap(sq, sqMmapSz)
@@ -427,7 +447,15 @@
 
             // -- Map SQE array (always separate) --
 
-            guard let sqe = unsafe mmap(nil, sqeSz, PROT_READ | PROT_WRITE, MAP_SHARED | MAP_POPULATE, fd, Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqes)),
+            guard
+                let sqe = unsafe mmap(
+                    nil,
+                    sqeSz,
+                    PROT_READ | PROT_WRITE,
+                    MAP_SHARED | MAP_POPULATE,
+                    fd,
+                    Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqes)
+                ),
                 unsafe sqe != MAP_FAILED
             else {
                 unsafe munmap(sq, sqMmapSz)
@@ -441,18 +469,42 @@
             // WHEN TO REMOVE: when kernel-primitives re-exports the integration module.
             unsafe self.init(
                 ringDescriptor: consume descriptor,
-                sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                sqMask: Submission.Queue.Mask(rawValue: sq.load(fromByteOffset: params.sqOff.ringMask.vector.rawValue, as: UInt32.self)),
+                sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(
+                    to: UInt32.self
+                ),
+                sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(
+                    to: UInt32.self
+                ),
+                sqMask: Submission.Queue.Mask(
+                    rawValue: sq.load(
+                        fromByteOffset: params.sqOff.ringMask.vector.rawValue,
+                        as: UInt32.self
+                    )
+                ),
                 sqEntries: params.sqEntries,
-                sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                sqes: sqe.assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.self),
-                cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(to: UInt32.self),
-                cqMask: Completion.Queue.Mask(rawValue: cq.load(fromByteOffset: params.cqOff.ringMask.vector.rawValue, as: UInt32.self)),
+                sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(
+                    to: UInt32.self
+                ),
+                sqes: sqe.assumingMemoryBound(
+                    to: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.self
+                ),
+                cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(
+                    to: UInt32.self
+                ),
+                cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(
+                    to: UInt32.self
+                ),
+                cqMask: Completion.Queue.Mask(
+                    rawValue: cq.load(
+                        fromByteOffset: params.cqOff.ringMask.vector.rawValue,
+                        as: UInt32.self
+                    )
+                ),
                 cqes: UnsafePointer(
                     cq.advanced(by: params.cqOff.cqes.vector.rawValue)
-                        .assumingMemoryBound(to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self)
+                        .assumingMemoryBound(
+                            to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self
+                        )
                 ),
                 singleMmap: isSingleMmap,
                 sqRingAddr: unsafe Memory_Primitives.Memory.Address(sq),

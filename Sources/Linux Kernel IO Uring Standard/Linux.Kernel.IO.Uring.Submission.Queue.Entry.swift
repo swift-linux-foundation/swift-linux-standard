@@ -202,7 +202,9 @@
         /// File permissions mode (for openat, mkdirat, chmod).
         @usableFromInline
         internal var filePermissions: ISO_9945.Kernel.File.Permissions {
-            get { ISO_9945.Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len)) }
+            get {
+                ISO_9945.Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len))
+            }
             set { cValue.len = UInt32(newValue.rawValue) }
         }
 
@@ -230,7 +232,9 @@
         /// Socket message flags (for send, recv, sendmsg, recvmsg).
         @usableFromInline
         internal var messageFlags: ISO_9945.Kernel.Socket.Message.Options {
-            get { ISO_9945.Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+            get {
+                ISO_9945.Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags))
+            }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
@@ -312,7 +316,9 @@
         /// Absorbs `ISO_9945.Kernel.Descriptor._rawValue` extraction — SPI access
         /// hidden from @inlinable callers.
         @usableFromInline
-        internal mutating func setEpollDescriptor(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) {
+        internal mutating func setEpollDescriptor(
+            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+        ) {
             cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue))
         }
 
@@ -327,7 +333,9 @@
         @usableFromInline
         internal var _addr3: UInt64 {
             get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_addr3($0) } }
-            set { withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, newValue) } }
+            set {
+                withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, newValue) }
+            }
         }
 
         /// Uring command opcode (32-bit union with off).
@@ -337,7 +345,11 @@
         @usableFromInline
         internal var commandOpcode: UInt32 {
             get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_cmd_op($0) } }
-            set { withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_cmd_op($0, newValue) } }
+            set {
+                withUnsafeMutablePointer(to: &cValue) {
+                    swift_io_uring_sqe_set_cmd_op($0, newValue)
+                }
+            }
         }
     }
 
@@ -417,7 +429,9 @@
         /// Waitid POSIX wait options.
         @usableFromInline
         internal var waitidOptions: ISO_9945.Kernel.Process.Wait.Options {
-            get { ISO_9945.Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index)) }
+            get {
+                ISO_9945.Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index))
+            }
             set { cValue.file_index = UInt32(bitPattern: newValue.rawValue) }
         }
 

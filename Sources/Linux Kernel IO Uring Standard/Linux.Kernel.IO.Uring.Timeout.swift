@@ -28,7 +28,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to timeout operation opcodes.
-        public static var timeout: ISO_9945.Kernel.IO.Uring.Timeout.Type { ISO_9945.Kernel.IO.Uring.Timeout.self }
+        public static var timeout: ISO_9945.Kernel.IO.Uring.Timeout.Type {
+            ISO_9945.Kernel.IO.Uring.Timeout.self
+        }
     }
 
 #endif

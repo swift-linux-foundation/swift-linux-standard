@@ -28,7 +28,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to write operation opcodes.
-        public static var write: ISO_9945.Kernel.IO.Uring.Write.Type { ISO_9945.Kernel.IO.Uring.Write.self }
+        public static var write: ISO_9945.Kernel.IO.Uring.Write.Type {
+            ISO_9945.Kernel.IO.Uring.Write.self
+        }
     }
 
 #endif

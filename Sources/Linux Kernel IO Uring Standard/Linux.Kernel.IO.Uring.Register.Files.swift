@@ -62,7 +62,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to file registration opcodes.
-        public static var files: ISO_9945.Kernel.IO.Uring.Register.Files.Type { ISO_9945.Kernel.IO.Uring.Register.Files.self }
+        public static var files: ISO_9945.Kernel.IO.Uring.Register.Files.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Files.self
+        }
     }
 
 #endif

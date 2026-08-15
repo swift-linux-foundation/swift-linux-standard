@@ -22,7 +22,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to sync operation opcodes.
-        public static var sync: ISO_9945.Kernel.IO.Uring.Sync.Type { ISO_9945.Kernel.IO.Uring.Sync.self }
+        public static var sync: ISO_9945.Kernel.IO.Uring.Sync.Type {
+            ISO_9945.Kernel.IO.Uring.Sync.self
+        }
     }
 
 #endif

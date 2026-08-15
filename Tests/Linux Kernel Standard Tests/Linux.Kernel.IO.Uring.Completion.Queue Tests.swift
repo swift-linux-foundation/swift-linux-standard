@@ -47,12 +47,14 @@
     extension Kernel.IO.Uring.Completion.Queue.Test.Unit {
         @Test
         func `Queue.Entry type exists`() {
-            let _: Kernel.IO.Uring.Completion.Queue.Entry.Type = Kernel.IO.Uring.Completion.Queue.Entry.self
+            let _: Kernel.IO.Uring.Completion.Queue.Entry.Type = Kernel.IO.Uring.Completion.Queue
+                .Entry.self
         }
 
         @Test
         func `Queue.Offsets type exists`() {
-            let _: Kernel.IO.Uring.Completion.Queue.Offsets.Type = Kernel.IO.Uring.Completion.Queue.Offsets.self
+            let _: Kernel.IO.Uring.Completion.Queue.Offsets.Type = Kernel.IO.Uring.Completion.Queue
+                .Offsets.self
         }
     }
 #endif

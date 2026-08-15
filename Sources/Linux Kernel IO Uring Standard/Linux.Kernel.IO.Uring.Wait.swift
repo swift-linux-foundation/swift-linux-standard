@@ -22,7 +22,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to wait operation opcodes.
-        public static var wait: ISO_9945.Kernel.IO.Uring.Wait.Type { ISO_9945.Kernel.IO.Uring.Wait.self }
+        public static var wait: ISO_9945.Kernel.IO.Uring.Wait.Type {
+            ISO_9945.Kernel.IO.Uring.Wait.self
+        }
     }
 
 #endif

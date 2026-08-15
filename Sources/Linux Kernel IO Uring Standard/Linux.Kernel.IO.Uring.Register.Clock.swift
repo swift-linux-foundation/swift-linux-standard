@@ -27,7 +27,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to clock registration opcodes.
-        public static var clock: ISO_9945.Kernel.IO.Uring.Register.Clock.Type { ISO_9945.Kernel.IO.Uring.Register.Clock.self }
+        public static var clock: ISO_9945.Kernel.IO.Uring.Register.Clock.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Clock.self
+        }
     }
 
 #endif

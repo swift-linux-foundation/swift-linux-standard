@@ -39,7 +39,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to eventfd registration opcodes.
-        public static var eventfd: ISO_9945.Kernel.IO.Uring.Register.Eventfd.Type { ISO_9945.Kernel.IO.Uring.Register.Eventfd.self }
+        public static var eventfd: ISO_9945.Kernel.IO.Uring.Register.Eventfd.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Eventfd.self
+        }
     }
 
 #endif

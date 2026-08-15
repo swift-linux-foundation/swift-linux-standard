@@ -47,7 +47,9 @@
                     }
 
                     /// Wait for writeout of pages in the range that were dirty before the call.
-                    public static let waitBefore = Self(rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE))
+                    public static let waitBefore = Self(
+                        rawValue: UInt32(SYNC_FILE_RANGE_WAIT_BEFORE)
+                    )
 
                     /// Initiate writeout of pages in the range that are currently dirty.
                     public static let write = Self(rawValue: UInt32(SYNC_FILE_RANGE_WRITE))

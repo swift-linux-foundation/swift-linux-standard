@@ -28,7 +28,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to futex operation opcodes.
-        public static var futex: ISO_9945.Kernel.IO.Uring.Futex.Type { ISO_9945.Kernel.IO.Uring.Futex.self }
+        public static var futex: ISO_9945.Kernel.IO.Uring.Futex.Type {
+            ISO_9945.Kernel.IO.Uring.Futex.self
+        }
     }
 
 #endif

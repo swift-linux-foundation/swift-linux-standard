@@ -24,9 +24,11 @@
     // matching the `_FICLONE` local-constants precedent
     // (`Linux.Kernel.File.Clone.swift`).
 
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     /// `RTLD_NOLOAD` — from glibc/musl `<dlfcn.h>` (`_GNU_SOURCE`-gated).
     private let _RTLD_NOLOAD: Int32 = 0x0000_4
 
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     /// `RTLD_NODELETE` — from glibc/musl `<dlfcn.h>` (`_GNU_SOURCE`-gated).
     private let _RTLD_NODELETE: Int32 = 0x1000
 

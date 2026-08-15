@@ -30,7 +30,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to worker pool management opcodes.
-        public static var worker: ISO_9945.Kernel.IO.Uring.Register.Worker.Type { ISO_9945.Kernel.IO.Uring.Register.Worker.self }
+        public static var worker: ISO_9945.Kernel.IO.Uring.Register.Worker.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Worker.self
+        }
     }
 
 #endif

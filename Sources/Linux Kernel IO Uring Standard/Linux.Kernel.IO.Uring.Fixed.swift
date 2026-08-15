@@ -22,7 +22,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to fixed fd operation opcodes.
-        public static var fixed: ISO_9945.Kernel.IO.Uring.Fixed.Type { ISO_9945.Kernel.IO.Uring.Fixed.self }
+        public static var fixed: ISO_9945.Kernel.IO.Uring.Fixed.Type {
+            ISO_9945.Kernel.IO.Uring.Fixed.self
+        }
     }
 
 #endif

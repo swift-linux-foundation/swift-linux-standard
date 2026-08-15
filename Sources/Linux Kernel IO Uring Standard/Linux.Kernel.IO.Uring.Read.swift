@@ -31,7 +31,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to read operation opcodes.
-        public static var read: ISO_9945.Kernel.IO.Uring.Read.Type { ISO_9945.Kernel.IO.Uring.Read.self }
+        public static var read: ISO_9945.Kernel.IO.Uring.Read.Type {
+            ISO_9945.Kernel.IO.Uring.Read.self
+        }
     }
 
 #endif

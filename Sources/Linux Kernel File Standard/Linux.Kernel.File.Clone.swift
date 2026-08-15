@@ -43,13 +43,22 @@ extension Linux.Kernel.File {
 
     extension Linux.Kernel.File.Clone.Capability {
         /// Probes whether the filesystem at the given path supports cloning.
-        public static func probe(at path: borrowing Path.Borrowed) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Linux.Kernel.File.Clone.Capability {
-            try unsafe path.withUnsafePointer { cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
+        public static func probe(
+            at path: borrowing Path.Borrowed
+        ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Linux.Kernel.File.Clone.Capability {
+            try unsafe path.withUnsafePointer {
+                cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
                 var statfsBuf = statfs()
-                let result = statfs(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statfsBuf)
+                let result = statfs(
+                    UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self),
+                    &statfsBuf
+                )
 
                 guard result == 0 else {
-                    throw Linux.Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .statfs)
+                    throw Linux.Kernel.File.Clone.Error.Syscall.platform(
+                        code: .posix(errno),
+                        operation: .statfs
+                    )
                 }
 
                 // Known filesystems that support FICLONE
@@ -69,13 +78,22 @@ extension Linux.Kernel.File {
 
     extension Linux.Kernel.File.Clone.Metadata {
         /// Gets the size of a file.
-        public static func size(at path: borrowing Path.Borrowed) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Int {
-            try unsafe path.withUnsafePointer { cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
+        public static func size(
+            at path: borrowing Path.Borrowed
+        ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Int {
+            try unsafe path.withUnsafePointer {
+                cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
                 var statBuf = Glibc.stat()
-                let result = stat(UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self), &statBuf)
+                let result = stat(
+                    UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self),
+                    &statBuf
+                )
 
                 guard result == 0 else {
-                    throw Linux.Kernel.File.Clone.Error.Syscall.platform(code: .posix(errno), operation: .stat)
+                    throw Linux.Kernel.File.Clone.Error.Syscall.platform(
+                        code: .posix(errno),
+                        operation: .stat
+                    )
                 }
 
                 return Int(statBuf.st_size)
@@ -188,7 +206,11 @@ extension Linux.Kernel.File {
             destination: borrowing ISO_9945.Kernel.Descriptor,
             length: Int
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) {
-            try copy(sourceFd: source._rawValue, destinationFd: destination._rawValue, length: length)
+            try copy(
+                sourceFd: source._rawValue,
+                destinationFd: destination._rawValue,
+                length: length
+            )
         }
     }
 

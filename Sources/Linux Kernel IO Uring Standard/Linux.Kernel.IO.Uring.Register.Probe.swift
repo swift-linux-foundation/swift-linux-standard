@@ -27,7 +27,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to probe registration opcodes.
-        public static var probe: ISO_9945.Kernel.IO.Uring.Register.Probe.Type { ISO_9945.Kernel.IO.Uring.Register.Probe.self }
+        public static var probe: ISO_9945.Kernel.IO.Uring.Register.Probe.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Probe.self
+        }
     }
 
 #endif

@@ -25,7 +25,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to poll operation opcodes.
-        public static var poll: ISO_9945.Kernel.IO.Uring.Poll.Type { ISO_9945.Kernel.IO.Uring.Poll.self }
+        public static var poll: ISO_9945.Kernel.IO.Uring.Poll.Type {
+            ISO_9945.Kernel.IO.Uring.Poll.self
+        }
     }
 
 #endif

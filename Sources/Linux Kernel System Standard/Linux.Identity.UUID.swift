@@ -34,7 +34,10 @@
             var bytes: Bytes = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             let result = string.withCString { cString in
                 withUnsafeMutableBytes(of: &bytes) { buffer in
-                    swift_uuid_parse(cString, buffer.baseAddress!.assumingMemoryBound(to: UInt8.self))
+                    swift_uuid_parse(
+                        cString,
+                        buffer.baseAddress!.assumingMemoryBound(to: UInt8.self)
+                    )
                 }
             }
             return result == 0 ? bytes : nil

@@ -24,6 +24,7 @@
     // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
     // (Redeclared file-locally alongside Linux.Kernel.IO.Uring.Poll.Options.swift's
     // copy since `private` is file-scoped.)
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
 
     extension ISO_9945.Kernel.IO.Uring.Poll {

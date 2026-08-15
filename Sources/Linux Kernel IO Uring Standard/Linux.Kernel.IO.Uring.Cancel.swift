@@ -22,7 +22,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to cancel operation opcodes.
-        public static var cancel: ISO_9945.Kernel.IO.Uring.Cancel.Type { ISO_9945.Kernel.IO.Uring.Cancel.self }
+        public static var cancel: ISO_9945.Kernel.IO.Uring.Cancel.Type {
+            ISO_9945.Kernel.IO.Uring.Cancel.self
+        }
     }
 
 #endif

@@ -31,7 +31,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to personality registration opcodes.
-        public static var personality: ISO_9945.Kernel.IO.Uring.Register.Personality.Type { ISO_9945.Kernel.IO.Uring.Register.Personality.self }
+        public static var personality: ISO_9945.Kernel.IO.Uring.Register.Personality.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Personality.self
+        }
     }
 
 #endif

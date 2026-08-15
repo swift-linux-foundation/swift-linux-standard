@@ -146,7 +146,9 @@
 
     extension Linux.Kernel.Event.Poll {
         /// Creates a new epoll instance.
-        package static func create(flags: Create.Flags = .cloexec) throws(Linux.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
+        package static func create(
+            flags: Create.Flags = .cloexec
+        ) throws(Linux.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
@@ -186,7 +188,12 @@
                 capacity: count
             ) { buffer in
                 let baseAddress = unsafe buffer.baseAddress!
-                let result = unsafe epoll_wait(epoll.descriptor._rawValue, baseAddress, Int32(count), timeout)
+                let result = unsafe epoll_wait(
+                    epoll.descriptor._rawValue,
+                    baseAddress,
+                    Int32(count),
+                    timeout
+                )
                 guard result >= 0 else {
                     let code = Error_Primitives.Error.Code.posix(errno)
                     if code.posix == EINTR {

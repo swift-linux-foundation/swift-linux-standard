@@ -65,7 +65,11 @@ extension Linux.Kernel.Thread {
             // Zero the mask
             unsafe withUnsafeMutablePointer(to: &mask) { ptr in
                 let rawPtr = unsafe UnsafeMutableRawPointer(ptr)
-                unsafe rawPtr.initializeMemory(as: UInt8.self, repeating: 0, count: MemoryLayout<cpu_set_t>.size)
+                unsafe rawPtr.initializeMemory(
+                    as: UInt8.self,
+                    repeating: 0,
+                    count: MemoryLayout<cpu_set_t>.size
+                )
             }
 
             // Set bits for each CPU (open-coded CPU_SET)
