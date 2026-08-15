@@ -57,7 +57,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to buffer registration opcodes.
-        public static var buffers: ISO_9945.Kernel.IO.Uring.Register.Buffers.Type { ISO_9945.Kernel.IO.Uring.Register.Buffers.self }
+        public static var buffers: ISO_9945.Kernel.IO.Uring.Register.Buffers.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Buffers.self
+        }
     }
 
 #endif

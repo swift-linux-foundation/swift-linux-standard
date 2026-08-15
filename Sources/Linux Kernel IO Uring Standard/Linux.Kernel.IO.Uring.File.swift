@@ -55,7 +55,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to file operation opcodes.
-        public static var file: ISO_9945.Kernel.IO.Uring.File.Type { ISO_9945.Kernel.IO.Uring.File.self }
+        public static var file: ISO_9945.Kernel.IO.Uring.File.Type {
+            ISO_9945.Kernel.IO.Uring.File.self
+        }
     }
 
 #endif

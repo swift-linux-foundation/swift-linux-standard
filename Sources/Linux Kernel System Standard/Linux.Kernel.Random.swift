@@ -40,7 +40,8 @@
         ///
         /// - Throws: `Random.Error` if getrandom fails.
         public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Random.Error) {
-            try unsafe span.withUnsafeMutableBytes { (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
+            try unsafe span.withUnsafeMutableBytes {
+                (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
                 try unsafe getrandom(buffer)
             }
         }
@@ -95,7 +96,9 @@
         ///
         /// - Throws: `Random.Error` if getrandom fails.
         @unsafe
-        public static func getrandom(_ buffer: UnsafeMutableBufferPointer<UInt8>) throws(Random.Error) {
+        public static func getrandom(
+            _ buffer: UnsafeMutableBufferPointer<UInt8>
+        ) throws(Random.Error) {
             try unsafe getrandom(UnsafeMutableRawBufferPointer(buffer))
         }
     }

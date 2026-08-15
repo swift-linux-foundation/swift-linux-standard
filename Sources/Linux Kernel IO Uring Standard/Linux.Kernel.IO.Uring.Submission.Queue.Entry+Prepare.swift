@@ -445,8 +445,7 @@
         /// - Parameters:
         ///   - target: Destination file targeting (fd_out).
         ///   - source: Source file descriptor (fd_in).
-        ///   - offsetIn: Offset in the source file.
-        ///   - offsetOut: Offset in the destination file.
+        ///   - offsets: Offset in the source file (`input`) and in the destination file (`output`).
         ///   - length: Number of bytes to transfer.
         ///   - flags: Splice flags (for example, `SPLICE_F_MOVE`).
         ///   - data: Operation data to return with completion.
@@ -454,8 +453,9 @@
         public mutating func splice(
             target: borrowing ISO_9945.Kernel.IO.Uring.Target,
             source: borrowing ISO_9945.Kernel.Descriptor,
-            offsetIn: ISO_9945.Kernel.IO.Uring.Offset,
-            offsetOut: ISO_9945.Kernel.IO.Uring.Offset,
+            offsets: (
+                input: ISO_9945.Kernel.IO.Uring.Offset, output: ISO_9945.Kernel.IO.Uring.Offset
+            ),
             length: ISO_9945.Kernel.IO.Uring.Length,
             flags: ISO_9945.Kernel.Pipe.Splice.Options,
             data: ISO_9945.Kernel.IO.Uring.Operation.Data
@@ -464,8 +464,8 @@
             self.opcode = .pipe.splice
             target.apply(to: &self)
             self.setSpliceSource(source)
-            self.addr = offsetIn.underlying
-            self.offset = offsetOut
+            self.addr = offsets.input.underlying
+            self.offset = offsets.output
             self.len = length
             self.spliceFlags = flags
             self.data = data
@@ -1058,7 +1058,8 @@
             ISO_9945.Kernel.IO.Uring.Target.none.apply(to: &self)
             unsafe self.setAddr(timespec)
             self._rawLength = count
-            let options: ISO_9945.Kernel.IO.Uring.Timeout.Options = multishot ? [.absolute, .multishot] : .absolute
+            let options: ISO_9945.Kernel.IO.Uring.Timeout.Options =
+                multishot ? [.absolute, .multishot] : .absolute
             self.configureTimeout(clock: clock, options: options)
             self.data = data
         }

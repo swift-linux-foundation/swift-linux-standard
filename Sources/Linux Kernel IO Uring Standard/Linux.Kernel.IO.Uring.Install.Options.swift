@@ -22,6 +22,7 @@
     // headers that predate this constant, so it is not always available from
     // Linux_Kernel_Shims. Defined locally with the documented kernel value,
     // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_FIXED_FD_NO_CLOEXEC: UInt32 = 1 << 0
 
     extension ISO_9945.Kernel.IO.Uring.Fixed {

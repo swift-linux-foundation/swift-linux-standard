@@ -31,7 +31,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to extended attribute operation opcodes.
-        public static var xattr: ISO_9945.Kernel.IO.Uring.Xattr.Type { ISO_9945.Kernel.IO.Uring.Xattr.self }
+        public static var xattr: ISO_9945.Kernel.IO.Uring.Xattr.Type {
+            ISO_9945.Kernel.IO.Uring.Xattr.self
+        }
     }
 
 #endif

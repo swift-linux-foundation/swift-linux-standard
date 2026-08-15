@@ -22,7 +22,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to memory operation opcodes.
-        public static var memory: ISO_9945.Kernel.IO.Uring.Memory.Type { ISO_9945.Kernel.IO.Uring.Memory.self }
+        public static var memory: ISO_9945.Kernel.IO.Uring.Memory.Type {
+            ISO_9945.Kernel.IO.Uring.Memory.self
+        }
     }
 
 #endif

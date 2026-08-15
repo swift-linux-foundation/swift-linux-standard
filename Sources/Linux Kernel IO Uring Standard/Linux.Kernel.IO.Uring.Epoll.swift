@@ -26,7 +26,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to epoll operation opcodes.
-        public static var epoll: ISO_9945.Kernel.IO.Uring.Epoll.Type { ISO_9945.Kernel.IO.Uring.Epoll.self }
+        public static var epoll: ISO_9945.Kernel.IO.Uring.Epoll.Type {
+            ISO_9945.Kernel.IO.Uring.Epoll.self
+        }
     }
 
 #endif

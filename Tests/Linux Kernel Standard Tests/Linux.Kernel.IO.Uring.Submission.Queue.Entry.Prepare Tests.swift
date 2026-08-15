@@ -319,7 +319,14 @@
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 81
             let buf = unsafe UnsafeRawPointer(bitPattern: 0xD000)!
-            unsafe entry.provide(buffer: buf, length: 4096, count: 16, group: 3, startId: 100, data: data)
+            unsafe entry.provide(
+                buffer: buf,
+                length: 4096,
+                count: 16,
+                group: 3,
+                startId: 100,
+                data: data
+            )
             #expect(entry.opcode == .buffer.provide)
             #expect(entry.cValue.fd == 16)
             #expect(entry.addr == 0xD000)
@@ -358,7 +365,11 @@
         func `install fd sets opcode and flags`() {
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 84
-            entry.install(fd: 10, flags: Kernel.IO.Uring.Fixed.Install.Options(rawValue: 0x01), data: data)
+            entry.install(
+                fd: 10,
+                flags: Kernel.IO.Uring.Fixed.Install.Options(rawValue: 0x01),
+                data: data
+            )
             #expect(entry.opcode == .fixed.install)
             #expect(entry.cValue.fd == 10)
             #expect(entry.cValue.rw_flags == 0x01)
@@ -370,7 +381,11 @@
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 85
             let fds = unsafe UnsafeMutablePointer<Int32>(bitPattern: 0xE000)!
-            unsafe entry.pipe(fds: fds, flags: Kernel.Pipe.Options(rawValue: Int32(bitPattern: UInt32(0x80000))), data: data)
+            unsafe entry.pipe(
+                fds: fds,
+                flags: Kernel.Pipe.Options(rawValue: Int32(bitPattern: UInt32(0x80000))),
+                data: data
+            )
             #expect(entry.opcode == .pipe.create)
             #expect(entry.cValue.fd == -1)
             #expect(entry.addr == 0xE000)
@@ -426,7 +441,12 @@
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
             let data: Kernel.IO.Uring.Operation.Data = 91
             let addr = unsafe UnsafeMutableRawPointer(bitPattern: 0x10000)!
-            unsafe entry.madvise(addr: addr, length: 4096, advice: Memory.Map.Advice(rawValue: 4), data: data)
+            unsafe entry.madvise(
+                addr: addr,
+                length: 4096,
+                advice: Memory.Map.Advice(rawValue: 4),
+                data: data
+            )
             #expect(entry.opcode == .memory.madvise)
             #expect(entry.cValue.fd == -1)
             #expect(entry.addr == 0x10000)
@@ -445,7 +465,13 @@
 
             // First: set many fields via a complex operation
             let buf = unsafe UnsafeMutableRawPointer(bitPattern: 0x5000)!
-            unsafe entry.read(target: .registered(99), buffer: buf, length: 4096, offset: 1000, data: 1)
+            unsafe entry.read(
+                target: .registered(99),
+                buffer: buf,
+                length: 4096,
+                offset: 1000,
+                data: 1
+            )
             #expect(entry.cValue.fd == 99)
             #expect(entry.addr == 0x5000)
 

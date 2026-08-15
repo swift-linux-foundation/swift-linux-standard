@@ -22,7 +22,9 @@
     // headers that predate these constants, so they are not always available
     // from Linux_Kernel_Shims. Defined locally with the documented kernel
     // values, matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_MSG_RING_CQE_SKIP: UInt32 = 1 << 0
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_MSG_RING_FLAGS_PASS: UInt32 = 1 << 1
 
     extension ISO_9945.Kernel.IO.Uring {

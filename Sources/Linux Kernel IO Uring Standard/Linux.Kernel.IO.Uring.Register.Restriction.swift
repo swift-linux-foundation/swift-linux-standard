@@ -27,7 +27,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to restriction registration opcodes.
-        public static var restriction: ISO_9945.Kernel.IO.Uring.Register.Restriction.Type { ISO_9945.Kernel.IO.Uring.Register.Restriction.self }
+        public static var restriction: ISO_9945.Kernel.IO.Uring.Register.Restriction.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Restriction.self
+        }
     }
 
 #endif

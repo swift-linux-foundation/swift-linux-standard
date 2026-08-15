@@ -29,7 +29,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         /// Access to ring registration opcodes.
-        public static var rings: ISO_9945.Kernel.IO.Uring.Register.Rings.Type { ISO_9945.Kernel.IO.Uring.Register.Rings.self }
+        public static var rings: ISO_9945.Kernel.IO.Uring.Register.Rings.Type {
+            ISO_9945.Kernel.IO.Uring.Register.Rings.self
+        }
     }
 
 #endif

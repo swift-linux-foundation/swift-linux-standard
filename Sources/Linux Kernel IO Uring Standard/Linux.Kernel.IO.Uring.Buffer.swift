@@ -34,7 +34,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to buffer management operation opcodes.
-        public static var buffer: ISO_9945.Kernel.IO.Uring.Buffer.Type { ISO_9945.Kernel.IO.Uring.Buffer.self }
+        public static var buffer: ISO_9945.Kernel.IO.Uring.Buffer.Type {
+            ISO_9945.Kernel.IO.Uring.Buffer.self
+        }
     }
 
 #endif

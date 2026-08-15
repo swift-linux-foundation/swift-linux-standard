@@ -37,7 +37,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to pipe/splice operation opcodes.
-        public static var pipe: ISO_9945.Kernel.IO.Uring.Pipe.Type { ISO_9945.Kernel.IO.Uring.Pipe.self }
+        public static var pipe: ISO_9945.Kernel.IO.Uring.Pipe.Type {
+            ISO_9945.Kernel.IO.Uring.Pipe.self
+        }
     }
 
 #endif

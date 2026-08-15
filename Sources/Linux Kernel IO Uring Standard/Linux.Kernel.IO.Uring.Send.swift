@@ -28,7 +28,9 @@
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         /// Access to send zero-copy operation opcodes.
-        public static var send: ISO_9945.Kernel.IO.Uring.Send.Type { ISO_9945.Kernel.IO.Uring.Send.self }
+        public static var send: ISO_9945.Kernel.IO.Uring.Send.Type {
+            ISO_9945.Kernel.IO.Uring.Send.self
+        }
     }
 
 #endif

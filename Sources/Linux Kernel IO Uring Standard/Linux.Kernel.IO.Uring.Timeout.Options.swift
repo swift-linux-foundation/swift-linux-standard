@@ -22,7 +22,9 @@
     // headers that predate these constants, so they are not always available
     // from Linux_Kernel_Shims. Defined locally with the documented kernel
     // values, matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_TIMEOUT_ETIME_SUCCESS: UInt32 = 1 << 5
+    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_TIMEOUT_MULTISHOT: UInt32 = 1 << 6
 
     extension ISO_9945.Kernel.IO.Uring.Timeout {

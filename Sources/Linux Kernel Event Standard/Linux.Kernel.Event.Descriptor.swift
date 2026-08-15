@@ -71,7 +71,9 @@
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return Linux.Kernel.Event.Descriptor(descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd))
+            return Linux.Kernel.Event.Descriptor(
+                descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
+            )
         }
     }
 
@@ -90,9 +92,17 @@
         public mutating func read() throws(Linux.Kernel.Event.Descriptor.Error) -> UInt64 {
             var value: UInt64 = 0
             #if canImport(Glibc)
-                let result = unsafe Glibc.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
+                let result = unsafe Glibc.read(
+                    descriptor._rawValue,
+                    &value,
+                    MemoryLayout<UInt64>.size
+                )
             #elseif canImport(Musl)
-                let result = unsafe Musl.read(descriptor._rawValue, &value, MemoryLayout<UInt64>.size)
+                let result = unsafe Musl.read(
+                    descriptor._rawValue,
+                    &value,
+                    MemoryLayout<UInt64>.size
+                )
             #endif
             guard result == MemoryLayout<UInt64>.size else {
                 let code = Error_Primitives.Error.Code.posix(errno)
@@ -112,9 +122,17 @@
         public mutating func write(_ value: UInt64) throws(Linux.Kernel.Event.Descriptor.Error) {
             var val = value
             #if canImport(Glibc)
-                let result = unsafe Glibc.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
+                let result = unsafe Glibc.write(
+                    descriptor._rawValue,
+                    &val,
+                    MemoryLayout<UInt64>.size
+                )
             #elseif canImport(Musl)
-                let result = unsafe Musl.write(descriptor._rawValue, &val, MemoryLayout<UInt64>.size)
+                let result = unsafe Musl.write(
+                    descriptor._rawValue,
+                    &val,
+                    MemoryLayout<UInt64>.size
+                )
             #endif
             guard result == MemoryLayout<UInt64>.size else {
                 let code = Error_Primitives.Error.Code.posix(errno)

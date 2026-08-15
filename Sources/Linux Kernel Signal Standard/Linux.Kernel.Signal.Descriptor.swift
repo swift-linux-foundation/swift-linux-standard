@@ -88,7 +88,9 @@
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return ISO_9945.Kernel.Signal.Descriptor(descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd))
+            return ISO_9945.Kernel.Signal.Descriptor(
+                descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
+            )
         }
     }
 
