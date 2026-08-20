@@ -1,15 +1,15 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 
 import PackageDescription
 
 let package = Package(
     name: "swift-linux-standard",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27"),
-        .visionOS("27")
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
+        .visionOS(.v27),
     ],
     products: [
         // MARK: - Kernel
@@ -17,7 +17,10 @@ let package = Package(
         .library(name: "Linux Kernel Pipe Standard", targets: ["Linux Kernel Pipe Standard"]),
         .library(name: "Linux Kernel Socket Standard", targets: ["Linux Kernel Socket Standard"]),
         .library(name: "Linux Kernel Memory Standard", targets: ["Linux Kernel Memory Standard"]),
-        .library(name: "Linux Kernel Descriptor Standard", targets: ["Linux Kernel Descriptor Standard"]),
+        .library(
+            name: "Linux Kernel Descriptor Standard",
+            targets: ["Linux Kernel Descriptor Standard"]
+        ),
         .library(name: "Linux Kernel Futex Standard", targets: ["Linux Kernel Futex Standard"]),
         .library(name: "Linux Kernel System Standard", targets: ["Linux Kernel System Standard"]),
         .library(name: "Linux Kernel Event Standard", targets: ["Linux Kernel Event Standard"]),
@@ -25,23 +28,59 @@ let package = Package(
         .library(name: "Linux Kernel Timer Standard", targets: ["Linux Kernel Timer Standard"]),
         .library(name: "Linux Kernel Signal Standard", targets: ["Linux Kernel Signal Standard"]),
         .library(name: "Linux Kernel IO Standard", targets: ["Linux Kernel IO Standard"]),
-        .library(name: "Linux Kernel IO Uring Standard", targets: ["Linux Kernel IO Uring Standard"]),
+        .library(
+            name: "Linux Kernel IO Uring Standard",
+            targets: ["Linux Kernel IO Uring Standard"]
+        ),
         // MARK: - Other
         .library(name: "Linux Loader Standard", targets: ["Linux Loader Standard"]),
         .library(name: "Linux Memory Standard", targets: ["Linux Memory Standard"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-primitives/swift-pair-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-cpu-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-dimension-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-loader-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-string-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-system-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-error-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-random-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-path-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-memory-primitives.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-memory-map-primitives.git", branch: "main"),
+        .package(
+            url: "https://github.com/swift-primitives/swift-pair-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-cpu-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-dimension-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-loader-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-string-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-system-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-error-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-random-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-path-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-memory-primitives.git",
+            branch: "main"
+        ),
+        .package(
+            url: "https://github.com/swift-primitives/swift-memory-map-primitives.git",
+            branch: "main"
+        ),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
     ],
     targets: [
@@ -50,7 +89,7 @@ let package = Package(
         .target(
             name: "Linux Standard Core",
             dependencies: [
-                .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Core", package: "swift-iso-9945")
             ]
         ),
 
@@ -88,7 +127,7 @@ let package = Package(
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
-                            .product(name: "Memory Primitives", package: "swift-memory-primitives"),
+                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
                 .product(name: "Random Primitives", package: "swift-random-primitives"),
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
                 .product(name: "Pair Primitives", package: "swift-pair-primitives"),
@@ -254,7 +293,7 @@ let package = Package(
             name: "Linux Memory Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .target(name: "Linux Memory Shims", condition: .when(platforms: [.linux]))
+                .target(name: "Linux Memory Shims", condition: .when(platforms: [.linux])),
             ]
         ),
 
