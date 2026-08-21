@@ -195,7 +195,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Event Standard",
             dependencies: [
-                "Linux Standard Core",
+                .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Time", package: "swift-iso-9945"),
@@ -205,7 +205,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Process Standard",
             dependencies: [
-                "Linux Standard Core",
+                .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
@@ -215,7 +215,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Timer Standard",
             dependencies: [
-                "Linux Standard Core",
+                .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
             ]
@@ -224,7 +224,7 @@ let package = Package(
         .target(
             name: "Linux Kernel Signal Standard",
             dependencies: [
-                "Linux Standard Core",
+                .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
@@ -234,9 +234,9 @@ let package = Package(
         .target(
             name: "Linux Kernel IO Standard",
             dependencies: [
-                "Linux Standard Core",
-                "Linux Kernel File Standard",
-                "Linux Kernel Descriptor Standard",
+                .target(name: "Linux Standard Core"),
+                .target(name: "Linux Kernel File Standard"),
+                .target(name: "Linux Kernel Descriptor Standard"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
             ]
@@ -245,14 +245,14 @@ let package = Package(
         .target(
             name: "Linux Kernel IO Uring Standard",
             dependencies: [
-                "Linux Kernel IO Standard",
-                "Linux Kernel Event Standard",
-                "Linux Kernel File Standard",
-                "Linux Kernel Pipe Standard",
-                "Linux Kernel Futex Standard",
-                "Linux Kernel Socket Standard",
-                "Linux Kernel System Standard",
-                "Linux Kernel Memory Standard",
+                .target(name: "Linux Kernel IO Standard"),
+                .target(name: "Linux Kernel Event Standard"),
+                .target(name: "Linux Kernel File Standard"),
+                .target(name: "Linux Kernel Pipe Standard"),
+                .target(name: "Linux Kernel Futex Standard"),
+                .target(name: "Linux Kernel Socket Standard"),
+                .target(name: "Linux Kernel System Standard"),
+                .target(name: "Linux Kernel Memory Standard"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Socket", package: "swift-iso-9945"),
@@ -263,7 +263,8 @@ let package = Package(
                 .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
                 .product(name: "Memory Map Primitives", package: "swift-memory-map-primitives"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
-            ]
+            ],
+            swiftSettings: [.enableExperimentalFeature("LifetimeDependence")]
         ),
 
         .target(
@@ -289,18 +290,18 @@ let package = Package(
         .testTarget(
             name: "Linux Kernel Standard Tests",
             dependencies: [
-                "Linux Kernel File Standard",
-                "Linux Kernel Pipe Standard",
-                "Linux Kernel Socket Standard",
-                "Linux Kernel Memory Standard",
-                "Linux Kernel Descriptor Standard",
-                "Linux Kernel Futex Standard",
-                "Linux Kernel System Standard",
-                "Linux Kernel Event Standard",
-                "Linux Kernel Process Standard",
-                "Linux Kernel Timer Standard",
-                "Linux Kernel Signal Standard",
-                "Linux Kernel IO Uring Standard",
+                .target(name: "Linux Kernel File Standard"),
+                .target(name: "Linux Kernel Pipe Standard"),
+                .target(name: "Linux Kernel Socket Standard"),
+                .target(name: "Linux Kernel Memory Standard"),
+                .target(name: "Linux Kernel Descriptor Standard"),
+                .target(name: "Linux Kernel Futex Standard"),
+                .target(name: "Linux Kernel System Standard"),
+                .target(name: "Linux Kernel Event Standard"),
+                .target(name: "Linux Kernel Process Standard"),
+                .target(name: "Linux Kernel Timer Standard"),
+                .target(name: "Linux Kernel Signal Standard"),
+                .target(name: "Linux Kernel IO Uring Standard"),
                 .product(name: "Error Primitives", package: "swift-error-primitives"),
                 .product(name: "Memory Primitives", package: "swift-memory-primitives"),
             ]
