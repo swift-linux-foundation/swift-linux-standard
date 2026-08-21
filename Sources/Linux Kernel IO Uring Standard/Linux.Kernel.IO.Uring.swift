@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
@@ -29,51 +18,11 @@
     #endif
 
     extension ISO_9945.Kernel.IO {
-        /// io_uring ring — owns the ring descriptor and mmap'd SQ/CQ shared-memory regions.
-        ///
-        /// io_uring is a high-performance asynchronous I/O interface for Linux (kernel 5.1+).
-        ///
-        /// This struct IS the ring: it owns the ring file descriptor, three mmap'd regions
-        /// (SQ ring, CQ ring, SQE array), and provides typed access to submission and
-        /// completion queues. All raw pointer arithmetic and UInt32 ring index masking is
-        /// encapsulated here — consumers see typed operations only.
-        ///
-        /// Instance methods provide both descriptor-bound syscalls (``enter(toSubmit:minComplete:flags:)``,
-        /// ``register(opcode:argument:count:)``) and the shared-memory SQ/CQ protocol.
-        ///
-        /// Static methods remain available for detached-descriptor workflows.
-        ///
-        /// NOT Sendable — thread-confined to the io_uring poll thread.
-        ///
-        /// ## Lifecycle
-        ///
-        /// ```swift
-        /// var params = ISO_9945.Kernel.IO.Uring.Params()
-        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: .init(_unchecked: Cardinal(256)), params: &params)
-        /// var ring = try ISO_9945.Kernel.IO.Uring(descriptor: consume fd, params: params)
-        /// // ring now owns the descriptor — deinit unmaps regions then closes fd
-        /// ```
-        ///
-        /// ## Usage
-        ///
-        /// ```swift
-        /// guard ring.hasCapacity else { /* flush and retry */ }
-        /// ring.next.entry.nop(data: data)
-        /// ring.advance()
-        /// let flushed = ring.flush()
-        /// _ = try ring.enter(toSubmit: flushed, minComplete: flushed, flags: .getEvents)
-        /// _ = ring.drain(limit: 256) { cqe in
-        ///     // process completion
-        /// }
-        /// ```
+
         public struct Uring: ~Copyable {
 
-            // Ring descriptor (owned — deinit closes fd after regions are unmapped).
-            // The explicit deinit body unmaps mmap'd regions first; then stored-
-            // property destruction closes the descriptor.
             @usableFromInline let ringDescriptor: ISO_9945.Kernel.Descriptor
 
-            // SQ ring (shared-memory pointers into mmap'd region)
             @usableFromInline let sqHead: UnsafeMutablePointer<UInt32>
             @usableFromInline let sqTail: UnsafeMutablePointer<UInt32>
             @usableFromInline let sqMask: Submission.Queue.Mask
@@ -81,23 +30,16 @@
             @usableFromInline let sqArray: UnsafeMutablePointer<UInt32>
             @usableFromInline let sqes: UnsafeMutablePointer<Submission.Queue.Entry>
 
-            // CQ ring (shared-memory pointers into mmap'd region)
             @usableFromInline let cqHead: UnsafeMutablePointer<UInt32>
             @usableFromInline let cqTail: UnsafeMutablePointer<UInt32>
             @usableFromInline let cqMask: Completion.Queue.Mask
             @usableFromInline let cqes: UnsafePointer<Completion.Queue.Entry>
 
-            // Submission tracking — local head/tail decoupled from kernel-visible tail.
-            // next() advances sqeTail locally. flush() publishes [sqeHead..<sqeTail]
-            // to the kernel with a single atomic store-release on sqTail.
             @usableFromInline var sqeHead: UInt32 = 0
             @usableFromInline var sqeTail: UInt32 = 0
 
-            // Whether SQ and CQ share one mmap region (IORING_FEAT_SINGLE_MMAP).
-            // When true, deinit must NOT munmap cqRingAddr separately.
             @usableFromInline let singleMmap: Bool
 
-            // mmap regions (owned — deinit unmaps)
             @usableFromInline let sqRingAddr: Memory_Primitives.Memory.Address
             @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
             @usableFromInline let cqRingAddr: Memory_Primitives.Memory.Address
@@ -150,7 +92,7 @@
 
             deinit {
                 unsafe munmap(sqRingAddr.mutablePointer, Int(sqRingSize))
-                // With SINGLE_MMAP, CQ shares the SQ region — do not double-munmap.
+
                 if !singleMmap {
                     unsafe munmap(cqRingAddr.mutablePointer, Int(cqRingSize))
                 }
@@ -159,30 +101,8 @@
         }
     }
 
-    // Space is declared in Linux.Kernel.IO.Uring.Space.swift
-
-    // MARK: - Syscalls
-
     extension ISO_9945.Kernel.IO.Uring {
-        /// Creates a new io_uring instance.
-        ///
-        /// - Parameters:
-        ///   - entries: Number of SQ entries (rounded up to power of 2).
-        ///   - params: Parameters struct (modified on return with ring offsets).
-        ///
-        /// - Returns: File descriptor for the io_uring instance.
-        ///
-        /// - Throws: `Error.setup` if creation fails.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall. Call from a blocking context
-        /// (dedicated thread pool), not the Swift cooperative thread pool.
-        ///
-        /// ## Cancellation
-        ///
-        /// Not cancellable once the syscall begins. Check task cancellation
-        /// before calling if cooperative cancellation is needed.
+
         public static func setup(
             entries: Submission.Count,
             params: inout Params
@@ -192,34 +112,11 @@
             guard fd >= 0 else {
                 throw .setup(.posix(errno))
             }
-            // Update params with kernel-filled values
+
             params = Params(cParams)
             return ISO_9945.Kernel.Descriptor(_rawValue: fd)
         }
 
-        /// Submits operations and/or waits for completions.
-        ///
-        /// - Parameters:
-        ///   - fd: io_uring file descriptor.
-        ///   - toSubmit: Number of SQEs to submit.
-        ///   - minComplete: Minimum completions to wait for.
-        ///   - flags: Enter flags.
-        ///
-        /// - Returns: Number of SQEs submitted.
-        ///
-        /// - Throws: `Error.enter` on failure, `Error.interrupted` on EINTR.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// May block if `minComplete > 0` or if `.getEvents` flag is set.
-        ///
-        /// Call from a blocking context (dedicated thread pool), not the
-        /// Swift cooperative thread pool.
-        ///
-        /// ## Cancellation
-        ///
-        /// If interrupted by a signal, throws `Error.interrupted`. Callers
-        /// should typically retry on interruption unless cancellation is desired.
         public static func enter(
             _ fd: borrowing ISO_9945.Kernel.Descriptor,
             toSubmit: Submission.Count,
@@ -242,25 +139,6 @@
             return Submission.Count(_unchecked: Cardinal(UInt(result)))
         }
 
-        /// Registers resources with the io_uring instance.
-        ///
-        /// - Parameters:
-        ///   - fd: io_uring file descriptor.
-        ///   - opcode: The registration operation to perform.
-        ///   - argument: Pointer to the arguments for the operation.
-        ///   - count: Number of arguments.
-        ///
-        /// - Throws: `Error.register` on failure.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall. Call from a blocking context
-        /// (dedicated thread pool), not the Swift cooperative thread pool.
-        ///
-        /// ## Cancellation
-        ///
-        /// Not cancellable once the syscall begins. Check task cancellation
-        /// before calling if cooperative cancellation is needed.
         @unsafe
         public static func register(
             _ fd: borrowing ISO_9945.Kernel.Descriptor,
@@ -279,44 +157,17 @@
             }
         }
 
-        /// Closes an io_uring instance.
-        ///
-        /// Uses `ISO_9945.Kernel.Close.close()` for consistency. Ignores errors.
-        ///
-        /// - Parameter fd: The io_uring file descriptor to close.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall but typically completes quickly.
-        ///
-        /// ## Shutdown
-        ///
-        /// Closing the ring immediately invalidates all pending submissions and
-        /// completions. Ensure all in-flight operations are completed or cancelled
-        /// before closing.
         public static func close(_ fd: consuming ISO_9945.Kernel.Descriptor) {
             do throws(ISO_9945.Kernel.Close.Error) {
                 try ISO_9945.Kernel.Close.close(consume fd)
             } catch {
-                // Intentionally ignored — see doc comment above ("Ignores errors").
+
             }
         }
     }
 
-    // MARK: - Instance API (descriptor-bound)
-
     extension ISO_9945.Kernel.IO.Uring {
-        /// Submit pending operations and/or wait for completions using the
-        /// ring's owned descriptor.
-        ///
-        /// - Parameters:
-        ///   - toSubmit: Number of SQEs to submit.
-        ///   - minComplete: Minimum completions to wait for.
-        ///   - flags: Enter flags.
-        ///
-        /// - Returns: Number of SQEs submitted.
-        ///
-        /// - Throws: `Error.enter` on failure, `Error.interrupted` on EINTR.
+
         public func enter(
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
@@ -330,7 +181,6 @@
             )
         }
 
-        /// Raw register — internal escape hatch for typed public methods.
         @unsafe
         internal func register(
             opcode: Register.Opcode,
@@ -345,14 +195,6 @@
             )
         }
 
-        /// Register an eventfd for completion notifications.
-        ///
-        /// The eventfd is signaled when completions arrive, enabling
-        /// integration with poll-based event loops (epoll).
-        ///
-        /// - Parameter descriptor: The eventfd file descriptor.
-        ///
-        /// - Throws: `Error.register` on failure.
         public func register(
             eventfd descriptor: borrowing ISO_9945.Kernel.Descriptor
         ) throws(Error) {
@@ -368,20 +210,8 @@
         }
     }
 
-    // MARK: - Factory
-
     extension ISO_9945.Kernel.IO.Uring {
-        /// Create a ring by mmap'ing the io_uring shared-memory regions.
-        ///
-        /// Maps three regions (SQ ring, CQ ring, SQE array) using the
-        /// offsets and sizes from kernel-filled params. On partial failure,
-        /// cleans up acquired regions before throwing.
-        ///
-        /// - Parameters:
-        ///   - descriptor: The io_uring file descriptor from ``setup(entries:params:)``.
-        ///   - params: Kernel-filled params containing ring offsets and sizes.
-        ///
-        /// - Throws: ``Error/setup(_:)`` on mmap failure.
+
         public init(
             descriptor: consuming ISO_9945.Kernel.Descriptor,
             params: ISO_9945.Kernel.IO.Uring.Params
@@ -399,9 +229,6 @@
             let sqeSz =
                 sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
 
-            // -- Map SQ ring --
-            // With SINGLE_MMAP (kernel 5.4+), size the region to cover both SQ and CQ.
-
             let sqMmapSz = isSingleMmap ? max(sqRingSz, cqRingSz) : sqRingSz
 
             guard
@@ -418,14 +245,11 @@
                 throw .setup(.posix(errno))
             }
 
-            // -- Map CQ ring --
-            // With SINGLE_MMAP the CQ ring shares the SQ region — no separate mmap.
-
             let cq: UnsafeMutableRawPointer
             let cqMmapSz: Int
             if isSingleMmap {
                 cq = sq
-                cqMmapSz = 0  // Not separately mapped.
+                cqMmapSz = 0
             } else {
                 cqMmapSz = cqRingSz
                 guard
@@ -445,8 +269,6 @@
                 cq = cqPtr
             }
 
-            // -- Map SQE array (always separate) --
-
             guard
                 let sqe = unsafe mmap(
                     nil,
@@ -463,10 +285,6 @@
                 throw .setup(.posix(errno))
             }
 
-            // WHY: .vector.rawValue extracts Int from Memory_Primitives.Memory.Address.Offset for stdlib
-            // pointer arithmetic. Memory Primitives Standard Library Integration provides
-            // typed overloads but isn't in the dependency chain.
-            // WHEN TO REMOVE: when kernel-primitives re-exports the integration module.
             unsafe self.init(
                 ringDescriptor: consume descriptor,
                 sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(
@@ -517,29 +335,8 @@
         }
     }
 
-    // MARK: - Submission Queue Operations
-
     extension ISO_9945.Kernel.IO.Uring {
-        /// The current submission queue slot.
-        ///
-        /// Yields a `~Copyable ~Escapable` ``Slot`` via `mutating _read` coroutine.
-        ///
-        /// The coroutine scope confines the slot's lifetime — it cannot escape.
-        ///
-        /// Write to the SQE through ``Slot/entry``:
-        ///
-        /// ```swift
-        /// ring.next.entry.read(target: .descriptor(fd), buffer: buf, length: len, offset: .zero, data: id)
-        /// ring.next.entry.flags.insert(.link)  // same slot — tail unchanged
-        /// ring.advance()
-        /// ```
-        ///
-        /// Multiple accesses without ``advance()`` hit the same slot (by design).
-        ///
-        /// Call ``advance()`` after each SQE is fully configured.
-        ///
-        /// - Precondition: The submission queue is not full. Check capacity
-        ///   before accessing.
+
         public var next: Slot {
             mutating _read {
                 let slot = sqMask.slot(for: sqeTail)
@@ -548,14 +345,6 @@
             }
         }
 
-        /// Whether the submission queue has capacity for another SQE.
-        ///
-        /// Check before accessing ``next``:
-        /// ```swift
-        /// guard ring.hasCapacity else { /* flush and retry */ }
-        /// ring.next.entry.read(...)
-        /// ring.advance()
-        /// ```
         public var hasCapacity: Bool {
             mutating get {
                 let head = unsafe CPU.Atomic.load(sqHead, ordering: .acquiring)
@@ -563,21 +352,10 @@
             }
         }
 
-        /// Mark the current SQE as ready for submission.
-        ///
-        /// Call after filling an SQE via ``next``. This advances the local
-        /// tail but does NOT publish to the kernel — call ``flush()`` for that.
         public mutating func advance() {
             sqeTail &+= 1
         }
 
-        /// Flush all pending SQEs to the kernel.
-        ///
-        /// Populates the SQ indirection array for the range [sqeHead..<sqeTail],
-        /// then publishes the new tail with a single atomic store-release. This
-        /// makes ALL pending SQEs visible to the kernel in one barrier.
-        ///
-        /// - Returns: Number of SQEs flushed.
         public mutating func flush() -> Submission.Count {
             let localTail = sqeTail
             let flushed = localTail &- sqeHead
@@ -589,39 +367,24 @@
             }
             sqeHead = localTail
 
-            // Single atomic store-release: makes SQE writes visible to the kernel.
             unsafe CPU.Atomic.store(sqTail, localTail, ordering: .releasing)
 
             return Submission.Count(_unchecked: Cardinal(UInt(flushed)))
         }
 
-        /// Number of SQEs locally queued but not yet flushed to the kernel.
         public var pending: Submission.Count {
             Submission.Count(_unchecked: Cardinal(UInt(sqeTail &- sqeHead)))
         }
     }
 
-    // MARK: - Completion Queue Operations
-
     extension ISO_9945.Kernel.IO.Uring {
-        /// Drain completed events from the CQ.
-        ///
-        /// Reads the CQ tail with acquire ordering (sees kernel's CQE writes),
-        /// iterates available CQEs up to `limit`, then publishes the new CQ head
-        /// with release ordering (frees CQ slots for the kernel).
-        ///
-        /// - Parameters:
-        ///   - limit: Maximum number of completions to drain.
-        ///   - visitor: Called for each CQE.
-        ///
-        /// - Returns: Number of completions drained.
+
         public mutating func drain(
             limit: Completion.Count,
             _ visitor: (Completion.Queue.Entry) -> Void
         ) -> Completion.Count {
-            // Acquire-load tail: sees all CQE data the kernel wrote before
-            // its store-release to cqTail.
-            var head = unsafe cqHead.pointee  // We are the sole writer of cqHead.
+
+            var head = unsafe cqHead.pointee
             let tail = unsafe CPU.Atomic.load(cqTail, ordering: .acquiring)
             let maxCount = Int(bitPattern: limit)
             var count = 0
@@ -633,12 +396,10 @@
                 count += 1
             }
 
-            // Release-store head: makes consumed CQ slots available to the kernel.
             unsafe CPU.Atomic.store(cqHead, head, ordering: .releasing)
             return Completion.Count(_unchecked: Cardinal(UInt(count)))
         }
 
-        /// Number of completions available without entering the kernel.
         public var completionsAvailable: Completion.Count {
             let tail = unsafe CPU.Atomic.load(cqTail, ordering: .acquiring)
             let head = unsafe cqHead.pointee

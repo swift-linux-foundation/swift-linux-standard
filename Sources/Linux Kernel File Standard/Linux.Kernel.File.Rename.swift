@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
@@ -26,29 +15,7 @@
     internal import Linux_Kernel_Shims
 
     extension ISO_9945.Kernel.File.Rename {
-        /// Atomically renames a file with flags.
-        ///
-        /// Uses renameat2(2) to perform atomic rename operations with
-        /// additional flags not available in the standard rename(2).
-        ///
-        /// - Parameters:
-        ///   - oldDirFD: Directory fd for oldPath (AT_FDCWD for cwd).
-        ///   - oldPath: Source path.
-        ///   - newDirFD: Directory fd for newPath (AT_FDCWD for cwd).
-        ///   - newPath: Destination path.
-        ///   - flags: Rename flags controlling behavior.
-        ///
-        /// - Throws: `Error` if the rename fails.
-        ///
-        /// ## Blocking Behavior
-        ///
-        /// This method performs a blocking syscall but typically completes
-        /// quickly. Safe to call from most contexts.
-        ///
-        /// ## Cancellation
-        ///
-        /// Not cancellable once the syscall begins. Check task cancellation
-        /// before calling if cooperative cancellation is needed.
+
         @unsafe
         public static func renameat2(
             oldDirFD: Int32,
@@ -72,8 +39,7 @@
                     throw .exists
 
                 case ENOSYS, EINVAL:
-                    // ENOSYS: syscall not available (old kernel < 3.15)
-                    // EINVAL: flags not supported by filesystem
+
                     throw .notSupported
 
                 case EOPNOTSUPP, ENOTSUP:
@@ -88,15 +54,6 @@
             }
         }
 
-        /// Atomically renames a file, failing if destination exists.
-        ///
-        /// Convenience wrapper that uses RENAME_NOREPLACE flag.
-        ///
-        /// - Parameters:
-        ///   - oldPath: Source path.
-        ///   - newPath: Destination path.
-        ///
-        /// - Throws: `Error.exists` if destination exists, other errors on failure.
         @unsafe
         public static func noClobber(
             from oldPath: UnsafePointer<CChar>,
@@ -111,17 +68,6 @@
             )
         }
 
-        /// Atomically exchanges two files.
-        ///
-        /// Convenience wrapper that uses RENAME_EXCHANGE flag.
-        ///
-        /// Both paths must exist.
-        ///
-        /// - Parameters:
-        ///   - path1: First path.
-        ///   - path2: Second path.
-        ///
-        /// - Throws: `Error` on failure.
         @unsafe
         public static func exchange(
             _ path1: UnsafePointer<CChar>,

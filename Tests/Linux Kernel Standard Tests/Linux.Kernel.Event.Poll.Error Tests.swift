@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     #if canImport(Glibc)
         import Glibc
@@ -33,8 +22,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.Event.Poll.Error.Test.Unit {
         @Test
@@ -74,14 +61,12 @@
         func `interrupted case exists`() {
             let error = Kernel.Event.Poll.Error.interrupted
             if case .interrupted = error {
-                // Expected
+
             } else {
                 Issue.record("Expected .interrupted case")
             }
         }
     }
-
-    // MARK: - Description Tests
 
     extension Kernel.Event.Poll.Error.Test.Unit {
         @Test
@@ -112,8 +97,6 @@
         }
     }
 
-    // MARK: - Conformance Tests
-
     extension Kernel.Event.Poll.Error.Test.Unit {
         @Test
         func `Error conforms to Swift.Error`() {
@@ -142,12 +125,10 @@
             var set = Set<Kernel.Event.Poll.Error>()
             set.insert(.interrupted)
             set.insert(.create(Error_Primitives.Error.Code.posix(EINVAL)))
-            set.insert(.interrupted)  // duplicate
+            set.insert(.interrupted)
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.Event.Poll.Error.Test.EdgeCase {
         @Test

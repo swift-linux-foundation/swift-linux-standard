@@ -12,7 +12,7 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        // MARK: - Kernel
+
         .library(name: "Linux Kernel File Standard", targets: ["Linux Kernel File Standard"]),
         .library(name: "Linux Kernel Pipe Standard", targets: ["Linux Kernel Pipe Standard"]),
         .library(name: "Linux Kernel Socket Standard", targets: ["Linux Kernel Socket Standard"]),
@@ -32,7 +32,7 @@ let package = Package(
             name: "Linux Kernel IO Uring Standard",
             targets: ["Linux Kernel IO Uring Standard"]
         ),
-        // MARK: - Other
+
         .library(name: "Linux Loader Standard", targets: ["Linux Loader Standard"]),
         .library(name: "Linux Memory Standard", targets: ["Linux Memory Standard"]),
     ],
@@ -85,7 +85,6 @@ let package = Package(
     ],
     targets: [
 
-        // MARK: - Core
         .target(
             name: "Linux Standard Core",
             dependencies: [
@@ -93,7 +92,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - C Shims
         .target(
             name: "Linux Kernel Shims",
             dependencies: [],
@@ -109,7 +107,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel File
         .target(
             name: "Linux Kernel File Standard",
             dependencies: [
@@ -120,7 +117,7 @@ let package = Package(
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
         ),
-        // MARK: - Kernel Pipe
+
         .target(
             name: "Linux Kernel Pipe Standard",
             dependencies: [
@@ -133,7 +130,7 @@ let package = Package(
                 .product(name: "Pair Primitives", package: "swift-pair-primitives"),
             ]
         ),
-        // MARK: - Kernel Socket
+
         .target(
             name: "Linux Kernel Socket Standard",
             dependencies: [
@@ -142,7 +139,7 @@ let package = Package(
                 .product(name: "ISO 9945 Kernel Socket", package: "swift-iso-9945"),
             ]
         ),
-        // MARK: - Kernel Memory
+
         .target(
             name: "Linux Kernel Memory Standard",
             dependencies: [
@@ -154,7 +151,7 @@ let package = Package(
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
             ]
         ),
-        // MARK: - Kernel Descriptor
+
         .target(
             name: "Linux Kernel Descriptor Standard",
             dependencies: [
@@ -166,7 +163,7 @@ let package = Package(
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
             ]
         ),
-        // MARK: - Kernel Futex
+
         .target(
             name: "Linux Kernel Futex Standard",
             dependencies: [
@@ -177,7 +174,7 @@ let package = Package(
                 .product(name: "Path Primitives", package: "swift-path-primitives"),
             ]
         ),
-        // MARK: - Kernel System
+
         .target(
             name: "Linux Kernel System Standard",
             dependencies: [
@@ -195,7 +192,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel Event
         .target(
             name: "Linux Kernel Event Standard",
             dependencies: [
@@ -206,7 +202,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel Process (pidfd)
         .target(
             name: "Linux Kernel Process Standard",
             dependencies: [
@@ -217,7 +212,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel Timer (timerfd)
         .target(
             name: "Linux Kernel Timer Standard",
             dependencies: [
@@ -227,7 +221,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel Signal (signalfd)
         .target(
             name: "Linux Kernel Signal Standard",
             dependencies: [
@@ -238,7 +231,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel IO
         .target(
             name: "Linux Kernel IO Standard",
             dependencies: [
@@ -250,7 +242,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Kernel IO Uring
         .target(
             name: "Linux Kernel IO Uring Standard",
             dependencies: [
@@ -275,7 +266,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Loader
         .target(
             name: "Linux Loader Standard",
             dependencies: [
@@ -288,7 +278,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Memory
         .target(
             name: "Linux Memory Standard",
             dependencies: [
@@ -297,7 +286,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Tests
         .testTarget(
             name: "Linux Kernel Standard Tests",
             dependencies: [

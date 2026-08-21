@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -42,8 +31,6 @@
             @Suite struct Unit {}
         }
     }
-
-    // MARK: - Basic Operations
 
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
@@ -128,8 +115,6 @@
         }
     }
 
-    // MARK: - File I/O (Fixed, Multishot)
-
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `read fixed sets opcode and buffer index`() {
@@ -170,8 +155,6 @@
         }
     }
 
-    // MARK: - File I/O (Truncate)
-
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `ftruncate sets opcode and length in offset field`() {
@@ -183,8 +166,6 @@
             #expect(entry.data == data)
         }
     }
-
-    // MARK: - File System
 
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
@@ -216,8 +197,6 @@
             #expect(entry.data == data)
         }
     }
-
-    // MARK: - Networking
 
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
@@ -264,8 +243,6 @@
         }
     }
 
-    // MARK: - Timeout and Poll
-
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `timeout remove sets opcode, target data, and fd to -1`() {
@@ -291,8 +268,6 @@
             #expect(entry.data == data)
         }
     }
-
-    // MARK: - Control and Utility
 
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
@@ -353,10 +328,7 @@
             let data: Kernel.IO.Uring.Operation.Data = 83
             entry.command(target: .registered(25), op: 0x7F, data: data)
             #expect(entry.opcode == .ring.cmd)
-            // Routed through the `commandOpcode` accessor (backed by the
-            // Linux_Kernel_Shims guard) rather than `cValue.cmd_op` directly —
-            // that field name is absent from some kernel-headers packages.
-            // See swift-linux-standard#7.
+
             #expect(entry.commandOpcode == 0x7F)
             #expect(entry.data == data)
         }
@@ -417,8 +389,6 @@
         }
     }
 
-    // MARK: - File and Memory Advisory
-
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `fadvise sets opcode, offset, length, and advice`() {
@@ -456,14 +426,11 @@
         }
     }
 
-    // MARK: - Zero-Initialization Safety
-
     extension Kernel.IO.Uring.Submission.Queue.Entry.PrepareTest.Unit {
         @Test
         func `mutating methods zero-initialize before setting fields`() {
             var entry = Kernel.IO.Uring.Submission.Queue.Entry()
 
-            // First: set many fields via a complex operation
             let buf = unsafe UnsafeMutableRawPointer(bitPattern: 0x5000)!
             unsafe entry.read(
                 target: .registered(99),
@@ -475,7 +442,6 @@
             #expect(entry.cValue.fd == 99)
             #expect(entry.addr == 0x5000)
 
-            // Then: overwrite with nop — all previous fields must be zeroed
             entry.nop(data: 2)
             #expect(entry.opcode == .nop)
             #expect(entry.data == 2)

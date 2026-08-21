@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -27,8 +16,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Opcode.Test.Unit {
         @Test
@@ -78,8 +65,6 @@
         }
     }
 
-    // MARK: - Conformance Tests
-
     extension Kernel.IO.Uring.Opcode.Test.Unit {
         @Test
         func `Opcode is Sendable`() {
@@ -102,7 +87,7 @@
             set.insert(.nop)
             set.insert(Kernel.IO.Uring.Read.standard)
             set.insert(Kernel.IO.Uring.Write.standard)
-            set.insert(.nop)  // duplicate
+            set.insert(.nop)
             #expect(set.count == 3)
         }
 
@@ -118,8 +103,6 @@
             #expect(opcode.description == "READ")
         }
     }
-
-    // MARK: - Description Tests
 
     extension Kernel.IO.Uring.Opcode.Test.Unit {
         @Test
@@ -144,8 +127,6 @@
             #expect(opcode.description.contains("200"))
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Opcode.Test.EdgeCase {
         @Test

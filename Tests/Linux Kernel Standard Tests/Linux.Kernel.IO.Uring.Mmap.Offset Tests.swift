@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -28,8 +17,6 @@
         }
     }
 
-    // MARK: - Unit Tests
-
     extension Kernel.IO.Uring.Mmap.Offset.Test.Unit {
         @Test
         func `Mmap.Offset namespace exists`() {
@@ -41,8 +28,6 @@
             let _: Kernel.IO.Uring.Mmap.Offset.Type = Kernel.IO.Uring.Mmap.Offset.self
         }
     }
-
-    // MARK: - Constant Tests
 
     extension Kernel.IO.Uring.Mmap.Offset.Test.Unit {
         @Test
@@ -60,8 +45,6 @@
             #expect(Kernel.IO.Uring.Mmap.Offset.sqes == 0x1000_0000)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Mmap.Offset.Test.EdgeCase {
         @Test
@@ -81,7 +64,7 @@
 
         @Test
         func `offsets are page-aligned`() {
-            // cqRing and sqes should be page-aligned (multiple of common page sizes)
+
             #expect(Kernel.IO.Uring.Mmap.Offset.cqRing % 4096 == 0)
             #expect(Kernel.IO.Uring.Mmap.Offset.sqes % 4096 == 0)
         }

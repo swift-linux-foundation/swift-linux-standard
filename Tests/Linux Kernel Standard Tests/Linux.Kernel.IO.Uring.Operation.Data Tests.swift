@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
     import Error_Primitives
@@ -36,8 +25,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Operation.DataTest.Unit {
         @Test
@@ -110,12 +97,10 @@
             set.insert(.zero)
             let one: Kernel.IO.Uring.Operation.Data = 1
             set.insert(one)
-            set.insert(.zero)  // duplicate
+            set.insert(.zero)
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Operation.DataTest.`Edge Case` {
         @Test

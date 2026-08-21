@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -28,8 +17,6 @@
         }
     }
 
-    // MARK: - Unit Tests
-
     extension Kernel.IO.Uring.Buffer.Test.Unit {
         @Test
         func `Buffer namespace exists`() {
@@ -41,8 +28,6 @@
             let _: Kernel.IO.Uring.Buffer.Type = Kernel.IO.Uring.Buffer.self
         }
     }
-
-    // MARK: - Index Tests
 
     extension Kernel.IO.Uring.Buffer.Test.Unit {
         @Test
@@ -94,12 +79,10 @@
             var set = Set<Kernel.IO.Uring.Buffer.Index>()
             set.insert(.first)
             set.insert(Kernel.IO.Uring.Buffer.Index(1))
-            set.insert(.first)  // duplicate
+            set.insert(.first)
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Group Tests
 
     extension Kernel.IO.Uring.Buffer.Test.Unit {
         @Test
@@ -146,12 +129,10 @@
             var set = Set<Kernel.IO.Uring.Buffer.Group>()
             set.insert(Kernel.IO.Uring.Buffer.Group(0))
             set.insert(Kernel.IO.Uring.Buffer.Group(1))
-            set.insert(Kernel.IO.Uring.Buffer.Group(0))  // duplicate
+            set.insert(Kernel.IO.Uring.Buffer.Group(0))
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Buffer.Test.EdgeCase {
         @Test

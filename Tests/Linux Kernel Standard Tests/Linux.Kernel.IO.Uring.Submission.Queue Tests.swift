@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -28,8 +17,6 @@
         }
     }
 
-    // MARK: - Unit Tests
-
     extension Kernel.IO.Uring.Submission.Queue.Test.Unit {
         @Test
         func `Queue namespace exists`() {
@@ -41,8 +28,6 @@
             let _: Kernel.IO.Uring.Submission.Queue.Type = Kernel.IO.Uring.Submission.Queue.self
         }
     }
-
-    // MARK: - Nested Types
 
     extension Kernel.IO.Uring.Submission.Queue.Test.Unit {
         @Test

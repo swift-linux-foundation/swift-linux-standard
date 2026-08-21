@@ -1,30 +1,9 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     public import System_Primitives
     internal import Glibc
 
     extension System.Topology.NUMA {
-        /// Discovers NUMA topology from /sys/devices/system/node/.
-        ///
-        /// ## Implementation
-        /// Parses `/sys/devices/system/node/node*/cpulist` to discover:
-        /// - Number of NUMA nodes
-        /// - CPUs belonging to each node
-        ///
-        /// ## Return Values
-        /// - `.uniformAccess`: Single NUMA node (UMA system)
-        /// - `.nonUniform(nodes:)`: Multiple NUMA nodes
-        /// - `.unavailable`: Discovery failed (sysfs not accessible)
+
         public static func discover() -> System.Topology.NUMA.State {
             let basePath = "/sys/devices/system/node"
 

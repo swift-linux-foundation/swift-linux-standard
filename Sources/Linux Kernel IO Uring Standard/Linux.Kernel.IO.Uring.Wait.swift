@@ -1,27 +1,16 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
-        /// Wait operation opcodes.
+
         public struct Wait {
-            /// Wait ID (kernel 6.4+).
+
             public static let id = Opcode(rawValue: 50)
         }
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
-        /// Access to wait operation opcodes.
+
         public static var wait: ISO_9945.Kernel.IO.Uring.Wait.Type {
             ISO_9945.Kernel.IO.Uring.Wait.self
         }

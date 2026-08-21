@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux-standard open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux-standard project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import Linux_Standard_Core
@@ -18,10 +7,8 @@
         internal import Musl
     #endif
 
-    // MARK: - POSIX errno to Copy.Error Mapping
-
     extension Linux.Kernel.Copy.Error {
-        /// Creates a copy error from a POSIX errno value.
+
         internal init(posixErrno: Int32) {
             switch posixErrno {
             case EBADF:

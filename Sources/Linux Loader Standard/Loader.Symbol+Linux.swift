@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
     public import Loader_Primitives
@@ -20,14 +9,8 @@
     #endif
     internal import Linux_Kernel_Shims
 
-    // MARK: - dlsym Handle Conversion
-
     extension Loader.Symbol.Scope {
-        /// Converts scope to the `dlsym` handle pointer for Linux.
-        ///
-        /// `RTLD_DEFAULT` and `RTLD_NEXT` are GNU extensions gated by `_GNU_SOURCE`
-        /// on glibc; `Linux_Kernel_Shims` exposes them via simple C functions so the
-        /// L2 Swift code does not have to carry the feature-test macro.
+
         @unsafe
         fileprivate var dlsymHandle: UnsafeMutableRawPointer? {
             switch unsafe self {
@@ -43,26 +26,8 @@
         }
     }
 
-    // MARK: - Symbol Lookup
-
     extension Loader.Symbol {
-        /// Looks up a symbol in a library or scope on Linux.
-        ///
-        /// Wraps `dlsym(3)`.
-        ///
-        /// - Parameters:
-        ///   - name: The symbol name (C string).
-        ///   - scope: Where to search — a loaded `Handle` or special scope.
-        ///
-        /// - Returns: Pointer to the symbol.
-        ///
-        /// - Throws: `Loader.Error.symbol` if not found.
-        ///
-        /// ## Pointer Lifetime
-        ///
-        /// - Returned `UnsafeRawPointer` is valid only while the owning library remains loaded.
-        ///
-        /// - Caller is responsible for correct casting and calling convention.
+
         @unsafe
         public static func lookup(
             name: UnsafePointer<CChar>,

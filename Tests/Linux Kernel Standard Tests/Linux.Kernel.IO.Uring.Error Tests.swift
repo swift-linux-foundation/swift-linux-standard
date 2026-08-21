@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -27,8 +16,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
@@ -68,14 +55,12 @@
         func `interrupted case exists`() {
             let error = Kernel.IO.Uring.Error.interrupted
             if case .interrupted = error {
-                // Expected
+
             } else {
                 Issue.record("Expected .interrupted case")
             }
         }
     }
-
-    // MARK: - Description Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
@@ -102,8 +87,6 @@
             #expect(error.description.contains("interrupted"))
         }
     }
-
-    // MARK: - Conformance Tests
 
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
@@ -134,7 +117,7 @@
             set.insert(.enter(.posix(2)))
             set.insert(.register(.posix(3)))
             set.insert(.interrupted)
-            set.insert(.setup(.posix(1)))  // duplicate
+            set.insert(.setup(.posix(1)))
             #expect(set.count == 4)
         }
 
@@ -144,8 +127,6 @@
             #expect(!error.description.isEmpty)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Error.Test.EdgeCase {
         @Test

@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -27,8 +16,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Enter.Options.Test.Unit {
         @Test
@@ -62,8 +49,6 @@
             #expect(Kernel.IO.Uring.Enter.Options.registeredRing.rawValue == 16)
         }
     }
-
-    // MARK: - OptionSet Tests
 
     extension Kernel.IO.Uring.Enter.Options.Test.Unit {
         @Test
@@ -99,8 +84,6 @@
         }
     }
 
-    // MARK: - Conformance Tests
-
     extension Kernel.IO.Uring.Enter.Options.Test.Unit {
         @Test
         func `Enter.Options is Sendable`() {
@@ -108,8 +91,6 @@
             #expect(flags is Kernel.IO.Uring.Enter.Options)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Enter.Options.Test.EdgeCase {
         @Test

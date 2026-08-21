@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
     import Error_Primitives
@@ -36,8 +25,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Uring.Personality.Test.Unit {
         @Test
@@ -94,12 +81,10 @@
             set.insert(.none)
             let one: Kernel.IO.Uring.Personality.ID = 1
             set.insert(one)
-            set.insert(.none)  // duplicate
+            set.insert(.none)
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Uring.Personality.Test.`Edge Case` {
         @Test

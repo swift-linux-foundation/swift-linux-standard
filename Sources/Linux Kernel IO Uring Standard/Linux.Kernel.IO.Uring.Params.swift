@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
@@ -23,60 +12,23 @@
     #endif
 
     extension ISO_9945.Kernel.IO.Uring {
-        /// Configuration and result parameters for io_uring setup.
-        ///
-        /// This struct serves dual purpose: you provide setup flags and thread
-        /// configuration as input, and the kernel fills in ring sizes, offsets,
-        /// and feature flags as output.
-        ///
-        /// ## Usage
-        ///
-        /// ```swift
-        /// // Create params with configuration
-        /// var params = ISO_9945.Kernel.IO.Uring.Params(
-        ///     flags: [.sqPoll, .singleIssuer],
-        ///     submission: .init(thread: .init(idle: .milliseconds(1000)))
-        /// )
-        ///
-        /// // Setup fills in kernel-provided values
-        /// let fd = try ISO_9945.Kernel.IO.Uring.setup(entries: 256, params: &params)
-        ///
-        /// // Now params contains ring offsets for mmap
-        /// print("SQ entries: \(params.sqEntries)")
-        /// print("CQ entries: \(params.cqEntries)")
-        /// ```
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/IO/Uring``
-        /// - ``Kernel/IO/Uring/Setup/Options``
+
         public struct Params: Sendable, Equatable {
-            /// Number of submission queue entries (filled by kernel).
+
             public private(set) var sqEntries: ISO_9945.Kernel.IO.Uring.Submission.Count
 
-            /// Number of completion queue entries (filled by kernel).
             public private(set) var cqEntries: ISO_9945.Kernel.IO.Uring.Completion.Count
 
-            /// Setup flags.
             public var flags: Setup.Options
 
-            /// Submission queue thread configuration.
             public var submission: Submission
 
-            /// Ring features supported by kernel (filled by kernel).
             public private(set) var features: Features
 
-            /// Submission queue ring offset info (filled by kernel).
             public private(set) var sqOff: ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets
 
-            /// Completion queue ring offset info (filled by kernel).
             public private(set) var cqOff: ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets
 
-            /// Creates io_uring parameters for setup.
-            ///
-            /// - Parameters:
-            ///   - flags: Setup flags to configure the ring.
-            ///   - submission: Submission queue thread configuration.
             public init(
                 flags: Setup.Options = [],
                 submission: Submission = Submission()
@@ -90,7 +42,6 @@
                 self.cqOff = ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets()
             }
 
-            /// Creates params from the C struct (after setup).
             internal init(_ cParams: io_uring_params) {
                 self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count(
                     _unchecked: Cardinal(UInt(cParams.sq_entries))
@@ -114,7 +65,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Params {
-        /// Converts to the C io_uring_params struct.
+
         internal var cValue: io_uring_params {
             var params = io_uring_params()
             params.flags = flags.rawValue

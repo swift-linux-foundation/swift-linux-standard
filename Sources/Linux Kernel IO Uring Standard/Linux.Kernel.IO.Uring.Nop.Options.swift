@@ -1,19 +1,8 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Nop {
-        /// Flags for NOP operations.
+
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
@@ -25,12 +14,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Nop.Options {
-        /// Inject a specific result value into the NOP completion.
-        ///
-        /// The CQE `res` field will contain the value from the
-        /// SQE's `len` field instead of the default 0.
-        ///
-        /// - Linux: `IORING_NOP_INJECT_RESULT`
+
         public static let injectResult = Self(rawValue: 1 << 0)
     }
 

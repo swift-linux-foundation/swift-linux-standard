@@ -1,27 +1,8 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
-        /// Namespace for io_uring setup and configuration types.
-        ///
-        /// Contains types used when creating an io_uring instance,
-        /// including setup flags and configuration parameters.
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/IO/Uring/Setup/Options``
-        /// - ``Kernel/IO/Uring/Params``
+
         public enum Setup {}
     }
 

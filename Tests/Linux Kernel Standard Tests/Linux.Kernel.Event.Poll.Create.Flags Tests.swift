@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -27,8 +16,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.Event.Poll.Create.Flags.Test.Unit {
         @Test
@@ -61,8 +48,6 @@
         }
     }
 
-    // MARK: - Conformance Tests
-
     extension Kernel.Event.Poll.Create.Flags.Test.Unit {
         @Test
         func `Create.Flags is Sendable`() {
@@ -84,12 +69,10 @@
             var set = Set<Kernel.Event.Poll.Create.Flags>()
             set.insert(.cloexec)
             set.insert(.none)
-            set.insert(.cloexec)  // duplicate
+            set.insert(.cloexec)
             #expect(set.count == 2)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.Event.Poll.Create.Flags.Test.EdgeCase {
         @Test

@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux-primitives open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux-primitives project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux) || os(Android) || os(OpenBSD)
 
     public import Random_Primitives
@@ -20,25 +9,13 @@
         internal import Musl
     #endif
 
-    // MARK: - Namespace anchor
-
     extension Linux.Kernel {
-        /// Linux-specific random vocabulary (for example, `getrandom(2)`).
+
         public enum Random: Sendable {}
     }
 
-    // MARK: - Linux getrandom(2) syscall
-
     extension Linux.Kernel.Random {
-        /// Fills a mutable span with cryptographically secure random bytes using
-        /// `getrandom(2)`.
-        ///
-        /// Uses the kernel's CSPRNG via `getrandom(2)`. Handles partial reads
-        /// and EINTR automatically by retrying until the buffer is full.
-        ///
-        /// - Parameter span: The mutable span to fill with random bytes.
-        ///
-        /// - Throws: `Random.Error` if getrandom fails.
+
         public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Random.Error) {
             try unsafe span.withUnsafeMutableBytes {
                 (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
@@ -46,15 +23,6 @@
             }
         }
 
-        /// Fills a buffer with cryptographically secure random bytes using
-        /// `getrandom(2)`.
-        ///
-        /// Uses the kernel's CSPRNG via `getrandom(2)`. Handles partial reads
-        /// and EINTR automatically by retrying until the buffer is full.
-        ///
-        /// - Parameter buffer: The buffer to fill with random bytes.
-        ///
-        /// - Throws: `Random.Error` if getrandom fails.
         @unsafe
         public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) {
             guard let base = buffer.baseAddress else { return }
@@ -66,7 +34,7 @@
                 let result = unsafe swift_getrandom(
                     unsafe base.advanced(by: filled),
                     total - filled,
-                    0  // No flags - blocking mode
+                    0
                 )
 
                 if result > 0 {
@@ -76,7 +44,7 @@
 
                 if result == -1 {
                     if errno == EINTR {
-                        continue  // Retry on interrupt
+                        continue
                     }
                     if errno == EAGAIN {
                         throw .entropyNotReady
@@ -84,17 +52,10 @@
                     throw .systemError(errno)
                 }
 
-                // result == 0 shouldn't happen, but treat as error
                 throw .systemError(0)
             }
         }
 
-        /// Fills a typed buffer with cryptographically secure random bytes using
-        /// `getrandom(2)`.
-        ///
-        /// - Parameter buffer: The buffer to fill with random bytes.
-        ///
-        /// - Throws: `Random.Error` if getrandom fails.
         @unsafe
         public static func getrandom(
             _ buffer: UnsafeMutableBufferPointer<UInt8>

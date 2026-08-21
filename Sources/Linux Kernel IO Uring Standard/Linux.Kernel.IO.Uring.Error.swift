@@ -1,72 +1,18 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
     public import Error_Primitives
 
     extension ISO_9945.Kernel.IO.Uring {
-        /// Errors from io_uring operations.
-        ///
-        /// Low-level errors from io_uring syscalls. Each case wraps the
-        /// underlying `Error_Primitives.Error.Code` for platform-specific details.
-        ///
-        /// Convert to `Error_Primitives.Error` for semantic error handling.
-        ///
-        /// ## Usage
-        ///
-        /// ```swift
-        /// do {
-        ///     let ring = try ISO_9945.Kernel.IO.Uring.Setup.setup(entries: 256)
-        /// } catch let error as ISO_9945.Kernel.IO.Uring.Error {
-        ///     switch error {
-        ///     case .setup(let code):
-        ///         print("Setup failed: \(code)")
-        ///     case .interrupted:
-        ///         // Retry the operation
-        ///     default:
-        ///         print("io_uring error: \(error)")
-        ///     }
-        /// }
-        /// ```
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/IO/Uring``
-        /// - ``Kernel/Error``
-        /// - ``Kernel/Error/Code``
+
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
-            /// Failed to create an io_uring instance.
-            ///
-            /// Common causes: insufficient memory, too many open files,
-            /// unsupported kernel version, or invalid parameters.
+
             case setup(Error_Primitives.Error.Code)
 
-            /// Failed to submit operations or wait for completions.
-            ///
-            /// Returned by `io_uring_enter`. May indicate queue overflow,
-            /// invalid SQE, or system resource exhaustion.
             case enter(Error_Primitives.Error.Code)
 
-            /// Failed to register resources with the ring.
-            ///
-            /// Returned when registering buffers, files, or other resources.
-            ///
-            /// May indicate invalid parameters or resource limits.
             case register(Error_Primitives.Error.Code)
 
-            /// Operation was interrupted by a signal.
-            ///
-            /// The operation should typically be retried.
             case interrupted
         }
     }

@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import Linux_Standard_Core
@@ -25,30 +14,7 @@
     #endif
 
     extension Linux.Kernel.Event.Poll.Create {
-        /// Flags for creating an epoll instance.
-        ///
-        /// Used with `epoll_create1` to control the behavior of the
-        /// newly created epoll file descriptor.
-        ///
-        /// ## Usage
-        ///
-        /// ```swift
-        /// // Create epoll with close-on-exec (recommended)
-        /// let epfd = try Linux.Kernel.Event.Poll.create(flags: .cloexec)
-        /// defer {
-        ///     do throws(ISO_9945.Kernel.Close.Error) {
-        ///         try ISO_9945.Kernel.Close.close(epfd)
-        ///     } catch { }
-        /// }
-        ///
-        /// // Add descriptors and poll for events...
-        ///
-        /// ```
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/Event/Poll``
-        /// - ``Kernel/Event/Poll/Operation``
+
         public struct Flags: OptionSet, Sendable, Hashable {
             public let rawValue: Int32
 
@@ -59,15 +25,9 @@
     }
 
     extension Linux.Kernel.Event.Poll.Create.Flags {
-        /// No flags.
+
         public static let none = Self(rawValue: 0)
 
-        /// Sets the close-on-exec flag on the epoll file descriptor.
-        ///
-        /// Prevents the epoll fd from leaking to child processes created
-        /// with `exec()`. Recommended for most applications.
-        ///
-        /// - Linux: `EPOLL_CLOEXEC`
         public static let cloexec = Self(rawValue: Int32(EPOLL_CLOEXEC))
     }
 

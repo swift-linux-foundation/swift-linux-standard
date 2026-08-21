@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -27,8 +16,6 @@
             @Suite(.serialized) struct Performance {}
         }
     }
-
-    // MARK: - Unit Tests
 
     extension Kernel.IO.Priority.Test.Unit {
         @Test
@@ -66,8 +53,6 @@
         }
     }
 
-    // MARK: - Conformance Tests
-
     extension Kernel.IO.Priority.Test.Unit {
         @Test
         func `Priority is Sendable`() {
@@ -89,7 +74,7 @@
             var set = Set<Kernel.IO.Priority>()
             set.insert(.default)
             set.insert(Kernel.IO.Priority(100))
-            set.insert(.default)  // duplicate
+            set.insert(.default)
             #expect(set.count == 2)
         }
 
@@ -107,8 +92,6 @@
             #expect(priority.rawValue == 50)
         }
     }
-
-    // MARK: - Edge Cases
 
     extension Kernel.IO.Priority.Test.EdgeCase {
         @Test

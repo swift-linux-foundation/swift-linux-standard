@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
     import Testing
 
@@ -19,11 +8,9 @@
     import ISO_9945_Core
     private typealias Kernel = ISO_9945.Kernel
 
-    /// Tests for Kernel.IO.Uring.Offset (typealias to Coordinate.X.Value).
     extension Kernel.IO.Uring {
         @Suite
         enum OffsetTest {
-            // MARK: - Unit Tests
 
             @Suite struct Unit {
                 @Test
@@ -88,7 +75,7 @@
                     set.insert(.zero)
                     set.insert(.current)
                     set.insert(Kernel.IO.Uring.Offset(Kernel.File.Offset(100)))
-                    set.insert(.zero)  // duplicate
+                    set.insert(.zero)
                     #expect(set.count == 3)
                 }
 
@@ -113,8 +100,6 @@
                     #expect(offset == .current)
                 }
             }
-
-            // MARK: - Edge Cases
 
             @Suite struct EdgeCase {
                 @Test

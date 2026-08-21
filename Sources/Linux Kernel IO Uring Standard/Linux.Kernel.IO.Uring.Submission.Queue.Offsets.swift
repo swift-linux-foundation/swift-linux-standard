@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
@@ -25,32 +14,21 @@
     #endif
 
     extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
-        /// Byte offsets for submission queue ring mapping.
-        ///
-        /// Kernel-filled during ``Kernel/IO/Uring/setup(entries:params:)``.
-        ///
-        /// Used by ``Kernel/IO/Uring/init(descriptor:params:)`` to locate
-        /// shared-memory fields within the mmap'd SQ ring region.
+
         public struct Offsets: Sendable, Equatable {
-            /// Byte offset to the head counter.
+
             public let head: Memory.Address.Offset
 
-            /// Byte offset to the tail counter.
             public let tail: Memory.Address.Offset
 
-            /// Byte offset to the ring mask value.
             public let ringMask: Memory.Address.Offset
 
-            /// Byte offset to the ring entries count.
             public let ringEntries: Memory.Address.Offset
 
-            /// Byte offset to the flags field.
             public let flags: Memory.Address.Offset
 
-            /// Byte offset to the dropped counter.
             public let dropped: Memory.Address.Offset
 
-            /// Byte offset to the SQ array.
             public let array: Memory.Address.Offset
 
             internal init() {
@@ -75,10 +53,8 @@
         }
     }
 
-    // MARK: - C Boundary
-
     extension Memory.Address.Offset {
-        /// Creates a byte offset from a kernel-provided UInt32 value.
+
         @inlinable
         package init(_ cOffset: UInt32) {
             self.init(_unchecked: Affine.Discrete.Vector(Int(cOffset)))

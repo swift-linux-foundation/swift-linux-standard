@@ -1,25 +1,8 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-linux open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-linux project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring {
-        /// Namespace for io_uring_enter related types.
-        ///
-        /// Contains flags for controlling `io_uring_enter` behavior.
-        ///
-        /// ## See Also
-        ///
-        /// - ``Kernel/IO/Uring/Enter/Options``
+
         public enum Enter {}
     }
 

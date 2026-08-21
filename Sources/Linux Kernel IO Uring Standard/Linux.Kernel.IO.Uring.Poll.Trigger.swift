@@ -1,14 +1,3 @@
-// ===----------------------------------------------------------------------===//
-//
-// This source file is part of the swift-kernel open source project
-//
-// Copyright (c) 2024-2025 Coen ten Thije Boonkkamp and the swift-kernel project authors
-// Licensed under Apache License v2.0
-//
-// See LICENSE for license information
-//
-// ===----------------------------------------------------------------------===//
-
 #if os(Linux)
 
     public import ISO_9945_Core
@@ -16,40 +5,20 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    // MARK: - IORING_POLL_ADD_LEVEL
-    //
-    // Some CI toolchain images (e.g. Swift 6.4.x-nightly) ship kernel/liburing
-    // headers that predate this constant, so it is not always available from
-    // Linux_Kernel_Shims. Defined locally with the documented kernel value,
-    // matching the FICLONE convention in Linux.Kernel.File.Clone.swift.
-    // (Redeclared file-locally alongside Linux.Kernel.IO.Uring.Poll.Options.swift's
-    // copy since `private` is file-scoped.)
-    // swift-format-ignore: AlwaysUseLowerCamelCase
     private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
 
     extension ISO_9945.Kernel.IO.Uring.Poll {
-        /// Trigger mode for io_uring poll operations.
-        ///
-        /// Determines when the kernel delivers poll completions.
-        ///
-        /// - `.edge` (default): Fires once when the condition transitions
-        ///   from not-ready to ready. The application must drain the fd
-        ///   until `EAGAIN` and re-arm if needed.
-        ///
-        /// - `.level`: Fires whenever the condition is true. The kernel
-        ///   re-delivers if the condition persists after the CQE is consumed.
-        ///   Simpler to use but higher overhead under sustained readiness.
+
         public enum Trigger: Sendable, Hashable {
-            /// Edge-triggered — fires on transition (default).
+
             case edge
 
-            /// Level-triggered — fires while condition holds.
             case level
         }
     }
 
     extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
-        /// The io_uring poll flag bits for this trigger mode.
+
         @usableFromInline
         var pollBits: UInt32 {
             switch self {
