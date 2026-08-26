@@ -1,5 +1,5 @@
 #if os(Linux)
-    public import System_Primitives
+    public import System
     internal import Glibc
 
     extension System.Memory {
@@ -31,7 +31,7 @@
         }
     }
 #else
-    public import System_Primitives
+    public import System
 
     extension System.Memory {
 

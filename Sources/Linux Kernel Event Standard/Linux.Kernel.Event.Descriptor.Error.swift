@@ -1,16 +1,16 @@
 #if os(Linux)
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     extension Linux.Kernel.Event.Descriptor {
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case create(Error_Primitives.Error.Code)
+            case create(Error.Error.Code)
 
-            case read(Error_Primitives.Error.Code)
+            case read(Error.Error.Code)
 
-            case write(Error_Primitives.Error.Code)
+            case write(Error.Error.Code)
 
             case wouldBlock
         }
@@ -36,7 +36,7 @@
 
     extension Linux.Kernel.Event.Descriptor.Error {
 
-        public var code: Error_Primitives.Error.Code? {
+        public var code: Error.Error.Code? {
             switch self {
             case .create(let code): return code
             case .read(let code): return code

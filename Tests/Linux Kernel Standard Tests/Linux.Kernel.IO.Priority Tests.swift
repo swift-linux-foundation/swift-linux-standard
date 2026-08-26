@@ -1,8 +1,8 @@
 #if os(Linux)
     import Testing
 
-    import Error_Primitives
-    import Memory_Primitives
+    import Error
+    import Memory
     @testable import Linux_Kernel_IO_Standard
 
     import ISO_9945_Core

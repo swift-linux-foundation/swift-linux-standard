@@ -1,6 +1,6 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import Random_Primitives
+    public import Random
 
     #if canImport(Glibc)
         internal import Glibc

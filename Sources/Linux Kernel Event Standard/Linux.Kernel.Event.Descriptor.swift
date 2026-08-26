@@ -2,7 +2,7 @@
 
     @_spi(Syscall) public import ISO_9945_Core
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -63,7 +63,7 @@
                 )
             #endif
             guard result == MemoryLayout<UInt64>.size else {
-                let code = Error_Primitives.Error.Code.posix(errno)
+                let code = Error.Error.Code.posix(errno)
                 if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                     throw .wouldBlock
                 }
@@ -88,7 +88,7 @@
                 )
             #endif
             guard result == MemoryLayout<UInt64>.size else {
-                let code = Error_Primitives.Error.Code.posix(errno)
+                let code = Error.Error.Code.posix(errno)
                 if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) {
                     throw .wouldBlock
                 }
@@ -108,7 +108,7 @@
                 let result = unsafe Musl.write(fd, &val, MemoryLayout<UInt64>.size)
             #endif
             if result < 0 {
-                let code = Error_Primitives.Error.Code.posix(errno)
+                let code = Error.Error.Code.posix(errno)
                 if code == .posix(EAGAIN) || code == .posix(EWOULDBLOCK) || code == .posix(EBADF) {
 
                 } else {

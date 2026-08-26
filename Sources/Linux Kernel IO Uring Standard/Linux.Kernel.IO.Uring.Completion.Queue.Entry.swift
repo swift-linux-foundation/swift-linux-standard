@@ -1,7 +1,7 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -55,8 +55,8 @@
             res == -Int32(ECANCELED)
         }
 
-        public var errorNumber: Error_Primitives.Error.Number? {
-            isError ? Error_Primitives.Error.Number(_unchecked: -res) : nil
+        public var errorNumber: Error.Error.Number? {
+            isError ? Error.Error.Number(_unchecked: -res) : nil
         }
     }
 

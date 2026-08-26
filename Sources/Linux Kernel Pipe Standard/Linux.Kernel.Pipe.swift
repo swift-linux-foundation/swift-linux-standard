@@ -1,8 +1,8 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error_Primitives
-    public import Pair_Primitives
+    public import Error
+    public import Pair
 
     #if canImport(Glibc)
         internal import Glibc
@@ -26,7 +26,7 @@
 
             guard result == 0 else {
 
-                throw .platform(Error_Primitives.Error(code: .posix(errno)))
+                throw .platform(Error.Error(code: .posix(errno)))
             }
 
             return (read: fds.0, write: fds.1)

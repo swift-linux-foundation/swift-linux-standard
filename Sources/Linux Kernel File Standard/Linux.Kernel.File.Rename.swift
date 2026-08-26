@@ -2,9 +2,9 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Error_Primitives
-    public import Memory_Primitives
-    public import Path_Primitives
+    public import Error
+    public import Memory
+    public import Path
 
     #if canImport(Glibc)
         internal import Glibc
@@ -33,7 +33,7 @@
             )
 
             guard result == 0 else {
-                let code = Error_Primitives.Error.Code.posix(errno)
+                let code = Error.Error.Code.posix(errno)
                 switch code.posix {
                 case EEXIST:
                     throw .exists

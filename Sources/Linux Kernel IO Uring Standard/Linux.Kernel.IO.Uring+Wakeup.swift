@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error_Primitives
+    public import Error
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
     extension ISO_9945.Kernel.IO.Uring {
@@ -43,7 +43,7 @@
 
     extension ISO_9945.Kernel.IO.Uring.Error {
 
-        var code: Error_Primitives.Error.Code {
+        var code: Error.Error.Code {
             switch self {
             case .setup(let code): code
             case .enter(let code): code

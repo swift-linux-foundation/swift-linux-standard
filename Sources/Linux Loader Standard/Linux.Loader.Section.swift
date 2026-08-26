@@ -1,7 +1,7 @@
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
     public import Linux_Standard_Core
-    public import Loader_Primitives
+    public import Loader
 
     extension Linux_Standard_Core.Linux.Loader {
 

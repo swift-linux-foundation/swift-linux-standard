@@ -1,8 +1,8 @@
 #if os(Linux)
     import Testing
 
-    import Error_Primitives
-    import Memory_Primitives
+    import Error
+    import Memory
     @testable import Linux_Kernel_IO_Uring_Standard
 
     import ISO_9945_Core
@@ -20,7 +20,7 @@
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
         func `setup case exists`() {
-            let code = Error_Primitives.Error.Code.posix(1)
+            let code = Error.Error.Code.posix(1)
             let error = Kernel.IO.Uring.Error.setup(code)
             if case .setup(let c) = error {
                 #expect(c == code)
@@ -31,7 +31,7 @@
 
         @Test
         func `enter case exists`() {
-            let code = Error_Primitives.Error.Code.posix(2)
+            let code = Error.Error.Code.posix(2)
             let error = Kernel.IO.Uring.Error.enter(code)
             if case .enter(let c) = error {
                 #expect(c == code)
@@ -42,7 +42,7 @@
 
         @Test
         func `register case exists`() {
-            let code = Error_Primitives.Error.Code.posix(3)
+            let code = Error.Error.Code.posix(3)
             let error = Kernel.IO.Uring.Error.register(code)
             if case .register(let c) = error {
                 #expect(c == code)
@@ -131,7 +131,7 @@
     extension Kernel.IO.Uring.Error.Test.EdgeCase {
         @Test
         func `all cases are distinct`() {
-            let code = Error_Primitives.Error.Code.posix(1)
+            let code = Error.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),
                 .enter(code),
@@ -155,7 +155,7 @@
 
         @Test
         func `all descriptions are non-empty`() {
-            let code = Error_Primitives.Error.Code.posix(1)
+            let code = Error.Error.Code.posix(1)
             let cases: [Kernel.IO.Uring.Error] = [
                 .setup(code),
                 .enter(code),

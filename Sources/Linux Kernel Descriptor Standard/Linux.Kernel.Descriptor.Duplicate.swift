@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -30,7 +30,7 @@
                     throw .tooManyOpen
 
                 default:
-                    throw .platform(Error_Primitives.Error(code: .posix(e)))
+                    throw .platform(Error.Error(code: .posix(e)))
                 }
             }
         }

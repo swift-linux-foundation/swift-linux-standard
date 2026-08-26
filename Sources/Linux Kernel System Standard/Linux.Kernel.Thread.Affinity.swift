@@ -7,7 +7,7 @@ extension Linux.Kernel.Thread {
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import Error_Primitives
+    public import Error
 
     internal import Linux_Kernel_Shims
 

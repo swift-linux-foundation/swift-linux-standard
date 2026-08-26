@@ -10,8 +10,8 @@
     #endif
     import Testing
 
-    import Error_Primitives
-    import Memory_Primitives
+    import Error
+    import Memory
     @testable import Linux_Kernel_Event_Standard
 
     import Linux_Standard_Core

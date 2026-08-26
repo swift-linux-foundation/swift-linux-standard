@@ -38,49 +38,50 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-primitives/swift-pair-primitives.git",
+            url: "https://github.com/swift-molecules/swift-pair.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-cpu-primitives.git",
+            url: "https://github.com/swift-molecules/swift-cpu.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-dimension-primitives.git",
+            url: "https://github.com/swift-molecules/swift-dimension.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-loader-primitives.git",
+            url: "https://github.com/swift-molecules/swift-loader.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-string-primitives.git",
+            url: "https://github.com/swift-molecules/swift-string.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-system-primitives.git",
+            url: "https://github.com/swift-molecules/swift-system.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-error-primitives.git",
+            url: "https://github.com/swift-molecules/swift-error.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-random-primitives.git",
+            url: "https://github.com/swift-molecules/swift-random.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-path-primitives.git",
+            url: "https://github.com/swift-molecules/swift-path.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-memory-primitives.git",
+            url: "https://github.com/swift-molecules/swift-memory.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-primitives/swift-memory-map-primitives.git",
+            url: "https://github.com/swift-molecules/swift-memory-map.git",
             branch: "main"
         ),
+        .package(url: "https://github.com/swift-molecules/swift-binary.git", branch: "main"),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
     ],
     targets: [
@@ -112,8 +113,8 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Path", package: "swift-path"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ]
         ),
@@ -123,11 +124,11 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
-                .product(name: "Pair Primitives", package: "swift-pair-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "Random", package: "swift-random"),
+                .product(name: "Path", package: "swift-path"),
+                .product(name: "Pair", package: "swift-pair"),
             ]
         ),
 
@@ -144,11 +145,11 @@ let package = Package(
             name: "Linux Kernel Memory Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
+                .product(name: "Memory", package: "swift-memory"),
                 .product(name: "ISO 9945 Kernel Memory", package: "swift-iso-9945"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Random", package: "swift-random"),
+                .product(name: "Path", package: "swift-path"),
             ]
         ),
 
@@ -157,10 +158,10 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "Random", package: "swift-random"),
+                .product(name: "Path", package: "swift-path"),
             ]
         ),
 
@@ -168,10 +169,10 @@ let package = Package(
             name: "Linux Kernel Futex Standard",
             dependencies: [
                 .target(name: "Linux Standard Core"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "Random", package: "swift-random"),
+                .product(name: "Path", package: "swift-path"),
             ]
         ),
 
@@ -180,15 +181,15 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "System Primitives", package: "swift-system-primitives"),
+                .product(name: "System", package: "swift-system"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Thread", package: "swift-iso-9945"),
-                .product(name: "Random Primitives", package: "swift-random-primitives"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "Path Primitives", package: "swift-path-primitives"),
+                .product(name: "Random", package: "swift-random"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "Path", package: "swift-path"),
             ]
         ),
 
@@ -197,7 +198,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Error", package: "swift-error"),
                 .product(name: "ISO 9945 Kernel Time", package: "swift-iso-9945"),
             ]
         ),
@@ -207,7 +208,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Error", package: "swift-error"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
             ]
         ),
@@ -217,7 +218,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Error", package: "swift-error"),
             ]
         ),
 
@@ -226,7 +227,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
+                .product(name: "Error", package: "swift-error"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
             ]
         ),
@@ -237,8 +238,8 @@ let package = Package(
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel File Standard"),
                 .target(name: "Linux Kernel Descriptor Standard"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
             ]
         ),
 
@@ -257,11 +258,12 @@ let package = Package(
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Socket", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Socket Address", package: "swift-iso-9945"),
-                .product(name: "Dimension Primitives", package: "swift-dimension-primitives"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
-                .product(name: "CPU Primitives", package: "swift-cpu-primitives"),
-                .product(name: "Memory Map Primitives", package: "swift-memory-map-primitives"),
+                .product(name: "Dimension", package: "swift-dimension"),
+                .product(name: "Binary", package: "swift-binary"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
+                .product(name: "CPU", package: "swift-cpu"),
+                .product(name: "Memory Map", package: "swift-memory-map"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
             ],
             swiftSettings: [.enableExperimentalFeature("LifetimeDependence")]
@@ -272,8 +274,8 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Loader Primitives", package: "swift-loader-primitives"),
-                .product(name: "String Primitives", package: "swift-string-primitives"),
+                .product(name: "Loader", package: "swift-loader"),
+                .product(name: "String", package: "swift-string"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Loader", package: "swift-iso-9945"),
             ]
@@ -302,8 +304,8 @@ let package = Package(
                 .target(name: "Linux Kernel Timer Standard"),
                 .target(name: "Linux Kernel Signal Standard"),
                 .target(name: "Linux Kernel IO Uring Standard"),
-                .product(name: "Error Primitives", package: "swift-error-primitives"),
-                .product(name: "Memory Primitives", package: "swift-memory-primitives"),
+                .product(name: "Error", package: "swift-error"),
+                .product(name: "Memory", package: "swift-memory"),
             ]
         ),
     ],

@@ -2,7 +2,7 @@
 
     @_spi(Syscall) public import ISO_9945_Core
     @_spi(Syscall) public import ISO_9945_Kernel_Signal
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc

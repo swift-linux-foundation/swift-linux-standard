@@ -1,17 +1,17 @@
 #if os(Linux)
 
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     extension Linux.Kernel.Event.Poll {
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case create(Error_Primitives.Error.Code)
+            case create(Error.Error.Code)
 
-            case ctl(Error_Primitives.Error.Code)
+            case ctl(Error.Error.Code)
 
-            case wait(Error_Primitives.Error.Code)
+            case wait(Error.Error.Code)
 
             case interrupted
         }

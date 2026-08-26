@@ -2,13 +2,13 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_Signal
-    public import Error_Primitives
+    public import Error
 
     extension ISO_9945.Kernel.Signal.Descriptor {
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case create(Error_Primitives.Error.Code)
+            case create(Error.Error.Code)
         }
     }
 
@@ -23,7 +23,7 @@
 
     extension ISO_9945.Kernel.Signal.Descriptor.Error {
 
-        public var code: Error_Primitives.Error.Code {
+        public var code: Error.Error.Code {
             switch self {
             case .create(let code): return code
             }

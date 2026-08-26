@@ -9,8 +9,8 @@ extension Linux.Kernel.File {
 
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Error_Primitives
-    public import Path_Primitives
+    public import Error
+    public import Path
 
     #if canImport(Glibc)
         internal import Glibc

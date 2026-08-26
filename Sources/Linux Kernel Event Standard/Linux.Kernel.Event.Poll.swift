@@ -3,7 +3,7 @@
     public import ISO_9945_Kernel_Time
     @_spi(Syscall) public import ISO_9945_Core
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -119,7 +119,7 @@
                     timeout
                 )
                 guard result >= 0 else {
-                    let code = Error_Primitives.Error.Code.posix(errno)
+                    let code = Error.Error.Code.posix(errno)
                     if code.posix == EINTR {
                         return .failure(.interrupted)
                     }

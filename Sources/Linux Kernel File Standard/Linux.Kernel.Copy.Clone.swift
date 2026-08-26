@@ -3,7 +3,7 @@
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     #if canImport(Glibc)
         internal import Glibc

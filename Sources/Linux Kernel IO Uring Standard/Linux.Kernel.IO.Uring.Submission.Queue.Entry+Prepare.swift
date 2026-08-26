@@ -3,9 +3,9 @@
     public import ISO_9945_Kernel_Process
     public import ISO_9945_Kernel_Socket_Address
     public import ISO_9945_Kernel_Socket
-    public import Error_Primitives
-    public import Memory_Primitives
-    public import Memory_Map_Primitives
+    public import Error
+    public import Memory
+    public import Memory_Map
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard

@@ -2,9 +2,9 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Dimension_Primitives
+    public import Dimension
 
-    public import Binary_Primitives
+    public import Binary
 
     extension ISO_9945.Kernel.IO.Uring {
 

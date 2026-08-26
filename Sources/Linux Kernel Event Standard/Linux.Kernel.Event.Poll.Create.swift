@@ -1,7 +1,7 @@
 #if os(Linux)
 
     public import Linux_Standard_Core
-    public import Error_Primitives
+    public import Error
 
     extension Linux.Kernel.Event.Poll {
 

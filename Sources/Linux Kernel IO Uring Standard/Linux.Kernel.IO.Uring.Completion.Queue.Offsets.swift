@@ -1,7 +1,7 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Memory_Primitives
+    public import Memory
 
     #if canImport(Glibc)
         internal import Glibc

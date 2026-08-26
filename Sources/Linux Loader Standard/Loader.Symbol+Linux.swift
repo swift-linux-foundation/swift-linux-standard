@@ -1,7 +1,7 @@
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-    public import Loader_Primitives
-    internal import String_Primitives
+    public import Loader
+    internal import String
     #if canImport(Glibc)
         internal import Glibc
     #elseif canImport(Musl)
@@ -39,9 +39,9 @@
 
             if let errorCStr = unsafe dlerror() {
                 let u8Ptr = unsafe UnsafeRawPointer(errorCStr).assumingMemoryBound(to: UInt8.self)
-                let view = unsafe String_Primitives.String.Borrowed(
+                let view = unsafe String.String.Borrowed(
                     u8Ptr,
-                    count: String_Primitives.String.length(of: u8Ptr)
+                    count: String.String.length(of: u8Ptr)
                 )
                 throw .symbol(unsafe Loader.Message(copying: view))
             }

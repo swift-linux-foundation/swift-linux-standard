@@ -1,9 +1,9 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Error_Primitives
-    public import Memory_Primitives
-    public import Path_Primitives
+    public import Error
+    public import Memory
+    public import Path
     public import ISO_9945_Kernel_Memory
 
     #if canImport(Glibc)

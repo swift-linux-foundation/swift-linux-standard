@@ -1,5 +1,5 @@
 #if os(Linux)
-    public import System_Primitives
+    public import System
     internal import Glibc
 
     extension System.Topology.NUMA {
@@ -96,7 +96,7 @@
         }
     }
 #else
-    public import System_Primitives
+    public import System
 
     extension System.Topology.NUMA {
         public static func discover() -> System.Topology.NUMA.State {

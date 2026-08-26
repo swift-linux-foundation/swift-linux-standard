@@ -2,10 +2,10 @@
 
     @_spi(Syscall) public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Error_Primitives
-    public import Memory_Primitives
+    public import Error
+    public import Memory
 
-    public import CPU_Primitives
+    public import CPU
 
     #if canImport(Glibc)
         internal import Glibc
@@ -40,11 +40,11 @@
 
             @usableFromInline let singleMmap: Bool
 
-            @usableFromInline let sqRingAddr: Memory_Primitives.Memory.Address
+            @usableFromInline let sqRingAddr: Memory.Memory.Address
             @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let cqRingAddr: Memory_Primitives.Memory.Address
+            @usableFromInline let cqRingAddr: Memory.Memory.Address
             @usableFromInline let cqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let sqeAddr: Memory_Primitives.Memory.Address
+            @usableFromInline let sqeAddr: Memory.Memory.Address
             @usableFromInline let sqeSize: ISO_9945.Kernel.File.Size
 
             @unsafe
@@ -61,11 +61,11 @@
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Memory_Primitives.Memory.Address,
+                sqRingAddr: Memory.Memory.Address,
                 sqRingSize: ISO_9945.Kernel.File.Size,
-                cqRingAddr: Memory_Primitives.Memory.Address,
+                cqRingAddr: Memory.Memory.Address,
                 cqRingSize: ISO_9945.Kernel.File.Size,
-                sqeAddr: Memory_Primitives.Memory.Address,
+                sqeAddr: Memory.Memory.Address,
                 sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
@@ -132,7 +132,7 @@
                 0
             )
             guard result >= 0 else {
-                let code = Error_Primitives.Error.Code.posix(errno)
+                let code = Error.Error.Code.posix(errno)
                 if code.posix == EINTR { throw .interrupted }
                 throw .enter(code)
             }
@@ -325,11 +325,11 @@
                         )
                 ),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Memory_Primitives.Memory.Address(sq),
+                sqRingAddr: unsafe Memory.Memory.Address(sq),
                 sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Memory_Primitives.Memory.Address(cq),
+                cqRingAddr: unsafe Memory.Memory.Address(cq),
                 cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Memory_Primitives.Memory.Address(sqe),
+                sqeAddr: unsafe Memory.Memory.Address(sqe),
                 sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
             )
         }

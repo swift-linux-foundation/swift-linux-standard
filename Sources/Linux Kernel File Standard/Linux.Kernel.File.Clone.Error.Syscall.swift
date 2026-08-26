@@ -1,10 +1,10 @@
-public import Error_Primitives
+public import Error
 public import Linux_Standard_Core
 
 extension Linux.Kernel.File.Clone.Error {
 
     public enum Syscall: Swift.Error, Sendable {
 
-        case platform(code: Error_Primitives.Error.Code, operation: Operation)
+        case platform(code: Error.Error.Code, operation: Operation)
     }
 }

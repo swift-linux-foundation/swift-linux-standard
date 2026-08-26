@@ -2,9 +2,9 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Error_Primitives
-    public import Memory_Primitives
-    public import Path_Primitives
+    public import Error
+    public import Memory
+    public import Path
 
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
