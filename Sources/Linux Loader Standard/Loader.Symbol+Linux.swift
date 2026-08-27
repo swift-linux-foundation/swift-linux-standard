@@ -1,6 +1,6 @@
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-    public import Loader
+    public import Loader_Vocabulary
     internal import String
     #if canImport(Glibc)
         internal import Glibc

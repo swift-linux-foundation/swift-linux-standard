@@ -2,7 +2,7 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Loader
-    public import Loader
+    public import Loader_Vocabulary
 
     private let _RTLD_NOLOAD: Int32 = 0x0000_4
 

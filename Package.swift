@@ -50,7 +50,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-loader.git",
+            url: "https://github.com/swift-molecules/swift-loader-vocabulary.git",
             branch: "main"
         ),
         .package(
@@ -274,7 +274,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Loader", package: "swift-loader"),
+                .product(name: "Loader", package: "swift-loader-vocabulary"),
                 .product(name: "String", package: "swift-string"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Loader", package: "swift-iso-9945"),

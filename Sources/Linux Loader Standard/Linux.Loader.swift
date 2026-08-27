@@ -1,7 +1,7 @@
 #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
     @_exported public import Linux_Standard_Core
-    @_exported public import Loader
+    @_exported public import Loader_Vocabulary
 
     extension Linux_Standard_Core.Linux {
 
