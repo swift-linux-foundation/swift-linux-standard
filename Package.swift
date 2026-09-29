@@ -75,11 +75,11 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swift-atoms/swift-memory.git",
-            branch: "main", traits: ["Map"]),
-        .package(url: "https://github.com/swift-atoms/swift-binary.git", branch: "main"),
+            branch: "main", traits: ["Map", "Shared", "Cursor"]),
+        .package(url: "https://github.com/swift-atoms/swift-binary.git", branch: "main", traits: ["Serializer"]),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-cardinal.git", branch: "main"),
-        .package(url: "https://github.com/swift-atoms/swift-difference.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-difference.git", branch: "main", traits: ["Tagged"]),
     ],
     targets: [
 
@@ -275,7 +275,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Loader", package: "swift-loader-vocabulary"),
+                .product(name: "Loader Vocabulary", package: "swift-loader-vocabulary"),
                 .product(name: "String", package: "swift-string"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Loader", package: "swift-iso-9945"),
