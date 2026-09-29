@@ -26,7 +26,7 @@
 
             guard result == 0 else {
 
-                throw .platform(Error.Error(code: .posix(errno)))
+                throw .platform(Error::Error(code: .posix(errno)))
             }
 
             return (read: fds.0, write: fds.1)

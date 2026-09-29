@@ -30,7 +30,7 @@
                     throw .tooManyOpen
 
                 default:
-                    throw .platform(Error.Error(code: .posix(e)))
+                    throw .platform(Error::Error(code: .posix(e)))
                 }
             }
         }

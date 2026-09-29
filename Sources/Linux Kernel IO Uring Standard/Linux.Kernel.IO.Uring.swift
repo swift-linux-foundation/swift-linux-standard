@@ -40,11 +40,11 @@
 
             @usableFromInline let singleMmap: Bool
 
-            @usableFromInline let sqRingAddr: Memory.Memory.Address
+            @usableFromInline let sqRingAddr: Memory::Memory.Address
             @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let cqRingAddr: Memory.Memory.Address
+            @usableFromInline let cqRingAddr: Memory::Memory.Address
             @usableFromInline let cqRingSize: ISO_9945.Kernel.File.Size
-            @usableFromInline let sqeAddr: Memory.Memory.Address
+            @usableFromInline let sqeAddr: Memory::Memory.Address
             @usableFromInline let sqeSize: ISO_9945.Kernel.File.Size
 
             @unsafe
@@ -61,11 +61,11 @@
                 cqMask: Completion.Queue.Mask,
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
-                sqRingAddr: Memory.Memory.Address,
+                sqRingAddr: Memory::Memory.Address,
                 sqRingSize: ISO_9945.Kernel.File.Size,
-                cqRingAddr: Memory.Memory.Address,
+                cqRingAddr: Memory::Memory.Address,
                 cqRingSize: ISO_9945.Kernel.File.Size,
-                sqeAddr: Memory.Memory.Address,
+                sqeAddr: Memory::Memory.Address,
                 sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
@@ -325,11 +325,11 @@
                         )
                 ),
                 singleMmap: isSingleMmap,
-                sqRingAddr: unsafe Memory.Memory.Address(sq),
+                sqRingAddr: unsafe Memory::Memory.Address(sq),
                 sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
-                cqRingAddr: unsafe Memory.Memory.Address(cq),
+                cqRingAddr: unsafe Memory::Memory.Address(cq),
                 cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
-                sqeAddr: unsafe Memory.Memory.Address(sqe),
+                sqeAddr: unsafe Memory::Memory.Address(sqe),
                 sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
             )
         }

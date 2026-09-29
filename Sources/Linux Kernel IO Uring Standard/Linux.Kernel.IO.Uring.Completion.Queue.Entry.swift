@@ -55,8 +55,8 @@
             res == -Int32(ECANCELED)
         }
 
-        public var errorNumber: Error.Error.Number? {
-            isError ? Error.Error.Number(_unchecked: -res) : nil
+        public var errorNumber: Error::Error.Number? {
+            isError ? Error::Error.Number(_unchecked: -res) : nil
         }
     }
 
