@@ -4,7 +4,6 @@
     public import ISO_9945_Kernel_Socket
     public import Error
     public import Memory
-    public import Memory_Map
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard

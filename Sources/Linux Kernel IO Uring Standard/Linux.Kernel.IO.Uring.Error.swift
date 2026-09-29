@@ -7,11 +7,11 @@
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case setup(Error.Error.Code)
+            case setup(Error::Error.Code)
 
-            case enter(Error.Error.Code)
+            case enter(Error::Error.Code)
 
-            case register(Error.Error.Code)
+            case register(Error::Error.Code)
 
             case interrupted
         }

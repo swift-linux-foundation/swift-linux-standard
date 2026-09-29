@@ -43,7 +43,7 @@
 
     extension ISO_9945.Kernel.IO.Uring.Error {
 
-        var code: Error.Error.Code {
+        var code: Error::Error.Code {
             switch self {
             case .setup(let code): code
             case .enter(let code): code

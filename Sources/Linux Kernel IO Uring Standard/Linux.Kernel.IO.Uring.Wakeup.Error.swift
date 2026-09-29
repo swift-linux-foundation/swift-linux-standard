@@ -7,9 +7,9 @@
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case eventfd(Error.Error.Code)
+            case eventfd(Error::Error.Code)
 
-            case register(Error.Error.Code)
+            case register(Error::Error.Code)
         }
     }
 

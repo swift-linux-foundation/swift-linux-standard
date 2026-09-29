@@ -119,7 +119,7 @@
                     timeout
                 )
                 guard result >= 0 else {
-                    let code = Error.Error.Code.posix(errno)
+                    let code = Error::Error.Code.posix(errno)
                     if code.posix == EINTR {
                         return .failure(.interrupted)
                     }

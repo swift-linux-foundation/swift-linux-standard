@@ -1,18 +1,19 @@
+public import Cardinal
 #if os(Linux)
     public import System
     internal import Glibc
 
-    extension System.Memory {
+    extension System {
 
-        public static var total: System.Memory.Capacity {
+        public static var memoryCapacity: Cardinal {
             guard let file = unsafe fopen("/proc/meminfo", "r") else {
-                return System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
+                return Cardinal(UInt(0))
             }
             defer { unsafe fclose(file) }
 
             var buffer = [CChar](repeating: 0, count: 256)
             guard unsafe fgets(&buffer, Int32(buffer.count), file) != nil else {
-                return System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
+                return Cardinal(UInt(0))
             }
 
             let line = unsafe String(cString: buffer)
@@ -27,16 +28,16 @@
 
             bytes = bytes &* 1024
 
-            return System.Memory.Capacity(_unchecked: Cardinal(bytes))
+            return Cardinal(bytes)
         }
     }
 #else
     public import System
 
-    extension System.Memory {
+    extension System {
 
-        public static var total: System.Memory.Capacity {
-            System.Memory.Capacity(_unchecked: Cardinal(UInt(0)))
+        public static var memoryCapacity: Cardinal {
+            Cardinal(UInt(0))
         }
     }
 #endif

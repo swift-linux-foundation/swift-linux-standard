@@ -38,11 +38,11 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-molecules/swift-pair.git",
+            url: "https://github.com/swift-atoms/swift-pair.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-cpu.git",
+            url: "https://github.com/swift-atoms/swift-cpu.git",
             branch: "main"
         ),
         .package(
@@ -54,35 +54,32 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-string.git",
+            url: "https://github.com/swift-atoms/swift-string.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-system.git",
+            url: "https://github.com/swift-atoms/swift-system.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-error.git",
+            url: "https://github.com/swift-atoms/swift-error.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-random.git",
+            url: "https://github.com/swift-atoms/swift-random.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-path.git",
+            url: "https://github.com/swift-atoms/swift-path.git",
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-molecules/swift-memory.git",
-            branch: "main"
-        ),
-        .package(
-            url: "https://github.com/swift-molecules/swift-memory-map.git",
-            branch: "main"
-        ),
-        .package(url: "https://github.com/swift-molecules/swift-binary.git", branch: "main"),
+            url: "https://github.com/swift-atoms/swift-memory.git",
+            branch: "main", traits: ["Map"]),
+        .package(url: "https://github.com/swift-atoms/swift-binary.git", branch: "main"),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-cardinal.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-difference.git", branch: "main"),
     ],
     targets: [
 
@@ -190,6 +187,7 @@ let package = Package(
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(name: "Path", package: "swift-path"),
+                .product(name: "Cardinal", package: "swift-cardinal"),
             ]
         ),
 
@@ -263,8 +261,11 @@ let package = Package(
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(name: "CPU", package: "swift-cpu"),
-                .product(name: "Memory Map", package: "swift-memory-map"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
+                .product(name: "ISO 9945 Core", package: "swift-iso-9945", condition: .when(platforms: [.linux])),
+                .product(name: "System", package: "swift-system", condition: .when(platforms: [.linux])),
+                .product(name: "Difference", package: "swift-difference", condition: .when(platforms: [.linux])),
+                .product(name: "Cardinal", package: "swift-cardinal", condition: .when(platforms: [.linux])),
             ],
             swiftSettings: [.enableExperimentalFeature("LifetimeDependence")]
         ),

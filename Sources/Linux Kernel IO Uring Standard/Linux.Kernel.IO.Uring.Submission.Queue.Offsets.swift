@@ -1,5 +1,8 @@
 #if os(Linux)
 
+    public import Difference
+    public import Cardinal
+
     public import ISO_9945_Core
     public import Memory
 
@@ -57,7 +60,7 @@
 
         @inlinable
         package init(_ cOffset: UInt32) {
-            self.init(_unchecked: Affine.Discrete.Vector(Int(cOffset)))
+            self.init(_unchecked: Difference.positive(.init(Cardinal(UInt(cOffset)))))
         }
     }
 

@@ -5,6 +5,6 @@ extension Linux.Kernel.Thread.Affinity {
 
     public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-        case platform(Error.Error.Code)
+        case platform(Error::Error.Code)
     }
 }

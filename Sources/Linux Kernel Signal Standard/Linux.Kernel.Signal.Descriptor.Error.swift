@@ -8,7 +8,7 @@
 
         public enum Error: Swift.Error, Sendable, Equatable, Hashable {
 
-            case create(Error.Error.Code)
+            case create(Error::Error.Code)
         }
     }
 
@@ -23,7 +23,7 @@
 
     extension ISO_9945.Kernel.Signal.Descriptor.Error {
 
-        public var code: Error.Error.Code {
+        public var code: Error::Error.Code {
             switch self {
             case .create(let code): return code
             }

@@ -33,7 +33,7 @@
             )
 
             guard result == 0 else {
-                let code = Error.Error.Code.posix(errno)
+                let code = Error::Error.Code.posix(errno)
                 switch code.posix {
                 case EEXIST:
                     throw .exists

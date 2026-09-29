@@ -7,12 +7,12 @@
 
         public struct Thread: Sendable, Equatable {
 
-            public var cpu: System.Processor.ID
+            public var cpu: Int
 
             public var idle: Duration
 
             public init(
-                cpu: System.Processor.ID = .zero,
+                cpu: Int = 0,
                 idle: Duration = .zero
             ) {
                 self.cpu = cpu
@@ -24,12 +24,18 @@
     extension ISO_9945.Kernel.IO.Uring.Params.Submission.Thread {
 
         internal init(cCpu: UInt32, cIdle: UInt32) {
-            self.cpu = System.Processor.ID(_unchecked: Ordinal(UInt(cCpu)))
+            guard let cpu = Int(exactly: cCpu) else {
+                preconditionFailure("CPU identifier is not representable as Int")
+            }
+            self.cpu = cpu
             self.idle = .milliseconds(Int(cIdle))
         }
 
         internal var cCpu: UInt32 {
-            UInt32(cpu.underlying.rawValue)
+            guard let value = UInt32(exactly: cpu) else {
+                preconditionFailure("CPU identifier must be representable as UInt32")
+            }
+            return value
         }
 
         internal var cIdle: UInt32 {
