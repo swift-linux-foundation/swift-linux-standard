@@ -4,6 +4,7 @@
     public import ISO_9945_Kernel_File
     public import Error
     public import Memory
+    internal import Difference
 
     public import CPU
 
@@ -222,9 +223,9 @@
             let sqEntryCount = Int(bitPattern: params.sqEntries)
             let cqEntryCount = Int(bitPattern: params.cqEntries)
             let sqRingSz =
-                params.sqOff.array.vector.rawValue + sqEntryCount * MemoryLayout<UInt32>.size
+                _ringByteOffset(params.sqOff.array) + sqEntryCount * MemoryLayout<UInt32>.size
             let cqRingSz =
-                params.cqOff.cqes.vector.rawValue + cqEntryCount
+                _ringByteOffset(params.cqOff.cqes) + cqEntryCount
                 * MemoryLayout<ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry>.size
             let sqeSz =
                 sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
@@ -287,39 +288,39 @@
 
             unsafe self.init(
                 ringDescriptor: consume descriptor,
-                sqHead: sq.advanced(by: params.sqOff.head.vector.rawValue).assumingMemoryBound(
+                sqHead: sq.advanced(by: _ringByteOffset(params.sqOff.head)).assumingMemoryBound(
                     to: UInt32.self
                 ),
-                sqTail: sq.advanced(by: params.sqOff.tail.vector.rawValue).assumingMemoryBound(
+                sqTail: sq.advanced(by: _ringByteOffset(params.sqOff.tail)).assumingMemoryBound(
                     to: UInt32.self
                 ),
                 sqMask: Submission.Queue.Mask(
                     rawValue: sq.load(
-                        fromByteOffset: params.sqOff.ringMask.vector.rawValue,
+                        fromByteOffset: _ringByteOffset(params.sqOff.ringMask),
                         as: UInt32.self
                     )
                 ),
                 sqEntries: params.sqEntries,
-                sqArray: sq.advanced(by: params.sqOff.array.vector.rawValue).assumingMemoryBound(
+                sqArray: sq.advanced(by: _ringByteOffset(params.sqOff.array)).assumingMemoryBound(
                     to: UInt32.self
                 ),
                 sqes: sqe.assumingMemoryBound(
                     to: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.self
                 ),
-                cqHead: cq.advanced(by: params.cqOff.head.vector.rawValue).assumingMemoryBound(
+                cqHead: cq.advanced(by: _ringByteOffset(params.cqOff.head)).assumingMemoryBound(
                     to: UInt32.self
                 ),
-                cqTail: cq.advanced(by: params.cqOff.tail.vector.rawValue).assumingMemoryBound(
+                cqTail: cq.advanced(by: _ringByteOffset(params.cqOff.tail)).assumingMemoryBound(
                     to: UInt32.self
                 ),
                 cqMask: Completion.Queue.Mask(
                     rawValue: cq.load(
-                        fromByteOffset: params.cqOff.ringMask.vector.rawValue,
+                        fromByteOffset: _ringByteOffset(params.cqOff.ringMask),
                         as: UInt32.self
                     )
                 ),
                 cqes: UnsafePointer(
-                    cq.advanced(by: params.cqOff.cqes.vector.rawValue)
+                    cq.advanced(by: _ringByteOffset(params.cqOff.cqes))
                         .assumingMemoryBound(
                             to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self
                         )
@@ -405,6 +406,14 @@
             let head = unsafe cqHead.pointee
             return Completion.Count(_unchecked: Cardinal(UInt(tail &- head)))
         }
+    }
+
+    @usableFromInline
+    internal func _ringByteOffset(_ offset: Memory.Address.Offset) -> Int {
+        guard let bytes = Int(exactly: offset) else {
+            preconditionFailure("io_uring ring offset \(offset) does not fit Int")
+        }
+        return bytes
     }
 
 #endif

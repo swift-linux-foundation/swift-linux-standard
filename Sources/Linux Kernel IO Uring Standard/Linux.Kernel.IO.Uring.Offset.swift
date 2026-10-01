@@ -8,7 +8,7 @@
 
     extension ISO_9945.Kernel.IO.Uring {
 
-        public typealias Offset = Coordinate.X<Space>.Value<UInt64>
+        public typealias Offset = Space::Coordinate.X<Space>.Value<UInt64>
     }
 
     extension ISO_9945.Kernel.IO.Uring.Offset {
