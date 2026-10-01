@@ -6,7 +6,7 @@
 
     extension ISO_9945.Kernel.IO.Uring {
 
-        public typealias Length = Spatial::Magnitude<Space>.Value<UInt32>
+        public typealias Length = Space::Magnitude<Space>.Value<UInt32>
     }
 
     extension ISO_9945.Kernel.IO.Uring.Length {

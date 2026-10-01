@@ -2,7 +2,7 @@
 
     public import ISO_9945_Core
     public import ISO_9945_Kernel_File
-    public import Spatial
+    public import Space
 
     public import Binary
 
