@@ -27,6 +27,8 @@ Add the product to a target that needs it:
 )
 ```
 
+On Linux, the kernel shims include `<uuid/uuid.h>`, so building requires the libuuid development headers: install `uuid-dev` on Debian and Ubuntu, or `libuuid-devel` on Fedora and RHEL.
+
 ## License
 
 Apache 2.0. See [LICENSE.md](LICENSE.md).
