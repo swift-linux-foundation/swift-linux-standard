@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static __thread int tracking_enabled = 0;
+static __thread int tracking_enabled = 1;
 static __thread AllocationStats stats = {0};
 
 static void* (*real_malloc)(size_t) = NULL;
