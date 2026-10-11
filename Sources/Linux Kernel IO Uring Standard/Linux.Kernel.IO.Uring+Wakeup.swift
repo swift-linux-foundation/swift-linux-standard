@@ -35,7 +35,7 @@
                 case .create(let code): throw .eventfd(code)
 
                 case .read, .write, .wouldBlock:
-                    throw .eventfd(.POSIX.EINVAL)
+                    throw .eventfd(.EINVAL)
                 }
             }
         }
@@ -48,7 +48,7 @@
             case .setup(let code): code
             case .enter(let code): code
             case .register(let code): code
-            case .interrupted: .POSIX.EINTR
+            case .interrupted: .EINTR
             }
         }
     }
