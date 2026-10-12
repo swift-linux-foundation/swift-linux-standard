@@ -1,3 +1,4 @@
+public import Error
 public import Linux_Standard_Core
 
 extension Linux.Kernel.Copy {
@@ -19,5 +20,7 @@ extension Linux.Kernel.Copy {
         case exists
 
         case notFound
+
+        case platform(code: Error::Error.Code)
     }
 }

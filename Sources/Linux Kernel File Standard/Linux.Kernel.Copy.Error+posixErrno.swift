@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    internal import Error
     public import Linux_Standard_Core
     #if canImport(Glibc)
         internal import Glibc
@@ -32,11 +33,11 @@
             case EEXIST:
                 self = .exists
 
-            case EINVAL, ENOTSUP:
+            case EINVAL, ENOTSUP, EOPNOTSUPP, ENOSYS:
                 self = .unsupported
 
             default:
-                self = .unsupported
+                self = .platform(code: .posix(posixErrno))
             }
         }
     }

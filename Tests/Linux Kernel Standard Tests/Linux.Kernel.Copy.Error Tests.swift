@@ -41,9 +41,9 @@
 
     extension Linux.Kernel.Copy.Error.Test.`Edge Case` {
         @Test
-        func `copy_file_range(2) and FICLONE errnos without a case are not reported as unsupported`() {
+        func `copy_file_range(2) and FICLONE errnos without a case pass through as platform errors`() {
             for errno in [EISDIR, EFBIG, EOVERFLOW, ETXTBSY, EROFS, ENOMEM] {
-                #expect(Linux.Kernel.Copy.Error(posixErrno: errno) != .unsupported)
+                #expect(Linux.Kernel.Copy.Error(posixErrno: errno) == .platform(code: .posix(errno)))
             }
         }
     }
