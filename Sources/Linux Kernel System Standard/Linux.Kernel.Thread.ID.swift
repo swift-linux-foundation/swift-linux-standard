@@ -30,7 +30,7 @@
     extension ISO_9945.Kernel.Thread.ID {
 
         public static var current: Self {
-            .init(rawValue: Int32(unsafe swift_gettid()))
+            .init(rawValue: Int32(swift_gettid()))
         }
     }
 

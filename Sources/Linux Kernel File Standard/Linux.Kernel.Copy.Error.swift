@@ -3,7 +3,7 @@ public import Linux_Standard_Core
 
 extension Linux.Kernel.Copy {
 
-    public enum Error: Swift.Error, Sendable, Equatable, Hashable {
+    public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
         case invalidDescriptor
 

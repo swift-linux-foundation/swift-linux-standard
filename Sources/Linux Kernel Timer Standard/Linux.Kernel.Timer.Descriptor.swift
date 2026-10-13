@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -35,7 +35,7 @@
             flags: Int32? = nil
         ) throws(ISO_9945.Kernel.Timer.Descriptor.Error) -> ISO_9945.Kernel.Timer.Descriptor {
 
-            let fd = unsafe timerfd_create(
+            let fd = timerfd_create(
                 clockId ?? Int32(CLOCK_MONOTONIC),
                 flags ?? Int32(TFD_CLOEXEC)
             )

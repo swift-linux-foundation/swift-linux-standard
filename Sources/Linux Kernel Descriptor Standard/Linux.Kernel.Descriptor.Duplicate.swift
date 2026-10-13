@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc

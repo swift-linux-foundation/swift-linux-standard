@@ -25,7 +25,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             "\(rawValue)"
         }
     }

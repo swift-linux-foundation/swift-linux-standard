@@ -36,7 +36,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Priority: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             "\(rawValue)"
         }
     }

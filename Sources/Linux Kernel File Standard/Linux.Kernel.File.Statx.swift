@@ -1,7 +1,7 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
+    import ISO_9945_Kernel_File
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
@@ -101,7 +101,7 @@
         }
 
         public var mountId: UInt64 {
-            withUnsafePointer(to: cValue) { swift_statx_get_mnt_id($0) }
+            withUnsafePointer(to: cValue) { unsafe swift_statx_get_mnt_id($0) }
         }
     }
 

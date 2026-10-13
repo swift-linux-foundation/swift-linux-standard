@@ -2,7 +2,7 @@
 
     public import ISO_9945_Core
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -16,14 +16,15 @@
 
     extension Linux.Kernel.Event.Poll {
 
+        @safe
         public struct Event: @unchecked Sendable {
 
             internal var cValue: epoll_event
 
             public init(events: Events = [], data: Linux.Kernel.Event.Poll.Data = .zero) {
-                self.cValue = epoll_event()
-                self.cValue.events = events.rawValue
-                self.cValue.data.u64 = data.underlying
+                unsafe self.cValue = unsafe epoll_event()
+                unsafe self.cValue.events = events.rawValue
+                unsafe self.cValue.data.u64 = data.underlying
             }
         }
     }
@@ -31,33 +32,33 @@
     extension Linux.Kernel.Event.Poll.Event {
 
         public var events: Linux.Kernel.Event.Poll.Events {
-            get { Linux.Kernel.Event.Poll.Events(rawValue: cValue.events) }
-            set { cValue.events = newValue.rawValue }
+            get { unsafe Linux.Kernel.Event.Poll.Events(rawValue: cValue.events) }
+            set { unsafe cValue.events = newValue.rawValue }
         }
 
         public var data: Linux.Kernel.Event.Poll.Data {
-            get { Linux.Kernel.Event.Poll.Data(_unchecked: cValue.data.u64) }
-            set { cValue.data.u64 = newValue.underlying }
+            get { unsafe Linux.Kernel.Event.Poll.Data(_unchecked: cValue.data.u64) }
+            set { unsafe cValue.data.u64 = newValue.underlying }
         }
     }
 
     extension Linux.Kernel.Event.Poll.Event {
 
         internal init(_ cEvent: epoll_event) {
-            self.cValue = cEvent
+            unsafe self.cValue = unsafe cEvent
         }
     }
 
     extension Linux.Kernel.Event.Poll.Event: Equatable {
         public static func == (lhs: Self, rhs: Self) -> Bool {
-            lhs.cValue.events == rhs.cValue.events && lhs.cValue.data.u64 == rhs.cValue.data.u64
+            unsafe lhs.cValue.events == rhs.cValue.events && lhs.cValue.data.u64 == rhs.cValue.data.u64
         }
     }
 
     extension Linux.Kernel.Event.Poll.Event: Hashable {
         public func hash(into hasher: inout Hasher) {
-            hasher.combine(cValue.events)
-            hasher.combine(cValue.data.u64)
+            unsafe hasher.combine(cValue.events)
+            unsafe hasher.combine(cValue.data.u64)
         }
     }
 

@@ -100,7 +100,7 @@
     extension Kernel.Event.Poll.Error.Test.Unit {
         @Test
         func `Error conforms to Swift.Error`() {
-            let error: any Swift.Error = Kernel.Event.Poll.Error.interrupted
+            let error: any Swift::Error = Kernel.Event.Poll.Error.interrupted
             #expect(error is Kernel.Event.Poll.Error)
         }
 

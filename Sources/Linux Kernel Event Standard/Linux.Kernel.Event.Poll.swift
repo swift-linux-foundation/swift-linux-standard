@@ -3,7 +3,7 @@
     public import ISO_9945_Kernel_Time
     @_spi(Syscall) public import ISO_9945_Core
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -89,8 +89,8 @@
             event: Event? = nil
         ) throws(Linux.Kernel.Event.Poll.Error) {
             let result: Int32
-            if var cEvent = event?.cValue {
-                result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
+            if var cEvent = unsafe event?.cValue {
+                result = unsafe epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
             } else {
                 result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, nil)
             }
@@ -111,7 +111,7 @@
                 of: epoll_event.self,
                 capacity: count
             ) { buffer in
-                let baseAddress = unsafe buffer.baseAddress!
+                let baseAddress = buffer.baseAddress!
                 let result = unsafe epoll_wait(
                     epoll.descriptor._rawValue,
                     baseAddress,
@@ -127,7 +127,7 @@
                 }
 
                 for i in 0..<Int(result) {
-                    events[i] = Event(unsafe buffer[i])
+                    events[i] = unsafe Event(unsafe buffer[i])
                 }
                 return .success(Int(result))
             }

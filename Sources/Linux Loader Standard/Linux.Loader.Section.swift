@@ -3,19 +3,19 @@
     public import Linux_Standard_Core
     public import Loader_Vocabulary
 
-    extension Linux_Standard_Core.Linux.Loader {
+    extension Linux_Standard_Core::Linux.Loader {
 
         public enum Section: Sendable {}
     }
 
-    extension Linux_Standard_Core.Linux.Loader.Section {
+    extension Linux_Standard_Core::Linux.Loader.Section {
 
         public typealias Name = Loader.Section.Name
 
         public typealias Bounds = Loader.Section.Bounds
     }
 
-    extension Linux_Standard_Core.Linux.Loader.Section {
+    extension Linux_Standard_Core::Linux.Loader.Section {
 
         public static func all(_ name: Name) -> [Bounds] {
             guard let sectionName = name.elf else {

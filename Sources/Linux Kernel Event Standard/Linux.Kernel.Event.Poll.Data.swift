@@ -2,7 +2,7 @@
 
     public import ISO_9945_Core
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     extension Linux.Kernel.Event.Poll {
 
@@ -13,17 +13,17 @@
 
         @unsafe
         public init(_ pointer: UnsafeRawPointer) {
-            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: pointer)))
         }
 
         @unsafe
         public init<T>(pointer: UnsafePointer<T>) {
-            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: pointer)))
         }
 
         @unsafe
         public init<T>(pointer: UnsafeMutablePointer<T>) {
-            self.init(_unchecked: UInt64(UInt(bitPattern: unsafe pointer)))
+            self.init(_unchecked: UInt64(UInt(bitPattern: pointer)))
         }
     }
 

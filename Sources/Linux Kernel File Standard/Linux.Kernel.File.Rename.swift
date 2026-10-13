@@ -1,10 +1,10 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
-    public import Error
-    public import Memory
-    public import Path
+    import ISO_9945_Kernel_File
+    import Error
+    import Memory
+    import Path
 
     #if canImport(Glibc)
         internal import Glibc

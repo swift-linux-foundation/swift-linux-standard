@@ -25,7 +25,7 @@
                 params: &params
             )
 
-            consume descriptor
+            _ = consume descriptor
             return true
         } catch let error {
             guard case Kernel.IO.Uring.Error.setup(let code) = error else {

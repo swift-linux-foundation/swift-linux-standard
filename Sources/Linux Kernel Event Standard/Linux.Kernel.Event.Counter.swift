@@ -1,6 +1,6 @@
 #if os(Linux)
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     extension Linux.Kernel.Event {
 
@@ -59,7 +59,7 @@
     }
 
     extension Linux.Kernel.Event.Counter: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             "\(rawValue)"
         }
     }

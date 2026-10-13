@@ -1,8 +1,8 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
-    public import Binary
+    import ISO_9945_Kernel_File
+    import Binary
 
     extension ISO_9945.Kernel.IO.Uring {
 
@@ -19,15 +19,15 @@
 
         @unsafe
         public init(_ buffer: UnsafeRawBufferPointer) {
-            self.init(UInt32(clamping: unsafe buffer.count))
+            self.init(UInt32(clamping: buffer.count))
         }
 
         @unsafe
         public init(_ buffer: UnsafeMutableRawBufferPointer) {
-            self.init(UInt32(clamping: unsafe buffer.count))
+            self.init(UInt32(clamping: buffer.count))
         }
 
-        public init(_ span: Swift.Span<UInt8>) {
+        public init(_ span: Swift::Span<UInt8>) {
             self.init(UInt32(clamping: span.count))
         }
 

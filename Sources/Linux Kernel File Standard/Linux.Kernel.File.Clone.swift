@@ -8,9 +8,9 @@ extension Linux.Kernel.File {
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
-    public import Error
-    public import Path
+    import ISO_9945_Kernel_File
+    import Error
+    import Path
 
     #if canImport(Glibc)
         internal import Glibc
@@ -27,7 +27,7 @@ extension Linux.Kernel.File {
             try unsafe path.withUnsafePointer {
                 cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
                 var statfsBuf = statfs()
-                let result = statfs(
+                let result = unsafe statfs(
                     UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self),
                     &statfsBuf
                 )
@@ -57,7 +57,7 @@ extension Linux.Kernel.File {
             try unsafe path.withUnsafePointer {
                 cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
                 var statBuf = Glibc.stat()
-                let result = stat(
+                let result = unsafe stat(
                     UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self),
                     &statBuf
                 )

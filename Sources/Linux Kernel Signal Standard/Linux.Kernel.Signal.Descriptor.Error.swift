@@ -1,19 +1,19 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import ISO_9945_Kernel_Signal
+    import ISO_9945_Kernel_Signal
     public import Error
 
     extension ISO_9945.Kernel.Signal.Descriptor {
 
-        public enum Error: Swift.Error, Sendable, Equatable, Hashable {
+        public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
             case create(Error::Error.Code)
         }
     }
 
     extension ISO_9945.Kernel.Signal.Descriptor.Error: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             switch self {
             case .create(let code):
                 return "signal descriptor creation failed (\(code))"

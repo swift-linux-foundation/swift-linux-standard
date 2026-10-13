@@ -1,15 +1,15 @@
 #if os(Linux)
 
     public import ISO_9945_Kernel_Socket_Address
-    public import ISO_9945_Kernel_Socket
-    public import Error
+    import ISO_9945_Kernel_Socket
+    import Error
     public import Memory
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
     public import Linux_Kernel_Event_Standard
     public import Linux_Kernel_Futex_Standard
     public import Linux_Kernel_Socket_Standard
-    public import Linux_Kernel_Memory_Standard
+    import Linux_Kernel_Memory_Standard
     public import ISO_9945_Kernel_File
     public import ISO_9945_Kernel_Process
     @_spi(Syscall) public import ISO_9945_Core
@@ -224,18 +224,18 @@
 
         @usableFromInline
         internal var _addr3: UInt64 {
-            get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_addr3($0) } }
+            get { withUnsafePointer(to: cValue) { unsafe swift_io_uring_sqe_get_addr3($0) } }
             set {
-                withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, newValue) }
+                withUnsafeMutablePointer(to: &cValue) { unsafe swift_io_uring_sqe_set_addr3($0, newValue) }
             }
         }
 
         @usableFromInline
         internal var commandOpcode: UInt32 {
-            get { withUnsafePointer(to: cValue) { swift_io_uring_sqe_get_cmd_op($0) } }
+            get { withUnsafePointer(to: cValue) { unsafe swift_io_uring_sqe_get_cmd_op($0) } }
             set {
                 withUnsafeMutablePointer(to: &cValue) {
-                    swift_io_uring_sqe_set_cmd_op($0, newValue)
+                    unsafe swift_io_uring_sqe_set_cmd_op($0, newValue)
                 }
             }
         }
@@ -357,7 +357,7 @@
 
         @usableFromInline @unsafe
         internal mutating func setAddr(_ pointer: UnsafeRawPointer?) {
-            cValue.addr = unsafe UInt64(UInt(bitPattern: pointer))
+            cValue.addr = UInt64(UInt(bitPattern: pointer))
         }
 
         @usableFromInline
@@ -367,13 +367,13 @@
 
         @usableFromInline @unsafe
         internal mutating func setOffset(_ pointer: UnsafeRawPointer?) {
-            cValue.off = unsafe UInt64(UInt(bitPattern: pointer))
+            cValue.off = UInt64(UInt(bitPattern: pointer))
         }
 
         @usableFromInline @unsafe
         internal mutating func setAddr3(_ pointer: UnsafeRawPointer) {
-            let raw = unsafe UInt64(UInt(bitPattern: pointer))
-            withUnsafeMutablePointer(to: &cValue) { swift_io_uring_sqe_set_addr3($0, raw) }
+            let raw = UInt64(UInt(bitPattern: pointer))
+            withUnsafeMutablePointer(to: &cValue) { unsafe swift_io_uring_sqe_set_addr3($0, raw) }
         }
 
         @usableFromInline

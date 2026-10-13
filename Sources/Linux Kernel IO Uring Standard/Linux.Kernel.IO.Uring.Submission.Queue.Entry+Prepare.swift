@@ -3,7 +3,7 @@
     public import ISO_9945_Kernel_Process
     public import ISO_9945_Kernel_Socket_Address
     public import ISO_9945_Kernel_Socket
-    public import Error
+    import Error
     public import Memory
     public import Linux_Kernel_File_Standard
     public import Linux_Kernel_Pipe_Standard
@@ -11,7 +11,7 @@
     public import Linux_Kernel_Futex_Standard
     public import Linux_Kernel_Socket_Standard
     public import Linux_Kernel_System_Standard
-    public import Linux_Kernel_Memory_Standard
+    import Linux_Kernel_Memory_Standard
     public import ISO_9945_Kernel_File
     public import ISO_9945_Kernel_Signal
     public import ISO_9945_Core

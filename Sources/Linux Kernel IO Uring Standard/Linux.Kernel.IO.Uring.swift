@@ -1,12 +1,12 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
-    public import Error
+    import ISO_9945_Kernel_File
+    import Error
     public import Memory
     internal import Difference
 
-    public import CPU
+    import CPU
 
     #if canImport(Glibc)
         internal import Glibc
@@ -20,6 +20,7 @@
 
     extension ISO_9945.Kernel.IO {
 
+        @safe
         public struct Uring: ~Copyable {
 
             @usableFromInline let ringDescriptor: ISO_9945.Kernel.Descriptor
@@ -70,16 +71,16 @@
                 sqeSize: ISO_9945.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
-                self.sqHead = sqHead
-                self.sqTail = sqTail
+                unsafe self.sqHead = unsafe sqHead
+                unsafe self.sqTail = unsafe sqTail
                 self.sqMask = sqMask
                 self.sqEntries = sqEntries
-                self.sqArray = sqArray
-                self.sqes = sqes
-                self.cqHead = cqHead
-                self.cqTail = cqTail
+                unsafe self.sqArray = unsafe sqArray
+                unsafe self.sqes = unsafe sqes
+                unsafe self.cqHead = unsafe cqHead
+                unsafe self.cqTail = unsafe cqTail
                 self.cqMask = cqMask
-                self.cqes = cqes
+                unsafe self.cqes = unsafe cqes
                 self.sqeHead = 0
                 self.sqeTail = 0
                 self.singleMmap = singleMmap
@@ -109,7 +110,7 @@
             params: inout Params
         ) throws(ISO_9945.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
             var cParams = params.cValue
-            let fd = swift_io_uring_setup(UInt32(entries.underlying.rawValue), &cParams)
+            let fd = unsafe swift_io_uring_setup(UInt32(entries.underlying.rawValue), &cParams)
             guard fd >= 0 else {
                 throw .setup(.posix(errno))
             }
@@ -200,7 +201,7 @@
             eventfd descriptor: borrowing ISO_9945.Kernel.Descriptor
         ) throws(Error) {
             var fd = descriptor._rawValue
-            try unsafe withUnsafeMutablePointer(to: &fd) {
+            try withUnsafeMutablePointer(to: &fd) {
                 (ptr: UnsafeMutablePointer<Int32>) throws(Error) in
                 try unsafe self.register(
                     opcode: .eventfd.register,
@@ -249,7 +250,7 @@
             let cq: UnsafeMutableRawPointer
             let cqMmapSz: Int
             if isSingleMmap {
-                cq = sq
+                unsafe cq = unsafe sq
                 cqMmapSz = 0
             } else {
                 cqMmapSz = cqRingSz
@@ -267,7 +268,7 @@
                     unsafe munmap(sq, sqMmapSz)
                     throw .setup(.posix(errno))
                 }
-                cq = cqPtr
+                unsafe cq = unsafe cqPtr
             }
 
             guard

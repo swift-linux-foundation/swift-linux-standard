@@ -1,8 +1,8 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import ISO_9945_Kernel_Process
-    public import Error
+    import ISO_9945_Kernel_Process
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -35,7 +35,7 @@
             pid: ISO_9945.Kernel.Process.ID,
             flags: UInt32 = 0
         ) throws(ISO_9945.Kernel.Process.Descriptor.Error) -> ISO_9945.Kernel.Process.Descriptor {
-            let fd = unsafe swift_pidfd_open(pid.rawValue, flags)
+            let fd = swift_pidfd_open(pid.rawValue, flags)
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }

@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import Error
+    import Error
     public import Pair
 
     #if canImport(Glibc)
@@ -19,8 +19,8 @@
             var fds: (Int32, Int32) = (0, 0)
 
             let result = withUnsafeMutablePointer(to: &fds) { ptr in
-                ptr.withMemoryRebound(to: Int32.self, capacity: 2) { fdPtr in
-                    swift_pipe2(fdPtr, flags.rawValue)
+                unsafe ptr.withMemoryRebound(to: Int32.self, capacity: 2) { fdPtr in
+                    unsafe swift_pipe2(fdPtr, flags.rawValue)
                 }
             }
 
@@ -36,7 +36,7 @@
             flags: Options
         ) throws(Error) -> Pair<ISO_9945.Kernel.Descriptor, ISO_9945.Kernel.Descriptor> {
             let raw = try pipe2(flags: flags) as (read: Int32, write: Int32)
-            return unsafe Pair(
+            return Pair(
                 ISO_9945.Kernel.Descriptor(_rawValue: raw.read),
                 ISO_9945.Kernel.Descriptor(_rawValue: raw.write)
             )

@@ -8,20 +8,20 @@
             let basePath = "/sys/devices/system/node"
 
             var statBuf = stat()
-            guard stat(basePath, &statBuf) == 0 else {
+            guard unsafe stat(basePath, &statBuf) == 0 else {
                 return .unavailable
             }
 
-            guard let dir = opendir(basePath) else {
+            guard let dir = unsafe opendir(basePath) else {
                 return .unavailable
             }
-            defer { closedir(dir) }
+            defer { unsafe closedir(dir) }
 
             var nodes: [System.Topology.NUMA.Node] = []
 
-            while let entry = readdir(dir) {
-                let name = withUnsafePointer(to: entry.pointee.d_name) { ptr in
-                    Swift.String(cString: UnsafeRawPointer(ptr).assumingMemoryBound(to: CChar.self))
+            while let entry = unsafe readdir(dir) {
+                let name = unsafe withUnsafePointer(to: entry.pointee.d_name) { ptr in
+                    unsafe Swift::String(cString: UnsafeRawPointer(ptr).assumingMemoryBound(to: CChar.self))
                 }
 
                 guard name.hasPrefix("node"),
@@ -59,23 +59,23 @@
         }
 
         private static func parseCPUList(at path: String) -> Set<Int>? {
-            guard let file = fopen(path, "r") else {
+            guard let file = unsafe fopen(path, "r") else {
                 return nil
             }
-            defer { fclose(file) }
+            defer { unsafe fclose(file) }
 
             var buffer = [CChar](repeating: 0, count: 256)
-            guard fgets(&buffer, Int32(buffer.count), file) != nil else {
+            guard unsafe fgets(&buffer, Int32(buffer.count), file) != nil else {
                 return nil
             }
 
-            var content = Swift.String(cString: buffer)
+            var content = Swift::String(decoding: buffer.prefix { $0 != 0 }.map(UTF8.CodeUnit.init(bitPattern:)), as: UTF8.self)
             while content.last?.isWhitespace == true { content.removeLast() }
             while content.first?.isWhitespace == true { content.removeFirst() }
             return parseCPUListString(content)
         }
 
-        private static func parseCPUListString(_ string: Swift.String) -> Set<Int> {
+        private static func parseCPUListString(_ string: Swift::String) -> Set<Int> {
             var cpus = Set<Int>()
 
             for part in string.split(separator: ",") {

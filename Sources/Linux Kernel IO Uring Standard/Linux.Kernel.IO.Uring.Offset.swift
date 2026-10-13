@@ -1,10 +1,10 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
+    import ISO_9945_Kernel_File
     public import Space
 
-    public import Binary
+    import Binary
 
     extension ISO_9945.Kernel.IO.Uring {
 
@@ -29,8 +29,8 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Offset: CustomStringConvertible {
-        public var description: Swift.String {
+    extension ISO_9945.Kernel.IO.Uring.Offset {
+        public var description: Swift::String {
             if self == .current {
                 return "current"
             }

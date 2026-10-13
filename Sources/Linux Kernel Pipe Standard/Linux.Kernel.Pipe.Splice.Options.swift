@@ -1,9 +1,9 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Error
-    public import Memory
-    public import Path
+    import Error
+    import Memory
+    import Path
 
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims

@@ -1,8 +1,8 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Error
-    public import Memory
+    import Error
+    import Memory
 
     extension ISO_9945.Kernel.IO.Uring.Cancel {
 

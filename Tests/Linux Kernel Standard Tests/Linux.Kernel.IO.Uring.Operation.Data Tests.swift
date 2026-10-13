@@ -51,7 +51,7 @@
             withUnsafePointer(to: &value) { ptr in
                 let rawPtr = unsafe UnsafeRawPointer(ptr)
                 let data = unsafe Kernel.IO.Uring.Operation.Data(rawPtr)
-                let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                let expected = UInt64(UInt(bitPattern: ptr))
                 #expect(data.underlying == expected)
             }
         }
@@ -61,7 +61,7 @@
             var value: Int = 42
             withUnsafePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
-                let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                let expected = UInt64(UInt(bitPattern: ptr))
                 #expect(data.underlying == expected)
             }
         }
@@ -71,7 +71,7 @@
             var value: Int = 42
             withUnsafeMutablePointer(to: &value) { ptr in
                 let data = unsafe Kernel.IO.Uring.Operation.Data(pointer: ptr)
-                let expected = unsafe UInt64(UInt(bitPattern: ptr))
+                let expected = UInt64(UInt(bitPattern: ptr))
                 #expect(data.underlying == expected)
             }
         }

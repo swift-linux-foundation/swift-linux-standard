@@ -1,6 +1,6 @@
 #if os(Linux)
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     extension Linux.Kernel.Event.Descriptor {
 

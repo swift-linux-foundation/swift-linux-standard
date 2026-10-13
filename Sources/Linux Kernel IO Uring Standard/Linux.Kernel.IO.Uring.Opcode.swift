@@ -22,7 +22,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             switch self {
 
             case .nop: return "NOP"

@@ -1,9 +1,9 @@
 #if os(Linux)
 
     public import ISO_9945_Core
-    public import Error
-    public import Memory
-    public import Path
+    import Error
+    import Memory
+    import Path
 
     extension ISO_9945.Kernel {
 

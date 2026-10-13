@@ -1,7 +1,7 @@
 #if os(Linux)
 
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -26,7 +26,7 @@
 
     extension Linux.Kernel.Event.Poll.Create.Flags {
 
-        public static let none = Self(rawValue: 0)
+        public static let none: Self = []
 
         public static let cloexec = Self(rawValue: Int32(EPOLL_CLOEXEC))
     }

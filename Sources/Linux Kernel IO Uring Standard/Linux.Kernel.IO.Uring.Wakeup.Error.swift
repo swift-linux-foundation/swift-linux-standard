@@ -5,7 +5,7 @@
 
     extension ISO_9945.Kernel.IO.Uring.Wakeup {
 
-        public enum Error: Swift.Error, Sendable, Equatable, Hashable {
+        public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
             case eventfd(Error::Error.Code)
 

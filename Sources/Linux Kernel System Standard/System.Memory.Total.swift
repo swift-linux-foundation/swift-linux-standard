@@ -16,7 +16,7 @@ public import Cardinal
                 return Cardinal(UInt(0))
             }
 
-            let line = unsafe String(cString: buffer)
+            let line = String(decoding: buffer.prefix { $0 != 0 }.map(UTF8.CodeUnit.init(bitPattern:)), as: UTF8.self)
             var bytes: UInt = 0
             for char in line.unicodeScalars {
                 if char >= "0" && char <= "9" {

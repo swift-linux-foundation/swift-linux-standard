@@ -1,7 +1,7 @@
 #if os(Linux)
 
     internal import Error
-    public import Linux_Standard_Core
+    import Linux_Standard_Core
     #if canImport(Glibc)
         internal import Glibc
     #elseif canImport(Musl)

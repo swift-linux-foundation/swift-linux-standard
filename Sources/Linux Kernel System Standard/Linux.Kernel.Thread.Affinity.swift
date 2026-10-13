@@ -7,7 +7,7 @@ extension Linux.Kernel.Thread {
 
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import Error
+    import Error
 
     internal import Linux_Kernel_Shims
 
@@ -27,8 +27,8 @@ extension Linux.Kernel.Thread {
         ) throws(Linux.Kernel.Thread.Affinity.Error) {
             var mask = cpu_set_t()
 
-            unsafe withUnsafeMutablePointer(to: &mask) { ptr in
-                let rawPtr = unsafe UnsafeMutableRawPointer(ptr)
+            withUnsafeMutablePointer(to: &mask) { ptr in
+                let rawPtr = UnsafeMutableRawPointer(ptr)
                 unsafe rawPtr.initializeMemory(
                     as: UInt8.self,
                     repeating: 0,
@@ -37,7 +37,7 @@ extension Linux.Kernel.Thread {
             }
 
             for cpu in cores {
-                unsafe withUnsafeMutablePointer(to: &mask) { maskPtr in
+                withUnsafeMutablePointer(to: &mask) { maskPtr in
                     let cpusPerLong = MemoryLayout<UInt>.size * 8
                     let index = cpu / cpusPerLong
                     let offset = cpu % cpusPerLong
@@ -50,7 +50,7 @@ extension Linux.Kernel.Thread {
                 }
             }
 
-            let result = unsafe withUnsafePointer(to: &mask) { maskPtr -> Int32 in
+            let result = withUnsafePointer(to: &mask) { maskPtr -> Int32 in
                 unsafe swift_sched_setaffinity(
                     tid,
                     MemoryLayout<cpu_set_t>.size,

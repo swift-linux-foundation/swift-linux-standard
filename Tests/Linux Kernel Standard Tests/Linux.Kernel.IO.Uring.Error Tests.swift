@@ -91,7 +91,7 @@
     extension Kernel.IO.Uring.Error.Test.Unit {
         @Test
         func `Error conforms to Swift.Error`() {
-            let error: any Swift.Error = Kernel.IO.Uring.Error.interrupted
+            let error: any Swift::Error = Kernel.IO.Uring.Error.interrupted
             #expect(error is Kernel.IO.Uring.Error)
         }
 

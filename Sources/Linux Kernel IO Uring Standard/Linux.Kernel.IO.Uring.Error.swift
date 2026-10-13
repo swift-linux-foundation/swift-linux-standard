@@ -5,7 +5,7 @@
 
     extension ISO_9945.Kernel.IO.Uring {
 
-        public enum Error: Swift.Error, Sendable, Equatable, Hashable {
+        public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
             case setup(Error::Error.Code)
 
@@ -18,7 +18,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Error: CustomStringConvertible {
-        public var description: Swift.String {
+        public var description: Swift::String {
             switch self {
             case .setup(let code):
                 return "io_uring_setup failed (\(code))"

@@ -1,9 +1,9 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
+    import ISO_9945_Kernel_File
     public import Linux_Standard_Core
-    public import Error
+    import Error
 
     #if canImport(Glibc)
         internal import Glibc
@@ -29,7 +29,7 @@
             var srcOff = off_t(sourceOffset.underlying)
             var dstOff = off_t(destOffset.underlying)
 
-            let result = Int(
+            let result = unsafe Int(
                 swift_copy_file_range(
                     sourceFd,
                     &srcOff,

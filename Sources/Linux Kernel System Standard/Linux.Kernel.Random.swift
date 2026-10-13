@@ -17,7 +17,7 @@
     extension Linux.Kernel.Random {
 
         public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Random.Error) {
-            try unsafe span.withUnsafeMutableBytes {
+            try span.withUnsafeMutableBytes {
                 (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
                 try unsafe getrandom(buffer)
             }
