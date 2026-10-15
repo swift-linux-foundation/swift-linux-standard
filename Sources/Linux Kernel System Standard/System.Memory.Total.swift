@@ -1,6 +1,6 @@
 public import Cardinal
 #if os(Linux)
-    public import System
+    public import System_Primitives
     internal import Glibc
 
     extension System {
@@ -32,7 +32,7 @@ public import Cardinal
         }
     }
 #else
-    public import System
+    public import System_Primitives
 
     extension System {
 
