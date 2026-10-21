@@ -111,7 +111,9 @@
                 of: epoll_event.self,
                 capacity: count
             ) { buffer in
-                let baseAddress = buffer.baseAddress!
+                guard let baseAddress = buffer.baseAddress else {
+                    preconditionFailure("A temporary allocation with non-zero capacity has a base address")
+                }
                 let result = unsafe epoll_wait(
                     epoll.descriptor._rawValue,
                     baseAddress,

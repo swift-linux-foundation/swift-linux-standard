@@ -75,7 +75,9 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swift-atoms/swift-memory.git",
-            branch: "main", traits: ["Map", "Shared", "Cursor", "Lock"]),
+            branch: "main",
+            traits: ["Map", "Shared", "Cursor", "Lock"]
+        ),
         .package(url: "https://github.com/swift-atoms/swift-binary.git", branch: "main", traits: ["Serializer"]),
         .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-parser.git", branch: "main", traits: ["Map", "IteratorLeaves", "Product", "Skip", "Append", "Either", "Iterator"]),
@@ -315,14 +317,15 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-        .enableExperimentalFeature("Lifetimes"),
-        .treatAllWarnings(as: .error),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }

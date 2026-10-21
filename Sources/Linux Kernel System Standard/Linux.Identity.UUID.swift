@@ -23,9 +23,12 @@
             var bytes: Bytes = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
             let result = string.withCString { cString in
                 withUnsafeMutableBytes(of: &bytes) { buffer in
-                    unsafe swift_uuid_parse(
+                    guard let base = buffer.baseAddress else {
+                        preconditionFailure("A 16-byte tuple buffer has a base address")
+                    }
+                    return unsafe swift_uuid_parse(
                         cString,
-                        buffer.baseAddress!.assumingMemoryBound(to: UInt8.self)
+                        base.assumingMemoryBound(to: UInt8.self)
                     )
                 }
             }
@@ -48,22 +51,30 @@
             )
             withUnsafeBytes(of: bytes) { input in
                 withUnsafeMutableBytes(of: &output) { outputBuffer in
-                    let outputPtr = unsafe outputBuffer.baseAddress!.assumingMemoryBound(to: CChar.self)
+                    guard let outputBase = outputBuffer.baseAddress,
+                        let inputBase = input.baseAddress
+                    else {
+                        preconditionFailure("Non-empty tuple buffers have base addresses")
+                    }
+                    let outputPtr = unsafe outputBase.assumingMemoryBound(to: CChar.self)
                     if uppercase {
                         unsafe swift_uuid_unparse_upper(
-                            input.baseAddress!.assumingMemoryBound(to: UInt8.self),
+                            inputBase.assumingMemoryBound(to: UInt8.self),
                             outputPtr
                         )
                     } else {
                         unsafe swift_uuid_unparse_lower(
-                            input.baseAddress!.assumingMemoryBound(to: UInt8.self),
+                            inputBase.assumingMemoryBound(to: UInt8.self),
                             outputPtr
                         )
                     }
                 }
             }
             return withUnsafeBytes(of: output) { buffer in
-                let ptr = unsafe buffer.baseAddress!.assumingMemoryBound(to: CChar.self)
+                guard let base = buffer.baseAddress else {
+                    preconditionFailure("A non-empty tuple buffer has a base address")
+                }
+                let ptr = unsafe base.assumingMemoryBound(to: CChar.self)
                 let span = unsafe Span(_unsafeStart: ptr, count: 36)
                 return body(span)
             }
@@ -83,22 +94,30 @@
             )
             withUnsafeBytes(of: bytes) { input in
                 withUnsafeMutableBytes(of: &output) { outputBuffer in
-                    let outputPtr = unsafe outputBuffer.baseAddress!.assumingMemoryBound(to: CChar.self)
+                    guard let outputBase = outputBuffer.baseAddress,
+                        let inputBase = input.baseAddress
+                    else {
+                        preconditionFailure("Non-empty tuple buffers have base addresses")
+                    }
+                    let outputPtr = unsafe outputBase.assumingMemoryBound(to: CChar.self)
                     if uppercase {
                         unsafe swift_uuid_unparse_upper(
-                            input.baseAddress!.assumingMemoryBound(to: UInt8.self),
+                            inputBase.assumingMemoryBound(to: UInt8.self),
                             outputPtr
                         )
                     } else {
                         unsafe swift_uuid_unparse_lower(
-                            input.baseAddress!.assumingMemoryBound(to: UInt8.self),
+                            inputBase.assumingMemoryBound(to: UInt8.self),
                             outputPtr
                         )
                     }
                 }
             }
             return withUnsafeBytes(of: output) { buffer in
-                let ptr = unsafe buffer.baseAddress!.assumingMemoryBound(to: CChar.self)
+                guard let base = buffer.baseAddress else {
+                    preconditionFailure("A non-empty tuple buffer has a base address")
+                }
+                let ptr = unsafe base.assumingMemoryBound(to: CChar.self)
                 let str = unsafe String(cString: ptr)
                 return body(str)
             }

@@ -20,7 +20,10 @@
             }
 
             public consuming func eventfd() -> Linux.Kernel.Event.Descriptor {
-                _eventfd.take()!
+                guard let descriptor = _eventfd.take() else {
+                    preconditionFailure("The eventfd is present until the result is consumed")
+                }
+                return descriptor
             }
         }
     }
