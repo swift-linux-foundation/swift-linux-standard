@@ -46,7 +46,7 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-spatial.git",
+            url: "https://github.com/swift-atoms/swift-space.git",
             branch: "main"
         ),
         .package(
@@ -259,7 +259,7 @@ let package = Package(
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Socket", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Socket Address", package: "swift-iso-9945"),
-                .product(name: "Space", package: "swift-spatial"),
+                .product(name: "Space", package: "swift-space"),
                 .product(name: "Binary", package: "swift-binary"),
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
