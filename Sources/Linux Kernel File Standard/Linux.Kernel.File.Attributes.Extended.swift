@@ -1,7 +1,7 @@
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
-    public import ISO_9945_Kernel_File
+    import ISO_9945_Kernel_File
     public import Path
     import Error
 
@@ -80,8 +80,8 @@
                 guard size >= 0 else { throw .current() }
                 if size == 0 { return [] }
 
-                var buffer = [Element](unsafeUninitializedCapacity: size) { _, count in count = size }
-                let result = unsafe buffer.withUnsafeMutableBufferPointer { read($0.baseAddress, size) }
+                var buffer = unsafe [Element](unsafeUninitializedCapacity: size) { _, count in count = size }
+                let result = buffer.withUnsafeMutableBufferPointer { unsafe read($0.baseAddress, size) }
                 if result >= 0 {
                     return Array(buffer.prefix(result))
                 }
