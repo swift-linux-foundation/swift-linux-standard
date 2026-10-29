@@ -68,6 +68,20 @@
             )
         }
 
+        public static func noClobber(
+            from oldPath: borrowing Path.Borrowed,
+            to newPath: borrowing Path.Borrowed
+        ) throws(Error) {
+            try unsafe oldPath.withUnsafePointer { oldPtr throws(Error) in
+                try unsafe newPath.withUnsafePointer { newPtr throws(Error) in
+                    try unsafe noClobber(
+                        from: UnsafeRawPointer(oldPtr).assumingMemoryBound(to: CChar.self),
+                        to: UnsafeRawPointer(newPtr).assumingMemoryBound(to: CChar.self)
+                    )
+                }
+            }
+        }
+
         @unsafe
         public static func exchange(
             _ path1: UnsafePointer<CChar>,
