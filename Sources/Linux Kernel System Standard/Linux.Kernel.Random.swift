@@ -1,7 +1,5 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
-    public import Random
-
     #if canImport(Glibc)
         internal import Glibc
         internal import Linux_Kernel_Shims
@@ -16,51 +14,29 @@
 
     extension Linux.Kernel.Random {
 
-        public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Random.Error) {
+        /// One `getrandom(2)` call.
+        ///
+        /// - Returns: The number of bytes written, which may be fewer than `span.count`.
+        public static func getrandom(_ span: inout MutableSpan<UInt8>) throws(Error) -> Int {
             try span.withUnsafeMutableBytes {
-                (buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) in
+                (buffer: UnsafeMutableRawBufferPointer) throws(Error) -> Int in
                 try unsafe getrandom(buffer)
             }
         }
 
+        /// One `getrandom(2)` call.
+        ///
+        /// - Returns: The number of bytes written, which may be fewer than `buffer.count`.
         @unsafe
-        public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Random.Error) {
-            guard let base = buffer.baseAddress else { return }
-            let total = buffer.count
-            guard total > 0 else { return }
-
-            var filled = 0
-            while filled < total {
-                let result = unsafe swift_getrandom(
-                    unsafe base.advanced(by: filled),
-                    total - filled,
-                    0
-                )
-
-                if result > 0 {
-                    filled += Int(result)
-                    continue
-                }
-
-                if result == -1 {
-                    if errno == EINTR {
-                        continue
-                    }
-                    if errno == EAGAIN {
-                        throw .entropyNotReady
-                    }
-                    throw .systemError(errno)
-                }
-
-                throw .systemError(0)
+        public static func getrandom(_ buffer: UnsafeMutableRawBufferPointer) throws(Error) -> Int {
+            guard let base = buffer.baseAddress, buffer.count > 0 else { return 0 }
+            let result = unsafe swift_getrandom(base, buffer.count, 0)
+            guard result == -1 else { return Int(result) }
+            switch errno {
+            case EINTR: throw .interrupted
+            case EAGAIN: throw .entropyNotReady
+            case let code: throw .systemError(code)
             }
-        }
-
-        @unsafe
-        public static func getrandom(
-            _ buffer: UnsafeMutableBufferPointer<UInt8>
-        ) throws(Random.Error) {
-            try unsafe getrandom(UnsafeMutableRawBufferPointer(buffer))
         }
     }
 

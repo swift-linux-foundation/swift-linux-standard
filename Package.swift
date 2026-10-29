@@ -186,7 +186,6 @@ let package = Package(
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Thread", package: "swift-iso-9945"),
-                .product(name: "Random", package: "swift-random"),
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(name: "Path", package: "swift-path"),
