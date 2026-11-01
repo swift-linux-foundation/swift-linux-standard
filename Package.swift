@@ -304,6 +304,7 @@ let package = Package(
                 .target(name: "Linux Kernel IO Uring Standard"),
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
+                .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
             ]
         ),
     ],
