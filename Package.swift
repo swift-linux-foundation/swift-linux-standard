@@ -58,10 +58,6 @@ let package = Package(
             branch: "main"
         ),
         .package(
-            url: "https://github.com/swift-atoms/swift-system.git",
-            branch: "main"
-        ),
-        .package(
             url: "https://github.com/swift-atoms/swift-error.git",
             branch: "main"
         ),
@@ -181,7 +177,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "System Primitives", package: "swift-system"),
+                .product(name: "CPU", package: "swift-cpu"),
                 .product(name: "ISO 9945 Kernel Signal", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel Process", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),
@@ -265,7 +261,6 @@ let package = Package(
                 .product(name: "CPU", package: "swift-cpu"),
                 .product(name: "ISO 9945 Kernel File", package: "swift-iso-9945"),
                 .product(name: "ISO 9945 Core", package: "swift-iso-9945", condition: .when(platforms: [.linux])),
-                .product(name: "System Primitives", package: "swift-system", condition: .when(platforms: [.linux])),
                 .product(name: "Difference", package: "swift-difference", condition: .when(platforms: [.linux])),
                 .product(name: "Cardinal", package: "swift-cardinal", condition: .when(platforms: [.linux])),
             ],
