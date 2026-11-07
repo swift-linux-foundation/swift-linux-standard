@@ -10,23 +10,22 @@
     private let _IORING_MSG_RING_FLAGS_PASS: UInt32 = 1 << 1
 
     extension ISO_9945.Kernel.IO.Uring {
+
         public struct Message: Sendable {
+
+            public struct Options: OptionSet, Sendable {
+                public let rawValue: UInt32
+
+                @inlinable
+                public init(rawValue: UInt32) {
+                    self.rawValue = rawValue
+                }
+
+                public static let cqeSkip = Options(rawValue: _IORING_MSG_RING_CQE_SKIP)
+
+                public static let flagsPass = Options(rawValue: _IORING_MSG_RING_FLAGS_PASS)
+            }
         }
     }
-
-extension ISO_9945.Kernel.IO.Uring.Message {
-        public struct Options: OptionSet, Sendable {
-            public let rawValue: UInt32
-
-            @inlinable
-            public init(rawValue: UInt32) {
-                self.rawValue = rawValue
-            }
-
-            public static let cqeSkip = Options(rawValue: _IORING_MSG_RING_CQE_SKIP)
-
-            public static let flagsPass = Options(rawValue: _IORING_MSG_RING_FLAGS_PASS)
-        }
-}
 
 #endif
