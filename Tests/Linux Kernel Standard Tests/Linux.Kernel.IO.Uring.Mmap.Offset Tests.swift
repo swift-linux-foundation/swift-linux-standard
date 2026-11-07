@@ -55,7 +55,7 @@
                 Kernel.IO.Uring.Mmap.Offset.sqes,
             ]
 
-            for i in 0..<offsets.count {
+            (0..<offsets.count).forEach { i in
                 for j in (i + 1)..<offsets.count {
                     #expect(offsets[i] != offsets[j])
                 }

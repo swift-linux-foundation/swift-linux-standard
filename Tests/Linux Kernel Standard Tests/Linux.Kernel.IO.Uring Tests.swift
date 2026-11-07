@@ -112,7 +112,7 @@
             var ring = try Kernel.IO.Uring(descriptor: consume fd, params: params)
 
             let count = 4
-            for i in 0..<count {
+            (0..<count).forEach { i in
                 let data = Kernel.IO.Uring.Operation.Data(_unchecked: UInt64(0x100 + i))
                 ring.next.entry.nop(data: data)
                 ring.advance()

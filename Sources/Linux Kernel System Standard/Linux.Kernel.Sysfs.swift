@@ -46,7 +46,7 @@
             for part in string.split(separator: ",") {
                 let range = part.split(separator: "-")
                 if range.count == 2, let start = Int(range[0]), let end = Int(range[1]), start <= end {
-                    for value in start...end {
+                    (start...end).forEach { value in
                         values.insert(value)
                     }
                 } else if let single = Int(part) {

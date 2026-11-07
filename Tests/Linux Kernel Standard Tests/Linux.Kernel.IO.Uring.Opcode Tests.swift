@@ -206,7 +206,7 @@
                 Kernel.IO.Uring.Fixed.install,
             ]
 
-            for i in 0..<opcodes.count {
+            (0..<opcodes.count).forEach { i in
                 for j in (i + 1)..<opcodes.count {
                     #expect(opcodes[i] != opcodes[j])
                 }

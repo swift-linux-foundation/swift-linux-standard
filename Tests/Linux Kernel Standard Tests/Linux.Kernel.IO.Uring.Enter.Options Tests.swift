@@ -99,7 +99,7 @@
                 .getEvents, .sqWakeup, .sqWait, .extArg, .registeredRing,
             ]
 
-            for i in 0..<flags.count {
+            (0..<flags.count).forEach { i in
                 for j in (i + 1)..<flags.count {
                     #expect(flags[i] != flags[j])
                 }
