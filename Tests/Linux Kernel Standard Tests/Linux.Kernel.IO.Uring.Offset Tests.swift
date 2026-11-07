@@ -100,18 +100,20 @@
                     #expect(offset == .current)
                 }
             }
+        }
+    }
 
-            @Suite struct EdgeCase {
-                @Test
-                func `zero and current are distinct`() {
-                    #expect(Kernel.IO.Uring.Offset.zero != Kernel.IO.Uring.Offset.current)
-                }
+    extension Kernel.IO.Uring.OffsetTest {
+        @Suite struct EdgeCase {
+            @Test
+            func `zero and current are distinct`() {
+                #expect(Kernel.IO.Uring.Offset.zero != Kernel.IO.Uring.Offset.current)
+            }
 
-                @Test
-                func `max UInt64 value equals current`() {
-                    let max = Kernel.IO.Uring.Offset(UInt64.max)
-                    #expect(max == .current)
-                }
+            @Test
+            func `max UInt64 value equals current`() {
+                let max = Kernel.IO.Uring.Offset(UInt64.max)
+                #expect(max == .current)
             }
         }
     }
