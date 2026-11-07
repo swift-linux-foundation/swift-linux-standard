@@ -14,20 +14,21 @@
     #endif
 
     extension ISO_9945.Kernel.Thread {
+
         public struct ID: Hashable, Sendable, RawRepresentable, CustomStringConvertible {
+
             public let rawValue: Int32
 
             public init(rawValue: Int32) {
                 self.rawValue = rawValue
             }
+
+            public var description: String { "tid(\(rawValue))" }
         }
     }
 
-extension ISO_9945.Kernel.Thread.ID {
-        public var description: String { "tid(\(rawValue))" }
-}
-
     extension ISO_9945.Kernel.Thread.ID {
+
         public static var current: Self {
             .init(rawValue: Int32(swift_gettid()))
         }

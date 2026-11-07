@@ -7,21 +7,20 @@
     import Path
 
     extension ISO_9945.Kernel.File.Rename {
+
         public struct Options: OptionSet, Sendable, Equatable, Hashable {
             public let rawValue: UInt32
 
             public init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
+
+            public static let noreplace = Self(rawValue: 1)
+
+            public static let exchange = Self(rawValue: 2)
+
+            public static let whiteout = Self(rawValue: 4)
         }
     }
-
-extension ISO_9945.Kernel.File.Rename.Options {
-        public static let noreplace = Self(rawValue: 1)
-
-        public static let exchange = Self(rawValue: 2)
-
-        public static let whiteout = Self(rawValue: 4)
-}
 
 #endif

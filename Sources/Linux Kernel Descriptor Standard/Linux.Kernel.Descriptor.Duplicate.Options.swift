@@ -12,17 +12,16 @@
     #endif
 
     extension ISO_9945.Kernel.Descriptor.Duplicate {
+
         public struct Options: OptionSet, Sendable, Equatable, Hashable {
             public let rawValue: Int32
 
             public init(rawValue: Int32) {
                 self.rawValue = rawValue
             }
+
+            public static let closeOnExec = Self(rawValue: O_CLOEXEC)
         }
     }
-
-extension ISO_9945.Kernel.Descriptor.Duplicate.Options {
-        public static let closeOnExec = Self(rawValue: O_CLOEXEC)
-}
 
 #endif

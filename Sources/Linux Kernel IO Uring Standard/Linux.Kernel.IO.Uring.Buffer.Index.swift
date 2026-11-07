@@ -2,6 +2,7 @@
 
     public import ISO_9945_Core
     extension ISO_9945.Kernel.IO.Uring.Buffer {
+
         public struct Index: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt16
 
@@ -12,12 +13,10 @@
             public init(_ value: UInt16) {
                 self.rawValue = value
             }
+
+            public static let first = Index(0)
         }
     }
-
-extension ISO_9945.Kernel.IO.Uring.Buffer.Index {
-        public static let first = Index(0)
-}
 
     extension ISO_9945.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {

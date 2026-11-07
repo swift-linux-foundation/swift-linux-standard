@@ -10,6 +10,7 @@
     private let _IORING_TIMEOUT_MULTISHOT: UInt32 = 1 << 6
 
     extension ISO_9945.Kernel.IO.Uring.Timeout {
+
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
@@ -17,19 +18,17 @@
             public init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
+
+            public static let absolute = Options(rawValue: UInt32(IORING_TIMEOUT_ABS))
+
+            public static let multishot = Options(rawValue: _IORING_TIMEOUT_MULTISHOT)
+
+            public static let update = Options(rawValue: UInt32(IORING_TIMEOUT_UPDATE))
+
+            public static let expirySuccess = Options(rawValue: _IORING_TIMEOUT_ETIME_SUCCESS)
+
+            public static let linkUpdate = Options(rawValue: UInt32(IORING_LINK_TIMEOUT_UPDATE))
         }
     }
-
-extension ISO_9945.Kernel.IO.Uring.Timeout.Options {
-        public static let absolute = Options(rawValue: UInt32(IORING_TIMEOUT_ABS))
-
-        public static let multishot = Options(rawValue: _IORING_TIMEOUT_MULTISHOT)
-
-        public static let update = Options(rawValue: UInt32(IORING_TIMEOUT_UPDATE))
-
-        public static let expirySuccess = Options(rawValue: _IORING_TIMEOUT_ETIME_SUCCESS)
-
-        public static let linkUpdate = Options(rawValue: UInt32(IORING_LINK_TIMEOUT_UPDATE))
-}
 
 #endif
