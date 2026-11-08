@@ -1,7 +1,6 @@
 public import Linux_Standard_Core
 
 extension Linux.Kernel.File {
-
     public enum Clone: Sendable {}
 }
 
@@ -20,7 +19,6 @@ extension Linux.Kernel.File {
     #endif
 
     extension Linux.Kernel.File.Clone.Capability {
-
         public static func probe(
             at path: borrowing Path.Borrowed
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Linux.Kernel.File.Clone.Capability {
@@ -50,7 +48,6 @@ extension Linux.Kernel.File {
     }
 
     extension Linux.Kernel.File.Clone.Metadata {
-
         public static func size(
             at path: borrowing Path.Borrowed
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Int {
@@ -77,32 +74,31 @@ extension Linux.Kernel.File {
     private let _FICLONE: UInt = 0x4004_9409
 
     extension Linux.Kernel.File.Clone {
-
         public enum Ficlone {
-
-            internal static func attempt(
-                sourceFd: Int32,
-                destinationFd: Int32
-            ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Bool {
-                let result = ioctl(destinationFd, _FICLONE, sourceFd)
-
-                if result == 0 {
-                    return true
-                }
-
-                let err = errno
-                if err == EOPNOTSUPP || err == ENOTSUP || err == EINVAL || err == EXDEV {
-                    return false
-                }
-
-                throw .platform(code: .posix(err), operation: .ficlone)
-            }
         }
-
     }
 
-    extension Linux.Kernel.File.Clone.Ficlone {
+extension Linux.Kernel.File.Clone.Ficlone {
+        internal static func attempt(
+            sourceFd: Int32,
+            destinationFd: Int32
+        ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Bool {
+            let result = ioctl(destinationFd, _FICLONE, sourceFd)
 
+            if result == 0 {
+                return true
+            }
+
+            let err = errno
+            if err == EOPNOTSUPP || err == ENOTSUP || err == EINVAL || err == EXDEV {
+                return false
+            }
+
+            throw .platform(code: .posix(err), operation: .ficlone)
+        }
+}
+
+    extension Linux.Kernel.File.Clone.Ficlone {
         public static func attempt(
             source: borrowing ISO_9945.Kernel.Descriptor,
             destination: borrowing ISO_9945.Kernel.Descriptor
@@ -112,44 +108,44 @@ extension Linux.Kernel.File {
     }
 
     extension Linux.Kernel.File.Clone {
-
         public enum CopyRange {
-
-            internal static func copy(
-                sourceFd: Int32,
-                destinationFd: Int32,
-                length: Int
-            ) throws(Linux.Kernel.File.Clone.Error.Syscall) {
-                var remaining = ISO_9945.Kernel.File.Size(length)
-                var srcOffset = ISO_9945.Kernel.File.Offset(0)
-                var dstOffset = ISO_9945.Kernel.File.Offset(0)
-
-                while remaining > .zero {
-                    let copied: ISO_9945.Kernel.File.Size
-                    do {
-                        copied = try Linux.Kernel.Copy.Range.copy(
-                            fromFd: sourceFd,
-                            sourceOffset: &srcOffset,
-                            toFd: destinationFd,
-                            destOffset: &dstOffset,
-                            length: remaining
-                        )
-                    } catch {
-                        throw .platform(code: .posix(errno), operation: .copyFileRange)
-                    }
-
-                    if copied == .zero {
-                        break
-                    }
-
-                    remaining -= copied
-                }
-            }
         }
     }
 
-    extension Linux.Kernel.File.Clone.CopyRange {
+extension Linux.Kernel.File.Clone.CopyRange {
+        internal static func copy(
+            sourceFd: Int32,
+            destinationFd: Int32,
+            length: Int
+        ) throws(Linux.Kernel.File.Clone.Error.Syscall) {
+            var remaining = ISO_9945.Kernel.File.Size(length)
+            var srcOffset = ISO_9945.Kernel.File.Offset(0)
+            var dstOffset = ISO_9945.Kernel.File.Offset(0)
 
+            while remaining > .zero {
+                let copied: ISO_9945.Kernel.File.Size
+                do {
+                    copied = try Linux.Kernel.Copy.Range.copy(
+                        fromFd: sourceFd,
+                        sourceOffset: &srcOffset,
+                        toFd: destinationFd,
+                        destOffset: &dstOffset,
+                        length: remaining
+                    )
+                } catch {
+                    throw .platform(code: .posix(errno), operation: .copyFileRange)
+                }
+
+                if copied == .zero {
+                    break
+                }
+
+                remaining -= copied
+            }
+        }
+}
+
+    extension Linux.Kernel.File.Clone.CopyRange {
         public static func copy(
             source: borrowing ISO_9945.Kernel.Descriptor,
             destination: borrowing ISO_9945.Kernel.Descriptor,

@@ -12,7 +12,6 @@
     #endif
 
     extension ISO_9945.Kernel.Pipe {
-
         internal static func pipe2(
             flags: Options
         ) throws(Error) -> (read: Int32, write: Int32) {
@@ -25,7 +24,6 @@
             }
 
             guard result == 0 else {
-
                 throw .platform(Error::Error(code: .posix(errno)))
             }
 
@@ -48,13 +46,15 @@
             public init(rawValue: Int32) {
                 self.rawValue = rawValue
             }
-
-            public static let closeOnExec = Self(rawValue: O_CLOEXEC)
-
-            public static let nonBlock = Self(rawValue: O_NONBLOCK)
-
-            public static let direct = Self(rawValue: O_DIRECT)
         }
     }
+
+extension ISO_9945.Kernel.Pipe.Options {
+        public static let closeOnExec = Self(rawValue: O_CLOEXEC)
+
+        public static let nonBlock = Self(rawValue: O_NONBLOCK)
+
+        public static let direct = Self(rawValue: O_DIRECT)
+}
 
 #endif

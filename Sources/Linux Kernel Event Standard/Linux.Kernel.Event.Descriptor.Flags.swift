@@ -3,7 +3,6 @@
     import Error
 
     extension Linux.Kernel.Event.Descriptor {
-
         public struct Flags: Sendable, Equatable, Hashable {
             public let rawValue: Int32
 
@@ -11,14 +10,16 @@
             public init(rawValue: Int32) {
                 self.rawValue = rawValue
             }
-
-            public static let none = Flags(rawValue: 0)
-
-            @inlinable
-            public static func | (lhs: Flags, rhs: Flags) -> Flags {
-                Flags(rawValue: lhs.rawValue | rhs.rawValue)
-            }
         }
     }
+
+extension Linux.Kernel.Event.Descriptor.Flags {
+        public static let none = Flags(rawValue: 0)
+
+        @inlinable
+        public static func | (lhs: Flags, rhs: Flags) -> Flags {
+            Flags(rawValue: lhs.rawValue | rhs.rawValue)
+        }
+}
 
 #endif
