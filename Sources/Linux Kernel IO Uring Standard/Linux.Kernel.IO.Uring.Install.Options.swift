@@ -20,9 +20,11 @@ extension ISO_9945.Kernel.IO.Uring.Fixed.Install {
             public init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
-
-            public static let noCloseOnExec = Options(rawValue: _IORING_FIXED_FD_NO_CLOEXEC)
         }
+}
+
+extension ISO_9945.Kernel.IO.Uring.Fixed.Install.Options {
+        public static let noCloseOnExec = Options(rawValue: _IORING_FIXED_FD_NO_CLOEXEC)
 }
 
 #endif

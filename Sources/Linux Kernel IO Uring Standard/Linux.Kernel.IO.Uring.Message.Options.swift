@@ -22,11 +22,13 @@ extension ISO_9945.Kernel.IO.Uring.Message {
             public init(rawValue: UInt32) {
                 self.rawValue = rawValue
             }
-
-            public static let cqeSkip = Options(rawValue: _IORING_MSG_RING_CQE_SKIP)
-
-            public static let flagsPass = Options(rawValue: _IORING_MSG_RING_FLAGS_PASS)
         }
+}
+
+extension ISO_9945.Kernel.IO.Uring.Message.Options {
+        public static let cqeSkip = Options(rawValue: _IORING_MSG_RING_CQE_SKIP)
+
+        public static let flagsPass = Options(rawValue: _IORING_MSG_RING_FLAGS_PASS)
 }
 
 #endif
