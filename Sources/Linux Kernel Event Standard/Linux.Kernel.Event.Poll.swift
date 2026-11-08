@@ -128,7 +128,7 @@
                     return .failure(.wait(code))
                 }
 
-                for i in 0..<Int(result) {
+                (0..<Int(result)).forEach { i in
                     events[i] = unsafe Event(unsafe buffer[i])
                 }
                 return .success(Int(result))

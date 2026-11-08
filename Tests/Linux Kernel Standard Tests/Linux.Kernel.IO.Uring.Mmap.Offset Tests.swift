@@ -56,7 +56,7 @@
             ]
 
             (0..<offsets.count).forEach { i in
-                for j in (i + 1)..<offsets.count {
+                ((i + 1)..<offsets.count).forEach { j in
                     #expect(offsets[i] != offsets[j])
                 }
             }

@@ -207,7 +207,7 @@
             ]
 
             (0..<opcodes.count).forEach { i in
-                for j in (i + 1)..<opcodes.count {
+                ((i + 1)..<opcodes.count).forEach { j in
                     #expect(opcodes[i] != opcodes[j])
                 }
             }
