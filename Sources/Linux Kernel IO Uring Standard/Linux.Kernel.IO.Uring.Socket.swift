@@ -6,7 +6,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Socket {
+    extension ISO_9945.Kernel.IO.Uring.Socket {
         public static let accept = Opcode(rawValue: 13)
 
         public static let connect = Opcode(rawValue: 16)
@@ -26,7 +26,7 @@ extension ISO_9945.Kernel.IO.Uring.Socket {
         public static let listen = Opcode(rawValue: 57)
 
         public static let receiveZeroCopy = Opcode(rawValue: 58)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         public static var socket: ISO_9945.Kernel.IO.Uring.Socket.Type {

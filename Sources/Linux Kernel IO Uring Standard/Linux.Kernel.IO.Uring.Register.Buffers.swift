@@ -6,7 +6,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
+    extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
         public static let register = Opcode(rawValue: 0)
 
         public static let unregister = Opcode(rawValue: 1)
@@ -20,7 +20,7 @@ extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
         public static var provided: Provided.Type { Provided.self }
 
         public static let sourceRegistered: UInt32 = 1
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         public static var buffers: ISO_9945.Kernel.IO.Uring.Register.Buffers.Type {

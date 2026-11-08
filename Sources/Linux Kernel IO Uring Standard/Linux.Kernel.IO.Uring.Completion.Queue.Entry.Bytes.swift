@@ -13,10 +13,10 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Bytes {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Bytes {
         public var transferred: Int? {
             entry.isSuccess ? Int(entry.res) : nil
         }
-}
+    }
 
 #endif

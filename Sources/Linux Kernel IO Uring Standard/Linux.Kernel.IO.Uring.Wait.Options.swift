@@ -12,8 +12,8 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Wait.Options {
+    extension ISO_9945.Kernel.IO.Uring.Wait.Options {
         public static let none = Options([])
-}
+    }
 
 #endif

@@ -15,9 +15,9 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Buffer.Index {
+    extension ISO_9945.Kernel.IO.Uring.Buffer.Index {
         public static let first = Index(0)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {

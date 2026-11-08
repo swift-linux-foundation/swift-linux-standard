@@ -21,8 +21,8 @@
         }
     }
 
-extension ISO_9945.Kernel.Descriptor.Duplicate.Options {
+    extension ISO_9945.Kernel.Descriptor.Duplicate.Options {
         public static let closeOnExec = Self(rawValue: O_CLOEXEC)
-}
+    }
 
 #endif

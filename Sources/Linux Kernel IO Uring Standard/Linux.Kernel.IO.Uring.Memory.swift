@@ -6,9 +6,9 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Memory {
+    extension ISO_9945.Kernel.IO.Uring.Memory {
         public static let madvise = Opcode(rawValue: 25)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         public static var memory: ISO_9945.Kernel.IO.Uring.Memory.Type {

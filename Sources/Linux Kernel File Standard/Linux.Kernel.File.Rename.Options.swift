@@ -16,12 +16,12 @@
         }
     }
 
-extension ISO_9945.Kernel.File.Rename.Options {
+    extension ISO_9945.Kernel.File.Rename.Options {
         public static let noreplace = Self(rawValue: 1)
 
         public static let exchange = Self(rawValue: 2)
 
         public static let whiteout = Self(rawValue: 4)
-}
+    }
 
 #endif

@@ -18,7 +18,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Poll.Options {
+    extension ISO_9945.Kernel.IO.Uring.Poll.Options {
         public static let level = Options(rawValue: _IORING_POLL_ADD_LEVEL)
 
         public static let multishot = Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
@@ -28,7 +28,7 @@ extension ISO_9945.Kernel.IO.Uring.Poll.Options {
         public static let updateUserData = Options(
             rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA)
         )
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
         @usableFromInline

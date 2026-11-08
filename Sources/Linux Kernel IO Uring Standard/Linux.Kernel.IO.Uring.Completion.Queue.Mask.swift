@@ -13,11 +13,11 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Mask {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Mask {
         @inlinable
         public func slot(for counter: UInt32) -> Int {
             Int(counter & rawValue)
         }
-}
+    }
 
 #endif

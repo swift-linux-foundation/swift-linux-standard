@@ -6,7 +6,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.File {
+    extension ISO_9945.Kernel.IO.Uring.File {
         public static let openat = Opcode(rawValue: 18)
 
         public static let openat2 = Opcode(rawValue: 28)
@@ -30,7 +30,7 @@ extension ISO_9945.Kernel.IO.Uring.File {
         public static let linkat = Opcode(rawValue: 39)
 
         public static let update = Opcode(rawValue: 20)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         public static var file: ISO_9945.Kernel.IO.Uring.File.Type {

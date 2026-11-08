@@ -11,7 +11,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Enter.Options {
+    extension ISO_9945.Kernel.IO.Uring.Enter.Options {
         public static let getEvents = Options(rawValue: 1 << 0)
 
         public static let sqWakeup = Options(rawValue: 1 << 1)
@@ -23,6 +23,6 @@ extension ISO_9945.Kernel.IO.Uring.Enter.Options {
         public static let registeredRing = Options(rawValue: 1 << 4)
 
         public static let absoluteTimer = Options(rawValue: 1 << 5)
-}
+    }
 
 #endif

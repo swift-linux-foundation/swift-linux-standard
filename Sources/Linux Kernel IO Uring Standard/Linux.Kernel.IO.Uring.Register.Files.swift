@@ -6,7 +6,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Files {
+    extension ISO_9945.Kernel.IO.Uring.Register.Files {
         public static let register = Opcode(rawValue: 2)
 
         public static let unregister = Opcode(rawValue: 3)
@@ -22,7 +22,7 @@ extension ISO_9945.Kernel.IO.Uring.Register.Files {
         public static let skip: Int32 = -2
 
         public static let indexAlloc: UInt32 = 0xFFFF_FFFF
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         public static var files: ISO_9945.Kernel.IO.Uring.Register.Files.Type {

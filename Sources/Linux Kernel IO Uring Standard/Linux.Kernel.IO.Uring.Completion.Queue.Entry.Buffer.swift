@@ -13,13 +13,13 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Buffer {
+    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Buffer {
         public var index: ISO_9945.Kernel.IO.Uring.Buffer.Index? {
             guard entry.flags.contains(.buffer) else { return nil }
             return ISO_9945.Kernel.IO.Uring.Buffer.Index(
                 rawValue: UInt16(truncatingIfNeeded: entry.flags.rawValue >> 16)
             )
         }
-}
+    }
 
 #endif

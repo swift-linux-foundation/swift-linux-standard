@@ -14,7 +14,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Cancel.Options {
+    extension ISO_9945.Kernel.IO.Uring.Cancel.Options {
         public static let all = Options(rawValue: 1 << 0)
 
         public static let fd = Options(rawValue: 1 << 1)
@@ -26,6 +26,6 @@ extension ISO_9945.Kernel.IO.Uring.Cancel.Options {
         public static let userData = Options(rawValue: 1 << 4)
 
         public static let op = Options(rawValue: 1 << 5)
-}
+    }
 
 #endif

@@ -6,9 +6,9 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Cancel {
+    extension ISO_9945.Kernel.IO.Uring.Cancel {
         public static let async = Opcode(rawValue: 14)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         public static var cancel: ISO_9945.Kernel.IO.Uring.Cancel.Type {

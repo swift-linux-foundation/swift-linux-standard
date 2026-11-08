@@ -13,13 +13,13 @@
         }
     }
 
-extension Linux.Kernel.Event.Descriptor.Flags {
+    extension Linux.Kernel.Event.Descriptor.Flags {
         public static let none = Flags(rawValue: 0)
 
         @inlinable
         public static func | (lhs: Flags, rhs: Flags) -> Flags {
             Flags(rawValue: lhs.rawValue | rhs.rawValue)
         }
-}
+    }
 
 #endif

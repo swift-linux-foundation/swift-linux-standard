@@ -6,10 +6,10 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Write.Vectored {
+    extension ISO_9945.Kernel.IO.Uring.Write.Vectored {
         public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 2)
 
         public static let fixed = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 61)
-}
+    }
 
 #endif

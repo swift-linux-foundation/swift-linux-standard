@@ -6,8 +6,8 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Files.Alloc {
+    extension ISO_9945.Kernel.IO.Uring.Register.Files.Alloc {
         public static let range = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 25)
-}
+    }
 
 #endif

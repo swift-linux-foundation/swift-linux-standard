@@ -6,9 +6,9 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Clock {
+    extension ISO_9945.Kernel.IO.Uring.Register.Clock {
         public static let register = Opcode(rawValue: 29)
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
         public static var clock: ISO_9945.Kernel.IO.Uring.Register.Clock.Type {

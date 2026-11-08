@@ -4,9 +4,9 @@
     import Memory
     @testable import Linux_Kernel_IO_Uring_Standard
 
-enum `Linux.Kernel.IO.Uring.RingOffset Tests` {}
+    enum `Linux.Kernel.IO.Uring.RingOffset Tests` {}
 
-extension `Linux.Kernel.IO.Uring.RingOffset Tests` {
+    extension `Linux.Kernel.IO.Uring.RingOffset Tests` {
         @Suite
         struct `Ring Byte Offset Tests` {
 
@@ -25,5 +25,5 @@ extension `Linux.Kernel.IO.Uring.RingOffset Tests` {
                 #expect(_ringByteOffset(Memory.Address.Offset(UInt32.max)) == Int(UInt32.max))
             }
         }
-}
+    }
 #endif

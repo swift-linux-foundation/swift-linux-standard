@@ -6,10 +6,10 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Worker.Affinity {
+    extension ISO_9945.Kernel.IO.Uring.Register.Worker.Affinity {
         public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 17)
 
         public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 18)
-}
+    }
 
 #endif

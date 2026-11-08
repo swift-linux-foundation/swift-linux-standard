@@ -49,12 +49,12 @@
         }
     }
 
-extension ISO_9945.Kernel.Pipe.Options {
+    extension ISO_9945.Kernel.Pipe.Options {
         public static let closeOnExec = Self(rawValue: O_CLOEXEC)
 
         public static let nonBlock = Self(rawValue: O_NONBLOCK)
 
         public static let direct = Self(rawValue: O_DIRECT)
-}
+    }
 
 #endif

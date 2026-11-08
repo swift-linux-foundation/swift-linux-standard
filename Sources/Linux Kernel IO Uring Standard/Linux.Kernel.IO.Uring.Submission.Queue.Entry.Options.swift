@@ -11,7 +11,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.Options {
+    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.Options {
         public static let fixedFile = Options(rawValue: 1 << 0)
 
         public static let ioDrain = Options(rawValue: 1 << 1)
@@ -25,6 +25,6 @@ extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.Options {
         public static let bufferSelect = Options(rawValue: 1 << 5)
 
         public static let cqeSkipSuccess = Options(rawValue: 1 << 6)
-}
+    }
 
 #endif

@@ -6,9 +6,9 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Sync {
+    extension ISO_9945.Kernel.IO.Uring.Sync {
         public static var file: File.Type { File.self }
-}
+    }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
         public static var sync: ISO_9945.Kernel.IO.Uring.Sync.Type {

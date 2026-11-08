@@ -15,10 +15,10 @@
         }
     }
 
-extension ISO_9945.Kernel.Futex.Options {
+    extension ISO_9945.Kernel.Futex.Options {
         public static let privateFlag = Self(rawValue: 128)
 
         public static let clockRealtime = Self(rawValue: 256)
-}
+    }
 
 #endif

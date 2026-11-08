@@ -6,7 +6,7 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Mmap.Offset {
+    extension ISO_9945.Kernel.IO.Uring.Mmap.Offset {
         public static let sqRing: Int64 = 0
 
         public static let cqRing: Int64 = 0x8000000
@@ -18,6 +18,6 @@ extension ISO_9945.Kernel.IO.Uring.Mmap.Offset {
         public static let providedBufferShift: Int64 = 16
 
         public static let mask: Int64 = 0xF800_0000
-}
+    }
 
 #endif

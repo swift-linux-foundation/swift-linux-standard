@@ -23,9 +23,9 @@
         }
     }
 
-extension ISO_9945.Kernel.Thread.ID {
+    extension ISO_9945.Kernel.Thread.ID {
         public var description: String { "tid(\(rawValue))" }
-}
+    }
 
     extension ISO_9945.Kernel.Thread.ID {
         public static var current: Self {

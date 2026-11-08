@@ -78,7 +78,7 @@ extension Linux.Kernel.File {
         }
     }
 
-extension Linux.Kernel.File.Clone.Ficlone {
+    extension Linux.Kernel.File.Clone.Ficlone {
         internal static func attempt(
             sourceFd: Int32,
             destinationFd: Int32
@@ -96,7 +96,7 @@ extension Linux.Kernel.File.Clone.Ficlone {
 
             throw .platform(code: .posix(err), operation: .ficlone)
         }
-}
+    }
 
     extension Linux.Kernel.File.Clone.Ficlone {
         public static func attempt(
@@ -112,7 +112,7 @@ extension Linux.Kernel.File.Clone.Ficlone {
         }
     }
 
-extension Linux.Kernel.File.Clone.CopyRange {
+    extension Linux.Kernel.File.Clone.CopyRange {
         internal static func copy(
             sourceFd: Int32,
             destinationFd: Int32,
@@ -143,7 +143,7 @@ extension Linux.Kernel.File.Clone.CopyRange {
                 remaining -= copied
             }
         }
-}
+    }
 
     extension Linux.Kernel.File.Clone.CopyRange {
         public static func copy(

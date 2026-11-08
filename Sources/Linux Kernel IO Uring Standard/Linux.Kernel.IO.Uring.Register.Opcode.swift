@@ -20,8 +20,8 @@
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.Register.Resource {
+    extension ISO_9945.Kernel.IO.Uring.Register.Resource {
         public static let sparse: UInt32 = 1
-}
+    }
 
 #endif
