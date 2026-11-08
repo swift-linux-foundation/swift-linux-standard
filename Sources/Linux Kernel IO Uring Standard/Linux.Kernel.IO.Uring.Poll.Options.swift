@@ -19,13 +19,13 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Poll.Options {
-        public static let level = Options(rawValue: _IORING_POLL_ADD_LEVEL)
+        public static let level = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: _IORING_POLL_ADD_LEVEL)
 
-        public static let multishot = Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
+        public static let multishot = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
 
-        public static let updateEvents = Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
+        public static let updateEvents = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
 
-        public static let updateUserData = Options(
+        public static let updateUserData = ISO_9945.Kernel.IO.Uring.Poll.Options(
             rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA)
         )
     }

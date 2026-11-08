@@ -21,15 +21,15 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Timeout.Options {
-        public static let absolute = Options(rawValue: UInt32(IORING_TIMEOUT_ABS))
+        public static let absolute = ISO_9945.Kernel.IO.Uring.Timeout.Options(rawValue: UInt32(IORING_TIMEOUT_ABS))
 
-        public static let multishot = Options(rawValue: _IORING_TIMEOUT_MULTISHOT)
+        public static let multishot = ISO_9945.Kernel.IO.Uring.Timeout.Options(rawValue: _IORING_TIMEOUT_MULTISHOT)
 
-        public static let update = Options(rawValue: UInt32(IORING_TIMEOUT_UPDATE))
+        public static let update = ISO_9945.Kernel.IO.Uring.Timeout.Options(rawValue: UInt32(IORING_TIMEOUT_UPDATE))
 
-        public static let expirySuccess = Options(rawValue: _IORING_TIMEOUT_ETIME_SUCCESS)
+        public static let expirySuccess = ISO_9945.Kernel.IO.Uring.Timeout.Options(rawValue: _IORING_TIMEOUT_ETIME_SUCCESS)
 
-        public static let linkUpdate = Options(rawValue: UInt32(IORING_LINK_TIMEOUT_UPDATE))
+        public static let linkUpdate = ISO_9945.Kernel.IO.Uring.Timeout.Options(rawValue: UInt32(IORING_LINK_TIMEOUT_UPDATE))
     }
 
 #endif

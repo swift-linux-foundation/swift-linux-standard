@@ -7,15 +7,15 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Files {
-        public static let register = Opcode(rawValue: 2)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 2)
 
-        public static let unregister = Opcode(rawValue: 3)
+        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 3)
 
-        public static let update = Opcode(rawValue: 6)
+        public static let update = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 6)
 
-        public static let register2 = Opcode(rawValue: 13)
+        public static let register2 = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 13)
 
-        public static let update2 = Opcode(rawValue: 14)
+        public static let update2 = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 14)
 
         public static var alloc: Alloc.Type { Alloc.self }
 

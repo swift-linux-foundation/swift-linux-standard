@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Rings {
-        public static let enable = Opcode(rawValue: 12)
+        public static let enable = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 12)
 
         public static var descriptor: Descriptor.Type { Descriptor.self }
     }

@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Probe {
-        public static let register = Opcode(rawValue: 8)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 8)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

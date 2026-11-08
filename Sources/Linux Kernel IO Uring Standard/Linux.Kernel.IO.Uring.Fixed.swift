@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Fixed {
-        public static let install = Opcode(rawValue: 54)
+        public static let install = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 54)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

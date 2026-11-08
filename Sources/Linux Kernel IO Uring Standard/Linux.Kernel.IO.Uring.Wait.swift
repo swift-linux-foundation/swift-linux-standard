@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Wait {
-        public static let id = Opcode(rawValue: 50)
+        public static let id = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 50)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

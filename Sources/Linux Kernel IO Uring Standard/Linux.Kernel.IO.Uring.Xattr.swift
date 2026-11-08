@@ -7,13 +7,13 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Xattr {
-        public static let fset = Opcode(rawValue: 41)
+        public static let fset = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 41)
 
-        public static let set = Opcode(rawValue: 42)
+        public static let set = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 42)
 
-        public static let fget = Opcode(rawValue: 43)
+        public static let fget = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 43)
 
-        public static let get = Opcode(rawValue: 44)
+        public static let get = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 44)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

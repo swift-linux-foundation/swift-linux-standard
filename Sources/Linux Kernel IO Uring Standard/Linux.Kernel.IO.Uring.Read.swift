@@ -7,13 +7,13 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Read {
-        public static let standard = Opcode(rawValue: 22)
+        public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 22)
 
         public static var vectored: Vectored.Type { Vectored.self }
 
-        public static let fixed = Opcode(rawValue: 4)
+        public static let fixed = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 4)
 
-        public static let multishot = Opcode(rawValue: 49)
+        public static let multishot = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 49)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

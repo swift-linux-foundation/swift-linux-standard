@@ -7,9 +7,9 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Personality {
-        public static let register = Opcode(rawValue: 9)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 9)
 
-        public static let unregister = Opcode(rawValue: 10)
+        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 10)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

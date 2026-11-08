@@ -14,11 +14,11 @@
     }
 
     extension Linux.Kernel.Event.Descriptor.Flags {
-        public static let none = Flags(rawValue: 0)
+        public static let none = Self(rawValue: 0)
 
         @inlinable
-        public static func | (lhs: Flags, rhs: Flags) -> Flags {
-            Flags(rawValue: lhs.rawValue | rhs.rawValue)
+        public static func | (lhs: Self, rhs: Self) -> Self {
+            Self(rawValue: lhs.rawValue | rhs.rawValue)
         }
     }
 

@@ -7,15 +7,15 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
-        public static let register = Opcode(rawValue: 0)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 0)
 
-        public static let unregister = Opcode(rawValue: 1)
+        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 1)
 
-        public static let register2 = Opcode(rawValue: 15)
+        public static let register2 = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 15)
 
-        public static let update = Opcode(rawValue: 16)
+        public static let update = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 16)
 
-        public static let clone = Opcode(rawValue: 30)
+        public static let clone = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 30)
 
         public static var provided: Provided.Type { Provided.self }
 

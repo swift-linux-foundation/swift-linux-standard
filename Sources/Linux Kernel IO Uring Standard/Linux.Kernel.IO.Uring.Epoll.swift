@@ -7,9 +7,9 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Epoll {
-        public static let ctl = Opcode(rawValue: 29)
+        public static let ctl = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 29)
 
-        public static let wait = Opcode(rawValue: 59)
+        public static let wait = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 59)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

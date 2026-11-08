@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Restriction {
-        public static let register = Opcode(rawValue: 11)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 11)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

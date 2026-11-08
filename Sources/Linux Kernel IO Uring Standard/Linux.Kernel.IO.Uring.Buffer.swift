@@ -7,9 +7,9 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Buffer {
-        public static let provide = Opcode(rawValue: 31)
+        public static let provide = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 31)
 
-        public static let remove = Opcode(rawValue: 32)
+        public static let remove = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 32)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {

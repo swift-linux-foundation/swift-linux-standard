@@ -7,7 +7,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Cancel {
-        public static let synchronous = Opcode(rawValue: 24)
+        public static let synchronous = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 24)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

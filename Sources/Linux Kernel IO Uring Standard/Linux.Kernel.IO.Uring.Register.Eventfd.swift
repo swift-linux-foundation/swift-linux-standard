@@ -7,11 +7,11 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Eventfd {
-        public static let register = Opcode(rawValue: 4)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 4)
 
-        public static let unregister = Opcode(rawValue: 5)
+        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 5)
 
-        public static let async = Opcode(rawValue: 7)
+        public static let async = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 7)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

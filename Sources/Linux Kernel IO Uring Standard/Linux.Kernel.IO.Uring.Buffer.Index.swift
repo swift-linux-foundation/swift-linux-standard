@@ -16,7 +16,7 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Buffer.Index {
-        public static let first = Index(0)
+        public static let first = Self(0)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {

@@ -7,9 +7,9 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.NAPI {
-        public static let register = Opcode(rawValue: 27)
+        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 27)
 
-        public static let unregister = Opcode(rawValue: 28)
+        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 28)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Register.Opcode {

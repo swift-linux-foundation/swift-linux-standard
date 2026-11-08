@@ -7,11 +7,11 @@
     }
 
     extension ISO_9945.Kernel.IO.Uring.Futex {
-        public static let wait = Opcode(rawValue: 51)
+        public static let wait = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 51)
 
-        public static let wake = Opcode(rawValue: 52)
+        public static let wake = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 52)
 
-        public static let waitv = Opcode(rawValue: 53)
+        public static let waitv = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 53)
     }
 
     extension ISO_9945.Kernel.IO.Uring.Opcode {
