@@ -16,26 +16,23 @@
     #endif
 
     extension ISO_9945.Kernel.Pipe {
+
         public struct Splice: Sendable {
-        }
-    }
 
-extension ISO_9945.Kernel.Pipe.Splice {
-        public struct Options: OptionSet, Sendable {
-            public let rawValue: UInt32
+            public struct Options: OptionSet, Sendable {
+                public let rawValue: UInt32
 
-            public init(rawValue: UInt32) {
-                self.rawValue = rawValue
+                public init(rawValue: UInt32) {
+                    self.rawValue = rawValue
+                }
+
+                public static let move = Self(rawValue: UInt32(SPLICE_F_MOVE))
+
+                public static let nonblock = Self(rawValue: UInt32(SPLICE_F_NONBLOCK))
+
+                public static let more = Self(rawValue: UInt32(SPLICE_F_MORE))
             }
         }
-}
-
-extension ISO_9945.Kernel.Pipe.Splice.Options {
-        public static let move = Self(rawValue: UInt32(SPLICE_F_MOVE))
-
-        public static let nonblock = Self(rawValue: UInt32(SPLICE_F_NONBLOCK))
-
-        public static let more = Self(rawValue: UInt32(SPLICE_F_MORE))
-}
+    }
 
 #endif

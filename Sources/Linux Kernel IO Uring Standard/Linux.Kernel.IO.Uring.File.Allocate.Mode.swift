@@ -12,27 +12,27 @@
     #endif
 
     extension ISO_9945.Kernel.IO.Uring.File {
+
         public enum Allocate: Sendable {
+            public enum Mode: Sendable, Hashable {
+
+                case allocate(keepSize: Bool = false)
+
+                case punch
+
+                case collapse
+
+                case zero(keepSize: Bool = false)
+
+                case insert
+
+                case unshare
+            }
         }
     }
 
-extension ISO_9945.Kernel.IO.Uring.File.Allocate {
-        public enum Mode: Sendable, Hashable {
-            case allocate(keepSize: Bool = false)
-
-            case punch
-
-            case collapse
-
-            case zero(keepSize: Bool = false)
-
-            case insert
-
-            case unshare
-        }
-}
-
     extension ISO_9945.Kernel.IO.Uring.File.Allocate.Mode {
+
         @usableFromInline
         var rawBits: Int32 {
             switch self {
