@@ -89,10 +89,10 @@
             event: Event? = nil
         ) throws(Linux.Kernel.Event.Poll.Error) {
             let result: Int32
-            if var cEvent = unsafe event?.cValue {
-                result = unsafe epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
+            result = if var cEvent = unsafe event?.cValue {
+                unsafe epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, &cEvent)
             } else {
-                result = epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, nil)
+                epoll_ctl(epoll.descriptor._rawValue, op.rawValue, fd._rawValue, nil)
             }
             guard result == 0 else {
                 throw .ctl(.posix(errno))
