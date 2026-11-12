@@ -91,10 +91,7 @@ let package = Package(
 
         .target(
             name: "Linux Kernel Shims",
-            dependencies: [],
-            linkerSettings: [
-                .linkedLibrary("uuid", .when(platforms: [.linux]))
-            ]
+            dependencies: []
         ),
         .target(
             name: "Linux Memory Shims",

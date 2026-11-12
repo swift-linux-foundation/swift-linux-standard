@@ -3,8 +3,6 @@
 
 #if defined(__linux__)
 
-#include "uuid_shim.h"
-
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
 #include <sys/statfs.h>
