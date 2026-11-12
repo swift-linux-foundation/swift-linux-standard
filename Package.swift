@@ -94,6 +94,12 @@ let package = Package(
             dependencies: []
         ),
         .target(
+            name: "Linux Kernel Reference Shims",
+            dependencies: [
+                .target(name: "Linux Kernel Shims")
+            ]
+        ),
+        .target(
             name: "Linux Memory Shims",
             dependencies: [],
             linkerSettings: [
@@ -299,6 +305,7 @@ let package = Package(
                 .target(name: "Linux Kernel Timer Standard"),
                 .target(name: "Linux Kernel Signal Standard"),
                 .target(name: "Linux Kernel IO Uring Standard"),
+                .target(name: "Linux Kernel Reference Shims", condition: .when(platforms: [.linux])),
                 .product(name: "Error", package: "swift-error"),
                 .product(name: "Memory", package: "swift-memory"),
                 .product(name: "ISO 9945 Kernel System", package: "swift-iso-9945"),

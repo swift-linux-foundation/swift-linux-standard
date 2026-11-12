@@ -1,0 +1,4 @@
+module Linux_Kernel_Reference_Shims {
+    header "reference.h"
+    export *
+}
