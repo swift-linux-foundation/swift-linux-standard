@@ -26,21 +26,34 @@
 
     extension Linux.Kernel.Event.Poll.Events {
 
-        public static let `in` = Self(rawValue: EPOLLIN.rawValue)
+        #if canImport(Glibc)
+            internal init(_ event: EPOLL_EVENTS) {
+                self.init(rawValue: event.rawValue)
+            }
+        #else
+            internal init(_ event: some BinaryInteger) {
+                self.init(rawValue: UInt32(truncatingIfNeeded: event))
+            }
+        #endif
+    }
 
-        public static let out = Self(rawValue: EPOLLOUT.rawValue)
+    extension Linux.Kernel.Event.Poll.Events {
 
-        public static let rdhup = Self(rawValue: EPOLLRDHUP.rawValue)
+        public static let `in` = Self(EPOLLIN)
 
-        public static let pri = Self(rawValue: EPOLLPRI.rawValue)
+        public static let out = Self(EPOLLOUT)
 
-        public static let err = Self(rawValue: EPOLLERR.rawValue)
+        public static let rdhup = Self(EPOLLRDHUP)
 
-        public static let hup = Self(rawValue: EPOLLHUP.rawValue)
+        public static let pri = Self(EPOLLPRI)
 
-        public static let et = Self(rawValue: EPOLLET.rawValue)
+        public static let err = Self(EPOLLERR)
 
-        public static let oneshot = Self(rawValue: EPOLLONESHOT.rawValue)
+        public static let hup = Self(EPOLLHUP)
+
+        public static let et = Self(EPOLLET)
+
+        public static let oneshot = Self(EPOLLONESHOT)
     }
 
 #endif

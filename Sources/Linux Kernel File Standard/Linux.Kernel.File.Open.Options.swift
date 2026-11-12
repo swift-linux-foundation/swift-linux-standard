@@ -6,7 +6,7 @@
     import Memory
     import Path
 
-    #if canImport(Glibc)
+    #if canImport(Glibc) || canImport(Musl)
         internal import Linux_Kernel_Shims
     #endif
 

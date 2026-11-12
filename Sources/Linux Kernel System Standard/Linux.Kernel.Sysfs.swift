@@ -1,6 +1,10 @@
 #if os(Linux)
 
-    internal import Glibc
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
 
     extension Linux.Kernel {
 

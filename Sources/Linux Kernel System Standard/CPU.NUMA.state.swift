@@ -1,7 +1,11 @@
 #if os(Linux)
 
     public import CPU
-    internal import Glibc
+    #if canImport(Glibc)
+        internal import Glibc
+    #elseif canImport(Musl)
+        internal import Musl
+    #endif
 
     extension CPU.NUMA {
 

@@ -16,6 +16,7 @@ extension Linux.Kernel.File {
         internal import Linux_Kernel_Shims
     #elseif canImport(Musl)
         internal import Musl
+        internal import Linux_Kernel_Shims
     #endif
 
     extension Linux.Kernel.File.Clone.Capability {
