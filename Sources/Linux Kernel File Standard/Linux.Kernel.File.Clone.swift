@@ -54,7 +54,11 @@ extension Linux.Kernel.File {
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Int {
             try unsafe path.withUnsafePointer {
                 cString throws(Linux.Kernel.File.Clone.Error.Syscall) in
-                var statBuf = Glibc.stat()
+                #if canImport(Glibc)
+                    var statBuf = Glibc.stat()
+                #elseif canImport(Musl)
+                    var statBuf = Musl.stat()
+                #endif
                 let result = unsafe stat(
                     UnsafeRawPointer(cString).assumingMemoryBound(to: CChar.self),
                     &statBuf
