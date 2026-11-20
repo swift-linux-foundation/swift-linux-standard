@@ -1,15 +1,17 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     import Binary
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public typealias Length = Space::Magnitude<Space>.Value<UInt32>
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Length {
+    extension Linux.Kernel.IO.Uring.Length {
 
         public static let zero: Self = .init(UInt32(0))
 
@@ -36,7 +38,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Length {
+    extension Linux.Kernel.IO.Uring.Length {
 
         public init(_ size: ISO_9945.Kernel.File.Size) {
             if size.underlying > Int64(UInt32.max) {

@@ -1,18 +1,20 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register {
+    extension Linux.Kernel.IO.Uring.Register {
         public struct Cancel {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Cancel {
-        public static let synchronous = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 24)
+    extension Linux.Kernel.IO.Uring.Register.Cancel {
+        public static let synchronous = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 24)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
-        public static var cancel: ISO_9945.Kernel.IO.Uring.Register.Cancel.Type {
-            ISO_9945.Kernel.IO.Uring.Register.Cancel.self
+    extension Linux.Kernel.IO.Uring.Register.Opcode {
+        public static var cancel: Linux.Kernel.IO.Uring.Register.Cancel.Type {
+            Linux.Kernel.IO.Uring.Register.Cancel.self
         }
     }
 

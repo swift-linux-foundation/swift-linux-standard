@@ -1,11 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     @_spi(Syscall) public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public enum Target: ~Copyable, ~Escapable {
 
@@ -19,7 +21,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Target {
+    extension Linux.Kernel.IO.Uring.Target {
 
         @_lifetime(borrow descriptor)
         public init(descriptor: borrowing ISO_9945.Kernel.Descriptor) {
@@ -27,11 +29,11 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Target {
+    extension Linux.Kernel.IO.Uring.Target {
 
         @usableFromInline
         func apply(
-            to sqe: inout ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry
+            to sqe: inout Linux.Kernel.IO.Uring.Submission.Queue.Entry
         ) {
             switch self {
             case .descriptor(let fd):

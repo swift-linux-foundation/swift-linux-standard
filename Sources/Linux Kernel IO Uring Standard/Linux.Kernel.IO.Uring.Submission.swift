@@ -1,14 +1,16 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public enum Submission {}
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission {
+    extension Linux.Kernel.IO.Uring.Submission {
 
-        public typealias Count = Tagged<ISO_9945.Kernel.IO.Uring.Submission, Cardinal>
+        public typealias Count = Tagged<Linux.Kernel.IO.Uring.Submission, Cardinal>
     }
 
 #endif

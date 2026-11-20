@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Socket.Transfer {
+    extension Linux.Kernel.IO.Uring.Socket.Transfer {
 
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt16
@@ -13,7 +15,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options {
+    extension Linux.Kernel.IO.Uring.Socket.Transfer.Options {
 
         public static let pollFirst = Self(rawValue: 1 << 0)
 

@@ -1,22 +1,24 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Futex {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Futex {
-        public static let wait = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 51)
+    extension Linux.Kernel.IO.Uring.Futex {
+        public static let wait = Linux.Kernel.IO.Uring.Opcode(rawValue: 51)
 
-        public static let wake = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 52)
+        public static let wake = Linux.Kernel.IO.Uring.Opcode(rawValue: 52)
 
-        public static let waitv = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 53)
+        public static let waitv = Linux.Kernel.IO.Uring.Opcode(rawValue: 53)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var futex: ISO_9945.Kernel.IO.Uring.Futex.Type {
-            ISO_9945.Kernel.IO.Uring.Futex.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var futex: Linux.Kernel.IO.Uring.Futex.Type {
+            Linux.Kernel.IO.Uring.Futex.self
         }
     }
 

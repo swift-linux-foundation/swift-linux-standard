@@ -1,7 +1,8 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO {
+    extension Linux.Kernel.IO {
 
         public struct Priority: RawRepresentable, Sendable, Equatable, Hashable, Comparable {
             public let rawValue: UInt16
@@ -12,7 +13,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Priority {
+    extension Linux.Kernel.IO.Priority {
 
         public init(_ value: UInt16) {
             self.rawValue = value
@@ -23,19 +24,19 @@
         public static let normal = Self(0)
     }
 
-    extension ISO_9945.Kernel.IO.Priority {
+    extension Linux.Kernel.IO.Priority {
         public static func < (lhs: Self, rhs: Self) -> Bool {
             lhs.rawValue < rhs.rawValue
         }
     }
 
-    extension ISO_9945.Kernel.IO.Priority: ExpressibleByIntegerLiteral {
+    extension Linux.Kernel.IO.Priority: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {
             self.rawValue = value
         }
     }
 
-    extension ISO_9945.Kernel.IO.Priority: CustomStringConvertible {
+    extension Linux.Kernel.IO.Priority: CustomStringConvertible {
         public var description: Swift::String {
             "\(rawValue)"
         }

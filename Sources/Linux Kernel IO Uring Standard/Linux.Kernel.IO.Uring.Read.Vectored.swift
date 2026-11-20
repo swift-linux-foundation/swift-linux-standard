@@ -1,15 +1,17 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Read {
+    extension Linux.Kernel.IO.Uring.Read {
         public struct Vectored {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Read.Vectored {
-        public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 1)
+    extension Linux.Kernel.IO.Uring.Read.Vectored {
+        public static let standard = Linux.Kernel.IO.Uring.Opcode(rawValue: 1)
 
-        public static let fixed = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 60)
+        public static let fixed = Linux.Kernel.IO.Uring.Opcode(rawValue: 60)
     }
 
 #endif

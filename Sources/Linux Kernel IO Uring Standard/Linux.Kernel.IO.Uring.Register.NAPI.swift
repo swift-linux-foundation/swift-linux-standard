@@ -1,20 +1,22 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register {
+    extension Linux.Kernel.IO.Uring.Register {
         public struct NAPI {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.NAPI {
-        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 27)
+    extension Linux.Kernel.IO.Uring.Register.NAPI {
+        public static let register = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 27)
 
-        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 28)
+        public static let unregister = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 28)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
-        public static var napi: ISO_9945.Kernel.IO.Uring.Register.NAPI.Type {
-            ISO_9945.Kernel.IO.Uring.Register.NAPI.self
+    extension Linux.Kernel.IO.Uring.Register.Opcode {
+        public static var napi: Linux.Kernel.IO.Uring.Register.NAPI.Type {
+            Linux.Kernel.IO.Uring.Register.NAPI.self
         }
     }
 

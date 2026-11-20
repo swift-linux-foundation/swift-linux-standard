@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import Error
     import Memory
@@ -15,7 +16,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.Pipe {
+    extension Linux.Kernel.Pipe {
 
         public struct Splice: Sendable {
 

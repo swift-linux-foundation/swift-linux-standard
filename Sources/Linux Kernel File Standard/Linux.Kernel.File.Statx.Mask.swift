@@ -1,12 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Statx {
+    extension Linux.Kernel.File.Statx {
 
         public struct Mask: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -17,7 +18,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Statx.Mask {
+    extension Linux.Kernel.File.Statx.Mask {
 
         public static let type = Self(rawValue: UInt32(STATX_TYPE))
 

@@ -1,8 +1,10 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
 
-    extension ISO_9945.Kernel.IO.Uring.Params.Submission {
+    extension Linux.Kernel.IO.Uring.Params.Submission {
 
         public struct Thread: Sendable, Equatable {
 
@@ -20,7 +22,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Params.Submission.Thread {
+    extension Linux.Kernel.IO.Uring.Params.Submission.Thread {
 
         internal init(cCpu: UInt32, cIdle: UInt32) {
             guard let cpu = Int(exactly: cCpu) else {

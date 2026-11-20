@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
@@ -9,7 +11,7 @@
 
     private let _IORING_MSG_RING_FLAGS_PASS: UInt32 = 1 << 1
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public struct Message: Sendable {
 

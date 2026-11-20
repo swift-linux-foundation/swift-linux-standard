@@ -1,12 +1,14 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Operation {
+    extension Linux.Kernel.IO.Uring.Operation {
 
-        public typealias Data = Tagged<ISO_9945.Kernel.IO.Uring.Operation, UInt64>
+        public typealias Data = Tagged<Linux.Kernel.IO.Uring.Operation, UInt64>
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Operation.Data {
+    extension Linux.Kernel.IO.Uring.Operation.Data {
 
         @unsafe
         public init(_ pointer: UnsafeRawPointer) {
@@ -24,7 +26,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Operation.Data {
+    extension Linux.Kernel.IO.Uring.Operation.Data {
 
         public static let zero: Self = .init(_unchecked: 0)
     }

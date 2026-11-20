@@ -1,3 +1,10 @@
+public import Linux_Standard_Core
+
+extension Linux.Kernel {
+
+    public enum Pipe: Sendable {}
+}
+
 #if os(Linux)
 
     @_spi(Syscall) public import ISO_9945_Core
@@ -12,10 +19,10 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.Pipe {
+    extension Linux.Kernel.Pipe {
         internal static func pipe2(
             flags: Options
-        ) throws(Error) -> (read: Int32, write: Int32) {
+        ) throws(ISO_9945.Kernel.Pipe.Error) -> (read: Int32, write: Int32) {
             var fds: (Int32, Int32) = (0, 0)
 
             let result = withUnsafeMutablePointer(to: &fds) { ptr in
@@ -33,29 +40,13 @@
 
         public static func pipe2(
             flags: Options
-        ) throws(Error) -> Pair<ISO_9945.Kernel.Descriptor, ISO_9945.Kernel.Descriptor> {
+        ) throws(ISO_9945.Kernel.Pipe.Error) -> Pair<ISO_9945.Kernel.Descriptor, ISO_9945.Kernel.Descriptor> {
             let raw = try pipe2(flags: flags) as (read: Int32, write: Int32)
             return Pair(
                 ISO_9945.Kernel.Descriptor(_rawValue: raw.read),
                 ISO_9945.Kernel.Descriptor(_rawValue: raw.write)
             )
         }
-
-        public struct Options: OptionSet, Sendable {
-            public let rawValue: Int32
-
-            public init(rawValue: Int32) {
-                self.rawValue = rawValue
-            }
-        }
-    }
-
-    extension ISO_9945.Kernel.Pipe.Options {
-        public static let closeOnExec = Self(rawValue: O_CLOEXEC)
-
-        public static let nonBlock = Self(rawValue: O_NONBLOCK)
-
-        public static let direct = Self(rawValue: O_DIRECT)
     }
 
 #endif

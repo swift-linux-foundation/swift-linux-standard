@@ -1,17 +1,19 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register.Buffers {
+    extension Linux.Kernel.IO.Uring.Register.Buffers {
         public struct Provided {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Buffers.Provided {
-        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 22)
+    extension Linux.Kernel.IO.Uring.Register.Buffers.Provided {
+        public static let register = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 22)
 
-        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 23)
+        public static let unregister = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 23)
 
-        public static let status = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 26)
+        public static let status = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 26)
     }
 
 #endif

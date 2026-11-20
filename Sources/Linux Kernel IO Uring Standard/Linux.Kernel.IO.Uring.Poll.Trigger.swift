@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
@@ -7,7 +9,7 @@
 
     private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
 
-    extension ISO_9945.Kernel.IO.Uring.Poll {
+    extension Linux.Kernel.IO.Uring.Poll {
 
         public enum Trigger: Sendable, Hashable {
 
@@ -17,7 +19,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
+    extension Linux.Kernel.IO.Uring.Poll.Trigger {
 
         @usableFromInline
         var pollBits: UInt32 {

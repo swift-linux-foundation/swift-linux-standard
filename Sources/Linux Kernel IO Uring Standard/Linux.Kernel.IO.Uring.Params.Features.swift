@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Params {
+    extension Linux.Kernel.IO.Uring.Params {
 
         public struct Features: Sendable, Equatable, Hashable {
             public let rawValue: UInt32
@@ -13,7 +15,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Params.Features {
+    extension Linux.Kernel.IO.Uring.Params.Features {
 
         public static let singleMmap = Self(rawValue: 1 << 0)
 
@@ -48,7 +50,7 @@
         public static let minimumTimeout = Self(rawValue: 1 << 15)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Params.Features {
+    extension Linux.Kernel.IO.Uring.Params.Features {
 
         @inlinable
         public func contains(_ feature: Self) -> Bool {

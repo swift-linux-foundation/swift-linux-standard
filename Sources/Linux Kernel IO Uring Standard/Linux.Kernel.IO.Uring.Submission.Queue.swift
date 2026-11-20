@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Submission {
+    extension Linux.Kernel.IO.Uring.Submission {
 
         public enum Queue {}
     }

@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     @_spi(Syscall) public import ISO_9945_Core
     import ISO_9945_Kernel_Process
     import Error
@@ -14,7 +15,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.Process {
+    extension Linux.Kernel.Process {
 
         public struct Descriptor: ~Copyable, Sendable {
 
@@ -29,17 +30,17 @@
         }
     }
 
-    extension ISO_9945.Kernel.Process.Descriptor {
+    extension Linux.Kernel.Process.Descriptor {
 
         public static func create(
             pid: ISO_9945.Kernel.Process.ID,
             flags: UInt32 = 0
-        ) throws(ISO_9945.Kernel.Process.Descriptor.Error) -> ISO_9945.Kernel.Process.Descriptor {
+        ) throws(Linux.Kernel.Process.Descriptor.Error) -> Linux.Kernel.Process.Descriptor {
             let fd = swift_pidfd_open(pid.rawValue, flags)
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return ISO_9945.Kernel.Process.Descriptor(
+            return Linux.Kernel.Process.Descriptor(
                 descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
             )
         }
@@ -47,12 +48,12 @@
 
     extension ISO_9945.Kernel.Descriptor {
 
-        public init(_ processDescriptor: consuming ISO_9945.Kernel.Process.Descriptor) {
+        public init(_ processDescriptor: consuming Linux.Kernel.Process.Descriptor) {
             self = processDescriptor.descriptor
         }
     }
 
-    extension ISO_9945.Kernel.Process.Descriptor {
+    extension Linux.Kernel.Process.Descriptor {
 
         public consuming func close() {
             _ = consume self

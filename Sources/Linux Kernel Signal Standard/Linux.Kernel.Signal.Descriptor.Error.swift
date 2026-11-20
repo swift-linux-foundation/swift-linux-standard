@@ -1,10 +1,11 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_Signal
     public import Error
 
-    extension ISO_9945.Kernel.Signal.Descriptor {
+    extension Linux.Kernel.Signal.Descriptor {
 
         public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
@@ -12,7 +13,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Signal.Descriptor.Error: CustomStringConvertible {
+    extension Linux.Kernel.Signal.Descriptor.Error: CustomStringConvertible {
         public var description: Swift::String {
             switch self {
             case .create(let code):
@@ -21,7 +22,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Signal.Descriptor.Error {
+    extension Linux.Kernel.Signal.Descriptor.Error {
 
         public var code: Error::Error.Code {
             switch self {

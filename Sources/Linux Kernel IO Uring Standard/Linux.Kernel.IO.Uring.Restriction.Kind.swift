@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Restriction {
+    extension Linux.Kernel.IO.Uring.Restriction {
 
         public enum Kind: UInt16, Sendable {
 

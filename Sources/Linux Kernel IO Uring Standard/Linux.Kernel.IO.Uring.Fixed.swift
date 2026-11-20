@@ -1,18 +1,20 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Fixed {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Fixed {
-        public static let install = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 54)
+    extension Linux.Kernel.IO.Uring.Fixed {
+        public static let install = Linux.Kernel.IO.Uring.Opcode(rawValue: 54)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var fixed: ISO_9945.Kernel.IO.Uring.Fixed.Type {
-            ISO_9945.Kernel.IO.Uring.Fixed.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var fixed: Linux.Kernel.IO.Uring.Fixed.Type {
+            Linux.Kernel.IO.Uring.Fixed.self
         }
     }
 

@@ -1,24 +1,26 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     public import Space
 
     import Binary
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public typealias Offset = Space::Coordinate.X<Space>.Value<UInt64>
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Offset {
+    extension Linux.Kernel.IO.Uring.Offset {
 
         public static let zero: Self = .init(UInt64(0))
 
         public static let current = Self(UInt64.max)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Offset {
+    extension Linux.Kernel.IO.Uring.Offset {
 
         public init(_ fileOffset: ISO_9945.Kernel.File.Offset) {
             if fileOffset.underlying >= 0 {
@@ -29,7 +31,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Offset {
+    extension Linux.Kernel.IO.Uring.Offset {
         public var description: Swift::String {
             if self == .current {
                 return "current"

@@ -1,12 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Statx {
+    extension Linux.Kernel.File.Statx {
 
         public struct Timestamp: @unchecked Sendable, Equatable {
             internal var cValue: statx_timestamp
@@ -23,7 +24,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Statx.Timestamp {
+    extension Linux.Kernel.File.Statx.Timestamp {
 
         public var seconds: Int64 {
             cValue.tv_sec
@@ -34,7 +35,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Statx.Timestamp {
+    extension Linux.Kernel.File.Statx.Timestamp {
         public static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.cValue.tv_sec == rhs.cValue.tv_sec && lhs.cValue.tv_nsec == rhs.cValue.tv_nsec
         }

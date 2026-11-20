@@ -1,20 +1,22 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register {
+    extension Linux.Kernel.IO.Uring.Register {
         public struct Worker {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Worker {
+    extension Linux.Kernel.IO.Uring.Register.Worker {
         public static var affinity: Affinity.Type { Affinity.self }
 
-        public static let max = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 19)
+        public static let max = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 19)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
-        public static var worker: ISO_9945.Kernel.IO.Uring.Register.Worker.Type {
-            ISO_9945.Kernel.IO.Uring.Register.Worker.self
+    extension Linux.Kernel.IO.Uring.Register.Opcode {
+        public static var worker: Linux.Kernel.IO.Uring.Register.Worker.Type {
+            Linux.Kernel.IO.Uring.Register.Worker.self
         }
     }
 

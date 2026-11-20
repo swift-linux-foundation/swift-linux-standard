@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
+    extension Linux.Kernel.IO.Uring.Completion.Queue {
         public struct Mask: Sendable, Equatable {
             @usableFromInline
             let rawValue: UInt32
@@ -13,7 +15,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Mask {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Mask {
         @inlinable
         public func slot(for counter: UInt32) -> Int {
             Int(counter & rawValue)

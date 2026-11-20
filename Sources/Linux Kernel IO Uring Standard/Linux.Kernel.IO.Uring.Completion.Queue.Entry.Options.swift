@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry {
 
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -12,7 +14,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Options {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry.Options {
 
         public static let buffer = Self(rawValue: 1 << 0)
 

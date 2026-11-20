@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import Difference
     public import Cardinal
 
@@ -16,7 +18,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
+    extension Linux.Kernel.IO.Uring.Submission.Queue {
 
         public struct Offsets: Sendable, Equatable {
 

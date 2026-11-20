@@ -1,7 +1,8 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.Futex.Wait {
+    extension Linux.Kernel.Futex.Wait {
 
         public struct Entry: Sendable, Equatable, Hashable {
 

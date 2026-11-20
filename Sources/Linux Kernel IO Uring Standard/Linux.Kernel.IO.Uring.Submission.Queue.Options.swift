@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
+    extension Linux.Kernel.IO.Uring.Submission.Queue {
 
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -13,7 +15,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Options {
+    extension Linux.Kernel.IO.Uring.Submission.Queue.Options {
 
         public static let needWakeup = Self(rawValue: 1 << 0)
 

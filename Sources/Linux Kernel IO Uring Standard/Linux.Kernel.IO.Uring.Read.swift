@@ -1,24 +1,26 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Read {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Read {
-        public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 22)
+    extension Linux.Kernel.IO.Uring.Read {
+        public static let standard = Linux.Kernel.IO.Uring.Opcode(rawValue: 22)
 
         public static var vectored: Vectored.Type { Vectored.self }
 
-        public static let fixed = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 4)
+        public static let fixed = Linux.Kernel.IO.Uring.Opcode(rawValue: 4)
 
-        public static let multishot = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 49)
+        public static let multishot = Linux.Kernel.IO.Uring.Opcode(rawValue: 49)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var read: ISO_9945.Kernel.IO.Uring.Read.Type {
-            ISO_9945.Kernel.IO.Uring.Read.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var read: Linux.Kernel.IO.Uring.Read.Type {
+            Linux.Kernel.IO.Uring.Read.self
         }
     }
 

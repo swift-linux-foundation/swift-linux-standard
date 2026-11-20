@@ -1,12 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Open {
+    extension Linux.Kernel.File.Open {
 
         public struct Resolve: OptionSet, Sendable {
             public let rawValue: UInt64
@@ -17,7 +18,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Open.Resolve {
+    extension Linux.Kernel.File.Open.Resolve {
 
         public static let beneath = Self(rawValue: UInt64(RESOLVE_BENEATH))
 

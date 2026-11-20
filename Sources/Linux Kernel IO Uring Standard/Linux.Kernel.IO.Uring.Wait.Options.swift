@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Wait {
+    extension Linux.Kernel.IO.Uring.Wait {
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
@@ -12,8 +14,8 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Wait.Options {
-        public static let none = ISO_9945.Kernel.IO.Uring.Wait.Options([])
+    extension Linux.Kernel.IO.Uring.Wait.Options {
+        public static let none = Linux.Kernel.IO.Uring.Wait.Options([])
     }
 
 #endif

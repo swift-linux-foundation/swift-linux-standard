@@ -1,18 +1,20 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Wait {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Wait {
-        public static let id = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 50)
+    extension Linux.Kernel.IO.Uring.Wait {
+        public static let id = Linux.Kernel.IO.Uring.Opcode(rawValue: 50)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var wait: ISO_9945.Kernel.IO.Uring.Wait.Type {
-            ISO_9945.Kernel.IO.Uring.Wait.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var wait: Linux.Kernel.IO.Uring.Wait.Type {
+            Linux.Kernel.IO.Uring.Wait.self
         }
     }
 

@@ -1,11 +1,13 @@
-#if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
+#if Loader
+    #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-    @_exported public import Linux_Standard_Core
-    @_exported public import Loader_Vocabulary
+        @_exported public import Linux_Standard_Core
+        @_exported public import Loader_Vocabulary
 
-    extension Linux_Standard_Core::Linux {
+        extension Linux_Standard_Core::Linux {
 
-        public enum Loader: Sendable {}
-    }
+            public enum Loader: Sendable {}
+        }
 
+    #endif
 #endif

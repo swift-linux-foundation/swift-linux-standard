@@ -1,12 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Open {
+    extension Linux.Kernel.File.Open {
 
         public struct How: @unchecked Sendable {
             internal var cValue: open_how
@@ -15,7 +16,7 @@
                 access: ISO_9945.Kernel.File.Open.Access = .readOnly,
                 options: ISO_9945.Kernel.File.Open.Options = [],
                 mode: ISO_9945.Kernel.File.Permissions = .none,
-                resolve: ISO_9945.Kernel.File.Open.Resolve = []
+                resolve: Linux.Kernel.File.Open.Resolve = []
             ) {
                 self.cValue = open_how()
                 self.cValue.flags = UInt64(access.rawValue | options.rawValue)
@@ -25,7 +26,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Open.How {
+    extension Linux.Kernel.File.Open.How {
 
         public var access: ISO_9945.Kernel.File.Open.Access {
             get {
@@ -52,8 +53,8 @@
             set { cValue.mode = UInt64(newValue.rawValue) }
         }
 
-        public var resolve: ISO_9945.Kernel.File.Open.Resolve {
-            get { ISO_9945.Kernel.File.Open.Resolve(rawValue: cValue.resolve) }
+        public var resolve: Linux.Kernel.File.Open.Resolve {
+            get { Linux.Kernel.File.Open.Resolve(rawValue: cValue.resolve) }
             set { cValue.resolve = newValue.rawValue }
         }
     }

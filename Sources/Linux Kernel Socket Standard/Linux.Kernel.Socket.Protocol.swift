@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_Socket
     #if canImport(Glibc)
@@ -8,7 +9,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.Socket {
+    extension Linux.Kernel.Socket {
 
         public struct `Protocol`: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: Int32
@@ -19,7 +20,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Socket.`Protocol` {
+    extension Linux.Kernel.Socket.`Protocol` {
 
         public static let auto = Self(rawValue: 0)
 

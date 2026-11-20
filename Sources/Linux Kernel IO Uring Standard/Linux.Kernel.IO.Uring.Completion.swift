@@ -1,14 +1,16 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public enum Completion {}
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion {
+    extension Linux.Kernel.IO.Uring.Completion {
 
-        public typealias Count = Tagged<ISO_9945.Kernel.IO.Uring.Completion, Cardinal>
+        public typealias Count = Tagged<Linux.Kernel.IO.Uring.Completion, Cardinal>
     }
 
 #endif

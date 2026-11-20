@@ -1,9 +1,11 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     @_spi(Syscall) public import ISO_9945_Core
     @_spi(Syscall) public import Linux_Kernel_Event_Standard
 
-    extension ISO_9945.Kernel.IO.Uring.Wakeup {
+    extension Linux.Kernel.IO.Uring.Wakeup {
 
         public struct Result: ~Copyable {
 

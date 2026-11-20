@@ -1,18 +1,20 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Sync {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Sync {
+    extension Linux.Kernel.IO.Uring.Sync {
         public static var file: File.Type { File.self }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var sync: ISO_9945.Kernel.IO.Uring.Sync.Type {
-            ISO_9945.Kernel.IO.Uring.Sync.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var sync: Linux.Kernel.IO.Uring.Sync.Type {
+            Linux.Kernel.IO.Uring.Sync.self
         }
     }
 

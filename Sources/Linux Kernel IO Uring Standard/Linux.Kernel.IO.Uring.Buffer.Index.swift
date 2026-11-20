@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Buffer {
+    extension Linux.Kernel.IO.Uring.Buffer {
         public struct Index: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt16
 
@@ -15,17 +17,17 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Buffer.Index {
+    extension Linux.Kernel.IO.Uring.Buffer.Index {
         public static let first = Self(0)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
+    extension Linux.Kernel.IO.Uring.Buffer.Index: ExpressibleByIntegerLiteral {
         public init(integerLiteral value: UInt16) {
             self.rawValue = value
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
+    extension Linux.Kernel.IO.Uring.Buffer.Index: CustomStringConvertible {
         public var description: Swift::String {
             "\(rawValue)"
         }

@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import Error
     import Memory
@@ -11,7 +12,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.Descriptor.Duplicate {
+    extension Linux.Kernel.Descriptor.Duplicate {
         public struct Options: OptionSet, Sendable, Equatable, Hashable {
             public let rawValue: Int32
 
@@ -21,7 +22,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Descriptor.Duplicate.Options {
+    extension Linux.Kernel.Descriptor.Duplicate.Options {
         public static let closeOnExec = Self(rawValue: O_CLOEXEC)
     }
 

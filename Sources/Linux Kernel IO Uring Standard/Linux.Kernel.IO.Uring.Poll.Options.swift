@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
@@ -7,7 +9,7 @@
 
     private let _IORING_POLL_ADD_LEVEL: UInt32 = 1 << 3
 
-    extension ISO_9945.Kernel.IO.Uring.Poll {
+    extension Linux.Kernel.IO.Uring.Poll {
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
@@ -18,21 +20,21 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Poll.Options {
-        public static let level = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: _IORING_POLL_ADD_LEVEL)
+    extension Linux.Kernel.IO.Uring.Poll.Options {
+        public static let level = Linux.Kernel.IO.Uring.Poll.Options(rawValue: _IORING_POLL_ADD_LEVEL)
 
-        public static let multishot = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
+        public static let multishot = Linux.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_ADD_MULTI))
 
-        public static let updateEvents = ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
+        public static let updateEvents = Linux.Kernel.IO.Uring.Poll.Options(rawValue: UInt32(IORING_POLL_UPDATE_EVENTS))
 
-        public static let updateUserData = ISO_9945.Kernel.IO.Uring.Poll.Options(
+        public static let updateUserData = Linux.Kernel.IO.Uring.Poll.Options(
             rawValue: UInt32(IORING_POLL_UPDATE_USER_DATA)
         )
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Poll.Trigger {
+    extension Linux.Kernel.IO.Uring.Poll.Trigger {
         @usableFromInline
-        var option: ISO_9945.Kernel.IO.Uring.Poll.Options {
+        var option: Linux.Kernel.IO.Uring.Poll.Options {
             switch self {
             case .edge: []
             case .level: .level

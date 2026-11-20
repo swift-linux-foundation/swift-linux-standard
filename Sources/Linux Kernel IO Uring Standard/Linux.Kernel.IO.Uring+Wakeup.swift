@@ -1,16 +1,18 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     @_spi(Syscall) public import ISO_9945_Core
     import Error
     @_spi(Syscall) import Linux_Kernel_Event_Standard
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public func createWakeup() throws(Wakeup.Error) -> Wakeup.Result {
 
             let eventfd = try Self.createEventfd()
 
-            do throws(ISO_9945.Kernel.IO.Uring.Error) {
+            do throws(Linux.Kernel.IO.Uring.Error) {
                 try self.register(eventfd: eventfd.descriptor)
             } catch {
                 throw .register(error.code)
@@ -41,7 +43,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Error {
+    extension Linux.Kernel.IO.Uring.Error {
 
         var code: Error::Error.Code {
             switch self {

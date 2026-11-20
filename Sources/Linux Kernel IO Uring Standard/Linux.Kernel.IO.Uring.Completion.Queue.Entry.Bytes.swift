@@ -1,19 +1,21 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry {
         public var bytes: Bytes { Bytes(entry: self) }
 
         public struct Bytes: Sendable {
-            let entry: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry
+            let entry: Linux.Kernel.IO.Uring.Completion.Queue.Entry
 
-            init(entry: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry) {
+            init(entry: Linux.Kernel.IO.Uring.Completion.Queue.Entry) {
                 self.entry = entry
             }
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.Bytes {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry.Bytes {
         public var transferred: Int? {
             entry.isSuccess ? Int(entry.res) : nil
         }

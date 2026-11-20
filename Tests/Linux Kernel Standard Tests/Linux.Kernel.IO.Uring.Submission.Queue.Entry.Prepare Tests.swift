@@ -6,7 +6,8 @@
     @testable import Linux_Kernel_IO_Uring_Standard
 
     import ISO_9945_Core
-    private typealias Kernel = ISO_9945.Kernel
+    import Linux_Standard_Core
+    private typealias Kernel = Linux.Kernel
     import Linux_Kernel_Socket_Standard
     import Linux_Kernel_Pipe_Standard
     import Linux_Kernel_File_Standard

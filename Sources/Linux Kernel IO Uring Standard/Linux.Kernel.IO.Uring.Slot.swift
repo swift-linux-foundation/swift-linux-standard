@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         @safe public struct Slot: ~Copyable, ~Escapable {
             @usableFromInline
@@ -15,9 +17,9 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Slot {
+    extension Linux.Kernel.IO.Uring.Slot {
         @inlinable
-        public var entry: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
+        public var entry: Linux.Kernel.IO.Uring.Submission.Queue.Entry {
             _read { yield unsafe pointer.pointee }
             nonmutating _modify { yield unsafe &pointer.pointee }
         }

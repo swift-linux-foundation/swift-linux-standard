@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     @_spi(Syscall) public import ISO_9945_Core
     @_spi(Syscall) public import ISO_9945_Kernel_Signal
     import Error
@@ -14,7 +15,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.Signal {
+    extension Linux.Kernel.Signal {
 
         public struct Descriptor: ~Copyable, Sendable {
 
@@ -29,12 +30,12 @@
         }
     }
 
-    extension ISO_9945.Kernel.Signal.Descriptor {
+    extension Linux.Kernel.Signal.Descriptor {
 
         public static func create(
             mask: borrowing ISO_9945.Kernel.Signal.Set,
             flags: Int32? = nil
-        ) throws(ISO_9945.Kernel.Signal.Descriptor.Error) -> ISO_9945.Kernel.Signal.Descriptor {
+        ) throws(Linux.Kernel.Signal.Descriptor.Error) -> Linux.Kernel.Signal.Descriptor {
 
             let resolvedFlags = flags ?? Int32(SFD_CLOEXEC)
 
@@ -44,7 +45,7 @@
             guard fd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return ISO_9945.Kernel.Signal.Descriptor(
+            return Linux.Kernel.Signal.Descriptor(
                 descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
             )
         }
@@ -52,12 +53,12 @@
 
     extension ISO_9945.Kernel.Descriptor {
 
-        public init(_ signalDescriptor: consuming ISO_9945.Kernel.Signal.Descriptor) {
+        public init(_ signalDescriptor: consuming Linux.Kernel.Signal.Descriptor) {
             self = signalDescriptor.descriptor
         }
     }
 
-    extension ISO_9945.Kernel.Signal.Descriptor {
+    extension Linux.Kernel.Signal.Descriptor {
 
         public consuming func close() {
             _ = consume self

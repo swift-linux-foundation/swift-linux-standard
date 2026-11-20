@@ -1,11 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public enum Clock: Sendable, Hashable {
 
@@ -17,7 +19,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Clock {
+    extension Linux.Kernel.IO.Uring.Clock {
 
         @usableFromInline
         var timeoutBits: UInt32 {

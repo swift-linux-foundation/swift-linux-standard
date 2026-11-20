@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Kernel_Socket_Address
     import ISO_9945_Kernel_Socket
     import Error
@@ -24,7 +26,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue {
+    extension Linux.Kernel.IO.Uring.Submission.Queue {
 
         public struct Entry: ~Copyable {
 
@@ -40,10 +42,10 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Submission.Queue.Entry {
 
-        public var opcode: ISO_9945.Kernel.IO.Uring.Opcode {
-            get { ISO_9945.Kernel.IO.Uring.Opcode(rawValue: cValue.opcode) }
+        public var opcode: Linux.Kernel.IO.Uring.Opcode {
+            get { Linux.Kernel.IO.Uring.Opcode(rawValue: cValue.opcode) }
             set { cValue.opcode = newValue.rawValue }
         }
 
@@ -58,19 +60,19 @@
             set { cValue.rw_flags = UInt32(bitPattern: newValue) }
         }
 
-        public var priority: ISO_9945.Kernel.IO.Priority {
-            get { ISO_9945.Kernel.IO.Priority(rawValue: cValue.ioprio) }
+        public var priority: Linux.Kernel.IO.Priority {
+            get { Linux.Kernel.IO.Priority(rawValue: cValue.ioprio) }
             set { cValue.ioprio = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var transferOptions: ISO_9945.Kernel.IO.Uring.Socket.Transfer.Options {
+        internal var transferOptions: Linux.Kernel.IO.Uring.Socket.Transfer.Options {
             get { .init(rawValue: cValue.ioprio) }
             set { cValue.ioprio = newValue.rawValue }
         }
 
-        public var offset: ISO_9945.Kernel.IO.Uring.Offset {
-            get { ISO_9945.Kernel.IO.Uring.Offset(cValue.off) }
+        public var offset: Linux.Kernel.IO.Uring.Offset {
+            get { Linux.Kernel.IO.Uring.Offset(cValue.off) }
             set { cValue.off = newValue.underlying }
         }
 
@@ -80,23 +82,23 @@
             set { cValue.addr = newValue }
         }
 
-        public var len: ISO_9945.Kernel.IO.Uring.Length {
-            get { ISO_9945.Kernel.IO.Uring.Length(cValue.len) }
+        public var len: Linux.Kernel.IO.Uring.Length {
+            get { Linux.Kernel.IO.Uring.Length(cValue.len) }
             set { cValue.len = newValue.underlying }
         }
 
-        public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
-            get { ISO_9945.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data) }
+        public var data: Linux.Kernel.IO.Uring.Operation.Data {
+            get { Linux.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data) }
             set { cValue.user_data = newValue.underlying }
         }
 
-        public var personality: ISO_9945.Kernel.IO.Uring.Personality.ID {
-            get { ISO_9945.Kernel.IO.Uring.Personality.ID(_unchecked: cValue.personality) }
+        public var personality: Linux.Kernel.IO.Uring.Personality.ID {
+            get { Linux.Kernel.IO.Uring.Personality.ID(_unchecked: cValue.personality) }
             set { cValue.personality = newValue.underlying }
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Submission.Queue.Entry {
 
         @usableFromInline
         internal var atFlags: ISO_9945.Kernel.File.At.Options {
@@ -117,20 +119,20 @@
         }
 
         @usableFromInline
-        internal var syncRangeFlags: ISO_9945.Kernel.File.Sync.Range.Options {
-            get { ISO_9945.Kernel.File.Sync.Range.Options(rawValue: cValue.rw_flags) }
+        internal var syncRangeFlags: Linux.Kernel.File.Sync.Range.Options {
+            get { Linux.Kernel.File.Sync.Range.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var pipeCreateFlags: ISO_9945.Kernel.Pipe.Options {
-            get { ISO_9945.Kernel.Pipe.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var pipeCreateFlags: Linux.Kernel.Pipe.Options {
+            get { Linux.Kernel.Pipe.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         @usableFromInline
-        internal var installFlags: ISO_9945.Kernel.IO.Uring.Fixed.Install.Options {
-            get { ISO_9945.Kernel.IO.Uring.Fixed.Install.Options(rawValue: cValue.rw_flags) }
+        internal var installFlags: Linux.Kernel.IO.Uring.Fixed.Install.Options {
+            get { Linux.Kernel.IO.Uring.Fixed.Install.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
@@ -143,8 +145,8 @@
         }
 
         @usableFromInline
-        internal var shutdownMode: ISO_9945.Kernel.Socket.Shutdown.Mode {
-            get { ISO_9945.Kernel.Socket.Shutdown.Mode(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var shutdownMode: Linux.Kernel.Socket.Shutdown.Mode {
+            get { Linux.Kernel.Socket.Shutdown.Mode(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
@@ -175,7 +177,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Submission.Queue.Entry {
 
         @usableFromInline
         internal static let fsyncDatasync: Int32 = Int32(IORING_FSYNC_DATASYNC)
@@ -199,14 +201,14 @@
         }
 
         @usableFromInline
-        internal var _bufferIndex: ISO_9945.Kernel.IO.Uring.Buffer.Index {
-            get { ISO_9945.Kernel.IO.Uring.Buffer.Index(rawValue: cValue.buf_index) }
+        internal var _bufferIndex: Linux.Kernel.IO.Uring.Buffer.Index {
+            get { Linux.Kernel.IO.Uring.Buffer.Index(rawValue: cValue.buf_index) }
             set { cValue.buf_index = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var _bufferGroup: ISO_9945.Kernel.IO.Uring.Buffer.Group {
-            get { ISO_9945.Kernel.IO.Uring.Buffer.Group(rawValue: cValue.buf_group) }
+        internal var _bufferGroup: Linux.Kernel.IO.Uring.Buffer.Group {
+            get { Linux.Kernel.IO.Uring.Buffer.Group(rawValue: cValue.buf_group) }
             set { cValue.buf_group = newValue.rawValue }
         }
 
@@ -241,42 +243,42 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Submission.Queue.Entry {
 
         @usableFromInline
-        internal var spliceFlags: ISO_9945.Kernel.Pipe.Splice.Options {
-            get { ISO_9945.Kernel.Pipe.Splice.Options(rawValue: cValue.rw_flags) }
+        internal var spliceFlags: Linux.Kernel.Pipe.Splice.Options {
+            get { Linux.Kernel.Pipe.Splice.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var renameFlags: ISO_9945.Kernel.File.Rename.Options {
-            get { ISO_9945.Kernel.File.Rename.Options(rawValue: cValue.rw_flags) }
+        internal var renameFlags: Linux.Kernel.File.Rename.Options {
+            get { Linux.Kernel.File.Rename.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var messageRingFlags: ISO_9945.Kernel.IO.Uring.Message.Options {
-            get { ISO_9945.Kernel.IO.Uring.Message.Options(rawValue: cValue.rw_flags) }
+        internal var messageRingFlags: Linux.Kernel.IO.Uring.Message.Options {
+            get { Linux.Kernel.IO.Uring.Message.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var futexFlags: ISO_9945.Kernel.Futex.Options {
-            get { ISO_9945.Kernel.Futex.Options(rawValue: cValue.rw_flags) }
+        internal var futexFlags: Linux.Kernel.Futex.Options {
+            get { Linux.Kernel.Futex.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
         @usableFromInline
         internal mutating func setXattrDisposition(
-            _ disposition: ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition
+            _ disposition: Linux.Kernel.IO.Uring.File.Xattr.Disposition
         ) {
             cValue.rw_flags = disposition.rawBits
         }
 
         @usableFromInline
-        internal var waitidFlags: ISO_9945.Kernel.IO.Uring.Wait.Options {
-            get { ISO_9945.Kernel.IO.Uring.Wait.Options(rawValue: cValue.rw_flags) }
+        internal var waitidFlags: Linux.Kernel.IO.Uring.Wait.Options {
+            get { Linux.Kernel.IO.Uring.Wait.Options(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
@@ -287,8 +289,8 @@
         }
 
         @usableFromInline
-        internal var pollOptions: ISO_9945.Kernel.IO.Uring.Poll.Options {
-            get { ISO_9945.Kernel.IO.Uring.Poll.Options(rawValue: cValue.len) }
+        internal var pollOptions: Linux.Kernel.IO.Uring.Poll.Options {
+            get { Linux.Kernel.IO.Uring.Poll.Options(rawValue: cValue.len) }
             set { cValue.len = newValue.rawValue }
         }
 
@@ -331,7 +333,7 @@
         }
 
         @usableFromInline
-        internal var socketProtocol: ISO_9945.Kernel.Socket.`Protocol` {
+        internal var socketProtocol: Linux.Kernel.Socket.`Protocol` {
             get { .init(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
@@ -344,8 +346,8 @@
 
         @usableFromInline
         internal mutating func configureTimeout(
-            clock: ISO_9945.Kernel.IO.Uring.Clock,
-            options: ISO_9945.Kernel.IO.Uring.Timeout.Options = []
+            clock: Linux.Kernel.IO.Uring.Clock,
+            options: Linux.Kernel.IO.Uring.Timeout.Options = []
         ) {
             cValue.rw_flags = clock.timeoutBits | options.rawValue
         }
@@ -361,7 +363,7 @@
         }
 
         @usableFromInline
-        internal mutating func setAddr(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
+        internal mutating func setAddr(_ data: Linux.Kernel.IO.Uring.Operation.Data) {
             cValue.addr = data.underlying
         }
 
@@ -395,7 +397,7 @@
         }
 
         @usableFromInline
-        internal mutating func setMessageTarget(_ data: ISO_9945.Kernel.IO.Uring.Operation.Data) {
+        internal mutating func setMessageTarget(_ data: Linux.Kernel.IO.Uring.Operation.Data) {
             cValue.off = data.underlying
         }
 

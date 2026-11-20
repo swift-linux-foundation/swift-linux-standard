@@ -1,20 +1,22 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Poll {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Poll {
-        public static let add = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 6)
+    extension Linux.Kernel.IO.Uring.Poll {
+        public static let add = Linux.Kernel.IO.Uring.Opcode(rawValue: 6)
 
-        public static let remove = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 7)
+        public static let remove = Linux.Kernel.IO.Uring.Opcode(rawValue: 7)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var poll: ISO_9945.Kernel.IO.Uring.Poll.Type {
-            ISO_9945.Kernel.IO.Uring.Poll.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var poll: Linux.Kernel.IO.Uring.Poll.Type {
+            Linux.Kernel.IO.Uring.Poll.self
         }
     }
 

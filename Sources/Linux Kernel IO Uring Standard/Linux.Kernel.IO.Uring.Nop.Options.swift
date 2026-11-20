@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Nop {
+    extension Linux.Kernel.IO.Uring.Nop {
 
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -13,7 +15,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Nop.Options {
+    extension Linux.Kernel.IO.Uring.Nop.Options {
 
         public static let injectResult = Self(rawValue: 1 << 0)
     }

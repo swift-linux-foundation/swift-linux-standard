@@ -6,7 +6,8 @@
     @testable import Linux_Kernel_IO_Standard
 
     import ISO_9945_Core
-    private typealias Kernel = ISO_9945.Kernel
+    import Linux_Standard_Core
+    private typealias Kernel = Linux.Kernel
 
     extension Kernel.IO.Priority {
         enum Test {

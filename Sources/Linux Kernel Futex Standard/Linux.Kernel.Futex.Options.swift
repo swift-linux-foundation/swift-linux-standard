@@ -1,11 +1,12 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import Error
     import Memory
     import Path
 
-    extension ISO_9945.Kernel.Futex {
+    extension Linux.Kernel.Futex {
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
 
@@ -15,7 +16,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.Futex.Options {
+    extension Linux.Kernel.Futex.Options {
         public static let privateFlag = Self(rawValue: 128)
 
         public static let clockRealtime = Self(rawValue: 256)

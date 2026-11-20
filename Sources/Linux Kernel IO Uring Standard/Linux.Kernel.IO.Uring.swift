@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     @_spi(Syscall) public import ISO_9945_Core
     import ISO_9945_Kernel_File
     import Error
@@ -18,7 +20,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO {
+    extension Linux.Kernel.IO {
 
         @safe
         public struct Uring: ~Copyable {
@@ -103,12 +105,12 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public static func setup(
             entries: Submission.Count,
             params: inout Params
-        ) throws(ISO_9945.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
+        ) throws(Linux.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
             var cParams = params.cValue
             let fd = unsafe swift_io_uring_setup(UInt32(entries.underlying.rawValue), &cParams)
             guard fd >= 0 else {
@@ -124,7 +126,7 @@
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
             flags: Enter.Options
-        ) throws(ISO_9945.Kernel.IO.Uring.Error) -> Submission.Count {
+        ) throws(Linux.Kernel.IO.Uring.Error) -> Submission.Count {
             let result = swift_io_uring_enter(
                 fd._rawValue,
                 UInt32(toSubmit.underlying.rawValue),
@@ -147,7 +149,7 @@
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
-        ) throws(ISO_9945.Kernel.IO.Uring.Error) {
+        ) throws(Linux.Kernel.IO.Uring.Error) {
             let result = unsafe swift_io_uring_register(
                 fd._rawValue,
                 opcode.rawValue,
@@ -168,7 +170,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public func enter(
             toSubmit: Submission.Count,
@@ -212,12 +214,12 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public init(
             descriptor: consuming ISO_9945.Kernel.Descriptor,
-            params: ISO_9945.Kernel.IO.Uring.Params
-        ) throws(ISO_9945.Kernel.IO.Uring.Error) {
+            params: Linux.Kernel.IO.Uring.Params
+        ) throws(Linux.Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
             let isSingleMmap = params.features.contains(.singleMmap)
 
@@ -227,9 +229,9 @@
                 _ringByteOffset(params.sqOff.array) + sqEntryCount * MemoryLayout<UInt32>.size
             let cqRingSz =
                 _ringByteOffset(params.cqOff.cqes) + cqEntryCount
-                * MemoryLayout<ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry>.size
+                * MemoryLayout<Linux.Kernel.IO.Uring.Completion.Queue.Entry>.size
             let sqeSz =
-                sqEntryCount * MemoryLayout<ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry>.size
+                sqEntryCount * MemoryLayout<Linux.Kernel.IO.Uring.Submission.Queue.Entry>.size
 
             let sqMmapSz = isSingleMmap ? max(sqRingSz, cqRingSz) : sqRingSz
 
@@ -261,7 +263,7 @@
                         PROT_READ | PROT_WRITE,
                         MAP_SHARED | MAP_POPULATE,
                         fd,
-                        Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.cqRing)
+                        Int(Linux.Kernel.IO.Uring.Mmap.Offset.cqRing)
                     ),
                     unsafe cqPtr != MAP_FAILED
                 else {
@@ -278,7 +280,7 @@
                     PROT_READ | PROT_WRITE,
                     MAP_SHARED | MAP_POPULATE,
                     fd,
-                    Int(ISO_9945.Kernel.IO.Uring.Mmap.Offset.sqes)
+                    Int(Linux.Kernel.IO.Uring.Mmap.Offset.sqes)
                 ),
                 unsafe sqe != MAP_FAILED
             else {
@@ -306,7 +308,7 @@
                     to: UInt32.self
                 ),
                 sqes: sqe.assumingMemoryBound(
-                    to: ISO_9945.Kernel.IO.Uring.Submission.Queue.Entry.self
+                    to: Linux.Kernel.IO.Uring.Submission.Queue.Entry.self
                 ),
                 cqHead: cq.advanced(by: _ringByteOffset(params.cqOff.head)).assumingMemoryBound(
                     to: UInt32.self
@@ -323,7 +325,7 @@
                 cqes: UnsafePointer(
                     cq.advanced(by: _ringByteOffset(params.cqOff.cqes))
                         .assumingMemoryBound(
-                            to: ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry.self
+                            to: Linux.Kernel.IO.Uring.Completion.Queue.Entry.self
                         )
                 ),
                 singleMmap: isSingleMmap,
@@ -337,7 +339,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public var next: Slot {
             mutating _read {
@@ -379,7 +381,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public mutating func drain(
             limit: Completion.Count,

@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public struct Opcode: RawRepresentable, Sendable, Equatable, Hashable {
             public let rawValue: UInt8
@@ -12,7 +14,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
+    extension Linux.Kernel.IO.Uring.Opcode {
 
         public static let nop = Self(rawValue: 0)
 
@@ -21,7 +23,7 @@
         public static let nop128 = Self(rawValue: 63)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode: CustomStringConvertible {
+    extension Linux.Kernel.IO.Uring.Opcode: CustomStringConvertible {
         public var description: Swift::String {
             switch self {
 

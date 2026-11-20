@@ -1,15 +1,17 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register.Rings {
+    extension Linux.Kernel.IO.Uring.Register.Rings {
         public struct Descriptor {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Rings.Descriptor {
-        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 20)
+    extension Linux.Kernel.IO.Uring.Register.Rings.Descriptor {
+        public static let register = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 20)
 
-        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 21)
+        public static let unregister = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 21)
     }
 
 #endif

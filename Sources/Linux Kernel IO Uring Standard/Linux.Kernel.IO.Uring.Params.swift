@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Glibc)
         internal import Glibc
@@ -11,13 +13,13 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
 
         public struct Params: Sendable, Equatable {
 
-            public private(set) var sqEntries: ISO_9945.Kernel.IO.Uring.Submission.Count
+            public private(set) var sqEntries: Linux.Kernel.IO.Uring.Submission.Count
 
-            public private(set) var cqEntries: ISO_9945.Kernel.IO.Uring.Completion.Count
+            public private(set) var cqEntries: Linux.Kernel.IO.Uring.Completion.Count
 
             public var flags: Setup.Options
 
@@ -25,28 +27,28 @@
 
             public private(set) var features: Features
 
-            public private(set) var sqOff: ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets
+            public private(set) var sqOff: Linux.Kernel.IO.Uring.Submission.Queue.Offsets
 
-            public private(set) var cqOff: ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets
+            public private(set) var cqOff: Linux.Kernel.IO.Uring.Completion.Queue.Offsets
 
             public init(
                 flags: Setup.Options = [],
                 submission: Submission = Submission()
             ) {
-                self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count.zero
-                self.cqEntries = ISO_9945.Kernel.IO.Uring.Completion.Count.zero
+                self.sqEntries = Linux.Kernel.IO.Uring.Submission.Count.zero
+                self.cqEntries = Linux.Kernel.IO.Uring.Completion.Count.zero
                 self.flags = flags
                 self.submission = submission
                 self.features = Features(rawValue: 0)
-                self.sqOff = ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets()
-                self.cqOff = ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets()
+                self.sqOff = Linux.Kernel.IO.Uring.Submission.Queue.Offsets()
+                self.cqOff = Linux.Kernel.IO.Uring.Completion.Queue.Offsets()
             }
 
             internal init(_ cParams: io_uring_params) {
-                self.sqEntries = ISO_9945.Kernel.IO.Uring.Submission.Count(
+                self.sqEntries = Linux.Kernel.IO.Uring.Submission.Count(
                     _unchecked: Cardinal(UInt(cParams.sq_entries))
                 )
-                self.cqEntries = ISO_9945.Kernel.IO.Uring.Completion.Count(
+                self.cqEntries = Linux.Kernel.IO.Uring.Completion.Count(
                     _unchecked: Cardinal(UInt(cParams.cq_entries))
                 )
                 self.flags = Setup.Options(rawValue: cParams.flags)
@@ -57,14 +59,14 @@
                     )
                 )
                 self.features = Features(rawValue: cParams.features)
-                self.sqOff = ISO_9945.Kernel.IO.Uring.Submission.Queue.Offsets(cParams.sq_off)
-                self.cqOff = ISO_9945.Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
+                self.sqOff = Linux.Kernel.IO.Uring.Submission.Queue.Offsets(cParams.sq_off)
+                self.cqOff = Linux.Kernel.IO.Uring.Completion.Queue.Offsets(cParams.cq_off)
             }
 
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Params {
+    extension Linux.Kernel.IO.Uring.Params {
 
         internal var cValue: io_uring_params {
             var params = io_uring_params()

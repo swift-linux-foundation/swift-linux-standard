@@ -1,18 +1,20 @@
-#if os(Linux)
+#if Loader
+    #if os(Linux)
 
-    public import ISO_9945_Core
-    public import ISO_9945_Loader
-    public import Loader_Vocabulary
+        public import ISO_9945_Core
+        public import ISO_9945_Loader
+        public import Loader_Vocabulary
 
-    private let _RTLD_NOLOAD: Int32 = 0x0000_4
+        private let _RTLD_NOLOAD: Int32 = 0x0000_4
 
-    private let _RTLD_NODELETE: Int32 = 0x1000
+        private let _RTLD_NODELETE: Int32 = 0x1000
 
-    extension ISO_9945.Loader.Library.Options {
+        extension ISO_9945.Loader.Library.Options {
 
-        public static let noLoad = Self(rawValue: _RTLD_NOLOAD)
+            public static let noLoad = Self(rawValue: _RTLD_NOLOAD)
 
-        public static let noDelete = Self(rawValue: _RTLD_NODELETE)
-    }
+            public static let noDelete = Self(rawValue: _RTLD_NODELETE)
+        }
 
+    #endif
 #endif

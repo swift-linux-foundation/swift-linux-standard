@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
@@ -11,7 +13,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring.File {
+    extension Linux.Kernel.IO.Uring.File {
 
         public enum Allocate: Sendable {
             public enum Mode: Sendable, Hashable {
@@ -31,7 +33,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.File.Allocate.Mode {
+    extension Linux.Kernel.IO.Uring.File.Allocate.Mode {
 
         @usableFromInline
         var rawBits: Int32 {

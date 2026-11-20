@@ -1,20 +1,22 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register {
+    extension Linux.Kernel.IO.Uring.Register {
         public struct Rings {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Rings {
-        public static let enable = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 12)
+    extension Linux.Kernel.IO.Uring.Register.Rings {
+        public static let enable = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 12)
 
         public static var descriptor: Descriptor.Type { Descriptor.self }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Opcode {
-        public static var rings: ISO_9945.Kernel.IO.Uring.Register.Rings.Type {
-            ISO_9945.Kernel.IO.Uring.Register.Rings.self
+    extension Linux.Kernel.IO.Uring.Register.Opcode {
+        public static var rings: Linux.Kernel.IO.Uring.Register.Rings.Type {
+            Linux.Kernel.IO.Uring.Register.Rings.self
         }
     }
 

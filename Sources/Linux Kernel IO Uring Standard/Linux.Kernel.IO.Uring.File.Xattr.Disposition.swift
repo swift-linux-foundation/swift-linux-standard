@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
@@ -11,12 +13,12 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring.File {
+    extension Linux.Kernel.IO.Uring.File {
 
         public enum Xattr {}
     }
 
-    extension ISO_9945.Kernel.IO.Uring.File.Xattr {
+    extension Linux.Kernel.IO.Uring.File.Xattr {
 
         public enum Disposition: Sendable, Hashable {
 
@@ -28,7 +30,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.File.Xattr.Disposition {
+    extension Linux.Kernel.IO.Uring.File.Xattr.Disposition {
 
         @usableFromInline
         var rawBits: UInt32 {

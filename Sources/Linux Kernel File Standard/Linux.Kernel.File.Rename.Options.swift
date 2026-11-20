@@ -1,12 +1,13 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     import Error
     import Memory
     import Path
 
-    extension ISO_9945.Kernel.File.Rename {
+    extension Linux.Kernel.File.Rename {
         public struct Options: OptionSet, Sendable, Equatable, Hashable {
             public let rawValue: UInt32
 
@@ -16,7 +17,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Rename.Options {
+    extension Linux.Kernel.File.Rename.Options {
         public static let noreplace = Self(rawValue: 1)
 
         public static let exchange = Self(rawValue: 2)

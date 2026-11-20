@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     @_spi(Syscall) public import ISO_9945_Core
     import Error
 
@@ -11,13 +12,18 @@
 
     internal import Linux_Kernel_Shims
 
-    extension ISO_9945.Kernel.Descriptor.Duplicate {
+    extension Linux.Kernel.Descriptor {
+
+        public enum Duplicate: Sendable {}
+    }
+
+    extension Linux.Kernel.Descriptor.Duplicate {
 
         internal static func duplicate(
             sourceFd: Int32,
             destinationFd: Int32,
             flags: Options
-        ) throws(Error) {
+        ) throws(ISO_9945.Kernel.Descriptor.Duplicate.Error) {
             let result = swift_dup3(sourceFd, destinationFd, flags.rawValue)
 
             guard result >= 0 else {
@@ -39,7 +45,7 @@
             source: borrowing ISO_9945.Kernel.Descriptor,
             destination: borrowing ISO_9945.Kernel.Descriptor,
             flags: Options
-        ) throws(Error) {
+        ) throws(ISO_9945.Kernel.Descriptor.Duplicate.Error) {
             try duplicate(
                 sourceFd: source._rawValue,
                 destinationFd: destination._rawValue,

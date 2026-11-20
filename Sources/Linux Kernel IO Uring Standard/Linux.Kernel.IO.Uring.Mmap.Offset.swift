@@ -1,12 +1,14 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Mmap {
+    extension Linux.Kernel.IO.Uring.Mmap {
         public enum Offset {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Mmap.Offset {
+    extension Linux.Kernel.IO.Uring.Mmap.Offset {
         public static let sqRing: Int64 = 0
 
         public static let cqRing: Int64 = 0x8000000

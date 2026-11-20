@@ -1,5 +1,6 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     public import ISO_9945_Kernel_Thread
 
@@ -13,7 +14,7 @@
         internal import Bionic
     #endif
 
-    extension ISO_9945.Kernel.Thread {
+    extension Linux.Kernel.Thread {
         public struct ID: Hashable, Sendable, RawRepresentable, CustomStringConvertible {
             public let rawValue: Int32
 
@@ -23,11 +24,11 @@
         }
     }
 
-    extension ISO_9945.Kernel.Thread.ID {
+    extension Linux.Kernel.Thread.ID {
         public var description: String { "tid(\(rawValue))" }
     }
 
-    extension ISO_9945.Kernel.Thread.ID {
+    extension Linux.Kernel.Thread.ID {
         public static var current: Self {
             .init(rawValue: Int32(swift_gettid()))
         }

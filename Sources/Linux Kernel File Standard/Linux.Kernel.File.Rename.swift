@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     import Error
@@ -14,7 +15,12 @@
 
     internal import Linux_Kernel_Shims
 
-    extension ISO_9945.Kernel.File.Rename {
+    extension Linux.Kernel.File {
+
+        public enum Rename: Sendable {}
+    }
+
+    extension Linux.Kernel.File.Rename {
 
         @unsafe
         public static func renameat2(
@@ -23,7 +29,7 @@
             newDirFD: Int32,
             newPath: UnsafePointer<CChar>,
             flags: Options
-        ) throws(Error) {
+        ) throws(ISO_9945.Kernel.File.Rename.Error) {
             let result = unsafe swift_renameat2(
                 oldDirFD,
                 oldPath,
@@ -58,7 +64,7 @@
         public static func noClobber(
             from oldPath: UnsafePointer<CChar>,
             to newPath: UnsafePointer<CChar>
-        ) throws(Error) {
+        ) throws(ISO_9945.Kernel.File.Rename.Error) {
             try unsafe renameat2(
                 oldDirFD: AT_FDCWD,
                 oldPath: oldPath,
@@ -71,9 +77,9 @@
         public static func noClobber(
             from oldPath: borrowing Path.Borrowed,
             to newPath: borrowing Path.Borrowed
-        ) throws(Error) {
-            try unsafe oldPath.withUnsafePointer { oldPtr throws(Error) in
-                try unsafe newPath.withUnsafePointer { newPtr throws(Error) in
+        ) throws(ISO_9945.Kernel.File.Rename.Error) {
+            try unsafe oldPath.withUnsafePointer { oldPtr throws(ISO_9945.Kernel.File.Rename.Error) in
+                try unsafe newPath.withUnsafePointer { newPtr throws(ISO_9945.Kernel.File.Rename.Error) in
                     try unsafe noClobber(
                         from: UnsafeRawPointer(oldPtr).assumingMemoryBound(to: CChar.self),
                         to: UnsafeRawPointer(newPtr).assumingMemoryBound(to: CChar.self)
@@ -86,7 +92,7 @@
         public static func exchange(
             _ path1: UnsafePointer<CChar>,
             _ path2: UnsafePointer<CChar>
-        ) throws(Error) {
+        ) throws(ISO_9945.Kernel.File.Rename.Error) {
             try unsafe renameat2(
                 oldDirFD: AT_FDCWD,
                 oldPath: path1,

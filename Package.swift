@@ -36,6 +36,9 @@ let package = Package(
         .library(name: "Linux Loader Standard", targets: ["Linux Loader Standard"]),
         .library(name: "Linux Memory Standard", targets: ["Linux Memory Standard"]),
     ],
+    traits: [
+        .trait(name: "Loader", description: "Dynamic library loader (dlopen/dlsym)")
+    ],
     dependencies: [
         .package(
             url: "https://github.com/swift-atoms/swift-pair.git",
@@ -75,8 +78,11 @@ let package = Package(
             traits: ["Map", "Shared", "Cursor", "Lock"]
         ),
         .package(url: "https://github.com/swift-atoms/swift-binary.git", branch: "main", traits: ["Serializer"]),
-        .package(url: "https://github.com/swift-iso/swift-iso-9945.git", branch: "main"),
-        .package(url: "https://github.com/swift-atoms/swift-parser.git", branch: "main", traits: ["Map", "IteratorLeaves", "Product", "Skip", "Append", "Either", "Iterator"]),
+        .package(
+            url: "https://github.com/swift-iso/swift-iso-9945.git",
+            branch: "main",
+            traits: [.trait(name: "Loader", condition: .when(traits: ["Loader"]))]
+        ),
         .package(url: "https://github.com/swift-atoms/swift-cardinal.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-difference.git", branch: "main", traits: ["Tagged"]),
     ],
@@ -275,10 +281,10 @@ let package = Package(
             dependencies: [
                 .target(name: "Linux Standard Core"),
                 .target(name: "Linux Kernel Shims", condition: .when(platforms: [.linux])),
-                .product(name: "Loader Vocabulary", package: "swift-loader-vocabulary"),
-                .product(name: "String", package: "swift-string"),
-                .product(name: "ISO 9945 Core", package: "swift-iso-9945"),
-                .product(name: "ISO 9945 Loader", package: "swift-iso-9945"),
+                .product(name: "Loader Vocabulary", package: "swift-loader-vocabulary", condition: .when(traits: ["Loader"])),
+                .product(name: "String", package: "swift-string", condition: .when(traits: ["Loader"])),
+                .product(name: "ISO 9945 Core", package: "swift-iso-9945", condition: .when(traits: ["Loader"])),
+                .product(name: "ISO 9945 Loader", package: "swift-iso-9945", condition: .when(traits: ["Loader"])),
             ]
         ),
 

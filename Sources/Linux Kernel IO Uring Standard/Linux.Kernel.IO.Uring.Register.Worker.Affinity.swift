@@ -1,15 +1,17 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Register.Worker {
+    extension Linux.Kernel.IO.Uring.Register.Worker {
         public struct Affinity {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Register.Worker.Affinity {
-        public static let register = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 17)
+    extension Linux.Kernel.IO.Uring.Register.Worker.Affinity {
+        public static let register = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 17)
 
-        public static let unregister = ISO_9945.Kernel.IO.Uring.Register.Opcode(rawValue: 18)
+        public static let unregister = Linux.Kernel.IO.Uring.Register.Opcode(rawValue: 18)
     }
 
 #endif

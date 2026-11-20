@@ -1,35 +1,37 @@
-#if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
+#if Loader
+    #if os(Linux) || os(FreeBSD) || os(OpenBSD) || os(Android)
 
-    public import Linux_Standard_Core
-    public import Loader_Vocabulary
+        public import Linux_Standard_Core
+        public import Loader_Vocabulary
 
-    extension Linux_Standard_Core::Linux.Loader {
+        extension Linux_Standard_Core::Linux.Loader {
 
-        public enum Section: Sendable {}
-    }
+            public enum Section: Sendable {}
+        }
 
-    extension Linux_Standard_Core::Linux.Loader.Section {
+        extension Linux_Standard_Core::Linux.Loader.Section {
 
-        public typealias Name = Loader.Section.Name
+            public typealias Name = Loader.Section.Name
 
-        public typealias Bounds = Loader.Section.Bounds
-    }
+            public typealias Bounds = Loader.Section.Bounds
+        }
 
-    extension Linux_Standard_Core::Linux.Loader.Section {
+        extension Linux_Standard_Core::Linux.Loader.Section {
 
-        public static func all(_ name: Name) -> [Bounds] {
-            guard let sectionName = name.elf else {
+            public static func all(_ name: Name) -> [Bounds] {
+                guard let sectionName = name.elf else {
+
+                    return []
+                }
+
+                return enumerateSections(named: sectionName)
+            }
+
+            private static func enumerateSections(named sectionName: StaticString) -> [Bounds] {
 
                 return []
             }
-
-            return enumerateSections(named: sectionName)
         }
 
-        private static func enumerateSections(named sectionName: StaticString) -> [Bounds] {
-
-            return []
-        }
-    }
-
+    #endif
 #endif

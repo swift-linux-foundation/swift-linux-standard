@@ -1,7 +1,9 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring.Setup {
+    extension Linux.Kernel.IO.Uring.Setup {
 
         public struct Options: OptionSet, Sendable {
             public let rawValue: UInt32
@@ -12,7 +14,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Setup.Options {
+    extension Linux.Kernel.IO.Uring.Setup.Options {
 
         public static let ioPoll = Self(rawValue: 1 << 0)
 

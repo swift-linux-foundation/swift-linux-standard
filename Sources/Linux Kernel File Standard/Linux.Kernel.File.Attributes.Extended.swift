@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     @_spi(Syscall) public import ISO_9945_Core
     import ISO_9945_Kernel_File
     public import Path
@@ -13,12 +14,12 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Attributes {
+    extension Linux.Kernel.File.Attributes {
 
         public enum Extended {}
     }
 
-    extension ISO_9945.Kernel.File.Attributes.Extended {
+    extension Linux.Kernel.File.Attributes.Extended {
 
         public struct Error: Swift::Error, Sendable {
             public let code: Error::Error.Code
@@ -29,7 +30,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Attributes.Extended.Error {
+    extension Linux.Kernel.File.Attributes.Extended.Error {
 
         public static let notFound = Error(code: .posix(ENODATA))
 
@@ -43,7 +44,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Attributes.Extended {
+    extension Linux.Kernel.File.Attributes.Extended {
 
         @unsafe
         private static func withCName<R, E: Swift::Error>(
@@ -75,7 +76,7 @@
         @unsafe
         private static func probed<Element: BitwiseCopyable>(
             _ read: (UnsafeMutablePointer<Element>?, Int) -> Int
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) -> [Element] {
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [Element] {
             while true {
                 let size = read(nil, 0)
                 guard size >= 0 else { throw .current() }
@@ -97,13 +98,13 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Attributes.Extended {
+    extension Linux.Kernel.File.Attributes.Extended {
 
         public static func list(
             path: borrowing Path.Borrowed,
             followSymlinks: Bool = true
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) -> [Swift::String] {
-            let buffer = try unsafe withCPath(path) { cPath throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [Swift::String] {
+            let buffer = try unsafe withCPath(path) { cPath throws(Linux.Kernel.File.Attributes.Extended.Error) in
                 try unsafe probed { (buffer: UnsafeMutablePointer<CChar>?, size) in
                     followSymlinks
                         ? unsafe listxattr(cPath, buffer, size)
@@ -117,9 +118,9 @@
             name: Swift::String,
             path: borrowing Path.Borrowed,
             followSymlinks: Bool = true
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) -> [UInt8] {
-            try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
-                try unsafe withCPath(path) { cPath throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [UInt8] {
+            try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
+                try unsafe withCPath(path) { cPath throws(Linux.Kernel.File.Attributes.Extended.Error) in
                     try unsafe probed { (buffer: UnsafeMutablePointer<UInt8>?, size) in
                         followSymlinks
                             ? unsafe getxattr(cPath, cName, buffer, size)
@@ -134,9 +135,9 @@
             value: UnsafeRawBufferPointer,
             path: borrowing Path.Borrowed,
             followSymlinks: Bool = true
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) {
-            try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
-                try unsafe withCPath(path) { cPath throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
+            try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
+                try unsafe withCPath(path) { cPath throws(Linux.Kernel.File.Attributes.Extended.Error) in
                     let result =
                         followSymlinks
                         ? unsafe setxattr(cPath, cName, value.baseAddress, value.count, 0)
@@ -150,9 +151,9 @@
             name: Swift::String,
             path: borrowing Path.Borrowed,
             followSymlinks: Bool = true
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) {
-            try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
-                try unsafe withCPath(path) { cPath throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
+            try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
+                try unsafe withCPath(path) { cPath throws(Linux.Kernel.File.Attributes.Extended.Error) in
                     let result =
                         followSymlinks
                         ? unsafe removexattr(cPath, cName)
@@ -163,11 +164,11 @@
         }
     }
 
-    extension ISO_9945.Kernel.File.Attributes.Extended {
+    extension Linux.Kernel.File.Attributes.Extended {
 
         public static func list(
             _ descriptor: borrowing ISO_9945.Kernel.Descriptor
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) -> [Swift::String] {
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [Swift::String] {
             let fd = descriptor._rawValue
             let buffer = try unsafe probed { (buffer: UnsafeMutablePointer<CChar>?, size) in
                 unsafe flistxattr(fd, buffer, size)
@@ -178,9 +179,9 @@
         public static func get(
             name: Swift::String,
             _ descriptor: borrowing ISO_9945.Kernel.Descriptor
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) -> [UInt8] {
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [UInt8] {
             let fd = descriptor._rawValue
-            return try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+            return try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
                 try unsafe probed { (buffer: UnsafeMutablePointer<UInt8>?, size) in
                     unsafe fgetxattr(fd, cName, buffer, size)
                 }
@@ -192,9 +193,9 @@
             name: Swift::String,
             value: UnsafeRawBufferPointer,
             _ descriptor: borrowing ISO_9945.Kernel.Descriptor
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) {
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
             let fd = descriptor._rawValue
-            try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+            try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
                 guard unsafe fsetxattr(fd, cName, value.baseAddress, value.count, 0) == 0 else {
                     throw .current()
                 }
@@ -204,9 +205,9 @@
         public static func remove(
             name: Swift::String,
             _ descriptor: borrowing ISO_9945.Kernel.Descriptor
-        ) throws(ISO_9945.Kernel.File.Attributes.Extended.Error) {
+        ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
             let fd = descriptor._rawValue
-            try unsafe withCName(name) { cName throws(ISO_9945.Kernel.File.Attributes.Extended.Error) in
+            try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
                 guard unsafe fremovexattr(fd, cName) == 0 else { throw .current() }
             }
         }

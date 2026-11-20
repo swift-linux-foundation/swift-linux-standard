@@ -1,22 +1,24 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
-    extension ISO_9945.Kernel.IO.Uring {
+    extension Linux.Kernel.IO.Uring {
         public struct Write {
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Write {
-        public static let standard = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 23)
+    extension Linux.Kernel.IO.Uring.Write {
+        public static let standard = Linux.Kernel.IO.Uring.Opcode(rawValue: 23)
 
         public static var vectored: Vectored.Type { Vectored.self }
 
-        public static let fixed = ISO_9945.Kernel.IO.Uring.Opcode(rawValue: 5)
+        public static let fixed = Linux.Kernel.IO.Uring.Opcode(rawValue: 5)
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Opcode {
-        public static var write: ISO_9945.Kernel.IO.Uring.Write.Type {
-            ISO_9945.Kernel.IO.Uring.Write.self
+    extension Linux.Kernel.IO.Uring.Opcode {
+        public static var write: Linux.Kernel.IO.Uring.Write.Type {
+            Linux.Kernel.IO.Uring.Write.self
         }
     }
 

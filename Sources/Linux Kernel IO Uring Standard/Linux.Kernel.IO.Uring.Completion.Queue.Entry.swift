@@ -1,5 +1,7 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
+    public import Linux_Kernel_IO_Standard
     public import ISO_9945_Core
     public import Error
 
@@ -13,7 +15,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue {
+    extension Linux.Kernel.IO.Uring.Completion.Queue {
 
         public struct Entry: Sendable {
 
@@ -25,10 +27,10 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry {
 
-        public var data: ISO_9945.Kernel.IO.Uring.Operation.Data {
-            ISO_9945.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data)
+        public var data: Linux.Kernel.IO.Uring.Operation.Data {
+            Linux.Kernel.IO.Uring.Operation.Data(_unchecked: cValue.user_data)
         }
 
         @usableFromInline
@@ -41,7 +43,7 @@
         }
     }
 
-    extension ISO_9945.Kernel.IO.Uring.Completion.Queue.Entry {
+    extension Linux.Kernel.IO.Uring.Completion.Queue.Entry {
 
         public var isSuccess: Bool {
             res >= 0

@@ -1,5 +1,6 @@
 #if os(Linux)
 
+    public import Linux_Standard_Core
     public import ISO_9945_Core
     import ISO_9945_Kernel_File
     import Error
@@ -16,7 +17,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.File {
+    extension Linux.Kernel.File {
 
         public struct Sync: Sendable {
 
