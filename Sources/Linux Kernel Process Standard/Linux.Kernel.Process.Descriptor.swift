@@ -20,11 +20,11 @@
         public struct Descriptor: ~Copyable, Sendable {
 
             @_spi(Syscall)
-            public let descriptor: ISO_9945.Kernel.Descriptor
+            public let descriptor: ISO.`9945`.Kernel.Descriptor
 
             @_spi(Syscall)
             @inlinable
-            public init(descriptor: consuming ISO_9945.Kernel.Descriptor) {
+            public init(descriptor: consuming ISO.`9945`.Kernel.Descriptor) {
                 self.descriptor = descriptor
             }
         }
@@ -33,7 +33,7 @@
     extension Linux.Kernel.Process.Descriptor {
 
         public static func create(
-            pid: ISO_9945.Kernel.Process.ID,
+            pid: ISO.`9945`.Kernel.Process.ID,
             flags: UInt32 = 0
         ) throws(Linux.Kernel.Process.Descriptor.Error) -> Linux.Kernel.Process.Descriptor {
             let fd = swift_pidfd_open(pid.rawValue, flags)
@@ -41,12 +41,12 @@
                 throw .create(.posix(errno))
             }
             return Linux.Kernel.Process.Descriptor(
-                descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
+                descriptor: ISO.`9945`.Kernel.Descriptor(_rawValue: fd)
             )
         }
     }
 
-    extension ISO_9945.Kernel.Descriptor {
+    extension ISO.`9945`.Kernel.Descriptor {
 
         public init(_ processDescriptor: consuming Linux.Kernel.Process.Descriptor) {
             self = processDescriptor.descriptor

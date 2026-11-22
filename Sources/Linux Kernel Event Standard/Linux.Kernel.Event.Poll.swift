@@ -21,7 +21,7 @@
         public struct Poll: ~Copyable, Sendable {
 
             @_spi(Syscall)
-            public let descriptor: ISO_9945.Kernel.Descriptor
+            public let descriptor: ISO.`9945`.Kernel.Descriptor
 
             public init(flags: Create.Flags = .cloexec) throws(Error) {
                 self.descriptor = try Self.create(flags: flags)
@@ -32,21 +32,21 @@
     extension Linux.Kernel.Event.Poll {
 
         public func add(
-            fd: borrowing ISO_9945.Kernel.Descriptor,
+            fd: borrowing ISO.`9945`.Kernel.Descriptor,
             event: Event
         ) throws(Error) {
             try Self.ctl(self, op: .add, fd: fd, event: event)
         }
 
         public func modify(
-            fd: borrowing ISO_9945.Kernel.Descriptor,
+            fd: borrowing ISO.`9945`.Kernel.Descriptor,
             event: Event
         ) throws(Error) {
             try Self.ctl(self, op: .modify, fd: fd, event: event)
         }
 
         public func remove(
-            fd: borrowing ISO_9945.Kernel.Descriptor
+            fd: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Error) {
             try Self.ctl(self, op: .delete, fd: fd)
         }
@@ -74,18 +74,18 @@
 
         package static func create(
             flags: Create.Flags = .cloexec
-        ) throws(Linux.Kernel.Event.Poll.Error) -> ISO_9945.Kernel.Descriptor {
+        ) throws(Linux.Kernel.Event.Poll.Error) -> ISO.`9945`.Kernel.Descriptor {
             let epfd = epoll_create1(flags.rawValue)
             guard epfd >= 0 else {
                 throw .create(.posix(errno))
             }
-            return ISO_9945.Kernel.Descriptor(_rawValue: epfd)
+            return ISO.`9945`.Kernel.Descriptor(_rawValue: epfd)
         }
 
         package static func ctl(
             _ epoll: borrowing Linux.Kernel.Event.Poll,
             op: Operation,
-            fd: borrowing ISO_9945.Kernel.Descriptor,
+            fd: borrowing ISO.`9945`.Kernel.Descriptor,
             event: Event? = nil
         ) throws(Linux.Kernel.Event.Poll.Error) {
             let result: Int32
@@ -142,7 +142,7 @@
             events: inout [Event],
             timeout: Duration?
         ) throws(Linux.Kernel.Event.Poll.Error) -> Int {
-            let ms = ISO_9945.Kernel.Time.milliseconds(from: timeout)
+            let ms = ISO.`9945`.Kernel.Time.milliseconds(from: timeout)
             return try wait(epoll, events: &events, timeout: ms)
         }
     }

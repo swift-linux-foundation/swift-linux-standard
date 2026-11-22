@@ -23,7 +23,7 @@
             sourceFd: Int32,
             destinationFd: Int32,
             flags: Options
-        ) throws(ISO_9945.Kernel.Descriptor.Duplicate.Error) {
+        ) throws(ISO.`9945`.Kernel.Descriptor.Duplicate.Error) {
             let result = swift_dup3(sourceFd, destinationFd, flags.rawValue)
 
             guard result >= 0 else {
@@ -42,10 +42,10 @@
         }
 
         public static func duplicate(
-            source: borrowing ISO_9945.Kernel.Descriptor,
-            destination: borrowing ISO_9945.Kernel.Descriptor,
+            source: borrowing ISO.`9945`.Kernel.Descriptor,
+            destination: borrowing ISO.`9945`.Kernel.Descriptor,
             flags: Options
-        ) throws(ISO_9945.Kernel.Descriptor.Duplicate.Error) {
+        ) throws(ISO.`9945`.Kernel.Descriptor.Duplicate.Error) {
             try duplicate(
                 sourceFd: source._rawValue,
                 destinationFd: destination._rawValue,

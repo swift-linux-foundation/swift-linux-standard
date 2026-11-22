@@ -20,11 +20,11 @@
         public struct Descriptor: ~Copyable, Sendable {
 
             @_spi(Syscall)
-            public let descriptor: ISO_9945.Kernel.Descriptor
+            public let descriptor: ISO.`9945`.Kernel.Descriptor
 
             @_spi(Syscall)
             @inlinable
-            public init(descriptor: consuming ISO_9945.Kernel.Descriptor) {
+            public init(descriptor: consuming ISO.`9945`.Kernel.Descriptor) {
                 self.descriptor = descriptor
             }
         }
@@ -33,7 +33,7 @@
     extension Linux.Kernel.Signal.Descriptor {
 
         public static func create(
-            mask: borrowing ISO_9945.Kernel.Signal.Set,
+            mask: borrowing ISO.`9945`.Kernel.Signal.Set,
             flags: Int32? = nil
         ) throws(Linux.Kernel.Signal.Descriptor.Error) -> Linux.Kernel.Signal.Descriptor {
 
@@ -46,12 +46,12 @@
                 throw .create(.posix(errno))
             }
             return Linux.Kernel.Signal.Descriptor(
-                descriptor: ISO_9945.Kernel.Descriptor(_rawValue: fd)
+                descriptor: ISO.`9945`.Kernel.Descriptor(_rawValue: fd)
             )
         }
     }
 
-    extension ISO_9945.Kernel.Descriptor {
+    extension ISO.`9945`.Kernel.Descriptor {
 
         public init(_ signalDescriptor: consuming Linux.Kernel.Signal.Descriptor) {
             self = signalDescriptor.descriptor

@@ -25,7 +25,7 @@
         @safe
         public struct Uring: ~Copyable {
 
-            @usableFromInline let ringDescriptor: ISO_9945.Kernel.Descriptor
+            @usableFromInline let ringDescriptor: ISO.`9945`.Kernel.Descriptor
 
             @usableFromInline let sqHead: UnsafeMutablePointer<UInt32>
             @usableFromInline let sqTail: UnsafeMutablePointer<UInt32>
@@ -45,15 +45,15 @@
             @usableFromInline let singleMmap: Bool
 
             @usableFromInline let sqRingAddr: Memory::Memory.Address
-            @usableFromInline let sqRingSize: ISO_9945.Kernel.File.Size
+            @usableFromInline let sqRingSize: ISO.`9945`.Kernel.File.Size
             @usableFromInline let cqRingAddr: Memory::Memory.Address
-            @usableFromInline let cqRingSize: ISO_9945.Kernel.File.Size
+            @usableFromInline let cqRingSize: ISO.`9945`.Kernel.File.Size
             @usableFromInline let sqeAddr: Memory::Memory.Address
-            @usableFromInline let sqeSize: ISO_9945.Kernel.File.Size
+            @usableFromInline let sqeSize: ISO.`9945`.Kernel.File.Size
 
             @unsafe
             init(
-                ringDescriptor: consuming ISO_9945.Kernel.Descriptor,
+                ringDescriptor: consuming ISO.`9945`.Kernel.Descriptor,
                 sqHead: UnsafeMutablePointer<UInt32>,
                 sqTail: UnsafeMutablePointer<UInt32>,
                 sqMask: Submission.Queue.Mask,
@@ -66,11 +66,11 @@
                 cqes: UnsafePointer<Completion.Queue.Entry>,
                 singleMmap: Bool,
                 sqRingAddr: Memory::Memory.Address,
-                sqRingSize: ISO_9945.Kernel.File.Size,
+                sqRingSize: ISO.`9945`.Kernel.File.Size,
                 cqRingAddr: Memory::Memory.Address,
-                cqRingSize: ISO_9945.Kernel.File.Size,
+                cqRingSize: ISO.`9945`.Kernel.File.Size,
                 sqeAddr: Memory::Memory.Address,
-                sqeSize: ISO_9945.Kernel.File.Size
+                sqeSize: ISO.`9945`.Kernel.File.Size
             ) {
                 self.ringDescriptor = consume ringDescriptor
                 unsafe self.sqHead = unsafe sqHead
@@ -110,7 +110,7 @@
         public static func setup(
             entries: Submission.Count,
             params: inout Params
-        ) throws(Linux.Kernel.IO.Uring.Error) -> ISO_9945.Kernel.Descriptor {
+        ) throws(Linux.Kernel.IO.Uring.Error) -> ISO.`9945`.Kernel.Descriptor {
             var cParams = params.cValue
             let fd = unsafe swift_io_uring_setup(UInt32(entries.underlying.rawValue), &cParams)
             guard fd >= 0 else {
@@ -118,11 +118,11 @@
             }
 
             params = Params(cParams)
-            return ISO_9945.Kernel.Descriptor(_rawValue: fd)
+            return ISO.`9945`.Kernel.Descriptor(_rawValue: fd)
         }
 
         public static func enter(
-            _ fd: borrowing ISO_9945.Kernel.Descriptor,
+            _ fd: borrowing ISO.`9945`.Kernel.Descriptor,
             toSubmit: Submission.Count,
             minComplete: Completion.Count,
             flags: Enter.Options
@@ -145,7 +145,7 @@
 
         @unsafe
         public static func register(
-            _ fd: borrowing ISO_9945.Kernel.Descriptor,
+            _ fd: borrowing ISO.`9945`.Kernel.Descriptor,
             opcode: Register.Opcode,
             argument: UnsafeMutableRawPointer?,
             count: UInt32
@@ -161,9 +161,9 @@
             }
         }
 
-        public static func close(_ fd: consuming ISO_9945.Kernel.Descriptor) {
-            do throws(ISO_9945.Kernel.Close.Error) {
-                try ISO_9945.Kernel.Close.close(consume fd)
+        public static func close(_ fd: consuming ISO.`9945`.Kernel.Descriptor) {
+            do throws(ISO.`9945`.Kernel.Close.Error) {
+                try ISO.`9945`.Kernel.Close.close(consume fd)
             } catch {
 
             }
@@ -200,7 +200,7 @@
         }
 
         public func register(
-            eventfd descriptor: borrowing ISO_9945.Kernel.Descriptor
+            eventfd descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Error) {
             var fd = descriptor._rawValue
             try withUnsafeMutablePointer(to: &fd) {
@@ -217,7 +217,7 @@
     extension Linux.Kernel.IO.Uring {
 
         public init(
-            descriptor: consuming ISO_9945.Kernel.Descriptor,
+            descriptor: consuming ISO.`9945`.Kernel.Descriptor,
             params: Linux.Kernel.IO.Uring.Params
         ) throws(Linux.Kernel.IO.Uring.Error) {
             let fd = descriptor._rawValue
@@ -330,11 +330,11 @@
                 ),
                 singleMmap: isSingleMmap,
                 sqRingAddr: unsafe Memory::Memory.Address(sq),
-                sqRingSize: ISO_9945.Kernel.File.Size(sqMmapSz),
+                sqRingSize: ISO.`9945`.Kernel.File.Size(sqMmapSz),
                 cqRingAddr: unsafe Memory::Memory.Address(cq),
-                cqRingSize: ISO_9945.Kernel.File.Size(cqMmapSz),
+                cqRingSize: ISO.`9945`.Kernel.File.Size(cqMmapSz),
                 sqeAddr: unsafe Memory::Memory.Address(sqe),
-                sqeSize: ISO_9945.Kernel.File.Size(sqeSz)
+                sqeSize: ISO.`9945`.Kernel.File.Size(sqeSz)
             )
         }
     }

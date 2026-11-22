@@ -13,9 +13,9 @@
             internal var cValue: open_how
 
             public init(
-                access: ISO_9945.Kernel.File.Open.Access = .readOnly,
-                options: ISO_9945.Kernel.File.Open.Options = [],
-                mode: ISO_9945.Kernel.File.Permissions = .none,
+                access: ISO.`9945`.Kernel.File.Open.Access = .readOnly,
+                options: ISO.`9945`.Kernel.File.Open.Options = [],
+                mode: ISO.`9945`.Kernel.File.Permissions = .none,
                 resolve: Linux.Kernel.File.Open.Resolve = []
             ) {
                 self.cValue = open_how()
@@ -28,7 +28,7 @@
 
     extension Linux.Kernel.File.Open.How {
 
-        public var access: ISO_9945.Kernel.File.Open.Access {
+        public var access: ISO.`9945`.Kernel.File.Open.Access {
             get {
                 switch Int32(cValue.flags & 0x3) {
                 case 1: .writeOnly
@@ -41,15 +41,15 @@
             }
         }
 
-        public var options: ISO_9945.Kernel.File.Open.Options {
-            get { ISO_9945.Kernel.File.Open.Options(rawValue: Int32(cValue.flags & ~0x3)) }
+        public var options: ISO.`9945`.Kernel.File.Open.Options {
+            get { ISO.`9945`.Kernel.File.Open.Options(rawValue: Int32(cValue.flags & ~0x3)) }
             set {
                 cValue.flags = UInt64(newValue.rawValue) | (cValue.flags & 0x3)
             }
         }
 
-        public var mode: ISO_9945.Kernel.File.Permissions {
-            get { ISO_9945.Kernel.File.Permissions(rawValue: UInt16(cValue.mode)) }
+        public var mode: ISO.`9945`.Kernel.File.Permissions {
+            get { ISO.`9945`.Kernel.File.Permissions(rawValue: UInt16(cValue.mode)) }
             set { cValue.mode = UInt64(newValue.rawValue) }
         }
 

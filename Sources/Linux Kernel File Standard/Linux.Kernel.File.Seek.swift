@@ -6,7 +6,7 @@
     import Memory
     import Path
 
-    extension ISO_9945.Kernel.File.Seek.Whence {
+    extension ISO.`9945`.Kernel.File.Seek.Whence {
 
         public static let hole = Self(rawValue: 4)
 

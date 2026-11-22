@@ -101,14 +101,14 @@
     extension Linux.Kernel.IO.Uring.Submission.Queue.Entry {
 
         @usableFromInline
-        internal var atFlags: ISO_9945.Kernel.File.At.Options {
-            get { ISO_9945.Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var atFlags: ISO.`9945`.Kernel.File.At.Options {
+            get { ISO.`9945`.Kernel.File.At.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         @usableFromInline
-        internal var fileAdvice: ISO_9945.Kernel.File.Advice {
-            get { ISO_9945.Kernel.File.Advice(rawValue: cValue.rw_flags) }
+        internal var fileAdvice: ISO.`9945`.Kernel.File.Advice {
+            get { ISO.`9945`.Kernel.File.Advice(rawValue: cValue.rw_flags) }
             set { cValue.rw_flags = newValue.rawValue }
         }
 
@@ -137,9 +137,9 @@
         }
 
         @usableFromInline
-        internal var filePermissions: ISO_9945.Kernel.File.Permissions {
+        internal var filePermissions: ISO.`9945`.Kernel.File.Permissions {
             get {
-                ISO_9945.Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len))
+                ISO.`9945`.Kernel.File.Permissions(rawValue: UInt16(truncatingIfNeeded: cValue.len))
             }
             set { cValue.len = UInt32(newValue.rawValue) }
         }
@@ -163,16 +163,16 @@
         }
 
         @usableFromInline
-        internal var messageFlags: ISO_9945.Kernel.Socket.Message.Options {
+        internal var messageFlags: ISO.`9945`.Kernel.Socket.Message.Options {
             get {
-                ISO_9945.Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags))
+                ISO.`9945`.Kernel.Socket.Message.Options(rawValue: Int32(bitPattern: cValue.rw_flags))
             }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
         @usableFromInline
-        internal var acceptFlags: ISO_9945.Kernel.Socket.Options {
-            get { ISO_9945.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var acceptFlags: ISO.`9945`.Kernel.Socket.Options {
+            get { ISO.`9945`.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
     }
@@ -213,13 +213,13 @@
         }
 
         @usableFromInline
-        internal mutating func setSpliceSource(_ descriptor: borrowing ISO_9945.Kernel.Descriptor) {
+        internal mutating func setSpliceSource(_ descriptor: borrowing ISO.`9945`.Kernel.Descriptor) {
             cValue.splice_fd_in = descriptor._rawValue
         }
 
         @usableFromInline
         internal mutating func setEpollDescriptor(
-            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+            _ descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) {
             cValue.off = UInt64(UInt32(bitPattern: descriptor._rawValue))
         }
@@ -295,15 +295,15 @@
         }
 
         @usableFromInline
-        internal var waitidKind: ISO_9945.Kernel.Process.Wait.Kind {
-            get { ISO_9945.Kernel.Process.Wait.Kind(rawValue: Int32(bitPattern: cValue.len)) }
+        internal var waitidKind: ISO.`9945`.Kernel.Process.Wait.Kind {
+            get { ISO.`9945`.Kernel.Process.Wait.Kind(rawValue: Int32(bitPattern: cValue.len)) }
             set { cValue.len = UInt32(bitPattern: newValue.rawValue) }
         }
 
         @usableFromInline
-        internal var waitidOptions: ISO_9945.Kernel.Process.Wait.Options {
+        internal var waitidOptions: ISO.`9945`.Kernel.Process.Wait.Options {
             get {
-                ISO_9945.Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index))
+                ISO.`9945`.Kernel.Process.Wait.Options(rawValue: Int32(bitPattern: cValue.file_index))
             }
             set { cValue.file_index = UInt32(bitPattern: newValue.rawValue) }
         }
@@ -321,14 +321,14 @@
         }
 
         @usableFromInline
-        internal var socketDomain: ISO_9945.Kernel.Socket.Address.Family {
-            get { ISO_9945.Kernel.Socket.Address.Family(rawValue: cValue.fd) }
+        internal var socketDomain: ISO.`9945`.Kernel.Socket.Address.Family {
+            get { ISO.`9945`.Kernel.Socket.Address.Family(rawValue: cValue.fd) }
             set { cValue.fd = newValue.rawValue }
         }
 
         @usableFromInline
-        internal var socketKind: ISO_9945.Kernel.Socket.Kind {
-            get { ISO_9945.Kernel.Socket.Kind(rawValue: Int32(truncatingIfNeeded: cValue.off)) }
+        internal var socketKind: ISO.`9945`.Kernel.Socket.Kind {
+            get { ISO.`9945`.Kernel.Socket.Kind(rawValue: Int32(truncatingIfNeeded: cValue.off)) }
             set { cValue.off = UInt64(UInt32(bitPattern: newValue.rawValue)) }
         }
 
@@ -339,8 +339,8 @@
         }
 
         @usableFromInline
-        internal var socketFlags: ISO_9945.Kernel.Socket.Options {
-            get { ISO_9945.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
+        internal var socketFlags: ISO.`9945`.Kernel.Socket.Options {
+            get { ISO.`9945`.Kernel.Socket.Options(rawValue: Int32(bitPattern: cValue.rw_flags)) }
             set { cValue.rw_flags = UInt32(bitPattern: newValue.rawValue) }
         }
 
@@ -353,7 +353,7 @@
         }
 
         @usableFromInline
-        internal mutating func setWaitidProcess(_ id: ISO_9945.Kernel.Process.ID) {
+        internal mutating func setWaitidProcess(_ id: ISO.`9945`.Kernel.Process.ID) {
             cValue.fd = id.rawValue
         }
 

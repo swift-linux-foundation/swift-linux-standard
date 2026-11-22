@@ -2,7 +2,7 @@
 
     public import ISO_9945_Core
 
-    extension ISO_9945.Kernel.File.System.Kind {
+    extension ISO.`9945`.Kernel.File.System.Kind {
 
         public static let ext4 = Self(rawValue: 0xEF53)
 

@@ -29,7 +29,7 @@
             newDirFD: Int32,
             newPath: UnsafePointer<CChar>,
             flags: Options
-        ) throws(ISO_9945.Kernel.File.Rename.Error) {
+        ) throws(ISO.`9945`.Kernel.File.Rename.Error) {
             let result = unsafe swift_renameat2(
                 oldDirFD,
                 oldPath,
@@ -64,7 +64,7 @@
         public static func noClobber(
             from oldPath: UnsafePointer<CChar>,
             to newPath: UnsafePointer<CChar>
-        ) throws(ISO_9945.Kernel.File.Rename.Error) {
+        ) throws(ISO.`9945`.Kernel.File.Rename.Error) {
             try unsafe renameat2(
                 oldDirFD: AT_FDCWD,
                 oldPath: oldPath,
@@ -77,9 +77,9 @@
         public static func noClobber(
             from oldPath: borrowing Path.Borrowed,
             to newPath: borrowing Path.Borrowed
-        ) throws(ISO_9945.Kernel.File.Rename.Error) {
-            try unsafe oldPath.withUnsafePointer { oldPtr throws(ISO_9945.Kernel.File.Rename.Error) in
-                try unsafe newPath.withUnsafePointer { newPtr throws(ISO_9945.Kernel.File.Rename.Error) in
+        ) throws(ISO.`9945`.Kernel.File.Rename.Error) {
+            try unsafe oldPath.withUnsafePointer { oldPtr throws(ISO.`9945`.Kernel.File.Rename.Error) in
+                try unsafe newPath.withUnsafePointer { newPtr throws(ISO.`9945`.Kernel.File.Rename.Error) in
                     try unsafe noClobber(
                         from: UnsafeRawPointer(oldPtr).assumingMemoryBound(to: CChar.self),
                         to: UnsafeRawPointer(newPtr).assumingMemoryBound(to: CChar.self)
@@ -92,7 +92,7 @@
         public static func exchange(
             _ path1: UnsafePointer<CChar>,
             _ path2: UnsafePointer<CChar>
-        ) throws(ISO_9945.Kernel.File.Rename.Error) {
+        ) throws(ISO.`9945`.Kernel.File.Rename.Error) {
             try unsafe renameat2(
                 oldDirFD: AT_FDCWD,
                 oldPath: path1,

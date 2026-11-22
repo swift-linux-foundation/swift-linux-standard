@@ -24,7 +24,7 @@
     extension Linux.Kernel.IO.Uring.Target {
 
         @_lifetime(borrow descriptor)
-        public init(descriptor: borrowing ISO_9945.Kernel.Descriptor) {
+        public init(descriptor: borrowing ISO.`9945`.Kernel.Descriptor) {
             self = .descriptor(descriptor._rawValue)
         }
     }

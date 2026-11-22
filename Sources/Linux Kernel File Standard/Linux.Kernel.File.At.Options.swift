@@ -13,7 +13,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.File.At.Options {
+    extension ISO.`9945`.Kernel.File.At.Options {
 
         public static let emptyPath = Self(rawValue: Int32(AT_EMPTY_PATH))
     }

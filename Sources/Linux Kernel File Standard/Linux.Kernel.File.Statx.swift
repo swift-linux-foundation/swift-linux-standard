@@ -37,28 +37,28 @@
             cValue.stx_nlink
         }
 
-        public var uid: ISO_9945.Kernel.User.ID {
-            ISO_9945.Kernel.User.ID(_unchecked: cValue.stx_uid)
+        public var uid: ISO.`9945`.Kernel.User.ID {
+            ISO.`9945`.Kernel.User.ID(_unchecked: cValue.stx_uid)
         }
 
-        public var gid: ISO_9945.Kernel.Group.ID {
-            ISO_9945.Kernel.Group.ID(_unchecked: cValue.stx_gid)
+        public var gid: ISO.`9945`.Kernel.Group.ID {
+            ISO.`9945`.Kernel.Group.ID(_unchecked: cValue.stx_gid)
         }
 
         public var mode: UInt16 {
             cValue.stx_mode
         }
 
-        public var permissions: ISO_9945.Kernel.File.Permissions {
-            ISO_9945.Kernel.File.Permissions(rawValue: cValue.stx_mode & 0o7777)
+        public var permissions: ISO.`9945`.Kernel.File.Permissions {
+            ISO.`9945`.Kernel.File.Permissions(rawValue: cValue.stx_mode & 0o7777)
         }
 
         public var inode: UInt64 {
             cValue.stx_ino
         }
 
-        public var size: ISO_9945.Kernel.File.Size {
-            ISO_9945.Kernel.File.Size(Int64(cValue.stx_size))
+        public var size: ISO.`9945`.Kernel.File.Size {
+            ISO.`9945`.Kernel.File.Size(Int64(cValue.stx_size))
         }
 
         public var blocks: UInt64 {

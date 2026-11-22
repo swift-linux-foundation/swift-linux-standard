@@ -9,7 +9,7 @@
 
         private let _RTLD_NODELETE: Int32 = 0x1000
 
-        extension ISO_9945.Loader.Library.Options {
+        extension ISO.`9945`.Loader.Library.Options {
 
             public static let noLoad = Self(rawValue: _RTLD_NOLOAD)
 

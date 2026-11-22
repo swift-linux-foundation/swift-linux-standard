@@ -167,7 +167,7 @@
     extension Linux.Kernel.File.Attributes.Extended {
 
         public static func list(
-            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+            _ descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [Swift::String] {
             let fd = descriptor._rawValue
             let buffer = try unsafe probed { (buffer: UnsafeMutablePointer<CChar>?, size) in
@@ -178,7 +178,7 @@
 
         public static func get(
             name: Swift::String,
-            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+            _ descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.File.Attributes.Extended.Error) -> [UInt8] {
             let fd = descriptor._rawValue
             return try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
@@ -192,7 +192,7 @@
         public static func set(
             name: Swift::String,
             value: UnsafeRawBufferPointer,
-            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+            _ descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
             let fd = descriptor._rawValue
             try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in
@@ -204,7 +204,7 @@
 
         public static func remove(
             name: Swift::String,
-            _ descriptor: borrowing ISO_9945.Kernel.Descriptor
+            _ descriptor: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.File.Attributes.Extended.Error) {
             let fd = descriptor._rawValue
             try unsafe withCName(name) { cName throws(Linux.Kernel.File.Attributes.Extended.Error) in

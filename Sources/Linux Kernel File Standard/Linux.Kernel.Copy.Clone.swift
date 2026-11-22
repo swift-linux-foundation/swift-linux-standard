@@ -31,8 +31,8 @@
         }
 
         public static func perform(
-            from source: borrowing ISO_9945.Kernel.Descriptor,
-            to destination: borrowing ISO_9945.Kernel.Descriptor
+            from source: borrowing ISO.`9945`.Kernel.Descriptor,
+            to destination: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.Copy.Error) {
             try perform(fromFd: source._rawValue, toFd: destination._rawValue)
         }

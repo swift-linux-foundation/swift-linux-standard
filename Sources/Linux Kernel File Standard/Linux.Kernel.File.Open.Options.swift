@@ -10,7 +10,7 @@
         internal import Linux_Kernel_Shims
     #endif
 
-    extension ISO_9945.Kernel.File.Open.Options {
+    extension ISO.`9945`.Kernel.File.Open.Options {
 
         public static let direct = Self(rawValue: O_DIRECT)
     }

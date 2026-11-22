@@ -105,8 +105,8 @@ extension Linux.Kernel.File {
 
     extension Linux.Kernel.File.Clone.Ficlone {
         public static func attempt(
-            source: borrowing ISO_9945.Kernel.Descriptor,
-            destination: borrowing ISO_9945.Kernel.Descriptor
+            source: borrowing ISO.`9945`.Kernel.Descriptor,
+            destination: borrowing ISO.`9945`.Kernel.Descriptor
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) -> Bool {
             try attempt(sourceFd: source._rawValue, destinationFd: destination._rawValue)
         }
@@ -123,12 +123,12 @@ extension Linux.Kernel.File {
             destinationFd: Int32,
             length: Int
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) {
-            var remaining = ISO_9945.Kernel.File.Size(length)
-            var srcOffset = ISO_9945.Kernel.File.Offset(0)
-            var dstOffset = ISO_9945.Kernel.File.Offset(0)
+            var remaining = ISO.`9945`.Kernel.File.Size(length)
+            var srcOffset = ISO.`9945`.Kernel.File.Offset(0)
+            var dstOffset = ISO.`9945`.Kernel.File.Offset(0)
 
             while remaining > .zero {
-                let copied: ISO_9945.Kernel.File.Size
+                let copied: ISO.`9945`.Kernel.File.Size
                 do {
                     copied = try Linux.Kernel.Copy.Range.copy(
                         fromFd: sourceFd,
@@ -152,8 +152,8 @@ extension Linux.Kernel.File {
 
     extension Linux.Kernel.File.Clone.CopyRange {
         public static func copy(
-            source: borrowing ISO_9945.Kernel.Descriptor,
-            destination: borrowing ISO_9945.Kernel.Descriptor,
+            source: borrowing ISO.`9945`.Kernel.Descriptor,
+            destination: borrowing ISO.`9945`.Kernel.Descriptor,
             length: Int
         ) throws(Linux.Kernel.File.Clone.Error.Syscall) {
             try copy(

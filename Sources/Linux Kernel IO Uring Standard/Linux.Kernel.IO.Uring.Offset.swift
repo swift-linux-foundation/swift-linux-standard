@@ -22,7 +22,7 @@
 
     extension Linux.Kernel.IO.Uring.Offset {
 
-        public init(_ fileOffset: ISO_9945.Kernel.File.Offset) {
+        public init(_ fileOffset: ISO.`9945`.Kernel.File.Offset) {
             if fileOffset.underlying >= 0 {
                 self.init(UInt64(fileOffset.underlying))
             } else {

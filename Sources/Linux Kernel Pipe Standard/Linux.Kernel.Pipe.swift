@@ -22,7 +22,7 @@ extension Linux.Kernel {
     extension Linux.Kernel.Pipe {
         internal static func pipe2(
             flags: Options
-        ) throws(ISO_9945.Kernel.Pipe.Error) -> (read: Int32, write: Int32) {
+        ) throws(ISO.`9945`.Kernel.Pipe.Error) -> (read: Int32, write: Int32) {
             var fds: (Int32, Int32) = (0, 0)
 
             let result = withUnsafeMutablePointer(to: &fds) { ptr in
@@ -40,11 +40,11 @@ extension Linux.Kernel {
 
         public static func pipe2(
             flags: Options
-        ) throws(ISO_9945.Kernel.Pipe.Error) -> Pair<ISO_9945.Kernel.Descriptor, ISO_9945.Kernel.Descriptor> {
+        ) throws(ISO.`9945`.Kernel.Pipe.Error) -> Pair<ISO.`9945`.Kernel.Descriptor, ISO.`9945`.Kernel.Descriptor> {
             let raw = try pipe2(flags: flags) as (read: Int32, write: Int32)
             return Pair(
-                ISO_9945.Kernel.Descriptor(_rawValue: raw.read),
-                ISO_9945.Kernel.Descriptor(_rawValue: raw.write)
+                ISO.`9945`.Kernel.Descriptor(_rawValue: raw.read),
+                ISO.`9945`.Kernel.Descriptor(_rawValue: raw.write)
             )
         }
     }

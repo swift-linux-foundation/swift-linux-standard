@@ -101,9 +101,9 @@
         @inlinable @unsafe
         public mutating func accept(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            addr: UnsafeMutablePointer<ISO_9945.Kernel.Socket.Address.Storage>?,
+            addr: UnsafeMutablePointer<ISO.`9945`.Kernel.Socket.Address.Storage>?,
             length: UnsafeMutablePointer<UInt32>?,
-            flags: ISO_9945.Kernel.Socket.Options,
+            flags: ISO.`9945`.Kernel.Socket.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -118,7 +118,7 @@
         @inlinable @unsafe
         public mutating func connect(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            address: UnsafePointer<ISO_9945.Kernel.Socket.Address.Storage>,
+            address: UnsafePointer<ISO.`9945`.Kernel.Socket.Address.Storage>,
             length: UInt32,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -135,7 +135,7 @@
             target: borrowing Linux.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Linux.Kernel.IO.Uring.Length,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -152,7 +152,7 @@
             target: borrowing Linux.Kernel.IO.Uring.Target,
             buffer: UnsafeMutableRawPointer,
             length: Linux.Kernel.IO.Uring.Length,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -170,7 +170,7 @@
         @inlinable @unsafe
         public mutating func read(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
+            vectors: UnsafeBufferPointer<ISO.`9945`.Kernel.IO.Vector.Segment>,
             offset: Linux.Kernel.IO.Uring.Offset,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -186,7 +186,7 @@
         @inlinable @unsafe
         public mutating func write(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
+            vectors: UnsafeBufferPointer<ISO.`9945`.Kernel.IO.Vector.Segment>,
             offset: Linux.Kernel.IO.Uring.Offset,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -240,7 +240,7 @@
         @inlinable @unsafe
         public mutating func read(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
+            vectors: UnsafeBufferPointer<ISO.`9945`.Kernel.IO.Vector.Segment>,
             offset: Linux.Kernel.IO.Uring.Offset,
             bufferIndex: Linux.Kernel.IO.Uring.Buffer.Index,
             data: Linux.Kernel.IO.Uring.Operation.Data
@@ -258,7 +258,7 @@
         @inlinable @unsafe
         public mutating func write(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            vectors: UnsafeBufferPointer<ISO_9945.Kernel.IO.Vector.Segment>,
+            vectors: UnsafeBufferPointer<ISO.`9945`.Kernel.IO.Vector.Segment>,
             offset: Linux.Kernel.IO.Uring.Offset,
             bufferIndex: Linux.Kernel.IO.Uring.Buffer.Index,
             data: Linux.Kernel.IO.Uring.Operation.Data
@@ -297,7 +297,7 @@
         @inlinable
         public mutating func splice(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            source: borrowing ISO_9945.Kernel.Descriptor,
+            source: borrowing ISO.`9945`.Kernel.Descriptor,
             offsets: (
                 input: Linux.Kernel.IO.Uring.Offset, output: Linux.Kernel.IO.Uring.Offset
             ),
@@ -319,7 +319,7 @@
         @inlinable
         public mutating func tee(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            source: borrowing ISO_9945.Kernel.Descriptor,
+            source: borrowing ISO.`9945`.Kernel.Descriptor,
             length: Linux.Kernel.IO.Uring.Length,
             flags: Linux.Kernel.Pipe.Splice.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
@@ -354,9 +354,9 @@
         public mutating func openat(
             target: borrowing Linux.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            access: ISO_9945.Kernel.File.Open.Access = .readOnly,
-            options: ISO_9945.Kernel.File.Open.Options = [],
-            mode: ISO_9945.Kernel.File.Permissions = .none,
+            access: ISO.`9945`.Kernel.File.Open.Access = .readOnly,
+            options: ISO.`9945`.Kernel.File.Open.Options = [],
+            mode: ISO.`9945`.Kernel.File.Permissions = .none,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -389,7 +389,7 @@
         public mutating func statx(
             target: borrowing Linux.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: ISO_9945.Kernel.File.At.Options,
+            flags: ISO.`9945`.Kernel.File.At.Options,
             mask: Linux.Kernel.File.Statx.Mask,
             buffer: UnsafeMutablePointer<Linux.Kernel.File.Statx>,
             data: Linux.Kernel.IO.Uring.Operation.Data
@@ -427,7 +427,7 @@
         public mutating func unlinkat(
             target: borrowing Linux.Kernel.IO.Uring.Target,
             path: UnsafePointer<CChar>,
-            flags: ISO_9945.Kernel.File.At.Options,
+            flags: ISO.`9945`.Kernel.File.At.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -474,7 +474,7 @@
             oldPath: UnsafePointer<CChar>,
             newDirFd: Int32,
             newPath: UnsafePointer<CChar>,
-            flags: ISO_9945.Kernel.File.At.Options,
+            flags: ISO.`9945`.Kernel.File.At.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -510,10 +510,10 @@
 
         @inlinable
         public mutating func socket(
-            domain: ISO_9945.Kernel.Socket.Address.Family,
-            kind: ISO_9945.Kernel.Socket.Kind,
+            domain: ISO.`9945`.Kernel.Socket.Address.Family,
+            kind: ISO.`9945`.Kernel.Socket.Kind,
             protocol: Linux.Kernel.Socket.`Protocol` = .auto,
-            flags: ISO_9945.Kernel.Socket.Options,
+            flags: ISO.`9945`.Kernel.Socket.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -528,7 +528,7 @@
         @inlinable @unsafe
         public mutating func bind(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            address: UnsafePointer<ISO_9945.Kernel.Socket.Address.Storage>,
+            address: UnsafePointer<ISO.`9945`.Kernel.Socket.Address.Storage>,
             length: UInt32,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -556,8 +556,8 @@
         @inlinable @unsafe
         public mutating func send(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            message: UnsafePointer<ISO_9945.Kernel.Socket.Message.Header>,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            message: UnsafePointer<ISO.`9945`.Kernel.Socket.Message.Header>,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -572,8 +572,8 @@
         @inlinable @unsafe
         public mutating func recv(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            message: UnsafeMutablePointer<ISO_9945.Kernel.Socket.Message.Header>,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            message: UnsafeMutablePointer<ISO.`9945`.Kernel.Socket.Message.Header>,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()
@@ -590,7 +590,7 @@
             target: borrowing Linux.Kernel.IO.Uring.Target,
             buffer: UnsafeRawPointer,
             length: Linux.Kernel.IO.Uring.Length,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             transfer: Linux.Kernel.IO.Uring.Socket.Transfer.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -607,8 +607,8 @@
         @inlinable @unsafe
         public mutating func send(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            message: UnsafePointer<ISO_9945.Kernel.Socket.Message.Header>,
-            flags: ISO_9945.Kernel.Socket.Message.Options,
+            message: UnsafePointer<ISO.`9945`.Kernel.Socket.Message.Header>,
+            flags: ISO.`9945`.Kernel.Socket.Message.Options,
             transfer: Linux.Kernel.IO.Uring.Socket.Transfer.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -638,7 +638,7 @@
         @inlinable @unsafe
         public mutating func epoll(
             target: borrowing Linux.Kernel.IO.Uring.Target,
-            descriptor: borrowing ISO_9945.Kernel.Descriptor,
+            descriptor: borrowing ISO.`9945`.Kernel.Descriptor,
             operation: Linux.Kernel.Event.Poll.Operation,
             event: UnsafeMutablePointer<Linux.Kernel.Event.Poll.Event>?,
             data: Linux.Kernel.IO.Uring.Operation.Data
@@ -895,10 +895,10 @@
 
         @inlinable @unsafe
         public mutating func waitid(
-            kind: ISO_9945.Kernel.Process.Wait.Kind,
-            id: ISO_9945.Kernel.Process.ID,
-            info: UnsafeMutablePointer<ISO_9945.Kernel.Signal.Information>,
-            options: ISO_9945.Kernel.Process.Wait.Options,
+            kind: ISO.`9945`.Kernel.Process.Wait.Kind,
+            id: ISO.`9945`.Kernel.Process.ID,
+            info: UnsafeMutablePointer<ISO.`9945`.Kernel.Signal.Information>,
+            options: ISO.`9945`.Kernel.Process.Wait.Options,
             flags: Linux.Kernel.IO.Uring.Wait.Options,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
@@ -920,7 +920,7 @@
             target: borrowing Linux.Kernel.IO.Uring.Target,
             offset: Linux.Kernel.IO.Uring.Offset,
             length: Linux.Kernel.IO.Uring.Length,
-            advice: ISO_9945.Kernel.File.Advice,
+            advice: ISO.`9945`.Kernel.File.Advice,
             data: Linux.Kernel.IO.Uring.Operation.Data
         ) {
             self = .init()

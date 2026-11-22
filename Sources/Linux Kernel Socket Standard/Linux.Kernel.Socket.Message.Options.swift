@@ -8,7 +8,7 @@
         internal import Musl
     #endif
 
-    extension ISO_9945.Kernel.Socket.Message.Options {
+    extension ISO.`9945`.Kernel.Socket.Message.Options {
 
         public static let more = Self(rawValue: Int32(MSG_MORE))
 
