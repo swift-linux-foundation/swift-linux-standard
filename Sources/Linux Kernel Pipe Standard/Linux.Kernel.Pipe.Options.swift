@@ -8,6 +8,10 @@
         internal import Musl
     #endif
 
+    #if canImport(Glibc) || canImport(Musl)
+        internal import Linux_Kernel_Shims
+    #endif
+
     extension Linux.Kernel.Pipe {
 
         public struct Options: OptionSet, Sendable {
