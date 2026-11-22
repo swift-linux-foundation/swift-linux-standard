@@ -1,7 +1,6 @@
 #if os(Linux)
 
     public import Linux_Standard_Core
-    public import ISO_9945_Core
     public import Error
 
     extension Linux.Kernel.Timer.Descriptor {

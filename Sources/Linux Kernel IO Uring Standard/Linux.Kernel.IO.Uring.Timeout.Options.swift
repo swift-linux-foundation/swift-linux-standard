@@ -2,7 +2,7 @@
 
     public import Linux_Standard_Core
     public import Linux_Kernel_IO_Standard
-    public import ISO_9945_Core
+    import ISO_9945_Core
     #if canImport(Linux_Kernel_Shims)
         internal import Linux_Kernel_Shims
     #endif

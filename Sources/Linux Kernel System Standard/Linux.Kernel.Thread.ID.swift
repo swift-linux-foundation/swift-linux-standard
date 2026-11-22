@@ -1,8 +1,8 @@
 #if os(Linux) || os(Android) || os(OpenBSD)
 
     public import Linux_Standard_Core
-    public import ISO_9945_Core
-    public import ISO_9945_Kernel_Thread
+    import ISO_9945_Core
+    import ISO_9945_Kernel_Thread
 
     internal import Linux_Kernel_Shims
 

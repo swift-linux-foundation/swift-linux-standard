@@ -2,7 +2,7 @@
 
     public import Linux_Standard_Core
     public import Linux_Kernel_IO_Standard
-    @_spi(Syscall) public import ISO_9945_Core
+    @_spi(Syscall) import ISO_9945_Core
     import Error
     @_spi(Syscall) import Linux_Kernel_Event_Standard
 
